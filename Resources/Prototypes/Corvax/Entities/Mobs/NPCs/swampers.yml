@@ -1,8 +1,8 @@
 - type: entity
-  name: болотник
+  name: swamper
   id: N14MobSwamper
   parent: N14MobBaseHostileInsect
-  description: Краб с панцырем? Это что-то новое.
+  description: A crab with a shell? That's something new.
   components:
   - type: Sprite
     drawdepth: Mobs
@@ -55,10 +55,10 @@
       prob: 0.8
 
 - type: entity
-  name: радболотник
+  name: rad swamper
   id: N14MobRadSwamper
   parent: N14MobSwamper
-  description: Краб с панцырем, да ещё и светится? Это что-то новое.
+  description: A crab with a shell, and it even glows? That's something new.
   components:
   - type: Sprite
     drawdepth: Mobs

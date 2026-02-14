@@ -798,7 +798,7 @@
 # Ranger
 
 - type: entity
-  name: Рейнджерский набор пистолета-пулемёта
+  name: ranger submachine gun kit
   parent: KitBase
   id: KitSMGRanger
   components:

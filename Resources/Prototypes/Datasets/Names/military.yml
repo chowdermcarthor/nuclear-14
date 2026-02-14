@@ -1,65 +1,65 @@
 - type: dataset
   id: NamesFirstMilitaryLeader
   values:
-  - Коммандер
-  - Полковник
-  - Подполковник
-  - Майор
-  - Лейтенант
+  - Commander
+  - Colonel
+  - Lieutenant Colonel
+  - Major
+  - Lieutenant
 
 - type: dataset
   id: NamesFirstMilitary
   values:
-  - Прапорщик
-  - Старшина
-  - Сержант
-  - Капрал
-  - Ефрейтор
+  - Warrant Officer
+  - Sergeant Major
+  - Sergeant
+  - Corporal
+  - Lance Corporal
 
 - type: dataset
   id: NamesLastMilitary
   values:
-  - Антарес
-  - Андромеда
-  - Бейд
-  - Бетельгейзе
-  - Вега
-  - Водолей
-  - Гинан
-  - Геркулес
-  - Денеб
-  - Дракон
-  - Зосма
-  - Змееносец
-  - Иклил
-  - Йильдун
-  - Канопус
-  - Козерог
-  - Лабр
-  - Лебедь
-  - Матар
-  - Микроскоп
-  - Нави
-  - Нихал
-  - Окул
-  - Орион
-  - Процион
-  - Персей
-  - Ригель
-  - Регул
-  - Сириус
-  - Саргас
-  - Табит
-  - Телец
-  - Укдах
-  - Фомальгаут
-  - Феникс
-  - Хадар
-  - Хамелеон
-  - Целена
-  - Центавр
-  - Чау
-  - Шедар
-  - Шаула
-  - Электра
-  
+  - Antares
+  - Andromeda
+  - Beid
+  - Betelgeuse
+  - Vega
+  - Aquarius
+  - Guinan
+  - Hercules
+  - Deneb
+  - Draco
+  - Zosma
+  - Ophiuchus
+  - Iklil
+  - Yildun
+  - Canopus
+  - Capricorn
+  - Labr
+  - Cygnus
+  - Matar
+  - Microscopium
+  - Navi
+  - Nihal
+  - Okul
+  - Orion
+  - Procyon
+  - Perseus
+  - Rigel
+  - Regulus
+  - Sirius
+  - Sargas
+  - Tabit
+  - Taurus
+  - Ukdah
+  - Fomalhaut
+  - Phoenix
+  - Hadar
+  - Chameleon
+  - Celaeno
+  - Centaur
+  - Chao
+  - Shedar
+  - Shaula
+  - Electra
+

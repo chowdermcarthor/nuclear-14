@@ -1,11 +1,11 @@
 - type: construction
-  name: Самодельная Удочка
+  name: Makeshift Fishing Rod
   id: FishingRodMakeshift
   graph: FishingRodMakeshift
   startNode: start
   targetNode: makeshiftRod
   category: construction-category-tools
-  description: Удочка из того что есть
+  description: A fishing rod made from whatever is available
   icon: { sprite: _Goobstation/Objects/Specific/Fishing/makeshift_rod.rsi, state: icon }
   objectType: Item
   hide: false

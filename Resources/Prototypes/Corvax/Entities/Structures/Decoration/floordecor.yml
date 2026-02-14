@@ -12,7 +12,7 @@
 - type: entity
   parent: N14DecorFloorBase
   id: NCDecorFloorVaultSkeleton
-  name: скелет с костюмом убежища
+  name: skeleton in a vault suit
   components:
   - type: Sprite
     sprite: Corvax/Structures/Decoration/vault_bones.rsi
@@ -23,7 +23,7 @@
 - type: entity
   parent: N14DecorFloorBase
   id: NCDecorFloorGrave1
-  name: надгробие
+  name: gravestone
   components:
   - type: Sprite
     sprite: Corvax/Structures/Decoration/graves.rsi
@@ -32,7 +32,7 @@
 - type: entity
   parent: NCDecorFloorGrave1
   id: NCDecorFloorGrave2
-  name: надгробие
+  name: gravestone
   components:
   - type: Sprite
     state: grob2
@@ -40,7 +40,7 @@
 - type: entity
   parent: NCDecorFloorGrave1
   id: NCDecorFloorGrave3
-  name: надгробие
+  name: gravestone
   components:
   - type: Sprite
     state: grob3

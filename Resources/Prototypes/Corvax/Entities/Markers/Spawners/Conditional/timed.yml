@@ -1,7 +1,7 @@
 - type: entity
   parent: N14TimedSpawnerMolerat
   id: N14TimedSpawnerSwamper
-  name: периодический спавнер болотника
+  name: periodic swamper spawner
   components:
     - type: Sprite
       layers:
@@ -21,7 +21,7 @@
 - type: entity
   parent: N14TimedSpawnerMolerat
   id: N14TimedSpawnerRadSwamper
-  name: периодический спавнер радболотника
+  name: periodic rad swamper spawner
   components:
     - type: Sprite
       layers:
@@ -41,7 +41,7 @@
 - type: entity
   parent: N14TimedSpawnerMolerat
   id: N14TimedSpawnerJackal
-  name: периодический спавнер шакала
+  name: periodic jackal spawner
   components:
     - type: Sprite
       layers:

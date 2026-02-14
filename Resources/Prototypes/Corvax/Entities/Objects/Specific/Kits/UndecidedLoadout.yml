@@ -569,8 +569,8 @@
 
 - type: UndecidedLoadoutBackpackSet
   id: RangerSMGSet
-  name: Набор рейнджера с ПП 9мм
-  description: Набор рейнджера, содержащий пистолет-пулемёт, 4 магазина и 1 коробку патронов калибра 9 милиметров, стимпак, сухой паёк и нож.
+  name: Ranger kit with 9mm SMG
+  description: A ranger kit containing a submachine gun, 4 magazines and 1 box of 9mm ammo, a stimpak, a dry ration, and a knife.
   sprite:
     sprite: _Nuclear14/Objects/Misc/kits.rsi
     state: rifleman

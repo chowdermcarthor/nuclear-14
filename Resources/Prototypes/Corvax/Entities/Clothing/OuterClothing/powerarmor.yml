@@ -1,8 +1,8 @@
 - type: entity
   parent: N14ClothingOuterPowerArmorT51
   id: N14ClothingOuterPowerArmorT51China
-  name: китайская силовая броня
-  description: Модель Т-51, на обратной стороне виднеется потёртая надпись ** Сделано в китае **
+  name: Chinese power armor
+  description: A T-51 model with a worn inscription on the back that reads "Made in China".
   components:
   - type: Sprite
     sprite: Corvax/Clothing/OuterClothing/PowerArmor/t51china.rsi

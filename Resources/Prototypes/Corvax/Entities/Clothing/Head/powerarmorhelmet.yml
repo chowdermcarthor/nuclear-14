@@ -1,8 +1,8 @@
 - type: entity
   parent: N14ClothingHeadHelmetPowerArmorT51
   id: N14ClothingHeadHelmetPowerArmorT51China
-  name: шлем китайской силовой брони
-  description: Шлем силовой брони модели Т-51, раскрашена в цвета ком. партии.
+  name: Chinese power armor helmet
+  description: A T-51 model power armor helmet, painted in the colors of the Communist Party.
   components:
   - type: Sprite
     netsync: false

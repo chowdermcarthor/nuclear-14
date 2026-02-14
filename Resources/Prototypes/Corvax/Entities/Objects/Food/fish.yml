@@ -1,8 +1,8 @@
 - type: entity
-  name: крабовые палочки
+  name: crab sticks
   parent: FoodBakedBase
   id: Crabstick
-  description: Имитация крабового мяса. В основном крахмал и рыбный ароматизатор.
+  description: Imitation crab meat. Mostly starch and fish flavoring.
   components:
   - type: Stack
     stackType: Crabsticks
@@ -67,7 +67,7 @@
 
 - type: stack
   id: Crabsticks
-  name: крабовые палочки
+  name: crab sticks
   spawn: Crabstick
   maxCount: 9
   itemSize: 1
@@ -76,10 +76,10 @@
   id: Crabsticks
 
 - type: entity
-  name: сырая красная рыба
+  name: raw red fish
   parent: N14FoodMeatRadRaw
   id: FoodMeatRedfishRaw
-  description: Жирный кусок сырой красной рыбы.
+  description: A fatty piece of raw red fish.
   components:
   - type: Sprite
     scale: 1, 1
@@ -92,7 +92,7 @@
         - ReagentId: N14UncookedAnimalProteinsRad
           Quantity: 5
         - ReagentId: Vitamin
-          Quantity: 2 # В красной рыбе есть витамины даже в сыром виде
+          Quantity: 2 # Red fish has vitamins even when raw
   - type: Construction
     graph: FoodMeatRedfish
     node: start
@@ -101,10 +101,10 @@
     price: 5
 
 - type: entity
-  name: сырая белая рыба
+  name: raw white fish
   parent: N14FoodMeatRadRaw
   id: FoodMeatWhitefishRaw
-  description: Диетический кусок сырой белой рыбы.
+  description: A lean piece of raw white fish.
   components:
   - type: Sprite
     scale: 1, 1
@@ -115,7 +115,7 @@
       food:
         reagents:
         - ReagentId: N14UncookedAnimalProteinsRad
-          Quantity: 6 # Белая рыба - это почти чистый белок
+          Quantity: 6 # White fish is almost pure protein
   - type: Construction
     graph: FoodMeatWhitefish
     node: start
@@ -124,10 +124,10 @@
     price: 4
 
 - type: entity
-  name: стейк из красной рыбы
+  name: redfish steak
   parent: N14FoodMeatCooked
   id: FoodMeatRedfishCooked
-  description: Идеально прожаренный, жирный стейк. Полезен для здоровья.
+  description: A perfectly cooked, fatty steak. Good for your health.
   components:
   - type: Sprite
     scale: 1, 1
@@ -154,10 +154,10 @@
     price: 10
 
 - type: entity
-  name: стейк из белой рыбы
+  name: whitefish steak
   parent: N14FoodMeatCooked
   id: FoodMeatWhitefishCooked
-  description: Нежный, диетический стейк. Отличный источник чистого белка.
+  description: A tender, lean steak. An excellent source of pure protein.
   components:
   - type: Sprite
     scale: 1, 1
@@ -171,7 +171,7 @@
         - ReagentId: Nutriment
           Quantity: 5
         - ReagentId: Protein
-          Quantity: 9 # Упор на протеин (для качков пустошей!)
+          Quantity: 9 # Protein focus (for wasteland lifters!)
   - type: Construction
     graph: FoodMeatWhitefish
     node: MeatCooked
@@ -210,13 +210,13 @@
   - node: MeatCooked
     entity: FoodMeatWhitefishCooked
 
-# --- СЛОЖНЫЕ БЛЮДА ---
+# --- COMPLEX DISHES ---
 
 - type: entity
-  name: крабовый салат
+  name: crab salad
   parent: N14CookedFoodBowlBase
   id: FoodCrabSalad
-  description: Сытный салат с овощами и яйцом. Сбалансированный обед.
+  description: A hearty salad with vegetables and egg. A balanced meal.
   components:
   - type: Sprite
     sprite: Corvax/Objects/Consumable/Food/bowl_food_fish.rsi
@@ -236,10 +236,10 @@
           Quantity: 5
 
 - type: entity
-  name: рыбный суп
+  name: fish soup
   parent: N14CookedFoodBowlBase
   id: FoodFishSoup
-  description: Горячая уха. Отлично утоляет жажду и согревает.
+  description: Hot fish soup. Great for quenching thirst and warming you up.
   components:
   - type: Sprite
     sprite: Corvax/Objects/Consumable/Food/bowl_food_fish.rsi
@@ -250,21 +250,21 @@
         maxVol: 40
         reagents:
         - ReagentId: Water
-          Quantity: 15 # Самое главное в супе - вода!
+          Quantity: 15 # The most important part of soup is water!
         - ReagentId: Nutriment
           Quantity: 5
         - ReagentId: Vitamin
           Quantity: 4
         - ReagentId: Omnizine
-          Quantity: 8 # Суп лечит лучше, чем сухомятка
+          Quantity: 8 # Soup heals better than dry rations
 
-# --- ВЫПЕЧКА ---
+# --- BAKED GOODS ---
 
 - type: entity
-  name: рыбный пирог
+  name: fish pie
   parent: FoodPieBase
   id: FoodFishPie
-  description: Сытный пирог с рыбой. Одним таким можно наесться на весь день.
+  description: A hearty fish pie. One is enough to stay full all day.
   components:
   - type: Sprite
     sprite: Corvax/Objects/Consumable/Food/fish_pie.rsi
@@ -278,17 +278,17 @@
         maxVol: 50
         reagents:
         - ReagentId: Nutriment
-          Quantity: 20 # Очень сытно (тесто + рыба)
+          Quantity: 20 # Very filling (dough + fish)
         - ReagentId: Protein
           Quantity: 10
         - ReagentId: Omnizine
           Quantity: 10
 
 - type: entity
-  name: кусок рыбного пирога
+  name: fish pie slice
   parent: FoodPieSliceBase
   id: FoodFishPieSlice
-  description: Аппетитный кусочек пирога.
+  description: An appetizing slice of pie.
   components:
   - type: Sprite
     sprite: Corvax/Objects/Consumable/Food/fish_pie.rsi
@@ -305,13 +305,13 @@
         - ReagentId: Omnizine
           Quantity: 2
 
-# --- ДЕЛИКАТЕСЫ (Икра) ---
+# --- DELICACIES (Caviar) ---
 
 - type: entity
-  name: красная икра
+  name: red caviar
   parent: N14CookedFoodTacoBase
   id: FoodRedCaviar
-  description: Баночка свежей красной икры. Соленая и питательная.
+  description: A jar of fresh red caviar. Salty and nutritious.
   components:
   - type: Sprite
     sprite: Corvax/Objects/Consumable/Food/redcaviar.rsi
@@ -324,19 +324,19 @@
         - ReagentId: Nutriment
           Quantity: 2
         - ReagentId: Sodium
-          Quantity: 5 # Икра всегда соленая!
+          Quantity: 5 # Caviar is always salty!
         - ReagentId: Vitamin
-          Quantity: 8 # Концентрат пользы
+          Quantity: 8 # Concentrated goodness
         - ReagentId: Omnizine
           Quantity: 5
         - ReagentId: Saline
           Quantity: 15
 
 - type: entity
-  name: тартлетка с икрой
+  name: caviar tartlet
   parent: N14CookedFoodBreadBase
   id: FoodCaviarTartlet
-  description: Маленькая хрустящая закуска с икрой.
+  description: A small crispy snack with caviar.
   components:
   - type: Sprite
     sprite: Corvax/Objects/Consumable/Food/caviar_food.rsi
@@ -358,10 +358,10 @@
           Quantity: 15
 
 - type: entity
-  name: тост с икрой
+  name: caviar toast
   parent: N14CookedFoodBreadBase
   id: FoodCaviarToast
-  description: Хрустящий тост с маслом и икрой. Вкус роскоши.
+  description: A crunchy toast with butter and caviar. A taste of luxury.
   components:
   - type: Sprite
     sprite: Corvax/Objects/Consumable/Food/caviar_food.rsi
@@ -385,8 +385,8 @@
 - type: entity
   parent: [FoodTinBase, FoodMeatBase]
   id: N14FoodCannedFish
-  name: рыбные консервы
-  description: Жестяная банка с консервированной рыбой. Внутри много масла.
+  name: canned fish
+  description: A tin can of preserved fish. Plenty of oil inside.
   components:
   - type: Sprite
     sprite: Corvax/Objects/Consumable/Food/canned_fish.rsi
@@ -419,12 +419,12 @@
     thickness: 0.1
     area: 0.05
 
-# Горячая (Вкусная и лечебная)
+# Hot (Tasty and healing)
 - type: entity
   parent: FoodTinBase
   id: N14FoodCannedFishHot
-  name: разогретые рыбные консервы
-  description: Горячая рыба в собственном соку. Отлично восстанавливает силы.
+  name: heated canned fish
+  description: Hot fish in its own juices. Restores strength well.
   components:
   - type: Sprite
     sprite: Corvax/Objects/Consumable/Food/canned_fish_hot.rsi
@@ -445,13 +445,13 @@
         maxVol: 30
         reagents:
         - ReagentId: Nutriment
-          Quantity: 12 # Сытнее, чем холодная
+          Quantity: 12 # More filling than cold
         - ReagentId: Protein
           Quantity: 8
         - ReagentId: Vitamin
           Quantity: 3
         - ReagentId: Omnizine
-          Quantity: 8 # Хорошо лечит
+          Quantity: 8 # Heals well
   - type: FlavorProfile
     flavors:
     - fishy
@@ -459,7 +459,7 @@
 - type: entity
   parent: FoodTinBaseTrash
   id: N14FoodCannedFishTrash
-  name: пустая рыбная консерва
+  name: empty fish can
   components:
   - type: Sprite
     sprite: Corvax/Objects/Consumable/Food/canned_fish.rsi
@@ -544,7 +544,7 @@
     N14FloraProduceWildOnion: 1
     N14FloraProduceWildTato: 1
 
-# Икра
+# Caviar
 - type: microwaveMealRecipe
   id: N14RecipeFoodCaviarTartlet
   name: caviar tartlet (wasteland)
@@ -565,7 +565,7 @@
     N14FloraProduceWildPricklyPearFruit: 1
     N14CookedFoodBreadPlainSlice: 1
 
-# Крабовые палочки (лучше из Cooked, как ты сделал)
+# Crab sticks (better from Cooked, as you did)
 - type: microwaveMealRecipe
   id: N14RecipeCrabstick
   name: crab sticks

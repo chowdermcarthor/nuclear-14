@@ -15,7 +15,7 @@
         - to: substationCable
           steps:
             - tag: N14Board
-              name: машинная плата
+              name: circuit board
               icon: {sprite: _Nuclear14/Objects/Misc/crafting_junk.rsi, state: board_1}
             - tool: Screwing
               doAfter: 0.5
@@ -39,10 +39,10 @@
         - material: CableHV
           amount: 2
         - tag: N14Capacitor
-          name: конденсатор
+          name: capacitor
           icon: {sprite: _Nuclear14/Objects/Misc/crafting_junk.rsi, state: capacitor_1}
         - tag: N14Fuse
-          name: предохранитель
+          name: fuse
           icon: {sprite: _Nuclear14/Objects/Misc/crafting_junk.rsi, state: fuse_1}
         - tool: Welding
           doAfter: 2

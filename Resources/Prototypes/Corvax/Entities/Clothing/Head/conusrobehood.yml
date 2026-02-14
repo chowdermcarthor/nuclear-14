@@ -1,8 +1,8 @@
 - type: entity
   parent: ClothingHeadBase
   id: N14ClothingHeadHatConusRobeHood
-  name: Капюшон Ку-Конус-Клана
-  description: Скромный тканевый мешок, с прорезью для глаз,увенчанный дорожным конусом, искусно прикреплённым таинственным образом.
+  name: Ku-Konus Clan hood
+  description: A modest cloth sack with an eye slit, crowned with a traffic cone artfully attached in a mysterious way.
   components:
   - type: Sprite
     sprite: Corvax/Clothing/Head/Hoods/conusrobehood.rsi

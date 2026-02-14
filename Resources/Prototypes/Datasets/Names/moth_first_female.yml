@@ -1,57 +1,12 @@
 - type: dataset
   id: names_moth_first_female
   values:
-  - Атропос # Acherontia atropos
-  - Бетулария # Biston betularia
-  - Дафне # Daphnis
-  - Дафнис
-  - Эурупта # Eurypteryx
-  - Эудрайс # Eudryas
-  - Ирис # Salassa iris
-  - Лакесис # Acherontia lachesis
-  - Луна # Actias luna
-  - Лиманция # Lymantria
-  - Лимантрия
-  - Рубикунда # Dryocampa rubicunda, "Rosy Maple"
-  - Роузи
-  - Мэппл
-  - Мима # Mimas
-  - Нефель # Nephele
-  - Космосома # Cosmosoma myrodora, "Scarlet-bodied wasp moth"
-  - Скарлет
-  - Стикс # Acherontia styx
-  - Аскалафа
-  - Долабрия
-  - Цисания
-  - Бруматта
-
+  - Atropos # Acherontia atropos  - Betulariya # Biston betularia  - Dafne # Daphnis  - Dafnis  - Eurupta # Eurypteryx  - Eudrays # Eudryas  - Iris # Salassa iris  - Lakesis # Acherontia lachesis  - Luna # Actias luna  - Limantsiya # Lymantria  - Limantriya  - Rubikunda # Dryocampa rubicunda, "Rosy Maple"  - Rouzi  - Meppl  - Mima # Mimas  - Nefel # Nephele  - Kosmosoma # Cosmosoma myrodora, "Scarlet-bodied wasp moth"  - Skarlet  - Stiks # Acherontia styx  - Askalafa  - Dolabriya  - Tsisaniya  - Brumatta
   # Other languages
-  - Авелиана # Galician "moth" (avelaíña)
-  - Фалена # Italian "winter moth"
-  - Менодора # Greek "moon gift"
-  - Моли # Romanian "moth"
-  - Полилла # Spanish "moth"
-
+  - Aveliana # Galician "moth" (avelaíña)  - Falena # Italian "winter moth"  - Menodora # Greek "moon gift"  - Moli # Romanian "moth"  - Polilla # Spanish "moth"
   # Myth and legend
-  - Атея # Greek mythological figure
-  - Алфея
-  - Аврора # Roman goddess of the dawn
-  - Хель # Greek mythological figure
-  - Селена # Greek goddess of the moon
-  - Никс # Greek goddess of the night
-
+  - Ateya # Greek mythological figure  - Alfeya  - Avrora # Roman goddess of the dawn  - Khel # Greek mythological figure  - Selena # Greek goddess of the moon  - Niks # Greek goddess of the night
   # Fun names
-  - Ангел
-  - Сэнди
-  - Либерти 
-
+  - Angel  - Sendi  - Liberti 
   # Common names, filler
-  - Беатрикс
-  - Дейзи
-  - Элизабет
-  - Люси
-  - Руби
-  - Сара
-  - Сьенна
-  - Уиллоу
-  - Зои
+  - Beatriks  - Deyzi  - Elizabet  - Lyusi  - Rubi  - Sara  - Senna  - Uillou  - Zoi

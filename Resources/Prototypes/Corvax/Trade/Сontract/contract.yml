@@ -82,8 +82,8 @@
 
 - type: storeContract
   id: caravan_contract_N14FloraProduceWildBrocFlower
-  name: "Брок"
-  description: "Нужен брок для одного медика."
+  name: "Broc Flower"
+  description: "A medic needs broc flower."
   difficulty: Easy
   targets:
   - id: N14FloraProduceWildBrocFlower
@@ -100,8 +100,8 @@
 
 - type: storeContract
   id: caravan_contract_MaterialCloth
-  name: "Требуется ткань"
-  description: "Для создания новой одежды нужна ткань."
+  name: "Cloth Needed"
+  description: "Cloth is needed to make new clothing."
   difficulty: Easy
   targets:
   - id: MaterialCloth1
@@ -118,8 +118,8 @@
 
 - type: storeContract
   id: caravan_contract_N14FloraLogTimber
-  name: "Дрова для отопления"
-  description: "Нужны дрова для отопления и строительства."
+  name: "Firewood for Heating"
+  description: "Firewood is needed for heating and construction."
   difficulty: Easy
   targets:
   - id: N14FloraLogTimber
@@ -136,8 +136,8 @@
 
 - type: storeContract
   id: caravan_contract_MaterialWoodPlank1
-  name: "Древесина для плотника"
-  description: "Нужна древесина для работы плотника."
+  name: "Lumber for the Carpenter"
+  description: "Lumber is needed for the carpenter's work."
   difficulty: Easy
   targets:
   - id: MaterialWoodPlank1
@@ -154,8 +154,8 @@
 
 - type: storeContract
   id: caravan_contract_N14FloraProduceWildCoyoteTobacco
-  name: "Табак для наемников"
-  description: "Необходим табак для сигарет для наемников."
+  name: "Tobacco for Mercenaries"
+  description: "Tobacco is needed for mercenaries' cigarettes."
   difficulty: Easy
   targets:
   - id: N14FloraProduceWildCoyoteTobacco
@@ -172,8 +172,8 @@
 
 - type: storeContract
   id: caravan_contract_N14FoodDogfood
-  name: "Собачий корм"
-  description: "Для моей собачки нужно больше корма."
+  name: "Dog Food"
+  description: "My dog needs more food."
   difficulty: Easy
   repeatable: false
   targets:
@@ -191,8 +191,8 @@
 
 - type: storeContract
   id: caravan_contract_N14WeaponSniper556VarmintRifle
-  name: "Оружие для охраны"
-  description: "Необходимо предоставить ствол для охраны."
+  name: "Weapon for Guard Duty"
+  description: "A weapon is needed for guard duty."
   difficulty: Easy
   targets:
   - id: N14WeaponSniper556VarmintRifle
@@ -209,8 +209,8 @@
 
 - type: storeContract
   id: caravan_contract_N14FoodMeatRadRaw
-  name: "Собрание мяса"
-  description: "Необходимо добыть мясо для переработки."
+  name: "Meat Collection"
+  description: "Meat is needed for processing."
   difficulty: Easy
   targets:
   - id: N14FoodMeatRadRaw
@@ -227,8 +227,8 @@
 
 - type: storeContract
   id: caravan_contract_N14Scrap1
-  name: "Сбор металлолома"
-  description: "Нужно собрать металлолом для переплавки."
+  name: "Scrap Metal Collection"
+  description: "Scrap metal is needed for smelting."
   difficulty: Easy
   targets:
   - id: N14Scrap1
@@ -245,8 +245,8 @@
 
 - type: storeContract
   id: caravan_contract_N14Scraps
-  name: "Сбор цветного металла"
-  description: "Нужно собрать металлолом для переплавки."
+  name: "Non-ferrous Metal Collection"
+  description: "Scrap metal is needed for smelting."
   difficulty: Easy
   targetCount: 1
   targets:
@@ -271,8 +271,8 @@
 
 - type: storeContract
   id: caravan_contract_N14Weapon9mm
-  name: "Нужен ствол"
-  description: "Ствол для охраннка бара."
+  name: "Need a Gun"
+  description: "A gun for the bar guard."
   difficulty: Easy
   targetCount: 1
   targets:
@@ -294,8 +294,8 @@
 
 - type: storeContract
   id: caravan_contract_N14MaterialLeather1
-  name: "Сбор кожи"
-  description: "Нужно собрать кожу для кожевника."
+  name: "Leather Collection"
+  description: "Leather is needed for the tanner."
   difficulty: Easy
   targets:
   - id: N14MaterialLeather1
@@ -312,8 +312,8 @@
 
 - type: storeContract
   id: caravan_contract_N14MobGhoulFeral
-  name: "Гули"
-  description: "Нужны мертвые тела гулей для экспрементов."
+  name: "Ghouls"
+  description: "Dead ghoul bodies are needed for experiments."
   difficulty: Medium
   targets:
   - id: N14MobGhoulFeral
@@ -330,8 +330,8 @@
 
 - type: storeContract
   id: caravan_contract_N14MobRaiderPsycho
-  name: "Рейдерды"
-  description: "Надоели уже, мелкие и мерзкие. Убей пару штук и притащи трупы."
+  name: "Raiders"
+  description: "I'm sick of them. Kill a couple and bring the bodies."
   difficulty: Medium
   targets:
   - id: N14MobRaiderPsycho
@@ -348,8 +348,8 @@
 
 - type: storeContract
   id: caravan_contract_N14DrinkNukaCola
-  name: "Ядер Кола"
-  description: "Мне не хватает одна ядер кола для коллекций."
+  name: "Nuka-Cola"
+  description: "I'm missing one Nuka-Cola for my collection."
   difficulty: Medium
   targetCount: 1
   targets:
@@ -383,8 +383,8 @@
 
 - type: storeContract
   id: caravan_contract_N14FloraProduceWildCarrot
-  name: "Морковкааа!!!"
-  description: "Я люблю морковку! Мне нужно много морковки!"
+  name: "Carrots!!!"
+  description: "I love carrots! I need lots of carrots!"
   difficulty: Medium
   targets:
   - id: N14FloraProduceWildCarrot
@@ -402,8 +402,8 @@
 
 - type: storeContract
   id: caravan_contract_N14BrassKnife
-  name: "Нож"
-  description: "Ищу новый ножи для своей коллекций."
+  name: "Knife"
+  description: "I'm looking for new knives for my collection."
   difficulty: Medium
   targets:
   - id: N14BrassKnife
@@ -420,8 +420,8 @@
 
 - type: storeContract
   id: caravan_contract_N14FloraProduceWildCaveFungusRad
-  name: "Грибы!"
-  description: "Мне нужны грибы. Да да чисто в научных целях."
+  name: "Mushrooms!"
+  description: "I need mushrooms. Yes, purely for scientific purposes."
   difficulty: Medium
   targets:
   - id: N14FloraProduceWildCaveFungusRad
@@ -438,8 +438,8 @@
 
 - type: storeContract
   id: caravan_contract_N14MobDeathclaw
-  name: "Коготь смерти!"
-  description: "Найди и убей тварь. Принеси ко мне."
+  name: "Deathclaw!"
+  description: "Find and kill the beast. Bring it to me."
   difficulty: Hard
   targets:
   - id: N14MobDeathclaw
@@ -456,8 +456,8 @@
 
 - type: storeContract
   id: caravan_contract_N14MobRaiderBoss
-  name: "Босс Рейдеров"
-  description: "Он всех достал. Он слишком много ходит по земле. Убей его."
+  name: "Raider Boss"
+  description: "He has annoyed everyone. He roams too much. Kill him."
   difficulty: Hard
   targets:
   - id: N14MobEnforcerWarden
@@ -474,8 +474,8 @@
 
 - type: storeContract
   id: caravan_contract_N14MobCazadorWave
-  name: "Казадор"
-  description: "Принеси  трупы казадоров."
+  name: "Cazador"
+  description: "Bring back the cazador bodies."
   difficulty: Hard
   targets:
   - id: N14MobCazadorWave
@@ -492,8 +492,8 @@
 
 - type: storeContract
   id: caravan_contract_N14SuperSledgeHammer
-  name: "Молот"
-  description: "Молот для одного ценителя."
+  name: "Hammer"
+  description: "A hammer for a connoisseur."
   difficulty: Hard
   targets:
   - id: N14SuperSledgeHammer
@@ -510,8 +510,8 @@
 
 - type: storeContract
   id: caravan_contract_N14MobDeathclawMetal
-  name: "Коготь смерти"
-  description: "Я слыхал живет один с броне. Очень стар и опасен."
+  name: "Deathclaw"
+  description: "I heard one lives with armor. Very old and dangerous."
   difficulty: Hard
   targets:
   - id: N14MobDeathclawMetal
@@ -528,8 +528,8 @@
 
 - type: storeContract
   id: caravan_contract_N14CookedFoodEggDeathclawBoiled
-  name: "Яйцо"
-  description: "Для одного гурмана срочно нужно варенные яйца когтя смерти."
+  name: "Egg"
+  description: "A gourmet urgently needs boiled deathclaw eggs."
   difficulty: Hard
   targets:
   - id: N14CookedFoodEggDeathclawBoiled

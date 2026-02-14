@@ -1,8 +1,8 @@
 - type: entity
   parent: ClothingOuterBaseLarge
   id: N14ClothingOuterSuitChinaStealth
-  name: китайская стелс-броня
-  description: Это довоенная легкая броня, которая делает владельца незаметным, использовалась элитными китайскими войсками Crimson Dragoon.
+  name: Chinese stealth armor
+  description: This pre-war light armor makes the wearer hard to see and was used by the elite Chinese Crimson Dragoon forces.
   components:
   - type: Sprite
     sprite: Corvax/Clothing/OuterClothing/Suits/chinastealth.rsi

@@ -1,8 +1,8 @@
 - type: entity
   parent: N14ClothingOuterBase
   id: N14ClothingOuterConusrobe
-  name: Ряса Ку-Конус-Клана
-  description: Загадочная белая ряса, созданная последователями Ку-Конус-Клана. Сшита из обрывков ткани и старой простыни.
+  name: Ku-Konus Clan robe
+  description: A mysterious white robe made by followers of the Ku-Konus Clan. Sewn from scraps of fabric and an old bedsheet.
   components:
   - type: Sprite
     sprite: Corvax/Clothing/OuterClothing/Coats_and_outer/conusrobe.rsi

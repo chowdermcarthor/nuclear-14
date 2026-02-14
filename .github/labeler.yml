@@ -1,4 +1,4 @@
-":musical_note: Изменения Audio :musical_note:": # Corvax-Change
+":musical_note: Audio Changes :musical_note:": # Corvax-Change
   - changed-files:
     - any-glob-to-any-file: "**/*.ogg"
 
@@ -6,7 +6,7 @@
   - changed-files:
     - any-glob-to-any-file: "**/*.cs"
 
-":gear: Изменение Конфига :gear:": # Corvax-Change
+":gear: Config Changes :gear:": # Corvax-Change
 - changed-files:
   - any-glob-to-any-file:
     - "**/*.toml"
@@ -17,29 +17,29 @@
     - ".vscode/*.json"
     - ".editorconfig"
 
-":book: Документация :book:": # Corvax-Change
+":book: Documentation :book:": # Corvax-Change
   - changed-files:
     - any-glob-to-any-file:
       - "**/*.xml"
       - "**/*.md"
 
-":page_facing_up: Локализация :page_facing_up:": # Corvax-Change
+":page_facing_up: Localization :page_facing_up:": # Corvax-Change
   - changed-files:
     - any-glob-to-any-file: 'Resources/Locale/**/*.ftl'
 
-":world_map: Изменения Карт :world_map:": # Corvax-Change
+":world_map: Map Changes :world_map:": # Corvax-Change
   - changed-files:
     - any-glob-to-any-file:
       - "Resources/Maps/**/*.yml"
       - "Resources/Prototypes/Maps/**/*.yml"
 
-":art: Спрайты :art:": # Corvax-Change
+":art: Sprites :art:": # Corvax-Change
   - changed-files:
     - any-glob-to-any-file:
       - "**/*.rsi/*.png"
       - "**/*.rsi/*.json"
 
-":computer: Изменения UI :computer:": # Corvax-Change
+":computer: UI Changes :computer:": # Corvax-Change
   - changed-files:
     - any-glob-to-any-file: "**/*.xaml*"
 

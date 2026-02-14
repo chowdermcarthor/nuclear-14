@@ -23,7 +23,7 @@
 - type: entity
   parent: N14FalloutArmorBase
   id: N14ClothingOuterHeavyCenturionArmor
-  name: сenturion heavy armor
+  name: centurion heavy armor
   description: "Heavy armor assembled from captured pieces of power armor of defeated enemies."
   components:
   - type: Sprite
@@ -390,8 +390,8 @@
 - type: entity
   parent: N14ClothingOuterNCRCombatArmor
   id: N14ClothingOuterRangerRedwood
-  name: комплект патрульной брони рейнджера "Редвуд"
-  description: Модифицированная версия патрульной боевой брони, поверх которой надета тёмно-коричневая кожаная куртка. Используется рейндерами НКР, патрулирующими густые районы и горные перевалы Калифорнии. Комплект обеспечивает хорошую защиту, при этом не ограничивая движения.
+  name: ranger patrol armor set "Redwood"
+  description: A modified version of patrol combat armor with a dark brown leather jacket worn over it. Used by NCR rangers patrolling dense regions and mountain passes of California. The set provides good protection without restricting movement.
   components:
   - type: Sprite
     sprite: Corvax/Clothing/OuterClothing/Armor/RangerJacketArmor.rsi

@@ -1,41 +1,41 @@
 - type: dataset
   id: names_N14pet_robot
   values: # The names after the values belong to those who suggested them
-  - Уитли #Mackrean
-  - Глэдис #mcrlud
-  - Стальная Пасть #Bonnhart
-  - Кулак #HungryCuban
-  - Челл #Mackrean
-  - Пип-Пип #mrclud
-  - Фрикборд #HungryCuban
+  - Wheatley #Mackrean
+  - GLaDOS #mcrlud
+  - Steel Maw #Bonnhart
+  - Fist #HungryCuban
+  - Chell #Mackrean
+  - Pip-Pip #mrclud
+  - Freakboard #HungryCuban
   - DC-AC #HungryCuban
-  - Киберлай #Bonnhart
-  - Альфа-Один #TheDoktorZ
-  - Экстерминатор #TheDoktorZ
-  - Бишоп #TheDoktorZ
-  - Горт #TheDoktorZ
-  - Мими #Mackrean
-  - Пенелопа #Mackrean
-  - Q-Берти #Mackrean
-  - Кэсси #Mackrean
-  - Потерянная Шестерня #OldDanceJacket
-  - Расти #OldDanceJacket
-  - Сьюзан #kaisershadow
-  - Боб #kaisershadow
-  - Мусорка #PatoGrone
-  - Медовый Соты #Nerb
-  - Стальной Костяк #Nerb
-  - Ватт #Nerb
-  - Лягушка #Sayla
+  - Cyberly #Bonnhart
+  - Alpha-One #TheDoktorZ
+  - Exterminator #TheDoktorZ
+  - Bishop #TheDoktorZ
+  - Gort #TheDoktorZ
+  - Mimi #Mackrean
+  - Penelope #Mackrean
+  - Q-Bert #Mackrean
+  - Cassie #Mackrean
+  - Lost Gear #OldDanceJacket
+  - Rusty #OldDanceJacket
+  - Susan #kaisershadow
+  - Bob #kaisershadow
+  - Trashcan #PatoGrone
+  - Honeycomb #Nerb
+  - Steel Frame #Nerb
+  - Watt #Nerb
+  - Frog #Sayla
   - W.O.M.B.A.T #Sayla
-  - Скиппи #WombatWacko
-  - Деревяшка #HungryCuban
-  - Искра #Dingo
-  - Робут #Dingo
-  - Тугодум #Dingo
-  - Скрепка #Nyawul
-  - Болван #Nerb
-  - Танк #Nerb
-  - Пенни #Nerb
-  - Следопыт #Brimcon
+  - Skippy #WombatWacko
+  - Wooden #HungryCuban
+  - Spark #Dingo
+  - Robut #Dingo
+  - Slowpoke #Dingo
+  - Paperclip #Nyawul
+  - Dummy #Nerb
+  - Tank #Nerb
+  - Penny #Nerb
+  - Pathfinder #Brimcon
   - R3-D3
