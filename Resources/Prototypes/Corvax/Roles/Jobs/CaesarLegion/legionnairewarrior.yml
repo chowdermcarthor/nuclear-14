@@ -7,7 +7,7 @@
   requirements:
   - !type:CharacterDepartmentTimeRequirement
     department: CaesarLegion
-    min: 10800 # 3 hours
+    min: 0 # 3 hours
   - !type:CharacterSpeciesRequirement
     species:
     - Human

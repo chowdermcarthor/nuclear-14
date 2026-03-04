@@ -12,7 +12,7 @@
       - Human
       - Ghoul
     - !type:CharacterOverallTimeRequirement
-      min: 3600
+      min: 0
   startingGear: NCRCadetGear
   icon: "JobIconNcrCadet" # Corvax-Change
   supervisors: job-supervisors-ncr

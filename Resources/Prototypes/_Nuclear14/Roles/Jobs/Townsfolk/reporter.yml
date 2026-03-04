@@ -13,7 +13,7 @@
       - Ghoul
     - !type:CharacterDepartmentTimeRequirement
       department: Townsfolk
-      min: 7200 # 2 hours
+      min: 0 # 2 hours
   startingGear: WastelandReporterGear
   icon: "JobIconTownReporter" # Corvax-Change
   supervisors: job-supervisors-townsfolk

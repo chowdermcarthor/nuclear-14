@@ -13,7 +13,7 @@
       - Ghoul
     - !type:CharacterDepartmentTimeRequirement
       department: BrotherhoodMidwest
-      min: 18000 # 5 hours
+      min: 0 # 5 hours
   startingGear: BoSMidScribeGear
   alwaysUseSpawner: true
   icon: "JobIconBosMScriptor" # Corvax-Change

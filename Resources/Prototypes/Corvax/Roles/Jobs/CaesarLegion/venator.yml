@@ -7,7 +7,7 @@
   requirements:
   - !type:CharacterDepartmentTimeRequirement
      department: CaesarLegion
-     min: 43200 #12 hours test
+     min: 0 #12 hours test
   - !type:CharacterWhitelistRequirement
   - !type:CharacterSpeciesRequirement
     species:

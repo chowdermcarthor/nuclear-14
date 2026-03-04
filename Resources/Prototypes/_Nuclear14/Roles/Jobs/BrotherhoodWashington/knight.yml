@@ -13,7 +13,7 @@
       - Ghoul
     - !type:CharacterDepartmentTimeRequirement
       department: BrotherhoodWashington
-      min: 18000
+      min: 0
   startingGear: BoSWashingtonKnightGear
   alwaysUseSpawner: true
   icon: "JobIconPassenger"

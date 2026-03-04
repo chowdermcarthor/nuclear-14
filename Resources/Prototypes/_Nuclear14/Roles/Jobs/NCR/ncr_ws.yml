@@ -13,10 +13,10 @@
       - Ghoul
     - !type:CharacterDepartmentTimeRequirement
       department: NCR
-      min: 36000 # 10 hours Corvax-Change
+      min: 0 # 10 hours Corvax-Change
     - !type:CharacterPlaytimeRequirement # Corvax-Add
       tracker: NCRSoldier
-      min: 18000 # 5 hours
+      min: 0 # 5 hours
   startingGear: NCRWSGear
   icon: "JobIconNcrSpec" # Corvax-Change
   supervisors: job-supervisors-ncr

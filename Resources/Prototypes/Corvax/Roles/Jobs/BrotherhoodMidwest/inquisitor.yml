@@ -15,7 +15,7 @@
     - !type:CharacterDepartmentTimeRequirement
       department: BrotherhoodMidwest
       min: 216000 # 60 hours
-    - !type:CharacterPlaytimeRequirement 
+    - !type:CharacterPlaytimeRequirement
       tracker: BoSMidPaladinCommander
       min: 216000 # 60 hours
   startingGear: BoSMidInquisitorGear
@@ -39,7 +39,7 @@
   id: BoSMidInquisitorGear
   equipment:
     jumpsuit: N14ClothingUniformJumpsuitInquisitorBOS
-    back: N14ClothingBackpackMilitary 
+    back: N14ClothingBackpackMilitary
     shoes: N14ClothingBootsCombatFilled
     head:  N14ClothingHeadHatBoSInquisitorCap
     outerClothing: N14ClothingOuterBOSInquisitorCoat
@@ -47,7 +47,7 @@
     gloves: N14ClothingHandsGlovesCombat
     id: N14IDBrotherhoodHolotagPaladin
     ears: N14ClothingHeadsetBOSMidwest
-  storage: 
+  storage:
     back:
     - N14BoxPlasticFilledMilitary
 

@@ -13,7 +13,7 @@
       - Ghoul
     - !type:CharacterDepartmentTimeRequirement
       department: Townsfolk
-      min: 7200
+      min: 0
   startingGear: TownDoctorGear
   icon: "JobIconTownMedic" # Corvax-Change
   supervisors: job-supervisors-townsfolk

@@ -11,7 +11,7 @@
           species:
             - Human
     - !type:CharacterOverallTimeRequirement
-      min: 3600
+      min: 0
   startingGear: BoSWestGunsmithGear
   alwaysUseSpawner: true
   icon: "JobIconBosMSquire"

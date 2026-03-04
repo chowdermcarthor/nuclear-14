@@ -14,7 +14,7 @@
             - Human
             - Ghoul
     - !type:CharacterOverallTimeRequirement
-      min: 3600
+      min: 0
   startingGear: BoSMidSquireGear
   alwaysUseSpawner: true
   icon: "JobIconBosMSquire" # Forge-Change

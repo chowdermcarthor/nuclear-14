@@ -13,7 +13,7 @@
       - Ghoul
     - !type:CharacterDepartmentTimeRequirement
       department: Tribe
-      min: 7200 # 2 hours
+      min: 0 # 2 hours
   startingGear: TribalFarmerGear
   alwaysUseSpawner: true
   icon: "JobIconTribalFarmer" # Corvax-Change

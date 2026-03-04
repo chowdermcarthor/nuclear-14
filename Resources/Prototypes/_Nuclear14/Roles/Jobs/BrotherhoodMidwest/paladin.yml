@@ -13,7 +13,7 @@
       - Ghoul
     - !type:CharacterDepartmentTimeRequirement
       department: BrotherhoodMidwest
-      min: 54000 # 15 hours
+      min: 0 # 15 hours
   startingGear: BoSMidPaladinGear
   alwaysUseSpawner: true
   icon: "JobIconBosMPaladin" # Corvax-Change

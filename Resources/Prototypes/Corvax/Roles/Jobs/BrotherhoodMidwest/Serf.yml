@@ -7,13 +7,13 @@
   playTimeTracker: BoSMidSerf
   requirements:
     - !type:MinPlayersRequirement
-      min: 40
+      min: 0
     - !type:CharacterSpeciesRequirement
       species:
       - Human
       - Ghoul
     - !type:CharacterOverallTimeRequirement
-      min: 3600
+      min: 0
   startingGear: BoSMidSerfGear
   alwaysUseSpawner: true
   icon: "JobIconRabMBos"

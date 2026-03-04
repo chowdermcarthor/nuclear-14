@@ -10,7 +10,7 @@
       - Human
     - !type:CharacterDepartmentTimeRequirement
       department: BrotherhoodWest
-      min: 108000 # 30 hours
+      min: 0 # 30 hours
   startingGear: BoSWestPaladinGear
   alwaysUseSpawner: true
   icon: "JobIconBosMPaladin"

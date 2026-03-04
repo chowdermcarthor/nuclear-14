@@ -14,7 +14,7 @@
             - Human
             - Ghoul
     - !type:CharacterOverallTimeRequirement
-      min: 3600
+      min: 0
   startingGear: BoSWashingtonInitiateGear
   alwaysUseSpawner: true
   icon: "JobIconPassenger"

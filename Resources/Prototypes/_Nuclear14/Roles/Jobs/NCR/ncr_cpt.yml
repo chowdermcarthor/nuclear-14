@@ -1,29 +1,32 @@
 - type: job
-  id: NCRSGT
+  id: NCRCPT
   setPreference: true
   overrideConsoleVisibility: false
-  canBeAntag: false
-  name: job-name-ncr-sgt
-  description: job-description-ncr-sgt
-  playTimeTracker: NCRNCO
+  canBeAntag: true
+  name: job-name-ncr-cpt
+  description: job-description-ncr-cpt
+  playTimeTracker: NCROfficer
   requirements:
     - !type:CharacterSpeciesRequirement
       species:
       - Human
-      - Ghoul
     - !type:CharacterDepartmentTimeRequirement
       department: NCR
-      min: 0 # 20 hours Corvax-Change
+      min: 216000 # 60 hours Corvax-Change
     - !type:CharacterPlaytimeRequirement # Corvax-Add
-      tracker: NCRSoldier
-      min: 0 # 10 hours
-  startingGear: NCRSGTGear
-  icon: "JobIconNcrSerg" # Corvax-Change
-  supervisors: job-supervisors-ncr-sgt
+      tracker: NCRNCO
+      min: 216000 # 60 hours
+  weight: 10
+  startingGear: NCRLTGear
+  icon: "JobIconNcrLeader" # Corvax-Change
+  supervisors: job-supervisors-ncr-cpt
+  requireAdminNotify: true
   alwaysUseSpawner: true
   access:
   - NCR
   - NCRSGT
+  - NCRMedic
+  - NCRLT
   special:
   - !type:AddComponentSpecial
     components:
@@ -33,18 +36,17 @@
           - NCR
 
 - type: startingGear
-  id: NCRSGTGear
+  id: NCRLTGear
   equipment:
+    head: N14ClothingHeadHatNCRBeretOfficer
     back: N14ClothingBackpackNCR # Corvax-Change
-    gloves: N14ClothingHandsGlovesCombat
     jumpsuit: N14ClothingOfficerUniformNCRDesert # Corvax-Change
     shoes: N14ClothingBootsCombatFilled
-    neck: N14ClothingNeckMantleNCR
-    belt: ClothingBeltNCR
-    outerClothing: N14ClothingOuterNCRCombatArmor
-    pocket1: NCRSGTloadoutkits
+    eyes: ClothingEyesGlassesSunglasses
+    ears: N14ClothingHeadsetNCR
+    pocket1: NCRLTloadoutkits
     pocket2: RadioHandheld
-    id: N14IDNCRDogtagNCO
+    id: N14IDNCRDogtagOfficer
   innerClothingSkirt: N14ClothingOfficerUniformNCRDesert # Corvax-Change
   satchel: N14ClothingBackpackSatchelNCRFilled
   storage: # Corvax-Change
@@ -52,4 +54,4 @@
     - N14BoxPlasticFilledMilitaryNCR
 
 - type: playTimeTracker
-  id: NCRNCO
+  id: NCROfficer

@@ -13,10 +13,10 @@
       - Ghoul
     - !type:CharacterDepartmentTimeRequirement
       department: Townsfolk
-      min: 28800 # 8 hours
+      min: 0 # 8 hours
     - !type:CharacterPlaytimeRequirement # Corvax-Add
       tracker: TownDeputy
-      min: 14400 # 4 hours
+      min: 0 # 4 hours
   startingGear: TownSheriffGear
   icon: "JobIconTownSheriff" # Corvax-Change
   supervisors: job-supervisors-townsfolk
