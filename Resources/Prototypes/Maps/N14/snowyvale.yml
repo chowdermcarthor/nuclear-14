@@ -1,10 +1,10 @@
 - type: gameMap
   id: Snowyvale
   mapName: 'Snowyvale'
-  mapPath: /Maps/Corvax/SnowyvaleSurfaceCorvax.yml # Forge-Maps
+  mapPath: /Maps/N14/Snowyvale.yml
   minPlayers: 0
   stations:
-    Sunnyvale:
+    Snowyvale:
       stationProto: FalloutStation
       components:
         - type: StationNameSetup
