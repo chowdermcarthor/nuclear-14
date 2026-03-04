@@ -1,0 +1,290 @@
+<Document>
+  <ColorBox Color="#353535" OutlineColor="#555555" OutlineThickness="2" Margin="5">
+    <Box Orientation="Vertical">
+      <Box Orientation="Horizontal" HorizontalAlignment="Center">
+        Misfits: Nuclear Wasteland – Server Rules
+      </Box>
+      <Box Orientation="Vertical" Margin="10">
+        Misfits: Nuclear Wasteland is a Medium Roleplay Fallout server. The goal is not only engaging gameplay, but the creation of memorable stories shaped by player choice.
+
+        The Wasteland is harsh and consequences matter. Your survival depends on your actions, your alliances, and your judgment. Administrative intervention is rare and reserved for rule enforcement, not story rescue.
+      </Box>
+    </Box>
+  </ColorBox>
+
+  <ColorBox Color="#2f2f3a" OutlineColor="#4f4f5a" OutlineThickness="2" Margin="5">
+    <Box Orientation="Vertical">
+      <Box Orientation="Horizontal" HorizontalAlignment="Center">
+        Rule 0: Conduct
+      </Box>
+      <Box Orientation="Vertical" Margin="10">
+        This is a collaborative environment. Toxicity, ego play, and behavior designed to ruin others’ enjoyment are not tolerated.
+
+        <Box Orientation="Vertical" Margin="10">
+          Play to create story, not to “win” at any cost.
+
+          Respect administrators and developers. They are volunteers.
+
+          Cooperate during admin interactions. Do not disconnect during an active ticket without valid reason.
+
+          Report technical issues promptly.
+
+          Administration may intervene in situations not explicitly covered by the rules if behavior damages the community or the round.
+        </Box>
+
+        Punishments are issued at staff discretion based on severity, context, and history.
+      </Box>
+    </Box>
+  </ColorBox>
+
+  <ColorBox Color="#2f3a2f" OutlineColor="#4f5a4f" OutlineThickness="2" Margin="5">
+    <Box Orientation="Vertical">
+      <Box Orientation="Horizontal" HorizontalAlignment="Center">
+        Rule 1: Griefing
+      </Box>
+      <Box Orientation="Vertical" Margin="10">
+        Griefing is any action taken primarily to disrupt gameplay or degrade the experience of others without meaningful in-character reasoning.
+
+        This includes:
+        <Box Orientation="Vertical" Margin="10">
+          Deliberate destruction with no RP justification.
+
+          Trap placement intended only to frustrate.
+
+          Causing large-scale disruption without narrative basis.
+        </Box>
+
+        Lack of intent does not always excuse large-scale damage. If your actions severely impact the round without reasonable RP logic, they may be treated as griefing.
+      </Box>
+    </Box>
+  </ColorBox>
+
+  <ColorBox Color="#3a2f2f" OutlineColor="#5a4f4f" OutlineThickness="2" Margin="5">
+    <Box Orientation="Vertical">
+      <Box Orientation="Horizontal" HorizontalAlignment="Center">
+        Rule 2: Fair Play
+      </Box>
+
+      <Box Orientation="Vertical" Margin="10">
+        2.1 Metagaming
+
+        Using out-of-character knowledge to influence in-character actions is prohibited.
+
+        <Box Orientation="Vertical" Margin="10">
+          Information from Discord, streams, OOC chat, or ghosting may not be used IC.
+
+          Coordinated external communication affecting the round is forbidden.
+
+          Streaming is allowed, but responsibility for information leaks lies with the streamer.
+        </Box>
+
+        Metagaming violations may result in removal.
+      </Box>
+
+      <Box Orientation="Vertical" Margin="10">
+        2.2 Multiaccounting
+
+        <Box Orientation="Vertical" Margin="10">
+          Using multiple accounts in the same round is forbidden.
+
+          Ban evasion is strictly prohibited.
+
+          Creating alternate accounts to avoid punishment history is not allowed.
+        </Box>
+
+        Violations may result in permanent bans.
+      </Box>
+
+      <Box Orientation="Vertical" Margin="10">
+        2.3 Exploits
+
+        <Box Orientation="Vertical" Margin="10">
+          No cheats, scripts, macros, or third-party tools.
+
+          No intentional abuse of bugs.
+
+          No deliberate server strain.
+        </Box>
+
+        Report discovered bugs through official channels.
+      </Box>
+    </Box>
+  </ColorBox>
+
+  <ColorBox Color="#2f3a3a" OutlineColor="#4f5a5a" OutlineThickness="2" Margin="5">
+    <Box Orientation="Vertical">
+      <Box Orientation="Horizontal" HorizontalAlignment="Center">
+        Rule 3: Roleplay Standards
+      </Box>
+
+      <Box Orientation="Vertical" Margin="10">
+        Characters must fit the Fallout setting in tone, behavior, and naming.
+
+        3.1 Character Identity
+        <Box Orientation="Vertical" Margin="10">
+          No meme names or obvious real-world references.
+
+          No reuse of deceased or permanently imprisoned characters without approval.
+
+          Administration may require name changes for immersion reasons.
+        </Box>
+
+        3.2 Communication
+        <Box Orientation="Vertical" Margin="10">
+          Do not break immersion with mechanical terms or real-world memes.
+
+          Keep OOC topics out of IC channels.
+
+          OOC channels must remain respectful and free of political or extremist discussion.
+        </Box>
+
+        3.3 Atmosphere
+        <Box Orientation="Vertical" Margin="10">
+          Avoid referencing game systems or “admins” in character.
+
+          Provide in-character explanations for absence when possible.
+
+          Do not create offensive or explicit material using in-game media.
+        </Box>
+
+        3.4 Knowledge Limits
+        <Box Orientation="Vertical" Margin="10">
+          Your character is not all-knowing.
+
+          Do not reference unresearched advanced technology.
+
+          Stay within the expertise of your chosen role.
+        </Box>
+      </Box>
+    </Box>
+  </ColorBox>
+
+  <ColorBox Color="#3a2f3a" OutlineColor="#5a4f5a" OutlineThickness="2" Margin="5">
+    <Box Orientation="Vertical">
+      <Box Orientation="Horizontal" HorizontalAlignment="Center">
+        Rule 4: Erotic Roleplay
+      </Box>
+      <Box Orientation="Vertical" Margin="10">
+        Explicit ERP is prohibited in all forms, including written in-game material.
+
+        Light romantic interaction such as flirting, hugging, or kissing is allowed if non-explicit and consensual.
+
+        If instructed by staff to stop behavior near the boundary, you must comply immediately.
+
+        Violations may result in permanent removal.
+      </Box>
+    </Box>
+  </ColorBox>
+
+  <ColorBox Color="#2f3a3a" OutlineColor="#4f5a5a" OutlineThickness="2" Margin="5">
+    <Box Orientation="Vertical">
+      <Box Orientation="Horizontal" HorizontalAlignment="Center">
+        Rule 5: SSD Protection
+      </Box>
+      <Box Orientation="Vertical" Margin="10">
+        Characters who disconnect (SSD) may not be directly harmed.
+
+        They may be looted, but not killed or kidnapped.
+
+        Disconnecting during active combat or escalation removes this protection.
+
+        SSD characters inside faction bases during active raids are not protected.
+      </Box>
+    </Box>
+  </ColorBox>
+
+  <ColorBox Color="#40282a" OutlineColor="#603c3f" OutlineThickness="2" Margin="5">
+    <Box Orientation="Vertical">
+      <Box Orientation="Horizontal" HorizontalAlignment="Center">
+        Rule 6: Armed Conflict
+      </Box>
+
+      <Box Orientation="Vertical" Margin="10">
+        6.1 Escalation
+
+        Dialogue must precede lethal force in most situations.
+
+        <Box Orientation="Vertical" Margin="10">
+          Escalation must be face-to-face.
+
+          A clear demand must be given.
+
+          A reasonable opportunity to respond must exist.
+        </Box>
+
+        Exceptions include active firefights, immediate threats, wildlife, faction wars, and designated high-risk zones.
+      </Box>
+
+      <Box Orientation="Vertical" Margin="10">
+        6.2 Robbery
+
+        <Box Orientation="Vertical" Margin="10">
+          Do not strip victims of all survival means.
+
+          Non-resisting victims must be left alive.
+
+          Resistance shifts responsibility for outcome.
+        </Box>
+      </Box>
+
+      <Box Orientation="Vertical" Margin="10">
+        6.3 Faction Warfare
+
+        <Box Orientation="Vertical" Margin="10">
+          Factions begin neutral.
+
+          Only recognized leaders may formally declare war.
+
+          War begins five minutes after a face-to-face declaration.
+
+          Killing diplomats or surrendered individuals is forbidden.
+        </Box>
+      </Box>
+
+      <Box Orientation="Vertical" Margin="10">
+        6.4 Early Raids
+
+        Faction bases may not be raided within the first 30 minutes of the round.
+      </Box>
+    </Box>
+  </ColorBox>
+
+  <ColorBox Color="#3a3033" OutlineColor="#5a4a50" OutlineThickness="2" Margin="5">
+    <Box Orientation="Vertical">
+      <Box Orientation="Horizontal" HorizontalAlignment="Center">
+        Rule 7: New Life Rule
+      </Box>
+
+      <Box Orientation="Vertical" Margin="10">
+        7.1 Within a Round
+        <Box Orientation="Vertical" Margin="10">
+          You may not rejoin on the same character to bypass death or punishment.
+
+          Revived characters forget the circumstances of their death and the final moments preceding it.
+        </Box>
+
+        7.2 Between Rounds
+        <Box Orientation="Vertical" Margin="10">
+          Do not use knowledge from previous rounds for advantage.
+
+          Characters do not remember contradictory past events.
+        </Box>
+      </Box>
+    </Box>
+  </ColorBox>
+
+  <ColorBox Color="#353535" OutlineColor="#555555" OutlineThickness="2" Margin="5">
+    <Box Orientation="Vertical">
+      <Box Orientation="Horizontal" HorizontalAlignment="Center">
+        Administrative Authority
+      </Box>
+      <Box Orientation="Vertical" Margin="10">
+        Project leadership and senior moderation retain final authority in rule interpretation.
+
+        The server maintains a 16+ expectation.
+
+        Rules may evolve as the project develops.
+      </Box>
+    </Box>
+  </ColorBox>
+</Document>
