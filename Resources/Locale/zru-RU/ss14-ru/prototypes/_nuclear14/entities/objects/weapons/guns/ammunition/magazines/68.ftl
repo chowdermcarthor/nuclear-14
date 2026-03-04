@@ -1,1 +1,0 @@
-ent-Magazine68Rifle = магазин (6.8mm)

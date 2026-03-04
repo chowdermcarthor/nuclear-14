@@ -1,9 +1,0 @@
-ent-N14WallmountVent = вентиляция
-    .desc = Вентиляция. Может послужить отличным тайником.
-    .suffix = Маппинг
-ent-N14WallmountVentDamaged = { ent-N14WallmountVent }
-    .suffix = уничтоженная, маппинг
-    .desc = { ent-N14WallmountVent.desc }
-ent-N14WallmountVentOpen = { ent-N14WallmountVent }
-    .suffix = открытая, маппинг
-    .desc = { ent-N14WallmountVent.desc }

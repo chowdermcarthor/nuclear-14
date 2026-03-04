@@ -8,7 +8,7 @@ Here is the translation with the original Markdown formatting preserved:
 
 Nuclear 14 is the first Fallout fork for Space Station 14, utilizing:
 
-* Assets from various Fallout13 (F13/SS13) builds
+* Assets from various Fallout13 (F13/SS13) builds. Desert Rose 2, Lone Star, etc.
 * Unique materials created by the community
 * A highly modular system from the upstream Einstein Engines repository
 
@@ -18,9 +18,7 @@ The theme and locations differ from classic F13, offering players a new experien
 
 Misfits: Nuclear Wasteland adds:
 
-* Full interface and content localization
-* Optimizations for the Russian-speaking community
-* Unique mechanics and balance
+* Full interface and content localization to English.
 * Regular updates and support
 
 To participate in development, join our [Discord](https://discord.gg/yXsJnq3FbU).
