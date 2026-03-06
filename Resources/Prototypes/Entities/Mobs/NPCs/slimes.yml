@@ -149,6 +149,9 @@
   - type: HTN
     rootTask:
       task: SimpleHostileCompound
+    blackboard:
+      NavSmash: !type:Bool
+        true
   - type: TTS # Corvax-TTS
     voice: Chen
 

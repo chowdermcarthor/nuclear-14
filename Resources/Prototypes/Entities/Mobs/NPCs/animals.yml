@@ -135,6 +135,9 @@
   - type: HTN
     rootTask:
       task: SimpleHostileCompound
+    blackboard:
+      NavSmash: !type:Bool
+        true
   - type: Extractable # DeltaV - Make it so bees can be ground up
     grindableSolutionName: bee
   - type: SolutionContainerManager
@@ -168,6 +171,9 @@
   - type: HTN
     rootTask:
       task: SimpleHostileCompound
+    blackboard:
+      NavSmash: !type:Bool
+        true
   - type: NpcFactionMember
     factions:
     - SimpleHostile
@@ -1051,6 +1057,9 @@
   - type: HTN
     rootTask:
       task: RuminantHostileCompound
+    blackboard:
+      NavSmash: !type:Bool
+        true
   - type: SurgeryTarget
   - type: UserInterface
     interfaces:
@@ -1159,6 +1168,9 @@
   - type: HTN
     rootTask:
       task: SimpleHostileCompound
+    blackboard:
+      NavSmash: !type:Bool
+        true
 
 - type: entity
   name: kangaroo
@@ -1251,6 +1263,9 @@
   - type: HTN
     rootTask:
       task: SimpleHostileCompound
+    blackboard:
+      NavSmash: !type:Bool
+        true
 
 - type: entity
   name: boxing kangaroo
@@ -1400,6 +1415,9 @@
   - type: HTN
     rootTask:
       task: SimpleHostileCompound
+    blackboard:
+      NavSmash: !type:Bool
+        true
   - type: IdExaminable
   - type: Tag
     tags:
@@ -2250,6 +2268,9 @@
   - type: HTN
     rootTask:
       task: SimpleHostileCompound
+    blackboard:
+      NavSmash: !type:Bool
+        true
   - type: NpcFactionMember
     factions:
     - Syndicate
@@ -2484,6 +2505,9 @@
   - type: HTN
     rootTask:
       task: SimpleHostileCompound
+    blackboard:
+      NavSmash: !type:Bool
+        true
   - type: GhostRole
     makeSentient: true
     name: ghost-role-information-giant-spider-name
@@ -2935,6 +2959,9 @@
   - type: HTN
     rootTask:
       task: SimpleHostileCompound
+    blackboard:
+      NavSmash: !type:Bool
+        true
   - type: NpcFactionMember
     factions:
     - SimpleHostile

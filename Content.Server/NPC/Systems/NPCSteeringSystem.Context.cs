@@ -227,6 +227,7 @@ public sealed partial class NPCSteeringSystem
                         return false;
                     case SteeringObstacleStatus.Continuing:
                         CheckPath(uid, steering, xform, needsPath, targetDistance);
+                        SetDirection(uid, mover, steering, Vector2.Zero);
                         return true;
                     default:
                         throw new ArgumentOutOfRangeException();

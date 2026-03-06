@@ -72,9 +72,9 @@ public sealed partial class NPCCombatSystem
 
             if (_steeringQuery.TryGetComponent(uid, out var steering) && steering.Status == SteeringStatus.NoPath)
             {
-                comp.Status = CombatStatus.TargetUnreachable;
-                comp.ShootAccumulator = 0f;
-                continue;
+                // Steering is blocked but we may still have line of sight — request a new path
+                // and let the LOS check below decide whether to shoot.
+                steering.ForceMove = true;
             }
 
             if (!_xformQuery.TryGetComponent(comp.Target, out var targetXform) ||

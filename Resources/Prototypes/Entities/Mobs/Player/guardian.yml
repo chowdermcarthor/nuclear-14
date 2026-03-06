@@ -137,6 +137,9 @@
     - type: HTN
       rootTask:
         task: SimpleHumanoidHostileCompound
+      blackboard:
+        NavSmash: !type:Bool
+          true
 
 # From Wizard deck of cards
 - type: entity
@@ -259,6 +262,9 @@
     - type: HTN
       rootTask:
         task: SimpleHumanoidHostileCompound
+      blackboard:
+        NavSmash: !type:Bool
+          true
 
 - type: entity
   id: ActionToggleGuardian

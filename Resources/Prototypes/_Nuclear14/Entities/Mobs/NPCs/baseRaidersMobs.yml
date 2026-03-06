@@ -32,6 +32,15 @@
           true
         MeleeRange: !type:Single
           1.5
+    - type: MeleeWeapon
+      hidden: true
+      attackRate: 1.5
+      range: 1.5
+      angle: 30
+      animation: WeaponArcPunch
+      damage:
+        types:
+          Blunt: 15
     - type: Carriable
     - type: Perishable
       rotAfter: 1800 # Rots after half of an in-game day

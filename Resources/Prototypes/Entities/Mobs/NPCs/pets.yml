@@ -119,6 +119,9 @@
   - type: HTN
     rootTask:
       task: SimpleHostileCompound
+    blackboard:
+      NavSmash: !type:Bool
+        true
   - type: Grammar
     attributes:
       proper: true
@@ -677,6 +680,9 @@
   - type: HTN
     rootTask:
       task: SimpleHostileCompound
+    blackboard:
+      NavSmash: !type:Bool
+        true
   - type: Physics
   - type: DamageStateVisuals
     states:

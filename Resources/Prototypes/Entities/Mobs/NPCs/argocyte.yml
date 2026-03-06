@@ -12,6 +12,9 @@
   - type: HTN
     rootTask:
       task: SimpleHostileCompound #todo custom argocyte AI
+    blackboard:
+      NavSmash: !type:Bool
+        true
   - type: Sprite
     sprite: Mobs/Aliens/Argocyte/argocyte_common.rsi
   - type: SolutionContainerManager

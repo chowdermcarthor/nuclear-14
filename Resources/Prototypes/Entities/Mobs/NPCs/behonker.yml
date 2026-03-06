@@ -16,6 +16,9 @@
     - type: HTN
       rootTask:
         task: SimpleRangedHostileCompound
+      blackboard:
+        NavSmash: !type:Bool
+          true
     - type: HitscanBatteryAmmoProvider
       proto: RedLaser
       fireCost: 62.5

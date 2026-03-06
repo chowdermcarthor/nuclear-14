@@ -88,6 +88,9 @@
   - type: HTN
     rootTask:
       task: SimpleHostileCompound
+    blackboard:
+      NavSmash: !type:Bool
+        true
   - type: MeleeWeapon
     hidden: true
     soundHit:

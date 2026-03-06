@@ -13,6 +13,9 @@
   - type: HTN
     rootTask:
       task: SimpleHostileCompound
+    blackboard:
+      NavSmash: !type:Bool
+        true
   - type: Reactive
     groups:
       Flammable: [Touch]
