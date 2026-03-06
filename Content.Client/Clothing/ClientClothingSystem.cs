@@ -317,6 +317,10 @@ public sealed class ClientClothingSystem : ClothingSystem
             sprite.LayerSetData(index, layerData);
             layer.Offset += slotDef.Offset;
 
+            // Misfits Change - apply per-species clothing scale from displacement data
+            if (displacementData?.ClothingScale is { } clothingScale)
+                layer.Scale *= clothingScale;
+
             if (displacementData != null)
             {
                 if (displacementData.ShaderOverride != null)

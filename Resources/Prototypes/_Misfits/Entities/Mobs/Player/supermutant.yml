@@ -1,0 +1,11 @@
+# Player-controlled Super Mutant entity.
+
+- type: entity
+  save: false
+  name: Urist McSupermutant
+  parent: N14BaseMobSuperMutant
+  id: N14MobSuperMutant
+  components:
+    - type: NpcFactionMember
+      factions:
+      - Wastelander

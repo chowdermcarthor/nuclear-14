@@ -1,0 +1,185 @@
+# Super Mutant body parts.
+# Update sprite paths once .dmi sprites are converted to .rsi.
+
+- type: entity
+  id: MisfitsPartSuperMutant
+  parent: [BaseItem, BasePart]
+  name: "super mutant body part"
+  abstract: true
+  components:
+  - type: Damageable
+    damageContainer: Biological
+  - type: BodyPart
+  - type: ContainerContainer
+    containers:
+      bodypart: !type:Container
+        ents: []
+  - type: StaticPrice
+    price: 0
+  - type: Extractable
+    juiceSolution:
+      reagents:
+      - ReagentId: Fat
+        Quantity: 5
+      - ReagentId: Blood
+        Quantity: 15
+
+- type: entity
+  id: MisfitsTorsoSuperMutant
+  name: "super mutant torso"
+  parent: [MisfitsPartSuperMutant, BaseTorso]
+  components:
+  - type: Sprite
+    sprite: _Misfits/Mobs/Species/SuperMutant/parts.rsi
+    state: "torso_m"
+  - type: Extractable
+    juiceSolution:
+      reagents:
+      - ReagentId: Fat
+        Quantity: 15
+      - ReagentId: Blood
+        Quantity: 30
+  - type: StaticPrice
+    price: 15
+  - type: Item
+    size: Large
+
+- type: entity
+  id: MisfitsHeadSuperMutant
+  name: "super mutant head"
+  parent: [MisfitsPartSuperMutant, BaseHead]
+  components:
+  - type: Sprite
+    sprite: _Misfits/Mobs/Species/SuperMutant/parts.rsi
+    state: "head_m"
+  - type: Icon
+    sprite: _Misfits/Mobs/Species/SuperMutant/parts.rsi
+    state: "head_m"
+  - type: BodyPart
+    partType: Head
+    vital: true
+  - type: Input
+    context: "ghost"
+  - type: MovementSpeedModifier
+    baseWalkSpeed: 0
+    baseSprintSpeed: 0
+  - type: InputMover
+  - type: GhostOnMove
+  - type: Tag
+    tags:
+      - Head
+  - type: Extractable
+    juiceSolution:
+      reagents:
+      - ReagentId: Fat
+        Quantity: 8
+      - ReagentId: Blood
+        Quantity: 15
+  - type: StaticPrice
+    price: 15
+  - type: Item
+    size: Normal
+
+- type: entity
+  id: MisfitsLeftArmSuperMutant
+  name: "left super mutant arm"
+  parent: [MisfitsPartSuperMutant, BaseLeftArm]
+  components:
+  - type: Sprite
+    sprite: _Misfits/Mobs/Species/SuperMutant/parts.rsi
+    state: "l_arm"
+  - type: StaticPrice
+    price: 10
+  - type: Item
+    size: Normal
+
+- type: entity
+  id: MisfitsRightArmSuperMutant
+  name: "right super mutant arm"
+  parent: [MisfitsPartSuperMutant, BaseRightArm]
+  components:
+  - type: Sprite
+    sprite: _Misfits/Mobs/Species/SuperMutant/parts.rsi
+    state: "r_arm"
+  - type: StaticPrice
+    price: 10
+  - type: Item
+    size: Normal
+
+- type: entity
+  id: MisfitsLeftHandSuperMutant
+  name: "left super mutant hand"
+  parent: [MisfitsPartSuperMutant, BaseLeftHand]
+  components:
+  - type: Sprite
+    sprite: _Misfits/Mobs/Species/SuperMutant/parts.rsi
+    state: "l_hand"
+  - type: StaticPrice
+    price: 5
+  - type: Item
+    size: Small
+
+- type: entity
+  id: MisfitsRightHandSuperMutant
+  name: "right super mutant hand"
+  parent: [MisfitsPartSuperMutant, BaseRightHand]
+  components:
+  - type: Sprite
+    sprite: _Misfits/Mobs/Species/SuperMutant/parts.rsi
+    state: "r_hand"
+  - type: StaticPrice
+    price: 5
+  - type: Item
+    size: Small
+
+- type: entity
+  id: MisfitsLeftLegSuperMutant
+  name: "left super mutant leg"
+  parent: [MisfitsPartSuperMutant, BaseLeftLeg]
+  components:
+  - type: Sprite
+    sprite: _Misfits/Mobs/Species/SuperMutant/parts.rsi
+    state: "l_leg"
+  - type: StaticPrice
+    price: 10
+  - type: Item
+    size: Normal
+
+- type: entity
+  id: MisfitsRightLegSuperMutant
+  name: "right super mutant leg"
+  parent: [MisfitsPartSuperMutant, BaseRightLeg]
+  components:
+  - type: Sprite
+    sprite: _Misfits/Mobs/Species/SuperMutant/parts.rsi
+    state: "r_leg"
+  - type: StaticPrice
+    price: 10
+  - type: Item
+    size: Normal
+
+- type: entity
+  id: MisfitsLeftFootSuperMutant
+  name: "left super mutant foot"
+  parent: [MisfitsPartSuperMutant, BaseLeftFoot]
+  components:
+  - type: Sprite
+    sprite: _Misfits/Mobs/Species/SuperMutant/parts.rsi
+    state: "l_foot"
+  - type: StaticPrice
+    price: 5
+  - type: Item
+    size: Small
+
+- type: entity
+  id: MisfitsRightFootSuperMutant
+  name: "right super mutant foot"
+  parent: [MisfitsPartSuperMutant, BaseRightFoot]
+  components:
+  - type: Sprite
+    sprite: _Misfits/Mobs/Species/SuperMutant/parts.rsi
+    state: "r_foot"
+  - type: StaticPrice
+    price: 5
+  - type: Item
+    size: Small

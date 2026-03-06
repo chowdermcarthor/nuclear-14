@@ -1,0 +1,53 @@
+# Super Mutant body prototype.
+# Full humanoid body with head, torso, arms, hands, legs, and feet.
+
+- type: body
+  id: SuperMutant
+  name: "super mutant"
+  root: torso
+  slots:
+    head:
+      part: MisfitsHeadSuperMutant
+      connections:
+      - torso
+      organs:
+        brain: MisfitsOrganSuperMutantBrain
+        eyes: MisfitsOrganSuperMutantEyes
+    torso:
+      part: MisfitsTorsoSuperMutant
+      organs:
+        heart: MisfitsOrganSuperMutantHeart
+        lungs: MisfitsOrganSuperMutantLungs
+        stomach: MisfitsOrganSuperMutantStomach
+        liver: MisfitsOrganSuperMutantLiver
+        kidneys: MisfitsOrganSuperMutantKidneys
+      connections:
+      - right arm
+      - left arm
+      - right leg
+      - left leg
+      - head
+    right arm:
+      part: MisfitsRightArmSuperMutant
+      connections:
+      - right hand
+    left arm:
+      part: MisfitsLeftArmSuperMutant
+      connections:
+      - left hand
+    right hand:
+      part: MisfitsRightHandSuperMutant
+    left hand:
+      part: MisfitsLeftHandSuperMutant
+    right leg:
+      part: MisfitsRightLegSuperMutant
+      connections:
+      - right foot
+    left leg:
+      part: MisfitsLeftLegSuperMutant
+      connections:
+      - left foot
+    right foot:
+      part: MisfitsRightFootSuperMutant
+    left foot:
+      part: MisfitsLeftFootSuperMutant

@@ -1,4 +1,5 @@
-﻿using Robust.Shared.Containers;
+﻿using System.Numerics;
+using Robust.Shared.Containers;
 using Robust.Shared.GameStates;
 using Robust.Shared.Serialization.TypeSerializers.Implementations.Custom.Prototype;
 
@@ -27,5 +28,11 @@ public sealed partial class InventoryComponent : Component
 
         [DataField]
         public string? ShaderOverride = "DisplacedStencilDraw";
+
+        /// <summary>
+        /// Scale to apply to clothing layers for this slot. Used to resize clothing for species with different body sizes.
+        /// </summary>
+        [DataField]
+        public Vector2? ClothingScale;
     }
 }

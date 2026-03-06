@@ -1,0 +1,25 @@
+# Super Mutant job: playable FEV-mutated humanoid role.
+# Players spawn directly into the super mutant body via jobEntity.
+# Locked behind 9999 hours playtime and whitelist.
+
+- type: job
+  id: SuperMutant
+  name: job-name-supermutant
+  description: job-description-supermutant
+  playTimeTracker: SuperMutant
+  icon: JobIconBorg
+  supervisors: job-supervisors-supermutant
+  canBeAntag: false
+  setPreference: true
+  overrideConsoleVisibility: true
+  spawnLoadout: false
+  applyTraits: false
+  jobEntity: N14MobSuperMutant
+  requirements:
+    - !type:CharacterWhitelistRequirement
+    - !type:CharacterPlaytimeRequirement
+      tracker: SuperMutant
+      min: 35996400 # 9999 hours
+
+- type: playTimeTracker
+  id: SuperMutant

@@ -93,10 +93,7 @@
   - type: Hands
     showInHands: false
     # disableExplosionRecursion: true # not in our version of the game yet 16/07/2024
-  - type: HandsFill
-    hands:
-      right: ~
-      left: ~
+  - type: BorgHands
   - type: ComplexInteraction
   - type: IntrinsicRadioReceiver
   # - type: IntrinsicRadioTransmitter

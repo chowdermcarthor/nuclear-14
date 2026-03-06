@@ -1,0 +1,216 @@
+# Super Mutant organs.
+# Based on human/ghoul organs with the same metabolizer types.
+
+- type: entity
+  id: MisfitsBaseSuperMutantOrganUnGibbable
+  parent: BaseItem
+  abstract: true
+  components:
+  - type: Sprite
+    sprite: Mobs/Species/Human/organs.rsi
+  - type: Organ
+  - type: Food
+  - type: Extractable
+    grindableSolutionName: Organ
+  - type: SolutionContainerManager
+    solutions:
+      Organ:
+        reagents:
+        - ReagentId: Nutriment
+          Quantity: 10
+      food:
+        maxVol: 5
+        reagents:
+        - ReagentId: UncookedAnimalProteins
+          Quantity: 5
+  - type: FlavorProfile
+    flavors:
+      - people
+  - type: Tag
+    tags:
+      - Meat
+  - type: StaticPrice
+    price: 5
+  - type: Item
+    size: Normal
+
+- type: entity
+  id: MisfitsBaseSuperMutantOrgan
+  parent: MisfitsBaseSuperMutantOrganUnGibbable
+  abstract: true
+  components:
+  - type: Gibbable
+
+- type: entity
+  id: MisfitsOrganSuperMutantBrain
+  parent: MisfitsBaseSuperMutantOrganUnGibbable
+  name: brain
+  description: "A massive, mutated brain. It may not be the sharpest, but it's resilient."
+  components:
+  - type: Sprite
+    state: brain
+  - type: Organ
+    slotId: brain
+  - type: Food
+    delay: 5
+    forceFeedDelay: 6
+    popupOnEat: true
+  - type: Input
+    context: "ghost"
+  - type: Brain
+  - type: InputMover
+  - type: Examiner
+  - type: BlockMovement
+  - type: BadFood
+  - type: Tag
+    tags:
+      - Meat
+  - type: SolutionContainerManager
+    solutions:
+      Organ:
+        reagents:
+        - ReagentId: Nutriment
+          Quantity: 10
+      food:
+        maxVol: 5
+        reagents:
+        - ReagentId: GreyMatter
+          Quantity: 5
+  - type: FlavorProfile
+    flavors:
+      - people
+  - type: FoodSequenceElement
+    entries:
+      Burger: Brain
+      Taco: Brain
+
+- type: entity
+  id: MisfitsOrganSuperMutantEyes
+  parent: MisfitsBaseSuperMutantOrgan
+  name: eyes
+  description: "Beady, yellow-tinged eyes."
+  components:
+  - type: Organ
+    slotId: eyes
+  - type: Eyes
+  - type: Sprite
+    layers:
+      - state: eyeball-l
+      - state: eyeball-r
+
+- type: entity
+  id: MisfitsOrganSuperMutantLungs
+  parent: MisfitsBaseSuperMutantOrgan
+  name: lungs
+  description: "Oversized lungs that can handle even the most polluted wasteland air."
+  components:
+  - type: Organ
+    slotId: lungs
+  - type: Sprite
+    layers:
+      - state: lung-l
+      - state: lung-r
+  - type: Lung
+  - type: Metabolizer
+    removeEmpty: true
+    solutionOnBody: false
+    solution: "Lung"
+    metabolizerTypes: [ Human ]
+    groups:
+    - id: Gas
+      rateModifier: 100.0
+  - type: SolutionContainerManager
+    solutions:
+      Organ:
+        reagents:
+        - ReagentId: Nutriment
+          Quantity: 10
+      Lung:
+        maxVol: 100.0
+        canReact: false
+      food:
+        maxVol: 5
+        reagents:
+        - ReagentId: UncookedAnimalProteins
+          Quantity: 5
+
+- type: entity
+  id: MisfitsOrganSuperMutantHeart
+  parent: MisfitsBaseSuperMutantOrgan
+  name: heart
+  description: "A massive, powerful heart."
+  components:
+  - type: Heart
+  - type: Organ
+    slotId: heart
+  - type: Sprite
+    state: heart-on
+  - type: Metabolizer
+    maxReagents: 2
+    metabolizerTypes: [Human]
+    groups:
+    - id: Medicine
+    - id: Poison
+    - id: Narcotic
+
+- type: entity
+  id: MisfitsOrganSuperMutantStomach
+  parent: MisfitsBaseSuperMutantOrgan
+  name: stomach
+  description: "Can digest just about anything. Super mutants aren't picky eaters."
+  components:
+  - type: Organ
+    slotId: stomach
+  - type: Sprite
+    state: stomach
+  - type: SolutionContainerManager
+    solutions:
+      stomach:
+        maxVol: 50
+      food:
+        maxVol: 5
+        reagents:
+        - ReagentId: UncookedAnimalProteins
+          Quantity: 5
+  - type: Stomach
+  - type: Metabolizer
+    maxReagents: 3
+    metabolizerTypes: [Human]
+    groups:
+    - id: Food
+    - id: Drink
+
+- type: entity
+  id: MisfitsOrganSuperMutantLiver
+  parent: MisfitsBaseSuperMutantOrgan
+  name: liver
+  description: "A tough, mutated liver resistant to toxins."
+  components:
+  - type: Liver
+  - type: Organ
+    slotId: liver
+  - type: Sprite
+    state: liver
+  - type: Metabolizer
+    maxReagents: 1
+    metabolizerTypes: [Human]
+    groups:
+    - id: Alcohol
+      rateModifier: 0.1
+
+- type: entity
+  id: MisfitsOrganSuperMutantKidneys
+  parent: MisfitsBaseSuperMutantOrgan
+  name: kidneys
+  description: "Filters toxins from the bloodstream."
+  components:
+  - type: Organ
+    slotId: kidneys
+  - type: Sprite
+    layers:
+      - state: kidney-l
+      - state: kidney-r
+  - type: Metabolizer
+    maxReagents: 5
+    metabolizerTypes: [Human]
+    removeEmpty: true
