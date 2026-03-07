@@ -1,9 +1,4 @@
-# Misfits Change - Attribution for creature mob sounds
-# Source: Desert Rose 2, Fortuna, Lone Star, Big Iron) - https://github.com/Foundation-19/Big-Iron - https://github.com/buffyuwu/LoneStar - https://github.com/DesertRose2/desertrose - https://github.com/FortunaSS13/Fortuna
-# Directories: sound/f13npc/*, sound/creatures/*
-# These sounds are from the Fallout 13 SS13 codebase and are used under the same license.
-#
-# Creature sounds: Assaultron, Bloatfly, Cazador, Centaur, Deathclaw, Dog, Eyebot, Gecko,
-#   Ghoul, Gutsy, Handy, Molerat, Nightstalker, Protectron, Radscorpion,
-#   Roach, Scorpion, Sentry, Supermutant
-# Note: Assaultron sounds sourced from DesertRose (Tron-117), all others from Big-Iron f13npc
+- files: ["**/*"]
+  license: "CC-BY-SA-3.0"
+  copyright: "Fallout 13 SS13 codebase - Assaultron sounds from DesertRose (Tron-117), all others from Big-Iron f13npc. Creature sounds: Assaultron, Bloatfly, Cazador, Centaur, Deathclaw, Dog, Eyebot, Gecko, Ghoul, Gutsy, Handy, Molerat, Nightstalker, Protectron, Radscorpion, Roach, Scorpion, Sentry, Supermutant."
+  source: "https://github.com/Foundation-19/Big-Iron, https://github.com/buffyuwu/LoneStar, https://github.com/DesertRose2/desertrose, https://github.com/FortunaSS13/Fortuna"
