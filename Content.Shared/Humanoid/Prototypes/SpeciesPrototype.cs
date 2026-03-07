@@ -1,3 +1,4 @@
+using Content.Shared.Clothing.Loadouts.Prototypes; // #Misfits Change
 using Content.Shared.Roles; // #Misfits Change
 using Robust.Shared.Prototypes;
 using Robust.Shared.Serialization.TypeSerializers.Implementations.Custom.Prototype;
@@ -214,11 +215,18 @@ public sealed partial class SpeciesPrototype : IPrototype
     public int Order; // #Misfits Change
 
     /// <summary>
-    ///     If true, the Jobs, Antags, Traits, Loadouts, and Markings tabs are hidden
+    ///     If true, the Antags, Traits, and Markings tabs are hidden
     ///     in the character editor for this species.
     /// </summary>
     [DataField]
     public bool RestrictedCustomization; // #Misfits Change
+
+    /// <summary>
+    ///     If set, only loadouts in these categories will be shown.
+    ///     Null means all categories are allowed.
+    /// </summary>
+    [DataField]
+    public List<ProtoId<LoadoutCategoryPrototype>>? AllowedLoadoutCategories; // #Misfits Change
 }
 
 public enum SpeciesNaming : byte

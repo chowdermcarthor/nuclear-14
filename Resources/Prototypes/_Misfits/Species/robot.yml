@@ -14,7 +14,6 @@
   jobWhitelistUnlock: RobotSpawn # #Misfits Change
   restrictedJobs: # #Misfits Change
   - RobotSpawn
-  - Wastelander
   sprites: RobotSprites
   markingLimits: RobotMarkingLimits
   prototype: N14PlayerSyntheticMrHandy
@@ -31,7 +30,6 @@
   jobWhitelistUnlock: RobotSpawn # #Misfits Change
   restrictedJobs: # #Misfits Change
   - RobotSpawn
-  - Wastelander
   sprites: RobotSprites
   markingLimits: RobotMarkingLimits
   prototype: N14PlayerSyntheticProtectron
@@ -48,7 +46,6 @@
   jobWhitelistUnlock: RobotSpawn # #Misfits Change
   restrictedJobs: # #Misfits Change
   - RobotSpawn
-  - Wastelander
   sprites: RobotSprites
   markingLimits: RobotMarkingLimits
   prototype: N14PlayerSyntheticMrGutsy
@@ -65,7 +62,6 @@
   jobWhitelistUnlock: RobotSpawn # #Misfits Change
   restrictedJobs: # #Misfits Change
   - RobotSpawn
-  - Wastelander
   sprites: RobotSprites
   markingLimits: RobotMarkingLimits
   prototype: N14PlayerSyntheticAssaultron

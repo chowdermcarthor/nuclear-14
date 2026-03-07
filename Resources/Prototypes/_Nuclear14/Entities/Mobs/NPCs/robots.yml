@@ -45,6 +45,8 @@
     thresholds:
       0: Alive
       100: Dead
+    triggersAlerts: false #Misfits Change - robots have no HUD alerts
+    showOverlays: false
   - type: Stamina
     critThreshold: 20
   - type: MovementAlwaysTouching
@@ -107,7 +109,7 @@
   - type: MeleeWeapon
     hidden: true
     soundHit:
-        path: /Audio/Effects/metal_thud1.ogg
+        collection: N14HandyAttack #Misfits Change
     angle: 0
     animation: WeaponArcPunch
     range: 1.5
@@ -131,10 +133,20 @@
         true
       MeleeRange: !type:Single
         1.5
+  - type: SpamEmitSound #Misfits Change
+    minInterval: 10
+    maxInterval: 20
+    sound:
+      collection: N14AssaultronIdle
+      params:
+        volume: -3
+        maxDistance: 7
   - type: MobThresholds
     thresholds:
       0: Alive
       200: Dead # Corvax-Change
+    triggersAlerts: false #Misfits Change - robots have no HUD alerts
+    showOverlays: false
   - type: Destructible
     thresholds:
     - trigger:
@@ -202,6 +214,14 @@
   - type: MovementSpeedModifier
     baseWalkSpeed : 1.5
     baseSprintSpeed : 3
+  - type: SpamEmitSound #Misfits Change
+    minInterval: 10
+    maxInterval: 20
+    sound:
+      collection: N14ProtectronIdle
+      params:
+        volume: -3
+        maxDistance: 7
   - type: Sprite
     sprite: _Nuclear14/Mobs/Robots/protectron.rsi
     layers:
@@ -338,13 +358,21 @@
   - type: MeleeWeapon
     hidden: true
     soundHit:
-      path: /Audio/Effects/metal_thud1.ogg
+      collection: N14HandyAttack #Misfits Change
     angle: 0
     animation: WeaponArcPunch
     range: 1.5
     damage:
       types:
         Pierce: 5
+  - type: SpamEmitSound #Misfits Change
+    minInterval: 10
+    maxInterval: 20
+    sound:
+      collection: N14HandyIdle
+      params:
+        volume: -3
+        maxDistance: 7
   - type: Sprite
     sprite: _Nuclear14/Mobs/Robots/mrhandyclaw.rsi
     layers:
@@ -437,6 +465,14 @@
     # name: Mr Handy
     # description: |
       # Protect your area and remove any trespassers.
+  - type: SpamEmitSound #Misfits Change
+    minInterval: 10
+    maxInterval: 20
+    sound:
+      collection: N14HandyIdle
+      params:
+        volume: -3
+        maxDistance: 7
   - type: Gun #Mobs currently cannot bolt a gun, so we have to simulate them firing it
     minAngle: 9
     maxAngle: 18
@@ -479,6 +515,14 @@
   - type: MovementSpeedModifier
     baseWalkSpeed : 2
     baseSprintSpeed : 4
+  - type: SpamEmitSound #Misfits Change
+    minInterval: 10
+    maxInterval: 20
+    sound:
+      collection: N14GutsyIdle
+      params:
+        volume: -3
+        maxDistance: 7
   - type: Sprite
     sprite: _Nuclear14/Mobs/Robots/mrhandygutsy.rsi
     layers:
@@ -537,6 +581,14 @@
   - type: MovementSpeedModifier
     baseWalkSpeed : 1.5
     baseSprintSpeed : 3
+  - type: SpamEmitSound #Misfits Change
+    minInterval: 10
+    maxInterval: 20
+    sound:
+      collection: N14ProtectronIdle
+      params:
+        volume: -3
+        maxDistance: 7
   - type: Sprite
     sprite: _Nuclear14/Mobs/Robots/robobrain.rsi
     layers:

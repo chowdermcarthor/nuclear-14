@@ -55,7 +55,7 @@
     altDisarm: false
     hidden: true
     soundHit:
-        path: /Audio/Effects/bite.ogg
+      collection: N14DogAttack #Misfits Change
     angle: 60
     animation: WeaponArcBite
     wideAnimation: WeaponArcBite
@@ -63,6 +63,14 @@
       types:
         Blunt: 4
         Slash: 8
+  - type: SpamEmitSound #Misfits Change
+    minInterval: 10
+    maxInterval: 60
+    sound:
+      collection: N14DogIdle
+      params:
+        volume: -10
+        maxDistance: 5
   - type: Deathgasp
   - type: PassiveDamage
     allowedStates:
@@ -108,7 +116,7 @@
     interactFailureString: petting-failure-generic
     interactSuccessSpawn: EffectHearts
     interactSuccessSound:
-      path: /Audio/Animals/small_dog_bark_happy.ogg
+      collection: N14DogBark #Misfits Change
   - type: ReplacementAccent
     accent: dog
   - type: LanguageKnowledge

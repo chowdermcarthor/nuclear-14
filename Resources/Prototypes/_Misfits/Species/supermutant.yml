@@ -9,10 +9,16 @@
   order: 3 # #Misfits Change: sort after Glowing Ghoul
   whitelistRequired: true # #Misfits Change
   restrictedCustomization: true # #Misfits Change
+  allowedLoadoutCategories: # #Misfits Change
+  - Weapons
+  - Bags
+  - Backpacks
+  - Duffel
+  - Satchel
+  - Items
   jobWhitelistUnlock: SuperMutant # #Misfits Change: job whitelist for SuperMutant unlocks this species
   restrictedJobs: # #Misfits Change
   - SuperMutant
-  - Wastelander
   prototype: N14MobSuperMutant
   sprites: MobSuperMutantSprites
   markingLimits: MobSuperMutantMarkingLimits
@@ -35,7 +41,6 @@
   sprites:
     Head: MobSuperMutantHead
     Chest: MobSuperMutantTorso
-    Eyes: MobHumanoidEyes
     LArm: MobSuperMutantLArm
     RArm: MobSuperMutantRArm
     LHand: MobSuperMutantLHand

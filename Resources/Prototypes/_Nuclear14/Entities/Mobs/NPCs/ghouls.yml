@@ -11,13 +11,21 @@
   - type: MeleeWeapon
     hidden: true
     soundHit:
-      path: /Audio/Weapons/bladeslice.ogg
+      collection: N14GhoulAttack #Misfits Change
     angle: 0
     animation: WeaponArcFist
     damage:
       types:
         Slash: 7
     range: 1
+  - type: SpamEmitSound #Misfits Change
+    minInterval: 10
+    maxInterval: 60
+    sound:
+      collection: N14GhoulIdle
+      params:
+        volume: -7
+        maxDistance: 5
   - type: Sprite
     drawdepth: Mobs
     layers:
@@ -34,13 +42,21 @@
   - type: MeleeWeapon
     hidden: true
     soundHit:
-      path: /Audio/Weapons/bladeslice.ogg
+      collection: N14GhoulAttack #Misfits Change
     angle: 0
     animation: WeaponArcFist
     damage:
       types:
         Slash: 7
     range: 1
+  - type: SpamEmitSound #Misfits Change
+    minInterval: 10
+    maxInterval: 60
+    sound:
+      collection: N14GhoulIdle
+      params:
+        volume: -7
+        maxDistance: 5
   - type: Sprite
     drawdepth: Mobs
     layers:
@@ -61,13 +77,21 @@
   - type: MeleeWeapon
     hidden: true
     soundHit:
-      path: /Audio/Weapons/bladeslice.ogg
+      collection: N14GhoulAttack #Misfits Change
     angle: 0
     animation: WeaponArcFist
     damage:
       types:
         Slash: 7
     range: 1
+  - type: SpamEmitSound #Misfits Change
+    minInterval: 10
+    maxInterval: 60
+    sound:
+      collection: N14GhoulIdle
+      params:
+        volume: -7
+        maxDistance: 5
   - type: Sprite
     drawdepth: Mobs
     layers:
@@ -87,7 +111,7 @@
   - type: MeleeWeapon
     hidden: true
     soundHit:
-      path: /Audio/Weapons/bladeslice.ogg
+      collection: N14GhoulAttack #Misfits Change
     angle: 0
     animation: WeaponArcFist
     damage:

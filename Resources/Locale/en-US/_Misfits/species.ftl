@@ -1,5 +1,5 @@
 ## Species Names
-species-name-supermutant = Super Mutant
+species-name-supermutant = Supermutant
 species-name-robot = Robot
 species-name-robot-mr-handy = Mr. Handy
 species-name-robot-protectron = Protectron

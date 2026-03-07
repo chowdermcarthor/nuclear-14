@@ -16,6 +16,7 @@
   id: BrotherhoodWashington
   description: department-BrotherhoodWashington-description
   color: "#a2000f"
+  editorHidden: true
   roles:
   - BoSWashingtonCommander
   - BoSWashingtonPaladin

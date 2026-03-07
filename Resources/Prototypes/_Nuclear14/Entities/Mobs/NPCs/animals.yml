@@ -44,13 +44,21 @@
     altDisarm: false
     hidden: true
     soundHit:
-        path: /Audio/Effects/bite.ogg
+      collection: N14MoleratAttack #Misfits Change
     angle: 60
     animation: WeaponArcBite
     wideAnimation: WeaponArcBite
     damage:
       groups:
         Brute: 3
+  - type: SpamEmitSound #Misfits Change
+    minInterval: 10
+    maxInterval: 60
+    sound:
+      collection: N14MoleratIdle
+      params:
+        volume: -10
+        maxDistance: 5
  #- type: Reproductive
    #breedChance: 0.05
    #birthPopup: reproductive-birth-popup
@@ -118,13 +126,21 @@
     altDisarm: false
     hidden: true
     soundHit:
-        path: /Audio/Effects/bite.ogg
+      collection: N14MoleratAttack #Misfits Change - pigrats share molerat sounds
     angle: 60
     animation: WeaponArcBite
     wideAnimation: WeaponArcBite
     damage:
       groups:
         Brute: 3
+  - type: SpamEmitSound #Misfits Change
+    minInterval: 10
+    maxInterval: 60
+    sound:
+      collection: N14MoleratIdle
+      params:
+        volume: -10
+        maxDistance: 5
   - type: Butcherable
     spawned:
     - id: N14FoodMeatPigrat
@@ -187,13 +203,21 @@
     altDisarm: false
     hidden: true
     soundHit:
-        path: /Audio/Effects/bite.ogg
+      collection: N14DogAttack #Misfits Change
     angle: 60
     animation: WeaponArcBite
     wideAnimation: WeaponArcBite
     damage:
       groups:
         Brute: 5
+  - type: SpamEmitSound #Misfits Change
+    minInterval: 10
+    maxInterval: 60
+    sound:
+      collection: N14DogIdle
+      params:
+        volume: -8
+        maxDistance: 5
  #- type: Reproductive
    #breedChance: 0.05
    #birthPopup: reproductive-birth-popup
@@ -265,7 +289,7 @@
     altDisarm: false
     hidden: true
     soundHit:
-        path: /Audio/Effects/bite.ogg
+      collection: N14DeathclawAttack #Misfits Change - Yao Guai reuses deathclaw roars
     angle: 60
     animation: WeaponArcBite
     wideAnimation: WeaponArcBite
@@ -277,6 +301,14 @@
   - type: MovementSpeedModifier
     baseWalkSpeed : 3
     baseSprintSpeed : 4.75
+  - type: SpamEmitSound #Misfits Change
+    minInterval: 10
+    maxInterval: 60
+    sound:
+      collection: N14DeathclawIdle
+      params:
+        volume: -7
+        maxDistance: 5
   - type: NoSlip
  #- type: Reproductive
    #breedChance: 0.05

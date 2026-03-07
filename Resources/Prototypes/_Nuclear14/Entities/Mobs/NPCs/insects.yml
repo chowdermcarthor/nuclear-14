@@ -60,7 +60,7 @@
     availableModes:
       - FullAuto
     selectedMode: FullAuto
-    soundGunshot: /Audio/Weapons/Xeno/alien_spitacid.ogg
+    soundGunshot: /Audio/_Misfits/Mobs/Bloatfly/bloatfly_attack.ogg #Misfits Change
     useKey: false
   - type: Butcherable
     spawned:
@@ -124,7 +124,7 @@
     altDisarm: false
     hidden: true
     soundHit:
-        path: /Audio/Weapons/Xeno/alien_claw_flesh3.ogg
+      collection: N14RadscorpionAttack #Misfits Change
     angle: 60
     animation: WeaponArcClaw
     wideAnimation: WeaponArcClaw
@@ -221,13 +221,21 @@
     altDisarm: false
     hidden: true
     soundHit:
-        path: /Audio/Effects/bite.ogg
+      collection: N14RadroachAttack #Misfits Change
     angle: 60
     animation: WeaponArcBite
     wideAnimation: WeaponArcBite
     damage:
       groups:
         Brute: 2
+  - type: SpamEmitSound #Misfits Change
+    minInterval: 10
+    maxInterval: 60
+    sound:
+      collection: N14RadroachIdle
+      params:
+        volume: -12
+        maxDistance: 5
   - type: Butcherable
     spawned:
     - id: N14FoodMeatRadroachFillet
@@ -290,7 +298,7 @@
     altDisarm: false
     hidden: true
     soundHit:
-        path: /Audio/Weapons/Xeno/alien_claw_flesh3.ogg
+      collection: N14RadscorpionAttack #Misfits Change
     angle: 60
     animation: WeaponArcClaw
     wideAnimation: WeaponArcClaw
@@ -298,6 +306,14 @@
       types:
         Slash: 2
         Piercing: 8
+  - type: SpamEmitSound #Misfits Change
+    minInterval: 10
+    maxInterval: 60
+    sound:
+      collection: N14RadscorpionIdle
+      params:
+        volume: -10
+        maxDistance: 5
   - type: SolutionContainerManager
     solutions:
       melee:
@@ -387,13 +403,21 @@
     altDisarm: false
     hidden: true
     soundHit:
-        path: /Audio/Effects/bite.ogg
+      collection: N14CazadorAttack #Misfits Change
     angle: 30
     animation: WeaponArcThrust
     wideAnimation: WeaponArcThrust
     damage:
       types:
         Piercing: 6
+  - type: SpamEmitSound #Misfits Change
+    minInterval: 10
+    maxInterval: 60
+    sound:
+      collection: N14CazadorIdle
+      params:
+        volume: -8
+        maxDistance: 5
   - type: SolutionContainerManager
     solutions:
       melee:

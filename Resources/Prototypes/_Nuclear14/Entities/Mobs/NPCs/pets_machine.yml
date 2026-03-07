@@ -229,6 +229,14 @@
     speechSounds: Borg
   - type: TypingIndicator # Corvax-Change
     proto: robot
+  - type: SpamEmitSound #Misfits Change
+    minInterval: 10
+    maxInterval: 60
+    sound:
+      collection: N14EyebotIdle
+      params:
+        volume: -5
+        maxDistance: 5
 
 - type: entity
   name: BoS Eyebot

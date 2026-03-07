@@ -793,6 +793,12 @@ namespace Content.Client.Lobby.UI
 
             _controller.RemoveDummyClothes(PreviewDummy);
             var job = _controller.GetPreferredJob(Profile);
+
+            // #Misfits Change: skip clothes if species is restricted to specific jobs and the preferred job isn't one of them
+            var species = _prototypeManager.Index<SpeciesPrototype>(Profile.Species);
+            if (species.RestrictedJobs != null && !species.RestrictedJobs.Contains(job.ID))
+                return;
+
             if (ShowClothes.Pressed)
                 _controller.GiveDummyJobClothes(PreviewDummy, job, Profile);
             if (ShowLoadouts.Pressed)
@@ -925,6 +931,17 @@ namespace Content.Client.Lobby.UI
             {
                 var departmentName = Loc.GetString($"department-{department.ID}");
 
+                var jobs = department.Roles.Select(jobId => _prototypeManager.Index<JobPrototype>(jobId))
+                    .Where(job => job.SetPreference)
+                    .Where(job => !job.HideWithoutWhitelist || _requirements.IsWhitelisted() || (job.Whitelisted && _requirements.IsJobWhitelisted(job.ID))) // #Misfits Change
+                    .ToArray();
+
+                Array.Sort(jobs, JobUIComparer.Instance);
+
+                // #Misfits Change: hide empty department categories
+                if (jobs.Length == 0)
+                    continue;
+
                 if (!_jobCategories.TryGetValue(department.ID, out var category))
                 {
                     category = new BoxContainer
@@ -957,13 +974,6 @@ namespace Content.Client.Lobby.UI
                     _jobCategories[department.ID] = category;
                     JobList.AddChild(category);
                 }
-
-                var jobs = department.Roles.Select(jobId => _prototypeManager.Index<JobPrototype>(jobId))
-                    .Where(job => job.SetPreference)
-                    .Where(job => !job.HideWithoutWhitelist || _requirements.IsWhitelisted() || (job.Whitelisted && _requirements.IsJobWhitelisted(job.ID))) // #Misfits Change
-                    .ToArray();
-
-                Array.Sort(jobs, JobUIComparer.Instance);
 
                 foreach (var job in jobs)
                 {
@@ -1061,6 +1071,16 @@ namespace Content.Client.Lobby.UI
             {
                 var departmentName = Loc.GetString($"department-{department.ID}");
 
+                var jobs = department.Roles.Select(jobId => _prototypeManager.Index(jobId))
+                    .Where(job => job.SetPreference)
+                    .Where(job => !job.HideWithoutWhitelist || _requirements.IsWhitelisted() || (job.Whitelisted && _requirements.IsJobWhitelisted(job.ID))) // #Misfits Change
+                    .ToArray();
+                Array.Sort(jobs, JobUIComparer.Instance);
+
+                // #Misfits Change: hide empty department categories
+                if (jobs.Length == 0)
+                    continue;
+
                 if (!_jobCategories.TryGetValue(department.ID, out var category))
                 {
                     category = new BoxContainer
@@ -1098,12 +1118,6 @@ namespace Content.Client.Lobby.UI
                     _jobCategories[department.ID] = category;
                     JobList.AddChild(category);
                 }
-
-                var jobs = department.Roles.Select(jobId => _prototypeManager.Index(jobId))
-                    .Where(job => job.SetPreference)
-                    .Where(job => !job.HideWithoutWhitelist || _requirements.IsWhitelisted() || (job.Whitelisted && _requirements.IsJobWhitelisted(job.ID))) // #Misfits Change
-                    .ToArray();
-                Array.Sort(jobs, JobUIComparer.Instance);
 
                 foreach (var job in jobs)
                 {
@@ -1424,12 +1438,13 @@ namespace Content.Client.Lobby.UI
             var species = _prototypeManager.Index<SpeciesPrototype>(speciesId);
             var restricted = species.RestrictedCustomization;
 
-            CTabContainer.SetTabVisible(Appearance, !restricted);
-            CTabContainer.SetTabVisible(Jobs, !restricted);
             CTabContainer.SetTabVisible(Antags, !restricted);
             CTabContainer.SetTabVisible(TraitsTab, !restricted);
-            CTabContainer.SetTabVisible(LoadoutsTab, !restricted);
             CTabContainer.SetTabVisible(MarkingsTab, !restricted);
+
+            // #Misfits Change: hide loadouts tab only if restricted AND no allowed categories
+            var showLoadouts = !restricted || species.AllowedLoadoutCategories is { Count: > 0 };
+            CTabContainer.SetTabVisible(LoadoutsTab, showLoadouts);
         }
 
         private void SetName(string newName)
@@ -1697,7 +1712,7 @@ namespace Content.Client.Lobby.UI
 
             var borgNames = _prototypeManager.Index<DatasetPrototype>(CyborgNames);
             var randomName = _random.Pick(borgNames.Values);
-            CyborgNameEdit.PlaceHolder = Loc.GetString(randomName);
+            CyborgNameEdit.PlaceHolder = randomName; // #Misfits Change - borg names are display text, not loc keys
         }
 
         private void UpdateSpawnPriorityControls()
@@ -2444,6 +2459,15 @@ namespace Content.Client.Lobby.UI
                     if (!_sponsorMan.TryGetSponsor(userId.Value, out SponsorLevel level))
                         continue;
                     if (loadout.Level > level)
+                        continue;
+                }
+
+                // #Misfits Change: filter loadouts by species allowed categories
+                if (Profile != null)
+                {
+                    var currentSpecies = _prototypeManager.Index<SpeciesPrototype>(Profile.Species);
+                    if (currentSpecies.AllowedLoadoutCategories != null
+                        && !currentSpecies.AllowedLoadoutCategories.Contains(loadout.Category))
                         continue;
                 }
 
