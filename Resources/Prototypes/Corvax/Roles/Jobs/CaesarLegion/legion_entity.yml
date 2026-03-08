@@ -1,7 +1,20 @@
 - type: entity
   parent: MobHuman
+  id: N14MobHumanCaesarLegionLegate
+  name: Legate
+  components:
+    - type: RandomHumanoidAppearance
+      randomizeName: true
+    - type: Loadout
+      prototypes: [CaesarLegionLegateGear]
+    - type: NpcFactionMember
+      factions:
+      - CaesarLegion
+
+- type: entity
+  parent: MobHuman
   id: N14MobHumanCaesarLegionCenturion
-  name: Centurion
+  name: Legion Centurion
   components:
     - type: RandomHumanoidAppearance
       randomizeName: true
@@ -13,8 +26,21 @@
 
 - type: entity
   parent: MobHuman
+  id: N14MobHumanCaesarLegionVeteranDecanus
+  name: Veteran Decanus
+  components:
+    - type: RandomHumanoidAppearance
+      randomizeName: true
+    - type: Loadout
+      prototypes: [CaesarLegionVeteranDecanusGear]
+    - type: NpcFactionMember
+      factions:
+      - CaesarLegion
+
+- type: entity
+  parent: MobHuman
   id: N14MobHumanCaesarLegionVenator
-  name: Venator
+  name: Explorer
   components:
     - type: RandomHumanoidAppearance
       randomizeName: true
@@ -26,8 +52,21 @@
 
 - type: entity
   parent: MobHuman
+  id: N14MobHumanCaesarLegionVexillarius
+  name: Vexillarius
+  components:
+    - type: RandomHumanoidAppearance
+      randomizeName: true
+    - type: Loadout
+      prototypes: [CaesarLegionVexillariusGear]
+    - type: NpcFactionMember
+      factions:
+      - CaesarLegion
+
+- type: entity
+  parent: MobHuman
   id: N14MobHumanCaesarLegionDean
-  name: Decanus
+  name: Legion Decanus
   components:
     - type: RandomHumanoidAppearance
       randomizeName: true
@@ -40,7 +79,7 @@
 - type: entity
   parent: MobHuman
   id: N14MobHumanCaesarLegionnaireVeteran
-  name: Legionnaire-Veteran
+  name: Veteran Legionary
   components:
     - type: RandomHumanoidAppearance
       randomizeName: true
@@ -53,7 +92,7 @@
 - type: entity
   parent: MobHuman
   id: N14MobHumanCaesarLegionnaireWarrior
-  name: Legionnaire-Warrior
+  name: Prime Legionary
   components:
     - type: RandomHumanoidAppearance
       randomizeName: true
@@ -66,7 +105,7 @@
 - type: entity
   parent: MobHuman
   id: N14MobHumanCaesarLegionnaireRecruit
-  name: Legionnaire-Recruit
+  name: Recruit Legionary
   components:
     - type: RandomHumanoidAppearance
       randomizeName: true
@@ -78,8 +117,34 @@
 
 - type: entity
   parent: MobHuman
+  id: N14MobHumanCaesarLegionHoundmaster
+  name: Houndmaster
+  components:
+    - type: RandomHumanoidAppearance
+      randomizeName: true
+    - type: Loadout
+      prototypes: [CaesarLegionHoundmasterGear]
+    - type: NpcFactionMember
+      factions:
+      - CaesarLegion
+
+- type: entity
+  parent: MobHuman
+  id: N14MobHumanCaesarLegionRecruit
+  name: Recruit
+  components:
+    - type: RandomHumanoidAppearance
+      randomizeName: true
+    - type: Loadout
+      prototypes: [CaesarLegionRecruitGear]
+    - type: NpcFactionMember
+      factions:
+      - CaesarLegion
+
+- type: entity
+  parent: MobHuman
   id: N14MobHumanCaesarCaesarLegionSlave
-  name: CaesarLegionSlave
+  name: Legion Slave
   components:
     - type: RandomHumanoidAppearance
       randomizeName: true

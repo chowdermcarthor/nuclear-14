@@ -14,9 +14,9 @@
   color: "#d8d52f"
   longRange: true
 
-- type: radioChannel
-  id: BrotherhoodWest
-  name: chat-radio-boswest
-  keycode: 'z'
-  frequency: 7777
-  color: "#02e5f5"
+# - type: radioChannel
+#   id: BrotherhoodWest
+#   name: chat-radio-boswest
+#   keycode: 'z'
+#   frequency: 7777
+#   color: "#02e5f5"

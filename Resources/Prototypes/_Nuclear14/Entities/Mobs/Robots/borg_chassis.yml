@@ -320,13 +320,13 @@
   components:
   - type: NpcFactionMember
     factions:
-      - BrotherhoodMidwest
+      - BrotherhoodOfSteel
   - type: IntrinsicRadioTransmitter
     channels:
-    - BrotherhoodMidwest
+    - BrotherhoodOfSteel
   - type: ActiveRadio
     channels:
-    - BrotherhoodMidwest
+    - BrotherhoodOfSteel
   # - type: AccessReader
     # access: [["BOSMidwest"]
   # - type: ContainerFill
@@ -345,7 +345,7 @@
   - type: Access
     enabled: false
     groups:
-    - BOSMidwest
+    - BOS
     
 - type: entity
   parent: [N14RobotMrHandy, N14RobotBOSMidwestBase]
@@ -369,13 +369,13 @@
   components:
   - type: NpcFactionMember
     factions:
-      - BrotherhoodWashington
+      - BrotherhoodOfSteel
   - type: IntrinsicRadioTransmitter
     channels:
-    - BrotherhoodWashington
+    - BrotherhoodOfSteel
   - type: ActiveRadio
     channels:
-    - BrotherhoodWashington
+    - BrotherhoodOfSteel
   # - type: AccessReader
     # access: [["BOSWashington"]
   # - type: ContainerFill
@@ -394,7 +394,7 @@
   - type: Access
     enabled: false
     groups:
-    - BOSWashington
+    - BOS
     
 - type: entity
   parent: [N14RobotMrHandy, N14RobotBOSWashingtonBase]

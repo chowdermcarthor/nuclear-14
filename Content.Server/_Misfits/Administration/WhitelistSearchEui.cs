@@ -78,10 +78,19 @@ public sealed class WhitelistSearchEui : BaseEui
             return;
         }
 
-        var records = await _db.SearchPlayersByName(query);
-        _searchResults = records
-            .Select(r => new WhitelistPlayerInfo(r.UserId, r.LastSeenUserName))
-            .ToList();
+        try
+        {
+            var records = await _db.SearchPlayersByName(query);
+            _sawmill.Debug($"Search for '{query}' returned {records.Count} results");
+            _searchResults = records
+                .Select(r => new WhitelistPlayerInfo(r.UserId, r.LastSeenUserName))
+                .ToList();
+        }
+        catch (Exception e)
+        {
+            _sawmill.Error($"Error searching players by name '{query}': {e}");
+            _searchResults = new List<WhitelistPlayerInfo>();
+        }
 
         StateDirty();
     }

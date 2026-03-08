@@ -414,7 +414,7 @@
   - type: ContainerFill
     containers:
       key_slots:
-      - EncryptionKeyBrotherhoodWashington
+      - EncryptionKeyBrotherhoodOfSteel
 
 - type: entity
   parent: N14MachineRackTelecomsServer
@@ -424,7 +424,7 @@
   - type: ContainerFill
     containers:
       key_slots:
-      - EncryptionKeyBrotherhoodMidwest
+      - EncryptionKeyBrotherhoodOfSteel
 
 - type: entity
   parent: N14MachineRackTelecomsServer

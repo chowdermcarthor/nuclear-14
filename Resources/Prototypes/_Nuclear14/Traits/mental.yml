@@ -36,12 +36,18 @@
       jobs:
         - TownSheriff
         - TownDeputy
+        - NCRCaptain
         - NCRLT
-        - NCRRangerVeteran
-        - NCRRanger
+        - RangerVeteran
+        - Ranger
+        - RangerRecruit
+        - NCRDoctor
+        - NCRFirstSergeant
+        - NCRStaffSergeant
         - NCRSGT
         - NCRWS
         - NCREngineer
+        - NCRPrivateFirstClass
         - NCRSoldier
         - NCRCadet
 #        - CaravanGuard
@@ -57,15 +63,17 @@
         - NCRMPinvestigator
         - BoSMidInquisitor
         - BoSWestElderCommander
-        - BoSWestPaladin
-        - BoSWestKnight
-        - BoSWestGunsmith
         - CaesarLegionCenturion
+        - CaesarLegionLegate
+        - CaesarLegionVeteranDecanus
         - CaesarLegionVenator
+        - CaesarLegionVexillarius
         - CaesarLegionDean
         - CaesarLegionLegionnaireVeteran
         - CaesarLegionLegionnaireWarrior
         - CaesarLegionLegionnaireRecruit
+        - CaesarLegionHoundmaster
+        - CaesarLegionRecruit
         # Forge-Change-End
         - VaultSecurity
   functions:
@@ -94,6 +102,7 @@
       jobs:
         - TribalHealer
         - TownDoctor
+        - NCRDoctor
         - NCRMedic
         - BoSWashingtonScribe
         - BoSMidScribe
@@ -250,7 +259,7 @@
   requirements:
     - !type:CharacterDepartmentRequirement
       departments:
-        - BrotherhoodMidwest
+        - BrotherhoodOfSteel
     - !type:CharacterTraitRequirement
       inverted: true
       traits:
@@ -272,7 +281,7 @@
   requirements:
     - !type:CharacterDepartmentRequirement
       departments:
-        - BrotherhoodWashington
+        - BrotherhoodOfSteel
     - !type:CharacterTraitRequirement
       inverted: true
       traits:
@@ -325,7 +334,7 @@
       min: 72000
     - !type:CharacterDepartmentRequirement
       departments:
-        - BrotherhoodMidwest
+        - BrotherhoodOfSteel
     - !type:CharacterTraitRequirement
       inverted: true
       traits:
@@ -349,7 +358,7 @@
       min: 72000
     - !type:CharacterDepartmentRequirement
       departments:
-        - BrotherhoodWashington
+        - BrotherhoodOfSteel
     - !type:CharacterTraitRequirement
       inverted: true
       traits:

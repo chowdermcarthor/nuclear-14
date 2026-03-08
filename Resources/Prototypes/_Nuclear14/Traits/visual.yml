@@ -6,8 +6,7 @@
   - !type:CharacterDepartmentRequirement # Forge-Change
       inverted: true
       departments:
-        - BrotherhoodWashington
-        - BrotherhoodWest
+        - BrotherhoodOfSteel
   - !type:CharacterJobRequirement # Forge-Change
     inverted: true
     jobs:
@@ -15,14 +14,20 @@
     - TribalElder
     - TownMayor
     - TownSheriff
+    - NCRCaptain
     - NCRLT
-    - NCRRangerVeteran
-    - NCRRanger
+    - NCRDoctor
+    - RangerVeteran
+    - Ranger
+    - RangerRecruit
+    - NCRFirstSergeant
+    - NCRStaffSergeant
     - NCRSGT
     - NCRMPinvestigator
     - NCRWS
     - NCREngineer
     - NCRMedic
+    - NCRPrivateFirstClass
     - NCRSoldier
     - NCRCadet
 #   - CaravanLeader
@@ -33,11 +38,16 @@
     - BoSMidKnight
     - BoSMidSquire
     - CaesarLegionCenturion
+    - CaesarLegionLegate
+    - CaesarLegionVeteranDecanus
     - CaesarLegionVenator
+    - CaesarLegionVexillarius
     - CaesarLegionDean
     - CaesarLegionLegionnaireVeteran
     - CaesarLegionLegionnaireWarrior
     - CaesarLegionLegionnaireRecruit
+    - CaesarLegionHoundmaster
+    - CaesarLegionRecruit
     - Overseer
     - VaultSecurity
   - !type:CharacterTraitRequirement

@@ -1,3 +1,4 @@
+# #Misfits Change - Uncommented to fix missing prototype reference in Wendover map
 - type: entity
   parent: EncryptionKey
   id: EncryptionKeyBrotherhoodMidwest
@@ -6,23 +7,38 @@
   components:
   - type: EncryptionKey
     channels:
-    - BrotherhoodMidwest
-    defaultChannel: BrotherhoodMidwest
+    - BrotherhoodOfSteel
+    defaultChannel: BrotherhoodOfSteel
   - type: Sprite
     layers:
     - state: crypt_silver
     - state: common_label
 
+# - type: entity
+#   parent: EncryptionKey
+#   id: EncryptionKeyBrotherhoodWashington
+#   name: Washington BoS Encryption Key
+#   description: An encryption key used by the Washington Brotherhood of Steel.
+#   components:
+#   - type: EncryptionKey
+#     channels:
+#     - BrotherhoodWashington
+#     defaultChannel: BrotherhoodWashington
+#   - type: Sprite
+#     layers:
+#     - state: crypt_silver
+#     - state: common_label
+
 - type: entity
   parent: EncryptionKey
-  id: EncryptionKeyBrotherhoodWashington
-  name: Washington BoS Encryption Key
-  description: An encryption key used by the Washington Brotherhood of Steel.
+  id: EncryptionKeyBrotherhoodOfSteel
+  name: Brotherhood encryption key
+  description: An encryption key used by the Brotherhood of Steel.
   components:
   - type: EncryptionKey
     channels:
-    - BrotherhoodWashington
-    defaultChannel: BrotherhoodWashington
+    - BrotherhoodOfSteel
+    defaultChannel: BrotherhoodOfSteel
   - type: Sprite
     layers:
     - state: crypt_silver

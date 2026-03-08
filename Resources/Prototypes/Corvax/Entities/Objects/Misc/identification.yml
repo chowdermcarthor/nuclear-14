@@ -1,6 +1,18 @@
 #MARK: Legion
 - type: entity
   parent: N14IDPassportBlank
+  id: N14IDLegionaryMedalLegate
+  name: distinctive medal
+  description: "The sign of Caesar's will."
+  components:
+  - type: Sprite
+    sprite: Corvax/Objects/Misc/identification.rsi
+    state: medal-gold
+  - type: PresetIdCard
+    job: CaesarLegionLegate
+
+- type: entity
+  parent: N14IDPassportBlank
   id: N14IDLegionaryBadge
   name: distinctive sign
   description: "The sign of the red bull."
@@ -10,6 +22,18 @@
     state: sign
   - type: PresetIdCard
     job: CaesarLegionLegionnaireRecruit
+
+- type: entity
+  parent: N14IDPassportBlank
+  id: N14IDLegionaryBadgeRecruit
+  name: distinctive sign
+  description: "The sign of a Legion recruit."
+  components:
+  - type: Sprite
+    sprite: Corvax/Objects/Misc/identification.rsi
+    state: sign
+  - type: PresetIdCard
+    job: CaesarLegionRecruit
 
 - type: entity
   parent: N14IDPassportBlank
@@ -25,6 +49,18 @@
 
 - type: entity
   parent: N14IDPassportBlank
+  id: N14IDLegionaryMedalHoundmaster
+  name: distinctive medal
+  description: "A medal worn by the keepers of Caesar's hounds."
+  components:
+  - type: Sprite
+    sprite: Corvax/Objects/Misc/identification.rsi
+    state: medal-silver
+  - type: PresetIdCard
+    job: CaesarLegionHoundmaster
+
+- type: entity
+  parent: N14IDPassportBlank
   id: N14IDLegionaryMedalSilver2
   name: distinctive medal
   description: "A distinctive medal with the sign of the bull."
@@ -37,6 +73,18 @@
 
 - type: entity
   parent: N14IDPassportBlank
+  id: N14IDLegionaryMedalVexillarius
+  name: distinctive medal
+  description: "A medal granted to one who carries the Legion's standard."
+  components:
+  - type: Sprite
+    sprite: Corvax/Objects/Misc/identification.rsi
+    state: medal-silver-2
+  - type: PresetIdCard
+    job: CaesarLegionVexillarius
+
+- type: entity
+  parent: N14IDPassportBlank
   id: N14IDLegionaryMedalSilver3
   name: distinctive medal
   description: "A distinctive medal with the sign of the bull."
@@ -46,6 +94,30 @@
     state: medal-silver-3
   - type: PresetIdCard
     job: CaesarLegionDean
+
+- type: entity
+  parent: N14IDPassportBlank
+  id: N14IDLegionaryMedalExplorer
+  name: distinctive medal
+  description: "A medal worn by Legion explorers."
+  components:
+  - type: Sprite
+    sprite: Corvax/Objects/Misc/identification.rsi
+    state: medal-silver-3
+  - type: PresetIdCard
+    job: CaesarLegionVenator
+
+- type: entity
+  parent: N14IDPassportBlank
+  id: N14IDLegionaryMedalVeteranDecanus
+  name: distinctive medal
+  description: "A distinctive medal carried by a veteran decanus."
+  components:
+  - type: Sprite
+    sprite: Corvax/Objects/Misc/identification.rsi
+    state: medal-silver-3
+  - type: PresetIdCard
+    job: CaesarLegionVeteranDecanus
 
 - type: entity
   parent: N14IDPassportBlank
@@ -197,7 +269,7 @@
   id: N14IDBrotherhoodWestHolotag
   name: holotag (scribe)
   description: An ID holotag worn by the Brotherhood of Steel.
-  suffix: West Scribe
+  suffix: Head Scribe
   components:
   - type: Sprite
     sprite: _Nuclear14/Objects/Misc/identification.rsi
@@ -205,44 +277,44 @@
   - type: PresetIdCard
     job: BoSWestScribe
   - type: ClothingAddFaction
-    faction: BrotherhoodWest
+    faction: BrotherhoodOfSteel
 
 - type: entity
   parent: N14IDBrotherhoodWestHolotag
   id: N14IDBrotherhoodWestHolotagGunsmith
   name: holotag (gunsmith)
   description: An ID holotag worn by the Brotherhood of Steel.
-  suffix: West Gunsmith
+  suffix: Squire
   components:
   - type: PresetIdCard
-    job: BoSWestGunsmith
+    job: BoSMidSquire
 
 - type: entity
   parent: N14IDBrotherhoodWestHolotag
   id: N14IDBrotherhoodWestHolotagKnight
   name: holotag (knight)
   description: An ID holotag worn by the Brotherhood of Steel.
-  suffix: West Knight
+  suffix: Senior Knight
   components:
   - type: PresetIdCard
-    job: BoSWestKnight
+    job: BoSMidKnight
 
 - type: entity
   parent: N14IDBrotherhoodWestHolotag
   id: N14IDBrotherhoodWestHolotagPaladin
   name: holotag (paladin)
   description: An ID holotag worn by the Paladins of the Brotherhood of Steel.
-  suffix: West Paladin
+  suffix: Senior Paladin
   components:
   - type: PresetIdCard
-    job: BoSWestPaladin
+    job: BoSMidPaladin
 
 - type: entity
   parent: N14IDBrotherhoodWestHolotag
   id: N14IDBrotherhoodWestHolotagElderCommander
   name: holotag (eldercommander)
-  description: An ID holotag worn by the Paladin Commander of the Brotherhood of Steel.
-  suffix: West Commander
+  description: An ID holotag worn by the Elder of the Brotherhood of Steel.
+  suffix: Elder
   components:
   - type: PresetIdCard
     job: BoSWestElderCommander

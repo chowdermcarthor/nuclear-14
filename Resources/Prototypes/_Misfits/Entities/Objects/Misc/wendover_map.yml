@@ -1,5 +1,5 @@
 # Misfits Change - Wendover Map items
-# Handheld and wall-mounted maps that display the station/area navmap
+# Handheld maps that display a static map image of the Wendover area
 
 # Handheld paper map - no power required
 - type: entity
@@ -8,8 +8,9 @@
   name: Wendover map
   description: A weathered paper map of the Wendover area. Useful for navigating the wasteland.
   components:
-  - type: StationMap
-    showLocation: true
+  - type: WastelandMap
+    mapTexturePath: _Misfits/Maps/wendover_map.png
+    mapTitle: Wendover Area Map
   - type: Sprite
     sprite: _Nuclear14/Objects/Misc/clutter.rsi
     layers:
@@ -19,11 +20,11 @@
   - type: ActivatableUI
     inHandsOnly: false
     singleUser: true
-    key: enum.StationMapUiKey.Key
+    key: enum.WastelandMapUiKey.Key
   - type: UserInterface
     interfaces:
-      enum.StationMapUiKey.Key:
-        type: StationMapBoundUserInterface
+      enum.WastelandMapUiKey.Key:
+        type: WastelandMapBoundUserInterface
   - type: Tag
     tags:
     - Document

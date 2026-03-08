@@ -241,6 +241,7 @@
   - type: NpcFactionMember
     factions:
     - Feral
+  - type: MobGhoulAggro #Misfits Change
   - type: HTN
     rootTask:
       task: N14HostileCompound

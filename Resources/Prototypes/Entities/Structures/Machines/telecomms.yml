@@ -81,8 +81,7 @@
       - EncryptionKeyService
       - EncryptionKeyCommand
       - EncryptionKeyJustice #DeltaV - Justice dept
-      - EncryptionKeyBrotherhoodWashington #The following are a temp. solution for N14 radio issues
-      - EncryptionKeyBrotherhoodMidwest
+      - EncryptionKeyBrotherhoodOfSteel
       - EncryptionKeyEnclave
       - EncryptionKeyNCR
       - EncryptionKeyVault

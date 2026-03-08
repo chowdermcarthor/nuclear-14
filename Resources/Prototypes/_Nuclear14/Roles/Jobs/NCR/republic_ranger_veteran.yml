@@ -1,6 +1,6 @@
 - type: job
   id: NCRRangerVeteran
-  setPreference: true
+  setPreference: false
   overrideConsoleVisibility: false
   canBeAntag: false
   name: job-name-ncr-ranger-veteran

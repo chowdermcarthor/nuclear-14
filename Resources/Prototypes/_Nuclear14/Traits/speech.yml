@@ -20,8 +20,8 @@
     - Tribe
   - !type:CharacterJobRequirement
     jobs:
-    - NCRRanger
-    - NCRRangerVeteran
+    - Ranger
+    - RangerVeteran
     - Followers # Forge-Change
   functions:
   - !type:TraitModifyLanguages
@@ -54,7 +54,7 @@
     - N14ExtremeAugPaladin
   - !type:CharacterDepartmentRequirement
     departments:
-    - BrotherhoodMidwest
+    - BrotherhoodOfSteel
   functions:
   - !type:TraitModifyLanguages
     languagesSpoken:
@@ -69,8 +69,7 @@
   - !type:CharacterDepartmentRequirement # Forge-Change
       inverted: true
       departments:
-        - BrotherhoodWashington
-        - BrotherhoodWest
+        - BrotherhoodOfSteel
   - !type:CharacterJobRequirement
     inverted: true
     jobs:
@@ -78,9 +77,14 @@
     - TribalElder
     - TownMayor
     - TownSheriff
+    - NCRCaptain
     - NCRLT
-    - NCRRangerVeteran
-    - NCRRanger # Forge-Change
+    - RangerVeteran
+    - Ranger
+    - RangerRecruit
+    - NCRDoctor
+    - NCRFirstSergeant
+    - NCRStaffSergeant
     - NCRSGT
 #    - CaravanLeader
 #    - BoSWashingtonCommander
@@ -92,6 +96,7 @@
     - NCRWS
     - NCREngineer
     - NCRMedic
+    - NCRPrivateFirstClass
     - NCRSoldier
     - NCRCadet
     - BoSMidInquisitor
@@ -99,11 +104,16 @@
     - BoSMidKnight
     - BoSMidSquire
     - CaesarLegionCenturion
+    - CaesarLegionLegate
+    - CaesarLegionVeteranDecanus
     - CaesarLegionVenator
+    - CaesarLegionVexillarius
     - CaesarLegionDean
     - CaesarLegionLegionnaireVeteran
     - CaesarLegionLegionnaireWarrior
     - CaesarLegionLegionnaireRecruit
+    - CaesarLegionHoundmaster
+    - CaesarLegionRecruit
     # Forge-Change-End
     - Overseer
     - VaultSecurity

@@ -1,0 +1,14 @@
+<!-- #Misfits Change: Floating round-end countdown widget. -->
+<widgets:RoundTimerWidget xmlns="https://spacestation14.io"
+    xmlns:widgets="clr-namespace:Content.Client._Misfits.RoundTimer"
+    HorizontalAlignment="Right"
+    VerticalAlignment="Top"
+    Margin="0 70 5 0"
+    Visible="False">
+    <PanelContainer>
+        <BoxContainer Orientation="Vertical" HorizontalAlignment="Center" Margin="8 4 8 4">
+            <Label Name="LabelTitle" Text="Round End" HorizontalAlignment="Center" />
+            <Label Name="LabelTime" Access="Public" Text="0:00:00" HorizontalAlignment="Center" />
+        </BoxContainer>
+    </PanelContainer>
+</widgets:RoundTimerWidget>

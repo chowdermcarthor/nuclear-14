@@ -1,6 +1,8 @@
 - type: job
   id: TownSheriff # Renamed to "Marshal", don't touch the prototype ID
   setPreference: true
+  weight: 80
+  showBorder: true
   overrideConsoleVisibility: false
   canBeAntag: false
   name: job-name-townsheriff

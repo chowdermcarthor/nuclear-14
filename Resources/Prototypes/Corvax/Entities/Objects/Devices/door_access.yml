@@ -6,7 +6,7 @@
   categories: [ HideSpawnMenu ]
   components:
   - type: AccessReader
-    access: [["WestElderCommander"]]
+    access: [["BOSElder"]]
 
 - type: entity
   parent: DoorElectronics
@@ -15,7 +15,7 @@
   categories: [ HideSpawnMenu ]
   components:
   - type: AccessReader
-    access: [["WestPaladin"]]
+    access: [["BOSSeniorPaladin"]]
 
 - type: entity
   parent: DoorElectronics
@@ -24,7 +24,7 @@
   categories: [ HideSpawnMenu ]
   components:
   - type: AccessReader
-    access: [["WestKnight"]]
+    access: [["BOSSeniorKnight"]]
 
 - type: entity
   parent: DoorElectronics
@@ -33,7 +33,7 @@
   categories: [ HideSpawnMenu ]
   components:
   - type: AccessReader
-    access: [["WestScribe"]]
+    access: [["BOSHeadScribe"]]
 
 - type: entity
   parent: DoorElectronics
@@ -42,4 +42,4 @@
   categories: [ HideSpawnMenu ]
   components:
   - type: AccessReader
-    access: [["BoSWest"]]
+    access: [["BOS"]]

@@ -6,7 +6,7 @@
   categories: [ HideSpawnMenu ]
   components:
   - type: AccessReader
-    access: [["PaladinCommander"]]
+    access: [["BOSHeadPaladin"]]
 
 - type: entity
   parent: DoorElectronics
@@ -15,7 +15,7 @@
   categories: [ HideSpawnMenu ]
   components:
   - type: AccessReader
-    access: [["Paladin"]]
+    access: [["BOSSeniorPaladin"]]
     
 - type: entity
   parent: DoorElectronics
@@ -24,7 +24,7 @@
   categories: [ HideSpawnMenu ]
   components:
   - type: AccessReader
-    access: [["Knight"]]
+    access: [["BOSSeniorKnight"]]
 
 - type: entity
   parent: DoorElectronics
@@ -33,7 +33,7 @@
   categories: [ HideSpawnMenu ]
   components:
   - type: AccessReader
-    access: [["Scribe"]]
+    access: [["BOSSeniorScribe"]]
 
 - type: entity
   parent: DoorElectronics
@@ -42,7 +42,7 @@
   categories: [ HideSpawnMenu ]
   components:
   - type: AccessReader
-    access: [["BoSMidwest"]]
+    access: [["BOS"]]
 
 # BoS Washington
 - type: entity
@@ -52,7 +52,7 @@
   categories: [ HideSpawnMenu ]
   components:
   - type: AccessReader
-    access: [["WashingtonCommander"]]
+    access: [["BOSHeadKnight"]]
 
 - type: entity
   parent: DoorElectronics
@@ -61,7 +61,7 @@
   categories: [ HideSpawnMenu ]
   components:
   - type: AccessReader
-    access: [["WashingtonPaladin"]]
+    access: [["BOSPaladin"]]
 
 - type: entity
   parent: DoorElectronics
@@ -70,7 +70,7 @@
   categories: [ HideSpawnMenu ]
   components:
   - type: AccessReader
-    access: [["WashingtonKnight"]]
+    access: [["BOSKnight"]]
 
 - type: entity
   parent: DoorElectronics
@@ -79,7 +79,7 @@
   categories: [ HideSpawnMenu ]
   components:
   - type: AccessReader
-    access: [["WashingtonScribe"]]
+    access: [["BOSScribe"]]
 
 - type: entity
   parent: DoorElectronics
@@ -88,7 +88,7 @@
   categories: [ HideSpawnMenu ]
   components:
   - type: AccessReader
-    access: [["WashingtonInitiate"]]
+    access: [["BOSInitiate"]]
     
 # Vault
 - type: entity

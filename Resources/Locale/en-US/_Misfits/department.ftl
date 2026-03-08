@@ -1,5 +1,7 @@
+Robots = Robots
 department-Synthetics = Synthetics
 department-Synthetics-description = Autonomous robots navigating the wasteland under their own living minds.
+FEVMutants = FEV Mutants
 department-SuperMutants = Super Mutants
 department-SuperMutants-description = Hulking FEV-mutated humanoids, feared and misunderstood throughout the wasteland.
 department-Robots = Robots

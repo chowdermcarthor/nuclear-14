@@ -1,6 +1,7 @@
 - type: job
   id: WastelandFarmer
   setPreference: true
+  weight: 30
   overrideConsoleVisibility: false
   canBeAntag: false
   name: job-name-farmer

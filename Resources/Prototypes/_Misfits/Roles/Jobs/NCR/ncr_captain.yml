@@ -1,0 +1,40 @@
+- type: job
+  id: NCRCaptain
+  setPreference: true
+  overrideConsoleVisibility: false
+  canBeAntag: true
+  name: job-name-ncr-captain
+  description: job-description-ncr-captain
+  playTimeTracker: NCRCaptain
+  requirements:
+    - !type:CharacterSpeciesRequirement
+      species:
+      - Human
+      - Ghoul
+    - !type:CharacterDepartmentTimeRequirement
+      department: NCR
+      min: 216000
+    - !type:CharacterPlaytimeRequirement
+      tracker: NCRNCO
+      min: 43200
+  weight: 120
+  startingGear: NCRLTGear
+  icon: "JobIconNcrLeader"
+  supervisors: job-supervisors-ncr-captain
+  requireAdminNotify: true
+  alwaysUseSpawner: true
+  access:
+  - NCR
+  - NCRSGT
+  - NCRMedic
+  - NCRLT
+  special:
+  - !type:AddComponentSpecial
+    components:
+      - type: NpcFactionMember
+        factions:
+          - Wastelander
+          - NCR
+
+- type: playTimeTracker
+  id: NCRCaptain

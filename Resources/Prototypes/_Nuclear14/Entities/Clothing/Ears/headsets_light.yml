@@ -81,19 +81,19 @@
 - type: entity
   parent: N14ClothingHeadsetLightScribe
   id: N14ClothingHeadsetBOSMidwestLightScribe
-  name: BoS Scribe Headset
+  name: Brotherhood scribe headset
   components:
   - type: ContainerFill
     containers:
       key_slots:
-      - EncryptionKeyBrotherhoodMidwest
+      - EncryptionKeyBrotherhoodOfSteel
 
 - type: entity
   parent: N14ClothingHeadsetLightScribe
   id: N14ClothingHeadsetBOSWashingtonLightScribe
-  name: Washington Scribe Headset
+  name: Brotherhood scribe headset
   components:
   - type: ContainerFill
     containers:
       key_slots:
-      - EncryptionKeyBrotherhoodWashington
+      - EncryptionKeyBrotherhoodOfSteel

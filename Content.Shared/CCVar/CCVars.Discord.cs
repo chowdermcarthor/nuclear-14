@@ -69,4 +69,25 @@ public sealed partial class CCVars
     /// </summary>
     public static readonly CVarDef<string> DiscordAuthApiKey =
         CVarDef.Create("discord.auth_api_key", "", CVar.SERVERONLY | CVar.CONFIDENTIAL);
+
+    // #Misfits Change - Discord MHelp webhook CVars
+
+    /// <summary>
+    /// URL of the Discord webhook which will relay all mentor help (mhelp) messages.
+    /// </summary>
+    public static readonly CVarDef<string> DiscordMHelpWebhook =
+        CVarDef.Create("discord.mhelp_webhook", string.Empty, CVar.SERVERONLY | CVar.CONFIDENTIAL);
+
+    /// <summary>
+    /// The server icon to use in the Discord mhelp embed footer.
+    /// Valid values are specified at https://discord.com/developers/docs/resources/channel#embed-object-embed-footer-structure.
+    /// </summary>
+    public static readonly CVarDef<string> DiscordMHelpFooterIcon =
+        CVarDef.Create("discord.mhelp_footer_icon", string.Empty, CVar.SERVERONLY);
+
+    /// <summary>
+    /// The avatar to use for the mhelp webhook. Should be a URL.
+    /// </summary>
+    public static readonly CVarDef<string> DiscordMHelpAvatar =
+        CVarDef.Create("discord.mhelp_avatar", string.Empty, CVar.SERVERONLY);
 }

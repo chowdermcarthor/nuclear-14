@@ -1,0 +1,39 @@
+- type: job
+  id: NCRDoctor
+  setPreference: true
+  weight: 100
+  showBorder: true
+  overrideConsoleVisibility: true
+  canBeAntag: false
+  name: job-name-ncr-doctor
+  description: job-description-ncr-doctor
+  playTimeTracker: NCRDoctor
+  requirements:
+    - !type:CharacterSpeciesRequirement
+      species:
+      - Human
+      - Ghoul
+    - !type:CharacterDepartmentTimeRequirement
+      department: NCR
+      min: 0
+    - !type:CharacterPlaytimeRequirement
+      tracker: NCRMedic
+      min: 0
+  startingGear: NCRMedicGear
+  icon: "JobIconNcrMedic"
+  supervisors: job-supervisors-ncr-lt
+  alwaysUseSpawner: true
+  access:
+  - NCR
+  - NCRMedic
+  special:
+  - !type:AddComponentSpecial
+    components:
+      - type: NpcFactionMember
+        factions:
+          - Wastelander
+          - NCR
+      - type: CPRTraining
+
+- type: playTimeTracker
+  id: NCRDoctor

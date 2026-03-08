@@ -1,6 +1,7 @@
 - type: job
   id: TribalElder
   setPreference: true
+  weight: 60
   overrideConsoleVisibility: false
   canBeAntag: false
   name: job-name-tribal-elder

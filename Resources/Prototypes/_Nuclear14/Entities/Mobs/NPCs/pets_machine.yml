@@ -247,7 +247,7 @@
   components:
   - type: NpcFactionMember
     factions:
-    - BrotherhoodMidwest
+    - BrotherhoodOfSteel
   - type: Sprite
     sprite: _Nuclear14/Mobs/Pets/eyebot_mbos.rsi
     layers:
@@ -275,7 +275,7 @@
   components:
   - type: NpcFactionMember
     factions:
-    - BrotherhoodWashington
+    - BrotherhoodOfSteel
   - type: Sprite
     sprite: _Nuclear14/Mobs/Pets/eyebot_wbos.rsi
     layers:

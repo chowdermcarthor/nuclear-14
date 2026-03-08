@@ -1,6 +1,7 @@
 - type: job
   id: TownMechanic
   setPreference: true
+  weight: 40
   overrideConsoleVisibility: false
   canBeAntag: false
   name: job-name-townmechanic

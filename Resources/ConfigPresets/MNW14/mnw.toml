@@ -91,8 +91,8 @@ auto_record_name = "done/{year}_{month}_{day}-{hour}_{minute}-round_{round}.zip"
 # #Misfits Change: Auto-call the emergency shuttle after 60 minutes.
 # The vote-to-extend resets this timer. auto_call_extension_time resets after a recall.
 [shuttle]
-auto_call_time = 60
-auto_call_extension_time = 30
+auto_call_time = 240
+auto_call_extension_time = 60
 
 [status]
 # The status server is the TCP side, used by the launcher to determine engine version, etc.

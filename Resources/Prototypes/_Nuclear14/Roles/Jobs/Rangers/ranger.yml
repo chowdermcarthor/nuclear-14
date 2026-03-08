@@ -1,8 +1,8 @@
 - type: job
   id: Ranger
-  setPreference: false
-  name: job-name-ranger-ranking
-  description: job-description-ranger-ranking
+  setPreference: true
+  name: job-name-ranger-field
+  description: job-description-ranger-field
   playTimeTracker: Ranger
   startingGear: RangerGear
   icon: "JobIconSecurityOfficer"

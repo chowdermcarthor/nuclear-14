@@ -178,12 +178,12 @@ public sealed partial class CCVars
     ///     Time in minutes after round start to auto-call the shuttle. Set to zero to disable.
     /// </summary>
     public static readonly CVarDef<int> EmergencyShuttleAutoCallTime =
-        CVarDef.Create("shuttle.auto_call_time", 120, CVar.SERVERONLY);
+        CVarDef.Create("shuttle.auto_call_time", 240, CVar.SERVERONLY);
 
     /// <summary>
     ///     Time in minutes after the round was extended (by recalling the shuttle) to call
     ///     the shuttle again.
     /// </summary>
     public static readonly CVarDef<int> EmergencyShuttleAutoCallExtensionTime =
-        CVarDef.Create("shuttle.auto_call_extension_time", 30, CVar.SERVERONLY);
+        CVarDef.Create("shuttle.auto_call_extension_time", 60, CVar.SERVERONLY);
 }

@@ -33,6 +33,22 @@
 
 - type: entity
   parent: N14MobHumanNCRCadet
+  id: N14MobHumanNCRDoctor
+  name: NCRDoctor
+  components:
+    - type: Icon
+      state: medic
+    - type: RandomHumanoidAppearance
+      randomizeName: true
+    - type: Loadout
+      prototypes: [NCRMedicGear]
+    - type: NpcFactionMember
+      factions:
+      - Wastelander
+      - NCR
+
+- type: entity
+  parent: N14MobHumanNCRCadet
   id: N14MobHumanNCRSGT
   name: NCRSGT
   components:
@@ -49,8 +65,56 @@
 
 - type: entity
   parent: N14MobHumanNCRCadet
+  id: N14MobHumanNCRFirstSergeant
+  name: NCRFirstSergeant
+  components:
+    - type: Icon
+      state: sgt
+    - type: RandomHumanoidAppearance
+      randomizeName: true
+    - type: Loadout
+      prototypes: [NCRSGTGear]
+    - type: NpcFactionMember
+      factions:
+      - Wastelander
+      - NCR
+
+- type: entity
+  parent: N14MobHumanNCRCadet
+  id: N14MobHumanNCRStaffSergeant
+  name: NCRStaffSergeant
+  components:
+    - type: Icon
+      state: sgt
+    - type: RandomHumanoidAppearance
+      randomizeName: true
+    - type: Loadout
+      prototypes: [NCRSGTGear]
+    - type: NpcFactionMember
+      factions:
+      - Wastelander
+      - NCR
+
+- type: entity
+  parent: N14MobHumanNCRCadet
   id: N14MobHumanNCRLT
   name: NCRLT
+  components:
+    - type: Icon
+      state: lt
+    - type: RandomHumanoidAppearance
+      randomizeName: true
+    - type: Loadout
+      prototypes: [NCRLTGear]
+    - type: NpcFactionMember
+      factions:
+      - Wastelander
+      - NCR
+
+- type: entity
+  parent: N14MobHumanNCRCadet
+  id: N14MobHumanNCRCaptain
+  name: NCRCaptain
   components:
     - type: Icon
       state: lt
@@ -99,6 +163,22 @@
   parent: N14MobHumanNCRCadet
   id: N14MobHumanNCRSoldier
   name: NCRSoldier
+  components:
+    - type: Icon
+      state: soldier
+    - type: RandomHumanoidAppearance
+      randomizeName: true
+    - type: Loadout
+      prototypes: [NCRSoldierGear]
+    - type: NpcFactionMember
+      factions:
+      - Wastelander
+      - NCR
+
+- type: entity
+  parent: N14MobHumanNCRCadet
+  id: N14MobHumanNCRPrivateFirstClass
+  name: NCRPrivateFirstClass
   components:
     - type: Icon
       state: soldier

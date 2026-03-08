@@ -1,0 +1,36 @@
+- type: job
+  id: NCRPrivateFirstClass
+  setPreference: true
+  weight: 30
+  overrideConsoleVisibility: false
+  canBeAntag: false
+  name: job-name-ncr-private-first-class
+  description: job-description-ncr-private-first-class
+  playTimeTracker: NCRPrivateFirstClass
+  requirements:
+    - !type:CharacterSpeciesRequirement
+      species:
+      - Human
+      - Ghoul
+    - !type:CharacterDepartmentTimeRequirement
+      department: NCR
+      min: 0
+    - !type:CharacterPlaytimeRequirement
+      tracker: NCRSoldier
+      min: 0
+  startingGear: NCRSoldierGear
+  icon: "JobIconNcrSoldier"
+  supervisors: job-supervisors-ncr-sergeant
+  alwaysUseSpawner: true
+  access:
+  - NCR
+  special:
+  - !type:AddComponentSpecial
+    components:
+      - type: NpcFactionMember
+        factions:
+          - Wastelander
+          - NCR
+
+- type: playTimeTracker
+  id: NCRPrivateFirstClass

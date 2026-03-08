@@ -1,5 +1,7 @@
 - type: job
   id: VaultSecurity
+  weight: 80
+  showBorder: true
   name: job-name-vault-security
   description: job-description-vault-security
   playTimeTracker: VaultSecurity

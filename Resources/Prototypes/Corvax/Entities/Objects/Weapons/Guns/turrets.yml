@@ -5,7 +5,7 @@
   components:
   - type: NpcFactionMember
     factions:
-    - BrotherhoodWestSecureArea
+    - BrotherhoodOfSteelSecureArea
 
 - type: entity
   parent: N14BaseWeaponTurret
@@ -14,4 +14,4 @@
   components:
   - type: NpcFactionMember
     factions:
-    - BrotherhoodWest
+    - BrotherhoodOfSteel

@@ -1,5 +1,6 @@
 - type: job
   id: BoSMidSerf
+  setPreference: false
   overrideConsoleVisibility: true
   canBeAntag: false
   name: job-name-bos-mid-serf #Misfits Change
@@ -18,15 +19,14 @@
   alwaysUseSpawner: true
   icon: "JobIconRabMBos"
   supervisors: job-supervisors-bos-mid-Serf
-  access:
-  - BoSMidwest
+  accessGroups:
+  - BOSInitiate
   special:
   - !type:AddComponentSpecial
     components:
       - type: NpcFactionMember
         factions:
-          - Wastelander
-          - BrotherhoodMidwest
+          - BrotherhoodOfSteel
 
 - type: startingGear
   id: BoSMidSerfGear

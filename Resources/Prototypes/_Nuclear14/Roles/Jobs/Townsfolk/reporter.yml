@@ -1,6 +1,7 @@
 - type: job
   id: WastelandReporter
   setPreference: true
+  weight: 35
   overrideConsoleVisibility: false
   canBeAntag: false
   name: job-name-townreporter

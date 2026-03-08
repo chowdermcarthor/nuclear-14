@@ -32,7 +32,7 @@ public sealed class EntityPainter
         _errorImage = Image.Load<Rgba32>(_resManager.ContentFileRead("/Textures/error.rsi/error.png"));
     }
 
-    public void Run(Image canvas, List<EntityData> entities)
+    public void Run(Image canvas, List<EntityData> entities, int offsetX = 0, int offsetY = 0)
     {
         var stopwatch = new Stopwatch();
         stopwatch.Start();
@@ -43,13 +43,13 @@ public sealed class EntityPainter
 
         foreach (var entity in entities)
         {
-            Run(canvas, entity, xformSystem);
+            Run(canvas, entity, xformSystem, offsetX, offsetY);
         }
 
         Console.WriteLine($"{nameof(EntityPainter)} painted {entities.Count} entities in {(int) stopwatch.Elapsed.TotalMilliseconds} ms");
     }
 
-    public void Run(Image canvas, EntityData entity, SharedTransformSystem xformSystem)
+    public void Run(Image canvas, EntityData entity, SharedTransformSystem xformSystem, int offsetX = 0, int offsetY = 0)
     {
         if (!entity.Sprite.Visible || entity.Sprite.ContainerOccluded)
         {
@@ -134,8 +134,8 @@ public sealed class EntityPainter
                 .Resize(imgX, imgY)
                 .Flip(FlipMode.Vertical));
 
-            var pointX = (int) entity.X - imgX / 2 + EyeManager.PixelsPerMeter / 2;
-            var pointY = (int) entity.Y - imgY / 2 + EyeManager.PixelsPerMeter / 2;
+            var pointX = (int) entity.X - imgX / 2 + EyeManager.PixelsPerMeter / 2 + offsetX;
+            var pointY = (int) entity.Y - imgY / 2 + EyeManager.PixelsPerMeter / 2 + offsetY;
             canvas.Mutate(o => o.DrawImage(image, new Point(pointX, pointY), 1));
         }
     }

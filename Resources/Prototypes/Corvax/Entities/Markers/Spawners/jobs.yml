@@ -1,7 +1,20 @@
 - type: entity
   parent: SpawnPointJobBase
+  id: N14SpawnPointLegate
+  name: legion legate
+  components:
+  - type: SpawnPoint
+    job_id: CaesarLegionLegate
+  - type: Sprite
+    sprite: Corvax/Markers/jobs.rsi
+    layers:
+      - state: green
+      - state: centurion
+
+- type: entity
+  parent: SpawnPointJobBase
   id: N14SpawnPointCenturion
-  name: centurion
+  name: legion centurion
   components:
   - type: SpawnPoint
     job_id: CaesarLegionCenturion
@@ -12,9 +25,21 @@
       - state: centurion
 
 - type: entity
+  id: N14SpawnPointVeteranDecanus
+  parent: N14SpawnPointCenturion
+  name: legion veteran decanus
+  components:
+  - type: SpawnPoint
+    job_id: CaesarLegionVeteranDecanus
+  - type: Sprite
+    layers:
+      - state: green
+      - state: dean
+
+- type: entity
   id: N14SpawnPointVenator
   parent: N14SpawnPointCenturion
-  name: venator
+  name: legion explorer
   components:
   - type: SpawnPoint
     job_id: CaesarLegionVenator
@@ -24,9 +49,21 @@
       - state: venator
 
 - type: entity
+  id: N14SpawnPointVexillarius
+  parent: N14SpawnPointCenturion
+  name: legion vexillarius
+  components:
+  - type: SpawnPoint
+    job_id: CaesarLegionVexillarius
+  - type: Sprite
+    layers:
+      - state: green
+      - state: venator
+
+- type: entity
   id: N14SpawnPointDean
   parent: N14SpawnPointCenturion
-  name: decanus
+  name: legion decanus
   components:
   - type: SpawnPoint
     job_id: CaesarLegionDean
@@ -38,7 +75,7 @@
 - type: entity
   id: N14SpawnPointLegionnaireVeteran
   parent: N14SpawnPointCenturion
-  name: legionnaire-veteran
+  name: legion veteran legionary
   components:
   - type: SpawnPoint
     job_id: CaesarLegionLegionnaireVeteran
@@ -50,7 +87,7 @@
 - type: entity
   id: N14SpawnPointLegionnaireWarrior
   parent: N14SpawnPointCenturion
-  name: legionnaire-warrior
+  name: legion prime legionary
   components:
   - type: SpawnPoint
     job_id: CaesarLegionLegionnaireWarrior
@@ -60,12 +97,36 @@
       - state: warrior
 
 - type: entity
+  id: N14SpawnPointHoundmaster
+  parent: N14SpawnPointCenturion
+  name: legion houndmaster
+  components:
+  - type: SpawnPoint
+    job_id: CaesarLegionHoundmaster
+  - type: Sprite
+    layers:
+      - state: green
+      - state: warrior
+
+- type: entity
   id: N14SpawnPointLegionnaireRecruit
   parent: N14SpawnPointCenturion
-  name: legionnaire-recruit
+  name: legion recruit legionary
   components:
   - type: SpawnPoint
     job_id: CaesarLegionLegionnaireRecruit
+  - type: Sprite
+    layers:
+      - state: green
+      - state: recruit
+
+- type: entity
+  id: N14SpawnPointLegionRecruit
+  parent: N14SpawnPointCenturion
+  name: legion recruit
+  components:
+  - type: SpawnPoint
+    job_id: CaesarLegionRecruit
   - type: Sprite
     layers:
       - state: green
@@ -87,7 +148,7 @@
 - type: entity
   parent: SpawnPointJobBase
   id: N14SpawnPointElderCommander
-  name: elder
+  name: Brotherhood Elder
   components:
   - type: SpawnPoint
     job_id: BoSWestElderCommander
@@ -100,10 +161,10 @@
 - type: entity
   id: N14SpawnPointWestPaladin
   parent: N14SpawnPointElderCommander
-  name: westpaladin
+  name: Brotherhood Senior Paladin
   components:
   - type: SpawnPoint
-    job_id: BoSWestPaladin
+    job_id: BoSMidPaladin
   - type: Sprite
     layers:
     - state: green
@@ -112,10 +173,10 @@
 - type: entity
   id: N14SpawnPointWestKnight
   parent: N14SpawnPointElderCommander
-  name: westknight
+  name: Brotherhood Senior Knight
   components:
   - type: SpawnPoint
-    job_id: BoSWestKnight
+    job_id: BoSMidKnight
   - type: Sprite
     layers:
     - state: green
@@ -124,7 +185,7 @@
 - type: entity
   id: N14SpawnPointWestScribe
   parent: N14SpawnPointElderCommander
-  name: westscribe
+  name: Brotherhood Head Scribe
   components:
   - type: SpawnPoint
     job_id: BoSWestScribe
@@ -136,10 +197,10 @@
 - type: entity
   id: N14SpawnPointWestGunsmith
   parent: N14SpawnPointElderCommander
-  name: westgunsmith
+  name: Brotherhood Squire
   components:
   - type: SpawnPoint
-    job_id: BoSWestGunsmith
+    job_id: BoSMidSquire
   - type: Sprite
     layers:
     - state: green
@@ -160,10 +221,10 @@
 - type: entity
   id: N14SpawnPointBoSMidInquisitor
   parent: N14SpawnPointBoSMidPaladin
-  name: Brotherhood of Steel Inquisitor
+  name: Brotherhood Senior Paladin
   components:
   - type: SpawnPoint
-    job_id: BoSMidInquisitor
+    job_id: BoSMidPaladin
   - type: Sprite
     sprite: Corvax/Markers/jobs.rsi
     layers:
@@ -186,7 +247,7 @@
 - type: entity
   id: SpawnPointCaesarLegionSlave
   parent: SpawnPointJobBase
-  name: Legion slave spawnpoint
+  name: legion slave
   components:
   - type: SpawnPoint
     job_id: CaesarLegionSlave
@@ -199,10 +260,10 @@
 - type: entity
   id: SpawnPointBoSMidSerf
   parent: SpawnPointJobBase
-  name: Serf spawner
+  name: Brotherhood Initiate
   components:
   - type: SpawnPoint
-    job_id: BoSMidSerf
+    job_id: BoSWashingtonInitiate
   - type: Sprite
     sprite: Corvax/Markers/jobs.rsi
     layers:

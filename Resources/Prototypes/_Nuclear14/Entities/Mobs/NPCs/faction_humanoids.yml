@@ -110,7 +110,7 @@
     - type: NpcFactionMember
       friendlyOrderable: true
       factions:
-      - BrotherhoodMidwestSecureArea
+      - BrotherhoodOfSteelSecureArea
     - type: Loadout
       prototypes:
         - MBoSSerfNPC
@@ -125,7 +125,7 @@
     - type: NpcFactionMember
       friendlyOrderable: true
       factions:
-      - BrotherhoodMidwestSecureArea
+      - BrotherhoodOfSteelSecureArea
     - type: Gun
       minAngle: 4
       maxAngle: 9
@@ -212,7 +212,7 @@
     - type: NpcFactionMember
       friendlyOrderable: true
       factions:
-      - BrotherhoodWashingtonSecureArea
+      - BrotherhoodOfSteelSecureArea
     - type: Loadout
       prototypes:
         - WBoSInitiateNPC
@@ -227,7 +227,7 @@
     - type: NpcFactionMember
       friendlyOrderable: true
       factions:
-      - BrotherhoodWashingtonSecureArea
+      - BrotherhoodOfSteelSecureArea
     - type: Gun
       minAngle: 4
       maxAngle: 9

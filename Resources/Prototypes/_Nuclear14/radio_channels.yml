@@ -54,19 +54,26 @@
   frequency: 1347
   color: "#b88646"
 
+# - type: radioChannel
+#   id: BrotherhoodMidwest
+#   name: chat-radio-bosmidwest
+#   keycode: 'm'
+#   frequency: 1213
+#   color: "#3B72BF"
+
+# - type: radioChannel
+#   id: BrotherhoodWashington
+#   name: chat-radio-boswashington
+#   keycode: 'w'
+#   frequency: 1313
+#   color: "#a2000f"
+
 - type: radioChannel
-  id: BrotherhoodMidwest
-  name: chat-radio-bosmidwest
+  id: BrotherhoodOfSteel
+  name: chat-radio-bos
   keycode: 'm'
   frequency: 1213
   color: "#3B72BF"
-
-- type: radioChannel
-  id: BrotherhoodWashington
-  name: chat-radio-boswashington
-  keycode: 'w'
-  frequency: 1313
-  color: "#a2000f"
 
 - type: radioChannel
   id: Enclave

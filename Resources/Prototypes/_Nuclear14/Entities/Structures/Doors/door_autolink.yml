@@ -4,7 +4,7 @@
   suffix: Autolink, BoS
   components:
     - type: AccessReader
-      access: [["BoSMidwest"]]
+      access: [["BOS"]]
     - type: AutoLinkReceiver
       channel: BoS
 
@@ -14,7 +14,7 @@
   suffix: Autolink, BoS, Open
   components:
     - type: AccessReader
-      access: [["BoSMidwest"]]
+      access: [["BOS"]]
     - type: AutoLinkReceiver
       channel: BoS
 

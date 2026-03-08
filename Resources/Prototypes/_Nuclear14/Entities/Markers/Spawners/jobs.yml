@@ -17,7 +17,7 @@
 - type: entity
   id: N14SpawnPointBoSMidPaladinCommander
   parent: N14SpawnPointWastelander
-  name: BoS Paladin Commander
+  name: Brotherhood Head Paladin
   components:
   - type: SpawnPoint
     job_id: BoSMidPaladinCommander
@@ -30,7 +30,7 @@
 - type: entity
   id: N14SpawnPointBoSMidKnight
   parent: N14SpawnPointBoSMidPaladinCommander
-  name: BoS Knight
+  name: Brotherhood Senior Knight
   components:
   - type: SpawnPoint
     job_id: BoSMidKnight
@@ -42,7 +42,7 @@
 - type: entity
   id: N14SpawnPointBoSMidPaladin
   parent: N14SpawnPointBoSMidPaladinCommander
-  name: BoS Paladin
+  name: Brotherhood Senior Paladin
   components:
   - type: SpawnPoint
     job_id: BoSMidPaladin
@@ -54,7 +54,7 @@
 - type: entity
   id: N14SpawnPointBoSMidInitiate # change this when I care
   parent: N14SpawnPointBoSMidPaladinCommander
-  name: BoS Squire
+  name: Brotherhood Squire
   components:
   - type: SpawnPoint
     job_id: BoSMidSquire
@@ -66,7 +66,7 @@
 - type: entity
   id: N14SpawnPointBoSMidScribe
   parent: N14SpawnPointBoSMidPaladinCommander
-  name: BoS Scribe
+  name: Brotherhood Senior Scribe
   components:
   - type: SpawnPoint
     job_id: BoSMidScribe
@@ -79,7 +79,7 @@
 - type: entity
   id: N14SpawnPointBoSWashingtonCommander
   parent: N14SpawnPointWastelander
-  name: Washington BoS Commander
+  name: Brotherhood Head Knight
   components:
   - type: SpawnPoint
     job_id: BoSWashingtonCommander
@@ -92,7 +92,7 @@
 - type: entity
   id: N14SpawnPointBoSWashingtonInitiate
   parent: N14SpawnPointBoSWashingtonCommander
-  name: Washington BoS Recruit
+  name: Brotherhood Initiate
   components:
   - type: SpawnPoint
     job_id: BoSWashingtonInitiate
@@ -104,7 +104,7 @@
 - type: entity
   id: N14SpawnPointBoSWashingtonPaladin
   parent: N14SpawnPointBoSWashingtonCommander
-  name: Washington BoS Captain
+  name: Brotherhood Paladin
   components:
   - type: SpawnPoint
     job_id: BoSWashingtonPaladin
@@ -116,7 +116,7 @@
 - type: entity
   id: N14SpawnPointBoSWashingtonKnight
   parent: N14SpawnPointBoSWashingtonCommander
-  name: Washington BoS Soldier
+  name: Brotherhood Knight
   components:
   - type: SpawnPoint
     job_id: BoSWashingtonKnight
@@ -128,7 +128,7 @@
 - type: entity
   id: N14SpawnPointBoSWashingtonScribe
   parent: N14SpawnPointBoSWashingtonCommander
-  name: Washington BoS Researcher
+  name: Brotherhood Scribe
   components:
   - type: SpawnPoint
     job_id: BoSWashingtonScribe
@@ -179,7 +179,7 @@
 - type: entity
   id: N14SpawnPointNCRCadet
   parent: N14SpawnPointWastelander
-  name: NCR cadet
+  name: NCR recruit
   components:
   - type: SpawnPoint
     job_id: NCRCadet
@@ -192,7 +192,7 @@
 - type: entity
   id: N14SpawnPointNCRMedic
   parent: N14SpawnPointNCRCadet
-  name: NCR doctor
+  name: NCR medic
   components:
   - type: SpawnPoint
     job_id: NCRMedic
@@ -202,9 +202,21 @@
       - state: medic
 
 - type: entity
+  id: N14SpawnPointNCRDoctor
+  parent: N14SpawnPointNCRCadet
+  name: NCR medical doctor
+  components:
+  - type: SpawnPoint
+    job_id: NCRDoctor
+  - type: Sprite
+    layers:
+      - state: green
+      - state: medic
+
+- type: entity
   id: N14SpawnPointNCRSGT
   parent: N14SpawnPointNCRCadet
-  name: NCR SGT
+  name: NCR sergeant
   components:
   - type: SpawnPoint
     job_id: NCRSGT
@@ -216,7 +228,19 @@
 - type: entity
   id: N14SpawnPointNCRLT
   parent: N14SpawnPointNCRCadet
-  name: NCR LT
+  name: NCR captain
+  components:
+  - type: SpawnPoint
+    job_id: NCRCaptain
+  - type: Sprite
+    layers:
+      - state: green
+      - state: lt
+
+- type: entity
+  id: N14SpawnPointNCRLieutenant
+  parent: N14SpawnPointNCRCadet
+  name: NCR lieutenant
   components:
   - type: SpawnPoint
     job_id: NCRLT
@@ -226,9 +250,33 @@
       - state: lt
 
 - type: entity
+  id: N14SpawnPointNCRFirstSergeant
+  parent: N14SpawnPointNCRCadet
+  name: NCR first sergeant
+  components:
+  - type: SpawnPoint
+    job_id: NCRFirstSergeant
+  - type: Sprite
+    layers:
+      - state: green
+      - state: sgt
+
+- type: entity
+  id: N14SpawnPointNCRStaffSergeant
+  parent: N14SpawnPointNCRCadet
+  name: NCR staff sergeant
+  components:
+  - type: SpawnPoint
+    job_id: NCRStaffSergeant
+  - type: Sprite
+    layers:
+      - state: green
+      - state: sgt
+
+- type: entity
   id: N14SpawnPointNCRWS
   parent: N14SpawnPointNCRCadet
-  name: NCR WS
+  name: NCR corporal
   components:
   - type: SpawnPoint
     job_id: NCRWS
@@ -276,10 +324,22 @@
 - type: entity
   id: N14SpawnPointNCRSoldier
   parent: N14SpawnPointNCRCadet
-  name: NCR Soldier
+  name: NCR private
   components:
   - type: SpawnPoint
     job_id: NCRSoldier
+  - type: Sprite
+    layers:
+      - state: green
+      - state: soldier
+
+- type: entity
+  id: N14SpawnPointNCRPrivateFirstClass
+  parent: N14SpawnPointNCRCadet
+  name: NCR private first class
+  components:
+  - type: SpawnPoint
+    job_id: NCRPrivateFirstClass
   - type: Sprite
     layers:
       - state: green
@@ -289,7 +349,7 @@
 - type: entity
   id: N14SpawnPointRangerRecruit
   parent: N14SpawnPointWastelander
-  name: ranger recruit
+  name: patrol ranger
   components:
   - type: SpawnPoint
     job_id: RangerRecruit
@@ -302,7 +362,7 @@
 - type: entity
   id: N14SpawnPointRanger
   parent: N14SpawnPointRangerRecruit
-  name: ranger
+  name: field ranger
   components:
   - type: SpawnPoint
     job_id: Ranger
@@ -314,7 +374,7 @@
 - type: entity
   id: N14SpawnPointRangerVeteran
   parent: N14SpawnPointRangerRecruit
-  name: ranger veteran
+  name: veteran ranger
   components:
   - type: SpawnPoint
     job_id: RangerVeteran
@@ -340,7 +400,7 @@
 - type: entity
   id: N14SpawnPointTribalElder
   parent: N14SpawnPointTribal
-  name: tribal elder
+  name: tribal chieftan
   components:
   - type: SpawnPoint
     job_id: TribalElder

@@ -1,0 +1,509 @@
+# #Misfits Change
+# Spawn point entity prototypes for _Misfits faction jobs.
+# These replace the N14/Corvax spawn point entities for the Misfits Wendover map.
+
+# Brotherhood of Steel - Midwest
+- type: entity
+  parent: SpawnPointJobBase
+  id: MisfitsSpawnPointBoSMidPaladinCommander
+  name: Brotherhood Head Paladin
+  components:
+  - type: SpawnPoint
+    job_id: BoSMidPaladinCommander
+  - type: Sprite
+    sprite: _Nuclear14/Markers/Jobs/bosmid.rsi
+    layers:
+      - state: green
+      - state: commander
+
+- type: entity
+  parent: MisfitsSpawnPointBoSMidPaladinCommander
+  id: MisfitsSpawnPointBoSMidKnight
+  name: Brotherhood Senior Knight
+  components:
+  - type: SpawnPoint
+    job_id: BoSMidKnight
+  - type: Sprite
+    layers:
+      - state: green
+      - state: knight
+
+- type: entity
+  parent: MisfitsSpawnPointBoSMidPaladinCommander
+  id: MisfitsSpawnPointBoSMidPaladin
+  name: Brotherhood Senior Paladin
+  components:
+  - type: SpawnPoint
+    job_id: BoSMidPaladin
+  - type: Sprite
+    layers:
+      - state: green
+      - state: paladin
+
+- type: entity
+  parent: MisfitsSpawnPointBoSMidPaladinCommander
+  id: MisfitsSpawnPointBoSMidSquire
+  name: Brotherhood Squire
+  components:
+  - type: SpawnPoint
+    job_id: BoSMidSquire
+  - type: Sprite
+    layers:
+      - state: green
+      - state: squire
+
+- type: entity
+  parent: MisfitsSpawnPointBoSMidPaladinCommander
+  id: MisfitsSpawnPointBoSMidScribe
+  name: Brotherhood Senior Scribe
+  components:
+  - type: SpawnPoint
+    job_id: BoSMidScribe
+  - type: Sprite
+    layers:
+      - state: green
+      - state: scribe
+
+- type: entity
+  parent: SpawnPointJobBase
+  id: MisfitsSpawnPointBoSWestElderCommander
+  name: Brotherhood Elder
+  components:
+  - type: SpawnPoint
+    job_id: BoSWestElderCommander
+  - type: Sprite
+    sprite: Corvax/Markers/boswest.rsi
+    layers:
+      - state: green
+      - state: elder
+
+- type: entity
+  parent: MisfitsSpawnPointBoSWestElderCommander
+  id: MisfitsSpawnPointBoSWestScribe
+  name: Brotherhood Head Scribe
+  components:
+  - type: SpawnPoint
+    job_id: BoSWestScribe
+  - type: Sprite
+    layers:
+      - state: green
+      - state: scribe
+
+- type: entity
+  parent: SpawnPointJobBase
+  id: MisfitsSpawnPointBoSWashingtonCommander
+  name: Brotherhood Head Knight
+  components:
+  - type: SpawnPoint
+    job_id: BoSWashingtonCommander
+  - type: Sprite
+    sprite: _Nuclear14/Markers/Jobs/boswashington.rsi
+    layers:
+      - state: green
+      - state: commander
+
+- type: entity
+  parent: MisfitsSpawnPointBoSWashingtonCommander
+  id: MisfitsSpawnPointBoSWashingtonPaladin
+  name: Brotherhood Paladin
+  components:
+  - type: SpawnPoint
+    job_id: BoSWashingtonPaladin
+  - type: Sprite
+    layers:
+      - state: green
+      - state: paladin
+
+- type: entity
+  parent: MisfitsSpawnPointBoSWashingtonCommander
+  id: MisfitsSpawnPointBoSWashingtonKnight
+  name: Brotherhood Knight
+  components:
+  - type: SpawnPoint
+    job_id: BoSWashingtonKnight
+  - type: Sprite
+    layers:
+      - state: green
+      - state: knight
+
+- type: entity
+  parent: MisfitsSpawnPointBoSWashingtonCommander
+  id: MisfitsSpawnPointBoSWashingtonScribe
+  name: Brotherhood Scribe
+  components:
+  - type: SpawnPoint
+    job_id: BoSWashingtonScribe
+  - type: Sprite
+    layers:
+      - state: green
+      - state: scribe
+
+# Brotherhood of Steel - Washington Initiate
+- type: entity
+  parent: SpawnPointJobBase
+  id: MisfitsSpawnPointBoSWashingtonInitiate
+  name: Brotherhood Initiate
+  components:
+  - type: SpawnPoint
+    job_id: BoSWashingtonInitiate
+  - type: Sprite
+    sprite: Corvax/Markers/jobs.rsi
+    layers:
+      - state: green
+      - state: serf
+
+# Caesar's Legion
+- type: entity
+  parent: SpawnPointJobBase
+  id: MisfitsSpawnPointCaesarLegionLegate
+  name: Legion Legate
+  components:
+  - type: SpawnPoint
+    job_id: CaesarLegionLegate
+  - type: Sprite
+    sprite: Corvax/Markers/jobs.rsi
+    layers:
+      - state: green
+      - state: centurion
+
+- type: entity
+  parent: SpawnPointJobBase
+  id: MisfitsSpawnPointCaesarLegionCenturion
+  name: Legion Centurion
+  components:
+  - type: SpawnPoint
+    job_id: CaesarLegionCenturion
+  - type: Sprite
+    sprite: Corvax/Markers/jobs.rsi
+    layers:
+      - state: green
+      - state: centurion
+
+- type: entity
+  parent: MisfitsSpawnPointCaesarLegionCenturion
+  id: MisfitsSpawnPointCaesarLegionVeteranDecanus
+  name: Legion Veteran Decanus
+  components:
+  - type: SpawnPoint
+    job_id: CaesarLegionVeteranDecanus
+  - type: Sprite
+    layers:
+      - state: green
+      - state: dean
+
+- type: entity
+  parent: MisfitsSpawnPointCaesarLegionCenturion
+  id: MisfitsSpawnPointCaesarLegionVenator
+  name: Legion Explorer
+  components:
+  - type: SpawnPoint
+    job_id: CaesarLegionVenator
+  - type: Sprite
+    layers:
+      - state: green
+      - state: venator
+
+- type: entity
+  parent: MisfitsSpawnPointCaesarLegionCenturion
+  id: MisfitsSpawnPointCaesarLegionVexillarius
+  name: Legion Vexillarius
+  components:
+  - type: SpawnPoint
+    job_id: CaesarLegionVexillarius
+  - type: Sprite
+    layers:
+      - state: green
+      - state: venator
+
+- type: entity
+  parent: MisfitsSpawnPointCaesarLegionCenturion
+  id: MisfitsSpawnPointCaesarLegionDean
+  name: Legion Decanus
+  components:
+  - type: SpawnPoint
+    job_id: CaesarLegionDean
+  - type: Sprite
+    layers:
+      - state: green
+      - state: dean
+
+- type: entity
+  parent: MisfitsSpawnPointCaesarLegionCenturion
+  id: MisfitsSpawnPointCaesarLegionLegionnaireVeteran
+  name: Legion Veteran Legionary
+  components:
+  - type: SpawnPoint
+    job_id: CaesarLegionLegionnaireVeteran
+  - type: Sprite
+    layers:
+      - state: green
+      - state: veteran
+
+- type: entity
+  parent: MisfitsSpawnPointCaesarLegionCenturion
+  id: MisfitsSpawnPointCaesarLegionLegionnaireWarrior
+  name: Legion Prime Legionary
+  components:
+  - type: SpawnPoint
+    job_id: CaesarLegionLegionnaireWarrior
+  - type: Sprite
+    layers:
+      - state: green
+      - state: warrior
+
+- type: entity
+  parent: MisfitsSpawnPointCaesarLegionCenturion
+  id: MisfitsSpawnPointCaesarLegionHoundmaster
+  name: Legion Houndmaster
+  components:
+  - type: SpawnPoint
+    job_id: CaesarLegionHoundmaster
+  - type: Sprite
+    layers:
+      - state: green
+      - state: warrior
+
+- type: entity
+  parent: MisfitsSpawnPointCaesarLegionCenturion
+  id: MisfitsSpawnPointCaesarLegionLegionnaireRecruit
+  name: Legion Recruit Legionary
+  components:
+  - type: SpawnPoint
+    job_id: CaesarLegionLegionnaireRecruit
+  - type: Sprite
+    layers:
+      - state: green
+      - state: recruit
+
+- type: entity
+  parent: MisfitsSpawnPointCaesarLegionCenturion
+  id: MisfitsSpawnPointCaesarLegionRecruit
+  name: Legion Recruit
+  components:
+  - type: SpawnPoint
+    job_id: CaesarLegionRecruit
+  - type: Sprite
+    layers:
+      - state: green
+      - state: recruit
+
+- type: entity
+  parent: SpawnPointJobBase
+  id: MisfitsSpawnPointCaesarLegionSlave
+  name: Legion Slave
+  components:
+  - type: SpawnPoint
+    job_id: CaesarLegionSlave
+  - type: Sprite
+    sprite: Corvax/Markers/jobs.rsi
+    layers:
+      - state: green
+      - state: slave
+
+# NCR
+- type: entity
+  parent: SpawnPointJobBase
+  id: MisfitsSpawnPointNCRCadet
+  name: NCR Recruit
+  components:
+  - type: SpawnPoint
+    job_id: NCRCadet
+  - type: Sprite
+    sprite: _Nuclear14/Markers/Jobs/ncr.rsi
+    layers:
+      - state: green
+      - state: cadet
+
+- type: entity
+  parent: MisfitsSpawnPointNCRCadet
+  id: MisfitsSpawnPointNCRMedic
+  name: NCR Medic
+  components:
+  - type: SpawnPoint
+    job_id: NCRMedic
+  - type: Sprite
+    layers:
+      - state: green
+      - state: medic
+
+- type: entity
+  parent: MisfitsSpawnPointNCRCadet
+  id: MisfitsSpawnPointNCRDoctor
+  name: NCR Medical Doctor
+  components:
+  - type: SpawnPoint
+    job_id: NCRDoctor
+  - type: Sprite
+    layers:
+      - state: green
+      - state: medic
+
+- type: entity
+  parent: MisfitsSpawnPointNCRCadet
+  id: MisfitsSpawnPointNCRSGT
+  name: NCR Sergeant
+  components:
+  - type: SpawnPoint
+    job_id: NCRSGT
+  - type: Sprite
+    layers:
+      - state: green
+      - state: sgt
+
+- type: entity
+  parent: MisfitsSpawnPointNCRCadet
+  id: MisfitsSpawnPointNCRCaptain
+  name: NCR Captain
+  components:
+  - type: SpawnPoint
+    job_id: NCRCaptain
+  - type: Sprite
+    layers:
+      - state: green
+      - state: lt
+
+- type: entity
+  parent: MisfitsSpawnPointNCRCadet
+  id: MisfitsSpawnPointNCRLT
+  name: NCR Lieutenant
+  components:
+  - type: SpawnPoint
+    job_id: NCRLT
+  - type: Sprite
+    layers:
+      - state: green
+      - state: lt
+
+- type: entity
+  parent: MisfitsSpawnPointNCRCadet
+  id: MisfitsSpawnPointNCRFirstSergeant
+  name: NCR First Sergeant
+  components:
+  - type: SpawnPoint
+    job_id: NCRFirstSergeant
+  - type: Sprite
+    layers:
+      - state: green
+      - state: sgt
+
+- type: entity
+  parent: MisfitsSpawnPointNCRCadet
+  id: MisfitsSpawnPointNCRStaffSergeant
+  name: NCR Staff Sergeant
+  components:
+  - type: SpawnPoint
+    job_id: NCRStaffSergeant
+  - type: Sprite
+    layers:
+      - state: green
+      - state: sgt
+
+- type: entity
+  parent: MisfitsSpawnPointNCRCadet
+  id: MisfitsSpawnPointNCRWS
+  name: NCR Corporal
+  components:
+  - type: SpawnPoint
+    job_id: NCRWS
+  - type: Sprite
+    layers:
+      - state: green
+      - state: ws
+
+- type: entity
+  parent: MisfitsSpawnPointNCRCadet
+  id: MisfitsSpawnPointNCREngineer
+  name: NCR Engineer
+  components:
+  - type: SpawnPoint
+    job_id: NCREngineer
+  - type: Sprite
+    layers:
+      - state: green
+      - state: engineer
+
+- type: entity
+  parent: MisfitsSpawnPointNCRCadet
+  id: MisfitsSpawnPointNCRSoldier
+  name: NCR Private
+  components:
+  - type: SpawnPoint
+    job_id: NCRSoldier
+  - type: Sprite
+    layers:
+      - state: green
+      - state: soldier
+
+- type: entity
+  parent: MisfitsSpawnPointNCRCadet
+  id: MisfitsSpawnPointNCRPrivateFirstClass
+  name: NCR Private First Class
+  components:
+  - type: SpawnPoint
+    job_id: NCRPrivateFirstClass
+  - type: Sprite
+    layers:
+      - state: green
+      - state: soldier
+
+- type: entity
+  parent: SpawnPointJobBase
+  id: MisfitsSpawnPointNCRPrisoner
+  name: NCR Prisoner
+  components:
+  - type: SpawnPoint
+    job_id: NCRPisoner
+  - type: Sprite
+    sprite: Corvax/Markers/jobs.rsi
+    layers:
+      - state: green
+      - state: prisoner
+
+- type: entity
+  parent: SpawnPointJobBase
+  id: MisfitsSpawnPointNCRMPinvestigator
+  name: NCR MP Investigator
+  components:
+  - type: SpawnPoint
+    job_id: NCRMPinvestigator
+  - type: Sprite
+    sprite: Corvax/Markers/jobs.rsi
+    layers:
+      - state: green
+      - state: investigator
+
+# Synthetics
+- type: entity
+  parent: SpawnPointJobBase
+  id: MisfitsSpawnPointSyntheticMrHandy
+  name: Synthetic Mr. Handy
+  components:
+  - type: SpawnPoint
+    job_id: SyntheticMrHandy
+  - type: Sprite
+    layers:
+      - state: green
+
+- type: entity
+  parent: MisfitsSpawnPointSyntheticMrHandy
+  id: MisfitsSpawnPointSyntheticProtectron
+  name: Synthetic Protectron
+  components:
+  - type: SpawnPoint
+    job_id: SyntheticProtectron
+
+- type: entity
+  parent: MisfitsSpawnPointSyntheticMrHandy
+  id: MisfitsSpawnPointSyntheticMrGutsy
+  name: Synthetic Mr. Gutsy
+  components:
+  - type: SpawnPoint
+    job_id: SyntheticMrGutsy
+
+- type: entity
+  parent: MisfitsSpawnPointSyntheticMrHandy
+  id: MisfitsSpawnPointSyntheticAssaultron
+  name: Synthetic Assaultron
+  components:
+  - type: SpawnPoint
+    job_id: SyntheticAssaultron

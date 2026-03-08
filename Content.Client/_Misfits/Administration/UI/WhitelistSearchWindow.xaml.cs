@@ -29,18 +29,15 @@ public sealed partial class WhitelistSearchWindow : FancyWindow
     // #Misfits Change - Only show Fallout-relevant factions/departments in the whitelist GUI
     private static readonly HashSet<string> AllowedDepartments = new()
     {
-        "BrotherhoodMidwest",
-        "BrotherhoodWashington",
-        "NCR",
-        "Tribe",
-        "Vault",
-        "Wastelander",
-        "Townsfolk",
+        "BrotherhoodOfSteel",
         "CaesarLegion",
-        "Raider",
-        "BrotherhoodWest",
-        "Robots",
+        "NCR",
+        "Townsfolk",
         "FEVMutants",
+        "Tribe",
+        "Robots",
+        "Vault",
+        "Raider",
     };
 
     public WhitelistSearchWindow()

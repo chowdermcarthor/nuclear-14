@@ -64,7 +64,7 @@
   description: A bandage used by the Brotherhood of Steel recruits.
   components:
   - type: ClothingFactionAndRoleAdd
-    faction: BrotherhoodMidwest
+    faction: BrotherhoodOfSteel
     role: BoSMidSquire
 
 - type: entity
@@ -87,7 +87,7 @@
   description: A collar used by the Brotherhood of Steel serfs.
   components:
   - type: ClothingFactionAndRoleAdd
-    faction: BrotherhoodMidwest
+    faction: BrotherhoodOfSteel
     role: BoSMidSerf
 
 #MARK: Legion
@@ -111,7 +111,7 @@
   components:
   - type: ClothingFactionAndRoleAdd
     faction: CaesarLegion
-    role: CaesarLegionLegionnaireRecruit
+    role: CaesarLegionRecruit
 
 - type: entity
   parent: Clothing

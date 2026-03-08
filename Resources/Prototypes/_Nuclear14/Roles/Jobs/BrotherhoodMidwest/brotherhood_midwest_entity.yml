@@ -12,8 +12,7 @@
       prototypes: [BoSMidPaladinCommanderGear]
     - type: NpcFactionMember
       factions:
-      - Wastelander
-      - BrotherhoodMidwest
+      - BrotherhoodOfSteel
 
 - type: entity
   parent: BoSMidPaladinCommander

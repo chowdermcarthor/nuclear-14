@@ -3,13 +3,24 @@
   description: department-CaesarLegion-description
   color: "#950202"
   roles:
-  - CaesarLegionCenturion
-  - CaesarLegionVenator
-  - CaesarLegionDean
-  - CaesarLegionLegionnaireVeteran
-  - CaesarLegionLegionnaireWarrior
-  - CaesarLegionLegionnaireRecruit
-  - CaesarLegionSlave
+  # Command
+  - CaesarLegionLegate          # Legate             | _Misfits/Roles/Jobs/CaesarLegion/legion_legate.yml
+  # Officers
+  - CaesarLegionCenturion       # Centurion          | _Misfits/Roles/Jobs/CaesarLegion/legion_centurion.yml
+  # Decani
+  - CaesarLegionVeteranDecanus  # Veteran Decanus    | _Misfits/Roles/Jobs/CaesarLegion/legion_veteran_decanus.yml
+  - CaesarLegionDean            # Decanus            | _Misfits/Roles/Jobs/CaesarLegion/legion_decanus.yml
+  # Legionaries
+  - CaesarLegionLegionnaireVeteran  # Legionnaire Veteran | _Misfits/Roles/Jobs/CaesarLegion/legion_legionnaire_veteran.yml
+  - CaesarLegionLegionnaireWarrior  # Legionnaire Warrior | _Misfits/Roles/Jobs/CaesarLegion/legion_legionnaire_warrior.yml
+  - CaesarLegionLegionnaireRecruit  # Legionnaire Recruit | _Misfits/Roles/Jobs/CaesarLegion/legion_legionnaire_recruit.yml
+  # Specialists
+  - CaesarLegionVenator         # Venator            | _Misfits/Roles/Jobs/CaesarLegion/legion_venator.yml
+  - CaesarLegionVexillarius     # Vexillarius        | _Misfits/Roles/Jobs/CaesarLegion/legion_vexillarius.yml
+  - CaesarLegionHoundmaster     # Houndmaster        | _Misfits/Roles/Jobs/CaesarLegion/legion_houndmaster.yml
+  # Enlisted
+  - CaesarLegionRecruit         # Recruit            | _Misfits/Roles/Jobs/CaesarLegion/legion_recruit.yml
+  - CaesarLegionSlave           # Slave              | _Misfits/Roles/Jobs/CaesarLegion/legion_slave.yml
 
 - type: department
   id: Raider
@@ -19,14 +30,14 @@
   roles:
   - Raider
 
-- type: department
-  id: BrotherhoodWest
-  description: department-BrotherhoodWest-description
-  color: "#0c0fb1"
-  editorHidden: true
-  roles:
-  - BoSWestElderCommander
-  - BoSWestGunsmith
-  - BoSWestPaladin
-  - BoSWestScribe
-  - BoSWestKnight
+# - type: department
+#   id: BrotherhoodWest
+#   description: department-BrotherhoodWest-description
+#   color: "#0c0fb1"
+#   editorHidden: true
+#   roles:
+#   - BoSWestElderCommander
+#   - BoSWestGunsmith
+#   - BoSWestPaladin
+#   - BoSWestScribe
+#   - BoSWestKnight

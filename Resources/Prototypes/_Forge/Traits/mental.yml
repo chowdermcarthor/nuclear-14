@@ -5,9 +5,13 @@
   requirements:
     - !type:CharacterJobRequirement
       jobs:
+        - CaesarLegionLegate
         - CaesarLegionCenturion
+        - CaesarLegionVeteranDecanus
         - CaesarLegionVenator
+        - CaesarLegionVexillarius
         - CaesarLegionDean
+        - CaesarLegionHoundmaster
   functions:
     - !type:TraitAddComponent
       components:

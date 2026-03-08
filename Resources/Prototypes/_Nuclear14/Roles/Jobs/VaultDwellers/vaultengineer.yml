@@ -1,5 +1,6 @@
 - type: job
   id: VaultEngineer
+  weight: 60
   name: job-name-vault-engineer
   description: job-description-vault-engineer
   requirements:

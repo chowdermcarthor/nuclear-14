@@ -32,16 +32,17 @@
           True: { visible: true }
           False: { visible: false }
   - type: Appearance
-  # #Misfits Change - Make tactical map functional with station map UI
-  - type: StationMap
-    showLocation: true
+  # #Misfits Change - Make tactical map functional with wasteland map viewer
+  - type: WastelandMap
+    mapTexturePath: _Misfits/Maps/wendover_map.png
+    mapTitle: Tactical Map - Wendover
   - type: ActivatableUI
-    key: enum.StationMapUiKey.Key
+    key: enum.WastelandMapUiKey.Key
   - type: ActivatableUIRequiresPower
   - type: UserInterface
     interfaces:
-      enum.StationMapUiKey.Key:
-        type: StationMapBoundUserInterface
+      enum.WastelandMapUiKey.Key:
+        type: WastelandMapBoundUserInterface
   # End Misfits Change
   - type: Destructible
     thresholds:

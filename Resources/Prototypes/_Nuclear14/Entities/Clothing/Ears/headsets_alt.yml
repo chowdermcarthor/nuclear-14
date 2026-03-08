@@ -128,12 +128,12 @@
 - type: entity
   parent: N14ClothingHeadsetAlt
   id: N14ClothingHeadsetBOSMidwest
-  name: BoS Radio Earpiece
+  name: Brotherhood radio earpiece
   components:
   - type: ContainerFill
     containers:
       key_slots:
-      - EncryptionKeyBrotherhoodMidwest
+      - EncryptionKeyBrotherhoodOfSteel
   - type: Sprite
     sprite: Clothing/Ears/Headsets/command.rsi
   - type: Clothing
@@ -142,12 +142,12 @@
 - type: entity
   parent: N14ClothingHeadsetAlt
   id: N14ClothingHeadsetBOSWashington
-  name: Washington Radio Earpiece
+  name: Brotherhood radio earpiece
   components:
   - type: ContainerFill
     containers:
       key_slots:
-      - EncryptionKeyBrotherhoodWashington
+      - EncryptionKeyBrotherhoodOfSteel
   - type: Sprite
     sprite: Clothing/Ears/Headsets/security.rsi
   - type: Clothing

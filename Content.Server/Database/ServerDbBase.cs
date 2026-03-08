@@ -653,8 +653,9 @@ namespace Content.Server.Database
         {
             await using var db = await GetDb();
 
+            var lowerName = partialName.ToLower();
             var records = await db.DbContext.Player
-                .Where(p => p.LastSeenUserName.Contains(partialName))
+                .Where(p => p.LastSeenUserName.ToLower().Contains(lowerName))
                 .OrderByDescending(p => p.LastSeenTime)
                 .Take(limit)
                 .ToListAsync(cancel);

@@ -76,18 +76,19 @@ namespace Content.Server.RoundEnd
             AutoCallStartTime = _gameTiming.CurTime;
         }
 
-        // #Misfits Change: Extend the round by recalling the shuttle (if active) and resetting the auto-call timer.
+        // #Misfits Change: Extend the round by recalling the shuttle (if active) and adding time.
         /// <summary>
-        ///     Recalls the emergency shuttle if a countdown is active, cancels round-end cooldown,
-        ///     and resets the auto-call timer so the full extension time elapses before the next auto-call.
+        ///     Recalls the emergency shuttle if a countdown is active and pushes the auto-call
+        ///     deadline forward by the configured extension time (additive to current remaining time).
         /// </summary>
         public void ExtendRound()
         {
             // Recall shuttle / cancel any active countdown without cooldown restriction.
             CancelRoundEndCountdown(null, false);
-            // Reset the auto-call timer — the Update() loop will re-trigger after the configured extension time.
-            SetAutoCallTime();
-            _autoCalledBefore = true; // Use the extension CVar for the next auto-call.
+            // Push AutoCallStartTime forward so remaining time increases by the extension amount.
+            // Deadline = AutoCallStartTime + autoCallMins, so adding to AutoCallStartTime adds to remaining.
+            var extensionMins = _cfg.GetCVar(CCVars.EmergencyShuttleAutoCallExtensionTime);
+            AutoCallStartTime += TimeSpan.FromMinutes(extensionMins);
             RaiseLocalEvent(RoundEndSystemChangedEvent.Default);
         }
 

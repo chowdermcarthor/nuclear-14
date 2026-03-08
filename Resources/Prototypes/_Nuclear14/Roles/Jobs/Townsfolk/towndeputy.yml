@@ -1,6 +1,7 @@
 - type: job
   id: TownDeputy # Renamed to "Guard", don't touch the prototype ID
   setPreference: true
+  weight: 70
   overrideConsoleVisibility: true
   canBeAntag: false
   name: job-name-towndeputy

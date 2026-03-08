@@ -1,5 +1,7 @@
 # Names
+CaesarLegion = Caesar's Legion
 department-CaesarLegion = Caesar's Legion
+Raider = Blood Hounds
 department-Raider = Blood Hounds
 department-BrotherhoodWest = Western BoS
 # Descriptions

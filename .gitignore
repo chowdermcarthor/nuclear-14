@@ -314,3 +314,4 @@ package-lock.json
 /Resources/Prototypes/Loadouts
 /Resources/Prototypes/Catalog
 .claude/rules/copilotinst.instructions.md
+.vscode/settings.json

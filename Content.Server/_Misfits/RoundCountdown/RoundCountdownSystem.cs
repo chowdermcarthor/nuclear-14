@@ -16,8 +16,8 @@ using Robust.Shared.Timing;
 namespace Content.Server._Misfits.RoundCountdown;
 
 /// <summary>
-///     Announces remaining time before the emergency shuttle auto-call and triggers a
-///     combined "New Round / Extend Round" vote at the 15-minute mark.
+///     Announces remaining time before the emergency shuttle auto-call and triggers an
+///     automatic Yes/No extend-round vote at the 15-minute mark.
 /// </summary>
 public sealed class RoundCountdownSystem : EntitySystem
 {
@@ -129,8 +129,8 @@ public sealed class RoundCountdownSystem : EntitySystem
             InitiatorText = Loc.GetString("ui-vote-initiator-server"),
             Options =
             {
-                (Loc.GetString("ui-vote-round-decision-new"), "newround"),
-                (Loc.GetString("ui-vote-round-decision-extend"), "extend"),
+                (Loc.GetString("ui-vote-round-decision-yes"), "yes"),
+                (Loc.GetString("ui-vote-round-decision-no"), "no"),
             },
             Duration = TimeSpan.FromSeconds(90),
         };
@@ -139,31 +139,31 @@ public sealed class RoundCountdownSystem : EntitySystem
 
         vote.OnFinished += (_, _) =>
         {
-            var votesNew = vote.VotesPerOption["newround"];
-            var votesExtend = vote.VotesPerOption["extend"];
+            var votesYes = vote.VotesPerOption["yes"];
+            var votesNo = vote.VotesPerOption["no"];
             var totalConnected = _playerManager.Sessions
                 .Count(s => s.Status != SessionStatus.Disconnected);
 
-            if (votesNew > votesExtend)
+            if (votesYes > votesNo)
             {
                 _chatManager.DispatchServerAnnouncement(
-                    Loc.GetString("ui-vote-round-decision-new-won",
-                        ("newVotes", votesNew), ("extendVotes", votesExtend), ("total", totalConnected)));
-                _roundEnd.RequestRoundEnd(null, false);
-            }
-            else if (votesExtend > votesNew)
-            {
-                _chatManager.DispatchServerAnnouncement(
-                    Loc.GetString("ui-vote-round-decision-extend-won",
-                        ("extendVotes", votesExtend), ("newVotes", votesNew), ("total", totalConnected)));
+                    Loc.GetString("ui-vote-round-decision-yes-won",
+                        ("yesVotes", votesYes), ("noVotes", votesNo), ("total", totalConnected)));
                 _roundEnd.ExtendRound();
+            }
+            else if (votesNo > votesYes)
+            {
+                _chatManager.DispatchServerAnnouncement(
+                    Loc.GetString("ui-vote-round-decision-no-won",
+                        ("noVotes", votesNo), ("yesVotes", votesYes), ("total", totalConnected)));
+                _roundEnd.RequestRoundEnd(null, false);
             }
             else
             {
                 // Tie — default to extending the round.
                 _chatManager.DispatchServerAnnouncement(
                     Loc.GetString("ui-vote-round-decision-tie",
-                        ("votes", votesNew), ("total", totalConnected)));
+                        ("yesVotes", votesYes), ("noVotes", votesNo), ("total", totalConnected)));
                 _roundEnd.ExtendRound();
             }
         };

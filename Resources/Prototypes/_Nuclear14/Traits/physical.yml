@@ -431,8 +431,6 @@
         - TribalHealer
         # Forge-Change-Start
         - BoSWestElderCommander
-        - BoSWestPaladin
-        - BoSWestKnight
         - Followers
         # Forge-Change-End
     - !type:CharacterTraitRequirement
@@ -463,8 +461,6 @@
         - BoSWashingtonKnight
         # Forge-Change-Start
         - BoSWestElderCommander
-        - BoSWestPaladin
-        - BoSWestKnight
         # Forge-Change-End
     - !type:CharacterTraitRequirement
       inverted: true

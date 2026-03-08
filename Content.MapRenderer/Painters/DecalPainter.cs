@@ -29,7 +29,7 @@ public sealed class DecalPainter
         _sPrototypeManager = server.ResolveDependency<IPrototypeManager>();
     }
 
-    public void Run(Image canvas, Span<DecalData> decals)
+    public void Run(Image canvas, Span<DecalData> decals, int offsetX = 0, int offsetY = 0)
     {
         var stopwatch = new Stopwatch();
         stopwatch.Start();
@@ -46,13 +46,13 @@ public sealed class DecalPainter
 
         foreach (var decal in decals)
         {
-            Run(canvas, decal);
+            Run(canvas, decal, offsetX, offsetY);
         }
 
         Console.WriteLine($"{nameof(DecalPainter)} painted {decals.Length} decals in {(int) stopwatch.Elapsed.TotalMilliseconds} ms");
     }
 
-    private void Run(Image canvas, DecalData data)
+    private void Run(Image canvas, DecalData data, int offsetX = 0, int offsetY = 0)
     {
         var decal = data.Decal;
         if (!_decalTextures.TryGetValue(decal.Id, out var sprite))
@@ -95,6 +95,6 @@ public sealed class DecalPainter
 
         // Very unsure why the - 1 is needed in the first place but all decals are off by exactly one pixel otherwise
         // Woohoo!
-        canvas.Mutate(o => o.DrawImage(image, new Point((int) data.X, (int) data.Y - 1), 1.0f));
+        canvas.Mutate(o => o.DrawImage(image, new Point((int) data.X + offsetX, (int) data.Y - 1 + offsetY), 1.0f));
     }
 }

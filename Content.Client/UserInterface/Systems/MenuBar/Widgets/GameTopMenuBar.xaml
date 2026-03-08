@@ -109,7 +109,7 @@
         Access="Internal"
         Icon="{xe:Tex '/Textures/Interface/info.svg.192dpi.png'}"
         BoundKey = "{x:Static is:ContentKeyFunctions.OpenMentorHelp}"
-        ToolTip="Mentor Help (F1)"
+        ToolTip="Mentor Help"
         MinSize="42 64"
         HorizontalExpand="True"
         AppendStyleClass="{x:Static style:StyleBase.ButtonSquare}"

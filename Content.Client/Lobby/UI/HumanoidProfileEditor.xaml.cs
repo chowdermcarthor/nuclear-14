@@ -987,6 +987,17 @@ namespace Content.Client.Lobby.UI
 
                 foreach (var job in jobs)
                 {
+                    // #Misfits Change: rank group separator
+                    if (job.ShowBorder)
+                    {
+                        category.AddChild(new PanelContainer
+                        {
+                            PanelOverride = new StyleBoxFlat { BackgroundColor = Color.FromHex("#464966") },
+                            MinSize = new Vector2(0, 2),
+                            Margin = new Thickness(3f, 8f, 3f, 4f),
+                        });
+                    }
+
                     var jobContainer = new BoxContainer { Orientation = LayoutOrientation.Horizontal, };
                     var selector = new RequirementsSelector { Margin = new(3f, 3f, 3f, 0f) };
 
@@ -1131,6 +1142,17 @@ namespace Content.Client.Lobby.UI
 
                 foreach (var job in jobs)
                 {
+                    // #Misfits Change: rank group separator
+                    if (job.ShowBorder)
+                    {
+                        category.AddChild(new PanelContainer
+                        {
+                            PanelOverride = new StyleBoxFlat { BackgroundColor = Color.FromHex("#464966") },
+                            MinSize = new Vector2(0, 2),
+                            Margin = new Thickness(3f, 8f, 3f, 4f),
+                        });
+                    }
+
                     var jobContainer = new BoxContainer()
                     {
                         Orientation = LayoutOrientation.Horizontal,

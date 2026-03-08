@@ -71,21 +71,24 @@
   #  - CaravanCompanyGuard
   - WastelandChaplain
   - AncientBunker
-  - WashingtonInitiate
-  - WashingtonInitiate
-  - WashingtonScribe
-  - WashingtonPaladin
-  - WashingtonCommander
+  - BOS
+  - BOSInitiate
+  - BOSSquire
+  - BOSScribe
+  - BOSKnight
+  - BOSPaladin
+  - BOSSeniorScribe
+  - BOSSeniorKnight
+  - BOSSeniorPaladin
+  - BOSHeadScribe
+  - BOSHeadKnight
+  - BOSHeadPaladin
+  - BOSElder
   - NCR
   - NCRMedic
   - NCRSGT
   - NCRLT
   - NCRRanger
-  - BoSMidwest
-  - Knight
-  - Scribe
-  - Paladin
-  - PaladinCommander
   - IronKey # N14 - Adds access
   - BronzeKey # N14 - Adds access
   - BrassKey # N14 - Adds access

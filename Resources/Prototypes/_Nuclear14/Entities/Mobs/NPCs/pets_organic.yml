@@ -146,7 +146,7 @@
     nameSegments: [names_N14pet_dog]
   - type: NpcFactionMember
     factions:
-      - BrotherhoodMidwest
+      - BrotherhoodOfSteel
   - type: Sprite
     drawdepth: Mobs
     layers:
@@ -189,7 +189,7 @@
     nameSegments: [names_N14pet_dog]
   - type: NpcFactionMember
     factions:
-      - BrotherhoodWashington
+      - BrotherhoodOfSteel
   - type: Sprite
     drawdepth: Mobs
     layers:

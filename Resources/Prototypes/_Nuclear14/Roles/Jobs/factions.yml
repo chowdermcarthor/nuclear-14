@@ -1,28 +1,51 @@
 # Top-down, highest to lowest rank when possible.
-- type: department
-  id: BrotherhoodMidwest
-  description: department-BrotherhoodMidwest-description
-  color: "#3B72BF"
-  roles:
-  - BoSMidPaladinCommander
-  - BoSMidPaladin
-  - BoSMidScribe
-  - BoSMidKnight
-  - BoSMidSquire
-  - BoSMidInquisitor # Forge-Change
-  - BoSMidSerf
+# - type: department
+#   id: BrotherhoodMidwest
+#   description: department-BrotherhoodMidwest-description
+#   color: "#3B72BF"
+#   roles:
+#   - BoSMidPaladinCommander
+#   - BoSMidPaladin
+#   - BoSMidScribe
+#   - BoSMidKnight
+#   - BoSMidSquire
+#   - BoSMidInquisitor # Forge-Change
+#   - BoSMidSerf
+
+# - type: department
+#   id: BrotherhoodWashington
+#   description: department-BrotherhoodWashington-description
+#   color: "#a2000f"
+#   editorHidden: true
+#   roles:
+#   - BoSWashingtonCommander
+#   - BoSWashingtonPaladin
+#   - BoSWashingtonScribe
+#   - BoSWashingtonKnight
+#   - BoSWashingtonInitiate
 
 - type: department
-  id: BrotherhoodWashington
-  description: department-BrotherhoodWashington-description
-  color: "#a2000f"
-  editorHidden: true
+  id: BrotherhoodOfSteel
+  description: department-BrotherhoodOfSteel-description
+  color: "#3B72BF"
   roles:
-  - BoSWashingtonCommander
-  - BoSWashingtonPaladin
-  - BoSWashingtonScribe
-  - BoSWashingtonKnight
-  - BoSWashingtonInitiate
+  # Command (Admin Only)
+  - BoSWestElderCommander        # Elder          | _Misfits/Roles/Jobs/BrotherhoodOfSteel/bos_elder.yml
+  # Head Officers
+  - BoSMidPaladinCommander       # Head Paladin   | _Misfits/Roles/Jobs/BrotherhoodOfSteel/bos_headpaladin.yml
+  - BoSWashingtonCommander       # Head Knight    | _Misfits/Roles/Jobs/BrotherhoodOfSteel/bos_headknight.yml
+  - BoSWestScribe                # Head Scribe    | _Misfits/Roles/Jobs/BrotherhoodOfSteel/bos_headscribe.yml
+  # Senior Members
+  - BoSMidPaladin                # Senior Paladin | _Misfits/Roles/Jobs/BrotherhoodOfSteel/bos_seniorpaladin.yml
+  - BoSMidKnight                 # Senior Knight  | _Misfits/Roles/Jobs/BrotherhoodOfSteel/bos_seniorknight.yml
+  - BoSMidScribe                 # Senior Scribe  | _Misfits/Roles/Jobs/BrotherhoodOfSteel/bos_seniorscribe.yml
+  # Members
+  - BoSWashingtonPaladin         # Paladin        | _Misfits/Roles/Jobs/BrotherhoodOfSteel/bos_paladin.yml
+  - BoSWashingtonKnight          # Knight         | _Misfits/Roles/Jobs/BrotherhoodOfSteel/bos_knight.yml
+  - BoSWashingtonScribe          # Scribe         | _Misfits/Roles/Jobs/BrotherhoodOfSteel/bos_scribe.yml
+  # Recruits
+  - BoSMidSquire                 # Squire         | _Misfits/Roles/Jobs/BrotherhoodOfSteel/bos_squire.yml
+  - BoSWashingtonInitiate        # Initiate       | _Misfits/Roles/Jobs/BrotherhoodOfSteel/bos_initiate.yml
 
 #- type: department
 #  id: CaravanCompany
@@ -38,27 +61,36 @@
   description: department-NCR-description
   color: "#fbc02d"
   roles:
-  - NCRLT
-  - NCRRangerVeteran
-  - NCRSGT
-  - NCRRanger
-  - NCRMedic
-  - NCRWS
-  - NCREngineer
-  - NCRSoldier
-  - NCRCadet
-  - NCRPisoner
-  - NCRMPinvestigator
+  # Officers
+  - NCRCaptain           # NCR Captain             | _Misfits/Roles/Jobs/NCR/ncr_captain.yml
+  - NCRLT                # NCR Lieutenant          | _Misfits/Roles/Jobs/NCR/ncr_lieutenant.yml
+  - NCRDoctor            # NCR Medical Doctor      | _Misfits/Roles/Jobs/NCR/ncr_doctor.yml
+  # NCOs
+  - NCRFirstSergeant     # NCR First Sergeant      | _Misfits/Roles/Jobs/NCR/ncr_first_sergeant.yml
+  - NCRStaffSergeant     # NCR Staff Sergeant      | _Misfits/Roles/Jobs/NCR/ncr_staff_sergeant.yml
+  - NCRSGT               # NCR Sergeant            | _Misfits/Roles/Jobs/NCR/ncr_sergeant.yml
+  # Enlisted
+  - NCRWS                # NCR Corporal            | _Misfits/Roles/Jobs/NCR/ncr_corporal.yml
+  - NCRMedic             # NCR Medic               | _Misfits/Roles/Jobs/NCR/ncr_medic.yml
+  - NCREngineer          # NCR Engineer            | _Misfits/Roles/Jobs/NCR/ncr_engineer.yml
+  - NCRPrivateFirstClass # NCR Private First Class | _Misfits/Roles/Jobs/NCR/ncr_private_first_class.yml
+  - NCRSoldier           # NCR Private             | _Misfits/Roles/Jobs/NCR/ncr_private.yml
+  - NCRCadet             # NCR Recruit             | _Misfits/Roles/Jobs/NCR/ncr_recruit.yml
+  # Special
+  - NCRPisoner           # NCR Prisoner            | _Misfits/Roles/Jobs/NCR/ncr_prisoner.yml
+  # Legacy jobs kept outside the visible ladder for compatibility:
+  # - NCRMPinvestigator  # NCR MP Investigator     | _Misfits/Roles/Jobs/NCR/ncr_mp_investigator.yml
+  # - NCRRanger
+  # - NCRRangerVeteran
 
-#- type: department # Disabled until roles are implemented
-#  id: Rangers
-#  description: department-Ranger-description
-#  color: "#3ab700"
-#  roles:
-#  - RangerRecruit
-#  - Ranger
-#  - RangerVeteran
-#  - RangerChief
+- type: department
+  id: Rangers
+  description: department-Rangers-description
+  color: "#3ab700"
+  roles:
+  - RangerVeteran
+  - Ranger
+  - RangerRecruit
 
 - type: department
   id: Tribe

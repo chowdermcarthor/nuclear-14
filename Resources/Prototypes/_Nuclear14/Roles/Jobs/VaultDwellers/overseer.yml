@@ -10,7 +10,7 @@
     department: Vault
     min: 36000 # 10 hours
   playTimeTracker: Overseer
-  weight: 20
+  weight: 100
   startingGear: OverseerGear
   alwaysUseSpawner: true
   icon: "JobIconVaultOverseer" # Forge-Change

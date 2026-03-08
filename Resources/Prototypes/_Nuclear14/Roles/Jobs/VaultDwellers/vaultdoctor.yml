@@ -1,5 +1,6 @@
 - type: job
   id: VaultDoctor
+  weight: 70
   name: job-name-vault-doctor
   description: job-description-vault-doctor
   requirements:

@@ -1,6 +1,8 @@
 - type: job
   id: TownShopkeeper
   setPreference: true
+  weight: 50
+  showBorder: true
   overrideConsoleVisibility: false
   canBeAntag: false
   name: job-name-townshopkeeper

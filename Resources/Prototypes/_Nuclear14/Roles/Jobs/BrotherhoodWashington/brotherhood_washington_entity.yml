@@ -12,8 +12,7 @@
       prototypes: [BoSWashingtonPaladinGear]
     - type: NpcFactionMember
       factions:
-      - Wastelander
-      - BrotherhoodWashington
+      - BrotherhoodOfSteel
 
 - type: entity
   parent: N14MobHumanBoSWashingtonPaladin
@@ -28,8 +27,7 @@
       prototypes: [BoSWashingtonCommanderGear]
     - type: NpcFactionMember
       factions:
-      - Wastelander
-      - BrotherhoodWashington
+      - BrotherhoodOfSteel
 
 - type: entity
   parent: N14MobHumanBoSWashingtonPaladin
@@ -44,8 +42,7 @@
       prototypes: [BoSWashingtonInitiateGear]
     - type: NpcFactionMember
       factions:
-      - Wastelander
-      - BrotherhoodWashington
+      - BrotherhoodOfSteel
 
 - type: entity
   parent: N14MobHumanBoSWashingtonPaladin
@@ -60,8 +57,7 @@
       prototypes: [BoSWashingtonScribeGear]
     - type: NpcFactionMember
       factions:
-      - Wastelander
-      - BrotherhoodWashington
+      - BrotherhoodOfSteel
 
 - type: entity
   parent: N14MobHumanBoSWashingtonPaladin
@@ -76,6 +72,5 @@
       prototypes: [BoSWashingtonKnightGear]
     - type: NpcFactionMember
       factions:
-      - Wastelander
-      - BrotherhoodWashington
+      - BrotherhoodOfSteel
 

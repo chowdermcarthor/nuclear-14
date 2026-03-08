@@ -1,6 +1,7 @@
 - type: job
   id: TownMayor
   setPreference: true
+  weight: 100
   overrideConsoleVisibility: false
   canBeAntag: false
   name: job-name-townmayor

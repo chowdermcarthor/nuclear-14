@@ -83,6 +83,20 @@ public sealed partial class NpcFactionSystem
     }
 
     /// <summary>
+    /// #Misfits Change: Stops preventing an entity from an enemy faction from being attacked.
+    /// </summary>
+    public void UnignoreEntity(Entity<FactionExceptionComponent?> ent, EntityUid target)
+    {
+        if (!Resolve(ent, ref ent.Comp, false))
+            return;
+
+        if (!ent.Comp.Ignored.Remove(target) || !_trackerQuery.TryGetComponent(target, out var tracker))
+            return;
+
+        tracker.Entities.Remove(ent);
+    }
+
+    /// <summary>
     /// Prevents a list of entities from an enemy faction from being attacked
     /// </summary>
     public void IgnoreEntities(Entity<FactionExceptionComponent?> ent, IEnumerable<EntityUid> ignored)

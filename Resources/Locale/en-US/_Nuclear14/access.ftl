@@ -35,6 +35,34 @@ id-card-access-level-midwest-knight = BoS Armory
 id-card-access-level-midwest-scribe = BoS Labs
 id-card-access-level-midwest = BoS Gates
 
+id-card-access-level-bos = BoS Gates
+id-card-access-level-bos-initiate = BoS Initiate Access
+id-card-access-level-bos-squire = BoS Squire Access
+id-card-access-level-bos-scribe = BoS Scribe Access
+id-card-access-level-bos-knight = BoS Knight Access
+id-card-access-level-bos-paladin = BoS Paladin Access
+id-card-access-level-bos-senior-scribe = BoS Senior Scribe Access
+id-card-access-level-bos-senior-knight = BoS Senior Knight Access
+id-card-access-level-bos-senior-paladin = BoS Senior Paladin Access
+id-card-access-level-bos-head-scribe = BoS Head Scribe Access
+id-card-access-level-bos-head-knight = BoS Head Knight Access
+id-card-access-level-bos-head-paladin = BoS Head Paladin Access
+id-card-access-level-bos-elder = BoS Elder Access
+
+id-card-access-level-legion = Legion Gates
+id-card-access-level-legion-slave = Legion Slave Access
+id-card-access-level-legion-recruit = Legion Recruit Access
+id-card-access-level-legion-houndmaster = Legion Houndmaster Access
+id-card-access-level-legion-explorer = Legion Explorer Access
+id-card-access-level-legion-vexillarius = Legion Vexillarius Access
+id-card-access-level-legion-recruit-legionary = Legion Recruit Legionary Access
+id-card-access-level-legion-prime-legionary = Legion Prime Legionary Access
+id-card-access-level-legion-veteran-legionary = Legion Veteran Legionary Access
+id-card-access-level-legion-decanus = Legion Decanus Access
+id-card-access-level-legion-veteran-decanus = Legion Veteran Decanus Access
+id-card-access-level-legion-centurion = Legion Centurion Access
+id-card-access-level-legion-legate = Legion Legate Access
+
 id-card-access-level-washington-commander = WBoS Office
 id-card-access-level-washington-paladin = WBoS Suits
 id-card-access-level-washington-knight = WBoS Armory

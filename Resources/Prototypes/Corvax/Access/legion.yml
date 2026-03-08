@@ -1,35 +1,168 @@
 - type: accessLevel
+  id: CaesarLegion
+  name: id-card-access-level-legion
+
+- type: accessLevel
+  id: CaesarLegionSlave
+  name: id-card-access-level-legion-slave
+
+- type: accessLevel
+  id: CaesarLegionRecruit
+  name: id-card-access-level-legion-recruit
+
+- type: accessLevel
+  id: CaesarLegionHoundmaster
+  name: id-card-access-level-legion-houndmaster
+
+- type: accessLevel
+  id: CaesarLegionVenator
+  name: id-card-access-level-legion-explorer
+
+- type: accessLevel
+  id: CaesarLegionVexillarius
+  name: id-card-access-level-legion-vexillarius
+
+- type: accessLevel
+  id: CaesarLegionLegionnaireRecruit
+  name: id-card-access-level-legion-recruit-legionary
+
+- type: accessLevel
+  id: CaesarLegionLegionnaireWarrior
+  name: id-card-access-level-legion-prime-legionary
+
+- type: accessLevel
+  id: CaesarLegionLegionnaireVeteran
+  name: id-card-access-level-legion-veteran-legionary
+
+- type: accessLevel
+  id: CaesarLegionDean
+  name: id-card-access-level-legion-decanus
+
+- type: accessLevel
+  id: CaesarLegionVeteranDecanus
+  name: id-card-access-level-legion-veteran-decanus
+
+- type: accessLevel
   id: CaesarLegionCenturion
   name: id-card-access-level-legion-centurion
 
 - type: accessLevel
-  id: CaesarLegionDean
-  name: id-card-access-level-legion-dean
-
-- type: accessLevel
-  id: CaesarLegionLegionnaireRecruit
-  name: id-card-access-level-legion-recruit
-
-- type: accessLevel
-  id: CaesarLegionLegionnaireVeteran
-  name: id-card-access-level-legion-veteran
-
-- type: accessLevel
-  id: CaesarLegionLegionnaireWarrior
-  name: id-card-access-level-legion-warrior
-
-- type: accessLevel
-  id: CaesarLegionVenator
-  name: id-card-access-level-legion-venator
-
-- type: accessLevel
-  id: CaesarLegion
-  name: id-card-access-level-west
+  id: CaesarLegionLegate
+  name: id-card-access-level-legion-legate
 
 - type: accessGroup
-  id: CaesarLegion
+  id: CaesarLegionSlave
   tags:
-  - CaesarLegionLegionnaireRecruit
-  - CaesarLegionLegionnaireVeteran
-  - CaesarLegionLegionnaireWarrior
+  - CaesarLegion
+  - CaesarLegionSlave
+
+- type: accessGroup
+  id: CaesarLegionRecruit
+  tags:
+  - CaesarLegion
+  - CaesarLegionSlave
+  - CaesarLegionRecruit
+
+- type: accessGroup
+  id: CaesarLegionHoundmaster
+  tags:
+  - CaesarLegion
+  - CaesarLegionSlave
+  - CaesarLegionRecruit
+  - CaesarLegionHoundmaster
+
+- type: accessGroup
+  id: CaesarLegionVenator
+  tags:
+  - CaesarLegion
+  - CaesarLegionSlave
+  - CaesarLegionRecruit
   - CaesarLegionVenator
+
+- type: accessGroup
+  id: CaesarLegionVexillarius
+  tags:
+  - CaesarLegion
+  - CaesarLegionSlave
+  - CaesarLegionRecruit
+  - CaesarLegionVexillarius
+
+- type: accessGroup
+  id: CaesarLegionLegionnaireRecruit
+  tags:
+  - CaesarLegion
+  - CaesarLegionSlave
+  - CaesarLegionRecruit
+  - CaesarLegionLegionnaireRecruit
+
+- type: accessGroup
+  id: CaesarLegionLegionnaireWarrior
+  tags:
+  - CaesarLegion
+  - CaesarLegionSlave
+  - CaesarLegionRecruit
+  - CaesarLegionLegionnaireRecruit
+  - CaesarLegionLegionnaireWarrior
+
+- type: accessGroup
+  id: CaesarLegionLegionnaireVeteran
+  tags:
+  - CaesarLegion
+  - CaesarLegionSlave
+  - CaesarLegionRecruit
+  - CaesarLegionLegionnaireRecruit
+  - CaesarLegionLegionnaireWarrior
+  - CaesarLegionLegionnaireVeteran
+
+- type: accessGroup
+  id: CaesarLegionDean
+  tags:
+  - CaesarLegion
+  - CaesarLegionSlave
+  - CaesarLegionRecruit
+  - CaesarLegionLegionnaireRecruit
+  - CaesarLegionLegionnaireWarrior
+  - CaesarLegionLegionnaireVeteran
+  - CaesarLegionDean
+
+- type: accessGroup
+  id: CaesarLegionVeteranDecanus
+  tags:
+  - CaesarLegion
+  - CaesarLegionSlave
+  - CaesarLegionRecruit
+  - CaesarLegionLegionnaireRecruit
+  - CaesarLegionLegionnaireWarrior
+  - CaesarLegionLegionnaireVeteran
+  - CaesarLegionDean
+  - CaesarLegionVeteranDecanus
+
+- type: accessGroup
+  id: CaesarLegionCenturion
+  tags:
+  - CaesarLegion
+  - CaesarLegionSlave
+  - CaesarLegionRecruit
+  - CaesarLegionLegionnaireRecruit
+  - CaesarLegionLegionnaireWarrior
+  - CaesarLegionLegionnaireVeteran
+  - CaesarLegionDean
+  - CaesarLegionVeteranDecanus
+  - CaesarLegionCenturion
+
+- type: accessGroup
+  id: CaesarLegionLegate
+  tags:
+  - CaesarLegion
+  - CaesarLegionSlave
+  - CaesarLegionRecruit
+  - CaesarLegionHoundmaster
+  - CaesarLegionVenator
+  - CaesarLegionVexillarius
+  - CaesarLegionLegionnaireRecruit
+  - CaesarLegionLegionnaireWarrior
+  - CaesarLegionLegionnaireVeteran
+  - CaesarLegionDean
+  - CaesarLegionVeteranDecanus
+  - CaesarLegionCenturion
+  - CaesarLegionLegate

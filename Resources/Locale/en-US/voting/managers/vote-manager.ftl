@@ -28,13 +28,17 @@ ui-round-countdown-60 = Attention: Approximately 60 minutes remain before the ro
 ui-round-countdown-30 = Attention: Approximately 30 minutes remain before the round ends.
 ui-round-countdown-15 = Attention: Approximately 15 minutes remain. A vote to decide the round's fate will now begin.
 
-# #Misfits Change: Automatic round-decision vote (New Round vs Extend Round).
-ui-vote-round-decision-title = Round ending soon — what should happen?
-ui-vote-round-decision-new = New Round
-ui-vote-round-decision-extend = Extend Round
-ui-vote-round-decision-new-won = The vote has decided: New Round ({ $newVotes } vs { $extendVotes }, { $total } connected). Calling the shuttle.
-ui-vote-round-decision-extend-won = The vote has decided: Extend Round ({ $extendVotes } vs { $newVotes }, { $total } connected). The round continues!
-ui-vote-round-decision-tie = The vote was tied ({ $votes } each, { $total } connected). Defaulting to extending the round.
+# #Misfits Change: Round timer HUD label.
+ui-round-timer-label = Round End
+    { $time }
+
+# #Misfits Change: Automatic round-decision vote (Yes/No extend-round vote).
+ui-vote-round-decision-title = Extend the round?
+ui-vote-round-decision-yes = Yes
+ui-vote-round-decision-no = No
+ui-vote-round-decision-yes-won = Vote passed to extend the round: Yes { $yesVotes }, No { $noVotes } ({ $total } connected). The round continues!
+ui-vote-round-decision-no-won = Vote passed to end the round: Yes { $yesVotes }, No { $noVotes } ({ $total } connected). Calling the shuttle.
+ui-vote-round-decision-tie = Extend-round vote tied: Yes { $yesVotes }, No { $noVotes } ({ $total } connected). Defaulting to extending the round.
 
 ui-vote-gamemode-title = Next gamemode
 ui-vote-gamemode-tie = Tie for gamemode vote! Picking... { $picked }

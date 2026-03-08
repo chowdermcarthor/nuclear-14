@@ -12,6 +12,7 @@ using Content.Shared.Roles;
 using Content.Shared.StatusIcon;
 using Robust.Client.Console;
 using Robust.Client.GameObjects;
+using Robust.Client.Graphics;
 using Robust.Client.UserInterface;
 using Robust.Client.UserInterface.Controls;
 using Robust.Client.UserInterface.CustomControls;
@@ -265,6 +266,18 @@ namespace Content.Client.LateJoin
 
                         jobSelector.AddChild(jobLabel);
                         jobButton.AddChild(jobSelector);
+
+                        // #Misfits Change: rank group separator
+                        if (prototype.ShowBorder)
+                        {
+                            category.AddChild(new PanelContainer
+                            {
+                                PanelOverride = new StyleBoxFlat { BackgroundColor = Color.FromHex("#464966") },
+                                MinSize = new Vector2(0, 2),
+                                Margin = new Thickness(3f, 8f, 3f, 4f),
+                            });
+                        }
+
                         category.AddChild(jobButton);
 
                         jobButton.OnPressed += _ => SelectedId.Invoke((id, jobButton.JobId));

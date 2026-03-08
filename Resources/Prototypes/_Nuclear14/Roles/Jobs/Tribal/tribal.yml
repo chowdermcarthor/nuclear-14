@@ -1,6 +1,8 @@
 - type: job
   id: Tribal
   setPreference: true
+  weight: 10
+  showBorder: true
   overrideConsoleVisibility: false
   canBeAntag: false
   name: job-name-tribal

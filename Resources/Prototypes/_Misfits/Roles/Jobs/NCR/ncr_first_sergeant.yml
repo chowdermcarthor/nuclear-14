@@ -1,0 +1,38 @@
+- type: job
+  id: NCRFirstSergeant
+  setPreference: true
+  weight: 70
+  showBorder: true
+  overrideConsoleVisibility: false
+  canBeAntag: false
+  name: job-name-ncr-first-sergeant
+  description: job-description-ncr-first-sergeant
+  playTimeTracker: NCRFirstSergeant
+  requirements:
+    - !type:CharacterSpeciesRequirement
+      species:
+      - Human
+      - Ghoul
+    - !type:CharacterDepartmentTimeRequirement
+      department: NCR
+      min: 0
+    - !type:CharacterPlaytimeRequirement
+      tracker: NCRStaffSergeant
+      min: 0
+  startingGear: NCRSGTGear
+  icon: "JobIconNcrSerg"
+  supervisors: job-supervisors-ncr-lt
+  alwaysUseSpawner: true
+  access:
+  - NCR
+  - NCRSGT
+  special:
+  - !type:AddComponentSpecial
+    components:
+      - type: NpcFactionMember
+        factions:
+          - Wastelander
+          - NCR
+
+- type: playTimeTracker
+  id: NCRFirstSergeant

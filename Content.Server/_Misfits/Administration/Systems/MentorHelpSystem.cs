@@ -1,15 +1,26 @@
-// #Misfits Change - Server-side mentor help system
+// #Misfits Change - Server-side mentor help system with Discord webhook integration
 using System.Linq;
+using System.Net.Http;
+using System.Text;
+using System.Text.Json;
+using System.Text.Json.Nodes;
+using System.Text.RegularExpressions;
+using System.Threading.Tasks;
+using Content.Server.Administration;
 using Content.Server.Administration.Managers;
 using Content.Server.Afk;
+using Content.Server.Discord;
 using Content.Server.GameTicking;
 using Content.Server.Players.RateLimiting;
 using Content.Shared._Misfits.Administration;
 using Content.Shared.Administration;
 using Content.Shared.CCVar;
+using Content.Shared.GameTicking;
+using Content.Shared.Mind;
 using Content.Shared.Players.RateLimiting;
 using JetBrains.Annotations;
 using Robust.Server.Player;
+using Robust.Shared;
 using Robust.Shared.Configuration;
 using Robust.Shared.Enums;
 using Robust.Shared.Network;
@@ -20,7 +31,7 @@ using Robust.Shared.Utility;
 namespace Content.Server._Misfits.Administration.Systems;
 
 [UsedImplicitly]
-public sealed class MentorHelpSystem : SharedMentorHelpSystem
+public sealed partial class MentorHelpSystem : SharedMentorHelpSystem
 {
     private const string RateLimitKey = "MentorHelp";
 
@@ -28,21 +39,65 @@ public sealed class MentorHelpSystem : SharedMentorHelpSystem
     [Dependency] private readonly IAdminManager _adminManager = default!;
     [Dependency] private readonly IConfigurationManager _config = default!;
     [Dependency] private readonly IGameTiming _timing = default!;
+    [Dependency] private readonly IPlayerLocator _playerLocator = default!;
     [Dependency] private readonly GameTicker _gameTicker = default!;
+    [Dependency] private readonly SharedMindSystem _minds = default!;
     [Dependency] private readonly IAfkManager _afkManager = default!;
     [Dependency] private readonly PlayerRateLimitManager _rateLimit = default!;
 
+    [GeneratedRegex(@"^https://(?:(?:canary|ptb)\.)?discord\.com/api/webhooks/(\d+)/((?!.*/).*)$")]
+    private static partial Regex DiscordRegex();
+
+    private string _webhookUrl = string.Empty;
+    private WebhookData? _webhookData;
+
     private ISawmill _sawmill = default!;
+    private readonly HttpClient _httpClient = new();
+
+    private string _footerIconUrl = string.Empty;
+    private string _avatarUrl = string.Empty;
+    private string _serverName = string.Empty;
+
+    private readonly Dictionary<NetUserId, DiscordRelayInteraction> _relayMessages = new();
+    private Dictionary<NetUserId, string> _oldMessageIds = new();
+    private readonly Dictionary<NetUserId, Queue<DiscordRelayedData>> _messageQueues = new();
+    private readonly HashSet<NetUserId> _processingChannels = new();
     private readonly Dictionary<NetUserId, (TimeSpan Timestamp, bool Typing)> _typingUpdateTimestamps = new();
     private readonly Dictionary<NetUserId, DateTime> _activeConversations = new();
+
+    // Max embed description length is 4096, per Discord docs. Keep small margin.
+    private const ushort DescriptionMax = 4000;
+    private const ushort MessageLengthCap = 3000;
+    private const string TooLongText = "... **(too long)**";
+
+    private int _maxAdditionalChars;
 
     public override void Initialize()
     {
         base.Initialize();
+
+        Subs.CVar(_config, CCVars.DiscordMHelpWebhook, OnWebhookChanged, true);
+        Subs.CVar(_config, CCVars.DiscordMHelpFooterIcon, OnFooterIconChanged, true);
+        Subs.CVar(_config, CCVars.DiscordMHelpAvatar, OnAvatarChanged, true);
+        Subs.CVar(_config, CVars.GameHostName, OnServerNameChanged, true);
+
         _sawmill = IoCManager.Resolve<ILogManager>().GetSawmill("MHELP");
+
+        var defaultParams = new MHelpMessageParams(
+            string.Empty,
+            string.Empty,
+            true,
+            _gameTicker.RoundDuration().ToString("hh\\:mm\\:ss"),
+            _gameTicker.RunLevel,
+            playedSound: false
+        );
+        _maxAdditionalChars = GenerateMHelpMessage(defaultParams).Message.Length;
+
         _playerManager.PlayerStatusChanged += OnPlayerStatusChanged;
 
         SubscribeNetworkEvent<MentorHelpClientTypingUpdated>(OnClientTypingUpdated);
+        SubscribeLocalEvent<GameRunLevelChangedEvent>(OnGameRunLevelChanged);
+        SubscribeLocalEvent<RoundRestartCleanupEvent>(_ => _activeConversations.Clear());
 
         _rateLimit.Register(
             RateLimitKey,
@@ -68,18 +123,18 @@ public sealed class MentorHelpSystem : SharedMentorHelpSystem
         if (!_activeConversations.ContainsKey(e.Session.UserId))
             return;
 
-        var message = e.NewStatus switch
+        var statusText = e.NewStatus switch
         {
             SessionStatus.Connected => "reconnected.",
             SessionStatus.Disconnected => "disconnected.",
             _ => null
         };
 
-        if (message == null)
+        if (statusText == null)
             return;
 
         var color = e.NewStatus == SessionStatus.Connected ? Color.Green.ToHex() : Color.Yellow.ToHex();
-        var inGameMessage = $"[color={color}]{e.Session.Name} {message}[/color]";
+        var inGameMessage = $"[color={color}]{e.Session.Name} {statusText}[/color]";
 
         var msg = new MentorHelpTextMessage(
             userId: e.Session.UserId,
@@ -93,6 +148,24 @@ public sealed class MentorHelpSystem : SharedMentorHelpSystem
         foreach (var mentor in mentors)
         {
             RaiseNetworkEvent(msg, mentor);
+        }
+
+        // Relay connection status to Discord webhook
+        if (_webhookUrl != string.Empty)
+        {
+            var icon = e.NewStatus == SessionStatus.Connected ? ":green_circle:" : ":red_circle:";
+            var roundTime = _gameTicker.RoundDuration().ToString("hh\\:mm\\:ss");
+            var messageParams = new MHelpMessageParams(
+                e.Session.Name,
+                FormattedMessage.EscapeText(statusText),
+                true,
+                roundTime,
+                _gameTicker.RunLevel,
+                playedSound: false,
+                icon: icon
+            );
+            var queue = _messageQueues.GetOrNew(e.Session.UserId);
+            queue.Enqueue(GenerateMHelpMessage(messageParams));
         }
     }
 
@@ -119,6 +192,69 @@ public sealed class MentorHelpSystem : SharedMentorHelpSystem
             RaiseNetworkEvent(update, mentor);
         }
     }
+
+    private void OnGameRunLevelChanged(GameRunLevelChangedEvent args)
+    {
+        if (args.Old is GameRunLevel.PreRoundLobby ||
+            args.New is not (GameRunLevel.PreRoundLobby or GameRunLevel.InRound))
+        {
+            return;
+        }
+
+        _oldMessageIds = new Dictionary<NetUserId, string>();
+        foreach (var (user, interaction) in _relayMessages)
+        {
+            var id = interaction.Id;
+            if (id == null)
+                return;
+            _oldMessageIds[user] = id;
+        }
+
+        _relayMessages.Clear();
+    }
+
+    private async void OnWebhookChanged(string url)
+    {
+        _webhookUrl = url;
+
+        if (url == string.Empty)
+            return;
+
+        var match = DiscordRegex().Match(url);
+
+        if (!match.Success)
+        {
+            Log.Warning("MHelp webhook URL does not appear to be a standard Discord webhook. Attempting to use anyway...");
+            _webhookData = await GetWebhookData(url);
+            return;
+        }
+
+        if (match.Groups.Count <= 2)
+        {
+            Log.Error("Could not get webhook ID or token for MHelp webhook URL.");
+            return;
+        }
+
+        _webhookData = await GetWebhookData(url);
+    }
+
+    private async Task<WebhookData?> GetWebhookData(string url)
+    {
+        var response = await _httpClient.GetAsync(url);
+        var content = await response.Content.ReadAsStringAsync();
+        if (!response.IsSuccessStatusCode)
+        {
+            _sawmill.Log(LogLevel.Error,
+                $"MHelp webhook returned bad status code when trying to get webhook data: {response.StatusCode}\nResponse: {content}");
+            return null;
+        }
+
+        return JsonSerializer.Deserialize<WebhookData>(content);
+    }
+
+    private void OnFooterIconChanged(string url) => _footerIconUrl = url;
+    private void OnAvatarChanged(string url) => _avatarUrl = url;
+    private void OnServerNameChanged(string obj) => _serverName = obj;
 
     protected override void OnMentorHelpTextMessage(MentorHelpTextMessage message, EntitySessionEventArgs eventArgs)
     {
@@ -168,10 +304,36 @@ public sealed class MentorHelpSystem : SharedMentorHelpSystem
             }
         }
 
-        if (mentors.Count != 0)
+        // Relay to Discord webhook
+        var sendsWebhook = _webhookUrl != string.Empty;
+        if (sendsWebhook)
+        {
+            if (!_messageQueues.ContainsKey(msg.UserId))
+                _messageQueues[msg.UserId] = new Queue<DiscordRelayedData>();
+
+            var str = message.Text;
+            var unameLength = senderSession.Name.Length;
+
+            if (unameLength + str.Length + _maxAdditionalChars > DescriptionMax)
+                str = str[..(DescriptionMax - _maxAdditionalChars - unameLength)];
+
+            var nonAfkMentors = GetNonAfkMentors();
+            var messageParams = new MHelpMessageParams(
+                senderSession.Name,
+                str,
+                senderMentor,
+                _gameTicker.RoundDuration().ToString("hh\\:mm\\:ss"),
+                _gameTicker.RunLevel,
+                playedSound: playSound,
+                noReceivers: nonAfkMentors.Count == 0
+            );
+            _messageQueues[msg.UserId].Enqueue(GenerateMHelpMessage(messageParams));
+        }
+
+        if (mentors.Count != 0 || sendsWebhook)
             return;
 
-        // No mentors online
+        // No mentors online and no webhook — let the player know
         if (senderSession.Channel != null)
         {
             var systemText = "[color=red]No mentors are currently online to receive your message. Please try again later or use admin help (F2).[/color]";
@@ -180,11 +342,283 @@ public sealed class MentorHelpSystem : SharedMentorHelpSystem
         }
     }
 
+    public override void Update(float frameTime)
+    {
+        base.Update(frameTime);
+
+        foreach (var userId in _messageQueues.Keys.ToArray())
+        {
+            if (_processingChannels.Contains(userId))
+                continue;
+
+            var queue = _messageQueues[userId];
+            _messageQueues.Remove(userId);
+            if (queue.Count == 0)
+                continue;
+
+            _processingChannels.Add(userId);
+            ProcessQueue(userId, queue);
+        }
+    }
+
+    private async void ProcessQueue(NetUserId userId, Queue<DiscordRelayedData> messages)
+    {
+        var exists = _relayMessages.TryGetValue(userId, out var existingEmbed);
+
+        var tooLong = exists && messages.Sum(m => Math.Min(m.Message.Length, MessageLengthCap) + "\n".Length)
+            + existingEmbed?.Description.Length > DescriptionMax;
+
+        if (!exists || tooLong)
+        {
+            var lookup = await _playerLocator.LookupIdAsync(userId);
+
+            if (lookup == null)
+            {
+                _sawmill.Log(LogLevel.Error,
+                    $"Unable to find player for NetUserId {userId} when sending MHelp Discord webhook.");
+                _relayMessages.Remove(userId);
+                _processingChannels.Remove(userId);
+                return;
+            }
+
+            var linkToPrevious = string.Empty;
+
+            if (_webhookData is { GuildId: { } guildId, ChannelId: { } channelId })
+            {
+                if (tooLong && existingEmbed?.Id != null)
+                {
+                    linkToPrevious =
+                        $"**[Go to previous embed of this round](https://discord.com/channels/{guildId}/{channelId}/{existingEmbed.Id})**\n";
+                }
+                else if (_oldMessageIds.TryGetValue(userId, out var id) && !string.IsNullOrEmpty(id))
+                {
+                    linkToPrevious =
+                        $"**[Go to last round's conversation with this player](https://discord.com/channels/{guildId}/{channelId}/{id})**\n";
+                }
+            }
+
+            var characterName = _minds.GetCharacterName(userId);
+            existingEmbed = new DiscordRelayInteraction
+            {
+                Id = null,
+                CharacterName = characterName,
+                Description = linkToPrevious,
+                Username = lookup.Username,
+                LastRunLevel = _gameTicker.RunLevel,
+            };
+
+            _relayMessages[userId] = existingEmbed;
+        }
+
+        if (existingEmbed!.LastRunLevel != _gameTicker.RunLevel)
+        {
+            existingEmbed.Description += _gameTicker.RunLevel switch
+            {
+                GameRunLevel.PreRoundLobby => "\n\n:arrow_forward: _**Pre-round lobby started**_\n",
+                GameRunLevel.InRound => "\n\n:arrow_forward: _**Round started**_\n",
+                GameRunLevel.PostRound => "\n\n:stop_button: _**Post-round started**_\n",
+                _ => throw new ArgumentOutOfRangeException(nameof(_gameTicker.RunLevel),
+                    $"{_gameTicker.RunLevel} was not matched."),
+            };
+
+            existingEmbed.LastRunLevel = _gameTicker.RunLevel;
+        }
+
+        while (messages.TryDequeue(out var message))
+        {
+            string text;
+            if (message.Message.Length > MessageLengthCap)
+                text = message.Message[..(MessageLengthCap - TooLongText.Length)] + TooLongText;
+            else
+                text = message.Message;
+
+            existingEmbed.Description += $"\n{text}";
+        }
+
+        var payload = GeneratePayload(existingEmbed.Description, existingEmbed.Username, userId.UserId, existingEmbed.CharacterName);
+
+        if (existingEmbed.Id == null)
+        {
+            var request = await _httpClient.PostAsync($"{_webhookUrl}?wait=true",
+                new StringContent(JsonSerializer.Serialize(payload), Encoding.UTF8, "application/json"));
+
+            var content = await request.Content.ReadAsStringAsync();
+            if (!request.IsSuccessStatusCode)
+            {
+                _sawmill.Log(LogLevel.Error,
+                    $"Discord returned bad status code when posting MHelp message: {request.StatusCode}\nResponse: {content}");
+                _relayMessages.Remove(userId);
+                _processingChannels.Remove(userId);
+                return;
+            }
+
+            var id = JsonNode.Parse(content)?["id"];
+            if (id == null)
+            {
+                _sawmill.Log(LogLevel.Error,
+                    $"Could not find id in json-content returned from Discord MHelp webhook: {content}");
+                _relayMessages.Remove(userId);
+                _processingChannels.Remove(userId);
+                return;
+            }
+
+            existingEmbed.Id = id.ToString();
+        }
+        else
+        {
+            var request = await _httpClient.PatchAsync($"{_webhookUrl}/messages/{existingEmbed.Id}",
+                new StringContent(JsonSerializer.Serialize(payload), Encoding.UTF8, "application/json"));
+
+            if (!request.IsSuccessStatusCode)
+            {
+                var content = await request.Content.ReadAsStringAsync();
+                _sawmill.Log(LogLevel.Error,
+                    $"Discord returned bad status code when patching MHelp message: {request.StatusCode}\nResponse: {content}");
+                _relayMessages.Remove(userId);
+                _processingChannels.Remove(userId);
+                return;
+            }
+        }
+
+        _relayMessages[userId] = existingEmbed;
+        _processingChannels.Remove(userId);
+    }
+
+    private WebhookPayload GeneratePayload(string messages, string username, Guid userId, string? characterName = null)
+    {
+        if (characterName != null)
+            username += $" ({characterName})";
+
+        // Purple color for mentor help to distinguish from ahelp (green)
+        var color = GetNonAfkMentors().Count > 0 ? 0x9B59B6 : 0xFF0000;
+
+        var serverName = _serverName[..Math.Min(_serverName.Length, 1500)];
+
+        var round = _gameTicker.RunLevel switch
+        {
+            GameRunLevel.PreRoundLobby => _gameTicker.RoundId == 0
+                ? "pre-round lobby after server restart"
+                : $"pre-round lobby for round {_gameTicker.RoundId + 1}",
+            GameRunLevel.InRound => $"round {_gameTicker.RoundId}",
+            GameRunLevel.PostRound => $"post-round {_gameTicker.RoundId}",
+            _ => throw new ArgumentOutOfRangeException(nameof(_gameTicker.RunLevel),
+                $"{_gameTicker.RunLevel} was not matched."),
+        };
+
+        return new WebhookPayload
+        {
+            Username = username,
+            UserID = userId,
+            AvatarUrl = string.IsNullOrWhiteSpace(_avatarUrl) ? null : _avatarUrl,
+            Embeds = new List<WebhookEmbed>
+            {
+                new()
+                {
+                    Description = messages,
+                    Color = color,
+                    Footer = new WebhookEmbedFooter
+                    {
+                        Text = $"{serverName} ({round})",
+                        IconUrl = string.IsNullOrWhiteSpace(_footerIconUrl) ? null : _footerIconUrl,
+                    },
+                },
+            },
+        };
+    }
+
+    private static DiscordRelayedData GenerateMHelpMessage(MHelpMessageParams parameters)
+    {
+        var sb = new StringBuilder();
+
+        if (parameters.Icon != null)
+            sb.Append(parameters.Icon);
+        else if (parameters.IsMentor)
+            sb.Append(":outbox_tray:");
+        else if (parameters.NoReceivers)
+            sb.Append(":sos:");
+        else
+            sb.Append(":inbox_tray:");
+
+        if (parameters.RoundTime != string.Empty && parameters.RoundState == GameRunLevel.InRound)
+            sb.Append($" **{parameters.RoundTime}**");
+        if (!parameters.PlayedSound)
+            sb.Append(" **(S)**");
+
+        if (parameters.Icon == null)
+            sb.Append($" **{parameters.Username}:** ");
+        else
+            sb.Append($" **{parameters.Username}** ");
+
+        sb.Append(parameters.Message);
+
+        return new DiscordRelayedData
+        {
+            Receivers = !parameters.NoReceivers,
+            Message = sb.ToString(),
+        };
+    }
+
+    private IList<INetChannel> GetNonAfkMentors()
+    {
+        return _adminManager.ActiveAdmins
+            .Where(p => (_adminManager.GetAdminData(p)?.HasFlag(AdminFlags.Mentorhelp) ?? false) &&
+                        !_afkManager.IsAfk(p))
+            .Select(p => p.Channel)
+            .ToList();
+    }
+
     private IList<INetChannel> GetTargetMentors()
     {
         return _adminManager.ActiveAdmins
             .Where(p => _adminManager.GetAdminData(p)?.HasFlag(AdminFlags.Mentorhelp) ?? false)
             .Select(p => p.Channel)
             .ToList();
+    }
+
+    private record struct DiscordRelayedData
+    {
+        public bool Receivers;
+        public string Message;
+    }
+
+    private sealed class DiscordRelayInteraction
+    {
+        public string? Id;
+        public string Username = string.Empty;
+        public string? CharacterName;
+        public string Description = string.Empty;
+        public GameRunLevel LastRunLevel;
+    }
+}
+
+public sealed class MHelpMessageParams
+{
+    public string Username { get; set; }
+    public string Message { get; set; }
+    public bool IsMentor { get; set; }
+    public string RoundTime { get; set; }
+    public GameRunLevel RoundState { get; set; }
+    public bool PlayedSound { get; set; }
+    public bool NoReceivers { get; set; }
+    public string? Icon { get; set; }
+
+    public MHelpMessageParams(
+        string username,
+        string message,
+        bool isMentor,
+        string roundTime,
+        GameRunLevel roundState,
+        bool playedSound,
+        bool noReceivers = false,
+        string? icon = null)
+    {
+        Username = username;
+        Message = message;
+        IsMentor = isMentor;
+        RoundTime = roundTime;
+        RoundState = roundState;
+        PlayedSound = playedSound;
+        NoReceivers = noReceivers;
+        Icon = icon;
     }
 }

@@ -74126,7 +74126,7 @@ entities:
     - type: Transform
       pos: 132.5,223.5
       parent: 2
-- proto: N14SpawnPointNCRRanger
+- proto: N14SpawnPointRanger
   entities:
   - uid: 4821
     components:
@@ -74137,21 +74137,6 @@ entities:
     components:
     - type: Transform
       pos: 39.5,99.5
-      parent: 2
-  - uid: 6781
-    components:
-    - type: Transform
-      pos: 38.5,101.5
-      parent: 2
-  - uid: 6782
-    components:
-    - type: Transform
-      pos: 38.5,99.5
-      parent: 2
-  - uid: 6783
-    components:
-    - type: Transform
-      pos: 40.5,98.5
       parent: 2
   - uid: 6846
     components:
@@ -74173,7 +74158,24 @@ entities:
     - type: Transform
       pos: 35.5,92.5
       parent: 2
-- proto: N14SpawnPointNCRRangerVeteran
+- proto: N14SpawnPointRangerRecruit
+  entities:
+  - uid: 6781
+    components:
+    - type: Transform
+      pos: 38.5,101.5
+      parent: 2
+  - uid: 6782
+    components:
+    - type: Transform
+      pos: 38.5,99.5
+      parent: 2
+  - uid: 6783
+    components:
+    - type: Transform
+      pos: 40.5,98.5
+      parent: 2
+- proto: N14SpawnPointRangerVeteran
   entities:
   - uid: 4826
     components:

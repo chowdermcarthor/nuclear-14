@@ -1,6 +1,7 @@
 - type: job
   id: WastelandBartender
   setPreference: true
+  weight: 25
   overrideConsoleVisibility: false
   canBeAntag: false
   name: job-name-townbartender

@@ -1,6 +1,8 @@
 - type: job
   id: TribalHealer
   setPreference: true
+  weight: 40
+  showBorder: true
   overrideConsoleVisibility: false
   canBeAntag: false
   name: job-name-tribal-healer

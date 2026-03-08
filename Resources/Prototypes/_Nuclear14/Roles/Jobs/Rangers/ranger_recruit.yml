@@ -1,12 +1,12 @@
 - type: job
   id: RangerRecruit
-  setPreference: false
-  name: job-name-ranger-recruit
-  description: job-description-ranger-recruit
+  setPreference: true
+  name: job-name-ranger-patrol
+  description: job-description-ranger-patrol
   playTimeTracker: RangerRecruit
   startingGear: RangerRecruitGear
   icon: "JobIconSecurityOfficer"
-  supervisors: job-supervisors-ranger
+  supervisors: job-supervisors-ranger-field
   canBeAntag: false
   access:
   - NCR

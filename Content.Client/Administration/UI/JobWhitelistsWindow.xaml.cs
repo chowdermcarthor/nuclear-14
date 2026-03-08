@@ -21,6 +21,19 @@ public sealed partial class JobWhitelistsWindow : FancyWindow
 {
     [Dependency] private readonly IPrototypeManager _proto = default!;
 
+    private static readonly HashSet<string> AllowedDepartments = new()
+    {
+        "BrotherhoodOfSteel",
+        "CaesarLegion",
+        "NCR",
+        "Townsfolk",
+        "FEVMutants",
+        "Tribe",
+        "Robots",
+        "Vault",
+        "Raider",
+    };
+
     public Action<ProtoId<JobPrototype>, bool>? OnSetJob;
 
     public JobWhitelistsWindow()
@@ -38,6 +51,9 @@ public sealed partial class JobWhitelistsWindow : FancyWindow
         Departments.RemoveAllChildren();
         foreach (var proto in _proto.EnumeratePrototypes<DepartmentPrototype>())
         {
+            if (!AllowedDepartments.Contains(proto.ID))
+                continue;
+
             var panel = new DepartmentWhitelistPanel(proto, _proto, state.Whitelists);
             panel.OnSetJob += (id, whitelisting) => OnSetJob?.Invoke(id, whitelisting);
             Departments.AddChild(panel);

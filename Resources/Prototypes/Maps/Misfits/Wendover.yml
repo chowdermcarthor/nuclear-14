@@ -46,43 +46,54 @@
           TownShopkeeper: [ 1, 1 ]
           TownShopkeeperHelper: [ 1, 1 ] # Forge-Town
           Townsperson: [ 5, 5 ]
+          NCRCaptain: [ 1, 1 ]
           NCRLT: [ 1, 1 ]
-          NCRRangerVeteran: [ 1, 1 ]
-          NCRRanger: [ 2, 3 ]
-          NCRSGT: [ 2, 2 ]
-          NCRWS: [ 2, 2 ]
+          RangerVeteran: [ 1, 1 ]
+          Ranger: [ 2, 2 ]
+          RangerRecruit: [ 1, 1 ]
+          NCRFirstSergeant: [ 1, 1 ]
+          NCRStaffSergeant: [ 1, 1 ]
+          NCRSGT: [ 1, 1 ]
+          NCRWS: [ 1, 1 ]
           NCREngineer: [ 2, 2 ]
-          NCRMedic: [ 1, 2 ]
-          NCRSoldier: [ 3, 6 ]
-          NCRCadet: [ 2, 5 ]
+          NCRDoctor: [ 1, 1 ]
+          NCRMedic: [ 1, 1 ]
+          NCRPrivateFirstClass: [ 2, 2 ]
+          NCRSoldier: [ 4, 4 ]
+          NCRCadet: [ 5, 5 ]
           NCRPisoner : [ 3, 3 ]
           NCRMPinvestigator : [ 1, 1 ]
           # CaravanLeader: [ 1, 1 ]
           # CaravanTrader: [ 1, 1 ]
           # CaravanGuard: [ 2, 2 ]
-          # BoSWashingtonCommander: [ 1, 0 ]
+          BoSWashingtonCommander: [ 1, 1 ] # Misfits Change
           # BoSWashingtonPaladin: [ 1, 0 ]
           # BoSWashingtonScribe: [ 2, 0 ]
           # BoSWashingtonKnight: [ 2, 2 ]
           # BoSWashingtonInitiate: [ 0, 2 ]
           BoSMidPaladinCommander: [ 1, 1 ]
-          BoSMidInquisitor: [ 1, 1 ]
-          BoSMidPaladin: [ 1, 2 ]
+          BoSWestScribe: [ 1, 1 ] # Misfits Change
+          BoSMidPaladin: [ 2, 3 ]
           BoSMidKnight: [ 2, 3 ]
           BoSMidScribe: [ 1, 2 ]
           BoSMidSquire: [ 2, 2 ]
-          BoSMidSerf: [ 3, 3 ]
+          BoSWashingtonInitiate: [ 3, 3 ]
           Overseer: [ 1, 1 ]
           VaultDoctor: [ 2, 2 ]
           VaultDweller: [ 4, 4 ]
           VaultEngineer: [ 1, 1 ]
           VaultSecurity: [ 2, 2 ]
+          CaesarLegionLegate: [ 1, 1 ] # Forge-Legion
           CaesarLegionCenturion: [ 1, 1 ] # Forge-Legion
+          CaesarLegionVeteranDecanus: [ 1, 1 ] # Forge-Legion
+          CaesarLegionDean: [ 1, 1 ] # Forge-Legion
+          CaesarLegionLegionnaireVeteran: [ 2, 2 ] # Forge-Legion
+          CaesarLegionLegionnaireWarrior: [ 2, 2 ] # Forge-Legion
+          CaesarLegionLegionnaireRecruit: [ 4, 4 ] # Forge-Legion
+          CaesarLegionVexillarius: [ 1, 1 ] # Forge-Legion
           CaesarLegionVenator: [ 1, 1 ] # Forge-Legion
-          CaesarLegionDean: [ 2, 2 ] # Forge-Legion
-          CaesarLegionLegionnaireVeteran: [ 3, 3 ] # Forge-Legion
-          CaesarLegionLegionnaireWarrior: [ 4, 4 ] # Forge-Legion
-          CaesarLegionLegionnaireRecruit: [ 6, 6 ] # Forge-Legion
+          CaesarLegionHoundmaster: [ 1, 1 ] # Forge-Legion
+          CaesarLegionRecruit: [ 2, 2 ] # Forge-Legion
           CaesarLegionSlave: [ 3, 3 ] # Forge-Legion
           # Raider: [3,3]
           Followers: [ 2, 2 ]

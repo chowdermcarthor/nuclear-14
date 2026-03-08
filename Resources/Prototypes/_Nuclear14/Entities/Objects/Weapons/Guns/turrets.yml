@@ -142,7 +142,7 @@
   components:
   - type: NpcFactionMember
     factions:
-    - BrotherhoodMidwestSecureArea
+    - BrotherhoodOfSteelSecureArea
 
 - type: entity
   parent: N14BaseWeaponTurret
@@ -151,7 +151,7 @@
   components:
   - type: NpcFactionMember
     factions:
-    - BrotherhoodMidwest
+    - BrotherhoodOfSteel
 
 - type: entity
   parent: N14BaseWeaponTurret
@@ -160,7 +160,7 @@
   components:
   - type: NpcFactionMember
     factions:
-    - BrotherhoodWashingtonSecureArea
+    - BrotherhoodOfSteelSecureArea
 
 - type: entity
   parent: N14BaseWeaponTurret
@@ -169,7 +169,7 @@
   components:
   - type: NpcFactionMember
     factions:
-    - BrotherhoodWashington
+    - BrotherhoodOfSteel
 
 - type: entity
   parent: N14BaseWeaponTurret
@@ -299,7 +299,7 @@
   components:
   - type: NpcFactionMember
     factions:
-    - BrotherhoodMidwestSecureArea
+    - BrotherhoodOfSteelSecureArea
 
 - type: entity
   parent: N14BaseWeaponTurretMeta
@@ -308,7 +308,7 @@
   components:
   - type: NpcFactionMember
     factions:
-    - BrotherhoodWashingtonSecureArea
+    - BrotherhoodOfSteelSecureArea
 
 - type: entity
   parent: N14BaseWeaponTurretMeta

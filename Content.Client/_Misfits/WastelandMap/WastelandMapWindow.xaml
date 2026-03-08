@@ -1,0 +1,41 @@
+<!-- #Misfits Change - Wasteland Map Viewer Window -->
+<controls:FancyWindow xmlns="https://spacestation14.io"
+                      xmlns:controls="clr-namespace:Content.Client.UserInterface.Controls"
+                      Title="Map"
+                      Resizable="True"
+                      SetSize="700 600"
+                      MinSize="400 350">
+    <BoxContainer Orientation="Vertical" HorizontalExpand="True" VerticalExpand="True">
+        <!-- Map title header -->
+        <controls:StripeBack>
+            <PanelContainer>
+                <Label Name="MapTitle" Text="Map" StyleClasses="LabelBig" Align="Center"/>
+            </PanelContainer>
+        </controls:StripeBack>
+
+        <!-- Map image area with scroll support -->
+        <PanelContainer HorizontalExpand="True" VerticalExpand="True"
+                        StyleClasses="AngleRect">
+            <ScrollContainer Name="ScrollArea"
+                             HorizontalExpand="True"
+                             VerticalExpand="True"
+                             HScrollEnabled="True"
+                             VScrollEnabled="True">
+                <TextureRect Name="MapTexture"
+                             Stretch="KeepAspectCentered"
+                             HorizontalExpand="True"
+                             VerticalExpand="True"/>
+            </ScrollContainer>
+        </PanelContainer>
+
+        <!-- Footer -->
+        <BoxContainer Orientation="Vertical">
+            <PanelContainer StyleClasses="LowDivider"/>
+            <BoxContainer Orientation="Horizontal" Margin="10 2 5 0" VerticalAlignment="Bottom">
+                <Label Name="FooterText" Text="Zoom: scroll wheel | Pan: click and drag"
+                       StyleClasses="WindowFooterText"
+                       HorizontalAlignment="Left" HorizontalExpand="True" Margin="0 0 5 0"/>
+            </BoxContainer>
+        </BoxContainer>
+    </BoxContainer>
+</controls:FancyWindow>

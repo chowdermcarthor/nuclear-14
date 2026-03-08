@@ -6,8 +6,8 @@
   parent: N14IDPassportBlank
   id: N14IDBrotherhoodWashingtonHolotagInitiate
   name: holotag
-  description: An ID holotag worn by an Initiate in the Washington Brotherhood of Steel.
-  suffix: Washington Initiate
+  description: An ID holotag worn by a Brotherhood initiate.
+  suffix: Initiate
   components:
   - type: Sprite
     sprite: _Nuclear14/Objects/Misc/identification.rsi
@@ -15,14 +15,14 @@
   - type: PresetIdCard
     job: BoSWashingtonInitiate
   - type: ClothingAddFaction
-    faction: BrotherhoodWashington
+    faction: BrotherhoodOfSteel
 
 - type: entity
   parent: N14IDBrotherhoodWashingtonHolotagInitiate
   id: N14IDBrotherhoodWashingtonHolotagScribe
   name: holotag
-  description: An ID holotag worn by a Scribe in the Washington Brotherhood of Steel.
-  suffix: Washington Scribe
+  description: An ID holotag worn by a Brotherhood scribe.
+  suffix: Scribe
   components:
   - type: PresetIdCard
     job: BoSWashingtonScribe
@@ -31,8 +31,8 @@
   parent: N14IDBrotherhoodWashingtonHolotagInitiate
   id: N14IDBrotherhoodWashingtonHolotagKnight
   name: holotag
-  description: An ID holotag worn by a Knight in the Washington Brotherhood of Steel.
-  suffix: Washington Knight
+  description: An ID holotag worn by a Brotherhood knight.
+  suffix: Knight
   components:
   - type: PresetIdCard
     job: BoSWashingtonKnight
@@ -41,8 +41,8 @@
   parent: N14IDBrotherhoodWashingtonHolotagInitiate
   id: N14IDBrotherhoodWashingtonHolotagPaladin
   name: holotag
-  description: An ID holotag worn by a Paladin in the Washington Brotherhood of Steel.
-  suffix: Washington Paladin
+  description: An ID holotag worn by a Brotherhood paladin.
+  suffix: Paladin
   components:
   - type: PresetIdCard
     job: BoSWashingtonPaladin
@@ -51,8 +51,8 @@
   parent: N14IDBrotherhoodWashingtonHolotagInitiate
   id: N14IDBrotherhoodWashingtonHolotagCommander
   name: holotag
-  description: An ID holotag worn by the Commander of the Washington Brotherhood of Steel.
-  suffix: Washington Commander
+  description: An ID holotag worn by the Head Knight of the Brotherhood of Steel.
+  suffix: Head Knight
   components:
   - type: PresetIdCard
     job: BoSWashingtonCommander
@@ -63,7 +63,7 @@
   id: N14IDBrotherhoodHolotag
   name: holotag
   description: An ID holotag worn by the Brotherhood of Steel.
-  suffix: Midwest Scribe
+  suffix: Senior Scribe
   components:
   - type: Sprite
     sprite: _Nuclear14/Objects/Misc/identification.rsi
@@ -71,14 +71,14 @@
   - type: PresetIdCard
     job: BoSMidScribe
   - type: ClothingAddFaction
-    faction: BrotherhoodMidwest
+    faction: BrotherhoodOfSteel
 
 - type: entity
   parent: N14IDBrotherhoodHolotag
   id: N14IDBrotherhoodHolotagSquire
   name: holotag
   description: An ID holotag worn by the Brotherhood of Steel.
-  suffix: Midwest Squire
+  suffix: Squire
   components:
   - type: PresetIdCard
     job: BoSMidSquire
@@ -88,7 +88,7 @@
   id: N14IDBrotherhoodHolotagKnight
   name: holotag
   description: An ID holotag worn by the Brotherhood of Steel.
-  suffix: Midwest Knight
+  suffix: Senior Knight
   components:
   - type: PresetIdCard
     job: BoSMidKnight
@@ -98,7 +98,7 @@
   id: N14IDBrotherhoodHolotagPaladin
   name: holotag
   description: An ID holotag worn by the Paladins of the Brotherhood of Steel.
-  suffix: Midwest Paladin
+  suffix: Senior Paladin
   components:
   - type: PresetIdCard
     job: BoSMidPaladin
@@ -107,8 +107,8 @@
   parent: N14IDBrotherhoodHolotag
   id: N14IDBrotherhoodHolotagCommander
   name: holotag
-  description: An ID holotag worn by the Paladin Commander of the Brotherhood of Steel.
-  suffix: Midwest Commander
+  description: An ID holotag worn by the Head Paladin of the Brotherhood of Steel.
+  suffix: Head Paladin
   components:
   - type: PresetIdCard
     job: BoSMidPaladinCommander

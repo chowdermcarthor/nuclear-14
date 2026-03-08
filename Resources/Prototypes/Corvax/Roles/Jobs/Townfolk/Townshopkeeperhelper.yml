@@ -1,6 +1,7 @@
 - type: job
   id: TownShopkeeperHelper
   setPreference: true
+  weight: 45
   overrideConsoleVisibility: false
   canBeAntag: false
   name: job-name-townshopkeeperhelper #Misfits Change

@@ -71,10 +71,10 @@
   id: BaseBOSWObjective
   components:
   - type: Objective
-    issuer: Washington Brotherhood
+    issuer: Brotherhood of Steel
   - type: FactionRequirement
     factions:
-    - BrotherhoodWashington
+    - BrotherhoodOfSteel
 
 - type: entity
   abstract: true

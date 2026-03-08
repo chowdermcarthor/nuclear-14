@@ -1,0 +1,172 @@
+- type: accessLevel
+  id: BOS
+  name: id-card-access-level-bos
+
+- type: accessLevel
+  id: BOSInitiate
+  name: id-card-access-level-bos-initiate
+
+- type: accessLevel
+  id: BOSSquire
+  name: id-card-access-level-bos-squire
+
+- type: accessLevel
+  id: BOSScribe
+  name: id-card-access-level-bos-scribe
+
+- type: accessLevel
+  id: BOSKnight
+  name: id-card-access-level-bos-knight
+
+- type: accessLevel
+  id: BOSPaladin
+  name: id-card-access-level-bos-paladin
+
+- type: accessLevel
+  id: BOSSeniorScribe
+  name: id-card-access-level-bos-senior-scribe
+
+- type: accessLevel
+  id: BOSSeniorKnight
+  name: id-card-access-level-bos-senior-knight
+
+- type: accessLevel
+  id: BOSSeniorPaladin
+  name: id-card-access-level-bos-senior-paladin
+
+- type: accessLevel
+  id: BOSHeadScribe
+  name: id-card-access-level-bos-head-scribe
+
+- type: accessLevel
+  id: BOSHeadKnight
+  name: id-card-access-level-bos-head-knight
+
+- type: accessLevel
+  id: BOSHeadPaladin
+  name: id-card-access-level-bos-head-paladin
+
+- type: accessLevel
+  id: BOSElder
+  name: id-card-access-level-bos-elder
+
+- type: accessGroup
+  id: BOS
+  tags:
+  - BOS
+
+- type: accessGroup
+  id: BOSInitiate
+  tags:
+  - BOS
+  - BOSInitiate
+
+- type: accessGroup
+  id: BOSSquire
+  tags:
+  - BOS
+  - BOSInitiate
+  - BOSSquire
+
+- type: accessGroup
+  id: BOSScribe
+  tags:
+  - BOS
+  - BOSInitiate
+  - BOSScribe
+
+- type: accessGroup
+  id: BOSKnight
+  tags:
+  - BOS
+  - BOSInitiate
+  - BOSKnight
+
+- type: accessGroup
+  id: BOSPaladin
+  tags:
+  - BOS
+  - BOSInitiate
+  - BOSScribe
+  - BOSKnight
+  - BOSPaladin
+
+- type: accessGroup
+  id: BOSSeniorScribe
+  tags:
+  - BOS
+  - BOSInitiate
+  - BOSScribe
+  - BOSSeniorScribe
+
+- type: accessGroup
+  id: BOSSeniorKnight
+  tags:
+  - BOS
+  - BOSInitiate
+  - BOSKnight
+  - BOSSeniorKnight
+
+- type: accessGroup
+  id: BOSSeniorPaladin
+  tags:
+  - BOS
+  - BOSInitiate
+  - BOSScribe
+  - BOSSeniorScribe
+  - BOSKnight
+  - BOSSeniorKnight
+  - BOSPaladin
+  - BOSSeniorPaladin
+
+- type: accessGroup
+  id: BOSHeadScribe
+  tags:
+  - BOS
+  - BOSInitiate
+  - BOSScribe
+  - BOSSeniorScribe
+  - BOSHeadScribe
+
+- type: accessGroup
+  id: BOSHeadKnight
+  tags:
+  - BOS
+  - BOSInitiate
+  - BOSSquire
+  - BOSKnight
+  - BOSSeniorKnight
+  - BOSHeadKnight
+
+- type: accessGroup
+  id: BOSHeadPaladin
+  tags:
+  - BOS
+  - BOSInitiate
+  - BOSSquire
+  - BOSScribe
+  - BOSSeniorScribe
+  - BOSHeadScribe
+  - BOSKnight
+  - BOSSeniorKnight
+  - BOSHeadKnight
+  - BOSPaladin
+  - BOSSeniorPaladin
+  - BOSHeadPaladin
+
+- type: accessGroup
+  id: BOSElder
+  tags:
+  - BOS
+  - BOSInitiate
+  - BOSSquire
+  - BOSScribe
+  - BOSSeniorScribe
+  - BOSHeadScribe
+  - BOSKnight
+  - BOSSeniorKnight
+  - BOSHeadKnight
+  - BOSPaladin
+  - BOSSeniorPaladin
+  - BOSHeadPaladin
+  - BOSElder
