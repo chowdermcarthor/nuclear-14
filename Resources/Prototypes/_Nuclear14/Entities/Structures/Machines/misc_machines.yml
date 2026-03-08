@@ -36,6 +36,7 @@
   - type: WastelandMap
     mapTexturePath: _Misfits/Maps/wendover_map.png
     mapTitle: Tactical Map - Wendover
+    worldBounds: "-517,-308,484,311"
   - type: ActivatableUI
     key: enum.WastelandMapUiKey.Key
   - type: ActivatableUIRequiresPower

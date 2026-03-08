@@ -377,3 +377,43 @@ reagent-effect-guidebook-add-moodlet =
     }
 
 reagent-effect-guidebook-purify-evil = Purifies evil powers
+
+#Misfits Change
+reagent-effect-guidebook-add-to-solution-reaction =
+    { $chance ->
+        [1] Adds
+        *[other] add
+    } this reagent to the target solution
+
+reagent-effect-guidebook-area-reaction =
+    Creates a spreading area effect that lasts for at least {NATURALFIXED($duration, 3)} {MANY("second", $duration)}
+
+reagent-effect-guidebook-plant-attribute =
+    { $chance ->
+        [1] Modifies
+        *[other] modify
+    } plant {$attribute} by [color={$colorName}]{$amount}[/color]
+
+reagent-effect-guidebook-plant-cryoxadone =
+    { $chance ->
+        [1] Reduces
+        *[other] reduce
+    } plant age and briefly delays further aging
+
+reagent-effect-guidebook-plant-diethylamine =
+    { $chance ->
+        [1] Has
+        *[other] have
+    } a chance to improve plant lifespan and endurance
+
+reagent-effect-guidebook-plant-phalanximine =
+    { $chance ->
+        [1] Restores
+        *[other] restore
+    } seed viability
+
+reagent-effect-guidebook-plant-robust-harvest =
+    { $chance ->
+        [1] Increases
+        *[other] increase
+    } plant potency by {$increase} up to {$limit}, making the plant seedless above {$seedlesstreshold} potency

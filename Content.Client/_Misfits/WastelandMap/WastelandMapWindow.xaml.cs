@@ -10,13 +10,22 @@ namespace Content.Client._Misfits.WastelandMap;
 [GenerateTypedNameReferences]
 public sealed partial class WastelandMapWindow : FancyWindow
 {
+    private readonly MapViewerControl _mapViewer;
+
     public WastelandMapWindow()
     {
         RobustXamlLoader.Load(this);
         IoCManager.InjectDependencies(this);
+
+        _mapViewer = new MapViewerControl
+        {
+            HorizontalExpand = true,
+            VerticalExpand = true,
+        };
+        MapContainer.AddChild(_mapViewer);
     }
 
-    public void SetMap(string title, ResPath texturePath)
+    public void SetMap(string title, ResPath texturePath, Robust.Shared.Maths.Box2 worldBounds)
     {
         MapTitle.Text = title;
         Title = title;
@@ -26,7 +35,7 @@ public sealed partial class WastelandMapWindow : FancyWindow
 
         if (resourceCache.TryGetResource<TextureResource>(fullPath, out var textureResource))
         {
-            MapTexture.Texture = textureResource;
+            _mapViewer.SetTexture(textureResource.Texture, worldBounds);
         }
     }
 }

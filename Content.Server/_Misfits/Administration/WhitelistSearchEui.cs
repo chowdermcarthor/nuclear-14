@@ -49,23 +49,36 @@ public sealed class WhitelistSearchEui : BaseEui
     {
         base.HandleMessage(msg);
 
-        if (!_admin.HasAdminFlag(Player, AdminFlags.Whitelist))
-        {
-            _sawmill.Warning($"{Player.Name} ({Player.UserId}) tried to use whitelist search without permission");
-            return;
-        }
+        _sawmill.Debug($"Received EUI message of type: {msg.GetType().Name}");
 
-        switch (msg)
+        try
         {
-            case SearchPlayersMessage search:
-                await HandleSearch(search.Query);
-                break;
-            case SelectPlayerMessage select:
-                await HandleSelectPlayer(select.PlayerId);
-                break;
-            case SetWhitelistSearchJobMessage setJob:
-                HandleSetJob(setJob.Job, setJob.Whitelisting);
-                break;
+            if (!_admin.HasAdminFlag(Player, AdminFlags.Whitelist))
+            {
+                _sawmill.Warning($"{Player.Name} ({Player.UserId}) tried to use whitelist search without permission");
+                return;
+            }
+
+            switch (msg)
+            {
+                case SearchPlayersMessage search:
+                    _sawmill.Debug($"Handling search for: '{search.Query}'");
+                    await HandleSearch(search.Query);
+                    break;
+                case SelectPlayerMessage select:
+                    await HandleSelectPlayer(select.PlayerId);
+                    break;
+                case SetWhitelistSearchJobMessage setJob:
+                    HandleSetJob(setJob.Job, setJob.Whitelisting);
+                    break;
+                default:
+                    _sawmill.Debug($"Unknown message type: {msg.GetType().FullName}");
+                    break;
+            }
+        }
+        catch (Exception e)
+        {
+            _sawmill.Error($"Error handling EUI message: {e}");
         }
     }
 

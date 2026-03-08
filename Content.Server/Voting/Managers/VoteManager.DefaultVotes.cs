@@ -176,7 +176,7 @@ namespace Content.Server.Voting.Managers
         private void CreateExtendVote(ICommonSession? initiator)
         {
             var alone = _playerManager.PlayerCount == 1 && initiator != null;
-            var extensionMinutes = _cfg.GetCVar(CCVars.VoteExtendTime);
+            var extensionMinutes = _cfg.GetCVar(CCVars.EmergencyShuttleAutoCallExtensionTime);
             var options = new VoteOptions
             {
                 Title = Loc.GetString("ui-vote-extend-title"),

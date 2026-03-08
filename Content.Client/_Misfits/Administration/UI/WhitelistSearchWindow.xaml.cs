@@ -46,6 +46,23 @@ public sealed partial class WhitelistSearchWindow : FancyWindow
         IoCManager.InjectDependencies(this);
 
         SearchBox.OnTextChanged += OnSearchTextChanged;
+        SearchBox.OnTextEntered += OnSearchTextEntered;
+        SearchButton.OnPressed += OnSearchButtonPressed;
+    }
+
+    private void OnSearchButtonPressed(BaseButton.ButtonEventArgs args)
+    {
+        var query = SearchBox.Text.Trim();
+        if (query.Length >= 2)
+            OnSearch?.Invoke(query);
+    }
+
+    private void OnSearchTextEntered(LineEdit.LineEditEventArgs args)
+    {
+        _searchDebounce?.Cancel();
+        var query = args.Text.Trim();
+        if (query.Length >= 2)
+            OnSearch?.Invoke(query);
     }
 
     private void OnSearchTextChanged(LineEdit.LineEditEventArgs args)

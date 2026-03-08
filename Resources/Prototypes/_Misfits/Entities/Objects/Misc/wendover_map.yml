@@ -11,6 +11,9 @@
   - type: WastelandMap
     mapTexturePath: _Misfits/Maps/wendover_map.png
     mapTitle: Wendover Area Map
+    # World tile bounds of the rendered image (left, bottom, right, top).
+    # Must match the AABB computed by Content.MapRenderer when the image was generated.
+    worldBounds: "-517,-308,484,311"
   - type: Sprite
     sprite: _Nuclear14/Objects/Misc/clutter.rsi
     layers:

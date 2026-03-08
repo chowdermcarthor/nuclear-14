@@ -61,13 +61,13 @@ public sealed partial class CCVars
     public static readonly CVarDef<bool> VoteExtendEnabled =
         CVarDef.Create("vote.extend_enabled", true, CVar.SERVERONLY);
 
-    // #Misfits Change: How many minutes the round is extended by when the extend vote passes.
+    // #Misfits Change: Legacy extend vote display duration.
     /// <summary>
-    ///     Minutes added to the round auto-call timer when a vote to extend passes.
-    ///     The shuttle is recalled and the timer is reset to this value from now.
+    ///     Legacy duration setting for extend-vote messaging.
+    ///     Actual round extension behavior is controlled by shuttle.auto_call_extension_time.
     /// </summary>
     public static readonly CVarDef<int> VoteExtendTime =
-        CVarDef.Create("vote.extend_time", 30, CVar.SERVERONLY);
+        CVarDef.Create("vote.extend_time", 60, CVar.SERVERONLY);
 
     /// <summary>
     /// Whether or not to prevent the restart vote from having any effect when there is an online admin

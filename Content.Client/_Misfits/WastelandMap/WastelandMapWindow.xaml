@@ -13,26 +13,15 @@
             </PanelContainer>
         </controls:StripeBack>
 
-        <!-- Map image area with scroll support -->
-        <PanelContainer HorizontalExpand="True" VerticalExpand="True"
-                        StyleClasses="AngleRect">
-            <ScrollContainer Name="ScrollArea"
-                             HorizontalExpand="True"
-                             VerticalExpand="True"
-                             HScrollEnabled="True"
-                             VScrollEnabled="True">
-                <TextureRect Name="MapTexture"
-                             Stretch="KeepAspectCentered"
-                             HorizontalExpand="True"
-                             VerticalExpand="True"/>
-            </ScrollContainer>
-        </PanelContainer>
+        <!-- Map image area - MapViewerControl added in code-behind -->
+        <PanelContainer Name="MapContainer" HorizontalExpand="True" VerticalExpand="True"
+                        StyleClasses="AngleRect"/>
 
         <!-- Footer -->
         <BoxContainer Orientation="Vertical">
             <PanelContainer StyleClasses="LowDivider"/>
             <BoxContainer Orientation="Horizontal" Margin="10 2 5 0" VerticalAlignment="Bottom">
-                <Label Name="FooterText" Text="Zoom: scroll wheel | Pan: click and drag"
+                <Label Name="FooterText" Text="Scroll to zoom | Click and drag to pan"
                        StyleClasses="WindowFooterText"
                        HorizontalAlignment="Left" HorizontalExpand="True" Margin="0 0 5 0"/>
             </BoxContainer>
