@@ -27,6 +27,8 @@ public sealed partial class AdminMenuWindow : DefaultWindow
         MasterTabContainer.SetTabTitle((int) TabIndex.BabyJail, Loc.GetString("admin-menu-baby-jail-tab"));
         MasterTabContainer.SetTabTitle((int) TabIndex.Players, Loc.GetString("admin-menu-players-tab"));
         MasterTabContainer.SetTabTitle((int) TabIndex.Objects, Loc.GetString("admin-menu-objects-tab"));
+        // #Misfits Change - Whitelisting tab
+        MasterTabContainer.SetTabTitle((int) TabIndex.Whitelisting, "Whitelisting");
         MasterTabContainer.OnTabChanged += OnTabChanged;
     }
 
@@ -55,5 +57,6 @@ public sealed partial class AdminMenuWindow : DefaultWindow
         BabyJail,
         Players,
         Objects,
+        Whitelisting, // #Misfits Change
     }
 }

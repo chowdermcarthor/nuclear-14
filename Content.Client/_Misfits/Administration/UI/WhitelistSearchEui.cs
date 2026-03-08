@@ -2,15 +2,18 @@
 using Content.Client.Eui;
 using Content.Shared._Misfits.Administration;
 using Content.Shared.Eui;
+using Robust.Shared.Log;
 
 namespace Content.Client._Misfits.Administration.UI;
 
 public sealed class WhitelistSearchEui : BaseEui
 {
+    private readonly ISawmill _sawmill;
     private WhitelistSearchWindow _window;
 
     public WhitelistSearchEui()
     {
+        _sawmill = Logger.GetSawmill("admin.whitelist_search_eui");
         _window = new WhitelistSearchWindow();
         _window.OnClose += () => SendMessage(new CloseEuiMessage());
         _window.OnSearch += query => SendMessage(new SearchPlayersMessage(query));
@@ -20,9 +23,15 @@ public sealed class WhitelistSearchEui : BaseEui
 
     public override void HandleState(EuiStateBase state)
     {
-        if (state is not WhitelistSearchEuiState cast)
-            return;
+        _sawmill.Debug($"HandleState called with type: {state.GetType().Name}");
 
+        if (state is not WhitelistSearchEuiState cast)
+        {
+            _sawmill.Warning($"State is NOT WhitelistSearchEuiState, actual type: {state.GetType().FullName}");
+            return;
+        }
+
+        _sawmill.Debug($"State received: {cast.SearchResults.Count} results, selected={cast.SelectedPlayerName}");
         _window.HandleState(cast);
     }
 

@@ -1,0 +1,12 @@
+<!-- #Misfits Change - Whitelisting tab for admin menu -->
+<Control
+    xmlns="https://spacestation14.io"
+    xmlns:cc="clr-namespace:Content.Client.Administration.UI.CustomControls"
+    Margin="4"
+    MinSize="50 50">
+    <BoxContainer Orientation="Vertical">
+        <GridContainer Columns="3">
+            <cc:CommandButton Command="whitelistsearch" Text="Role Whitelists Menu"/>
+        </GridContainer>
+    </BoxContainer>
+</Control>

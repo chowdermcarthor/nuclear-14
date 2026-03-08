@@ -8,13 +8,14 @@
         <BoxContainer Orientation="Horizontal" Margin="0 0 0 4">
             <Label Text="Search Player:" Margin="0 0 8 0" />
             <LineEdit Name="SearchBox" PlaceHolder="Type a player name (min 2 chars)..." HorizontalExpand="True" />
+            <Button Name="SearchButton" Text="Search" Margin="4 0 0 0" MinWidth="80" />
         </BoxContainer>
 
         <!-- Search Results -->
-        <BoxContainer Orientation="Vertical" Margin="0 0 0 4" VerticalExpand="False" MinSize="0 150" MaxSize="0 200">
+        <BoxContainer Orientation="Vertical" Margin="0 0 0 4" VerticalExpand="False" MinSize="0 150" MaxHeight="200">
             <Label Text="Search Results:" Margin="0 0 0 2" />
             <ScrollContainer VerticalExpand="True" HorizontalExpand="True">
-                <BoxContainer Name="SearchResults" Orientation="Vertical" />
+                <BoxContainer Name="SearchResults" Orientation="Vertical" HorizontalExpand="True" />
             </ScrollContainer>
         </BoxContainer>
 

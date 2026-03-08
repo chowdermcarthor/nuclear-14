@@ -17,8 +17,6 @@
             <cc:CommandButton Command="adminlogs" Text="{Loc admin-player-actions-window-admin-logs}"/>
             <cc:CommandButton Command="faxui" Text="{Loc admin-player-actions-window-admin-fax}"/>
             <cc:CommandButton Command="timetransferpanel" Text="{Loc admin-player-actions-window-time-transfer}"/>
-            <!-- #Misfits Change - Whitelist Search button for admin menu -->
-            <cc:CommandButton Command="whitelistsearch" Text="Whitelists"/>
         </GridContainer>
     </BoxContainer>
 </Control>
