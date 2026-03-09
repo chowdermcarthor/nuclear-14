@@ -1042,6 +1042,12 @@ public sealed class ChatUIController : UIController
         return MapLocalIfGhost(PreferredChannel);
     }
 
+    // #Misfits Change — true when the local player is currently in admin ghost (aghost) mode.
+    public bool IsAdminGhost =>
+        _ghost is { IsGhost: true } &&
+        _ghost.Player?.CanGhostInteract == true &&
+        _admin.HasFlag(AdminFlags.Admin);
+
     public void NotifyChatTextChange()
     {
         _typingIndicator?.ClientChangedChatText();

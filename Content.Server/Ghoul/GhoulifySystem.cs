@@ -6,6 +6,7 @@ using Content.Shared.Popups;
 using Content.Shared.Examine;
 using Robust.Shared.Utility;
 using Robust.Shared.Random;
+using Content.Server._Misfits.GhoulReversal; // #Misfits Change
 
 namespace Content.Server.Ghoul;
 
@@ -102,6 +103,7 @@ public sealed partial class GhoulifySystem : EntitySystem
         _popup.PopupEntity(Loc.GetString("ghoulify-complete"), uid, uid);
         RemComp<GhoulifyComponent>(uid);
         EnsureComp<FeralGhoulifyComponent>(uid);
+        EnsureComp<GhoulificationTimeComponent>(uid); // #Misfits Change
     }
 
     private void OnFeralIrradiated(EntityUid uid, FeralGhoulifyComponent comp, OnIrradiatedEvent args)
@@ -153,6 +155,7 @@ public sealed partial class GhoulifySystem : EntitySystem
         _popup.PopupEntity(Loc.GetString("ghoul-glowing-complete"), uid, uid);
         RemComp<GhoulifyComponent>(uid);
         RemCompDeferred<FeralGhoulifyComponent>(uid);
+        EnsureComp<GhoulificationTimeComponent>(uid); // #Misfits Change
     }
 
     private void Feralize(EntityUid uid)

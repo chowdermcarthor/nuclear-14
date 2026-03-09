@@ -1,0 +1,17 @@
+# #Misfits Change
+# Ghoul Reversal Reagent — "Promethine"
+# A cutting-edge serum that suppresses the FEV radiation markers responsible for ghoulification,
+# but only effective within the first 12 real-world hours of exposure.
+
+- type: reagent
+  id: Promethine
+  name: reagent-name-promethine
+  group: Medicine
+  desc: reagent-desc-promethine
+  physicalDesc: reagent-physical-desc-luminous
+  color: "#d4af37"
+  metabolisms:
+    Medicine:
+      metabolismRate: 0.5
+      effects:
+      - !type:GhoulReversalEffect

@@ -104,6 +104,15 @@ public sealed class WhitelistSearchEui : BaseEui
                 case AddWhitelistSearchRoleTimeMessage addTime:
                     await HandleAddRoleTime(addTime.Job, addTime.TimeString);
                     break;
+                case SetWhitelistSearchRoleTimeMessage setTime:
+                    await HandleSetRoleTime(setTime.Job, setTime.TimeString);
+                    break;
+                case AddWhitelistSearchDeptTimeMessage addDept:
+                    await HandleAddDeptTime(addDept.DepartmentId, addDept.TimeString);
+                    break;
+                case SetWhitelistSearchDeptTimeMessage setDept:
+                    await HandleSetDeptTime(setDept.DepartmentId, setDept.TimeString);
+                    break;
                 case AdjustWhitelistSearchJobSlotsMessage adjustSlots:
                     HandleAdjustJobSlots(adjustSlots.Job, adjustSlots.Delta);
                     break;
@@ -248,6 +257,164 @@ public sealed class WhitelistSearchEui : BaseEui
         }
 
         _sawmill.Info($"{Player.Name} ({Player.UserId}) added {delta} of role time for {job} to player {_selectedPlayerName} ({_selectedPlayerId.Value.UserId})");
+        StateDirty();
+    }
+
+    private async Task HandleSetRoleTime(ProtoId<JobPrototype> job, string timeString)
+    {
+        if (!_admin.HasAdminFlag(Player, AdminFlags.Admin))
+        {
+            _sawmill.Warning($"{Player.Name} ({Player.UserId}) tried to set role time without permission");
+            return;
+        }
+
+        if (_selectedPlayerId == null || !_proto.TryIndex(job, out var jobProto))
+            return;
+
+        var minutes = Content.Server.Administration.Commands.PlayTimeCommandUtilities.CountMinutes(timeString);
+        if (minutes < 0)
+            return;
+
+        var newTime = TimeSpan.FromMinutes(minutes);
+
+        if (_player.TryGetSessionById(_selectedPlayerId.Value, out var session))
+        {
+            _playTime.FlushTracker(session);
+            var currentTime = _playTime.GetPlayTimeForTracker(session, jobProto.PlayTimeTracker);
+            _playTime.AddTimeToTracker(session, jobProto.PlayTimeTracker, newTime - currentTime);
+            _playTime.SaveSession(session);
+        }
+        else
+        {
+            await _db.UpdatePlayTimes(new[]
+            {
+                new PlayTimeUpdate(_selectedPlayerId.Value, jobProto.PlayTimeTracker, newTime),
+            });
+        }
+
+        if (_jobAdminInfo != null)
+        {
+            var row = _jobAdminInfo.FirstOrDefault(x => x.Job == job);
+            if (row != null)
+                row.RoleTime = newTime;
+        }
+
+        _sawmill.Info($"{Player.Name} ({Player.UserId}) set role time for {job} to {newTime} for player {_selectedPlayerName} ({_selectedPlayerId.Value.UserId})");
+        StateDirty();
+    }
+
+    private async Task HandleAddDeptTime(string departmentId, string timeString)
+    {
+        if (!_admin.HasAdminFlag(Player, AdminFlags.Admin))
+        {
+            _sawmill.Warning($"{Player.Name} ({Player.UserId}) tried to add department time without permission");
+            return;
+        }
+
+        if (_selectedPlayerId == null || !_proto.TryIndex<DepartmentPrototype>(departmentId, out var dept))
+            return;
+
+        var minutes = Content.Server.Administration.Commands.PlayTimeCommandUtilities.CountMinutes(timeString);
+        if (minutes <= 0)
+            return;
+
+        var delta = TimeSpan.FromMinutes(minutes);
+
+        if (_player.TryGetSessionById(_selectedPlayerId.Value, out var onlineSession))
+        {
+            _playTime.FlushTracker(onlineSession);
+            foreach (var jobId in dept.Roles)
+            {
+                if (!_proto.TryIndex(jobId, out var jobProto))
+                    continue;
+                _playTime.AddTimeToTracker(onlineSession, jobProto.PlayTimeTracker, delta);
+            }
+            _playTime.SaveSession(onlineSession);
+
+            foreach (var jobId in dept.Roles)
+            {
+                if (!_proto.TryIndex(jobId, out var jobProto2))
+                    continue;
+                var updated = _playTime.GetPlayTimeForTracker(onlineSession, jobProto2.PlayTimeTracker);
+                var row = _jobAdminInfo?.FirstOrDefault(x => x.Job == jobId);
+                if (row != null)
+                    row.RoleTime = updated;
+            }
+        }
+        else
+        {
+            var playTimes = await _db.GetPlayTimes(_selectedPlayerId.Value.UserId);
+            var playTimeDict = playTimes.ToDictionary(x => x.Tracker, x => x.TimeSpent);
+
+            var updates = new List<PlayTimeUpdate>();
+            foreach (var jobId in dept.Roles)
+            {
+                if (!_proto.TryIndex(jobId, out var jobProto))
+                    continue;
+                var current = playTimeDict.GetValueOrDefault(jobProto.PlayTimeTracker);
+                var newTime = current + delta;
+                updates.Add(new PlayTimeUpdate(_selectedPlayerId.Value, jobProto.PlayTimeTracker, newTime));
+
+                var row = _jobAdminInfo?.FirstOrDefault(x => x.Job == jobId);
+                if (row != null)
+                    row.RoleTime = newTime;
+            }
+            await _db.UpdatePlayTimes(updates);
+        }
+
+        _sawmill.Info($"{Player.Name} ({Player.UserId}) added {delta} of role time to all jobs in {departmentId} for player {_selectedPlayerName} ({_selectedPlayerId.Value.UserId})");
+        StateDirty();
+    }
+
+    private async Task HandleSetDeptTime(string departmentId, string timeString)
+    {
+        if (!_admin.HasAdminFlag(Player, AdminFlags.Admin))
+        {
+            _sawmill.Warning($"{Player.Name} ({Player.UserId}) tried to set department time without permission");
+            return;
+        }
+
+        if (_selectedPlayerId == null || !_proto.TryIndex<DepartmentPrototype>(departmentId, out var dept))
+            return;
+
+        var minutes = Content.Server.Administration.Commands.PlayTimeCommandUtilities.CountMinutes(timeString);
+        if (minutes < 0)
+            return;
+
+        var newTime = TimeSpan.FromMinutes(minutes);
+
+        if (_player.TryGetSessionById(_selectedPlayerId.Value, out var onlineSession))
+        {
+            _playTime.FlushTracker(onlineSession);
+            foreach (var jobId in dept.Roles)
+            {
+                if (!_proto.TryIndex(jobId, out var jobProto))
+                    continue;
+                var current = _playTime.GetPlayTimeForTracker(onlineSession, jobProto.PlayTimeTracker);
+                _playTime.AddTimeToTracker(onlineSession, jobProto.PlayTimeTracker, newTime - current);
+            }
+            _playTime.SaveSession(onlineSession);
+        }
+        else
+        {
+            var updates = new List<PlayTimeUpdate>();
+            foreach (var jobId in dept.Roles)
+            {
+                if (!_proto.TryIndex(jobId, out var jobProto))
+                    continue;
+                updates.Add(new PlayTimeUpdate(_selectedPlayerId.Value, jobProto.PlayTimeTracker, newTime));
+            }
+            await _db.UpdatePlayTimes(updates);
+        }
+
+        foreach (var jobId in dept.Roles)
+        {
+            var row = _jobAdminInfo?.FirstOrDefault(x => x.Job == jobId);
+            if (row != null)
+                row.RoleTime = newTime;
+        }
+
+        _sawmill.Info($"{Player.Name} ({Player.UserId}) set role time to {newTime} for all jobs in {departmentId} for player {_selectedPlayerName} ({_selectedPlayerId.Value.UserId})");
         StateDirty();
     }
 

@@ -19,13 +19,24 @@
             </ScrollContainer>
         </BoxContainer>
 
-        <!-- Selected Player Header -->
-        <Label Name="SelectedPlayerLabel" Text="No player selected" Margin="0 4 0 4" StyleClasses="LabelHeadingBig" />
-        <Label Name="SelectedStationLabel" Text="Station: none" Margin="0 0 0 6" StyleClasses="LabelSubText" />
+        <!-- Selected Player Panel (greyed background for visual separation) -->
+        <PanelContainer VerticalExpand="True" StyleClasses="BackgroundDark" Margin="0 2 0 0">
+            <BoxContainer Orientation="Vertical" Margin="6">
+                <!-- Player header -->
+                <Label Name="SelectedPlayerLabel" Text="No player selected" Margin="0 2 0 2" StyleClasses="LabelHeadingBig" />
+                <Label Name="SelectedStationLabel" Text="Station: none" Margin="0 0 0 4" StyleClasses="LabelSubText" />
 
-        <!-- Job Whitelists for Selected Player -->
-        <ScrollContainer VerticalExpand="True">
-            <BoxContainer Name="Departments" Orientation="Vertical" />
-        </ScrollContainer>
+                <!-- Role search filter -->
+                <BoxContainer Orientation="Horizontal" Margin="0 0 0 6" SeparationOverride="6">
+                    <Label Text="Search Role:" Margin="0 0 4 0" VerticalAlignment="Center" />
+                    <LineEdit Name="RoleSearchBox" PlaceHolder="Filter roles by name..." HorizontalExpand="True" />
+                </BoxContainer>
+
+                <!-- Job Whitelists for Selected Player -->
+                <ScrollContainer VerticalExpand="True">
+                    <BoxContainer Name="Departments" Orientation="Vertical" />
+                </ScrollContainer>
+            </BoxContainer>
+        </PanelContainer>
     </BoxContainer>
 </controls:FancyWindow>

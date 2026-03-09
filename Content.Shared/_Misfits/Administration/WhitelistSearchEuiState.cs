@@ -180,3 +180,51 @@ public sealed class AdjustWhitelistSearchJobSlotsMessage : EuiMessageBase
         Delta = delta;
     }
 }
+
+/// <summary>
+/// Message from client to server to set (overwrite) a single job's role time to an exact value.
+/// </summary>
+[Serializable, NetSerializable]
+public sealed class SetWhitelistSearchRoleTimeMessage : EuiMessageBase
+{
+    public ProtoId<JobPrototype> Job;
+    public string TimeString;
+
+    public SetWhitelistSearchRoleTimeMessage(ProtoId<JobPrototype> job, string timeString)
+    {
+        Job = job;
+        TimeString = timeString;
+    }
+}
+
+/// <summary>
+/// Message from client to server to add playtime to all jobs in a department for the selected player.
+/// </summary>
+[Serializable, NetSerializable]
+public sealed class AddWhitelistSearchDeptTimeMessage : EuiMessageBase
+{
+    public string DepartmentId;
+    public string TimeString;
+
+    public AddWhitelistSearchDeptTimeMessage(string departmentId, string timeString)
+    {
+        DepartmentId = departmentId;
+        TimeString = timeString;
+    }
+}
+
+/// <summary>
+/// Message from client to server to set (overwrite) playtime for all jobs in a department.
+/// </summary>
+[Serializable, NetSerializable]
+public sealed class SetWhitelistSearchDeptTimeMessage : EuiMessageBase
+{
+    public string DepartmentId;
+    public string TimeString;
+
+    public SetWhitelistSearchDeptTimeMessage(string departmentId, string timeString)
+    {
+        DepartmentId = departmentId;
+        TimeString = timeString;
+    }
+}

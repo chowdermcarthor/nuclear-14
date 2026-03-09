@@ -58,6 +58,9 @@
         Radiation: 0.6
   - type: ExplosionResistance
     damageCoefficient: 0.85
+  - type: BreathMask # Misfits Change
+  - type: GasFilterMask # Misfits Change
+  - type: IngestionBlocker # Misfits Change
   - type: Tag
     tags:
     - HidesHair
@@ -123,6 +126,9 @@
         Radiation: 0.6
   - type: ExplosionResistance
     damageCoefficient: 0.85
+  - type: BreathMask # Misfits Change
+  - type: GasFilterMask # Misfits Change
+  - type: IngestionBlocker # Misfits Change
   - type: Tag
     tags:
     - HidesHair
@@ -188,6 +194,9 @@
         Radiation: 0.6
   - type: ExplosionResistance
     damageCoefficient: 0.85
+  - type: BreathMask # Misfits Change
+  - type: GasFilterMask # Misfits Change
+  - type: IngestionBlocker # Misfits Change
   - type: Tag
     tags:
     - HidesHair
@@ -253,6 +262,9 @@
         Radiation: 0.6
   - type: ExplosionResistance
     damageCoefficient: 0.85
+  - type: BreathMask # Misfits Change
+  - type: GasFilterMask # Misfits Change
+  - type: IngestionBlocker # Misfits Change
   - type: Tag
     tags:
     - HidesHair
@@ -386,6 +398,9 @@
     interfaces:
       enum.WastelandMapUiKey.Key:
         type: WastelandMapBoundUserInterface
+  - type: BreathMask # Misfits Change
+  - type: GasFilterMask # Misfits Change
+  - type: IngestionBlocker # Misfits Change
 
 - type: entity
   parent: ClothingHeadHardsuitWithLightBase
@@ -447,6 +462,9 @@
         Radiation: 0.6
   - type: ExplosionResistance
     damageCoefficient: 0.85
+  - type: BreathMask # Misfits Change
+  - type: GasFilterMask # Misfits Change
+  - type: IngestionBlocker # Misfits Change
 
 - type: entity
   parent: N14ClothingHeadHelmetPowerArmorX01

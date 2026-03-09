@@ -9,6 +9,7 @@
   - type: Clothing
     sprite: Clothing/Mask/gas.rsi
   - type: BreathMask
+  - type: GasFilterMask # Misfits Change
   - type: IngestionBlocker
   - type: IdentityBlocker
   - type: Tag
@@ -32,6 +33,9 @@
     sprite: Clothing/Mask/gassecurity.rsi
   - type: Clothing
     sprite: Clothing/Mask/gassecurity.rsi
+  - type: BreathMask # Misfits Change
+  - type: GasFilterMask # Misfits Change
+  - type: IngestionBlocker # Misfits Change
   - type: Armor
     modifiers:
       coefficients:
@@ -50,6 +54,9 @@
     sprite: Clothing/Mask/gassyndicate.rsi
   - type: Clothing
     sprite: Clothing/Mask/gassyndicate.rsi
+  - type: BreathMask # Misfits Change
+  - type: GasFilterMask # Misfits Change
+  - type: IngestionBlocker # Misfits Change
   - type: FlashImmunity
   - type: EyeProtection
   - type: Armor
@@ -70,6 +77,9 @@
     sprite: Clothing/Mask/gasatmos.rsi
   - type: Clothing
     sprite: Clothing/Mask/gasatmos.rsi
+  - type: BreathMask # Misfits Change
+  - type: GasFilterMask # Misfits Change
+  - type: IngestionBlocker # Misfits Change
   - type: Armor
     modifiers:
       coefficients:
@@ -86,6 +96,7 @@
   - type: Clothing
     sprite: Clothing/Mask/gascaptain.rsi
   - type: BreathMask
+  - type: GasFilterMask # Misfits Change
   - type: IngestionBlocker
 
 - type: entity
@@ -110,6 +121,7 @@
   - type: Clothing
     sprite: Clothing/Mask/gascentcom.rsi
   - type: BreathMask
+  - type: GasFilterMask # Misfits Change
   - type: IngestionBlocker
 
 - type: entity
@@ -123,6 +135,8 @@
   - type: Clothing
     sprite: Clothing/Mask/gasexplorer.rsi
   - type: Mask
+  - type: BreathMask # Misfits Change
+  - type: GasFilterMask # Misfits Change
   - type: IngestionBlocker
   - type: Tag
     tags:
@@ -339,6 +353,7 @@
   - type: Clothing
     sprite: Clothing/Mask/plaguedoctormask.rsi
   - type: BreathMask
+  - type: GasFilterMask # Misfits Change
   - type: IngestionBlocker
   - type: IdentityBlocker
   - type: HideLayerClothing
@@ -702,6 +717,7 @@
     storedRotation: -90
   - type: EyeProtection
   - type: BreathMask
+  - type: GasFilterMask # Misfits Change
   - type: IdentityBlocker
   - type: Tag
     tags:

@@ -41,6 +41,7 @@
   - type: FootPrints
   - type: PsionicInsulation
 #  - type: Ghoulify # Forge-Change
+  - type: GhoulifyOnRadiationDeath # #Misfits Change: humans who die to radiation become ghouls instead
 
 - type: entity
   parent: BaseSpeciesDummy

@@ -40,10 +40,13 @@
                 <cc:CommandButton Command="faxui" Text="{Loc admin-player-actions-window-admin-fax}" MinWidth="180" />
                 <Label Text="{Loc misfits-admin-tab-fax-desc}" VerticalAlignment="Center" StyleClasses="LabelSubText" />
             </BoxContainer>
+            <!-- Time Transfer commented out: functionality merged into Role Whitelists Menu (whitelistsearch) -->
+            <!--
             <BoxContainer Orientation="Horizontal" SeparationOverride="8">
                 <cc:CommandButton Command="timetransferpanel" Text="{Loc admin-player-actions-window-time-transfer}" MinWidth="180" />
                 <Label Text="{Loc misfits-admin-tab-time-transfer-desc}" VerticalAlignment="Center" StyleClasses="LabelSubText" />
             </BoxContainer>
+            -->
         </BoxContainer>
     </ScrollContainer>
 </Control>

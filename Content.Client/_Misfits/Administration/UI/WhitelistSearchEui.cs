@@ -20,6 +20,9 @@ public sealed class WhitelistSearchEui : BaseEui
         _window.OnSelectPlayer += playerId => SendMessage(new SelectPlayerMessage(playerId));
         _window.OnSetJob += (job, whitelisting) => SendMessage(new SetWhitelistSearchJobMessage(job, whitelisting));
         _window.OnAddRoleTime += (job, timeString) => SendMessage(new AddWhitelistSearchRoleTimeMessage(job, timeString));
+        _window.OnSetRoleTime += (job, timeString) => SendMessage(new SetWhitelistSearchRoleTimeMessage(job, timeString));
+        _window.OnAddDeptTime += (deptId, timeString) => SendMessage(new AddWhitelistSearchDeptTimeMessage(deptId, timeString));
+        _window.OnSetDeptTime += (deptId, timeString) => SendMessage(new SetWhitelistSearchDeptTimeMessage(deptId, timeString));
         _window.OnAdjustJobSlots += (job, delta) => SendMessage(new AdjustWhitelistSearchJobSlotsMessage(job, delta));
     }
 

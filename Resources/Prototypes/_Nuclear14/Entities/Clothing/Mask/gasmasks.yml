@@ -36,6 +36,7 @@
     sprite: _Nuclear14/Clothing/Mask/fallouthazmatsuit.rsi
   - type: IdentityBlocker
   - type: BreathMask
+  - type: GasFilterMask # Misfits Change
   - type: Armor
     modifiers:
       coefficients:

@@ -11,7 +11,14 @@ public sealed class WhitelistDepartmentPanel : PanelContainer
 {
     public Action<ProtoId<JobPrototype>, bool>? OnSetJob;
     public Action<ProtoId<JobPrototype>, string>? OnAddRoleTime;
+    public Action<ProtoId<JobPrototype>, string>? OnSetRoleTime;
     public Action<ProtoId<JobPrototype>, int>? OnAdjustJobSlots;
+    public Action<string, string>? OnAddDeptTime;
+    public Action<string, string>? OnSetDeptTime;
+
+    private readonly List<(string JobName, WhitelistJobRow Row)> _rows = new();
+    private readonly BoxContainer _jobs;
+    private readonly string _departmentId;
 
     public WhitelistDepartmentPanel(
         DepartmentPrototype department,
@@ -20,6 +27,7 @@ public sealed class WhitelistDepartmentPanel : PanelContainer
         IReadOnlyDictionary<ProtoId<JobPrototype>, WhitelistJobAdminInfo> adminInfo,
         bool canManagePlaytime)
     {
+        _departmentId = department.ID;
         Margin = new Thickness(0, 0, 0, 6);
         StyleClasses.Add("BackgroundDark");
 
@@ -31,6 +39,13 @@ public sealed class WhitelistDepartmentPanel : PanelContainer
         };
 
         var allWhitelisted = department.Roles.All(whitelists.Contains);
+        var headerRow = new BoxContainer
+        {
+            Orientation = BoxContainer.LayoutOrientation.Horizontal,
+            SeparationOverride = 6,
+            HorizontalExpand = true,
+        };
+
         var header = new Button
         {
             Text = Loc.GetString(department.ID),
@@ -40,7 +55,58 @@ public sealed class WhitelistDepartmentPanel : PanelContainer
             Modulate = department.Color,
         };
 
-        var jobs = new BoxContainer
+        // Bulk time controls in header
+        var deptTimeInput = new LineEdit
+        {
+            PlaceHolder = "e.g. 1h30m",
+            MinWidth = 80,
+            Editable = canManagePlaytime,
+            VerticalAlignment = VAlignment.Center,
+        };
+
+        var addAllButton = new Button
+        {
+            Text = Loc.GetString("misfits-whitelist-search-dept-add-all"),
+            Disabled = !canManagePlaytime,
+            MinWidth = 80,
+            StyleClasses = { "ButtonSquare" },
+        };
+        addAllButton.ToolTip = Loc.GetString("misfits-whitelist-search-dept-add-all-tooltip");
+
+        addAllButton.OnPressed += _ =>
+        {
+            var t = deptTimeInput.Text.Trim();
+            if (t.Length == 0) return;
+            OnAddDeptTime?.Invoke(_departmentId, t);
+            deptTimeInput.Text = string.Empty;
+        };
+
+        var setAllButton = new Button
+        {
+            Text = Loc.GetString("misfits-whitelist-search-dept-set-all"),
+            Disabled = !canManagePlaytime,
+            MinWidth = 80,
+            StyleClasses = { "ButtonSquare" },
+        };
+        setAllButton.ToolTip = Loc.GetString("misfits-whitelist-search-dept-set-all-tooltip");
+
+        setAllButton.OnPressed += _ =>
+        {
+            var t = deptTimeInput.Text.Trim();
+            if (t.Length == 0) return;
+            OnSetDeptTime?.Invoke(_departmentId, t);
+            deptTimeInput.Text = string.Empty;
+        };
+
+        headerRow.AddChild(header);
+        if (canManagePlaytime)
+        {
+            headerRow.AddChild(deptTimeInput);
+            headerRow.AddChild(addAllButton);
+            headerRow.AddChild(setAllButton);
+        }
+
+        _jobs = new BoxContainer
         {
             Orientation = BoxContainer.LayoutOrientation.Vertical,
             SeparationOverride = 3,
@@ -62,8 +128,10 @@ public sealed class WhitelistDepartmentPanel : PanelContainer
 
             row.OnSetJob += (id, enabled) => OnSetJob?.Invoke(id, enabled);
             row.OnAddRoleTime += (id, timeString) => OnAddRoleTime?.Invoke(id, timeString);
+            row.OnSetRoleTime += (id, timeString) => OnSetRoleTime?.Invoke(id, timeString);
             row.OnAdjustJobSlots += (id, delta) => OnAdjustJobSlots?.Invoke(id, delta);
-            jobs.AddChild(row);
+            _rows.Add((job.LocalizedName, row));
+            _jobs.AddChild(row);
         }
 
         header.OnPressed += _ =>
@@ -77,8 +145,27 @@ public sealed class WhitelistDepartmentPanel : PanelContainer
             }
         };
 
-        root.AddChild(header);
-        root.AddChild(jobs);
+        root.AddChild(headerRow);
+        root.AddChild(_jobs);
         AddChild(root);
+    }
+
+    /// <summary>
+    /// Shows/hides individual job rows based on the filter string.
+    /// Returns true if any rows are visible.
+    /// </summary>
+    public bool Filter(string filter)
+    {
+        var empty = string.IsNullOrWhiteSpace(filter);
+        var anyVisible = false;
+        foreach (var (name, row) in _rows)
+        {
+            var visible = empty || name.Contains(filter, StringComparison.OrdinalIgnoreCase);
+            row.Visible = visible;
+            if (visible)
+                anyVisible = true;
+        }
+        Visible = anyVisible;
+        return anyVisible;
     }
 }

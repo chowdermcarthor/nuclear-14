@@ -37,7 +37,13 @@ public sealed class PlayerPanelEui : BaseEui
         PlayerPanel.OnFreeze += () => SendMessage(new PlayerPanelFreezeMessage());
         PlayerPanel.OnLogs += () => SendMessage(new PlayerPanelLogsMessage());
         PlayerPanel.OnRejuvenate += () => SendMessage(new PlayerPanelRejuvenationMessage());
-        PlayerPanel.OnDelete+= () => SendMessage(new PlayerPanelDeleteMessage());
+        PlayerPanel.OnDelete += () => SendMessage(new PlayerPanelDeleteMessage());
+        // #Misfits Change — aghost to the target player via the aghost command.
+        PlayerPanel.OnAGhost += username =>
+        {
+            if (!string.IsNullOrEmpty(username))
+                _console.ExecuteCommand($"aghost \"{username}\"");
+        };
 
         PlayerPanel.OnClose += () => SendMessage(new CloseEuiMessage());
     }

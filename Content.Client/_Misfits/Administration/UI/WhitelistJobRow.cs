@@ -11,6 +11,7 @@ public sealed class WhitelistJobRow : PanelContainer
 {
     public Action<Robust.Shared.Prototypes.ProtoId<JobPrototype>, bool>? OnSetJob;
     public Action<Robust.Shared.Prototypes.ProtoId<JobPrototype>, string>? OnAddRoleTime;
+    public Action<Robust.Shared.Prototypes.ProtoId<JobPrototype>, string>? OnSetRoleTime;
     public Action<Robust.Shared.Prototypes.ProtoId<JobPrototype>, int>? OnAdjustJobSlots;
 
     public WhitelistJobRow(
@@ -81,6 +82,26 @@ public sealed class WhitelistJobRow : PanelContainer
             addTimeInput.Text = string.Empty;
         };
 
+        var setTimeButton = new Button
+        {
+            Text = Loc.GetString("misfits-whitelist-search-set-time"),
+            Disabled = !canManagePlaytime,
+            MinWidth = 60,
+            StyleClasses = { "ButtonSquare" },
+            TooltipDelay = 0,
+        };
+        setTimeButton.ToolTip = Loc.GetString("misfits-whitelist-search-set-time-tooltip");
+
+        setTimeButton.OnPressed += _ =>
+        {
+            var timeString = addTimeInput.Text.Trim();
+            if (timeString.Length == 0)
+                return;
+
+            OnSetRoleTime?.Invoke(jobId, timeString);
+            addTimeInput.Text = string.Empty;
+        };
+
         if (!job.Whitelisted)
             whitelistBox.Modulate = Color.FromHex("#cccccc");
 
@@ -89,6 +110,7 @@ public sealed class WhitelistJobRow : PanelContainer
         root.AddChild(roleTimeLabel);
         root.AddChild(addTimeInput);
         root.AddChild(addTimeButton);
+        root.AddChild(setTimeButton);
 
         AddChild(root);
     }

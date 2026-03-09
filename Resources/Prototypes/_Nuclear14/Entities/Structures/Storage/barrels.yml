@@ -79,6 +79,9 @@
   - type: Sprite
     sprite: _Nuclear14/Structures/Storage/barrels.rsi
     state: black-closed
+  - type: RadiationSource #Misfits Change - pre-war nuclear waste disposal container
+    intensity: 0.5
+    slope: 1
 
 - type: entity
   parent: N14BaseBarrel
@@ -139,6 +142,9 @@
   - type: Sprite
     sprite: _Nuclear14/Structures/Storage/barrels.rsi
     state: black-open
+  - type: RadiationSource #Misfits Change - open lid exposes waste; slightly stronger than sealed
+    intensity: 0.8
+    slope: 1
 
 - type: entity
   parent: N14BaseBarrelOpen
@@ -187,6 +193,9 @@
     sprite: _Nuclear14/Structures/Storage/barrels.rsi
     state: black-full
     # TODO - fill with some sort of waste product? Maybe just dirty water.
+  - type: RadiationSource #Misfits Change - full of unknown dark waste; highest intensity of the set
+    intensity: 1.2
+    slope: 1
 
 - type: entity
   parent: N14RedBarrelOpen

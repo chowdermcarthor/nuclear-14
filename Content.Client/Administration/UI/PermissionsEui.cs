@@ -547,11 +547,15 @@ namespace Content.Client.Administration.UI
                     VSeparationOverride = 0
                 };
 
+                // #Misfits Change — HOST implies all flags; prevents newly added custom flags from being
+                //                  permanently uneditable for HOST admins who were promoted before the flag existed.
+                var editorIsHost = ui._adminManager.HasFlag(AdminFlags.Host);
+
                 foreach (var flag in AdminFlagsHelper.AllFlags)
                 {
                     // Can only grant out perms you also have yourself.
                     // Primarily intended to prevent people giving themselves +HOST with +PERMISSIONS but generalized.
-                    var disable = !ui._adminManager.HasFlag(flag);
+                    var disable = !editorIsHost && !ui._adminManager.HasFlag(flag);
                     var flagName = flag.ToString().ToUpper();
 
                     // #Misfits Change — tooltip shows short description for each flag
@@ -712,11 +716,15 @@ namespace Content.Client.Administration.UI
                     Orientation = LayoutOrientation.Vertical
                 };
 
+                // #Misfits Change — HOST implies all flags; prevents newly added custom flags from being
+                //                  permanently uneditable for HOST admins who were promoted before the flag existed.
+                var editorIsHost = ui._adminManager.HasFlag(AdminFlags.Host);
+
                 foreach (var flag in AdminFlagsHelper.AllFlags)
                 {
                     // Can only grant out perms you also have yourself.
                     // Primarily intended to prevent people giving themselves +HOST with +PERMISSIONS but generalized.
-                    var disable = !ui._adminManager.HasFlag(flag);
+                    var disable = !editorIsHost && !ui._adminManager.HasFlag(flag);
                     var flagName = flag.ToString().ToUpper();
 
                     // #Misfits Change — show short description alongside the flag name

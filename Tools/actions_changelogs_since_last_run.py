@@ -130,10 +130,24 @@ def get_discord_body(content: str):
 
 
 def send_discord(content: str):
-    body = get_discord_body(content)
+    if not content:
+        return
 
-    response = requests.post(CHANGELOG_WEBHOOK, json=body)
-    response.raise_for_status()
+    # Discord rejects messages over 2000 characters; split at newline boundaries.
+    while len(content) > DISCORD_SPLIT_LIMIT:
+        split_at = content.rfind('\n', 0, DISCORD_SPLIT_LIMIT)
+        if split_at <= 0:
+            split_at = DISCORD_SPLIT_LIMIT
+        chunk = content[:split_at]
+        body = get_discord_body(chunk)
+        response = requests.post(CHANGELOG_WEBHOOK, json=body)
+        response.raise_for_status()
+        content = content[split_at:].lstrip('\n')
+
+    if content:
+        body = get_discord_body(content)
+        response = requests.post(CHANGELOG_WEBHOOK, json=body)
+        response.raise_for_status()
 
 
 def send_to_discord(entries: Iterable[ChangelogEntry]) -> None:
@@ -168,8 +182,9 @@ def send_to_discord(entries: Iterable[ChangelogEntry]) -> None:
 
         # If adding the text would bring it over the group limit then send the message and start a new one
         if message_length + group_length >= DISCORD_SPLIT_LIMIT:
-            print("Split changelog and sending to discord")
-            send_discord(message_text)
+            if message_length > 0:  # Never send an empty message
+                print("Split changelog and sending to discord")
+                send_discord(message_text)
 
             # Reset the message
             message_content = io.StringIO()

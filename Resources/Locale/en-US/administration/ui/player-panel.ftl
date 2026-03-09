@@ -20,4 +20,5 @@ player-panel-ban = Ban
 player-panel-logs = Logs
 player-panel-delete = Delete
 player-panel-rejuvenate = Rejuvenate
+player-panel-aghost = AGhost to Player
 player-panel-false = False

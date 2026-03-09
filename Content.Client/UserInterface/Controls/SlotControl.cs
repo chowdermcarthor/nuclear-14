@@ -1,8 +1,10 @@
+// #Misfits Change
 using System.Numerics;
 using Content.Client.Cooldown;
 using Content.Client.UserInterface.Systems.Inventory.Controls;
 using Robust.Client.UserInterface;
 using Robust.Client.UserInterface.Controls;
+using Robust.Client.UserInterface.CustomControls;
 using Robust.Shared.Input;
 
 namespace Content.Client.UserInterface.Controls
@@ -193,6 +195,21 @@ namespace Content.Client.UserInterface.Controls
 
             HighlightTexturePath = "slot_highlight";
             BlockedTexturePath = "blocked";
+
+            // #Misfits Change - show item name on mouseover, matching backpack grid behaviour
+            ButtonRect.TooltipSupplier = SupplyTooltip;
+        }
+
+        // #Misfits Change
+        private Control? SupplyTooltip(Control sender)
+        {
+            if (Entity is not { } ent)
+                return null;
+
+            return new Tooltip
+            {
+                Text = IoCManager.Resolve<IEntityManager>().GetComponent<MetaDataComponent>(ent).EntityName
+            };
         }
 
         public void ClearHover()

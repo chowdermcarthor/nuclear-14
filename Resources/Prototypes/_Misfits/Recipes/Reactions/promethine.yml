@@ -1,0 +1,23 @@
+# #Misfits Change
+# Promethine synthesis reaction
+# Promethine is a rare, difficult-to-craft de-ghoulification reagent.
+# Requires: RadAway (base radiation binder) + RadX (radiation blocker) + Epinephrine (cell stimulant)
+# + Phosphorus (cellular catalyst) + Silicon (stabilizer)
+# Produces a small batch — enough for one syringe per successful synthesis.
+
+- type: reaction
+  id: Promethine
+  reactants:
+    RadAway:
+      amount: 3
+    RadX:
+      amount: 2
+    Epinephrine:
+      amount: 2
+    Phosphorus:
+      amount: 1
+    Silicon:
+      amount: 1
+  minTemp: 320  # Must be heated — roughly body temperature plus margin
+  products:
+    Promethine: 5

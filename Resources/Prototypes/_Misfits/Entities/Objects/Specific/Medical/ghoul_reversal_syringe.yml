@@ -1,0 +1,53 @@
+# #Misfits Change
+# De-Ghoulification Syringe
+# Admin-only injectable that permanently reverses a ghoul back to human.
+# Modeled after the FEV syringe (fev_syringe.yml) in the opposite direction.
+
+- type: entity
+  parent: PrefilledSyringe
+  id: GhoulReversalSyringe
+  name: de-ghoulification syringe
+  description: A syringe containing an experimental reverse-engineered compound that suppresses the FEV strain responsible for ghoulification. Clinical trials are... limited. FOR ADMINISTRATIVE AND MEDICAL USE ONLY. (This persists cross round)
+  components:
+  - type: Sprite
+    sprite: Objects/Specific/Chemistry/syringe.rsi
+    layers:
+      - state: syringe1
+        map: ["enum.SolutionContainerLayers.Fill"]
+        color: "#ffd700"
+      - state: syringe_base0
+        map: ["enum.SolutionContainerLayers.Base"]
+  - type: SolutionContainerManager
+    solutions:
+      injector:
+        maxVol: 15
+        reagents:
+        - ReagentId: Epinephrine # Placeholder reagent; reversal is handled via component
+          Quantity: 15
+  - type: GhoulReversal
+    updateDatabaseProfile: true
+    targetSpecies: Human
+  - type: Tag
+    tags:
+    - Syringe
+    - Trash
+
+# Admin-only infinite-use version for events/testing
+- type: entity
+  parent: GhoulReversalSyringe
+  id: GhoulReversalSyringeInfinite
+  suffix: Admin, Infinite
+  components:
+  - type: Injector
+    injectOnly: true
+    ignoreMobs: false
+    minTransferAmount: 15
+    maxTransferAmount: 15
+    transferAmount: 15
+  - type: SolutionContainerManager
+    solutions:
+      injector:
+        maxVol: 150
+        reagents:
+        - ReagentId: Epinephrine
+          Quantity: 150

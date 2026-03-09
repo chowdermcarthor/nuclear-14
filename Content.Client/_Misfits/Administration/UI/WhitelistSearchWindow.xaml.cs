@@ -24,6 +24,9 @@ public sealed partial class WhitelistSearchWindow : FancyWindow
     public Action<NetUserId>? OnSelectPlayer;
     public Action<ProtoId<JobPrototype>, bool>? OnSetJob;
     public Action<ProtoId<JobPrototype>, string>? OnAddRoleTime;
+    public Action<ProtoId<JobPrototype>, string>? OnSetRoleTime;
+    public Action<string, string>? OnAddDeptTime;
+    public Action<string, string>? OnSetDeptTime;
     public Action<ProtoId<JobPrototype>, int>? OnAdjustJobSlots;
 
     private CancellationTokenSource? _searchDebounce;
@@ -50,6 +53,7 @@ public sealed partial class WhitelistSearchWindow : FancyWindow
         SearchBox.OnTextChanged += OnSearchTextChanged;
         SearchBox.OnTextEntered += OnSearchTextEntered;
         SearchButton.OnPressed += OnSearchButtonPressed;
+        RoleSearchBox.OnTextChanged += OnRoleSearchTextChanged;
     }
 
     private void OnSearchButtonPressed(BaseButton.ButtonEventArgs args)
@@ -84,6 +88,16 @@ public sealed partial class WhitelistSearchWindow : FancyWindow
         {
             OnSearch?.Invoke(query);
         }, _searchDebounce.Token);
+    }
+
+    private void OnRoleSearchTextChanged(LineEdit.LineEditEventArgs args)
+    {
+        var filter = args.Text.Trim();
+        foreach (var child in Departments.Children)
+        {
+            if (child is WhitelistDepartmentPanel panel)
+                panel.Filter(filter);
+        }
     }
 
     public void HandleState(WhitelistSearchEuiState state)
@@ -132,6 +146,7 @@ public sealed partial class WhitelistSearchWindow : FancyWindow
             .ToDictionary(x => x.Job, x => x) ?? new Dictionary<ProtoId<JobPrototype>, WhitelistJobAdminInfo>();
 
         Departments.RemoveAllChildren();
+        var currentFilter = RoleSearchBox.Text.Trim();
         foreach (var proto in _proto.EnumeratePrototypes<DepartmentPrototype>().OrderByDescending(x => x.Weight).ThenBy(x => x.ID))
         {
             if (!AllowedDepartments.Contains(proto.ID))
@@ -140,7 +155,12 @@ public sealed partial class WhitelistSearchWindow : FancyWindow
             var panel = new WhitelistDepartmentPanel(proto, _proto, whitelists, infoLookup, canManagePlaytime);
             panel.OnSetJob += (id, whitelisting) => OnSetJob?.Invoke(id, whitelisting);
             panel.OnAddRoleTime += (id, timeString) => OnAddRoleTime?.Invoke(id, timeString);
+            panel.OnSetRoleTime += (id, timeString) => OnSetRoleTime?.Invoke(id, timeString);
+            panel.OnAddDeptTime += (deptId, timeString) => OnAddDeptTime?.Invoke(deptId, timeString);
+            panel.OnSetDeptTime += (deptId, timeString) => OnSetDeptTime?.Invoke(deptId, timeString);
             panel.OnAdjustJobSlots += (id, delta) => OnAdjustJobSlots?.Invoke(id, delta);
+            if (!string.IsNullOrWhiteSpace(currentFilter))
+                panel.Filter(currentFilter);
             Departments.AddChild(panel);
         }
     }
