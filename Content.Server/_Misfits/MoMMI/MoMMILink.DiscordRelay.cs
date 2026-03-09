@@ -18,12 +18,26 @@ internal sealed partial class MoMMILink
     private WebhookIdentifier? _oocWebhookIdentifier;
     private WebhookIdentifier? _adminChatWebhookIdentifier;
     private string _discordRelayServerName = string.Empty;
+    private bool _discordRelaySubscribed;
 
     [GeneratedRegex(@"^https://(?:(?:canary|ptb)\.)?discord\.com/api/webhooks/(\d+)/((?!.*/).*)$")]
     private static partial Regex DiscordWebhookRegex();
 
     partial void PostInjectDiscordRelay()
     {
+        // CVar subscriptions are deferred to first relay call.
+        // Subscribing here (during PostInject / IoC BuildGraph) causes a KeyNotFoundException in
+        // unit tests because CVars are loaded after BuildGraph runs in the test framework.
+    }
+
+    // Lazily subscribes to Discord relay CVars the first time a message is relayed.
+    // By that point the config manager will have loaded all CVars.
+    private void EnsureDiscordRelaySubscribed()
+    {
+        if (_discordRelaySubscribed)
+            return;
+
+        _discordRelaySubscribed = true;
         _configurationManager.OnValueChanged(CCVars.DiscordOOCWebhook, OnOOCWebhookChanged, true);
         _configurationManager.OnValueChanged(CCVars.DiscordAdminChatWebhook, OnAdminChatWebhookChanged, true);
         _configurationManager.OnValueChanged(Robust.Shared.CVars.GameHostName, value => _discordRelayServerName = value, true);
@@ -31,6 +45,7 @@ internal sealed partial class MoMMILink
 
     partial void RelayOOCToDiscord(string sender, string message)
     {
+        EnsureDiscordRelaySubscribed();
         if (_oocWebhookIdentifier is not { } identifier)
             return;
 
@@ -39,6 +54,7 @@ internal sealed partial class MoMMILink
 
     partial void RelayAdminChatToDiscord(string sender, string message)
     {
+        EnsureDiscordRelaySubscribed();
         if (_adminChatWebhookIdentifier is not { } identifier)
             return;
 
