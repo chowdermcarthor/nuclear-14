@@ -25,9 +25,12 @@
             pathfindKey: TargetPathfind
             rangeKey: MeleeRange
 
-        # - !type:HTNPrimitiveTask # Juking throws errors for some reason, I just comment it out while it's being investigated.
-          # operator: !type:JukeOperator
-            # jukeType: Away
+        # #Misfits Change — Re-enabled: the juke system was refactored to handle edge cases
+        # (null target, missing weapon) that caused the original errors. The continuous melee
+        # back-off in NPCJukeSystem.cs prevents NPCs from sticking to the target entity.
+        - !type:HTNPrimitiveTask
+          operator: !type:JukeOperator
+            jukeType: Away
 
         - !type:HTNPrimitiveTask
           operator: !type:MeleeOperator

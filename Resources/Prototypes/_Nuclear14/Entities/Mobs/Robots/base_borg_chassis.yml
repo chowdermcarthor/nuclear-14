@@ -226,6 +226,7 @@
     tags:
     - DoorBumpOpener
     - CanPilot
+    - FootstepSound #Misfits Change - robot footstep sounds
   - type: Emoting
   # - type: GuideHelp
     # guides:

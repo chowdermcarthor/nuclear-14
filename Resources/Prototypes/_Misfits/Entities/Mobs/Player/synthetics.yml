@@ -46,6 +46,8 @@
         - BorgModuleDiagnosis
         - BorgModuleTreatment
         - BorgModuleSurgery
+      id: # #Misfits Change: pre-load the nav module into the id inventory slot
+        - MisfitsRobotNavCard
   - type: ItemSlots
     slots:
       cell_slot:
@@ -94,6 +96,8 @@
     containers:
       borg_brain:
         - PositronicBrain
+      id: # #Misfits Change: pre-load the nav module into the id inventory slot
+        - MisfitsRobotNavCard
   - type: ItemSlots
     slots:
       cell_slot:
@@ -142,6 +146,8 @@
         - PositronicBrain
       borg_module:
         - N14BorgModulePlasma
+      id: # #Misfits Change: pre-load the nav module into the id inventory slot
+        - MisfitsRobotNavCard
   - type: ItemSlots
     slots:
       cell_slot:
@@ -190,6 +196,8 @@
     containers:
       borg_brain:
         - PositronicBrain
+      id: # #Misfits Change: pre-load the nav module into the id inventory slot
+        - MisfitsRobotNavCard
   - type: ItemSlots
     slots:
       cell_slot:

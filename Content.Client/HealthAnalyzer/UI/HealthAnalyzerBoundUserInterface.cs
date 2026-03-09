@@ -1,9 +1,11 @@
 ﻿using Content.Shared.MedicalScanner;
+using Content.Shared.DeltaV.MedicalRecords; // #Misfits Change
 using Content.Shared._Shitmed.Targeting;
 using JetBrains.Annotations;
 
 namespace Content.Client.HealthAnalyzer.UI
 {
+    // #Misfits Change
     [UsedImplicitly]
     public sealed class HealthAnalyzerBoundUserInterface : BoundUserInterface
     {
@@ -23,6 +25,8 @@ namespace Content.Client.HealthAnalyzer.UI
             };
             _window.OnClose += Close;
             _window.OnBodyPartSelected += SendBodyPartMessage;
+            _window.OnTriageStatusChanged += SendTriageStatusMessage;
+            _window.OnClaimPatient += SendTriageClaimMessage;
             _window.OpenCentered();
         }
 
@@ -39,6 +43,10 @@ namespace Content.Client.HealthAnalyzer.UI
 
         private void SendBodyPartMessage(TargetBodyPart? part, EntityUid target) => SendMessage(new HealthAnalyzerPartMessage(EntMan.GetNetEntity(target), part ?? null));
 
+        private void SendTriageStatusMessage(TriageStatus status) => SendMessage(new HealthAnalyzerTriageStatusMessage(status));
+
+        private void SendTriageClaimMessage() => SendMessage(new HealthAnalyzerTriageClaimMessage());
+
         protected override void Dispose(bool disposing)
         {
             base.Dispose(disposing);
@@ -49,9 +57,12 @@ namespace Content.Client.HealthAnalyzer.UI
             {
                 _window.OnClose -= Close;
                 _window.OnBodyPartSelected -= SendBodyPartMessage;
+                _window.OnTriageStatusChanged -= SendTriageStatusMessage;
+                _window.OnClaimPatient -= SendTriageClaimMessage;
+                _window.Close();
             }
 
-            _window?.Dispose();
+            _window = null;
         }
     }
 }

@@ -1,0 +1,28 @@
+# #Misfits Change - Robot player navigation and comms module (sits in the IDCARD inventory slot)
+# Grants a hotbar action to open the Wendover map UI when equipped.
+# Loaded into each synthetic robot via ContainerFill so it is present at spawn.
+# Not shown in the strip menu (borgRobot template uses stripHidden: true on the id slot).
+
+- type: entity
+  parent: N14IDCard
+  id: MisfitsRobotNavCard
+  name: navigation module
+  description: An integrated navigation and communications chip embedded in synthetic beings. Provides tactical map access and facilitates radio-frequency communications. Cannot be removed without specialized tools.
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Sprite
+    sprite: _Nuclear14/Objects/Misc/tapes_cards.rsi
+    scale: 0.7, 0.7
+    layers:
+    - state: keycard_vault
+  - type: WastelandMap
+    mapTexturePath: _Misfits/Maps/wendover_map.png
+    mapTitle: Synthetic Navigation System
+    worldBounds: "-517,-308,484,311"
+    # No tacticalFeed - standalone personal map, no faction blip sharing
+  - type: WastelandMapAction
+    requiredSlot: IDCARD
+  - type: UserInterface
+    interfaces:
+      enum.WastelandMapUiKey.Key:
+        type: WastelandMapBoundUserInterface

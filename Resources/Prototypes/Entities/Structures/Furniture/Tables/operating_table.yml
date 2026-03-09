@@ -33,3 +33,4 @@
     ports:
     - OperatingTable
   # End Shitmed Changes
+  - type: AnesthesiaOnBuckle # #Misfits Change - Anesthesia system

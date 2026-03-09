@@ -3,6 +3,7 @@
   categories: [ HideSpawnMenu ]
   components:
   - type: SurgeryStep
+  - type: SurgeryStepDirtiness # #Misfits Change - Contamination system
 
 - type: entity
   parent: SurgeryStepBase

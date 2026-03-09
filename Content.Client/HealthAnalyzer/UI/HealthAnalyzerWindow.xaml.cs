@@ -2,6 +2,7 @@ using System.Linq;
 using System.Numerics;
 using Content.Shared.Atmos;
 using Content.Client.UserInterface.Controls;
+using Content.Shared.DeltaV.MedicalRecords; // #Misfits Change
 using Content.Shared._Shitmed.Targeting;
 using Content.Shared.Damage;
 using Content.Shared.Damage.Prototypes;
@@ -23,6 +24,7 @@ using Robust.Shared.Utility;
 
 namespace Content.Client.HealthAnalyzer.UI
 {
+    // #Misfits Change
     [GenerateTypedNameReferences]
     public sealed partial class HealthAnalyzerWindow : FancyWindow
     {
@@ -30,14 +32,17 @@ namespace Content.Client.HealthAnalyzer.UI
         private readonly SpriteSystem _spriteSystem;
         private readonly IPrototypeManager _prototypes;
         private readonly IResourceCache _cache;
+        private readonly ButtonGroup _triageStatusGroup = new();
 
         public event Action<TargetBodyPart?, EntityUid>? OnBodyPartSelected;
+        public event Action<TriageStatus>? OnTriageStatusChanged;
+        public event Action? OnClaimPatient;
         private EntityUid _spriteViewEntity;
 
-        [ValidatePrototypeId<EntityPrototype>]
-        private readonly EntProtoId _bodyView = "AlertSpriteView";
+        private static readonly EntProtoId BodyView = "AlertSpriteView";
 
         private readonly Dictionary<TargetBodyPart, TextureButton> _bodyPartControls;
+        private readonly Dictionary<TriageStatus, Button> _triageControls;
         private EntityUid? _target;
 
 
@@ -64,12 +69,28 @@ namespace Content.Client.HealthAnalyzer.UI
                 { TargetBodyPart.RightLeg, RightLegButton },
                 { TargetBodyPart.RightFoot, RightFootButton },
             };
+            _triageControls = new Dictionary<TriageStatus, Button>
+            {
+                { TriageStatus.None, TriageNoneButton },
+                { TriageStatus.Minor, TriageMinorButton },
+                { TriageStatus.Delayed, TriageDelayedButton },
+                { TriageStatus.Immediate, TriageImmediateButton },
+                { TriageStatus.Expectant, TriageExpectantButton },
+            };
 
             foreach (var bodyPartButton in _bodyPartControls)
             {
                 bodyPartButton.Value.MouseFilter = MouseFilterMode.Stop;
                 bodyPartButton.Value.OnPressed += _ => SetActiveBodyPart(bodyPartButton.Key, bodyPartButton.Value);
             }
+
+            foreach (var triageButton in _triageControls)
+            {
+                triageButton.Value.Group = _triageStatusGroup;
+                triageButton.Value.OnPressed += _ => OnTriageStatusChanged?.Invoke(triageButton.Key);
+            }
+
+            ClaimButton.OnPressed += _ => OnClaimPatient?.Invoke();
             ReturnButton.OnPressed += _ => ResetBodyPart();
         }
 
@@ -202,6 +223,19 @@ namespace Content.Client.HealthAnalyzer.UI
                 AlertsContainer.AddChild(bleedingLabel);
             }
 
+            if (msg.MedicalRecord is not { } medicalRecord)
+            {
+                TriageControls.Visible = false;
+            }
+            else
+            {
+                TriageControls.Visible = true;
+                _triageControls[medicalRecord.Status].Pressed = true;
+                ClaimButton.Text = medicalRecord.ClaimedName != null
+                    ? Loc.GetString("health-analyzer-window-triage-unclaim", ("claimedBy", medicalRecord.ClaimedName))
+                    : Loc.GetString("health-analyzer-window-triage-claim");
+            }
+
             // Damage Groups
 
             var damageSortedGroups =
@@ -323,10 +357,12 @@ namespace Content.Client.HealthAnalyzer.UI
             if (!_entityManager.Deleted(_spriteViewEntity))
                 _entityManager.QueueDeleteEntity(_spriteViewEntity);
 
-            _spriteViewEntity = _entityManager.Spawn(_bodyView);
+            _spriteViewEntity = _entityManager.Spawn(BodyView);
 
             if (!_entityManager.TryGetComponent<SpriteComponent>(_spriteViewEntity, out var sprite))
                 return null;
+
+            var spriteEnt = new Entity<SpriteComponent?>(_spriteViewEntity, sprite);
 
             int layer = 0;
             foreach (var (bodyPart, integrity) in body)
@@ -336,11 +372,11 @@ namespace Content.Client.HealthAnalyzer.UI
                 int enumValue = (int) integrity;
                 var rsi = new SpriteSpecifier.Rsi(new ResPath($"/Textures/_Shitmed/Interface/Targeting/Status/{enumName.ToLowerInvariant()}.rsi"), $"{enumName.ToLowerInvariant()}_{enumValue}");
                 // Shitcode with love from Russia :)
-                if (!sprite.TryGetLayer(layer, out _))
-                    sprite.AddLayer(_spriteSystem.Frame0(rsi));
+                if (!_spriteSystem.TryGetLayer(spriteEnt, layer, out _, false))
+                    _spriteSystem.AddTextureLayer(spriteEnt, _spriteSystem.Frame0(rsi));
                 else
-                    sprite.LayerSetTexture(layer, _spriteSystem.Frame0(rsi));
-                sprite.LayerSetScale(layer, new Vector2(3f, 3f));
+                    _spriteSystem.LayerSetTexture(spriteEnt, layer, _spriteSystem.Frame0(rsi));
+                _spriteSystem.LayerSetScale(spriteEnt, layer, new Vector2(3f, 3f));
                 layer++;
             }
             return _spriteViewEntity;

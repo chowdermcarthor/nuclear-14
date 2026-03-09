@@ -943,7 +943,8 @@ public sealed class ChatUIController : UIController
     public void ProcessChatMessage(ChatMessage msg, bool speechBubble = true)
     {
         // color the name unless it's something like "the old man"
-        if ((msg.Channel == ChatChannel.Local || msg.Channel == ChatChannel.Whisper) && _chatNameColorsEnabled)
+        // #Misfits Change - also colorize names in emote messages
+        if ((msg.Channel == ChatChannel.Local || msg.Channel == ChatChannel.Whisper || msg.Channel == ChatChannel.Emotes) && _chatNameColorsEnabled)
         {
             var grammar = _ent.GetComponentOrNull<GrammarComponent>(_ent.GetEntity(msg.SenderEntity));
             if (grammar != null && grammar.ProperNoun == true)

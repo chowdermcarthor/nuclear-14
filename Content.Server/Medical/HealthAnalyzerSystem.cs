@@ -1,5 +1,6 @@
 using Content.Server.Body.Components;
 using Content.Server.Chemistry.Containers.EntitySystems;
+using Content.Server.DeltaV.MedicalRecords; // #Misfits Change
 using Content.Server.Medical.Components;
 using Content.Server.PowerCell;
 using Content.Server.Temperature.Components;
@@ -16,6 +17,7 @@ using Content.Shared.MedicalScanner;
 using Content.Shared.Mobs.Components;
 using Content.Shared.PowerCell;
 using Content.Shared.Popups;
+using Content.Shared.DeltaV.MedicalRecords; // #Misfits Change
 using Robust.Server.GameObjects;
 using Robust.Shared.Audio.Systems;
 using Robust.Shared.Containers;
@@ -36,6 +38,7 @@ public sealed class HealthAnalyzerSystem : EntitySystem
     [Dependency] private readonly SharedAudioSystem _audio = default!;
     [Dependency] private readonly SharedDoAfterSystem _doAfterSystem = default!;
     [Dependency] private readonly SharedBodySystem _bodySystem = default!; // Shitmed Change
+    [Dependency] private readonly MedicalRecordsSystem _medicalRecords = default!; // #Misfits Change
     [Dependency] private readonly SharedSolutionContainerSystem _solutionContainerSystem = default!;
     [Dependency] private readonly UserInterfaceSystem _uiSystem = default!;
     [Dependency] private readonly TransformSystem _transformSystem = default!;
@@ -52,6 +55,8 @@ public sealed class HealthAnalyzerSystem : EntitySystem
         Subs.BuiEvents<HealthAnalyzerComponent>(HealthAnalyzerUiKey.Key, subs =>
         {
             subs.Event<HealthAnalyzerPartMessage>(OnHealthAnalyzerPartSelected);
+            subs.Event<HealthAnalyzerTriageStatusMessage>(OnHealthAnalyzerTriageStatusSelected);
+            subs.Event<HealthAnalyzerTriageClaimMessage>(OnHealthAnalyzerTriageClaimSelected);
         });
         // Shitmed Change End
     }
@@ -127,6 +132,7 @@ public sealed class HealthAnalyzerSystem : EntitySystem
 
         OpenUserInterface(args.User, uid);
         BeginAnalyzingEntity(uid, args.Target.Value);
+        uid.Comp.StationRecordKey = _medicalRecords.GetMedicalRecordsKey(args.Target.Value);
         args.Handled = true;
     }
 
@@ -191,6 +197,7 @@ public sealed class HealthAnalyzerSystem : EntitySystem
         //Unlink the analyzer
         healthAnalyzer.Comp.ScannedEntity = null;
         healthAnalyzer.Comp.CurrentBodyPart = null; // Shitmed Change
+        healthAnalyzer.Comp.StationRecordKey = null;
         _cell.SetDrawEnabled(healthAnalyzer.Owner, false);
 
         UpdateScannedUser(healthAnalyzer, target, false);
@@ -219,6 +226,23 @@ public sealed class HealthAnalyzerSystem : EntitySystem
         }
     }
     // Shitmed Change End
+
+    // #Misfits Change
+    private void OnHealthAnalyzerTriageStatusSelected(Entity<HealthAnalyzerComponent> healthAnalyzer, ref HealthAnalyzerTriageStatusMessage args)
+    {
+        if (healthAnalyzer.Comp.StationRecordKey is not { } key)
+            return;
+
+        _medicalRecords.SetPatientStatus(key, args.TriageStatus);
+    }
+
+    private void OnHealthAnalyzerTriageClaimSelected(Entity<HealthAnalyzerComponent> healthAnalyzer, ref HealthAnalyzerTriageClaimMessage args)
+    {
+        if (healthAnalyzer.Comp.StationRecordKey is not { } key)
+            return;
+
+        _medicalRecords.ClaimPatient(key, args.Actor);
+    }
 
     /// <summary>
     /// Send an update for the target to the healthAnalyzer
@@ -257,6 +281,8 @@ public sealed class HealthAnalyzerSystem : EntitySystem
             body = _bodySystem.GetBodyPartStatus(target);
         // Shitmed Change End
 
+        var medicalRecord = _medicalRecords.GetMedicalRecords(target);
+
         _uiSystem.ServerSendUiMessage(healthAnalyzer, HealthAnalyzerUiKey.Key, new HealthAnalyzerScannedUserMessage(
             GetNetEntity(target),
             bodyTemperature,
@@ -265,6 +291,7 @@ public sealed class HealthAnalyzerSystem : EntitySystem
             bleeding,
             unrevivable,
             body, // Shitmed Change
+            medicalRecord,
             part != null ? GetNetEntity(part) : null // Shitmed Change
         ));
     }

@@ -49,3 +49,11 @@ health-analyzer-window-scan-mode-inactive = Inactive
 
 health-analyzer-popup-scan-target = {CAPITALIZE(THE($user))} is trying to scan you!
 health-analyzer-window-return-button-text = < Return
+health-analyzer-window-triage-title = Triage
+health-analyzer-window-triage-none = None
+health-analyzer-window-triage-minor = Minor
+health-analyzer-window-triage-delayed = Delayed
+health-analyzer-window-triage-immediate = Immediate
+health-analyzer-window-triage-expectant = Expectant
+health-analyzer-window-triage-claim = Claim patient
+health-analyzer-window-triage-unclaim = Unclaim ({$claimedBy})

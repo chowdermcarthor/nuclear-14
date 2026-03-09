@@ -33,9 +33,10 @@ chat-manager-entity-whisper-wrap-message = [BubbleHeader][Name][font size=10][co
 chat-manager-entity-whisper-unknown-wrap-message = [BubbleHeader][font size=10][color={$color}][bold]{$language}[/bold][/color][/font][font size=11][italic]Someone[/BubbleHeader] whispers, [font="{$fontType}"][color={$color}][italic]"[BubbleContent][font="{$fontType}"][color={$color}][italic]{$message}[/italic][/color][/font][/BubbleContent]"[/italic][/color][/font][/italic][/font]
 
 # THE() is not used here because the entity and its name can technically be disconnected if a nameOverride is passed...
+# #Misfits Change - wrap name in [Name] tags so client can apply chat name color
 chat-manager-entity-me-wrap-message = [italic]{ PROPER($entity) ->
-    *[false] the {$entityName} {$message}[/italic]
-     [true] {$entityName} {$message}[/italic]
+    *[false] the [Name]{$entityName}[/Name] {$message}[/italic]
+     [true] [Name]{$entityName}[/Name] {$message}[/italic]
     }
 
 chat-manager-entity-do-wrap-message = [italic]{$message}[/italic]

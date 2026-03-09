@@ -1,0 +1,15 @@
+# #Misfits Change - Wasteland scrap headset for junk pile loot drops
+- type: entity
+  parent: N14ClothingHeadsetAlt
+  id: MisfitsClothingHeadsetWastelandScrap
+  name: scrap headset
+  description: A battered, jury-rigged headset salvaged from the wastes. Barely holds together, but it still picks up the wasteland frequency.
+  components:
+  - type: ContainerFill
+    containers:
+      key_slots:
+      - EncryptionKeyWastelandGlobal
+  - type: Sprite
+    sprite: Clothing/Ears/Headsets/base.rsi
+  - type: Clothing
+    sprite: Clothing/Ears/Headsets/base.rsi

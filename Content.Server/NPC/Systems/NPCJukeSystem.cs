@@ -70,6 +70,47 @@ public sealed class NPCJukeSystem : EntitySystem
             return;
         }
 
+        // #Misfits Change — Melee NPC continuous back-off: runs every frame (no juke cooldown).
+        // Backs the melee NPC away from its target during the weapon cooldown to prevent it from
+        // being permanently physics-pressed against the target entity, which causes stuck detection
+        // to trigger and the subsequent plan restart / circling behaviour.
+        if (component.JukeType == JukeType.Away && _npcMeleeQuery.TryGetComponent(uid, out var continuousMelee))
+        {
+            if (continuousMelee.Target.IsValid() && _melee.TryGetWeapon(uid, out var mWUid, out var mWeapon))
+            {
+                var mCdRemaining = mWeapon.NextAttack - _timing.CurTime;
+                var mAttackCooldown = TimeSpan.FromSeconds(1f / _melee.GetAttackRate(mWUid, uid, mWeapon));
+
+                // Back away for the majority of the cooldown; charge in for the last 45% to attack.
+                if (mCdRemaining >= mAttackCooldown * 0.45f)
+                {
+                    var mDir = _transform.GetWorldPosition(continuousMelee.Target) - args.WorldPosition;
+                    var mDist = mDir.Length();
+                    var mIdealDist = mWeapon.Range * 4f;
+
+                    if (mDist > 0f && mDist <= mIdealDist)
+                    {
+                        mDir = args.OffsetRotation.RotateVec(mDir);
+                        var mNorm = mDir.Normalized();
+                        var mWeight = mDist <= args.Steering.Radius
+                            ? 1f
+                            : (mIdealDist - mDist) / mIdealDist;
+
+                        for (var i = 0; i < SharedNPCSteeringSystem.InterestDirections; i++)
+                        {
+                            var result = -Vector2.Dot(mNorm, NPCSteeringSystem.Directions[i]) * mWeight;
+                            if (result < 0f)
+                                continue;
+                            args.Steering.Interest[i] = MathF.Max(args.Steering.Interest[i], result);
+                        }
+
+                        args.Steering.CanSeek = false;
+                    }
+                }
+            }
+            return;
+        }
+
         if (_timing.CurTime < component.NextJuke)
         {
             component.TargetTile = null;
@@ -153,9 +194,11 @@ public sealed class NPCJukeSystem : EntitySystem
             const float weight = 1f;
             var norm = targetDir.Normalized();
 
+            // #Misfits Change — Fix: use +dot so NPCs move TOWARD the chosen juke tile
+            // (previously used -dot which incorrectly moved them away from it).
             for (var i = 0; i < SharedNPCSteeringSystem.InterestDirections; i++)
             {
-                var result = -Vector2.Dot(norm, NPCSteeringSystem.Directions[i]) * weight;
+                var result = Vector2.Dot(norm, NPCSteeringSystem.Directions[i]) * weight;
 
                 if (result < 0f)
                     continue;

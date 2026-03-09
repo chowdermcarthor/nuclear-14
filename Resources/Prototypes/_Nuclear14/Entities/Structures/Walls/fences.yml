@@ -28,7 +28,13 @@
         mask:
         - FullTileMask
         layer:
-        - WallLayer
+        # Misfits Change - WallLayer minus BulletImpassable so bullets pass through fences
+        - Opaque
+        - Impassable
+        - HighImpassable
+        - MidImpassable
+        - LowImpassable
+        - InteractImpassable
         density: 100
 
 - type: entity

@@ -221,6 +221,39 @@
 
             </BoxContainer>
 
+                <PanelContainer Name="TriageDivider"
+                        StyleClasses="LowDivider"/>
+
+                <BoxContainer Name="TriageControls"
+                      Margin="0 5 0 5"
+                      Orientation="Vertical"
+                      Visible="False">
+                <Label Text="{Loc 'health-analyzer-window-triage-title'}"/>
+                <BoxContainer Orientation="Horizontal"
+                          SeparationOverride="4"
+                          Margin="0 4 0 0">
+                    <Button Name="TriageNoneButton"
+                        Text="{Loc 'health-analyzer-window-triage-none'}"
+                        ToggleMode="True"/>
+                    <Button Name="TriageMinorButton"
+                        Text="{Loc 'health-analyzer-window-triage-minor'}"
+                        ToggleMode="True"/>
+                    <Button Name="TriageDelayedButton"
+                        Text="{Loc 'health-analyzer-window-triage-delayed'}"
+                        ToggleMode="True"/>
+                    <Button Name="TriageImmediateButton"
+                        Text="{Loc 'health-analyzer-window-triage-immediate'}"
+                        ToggleMode="True"/>
+                    <Button Name="TriageExpectantButton"
+                        Text="{Loc 'health-analyzer-window-triage-expectant'}"
+                        ToggleMode="True"/>
+                </BoxContainer>
+                <Button Name="ClaimButton"
+                    Margin="0 4 0 0"
+                    HorizontalExpand="False"
+                    Text="{Loc 'health-analyzer-window-triage-claim'}"/>
+                </BoxContainer>
+
             <PanelContainer StyleClasses="LowDivider"/>
 
             <BoxContainer

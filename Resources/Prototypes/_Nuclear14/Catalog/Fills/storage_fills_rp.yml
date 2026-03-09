@@ -1168,6 +1168,10 @@
           prob: 0.05
         - id: Pen
           prob: 0.04
+        - id: N14Paper1 # #Misfits Change
+          prob: 0.07
+          amount: 1
+          maxAmount: 3
         - id: N14CombatKnife
           prob: 0.03
           orGroup: Tools
@@ -1637,6 +1641,11 @@
         - id: N14JunkWonderglue
           prob: 0.05
           orGroup: Junk
+        # #Misfits Change - Extremely rare pipboy (0.5%) and low-chance wasteland scrap headset (2%) for junk pile finds
+        - id: N14Pipboy
+          prob: 0.005
+        - id: MisfitsClothingHeadsetWastelandScrap
+          prob: 0.02
         - id: N14CurrencyCap
           prob: 1
           orGroup: Currency

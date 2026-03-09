@@ -1,0 +1,6 @@
+# Misfits Change — Chronic pain pain-effect message dataset
+- type: localizedDataset
+  id: PainEffects
+  values:
+    prefix: chronic-pain-
+    count: 10

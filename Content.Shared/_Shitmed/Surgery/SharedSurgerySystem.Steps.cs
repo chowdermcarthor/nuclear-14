@@ -178,6 +178,10 @@ public abstract partial class SharedSurgerySystem
                 RaiseLocalEvent(args.Body, ref ev);
             }
         }
+
+        // #Misfits Change - Fire contamination event so the server can apply sepsis from dirty instruments
+        var dirtinessEv = new Content.Shared._Misfits.Surgery.Contamination.SurgeryDirtinessEvent(args.User, args.Part, args.Tools, ent);
+        RaiseLocalEvent(args.Body, ref dirtinessEv);
     }
 
     private void OnToolCheck(Entity<SurgeryStepComponent> ent, ref SurgeryStepCompleteCheckEvent args)

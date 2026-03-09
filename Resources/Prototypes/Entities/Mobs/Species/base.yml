@@ -254,6 +254,7 @@
     - DoorBumpOpener
   - type: Targeting
   - type: SurgeryTarget
+  - type: SurgeryContaminable # #Misfits Change - Sepsis system
 
 - type: entity
   save: false

@@ -43,7 +43,24 @@
     displayName: Head
     offset: 0, 0.09375
 
-# #Misfits Change: player-controlled robots have no equipment slots
+# #Misfits Change: player-controlled robots - ears slot for headset radio, locked id slot for nav module
 - type: inventoryTemplate
   id: borgRobot
-  slots: []
+  slots:
+  - name: ears
+    slotTexture: ears
+    slotFlags: EARS
+    stripTime: 3
+    uiWindowPos: 0,0
+    strippingWindowPos: 0,0
+    displayName: Ears
+  - name: id
+    slotTexture: id
+    fullTextureName: template_small
+    slotFlags: IDCARD
+    slotGroup: SecondHotbar
+    stripTime: 999
+    stripHidden: true
+    uiWindowPos: 1,0
+    strippingWindowPos: 1,0
+    displayName: Nav-Module

@@ -1,3 +1,5 @@
+// #Misfits Change
+using Content.Shared.StationRecords;
 using Robust.Shared.Audio;
 using Robust.Shared.Serialization.TypeSerializers.Implementations.Custom;
 
@@ -67,4 +69,10 @@ public sealed partial class HealthAnalyzerComponent : Component
     /// </summary>
     [DataField]
     public bool Silent;
+
+    /// <summary>
+    /// DeltaV Medical Records: the station record key for the scanned entity.
+    /// </summary>
+    [DataField]
+    public StationRecordKey? StationRecordKey;
 }

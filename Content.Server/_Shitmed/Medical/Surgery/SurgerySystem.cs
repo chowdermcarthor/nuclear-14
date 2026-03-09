@@ -1,6 +1,7 @@
 using Content.Server.Atmos.Rotting;
 using Content.Server.Body.Systems;
 using Content.Server.Chat.Systems;
+using Content.Server.Forensics;
 using Content.Shared.Body.Organ;
 using Content.Shared.Body.Part;
 using Content.Server.Popups;
@@ -9,8 +10,11 @@ using Content.Shared.CCVar;
 using Content.Shared.Damage;
 using Content.Shared.Eye.Blinding.Components;
 using Content.Shared.Eye.Blinding.Systems;
+using Content.Shared.FixedPoint;
 using Content.Shared.Interaction;
 using Content.Shared.Inventory;
+using Content.Shared._Misfits.Surgery.Anesthesia;
+using Content.Shared._Misfits.Surgery.Contamination;
 using Content.Shared._Shitmed.Medical.Surgery;
 using Content.Shared._Shitmed.Medical.Surgery.Conditions;
 using Content.Shared._Shitmed.Medical.Surgery.Effects.Step;
@@ -38,6 +42,10 @@ public sealed class SurgerySystem : SharedSurgerySystem
     [Dependency] private readonly UserInterfaceSystem _ui = default!;
     [Dependency] private readonly RottingSystem _rot = default!;
     [Dependency] private readonly BlindableSystem _blindableSystem = default!;
+    [Dependency] private readonly SurgeryCleanSystem _clean = default!; // #Misfits Change - surgery contamination
+    [Dependency] private readonly InventorySystem _surgeryInventory = default!; // #Misfits Change - surgery contamination (renamed to avoid conflict with shared base)
+
+    private readonly HashSet<string> _dirtyDnas = new(); // #Misfits Change - surgery contamination
 
     public override void Initialize()
     {
@@ -45,6 +53,7 @@ public sealed class SurgerySystem : SharedSurgerySystem
 
         SubscribeLocalEvent<SurgeryToolComponent, GetVerbsEvent<UtilityVerb>>(OnUtilityVerb);
         SubscribeLocalEvent<SurgeryTargetComponent, SurgeryStepDamageEvent>(OnSurgeryStepDamage);
+        SubscribeLocalEvent<SurgeryContaminableComponent, SurgeryDirtinessEvent>(OnSurgeryDirtiness); // #Misfits Change - surgery contamination
         // You might be wondering "why aren't we using StepEvent for these two?" reason being that StepEvent fires off regardless of success on the previous functions
         // so this would heal entities even if you had a used or incorrect organ.
         SubscribeLocalEvent<SurgerySpecialDamageChangeEffectComponent, SurgeryStepDamageChangeEvent>(OnSurgerySpecialDamageChange);
@@ -151,7 +160,8 @@ public sealed class SurgerySystem : SharedSurgerySystem
     private void OnSurgeryDamageChange(Entity<SurgeryDamageChangeEffectComponent> ent, ref SurgeryStepDamageChangeEvent args)
     {
         var damageChange = ent.Comp.Damage;
-        if (HasComp<ForcedSleepingComponent>(args.Body))
+        // #Misfits Change - also reduce damage when under anesthesia
+        if (HasComp<ForcedSleepingComponent>(args.Body) || HasComp<AnesthesiaComponent>(args.Body))
             damageChange = damageChange * ent.Comp.SleepModifier;
 
         SetDamage(args.Body, damageChange, 0.5f, args.User, args.Part);
@@ -170,11 +180,107 @@ public sealed class SurgerySystem : SharedSurgerySystem
 
     private void OnStepScreamComplete(Entity<SurgeryStepEmoteEffectComponent> ent, ref SurgeryStepEvent args)
     {
-        if (HasComp<ForcedSleepingComponent>(args.Body))
+        if (HasComp<ForcedSleepingComponent>(args.Body) || HasComp<AnesthesiaComponent>(args.Body)) // #Misfits Change - suppress screaming under anesthesia
             return;
 
         _chat.TryEmoteWithChat(args.Body, ent.Comp.Emote);
     }
     private void OnStepSpawnComplete(Entity<SurgeryStepSpawnEffectComponent> ent, ref SurgeryStepEvent args) =>
         SpawnAtPosition(ent.Comp.Entity, Transform(args.Body).Coordinates);
+
+    // #Misfits Change Begin - Surgery cross contamination and sepsis system
+
+    /// <summary>
+    ///     Calculates total dirtiness the surgeon is bringing to the operating site,
+    ///     including gloves, tools, and any cross-contaminated patient DNA.
+    /// </summary>
+    public FixedPoint2 TotalDirtiness(EntityUid user, List<EntityUid> tools, Entity<DnaComponent, SurgeryContaminableComponent> target)
+    {
+        var total = FixedPoint2.Zero;
+        _dirtyDnas.Clear();
+
+        if (HasComp<SurgerySelfDirtyComponent>(user))
+        {
+            total += _clean.Dirtiness(user);
+            _dirtyDnas.UnionWith(_clean.CrossContaminants(user));
+        }
+        else
+        {
+            if (_surgeryInventory.TryGetSlotEntity(user, "gloves", out var glovesEntity))
+            {
+                total += _clean.Dirtiness(glovesEntity.Value);
+                _dirtyDnas.UnionWith(_clean.CrossContaminants(glovesEntity.Value));
+            }
+
+            foreach (var tool in tools)
+            {
+                total += _clean.Dirtiness(tool);
+                _dirtyDnas.UnionWith(_clean.CrossContaminants(tool));
+            }
+        }
+
+        // Remove the patient's own DNA — operating on yourself doesn't count as cross-contamination
+        if (target.Comp1.DNA is { } dna)
+            _dirtyDnas.Remove(dna);
+
+        return total + _dirtyDnas.Count * target.Comp2.CrossContaminationDirtinessLevel;
+    }
+
+    /// <summary>
+    ///     Calculates how much sepsis (toxin) damage to deal given the accumulated dirtiness.
+    ///     Damage scales quadratically above the threshold.
+    /// </summary>
+    public FixedPoint2 DamageToBeDealt(Entity<SurgeryContaminableComponent> ent, FixedPoint2 dirtiness)
+    {
+        if (ent.Comp.DirtinessThreshold > dirtiness)
+            return 0;
+
+        var exceedsAmount = (dirtiness - ent.Comp.DirtinessThreshold).Float();
+        var additionalDamage = (1f / ent.Comp.InverseDamageCoefficient.Float()) * (exceedsAmount * exceedsAmount);
+
+        return FixedPoint2.Min(FixedPoint2.New(additionalDamage) + ent.Comp.BaseDamage, ent.Comp.ToxinStepLimit);
+    }
+
+    private void OnSurgeryDirtiness(Entity<SurgeryContaminableComponent> ent, ref SurgeryDirtinessEvent args)
+    {
+        if (!TryComp<DnaComponent>(ent, out var dnaComp))
+            return;
+
+        var dirtiness = TotalDirtiness(args.User, args.Tools, (ent, dnaComp, ent));
+        var damage = DamageToBeDealt(ent, dirtiness);
+
+        if (damage > 0)
+        {
+            var sepsis = new DamageSpecifier(_prototypes.Index(ent.Comp.SepsisDamageType), damage);
+            SetDamage(ent, sepsis, 0.5f, args.User, args.Part);
+        }
+
+        if (!TryComp<SurgeryStepDirtinessComponent>(args.Step, out var surgicalStepDirtiness))
+            return;
+
+        if (HasComp<SurgerySelfDirtyComponent>(args.User))
+        {
+            _clean.AddDirt(args.User, surgicalStepDirtiness.ToolDirtiness);
+            _clean.AddDna(args.User, dnaComp.DNA);
+            return;
+        }
+
+        if (_surgeryInventory.TryGetSlotEntity(args.User, "gloves", out var glovesEntity))
+        {
+            _clean.AddDirt(glovesEntity.Value, surgicalStepDirtiness.GloveDirtiness);
+            _clean.AddDna(glovesEntity.Value, dnaComp.DNA);
+        }
+
+        foreach (var tool in args.Tools)
+        {
+            // Only dirty actual surgery tools, not incidental items
+            if (!HasComp<SurgeryToolComponent>(tool))
+                continue;
+
+            _clean.AddDirt(tool, surgicalStepDirtiness.ToolDirtiness);
+            _clean.AddDna(tool, dnaComp.DNA);
+        }
+    }
+
+    // #Misfits Change End
 }

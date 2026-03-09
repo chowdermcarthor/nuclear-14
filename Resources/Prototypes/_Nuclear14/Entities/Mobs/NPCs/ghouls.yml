@@ -25,7 +25,7 @@
     sound:
       collection: N14GhoulIdle
       params:
-        volume: -7
+        volume: -9
         maxDistance: 5
   - type: Sprite
     drawdepth: Mobs
@@ -57,7 +57,7 @@
     sound:
       collection: N14GhoulIdle
       params:
-        volume: -7
+        volume: -9
         maxDistance: 5
   - type: Sprite
     drawdepth: Mobs
@@ -93,7 +93,7 @@
     sound:
       collection: N14GhoulIdle
       params:
-        volume: -7
+        volume: -9
         maxDistance: 5
   - type: Sprite
     drawdepth: Mobs

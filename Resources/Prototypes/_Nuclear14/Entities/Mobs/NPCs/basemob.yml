@@ -70,6 +70,10 @@
   - type: Puller
     needsHands: true
   - type: IgnitionSource
+  - type: Tag #Misfits Change - footstep sounds
+    tags:
+    - DoorBumpOpener
+    - FootstepSound
 
 #MARK: Base Hostile
 - type: entity

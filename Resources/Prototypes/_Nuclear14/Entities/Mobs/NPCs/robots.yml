@@ -98,6 +98,10 @@
           path: /Audio/Machines/AI/borg_death.ogg
       - !type:DoActsBehavior
         acts: [ "Destruction" ]
+  - type: Tag #Misfits Change - robot footstep sounds
+    tags:
+    - DoorBumpOpener
+    - FootstepSound
 # TODO: Make them shout things at people using advertise.
 
 - type: entity
