@@ -276,6 +276,10 @@
     state: bos_holotag
   - type: PresetIdCard
     job: BoSWestScribe
+  # #Misfits Change - enables BOS shared map (tactical table, Pip-Boy, armor HUDs)
+  - type: Tag
+    tags:
+    - IdCardBrotherhood
   - type: ClothingAddFaction
     faction: BrotherhoodOfSteel
 

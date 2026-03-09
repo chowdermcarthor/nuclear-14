@@ -20,9 +20,9 @@ can_create_vacuum = false
 [game]
 desc = "TBD"
 hostname = "Misfits: Nuclear Wasteland"
-defaultpreset = "N14"
+defaultpreset = "M14"
 fallbackenabled = false
-fallbackpreset = "N14"
+fallbackpreset = "M14"
 round_end_sound_collection = "CMRoundEnd"
 contraband_examine = false
 maxplayers = 150

@@ -222,6 +222,7 @@ public sealed class WastelandMapSystem : EntitySystem
             WastelandMapTacticalFeedKind.Brotherhood => GetIdCardBlips(mapId, bounds, "IdCardBrotherhood"),
             WastelandMapTacticalFeedKind.Vault => GetIdCardBlips(mapId, bounds, "IdCardVault"),
             WastelandMapTacticalFeedKind.NCR => GetIdCardBlips(mapId, bounds, "IdCardNCR"),
+            WastelandMapTacticalFeedKind.Enclave => GetIdCardBlips(mapId, bounds, "IdCardEnclave"), // #Misfits Change
             _ => [],
         };
     }

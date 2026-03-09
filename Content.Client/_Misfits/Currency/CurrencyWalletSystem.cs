@@ -1,4 +1,6 @@
 // #Misfits Change - Client-side currency wallet system
+using Content.Client._Misfits.Currency.Widgets;
+using Content.Client.UserInterface.Systems.Gameplay;
 using Content.Shared._Misfits.Currency;
 using Content.Shared._Misfits.Currency.Components;
 using Robust.Client.GameObjects;
@@ -20,6 +22,28 @@ public sealed class CurrencyWalletSystem : EntitySystem
         base.Initialize();
 
         SubscribeNetworkEvent<CurrencyWalletStateMessage>(OnCurrencyWalletState);
+
+        // #Misfits Change - hook the dedicated HUD button on screen load/unload
+        var loadController = _uiManager.GetUIController<GameplayStateLoadController>();
+        loadController.OnScreenLoad += OnScreenLoad;
+        loadController.OnScreenUnload += OnScreenUnload;
+    }
+
+    private void OnScreenLoad()
+    {
+        if (_uiManager.GetActiveUIWidgetOrNull<CurrencyWalletGui>() is { } gui)
+            gui.OnWalletPressed += OnHudWalletPressed;
+    }
+
+    private void OnScreenUnload()
+    {
+        if (_uiManager.GetActiveUIWidgetOrNull<CurrencyWalletGui>() is { } gui)
+            gui.OnWalletPressed -= OnHudWalletPressed;
+    }
+
+    private void OnHudWalletPressed()
+    {
+        RaiseNetworkEvent(new OpenWalletHudMessage());
     }
 
     private void OnCurrencyWalletState(CurrencyWalletStateMessage msg)
@@ -37,6 +61,12 @@ public sealed class CurrencyWalletSystem : EntitySystem
 
         _window = new CurrencyWalletWindow();
         _window.OnWithdrawRequest += OnWithdrawRequest;
+        _window.OnDepositInHandRequest += OnDepositInHand;
+    }
+
+    private void OnDepositInHand()
+    {
+        RaiseNetworkEvent(new DepositHeldCurrencyRequest());
     }
 
     private void OnWithdrawRequest(CurrencyType type, int amount)
@@ -48,3 +78,4 @@ public sealed class CurrencyWalletSystem : EntitySystem
         });
     }
 }
+

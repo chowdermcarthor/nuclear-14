@@ -33,3 +33,19 @@ public sealed class WithdrawCurrencyRequest : EntityEventArgs
     public CurrencyType CurrencyType;
     public int Amount;
 }
+
+/// <summary>
+/// Sent from the client HUD button to the server to request the wallet UI be opened.
+/// </summary>
+[Serializable, NetSerializable]
+public sealed class OpenWalletHudMessage : EntityEventArgs
+{
+}
+
+/// <summary>
+/// Sent from the client wallet window to the server to deposit whatever ConsumableCurrency item is currently in hand.
+/// </summary>
+[Serializable, NetSerializable]
+public sealed class DepositHeldCurrencyRequest : EntityEventArgs
+{
+}

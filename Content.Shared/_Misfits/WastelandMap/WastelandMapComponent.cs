@@ -41,6 +41,7 @@ public enum WastelandMapTacticalFeedKind : byte
     Brotherhood,
     Vault,
     NCR,
+    Enclave, // #Misfits Change
 }
 
 [Serializable, NetSerializable]

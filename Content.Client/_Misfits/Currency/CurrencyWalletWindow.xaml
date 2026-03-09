@@ -1,7 +1,15 @@
 <DefaultWindow xmlns="https://spacestation14.io"
+               xmlns:cc="clr-namespace:Content.Client.Administration.UI.CustomControls"
                Title="{Loc 'currency-wallet-window-title'}"
                MinSize="320 300">
     <BoxContainer Orientation="Vertical" SeparationOverride="8" Margin="8 8 8 8">
+        <!-- Deposit In Hand -->
+        <BoxContainer Orientation="Horizontal" SeparationOverride="4">
+            <Label Text="Currency In Hand: " HorizontalExpand="True" />
+            <Button Name="DepositInHandButton" Text="Click to Deposit" Access="Public" />
+        </BoxContainer>
+        <cc:HSeparator />
+
         <!-- Bottlecaps -->
         <BoxContainer Orientation="Horizontal" SeparationOverride="4">
             <Label Text="Bottlecaps: " />

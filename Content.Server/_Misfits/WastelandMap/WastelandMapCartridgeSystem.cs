@@ -131,6 +131,9 @@ public sealed class WastelandMapCartridgeSystem : EntitySystem
         if (_tag.HasTag(containedId, "IdCardNCR"))
             return WastelandMapTacticalFeedKind.NCR;
 
+        if (_tag.HasTag(containedId, "IdCardEnclave")) // #Misfits Change
+            return WastelandMapTacticalFeedKind.Enclave;
+
         return _wastelandMap.GetEffectiveFeed(component);
     }
 }

@@ -1,6 +1,7 @@
 ﻿<widgets:AlertsUI xmlns="https://spacestation14.io"
                   xmlns:widgets="clr-namespace:Content.Client.UserInterface.Systems.Alerts.Widgets"
                   xmlns:partStatus="clr-namespace:Content.Client._Shitmed.UserInterface.Systems.PartStatus.Widgets"
+                  xmlns:misfitsCurrency="clr-namespace:Content.Client._Misfits.Currency.Widgets"
                   MinSize="64 64">
     <!-- Shitmed Change Start - TODO: Refactor this godforsaken abomination -->
     <GridContainer Columns="1" HorizontalAlignment="Right" VerticalAlignment="Top">
@@ -8,6 +9,8 @@
             <GridContainer Name="AlertContainer" Columns="1" HorizontalAlignment="Right" VerticalAlignment="Center" Access="Public" />
         </PanelContainer>
         <partStatus:PartStatusControl Name="PartStatus" Access="Protected"/>
+        <!-- #Misfits Change - Currency wallet button in status bar -->
+        <misfitsCurrency:CurrencyWalletGui Name="CurrencyWallet" HorizontalAlignment="Right" Access="Protected" />
     </GridContainer>
     <!-- Shitmed Change End -->
 </widgets:AlertsUI>

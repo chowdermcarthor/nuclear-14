@@ -55,6 +55,7 @@
         - IdCardVault
         - IdCardBrotherhood
         - IdCardNCR
+        - IdCardEnclave # #Misfits Change
   - type: Geiger
     isEnabled: true
     showControl: true

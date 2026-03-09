@@ -159,8 +159,9 @@
     worldBounds: "-517,-308,484,311"
     tacticalFeed: Brotherhood
     compactHud: true
+  # #Misfits Change - tactical HUD is provided by the helmet, not the suit itself
   - type: WastelandMapAction
-    requiredSlot: OUTERCLOTHING
+    requiredSlot: HEAD
   - type: N14BosBackpackSlot # Misfits Change
   - type: ToggleableClothing
     clothingPrototypes:
@@ -179,6 +180,9 @@
     sprite: Corvax/Clothing/OuterClothing/PowerArmor/t51westboselder.rsi
   - type: Clothing
     sprite: Corvax/Clothing/OuterClothing/PowerArmor/t51westboselder.rsi
+  # #Misfits Change - tactical HUD is provided by the helmet, not the suit itself
+  - type: WastelandMapAction
+    requiredSlot: HEAD
   - type: ToggleableClothing
     clothingPrototypes:
       head: N14ClothingHeadHelmetPowerArmorT51WestBOSElder

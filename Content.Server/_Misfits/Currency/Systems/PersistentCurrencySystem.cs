@@ -57,6 +57,8 @@ public sealed class PersistentCurrencySystem : EntitySystem
         SubscribeLocalEvent<PersistentCurrencyComponent, ComponentShutdown>(OnCurrencyShutdown);
         SubscribeLocalEvent<PersistentCurrencyComponent, OpenCurrencyWalletEvent>(OnOpenWallet);
         SubscribeNetworkEvent<WithdrawCurrencyRequest>(OnWithdrawRequest);
+        SubscribeNetworkEvent<OpenWalletHudMessage>(OnHudOpenWallet); // #Misfits Change - HUD button support
+        SubscribeNetworkEvent<DepositHeldCurrencyRequest>(OnDepositHeldRequest); // #Misfits Change - wallet Deposit In Hand button
 
         // Set up save file path
         var userDataPath = _resourceManager.UserData.RootDir ?? ".";
@@ -86,6 +88,107 @@ public sealed class PersistentCurrencySystem : EntitySystem
         };
 
         RaiseNetworkEvent(msg, actor.PlayerSession.Channel);
+    }
+
+    // #Misfits Change - handles wallet open request from the dedicated HUD button
+    private void OnHudOpenWallet(OpenWalletHudMessage msg, EntitySessionEventArgs args)
+    {
+        var player = args.SenderSession;
+        if (player.AttachedEntity is not { } uid)
+            return;
+
+        if (!TryComp<PersistentCurrencyComponent>(uid, out var comp))
+            return;
+
+        if (!TryComp<ActorComponent>(uid, out var actor))
+            return;
+
+        var stateMsg = new CurrencyWalletStateMessage
+        {
+            Bottlecaps = comp.Bottlecaps,
+            NCRDollars = comp.NCRDollars,
+            LegionDenarii = comp.LegionDenarii,
+            PrewarMoney = comp.PrewarMoney,
+        };
+
+        RaiseNetworkEvent(stateMsg, actor.PlayerSession.Channel);
+    }
+
+    // #Misfits Change - Deposit In Hand button: deposit whatever ConsumableCurrency item the player is holding
+    private void OnDepositHeldRequest(DepositHeldCurrencyRequest msg, EntitySessionEventArgs args)
+    {
+        var player = args.SenderSession;
+        if (player.AttachedEntity is not { } uid)
+            return;
+
+        if (!TryComp<PersistentCurrencyComponent>(uid, out var comp))
+            return;
+
+        // Find a ConsumableCurrencyComponent item in any held hand
+        EntityUid? heldItem = null;
+        foreach (var held in _hands.EnumerateHeld(uid))
+        {
+            if (HasComp<ConsumableCurrencyComponent>(held))
+            {
+                heldItem = held;
+                break;
+            }
+        }
+
+        if (heldItem == null)
+        {
+            _popup.PopupEntity("You're not holding any currency!", uid, uid);
+            return;
+        }
+
+        if (!TryComp<ConsumableCurrencyComponent>(heldItem.Value, out var currency))
+            return;
+
+        // Determine deposit amount (stack-aware)
+        var amount = currency.ValuePerUnit;
+        if (TryComp<StackComponent>(heldItem.Value, out var stack))
+            amount *= stack.Count;
+
+        // Credit the balance
+        var typeName = currency.CurrencyType switch
+        {
+            CurrencyType.Bottlecaps => "bottlecaps",
+            CurrencyType.NCRDollars => "NCR dollars",
+            CurrencyType.LegionDenarii => "denarii",
+            CurrencyType.PrewarMoney => "pre-war money",
+            _ => "currency"
+        };
+
+        switch (currency.CurrencyType)
+        {
+            case CurrencyType.Bottlecaps:    comp.Bottlecaps    += amount; break;
+            case CurrencyType.NCRDollars:    comp.NCRDollars    += amount; break;
+            case CurrencyType.LegionDenarii: comp.LegionDenarii += amount; break;
+            case CurrencyType.PrewarMoney:   comp.PrewarMoney   += amount; break;
+        }
+
+        var total = GetBalance(comp, currency.CurrencyType);
+        _popup.PopupEntity($"Deposited {amount} {typeName}. Total: {total}", uid, uid);
+
+        Dirty(uid, comp);
+
+        if (comp.UserId != null && comp.CharacterName != null)
+            SaveCurrency(comp.UserId, comp.CharacterName, comp);
+
+        // Delete the held currency item
+        QueueDel(heldItem.Value);
+
+        // Send refreshed state back so the window updates immediately
+        if (!TryComp<ActorComponent>(uid, out var actor))
+            return;
+
+        RaiseNetworkEvent(new CurrencyWalletStateMessage
+        {
+            Bottlecaps    = comp.Bottlecaps,
+            NCRDollars    = comp.NCRDollars,
+            LegionDenarii = comp.LegionDenarii,
+            PrewarMoney   = comp.PrewarMoney,
+        }, actor.PlayerSession.Channel);
     }
 
     private void OnWithdrawRequest(WithdrawCurrencyRequest msg, EntitySessionEventArgs args)
@@ -241,8 +344,7 @@ public sealed class PersistentCurrencySystem : EntitySystem
 
     private void OnCurrencyStartup(Entity<PersistentCurrencyComponent> ent, ref ComponentStartup args)
     {
-        // Grant the wallet action
-        _actions.AddAction(ent, ref ent.Comp.ActionEntity, ent.Comp.Action, ent);
+        // #Misfits Change - action intentionally not granted; wallet is accessed via the AlertsUI HUD button instead
 
         // Load currency from file when component starts up
         if (TryComp<ActorComponent>(ent, out var actor))
@@ -253,7 +355,7 @@ public sealed class PersistentCurrencySystem : EntitySystem
 
     private void OnCurrencyShutdown(Entity<PersistentCurrencyComponent> ent, ref ComponentShutdown args)
     {
-        _actions.RemoveAction(ent, ent.Comp.ActionEntity);
+        // #Misfits Change - nothing to remove; action is no longer granted
     }
 
     private void OnPlayerAttached(Entity<PersistentCurrencyComponent> ent, ref PlayerAttachedEvent args)

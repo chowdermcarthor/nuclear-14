@@ -214,6 +214,18 @@
     interfaces:
       enum.ToggleClothingUiKey.Key:
         type: ToggleableClothingBoundUserInterface
+      enum.WastelandMapUiKey.Key:
+        type: WastelandMapBoundUserInterface
+  # #Misfits Change - Enclave tactical map HUD; action fires from helmet (HEAD slot), not suit
+  - type: WastelandMap
+    mapTexturePath: _Misfits/Maps/wendover_map.png
+    mapTitle: Enclave Tactical HUD
+    worldBounds: "-517,-308,484,311"
+    tacticalFeed: Enclave
+    compactHud: true
+  - type: WastelandMapAction
+    requiredSlot: HEAD
+  # End Misfits Change
   - type: ToggleableClothing
     clothingPrototypes:
       head: N14ClothingHeadHelmetPowerArmorX02
@@ -325,8 +337,9 @@
     worldBounds: "-517,-308,484,311"
     tacticalFeed: Brotherhood
     compactHud: true
+  # #Misfits Change - tactical HUD is provided by the helmet, not the suit itself
   - type: WastelandMapAction
-    requiredSlot: OUTERCLOTHING
+    requiredSlot: HEAD
   - type: N14BosBackpackSlot # Misfits Change
   - type: ToggleableClothing
     clothingPrototypes:
@@ -375,8 +388,9 @@
     worldBounds: "-517,-308,484,311"
     tacticalFeed: Brotherhood
     compactHud: true
+  # #Misfits Change - tactical HUD is provided by the helmet, not the suit itself
   - type: WastelandMapAction
-    requiredSlot: OUTERCLOTHING
+    requiredSlot: HEAD
   - type: ToggleableClothing
     clothingPrototypes:
       head: N14ClothingHeadHelmetPowerArmorMidwestCommander
@@ -419,8 +433,9 @@
     worldBounds: "-517,-308,484,311"
     tacticalFeed: Brotherhood
     compactHud: true
+  # #Misfits Change - tactical HUD is provided by the helmet, not the suit itself
   - type: WastelandMapAction
-    requiredSlot: OUTERCLOTHING
+    requiredSlot: HEAD
   - type: N14BosBackpackSlot # Misfits Change
   - type: ToggleableClothing
     clothingPrototypes:
@@ -524,8 +539,9 @@
     worldBounds: "-517,-308,484,311"
     tacticalFeed: Brotherhood
     compactHud: true
+  # #Misfits Change - tactical HUD is provided by the helmet, not the suit itself
   - type: WastelandMapAction
-    requiredSlot: OUTERCLOTHING
+    requiredSlot: HEAD
   - type: N14BosBackpackSlot # Misfits Change
   - type: ToggleableClothing
     clothingPrototypes:
@@ -576,8 +592,9 @@
     worldBounds: "-517,-308,484,311"
     tacticalFeed: Brotherhood
     compactHud: true
+  # #Misfits Change - tactical HUD is provided by the helmet, not the suit itself
   - type: WastelandMapAction
-    requiredSlot: OUTERCLOTHING
+    requiredSlot: HEAD
   - type: ToggleableClothing
     clothingPrototypes:
       head: N14ClothingHeadHelmetPowerArmorT51WashElite

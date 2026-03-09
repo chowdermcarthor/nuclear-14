@@ -287,6 +287,10 @@
     state: enclave_trooper
   # - type: PresetIdCard
   #   job: EnclaveTrooper
+  # #Misfits Change - enables Enclave shared map (tactical helmet HUDs, Pip-Boy)
+  - type: Tag
+    tags:
+    - IdCardEnclave
 
 - type: entity
   parent: N14IDPassportBlank

@@ -10,11 +10,13 @@ namespace Content.Client._Misfits.Currency;
 public sealed partial class CurrencyWalletWindow : DefaultWindow
 {
     public event Action<CurrencyType, int>? OnWithdrawRequest;
+    public event Action? OnDepositInHandRequest;
 
     public CurrencyWalletWindow()
     {
         RobustXamlLoader.Load(this);
 
+        DepositInHandButton.OnPressed += _ => OnDepositInHandRequest?.Invoke();
         BottlecapsWithdraw.OnPressed += _ => TryWithdraw(CurrencyType.Bottlecaps, BottlecapsAmount);
         NCRDollarsWithdraw.OnPressed += _ => TryWithdraw(CurrencyType.NCRDollars, NCRDollarsAmount);
         LegionDenariiWithdraw.OnPressed += _ => TryWithdraw(CurrencyType.LegionDenarii, LegionDenariiAmount);
