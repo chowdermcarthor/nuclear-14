@@ -751,3 +751,58 @@ Entries:
   id: 5623
   time: '2026-03-09T12:34:56.0000000+00:00'
   url: https://github.com/Misfit-Sanctuary/nuclear-14/pull/83
+- author: cythisiax
+  changes:
+    - type: Add
+      message: >-
+        Mouseover tooltip added to player hotbar — displays equipped item name
+        on hover, matching existing bag tooltip behavior
+    - type: Add
+      message: >-
+        Admin ghost chat now appends [Info] and [Ghost] hyperlinks to Local,
+        Emote, LOOC, OOC, Dead, and Radio messages — immediately opens player
+        info panel or aghosts to and orbits the player
+    - type: Add
+      message: >-
+        "Ghoul Reversal" reagent — Promethine; if administered within 2 hours of
+        ghoulification caused by radiation death, reverses the player's species
+        back to MobHuman with their original appearance
+    - type: Add
+      message: >-
+        Passive emote triggers when a player nears sickly green water or
+        radiation emitters — 'you feel weird' example
+    - type: Add
+      message: >-
+        Ambiguous character emote triggers on high rads accumulation — 'if I
+        stick around here I might lose all my hair' example
+    - type: Add
+      message: High rads damage now causes hair loss on the player character
+    - type: Add
+      message: >-
+        N14BlackBarrels now emit radiation — description already reads 'nuclear
+        waste'
+    - type: Add
+      message: >-
+        BreathMask component added to gasmasks, appropriate full-face masks, and
+        all power armors — NCR, Brotherhood of Steel hardsuits with helmets on,
+        and wasteland-crafted variants
+    - type: Tweak
+      message: >-
+        Time Transfer moved out of Admin menu and folded into Whitelisting >
+        Role Whitelists Menu; job search function added when a player is
+        selected here; background made grey and boxed to stop visual bleed
+    - type: Fix
+      message: >-
+        HOST permission can now explicitly grant MENTORHELP to existing ranks —
+        previously required creating a new rank entirely to assign the
+        permission, as HOST rank is regenerated fresh on each rebuild and the
+        case never surfaced in local testing
+    - type: Fix
+      message: >-
+        Shift+click item description remains intact alongside the new mouseover
+        tooltip addition
+    - type: Tweak
+      message: Discord changelog .py adjustment attempt.
+  id: 5624
+  time: '2026-03-09T16:31:12.0000000+00:00'
+  url: https://github.com/Misfit-Sanctuary/nuclear-14/pull/84
