@@ -11,6 +11,17 @@
       thresholds:
         0: Alive
         60: Dead
+    - type: Destructible #Misfits Change /Add: Drop bottle caps on death (1-7)
+      thresholds:
+      - trigger:
+          !type:DamageTrigger
+          damage: 60
+        behaviors:
+        - !type:SpawnEntitiesBehavior
+          spawn:
+            N14CurrencyCap:
+              min: 1
+              max: 7
     - type: PassiveDamage # It's mostly for the faction NPCs, but can be here nonetheless.
       allowedStates:
       - Alive

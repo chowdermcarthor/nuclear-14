@@ -1,21 +1,16 @@
 // #Misfits Change - Persistent currency system
 using System.IO;
 using System.Text.Json;
-using Content.Server.Actions;
 using Content.Server.Mind;
 using Content.Shared._Misfits.Currency;
 using Content.Shared._Misfits.Currency.Components;
-using Content.Shared.DoAfter;
 using Content.Shared.Hands.EntitySystems;
-using Content.Shared.Interaction;
 using Content.Shared.Interaction.Events;
 using Content.Shared.Popups;
 using Content.Shared.Stacks;
 using Robust.Server.GameObjects;
 using Robust.Shared.ContentPack;
 using Robust.Shared.Player;
-using Robust.Shared.Prototypes;
-using Robust.Shared.Utility;
 
 namespace Content.Server._Misfits.Currency.Systems;
 
@@ -29,8 +24,9 @@ public sealed class PersistentCurrencySystem : EntitySystem
     [Dependency] private readonly SharedHandsSystem _hands = default!;
     [Dependency] private readonly SharedStackSystem _stack = default!;
     [Dependency] private readonly MindSystem _mind = default!;
-    [Dependency] private readonly UserInterfaceSystem _ui = default!;
-    [Dependency] private readonly ActionsSystem _actions = default!;
+
+    // #Misfits Change - Sawmill for wallet logging
+    private ISawmill _log = default!;
 
     private const string CurrencyDataPath = "/currency_data.json";
     private readonly Dictionary<string, CharacterCurrency> _currencyData = new();
@@ -50,6 +46,9 @@ public sealed class PersistentCurrencySystem : EntitySystem
     public override void Initialize()
     {
         base.Initialize();
+
+        // #Misfits Change - initialise the sawmill before any other setup
+        _log = Logger.GetSawmill("persistent_currency");
 
         SubscribeLocalEvent<ConsumableCurrencyComponent, UseInHandEvent>(OnUseCurrency);
         SubscribeLocalEvent<PersistentCurrencyComponent, ComponentStartup>(OnCurrencyStartup);
@@ -339,6 +338,18 @@ public sealed class PersistentCurrencySystem : EntitySystem
         // Delete the currency item
         QueueDel(ent);
 
+        // #Misfits Change - refresh the wallet window if the player has it open
+        if (TryComp<ActorComponent>(user, out var actor))
+        {
+            RaiseNetworkEvent(new CurrencyWalletStateMessage
+            {
+                Bottlecaps    = currencyComp.Bottlecaps,
+                NCRDollars    = currencyComp.NCRDollars,
+                LegionDenarii = currencyComp.LegionDenarii,
+                PrewarMoney   = currencyComp.PrewarMoney,
+            }, actor.PlayerSession.Channel);
+        }
+
         args.Handled = true;
     }
 
@@ -435,7 +446,7 @@ public sealed class PersistentCurrencySystem : EntitySystem
         }
         catch (Exception ex)
         {
-            Logger.Error($"Failed to load currency data: {ex}");
+            _log.Error($"Failed to load currency data: {ex}");
         }
     }
 
@@ -452,7 +463,7 @@ public sealed class PersistentCurrencySystem : EntitySystem
         }
         catch (Exception ex)
         {
-            Logger.Error($"Failed to save currency data: {ex}");
+            _log.Error($"Failed to save currency data: {ex}");
         }
     }
 }
