@@ -232,6 +232,21 @@ public sealed partial class ChatSystem : SharedChatSystem
 
         var language = languageOverride ?? _language.GetLanguage(source);
 
+        if (player != null && _sanitizer.TryGetBlockedChatResult(message, ChatSanitizationChannel.InCharacter, out var icModeration))
+        {
+            var contextLabel = desiredType switch
+            {
+                InGameICChatType.Emote => "emote",
+                InGameICChatType.Telepathic => "telepathic chat",
+                InGameICChatType.Whisper => "whisper",
+                _ => "IC chat",
+            };
+
+            _sanitizer.ReportBlockedChat(player, message, contextLabel);
+            SendEntityEmote(source, icModeration.ReplacementText, range, nameOverride, language, ignoreActionBlocker: ignoreActionBlocker, author: player.UserId);
+            return;
+        }
+
         bool shouldCapitalize = (desiredType != InGameICChatType.Emote);
         bool shouldPunctuate = _configurationManager.GetCVar(CCVars.ChatPunctuation);
         // Capitalizing the word I only happens in English, so we check language here
@@ -302,6 +317,13 @@ public sealed partial class ChatSystem : SharedChatSystem
         // in-game IC messages.
         if (player?.AttachedEntity is not { Valid: true } entity || source != entity)
             return;
+
+        if (_sanitizer.TryGetBlockedChatResult(message, ChatSanitizationChannel.OutOfCharacter, out var oocModeration))
+        {
+            var contextLabel = type == InGameOOCChatType.Looc ? "LOOC" : "dead chat";
+            _sanitizer.ReportBlockedChat(player, message, contextLabel);
+            message = oocModeration.ReplacementText;
+        }
 
         message = SanitizeInGameOOCMessage(message);
 

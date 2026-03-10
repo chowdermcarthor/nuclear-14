@@ -11,6 +11,7 @@ namespace Content.Shared.Administration
 
         public AdminData[] Admins = Array.Empty<AdminData>();
         public Dictionary<int, AdminRankData> AdminRanks = new();
+        public SearchPlayerData[] SearchResults = Array.Empty<SearchPlayerData>();
 
         [Serializable, NetSerializable]
         public struct AdminData
@@ -29,6 +30,13 @@ namespace Content.Shared.Administration
             public string Name;
             public AdminFlags Flags;
         }
+
+        [Serializable, NetSerializable]
+        public struct SearchPlayerData
+        {
+            public NetUserId UserId;
+            public string UserName;
+        }
     }
 
     public static class PermissionsEuiMsg
@@ -36,11 +44,18 @@ namespace Content.Shared.Administration
         [Serializable, NetSerializable]
         public sealed class AddAdmin : EuiMessageBase
         {
+            public NetUserId? UserId;
             public string UserNameOrId = string.Empty;
             public string? Title;
             public AdminFlags PosFlags;
             public AdminFlags NegFlags;
             public int? RankId;
+        }
+
+        [Serializable, NetSerializable]
+        public sealed class SearchPlayers : EuiMessageBase
+        {
+            public string Query = string.Empty;
         }
 
         [Serializable, NetSerializable]

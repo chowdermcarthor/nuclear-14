@@ -25,6 +25,7 @@ namespace Content.Server.Administration.UI
 
         private readonly List<(Admin a, string? lastUserName)> _admins = new List<(Admin, string? lastUserName)>();
         private readonly List<DbAdminRank> _adminRanks = new();
+        private List<PermissionsEuiState.SearchPlayerData> _searchResults = new();
 
         public PermissionsEui()
         {
@@ -83,7 +84,15 @@ namespace Content.Server.Administration.UI
                 {
                     Flags = AdminFlagsHelper.NamesToFlags(a.Flags.Select(p => p.Flag)),
                     Name = a.Name
-                })
+                }),
+
+                SearchResults = _searchResults
+                    .Select(p => new PermissionsEuiState.SearchPlayerData
+                    {
+                        UserId = p.UserId,
+                        UserName = p.UserName,
+                    })
+                    .ToArray(),
             };
         }
 
@@ -91,11 +100,20 @@ namespace Content.Server.Administration.UI
         {
             base.HandleMessage(msg);
 
+            var reloadDb = true;
+
             switch (msg)
             {
                 case AddAdmin ca:
                 {
                     await HandleCreateAdmin(ca);
+                    break;
+                }
+
+                case SearchPlayers search:
+                {
+                    await HandleSearchPlayers(search.Query);
+                    reloadDb = false;
                     break;
                 }
 
@@ -130,10 +148,39 @@ namespace Content.Server.Administration.UI
                 }
             }
 
-            if (!IsShutDown)
+            if (reloadDb && !IsShutDown)
             {
                 LoadFromDb();
             }
+        }
+
+        private async Task HandleSearchPlayers(string query)
+        {
+            if (string.IsNullOrWhiteSpace(query) || query.Trim().Length < 2)
+            {
+                _searchResults.Clear();
+                StateDirty();
+                return;
+            }
+
+            try
+            {
+                var records = await _db.SearchPlayersByName(query.Trim());
+                _searchResults = records
+                    .Select(record => new PermissionsEuiState.SearchPlayerData
+                    {
+                        UserId = record.UserId,
+                        UserName = record.LastSeenUserName,
+                    })
+                    .ToList();
+            }
+            catch (Exception e)
+            {
+                _sawmill.Error($"Error searching players by name '{query}': {e}");
+                _searchResults.Clear();
+            }
+
+            StateDirty();
         }
 
         private async Task HandleRemoveAdminRank(RemoveAdminRank rr)
@@ -286,7 +333,14 @@ namespace Content.Server.Administration.UI
 
             string name;
             NetUserId userId;
-            if (Guid.TryParse(ca.UserNameOrId, out var guid))
+
+            if (ca.UserId is { } explicitUserId)
+            {
+                userId = explicitUserId;
+                var playerRecord = await _db.GetPlayerRecordByUserId(userId);
+                name = playerRecord?.LastSeenUserName ?? userId.ToString();
+            }
+            else if (Guid.TryParse(ca.UserNameOrId, out var guid))
             {
                 userId = new NetUserId(guid);
                 var playerRecord = await _db.GetPlayerRecordByUserId(userId);

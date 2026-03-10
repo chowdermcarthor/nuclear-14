@@ -7,6 +7,7 @@
     MinSize="50 50">
     <ScrollContainer HScrollEnabled="False" VScrollEnabled="True" VerticalExpand="True">
         <BoxContainer Orientation="Vertical" SeparationOverride="6">
+            <Label Text="{Loc misfits-panic-bunker-section}" StyleClasses="LabelHeading" Margin="0 0 0 4" />
             <!-- Toggle: Enable/Disable Panic Bunker -->
             <BoxContainer Orientation="Horizontal" SeparationOverride="8">
                 <cc:CommandButton Name="EnabledButton" Command="panicbunker" ToggleMode="True"
@@ -56,6 +57,35 @@
                 <LineEdit Name="MinOverallHours" MinWidth="50" Margin="0 0 5 0" />
                 <Label Text="{Loc generic-hours}" VerticalAlignment="Center" />
                 <Label Text="{Loc misfits-panic-bunker-min-hours-desc}" VerticalAlignment="Center" StyleClasses="LabelSubText" />
+            </BoxContainer>
+
+            <Control MinSize="0 8" />
+            <Label Text="{Loc misfits-baby-jail-section}" StyleClasses="LabelHeading" Margin="0 0 0 4" />
+            <!-- Toggle: Enable/Disable Baby Jail -->
+            <BoxContainer Orientation="Horizontal" SeparationOverride="8">
+                <cc:CommandButton Name="BabyJailEnabledButton" Command="babyjail" ToggleMode="True"
+                                  Text="{Loc admin-ui-baby-jail-disabled}" MinWidth="180" />
+                <Label Text="{Loc misfits-baby-jail-toggle-desc}" VerticalAlignment="Center" StyleClasses="LabelSubText" />
+            </BoxContainer>
+            <!-- Toggle: Show Reason -->
+            <BoxContainer Orientation="Horizontal" SeparationOverride="8">
+                <cc:CommandButton Name="BabyJailShowReasonButton" Command="babyjail_show_reason"
+                                  ToggleMode="True" Text="{Loc admin-ui-baby-jail-show-reason}" MinWidth="180" />
+                <Label Text="{Loc misfits-baby-jail-show-reason-desc}" VerticalAlignment="Center" StyleClasses="LabelSubText" />
+            </BoxContainer>
+            <!-- Max Account Age -->
+            <BoxContainer Orientation="Horizontal" SeparationOverride="8">
+                <Label Text="{Loc admin-ui-baby-jail-max-account-age}" MinWidth="180" VerticalAlignment="Center" />
+                <LineEdit Name="BabyJailMaxAccountAge" MinWidth="50" Margin="0 0 5 0" />
+                <Label Text="{Loc generic-hours}" VerticalAlignment="Center" />
+                <Label Text="{Loc misfits-baby-jail-max-age-desc}" VerticalAlignment="Center" StyleClasses="LabelSubText" />
+            </BoxContainer>
+            <!-- Max Overall Hours -->
+            <BoxContainer Orientation="Horizontal" SeparationOverride="8">
+                <Label Text="{Loc admin-ui-baby-jail-max-overall-hours}" MinWidth="180" VerticalAlignment="Center" />
+                <LineEdit Name="BabyJailMaxOverallHours" MinWidth="50" Margin="0 0 5 0" />
+                <Label Text="{Loc generic-hours}" VerticalAlignment="Center" />
+                <Label Text="{Loc misfits-baby-jail-max-hours-desc}" VerticalAlignment="Center" StyleClasses="LabelSubText" />
             </BoxContainer>
         </BoxContainer>
     </ScrollContainer>

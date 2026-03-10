@@ -13,6 +13,8 @@ public sealed partial class PanicBunkerTab : Control
 
     private string _minAccountAge;
     private string _minOverallHours;
+    private string _babyJailMaxAccountAge;
+    private string _babyJailMaxOverallHours;
 
     public PanicBunkerTab()
     {
@@ -28,6 +30,14 @@ public sealed partial class PanicBunkerTab : Control
         MinOverallHours.OnTextEntered += args => SendMinOverallHours(args.Text);
         MinOverallHours.OnFocusExit += args => SendMinOverallHours(args.Text);
         _minOverallHours = MinOverallHours.Text;
+
+        BabyJailMaxAccountAge.OnTextEntered += args => SendBabyJailMaxAccountAge(args.Text);
+        BabyJailMaxAccountAge.OnFocusExit += args => SendBabyJailMaxAccountAge(args.Text);
+        _babyJailMaxAccountAge = BabyJailMaxAccountAge.Text;
+
+        BabyJailMaxOverallHours.OnTextEntered += args => SendBabyJailMaxOverallHours(args.Text);
+        BabyJailMaxOverallHours.OnFocusExit += args => SendBabyJailMaxOverallHours(args.Text);
+        _babyJailMaxOverallHours = BabyJailMaxOverallHours.Text;
     }
 
     private void SendMinAccountAge(string text)
@@ -54,6 +64,30 @@ public sealed partial class PanicBunkerTab : Control
         _console.ExecuteCommand($"panicbunker_min_overall_hours {hours}");
     }
 
+    private void SendBabyJailMaxAccountAge(string text)
+    {
+        if (string.IsNullOrWhiteSpace(text) ||
+            text == _babyJailMaxAccountAge ||
+            !int.TryParse(text, out var hours))
+        {
+            return;
+        }
+
+        _console.ExecuteCommand($"babyjail_max_account_age {hours}");
+    }
+
+    private void SendBabyJailMaxOverallHours(string text)
+    {
+        if (string.IsNullOrWhiteSpace(text) ||
+            text == _babyJailMaxOverallHours ||
+            !int.TryParse(text, out var hours))
+        {
+            return;
+        }
+
+        _console.ExecuteCommand($"babyjail_max_overall_hours {hours}");
+    }
+
     public void UpdateStatus(PanicBunkerStatus status)
     {
         EnabledButton.Pressed = status.Enabled;
@@ -73,5 +107,22 @@ public sealed partial class PanicBunkerTab : Control
 
         MinOverallHours.Text = status.MinOverallHours.ToString();
         _minOverallHours = MinOverallHours.Text;
+    }
+
+    public void UpdateBabyJailStatus(BabyJailStatus status)
+    {
+        BabyJailEnabledButton.Pressed = status.Enabled;
+        BabyJailEnabledButton.Text = Loc.GetString(status.Enabled
+            ? "admin-ui-baby-jail-enabled"
+            : "admin-ui-baby-jail-disabled"
+        );
+        BabyJailEnabledButton.ModulateSelfOverride = status.Enabled ? Color.Red : null;
+        BabyJailShowReasonButton.Pressed = status.ShowReason;
+
+        BabyJailMaxAccountAge.Text = status.MaxAccountAgeHours.ToString();
+        _babyJailMaxAccountAge = BabyJailMaxAccountAge.Text;
+
+        BabyJailMaxOverallHours.Text = status.MaxOverallHours.ToString();
+        _babyJailMaxOverallHours = BabyJailMaxOverallHours.Text;
     }
 }

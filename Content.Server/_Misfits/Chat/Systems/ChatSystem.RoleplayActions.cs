@@ -1,6 +1,7 @@
 // #Misfits Change
 using System.Globalization;
 using System.Text;
+using Content.Server.Chat.Managers;
 using Content.Shared.CCVar;
 using Content.Shared.Chat;
 using Content.Shared.Database;
@@ -63,6 +64,13 @@ public sealed partial class ChatSystem
 
         if (player != null)
             _chatManager.EnsurePlayer(player.UserId).AddEntity(GetNetEntity(source));
+
+        if (player != null && _sanitizer.TryGetBlockedChatResult(message, ChatSanitizationChannel.InCharacter, out var doModeration))
+        {
+            _sanitizer.ReportBlockedChat(player, message, ".do");
+            SendEntityEmote(source, doModeration.ReplacementText, range, null, _language.GetLanguage(source), ignoreActionBlocker: ignoreActionBlocker, author: player.UserId);
+            return;
+        }
 
         var shouldPunctuate = _configurationManager.GetCVar(CCVars.ChatPunctuation);
         var shouldCapitalizeTheWordI = (!CultureInfo.CurrentCulture.IsNeutralCulture && CultureInfo.CurrentCulture.Parent.Name == "en")

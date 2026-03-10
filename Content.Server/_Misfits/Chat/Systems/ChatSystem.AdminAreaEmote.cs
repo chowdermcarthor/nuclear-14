@@ -1,5 +1,6 @@
 // #Misfits Change
 // ChatSystem partial — admin area (local-radius) emote in green text, no speaker name, no bubble.
+using Content.Server.Chat.Managers;
 using Content.Shared.Chat;
 using Content.Shared.Database;
 using Robust.Shared.Player;
@@ -22,6 +23,13 @@ public sealed partial class ChatSystem
     {
         if (string.IsNullOrWhiteSpace(action))
             return;
+
+        if (_sanitizer.TryGetBlockedChatResult(action, ChatSanitizationChannel.InCharacter, out var moderation))
+        {
+            _sanitizer.ReportBlockedChat(player, action, "admin area emote");
+            SendEntityEmote(source, moderation.ReplacementText, ChatTransmitRange.Normal, null, _language.GetLanguage(source), ignoreActionBlocker: true, author: player.UserId);
+            return;
+        }
 
         // Record the player's entity for admin-log history.
         _chatManager.EnsurePlayer(player.UserId).AddEntity(GetNetEntity(source));

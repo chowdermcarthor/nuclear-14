@@ -20,6 +20,8 @@ admin-ui-panic-bunker-min-overall-minutes = Min. Overall Playtime
 admin-ui-panic-bunker-min-overall-hours = Min. Overall Hours
 
 # Misfits Change
+misfits-panic-bunker-section = Panic Bunker
+misfits-baby-jail-section = Baby Jail
 misfits-panic-bunker-toggle-desc = Toggle panic bunker restrictions for new or low-playtime accounts.
 misfits-panic-bunker-disable-auto-desc = Automatically disable panic bunker when an admin connects.
 misfits-panic-bunker-enable-auto-desc = Automatically enable panic bunker when no admins are online.

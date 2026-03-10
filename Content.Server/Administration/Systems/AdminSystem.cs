@@ -309,7 +309,7 @@ namespace Content.Server.Administration.Systems
 
         private void OnBabyJailMaxAccountAgeChanged(int hours)
         {
-            BabyJail.MaxOverallHours = hours;
+            BabyJail.MaxAccountAgeHours = hours;
             SendBabyJailStatusAll();
         }
 
@@ -321,7 +321,7 @@ namespace Content.Server.Administration.Systems
 
         private void OnBabyJailMaxOverallHoursChanged(int hours)
         {
-            BabyJail.MaxAccountAgeHours = hours;
+            BabyJail.MaxOverallHours = hours;
             SendBabyJailStatusAll();
         }
 
