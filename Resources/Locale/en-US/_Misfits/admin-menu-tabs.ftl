@@ -121,3 +121,5 @@ misfits-server-restart-announcement = The server is restarting. Please reconnect
 # Used when the watchdog has a staged build ready — more informative for players
 misfits-server-restart-announcement-update = The server is restarting to deploy a pending update. Please reconnect shortly.
 misfits-server-restart-shutdown-reason = Server restarting by admin request.
+# Admin-only chat notification when the watchdog signals a new build is staged and ready
+misfits-server-update-pending-admin = [UPDATE] A new server build is staged and ready. Use "Restart Server" in the F7 Server tab to deploy it.

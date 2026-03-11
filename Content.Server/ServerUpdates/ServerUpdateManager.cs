@@ -81,6 +81,8 @@ public sealed class ServerUpdateManager
     private void WatchdogOnUpdateReceived()
     {
         _chatManager.DispatchServerAnnouncement(Loc.GetString("server-updates-received"));
+        // #Misfits Add - Also notify admins specifically in admin chat so it's not missed
+        _chatManager.SendAdminAnnouncement(Loc.GetString("misfits-server-update-pending-admin"));
         _updateOnRoundEnd = true;
         ServerEmptyUpdateRestartCheck();
     }
