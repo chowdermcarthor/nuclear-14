@@ -6,9 +6,17 @@
     MinSize="50 50">
     <ScrollContainer VerticalExpand="True">
         <BoxContainer Orientation="Vertical" SeparationOverride="4">
+            <!-- #Misfits Change - Shutdown button hidden; use Restart Server instead (announces to players before shutdown) -->
+            <!--
             <BoxContainer Orientation="Horizontal" SeparationOverride="8">
                 <cc:CommandButton Command="shutdown" Text="{Loc server-shutdown}" MinWidth="180" />
                 <Label Text="{Loc misfits-server-tab-shutdown-desc}" VerticalAlignment="Center" StyleClasses="LabelSubText" />
+            </BoxContainer>
+            -->
+            <!-- #Misfits Add - Full server restart button (announces to players, then clean shutdown; process manager/watchdog relaunches) -->
+            <BoxContainer Orientation="Horizontal" SeparationOverride="8">
+                <cc:CommandButton Command="misfitsrestart" Text="{Loc misfits-server-restart}" MinWidth="180" />
+                <Label Text="{Loc misfits-server-tab-restart-desc}" VerticalAlignment="Center" StyleClasses="LabelSubText" />
             </BoxContainer>
             <BoxContainer Orientation="Horizontal" SeparationOverride="8">
                 <cc:CommandButton Name="SetOocButton" Command="setooc" Text="{Loc server-ooc-toggle}" ToggleMode="True" MinWidth="180" />

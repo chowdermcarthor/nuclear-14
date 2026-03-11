@@ -28,13 +28,14 @@
             <BoxContainer Orientation="Vertical" Name="Specials" Access="Public"/>
             <cc:Placeholder Name="SpecialsPlaceholder" Access="Public" PlaceholderText="{Loc 'character-info-special-placeholder-text'}"/>
             <!-- Nuclear14 Special END -->
-            <!-- #Misfits Add - Three buttons: open dedicated SPECIAL window, Wallet window, and toggle History inline -->
+            <!-- #Misfits Add - Two buttons: open dedicated SPECIAL window and Wallet window -->
+            <!-- History button and panel disabled/commented out for now -->
             <BoxContainer Orientation="Horizontal" Margin="0 4 0 0">
                 <Button Name="OpenSpecialButton" Access="Public" HorizontalExpand="True" Margin="0 0 2 0" Text="{Loc 'character-info-special-window-button'}"/>
-                <Button Name="OpenWalletButton" Access="Public" HorizontalExpand="True" Margin="2 0 2 0" Text="{Loc 'character-info-wallet-window-button'}"/>
-                <Button Name="HistoryToggleButton" Access="Public" HorizontalExpand="True" Margin="2 0 0 0"/>
+                <Button Name="OpenWalletButton" Access="Public" HorizontalExpand="True" Margin="2 0 0 0" Text="{Loc 'character-info-wallet-window-button'}"/>
             </BoxContainer>
-            <!-- History panel expands inline below the buttons -->
+            <!-- History panel kept in tree but permanently hidden -->
+            <BoxContainer Name="HistoryToggleButton" Access="Public" Visible="False"/>
             <BoxContainer Name="HistoryPanel" Access="Public" Orientation="Vertical" Visible="False">
                 <BoxContainer Orientation="Vertical" Name="History" Access="Public"/>
                 <cc:Placeholder Name="HistoryPlaceholder" Access="Public" PlaceholderText="{Loc 'character-info-history-placeholder'}"/>

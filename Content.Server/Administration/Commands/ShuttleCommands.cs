@@ -41,7 +41,8 @@ namespace Content.Server.Administration.Commands
 
         public void Execute(IConsoleShell shell, string argStr, string[] args)
         {
-            EntitySystem.Get<RoundEndSystem>().CancelRoundEndCountdown(shell.Player?.AttachedEntity, false);
+            // #Misfits Change /Fix/: extend the round so recalling the train also pushes back the auto-call timer.
+            EntitySystem.Get<RoundEndSystem>().ExtendRound();
         }
     }
 }

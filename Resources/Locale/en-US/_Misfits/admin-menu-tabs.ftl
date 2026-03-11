@@ -78,9 +78,13 @@ misfits-round-tab-restart-round = Restart Round
 misfits-round-tab-restart-round-desc = End the current round and start a new one.
 misfits-round-tab-restart-now = Restart NOW
 misfits-round-tab-restart-now-desc = Immediately restart the round without delay.
+misfits-round-tab-extend-round = Extend Round
+misfits-round-tab-extend-round-desc = Stop the incoming train and add more time before round end can trigger again.
 
 # Server tab button descriptions
 misfits-server-tab-shutdown-desc = Shut down the game server.
+misfits-server-restart = Restart Server
+misfits-server-tab-restart-desc = Cleanly restart the server process (watchdog/systemd will relaunch).
 misfits-server-tab-ooc-desc = Toggle OOC (out-of-character) chat on or off.
 misfits-server-tab-looc-desc = Toggle LOOC (local out-of-character) chat on or off.
 
@@ -111,3 +115,11 @@ misfits-job-slots-slot-count = Slots: {$count}
 misfits-job-slots-slot-unlimited = Slots: Unlimited
 misfits-job-slots-slot-no-station = Slots: no station
 misfits-job-slots-slot-not-configured = Not configured
+
+# Server restart command messages
+misfits-server-restart-announcement = The server is restarting. Please reconnect in a moment.
+# Used when the watchdog has a staged build ready — more informative for players
+misfits-server-restart-announcement-update = The server is restarting to deploy a pending update. Please reconnect shortly.
+misfits-server-restart-shutdown-reason = Server restarting by admin request.
+# Admin-only chat notification when the watchdog signals a new build is staged and ready
+misfits-server-update-pending-admin = [UPDATE] A new server build is staged and ready. Use "Restart Server" in the F7 Server tab to deploy it.

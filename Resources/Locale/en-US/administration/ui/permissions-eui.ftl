@@ -21,6 +21,7 @@ permissions-eui-edit-admin-rank-button = Edit
 permissions-eui-edit-admin-rank-window-title = Edit Admin Rank
 permissions-eui-edit-admin-window-save-button = Save
 permissions-eui-edit-admin-window-remove-flag-button = Remove
+permissions-eui-edit-admin-window-search-empty = Type at least 2 characters to search players.
 
 # Misfits Change — new strings for overhauled permissions panel
 permissions-eui-rank-perms-count = {$count} perms

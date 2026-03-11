@@ -69,13 +69,15 @@ public sealed class CharacterUIController : UIController, IOnStateEntered<Gamepl
         // #Misfits Add - wire Character Menu buttons at creation time to avoid missed hook if LoadButton fires early
         _window.OpenSpecialButton.OnPressed    += _ => ToggleSpecialWindow();
         _window.OpenWalletButton.OnPressed     += _ => _currencyWallet.OpenWallet();
-        _window.HistoryToggleButton.OnPressed  += _ => ToggleHistoryPanel();
+        // #Misfits - History disabled; button removed from XAML
+        //_window.HistoryToggleButton.OnPressed  += _ => ToggleHistoryPanel();
         _window.SpriteRotateLeft.OnPressed     += _ => { _spriteDirection = _spriteDirection.TurnCw(); SetSpriteDirection(); };
         _window.SpriteRotateRight.OnPressed    += _ => { _spriteDirection = _spriteDirection.TurnCcw(); SetSpriteDirection(); };
         // Disable sub-window buttons until character data arrives
         _window.OpenSpecialButton.Disabled = true;
         _window.OpenWalletButton.Disabled = true;
-        UpdateHistoryToggleLabel();
+        // #Misfits - History disabled
+        //UpdateHistoryToggleLabel();
         // Create dedicated SPECIAL sub-window and wire all allocation buttons
         _specialWindow = UIManager.CreateWindow<SpecialWindow>();
         _specialWindow.SpecialApplyButton.OnPressed      += _ => OnSpecialApplyPressed();
@@ -235,7 +237,8 @@ public sealed class CharacterUIController : UIController, IOnStateEntered<Gamepl
         {
             _localStatsConfirmed = persistentStats.StatsConfirmed;
             _lastEntityName = entityName;
-            UpdateHistoryToggleLabel();
+            // #Misfits - History disabled
+            //UpdateHistoryToggleLabel();
 
             // Populate dedicated SPECIAL allocation window
             if (_specialWindow != null)
@@ -257,22 +260,24 @@ public sealed class CharacterUIController : UIController, IOnStateEntered<Gamepl
                 Modulate = Color.LightGray,
             });
 
-            // ── Character history log ───────────────────────────────────────────────
-            _window.HistoryPlaceholder.Visible = persistentStats.HistoryLog.Count == 0;
-            foreach (var entry in persistentStats.HistoryLog)
-                _window.History.AddChild(new Label { Text = $"• {entry}", Modulate = Color.White });
+            // ── Character history log (disabled) ─────────────────────────────────────
+            // _window.HistoryPlaceholder.Visible = persistentStats.HistoryLog.Count == 0;
+            // foreach (var entry in persistentStats.HistoryLog)
+            //     _window.History.AddChild(new Label { Text = $"• {entry}", Modulate = Color.White });
 
             // Ensure Character Menu buttons are enabled when data is available
             _window.OpenSpecialButton.Disabled = false;
             _window.OpenWalletButton.Disabled = false;
-            _window.HistoryToggleButton.Visible = true;
+            // #Misfits - History button removed from XAML
+            //_window.HistoryToggleButton.Visible = true;
         }
         else
         {
             // Disable/hide Misfits sections when no persistent data available (e.g., observer)
             _window.OpenSpecialButton.Disabled = true;
             _window.OpenWalletButton.Disabled = true;
-            _window.HistoryToggleButton.Visible = false;
+            // #Misfits - History disabled
+            //_window.HistoryToggleButton.Visible = false;
             _window.HistoryPanel.Visible = false;
             _window.StatsLabel.Visible = false;
             _window.StatsPlaceholder.Visible = false;
@@ -341,18 +346,12 @@ public sealed class CharacterUIController : UIController, IOnStateEntered<Gamepl
 
     private void ToggleHistoryPanel()
     {
-        if (_window == null) return;
-        _historyExpanded = !_historyExpanded;
-        _window.HistoryPanel.Visible = _historyExpanded;
-        UpdateHistoryToggleLabel();
+        // #Misfits - History disabled
     }
 
     private void UpdateHistoryToggleLabel()
     {
-        if (_window == null) return;
-        var arrow = _historyExpanded ? "\u25bc" : "\u25b6";
-        var name = string.IsNullOrEmpty(_lastEntityName) ? "Character" : _lastEntityName;
-        _window.HistoryToggleButton.Text = $"{arrow} {name}'s History";
+        // #Misfits - History disabled
     }
 
     // #Misfits Add - one colour per S.P.E.C.I.A.L. stat, matching classic Fallout hues

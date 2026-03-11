@@ -218,3 +218,159 @@ undecided-loadout-category-washington-scribe-medic-description =
     A box with gear needed to keep Brotherhood fighters alive.
     Contains: 1 charging pistol, 1 medical belt, 1 kit for treating gunshot wounds,
     1 scribe medical uniform, 1 knife, a stimulator, and a dry ration.
+
+# Misfits Change /Fix/: restore missing undecided loadout localization entries used by Corvax and Forge kit prototypes.
+
+# Brotherhood West
+undecided-loadout-category-scribe-rifle-name = Scribe Rifle Kit
+undecided-loadout-category-scribe-rifle-description =
+    A box with practical workshop gear for a Brotherhood scribe.
+    Contains: 1 sawed-off shotgun, 1 box of 12 gauge shells,
+    1 roll of gauze, 1 stimpak, 1 Brotherhood leather belt,
+    10 gunpowder, and 5 lead ingots.
+
+undecided-loadout-category-scribe-laser-name = Scribe Medical Kit
+undecided-loadout-category-scribe-laser-description =
+    A box with medical support gear for a Brotherhood scribe.
+    Contains: 1 magneto laser pistol, 3 small magneto cells,
+    1 health analyzer, 1 stimpak, 1 filled medkit,
+    and 1 filled medical belt.
+
+undecided-loadout-category-scribe-plasma-name = Scribe Engineer Kit
+undecided-loadout-category-scribe-plasma-description =
+    A box with hazardous-environment engineering gear.
+    Contains: 1 plasma pistol, 2 plasma cells, 1 radiation suit,
+    1 hazmat helmet, 1 filled utility belt, 1 steel sheet,
+    1 glass sheet, and 1 stimpak.
+
+undecided-loadout-category-squire-rifle-name = Squire Rifle Kit
+undecided-loadout-category-squire-rifle-description =
+    A box with a basic ballistic loadout for a Brotherhood squire.
+    Contains: 1 AK-112 rifle, 3 rifle magazines, 1 box of 5.45 ammo,
+    1 roll of gauze, 1 stimpak, 1 Brotherhood helmet,
+    1 pair of goggles, and 1 gas mask.
+
+undecided-loadout-category-squire-laser-name = Squire Laser Kit
+undecided-loadout-category-squire-laser-description =
+    A box with a basic energy loadout for a Brotherhood squire.
+    Contains: 1 crude laser rifle, 3 high-capacity power cells,
+    1 roll of gauze, 1 stimpak, and 1 pair of goggles.
+
+undecided-loadout-category-squire-plasma-name = Squire Plasma Kit
+undecided-loadout-category-squire-plasma-description =
+    A box with a light plasma loadout for a Brotherhood squire.
+    Contains: 1 plasma pistol, 2 plasma cells, 1 roll of gauze,
+    1 stimpak, 1 Nuka grenade, and 1 gas mask.
+
+undecided-loadout-category-knight-rifle-name = Knight Rifle Kit
+undecided-loadout-category-knight-rifle-description =
+    A box with a standard ballistic loadout for a Brotherhood knight.
+    Contains: 1 AK-112 rifle, 3 rifle magazines, 1 box of 5.45 ammo,
+    1 .45 revolver, 2 .45 magazines, 1 roll of gauze,
+    1 stimpak, 1 knight helmet, 1 gas mask, and 1 pair of goggles.
+
+undecided-loadout-category-knight-laser-name = Knight Laser Kit
+undecided-loadout-category-knight-laser-description =
+    A box with a standard laser loadout for a Brotherhood knight.
+    Contains: 1 laser rifle, 1 laser pistol, 3 high-capacity power cells,
+    2 small power cells, 1 roll of gauze, 1 stimpak,
+    1 knight beret, 1 pair of goggles, and 1 gas mask.
+
+undecided-loadout-category-knight-plasma-name = Knight Plasma Kit
+undecided-loadout-category-knight-plasma-description =
+    A box with a standard plasma loadout for a Brotherhood knight.
+    Contains: 1 crude plasma rifle, 3 plasma cartridges, 1 12mm pistol,
+    2 12mm magazines, 1 roll of gauze, 1 stimpak,
+    1 Nuka grenade, 1 knight cap, 1 pair of goggles, and 1 gas mask.
+
+undecided-loadout-category-paladin-rifle-name = Paladin Rifle Kit
+undecided-loadout-category-paladin-rifle-description =
+    A box with a veteran ballistic loadout for a Brotherhood paladin.
+    Contains: 1 scoped AK-112, 2 drum magazines, 1 box of 5.45 ammo,
+    1 .45 revolver, 3 .45 magazines, 1 roll of gauze, and 1 stimpak.
+
+undecided-loadout-category-paladin-laser-name = Paladin Laser Kit
+undecided-loadout-category-paladin-laser-description =
+    A box with a veteran laser loadout for a Brotherhood paladin.
+    Contains: 1 automatic laser rifle, 1 laser pistol,
+    3 high-capacity power cells, 2 small power cells,
+    1 roll of gauze, and 1 stimpak.
+
+undecided-loadout-category-paladin-plasma-name = Paladin Plasma Kit
+undecided-loadout-category-paladin-plasma-description =
+    A box with a veteran plasma loadout for a Brotherhood paladin.
+    Contains: 1 plasma rifle, 3 plasma cartridges,
+    1 magneto laser pistol, 2 small magneto cells,
+    1 roll of gauze, 1 stimpak, and 1 welding fuel cigarette.
+
+undecided-loadout-category-elder-rifle-name = Elder Rifle Kit
+undecided-loadout-category-elder-rifle-description =
+    A box with a command-grade ballistic loadout for a Brotherhood elder.
+    Contains: 1 scoped AK-112, 2 drum magazines, 1 box of 5.45 ammo,
+    1 .45 revolver, 3 .45 magazines, 1 roll of gauze,
+    1 stimpak, and 1 shrapnel grenade.
+
+undecided-loadout-category-elder-laser-name = Elder Laser Kit
+undecided-loadout-category-elder-laser-description =
+    A box with a command-grade laser loadout for a Brotherhood elder.
+    Contains: 1 YK42B laser rifle, 1 magneto laser pistol,
+    3 focused YK42B power cells, 2 small magneto cells,
+    1 roll of gauze, 1 stimpak, and 1 plasma grenade.
+
+# Midwest Brotherhood Inquisitors
+undecided-loadout-category-inquisitorinspector-name = Inquisitor Inspector Kit
+undecided-loadout-category-inquisitorinspector-description =
+    A box with investigative gear for a Brotherhood inquisitor.
+    Contains: 1 hunting revolver, 2 45-70 speedloaders,
+    1 box of 45-70 ammo, 1 ceremonial sword, 1 revolver belt,
+    2 stimpaks, 1 combat medkit, 1 K-ration box, and 1 roll of gauze.
+
+undecided-loadout-category-inquisitorcrusader-name = Inquisitor Crusader Kit
+undecided-loadout-category-inquisitorcrusader-description =
+    A box with frontline equipment for a Brotherhood inquisitor.
+    Contains: 1 5.56 carbine, 3 long rifle magazines, 1 box of 5.56 ammo,
+    1 Brotherhood webbing, 2 stimpaks, 1 K-ration box,
+    and 1 roll of gauze.
+
+undecided-loadout-category-inquisitorplasma-name = Inquisitor Plasma Kit
+undecided-loadout-category-inquisitorplasma-description =
+    A box with heavy energy gear for a Brotherhood inquisitor.
+    Contains: 1 automatic plasma rifle, 3 plasma cartridges,
+    1 Brotherhood webbing, 2 stimpaks, 1 super stimpak,
+    1 K-ration box, 1 roll of gauze, and 1 ointment pack.
+
+# NCR Military Police
+undecided-loadout-category-NCRMPMilitaryPolice-name = Military Police Kit
+undecided-loadout-category-NCRMPMilitaryPolice-description =
+    A box with riot-control equipment for NCR Military Police.
+    Contains: 1 riot shotgun, 2 drum magazines, 1 box of 20 gauge ammo,
+    1 police baton, 2 handcuffs, 2 stimpaks,
+    1 K-ration box, and 1 roll of gauze.
+
+undecided-loadout-category-NCRMPinvestigator-name = Investigator Kit
+undecided-loadout-category-NCRMPinvestigator-description =
+    A box with field gear for an NCR Military Police investigator.
+    Contains: 1 battle rifle, 2 stripper clips, 1 box of .308 ammo,
+    1 police baton, 2 handcuffs, 2 stimpaks,
+    1 K-ration box, and 1 roll of gauze.
+
+undecided-loadout-category-NCRMPinvestigatorBailif-name = Bailiff Kit
+undecided-loadout-category-NCRMPinvestigatorBailif-description =
+    A box with security gear for an NCR Military Police bailiff.
+    Contains: 1 9mm SMG, 2 SMG magazines, 1 box of 9mm ammo,
+    1 police baton, 2 handcuffs, 2 stimpaks,
+    1 K-ration box, and 1 roll of gauze.
+
+# Midwest BoS Squire Kits
+undecided-loadout-category-bos-squiredefault-name = BoS Squire Default Kit
+undecided-loadout-category-bos-squiredefault-description =
+    A crate containing the standard field kit for a Brotherhood squire.
+    Contains: 1 9mm SMG, 3 SMG magazines, 1 10mm pistol,
+    2 pistol magazines, 1 stimpak, and 1 K-ration box.
+
+undecided-loadout-category-bos-squiresniper-name = BoS Squire Sniper Kit
+undecided-loadout-category-bos-squiresniper-description =
+    A crate containing a marksman kit for a Brotherhood squire.
+    Contains: 1 lever-action sniper carbine, 1 box of .44 ammo,
+    1 10mm pistol, 1 pistol magazine, 1 stimpak,
+    and 1 K-ration box.

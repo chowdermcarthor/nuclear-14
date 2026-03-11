@@ -65,7 +65,7 @@ public sealed class AdminUIController : UIController,
     {
         var showDialog = _babyJail == null && msg.Status.Enabled;
         _babyJail = msg.Status;
-        _window?.BabyJailControl.UpdateStatus(msg.Status);
+        _window?.PanicBunkerControl.UpdateBabyJailStatus(msg.Status);
 
         if (showDialog)
         {
@@ -124,12 +124,8 @@ public sealed class AdminUIController : UIController,
         if (_panicBunker != null)
             _window.PanicBunkerControl.UpdateStatus(_panicBunker);
 
-        /*
-         * TODO: Remove baby jail code once a more mature gateway process is established. This code is only being issued as a stopgap to help with potential tiding in the immediate future.
-         */
-
         if (_babyJail != null)
-            _window.BabyJailControl.UpdateStatus(_babyJail);
+            _window.PanicBunkerControl.UpdateBabyJailStatus(_babyJail);
 
         _window.PlayerTabControl.OnEntryKeyBindDown += PlayerTabEntryKeyBindDown;
         _window.ObjectsTabControl.OnEntryKeyBindDown += ObjectsTabEntryKeyBindDown;

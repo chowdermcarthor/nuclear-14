@@ -38,6 +38,7 @@
   equipment:
     jumpsuit: N14ClothingUniformJumpsuitRags
     neck: NCClothingCollarLegionSlave
+    id: N14IDLegionaryBadgeSlave
 
 
 - type: playTimeTracker

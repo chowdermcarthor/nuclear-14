@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Numerics;
+using System.Threading;
 using Content.Client.Administration.Managers;
 using Content.Client.Eui;
 using Content.Client.Stylesheets;
@@ -13,7 +14,9 @@ using Robust.Client.UserInterface.CustomControls;
 using Robust.Shared.IoC;
 using Robust.Shared.Localization;
 using Robust.Shared.Maths;
+using Robust.Shared.Network;
 using Robust.Shared.Utility;
+using Timer = Robust.Shared.Timing.Timer;
 using static Content.Shared.Administration.PermissionsEuiMsg;
 using static Robust.Client.UserInterface.Controls.BoxContainer;
 
@@ -58,6 +61,7 @@ namespace Content.Client.Administration.UI
 
         private Dictionary<int, PermissionsEuiState.AdminRankData> _ranks =
             new();
+        private PermissionsEuiState.SearchPlayerData[] _searchResults = Array.Empty<PermissionsEuiState.SearchPlayerData>();
 
         public PermissionsEui()
         {
@@ -175,6 +179,7 @@ namespace Content.Client.Administration.UI
 
                 SendMessage(new AddAdmin
                 {
+                    UserId = popup.SelectedUserId,
                     UserNameOrId = popup.NameEdit!.Text,
                     Title = title,
                     PosFlags = pos,
@@ -228,6 +233,12 @@ namespace Content.Client.Administration.UI
             }
 
             _ranks = s.AdminRanks;
+            _searchResults = s.SearchResults;
+
+            foreach (var window in _subWindows.OfType<EditAdminWindow>())
+            {
+                window.UpdateSearchResults(_searchResults);
+            }
 
             // ---- Admins tab: group by rank, sort groups by total perm count descending ----
             // #Misfits Change — rank-grouped card layout instead of flat grid
@@ -501,13 +512,20 @@ namespace Content.Client.Administration.UI
             public readonly OptionButton RankButton;
             public readonly Button SaveButton;
             public readonly Button? RemoveButton;
+            public readonly BoxContainer SearchResultsList;
+            public NetUserId? SelectedUserId;
 
             public readonly Dictionary<AdminFlags, (Button inherit, Button sub, Button plus)> FlagButtons
                 = new();
 
+            private CancellationTokenSource? _searchDebounce;
+            private bool _suppressSearchTextChanged;
+            private readonly PermissionsEui _ui;
+
             public EditAdminWindow(PermissionsEui ui, PermissionsEuiState.AdminData? data)
             {
                 MinSize = new Vector2(600, 400);
+                _ui = ui;
                 SourceData = data;
 
                 Control nameControl;
@@ -525,11 +543,18 @@ namespace Content.Client.Administration.UI
                     Title = Loc.GetString("permissions-eui-menu-add-admin-button");
 
                     nameControl = NameEdit = new LineEdit { PlaceHolder = Loc.GetString("permissions-eui-edit-admin-window-name-edit-placeholder") };
+                    NameEdit.OnTextChanged += NameEditOnTextChanged;
+                    NameEdit.OnTextEntered += NameEditOnTextEntered;
                 }
 
                 TitleEdit = new LineEdit { PlaceHolder = Loc.GetString("permissions-eui-edit-admin-window-title-edit-placeholder") };
                 RankButton = new OptionButton();
                 SaveButton = new Button { Text = Loc.GetString("permissions-eui-edit-admin-window-save-button"), HorizontalAlignment = HAlignment.Right };
+                SearchResultsList = new BoxContainer
+                {
+                    Orientation = LayoutOrientation.Vertical,
+                    SeparationOverride = 2,
+                };
 
                 RankButton.AddItem(Loc.GetString("permissions-eui-edit-admin-window-no-rank-button"), NoRank);
                 foreach (var (rId, rank) in ui._ranks)
@@ -626,6 +651,33 @@ namespace Content.Client.Administration.UI
 
                 bottomButtons.AddChild(SaveButton);
 
+                var detailsBox = new BoxContainer
+                {
+                    Orientation = LayoutOrientation.Vertical,
+                    HorizontalExpand = true,
+                    Children =
+                    {
+                        nameControl,
+                        new ScrollContainer
+                        {
+                            VerticalExpand = true,
+                            MinSize = new Vector2(220, 140),
+                            Children = { SearchResultsList }
+                        },
+                        TitleEdit,
+                        RankButton
+                    }
+                };
+
+                if (data != null)
+                {
+                    SearchResultsList.Visible = false;
+                }
+                else
+                {
+                    UpdateSearchResults(ui._searchResults);
+                }
+
                 Contents.AddChild(new BoxContainer
                 {
                     Orientation = LayoutOrientation.Vertical,
@@ -637,17 +689,7 @@ namespace Content.Client.Administration.UI
                             SeparationOverride = 2,
                             Children =
                             {
-                                new BoxContainer
-                                {
-                                    Orientation = LayoutOrientation.Vertical,
-                                    HorizontalExpand = true,
-                                    Children =
-                                    {
-                                        nameControl,
-                                        TitleEdit,
-                                        RankButton
-                                    }
-                                },
+                                detailsBox,
                                 permGrid
                             },
                             VerticalExpand = true
@@ -660,6 +702,81 @@ namespace Content.Client.Administration.UI
             private void RankSelected(OptionButton.ItemSelectedEventArgs obj)
             {
                 RankButton.SelectId(obj.Id);
+            }
+
+            private void NameEditOnTextEntered(LineEdit.LineEditEventArgs args)
+            {
+                QueueSearch(args.Text);
+            }
+
+            private void NameEditOnTextChanged(LineEdit.LineEditEventArgs args)
+            {
+                if (_suppressSearchTextChanged)
+                    return;
+
+                SelectedUserId = null;
+                QueueSearch(args.Text);
+            }
+
+            private void QueueSearch(string text)
+            {
+                _searchDebounce?.Cancel();
+
+                var query = text.Trim();
+                if (query.Length < 2)
+                {
+                    UpdateSearchResults(Array.Empty<PermissionsEuiState.SearchPlayerData>());
+                    return;
+                }
+
+                _searchDebounce = new CancellationTokenSource();
+                Timer.Spawn(300, () =>
+                {
+                    _ui.SendMessage(new SearchPlayers { Query = query });
+                }, _searchDebounce.Token);
+            }
+
+            public void UpdateSearchResults(IReadOnlyList<PermissionsEuiState.SearchPlayerData> results)
+            {
+                if (SourceData != null)
+                    return;
+
+                SearchResultsList.RemoveAllChildren();
+
+                if (results.Count == 0)
+                {
+                    SearchResultsList.AddChild(new Label
+                    {
+                        Text = Loc.GetString("permissions-eui-edit-admin-window-search-empty"),
+                        StyleClasses = { StyleBase.StyleClassItalic },
+                    });
+                    return;
+                }
+
+                foreach (var result in results)
+                {
+                    var button = new Button
+                    {
+                        Text = result.UserName,
+                        HorizontalExpand = true,
+                        ToolTip = result.UserId.ToString(),
+                    };
+
+                    var captured = result;
+                    button.OnPressed += _ => SelectSearchResult(captured);
+                    SearchResultsList.AddChild(button);
+                }
+            }
+
+            private void SelectSearchResult(PermissionsEuiState.SearchPlayerData result)
+            {
+                SelectedUserId = result.UserId;
+                if (NameEdit != null)
+                {
+                    _suppressSearchTextChanged = true;
+                    NameEdit.Text = result.UserName;
+                    _suppressSearchTextChanged = false;
+                }
             }
 
             public void CollectSetFlags(out AdminFlags pos, out AdminFlags neg)
@@ -677,6 +794,22 @@ namespace Content.Client.Administration.UI
                     {
                         pos |= flag;
                     }
+                }
+            }
+
+            [Obsolete]
+            protected override void Dispose(bool disposing)
+            {
+                base.Dispose(disposing);
+
+                if (!disposing)
+                    return;
+
+                _searchDebounce?.Cancel();
+                if (NameEdit != null)
+                {
+                    NameEdit.OnTextChanged -= NameEditOnTextChanged;
+                    NameEdit.OnTextEntered -= NameEditOnTextEntered;
                 }
             }
         }

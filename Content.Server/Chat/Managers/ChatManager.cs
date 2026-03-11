@@ -47,6 +47,7 @@ namespace Content.Server.Chat.Managers
         [Dependency] private readonly INetConfigurationManager _netConfigManager = default!;
         [Dependency] private readonly IEntityManager _entityManager = default!;
         [Dependency] private readonly PlayerRateLimitManager _rateLimitManager = default!;
+        [Dependency] private readonly IChatSanitizationManager _sanitizer = default!;
         [Dependency] private readonly SponsorManager _sponsors = default!; // Forge-Change
 
         /// <summary>
@@ -217,6 +218,13 @@ namespace Content.Server.Chat.Managers
             {
                 DispatchServerMessage(player, Loc.GetString("chat-manager-max-message-length-exceeded-message", ("limit", MaxMessageLength)));
                 return;
+            }
+
+            if (_sanitizer.TryGetBlockedChatResult(message, ChatSanitizationChannel.OutOfCharacter, out var moderation))
+            {
+                var contextLabel = type == OOCChatType.Admin ? "admin chat" : "OOC";
+                _sanitizer.ReportBlockedChat(player, message, contextLabel);
+                message = moderation.ReplacementText;
             }
 
             switch (type)

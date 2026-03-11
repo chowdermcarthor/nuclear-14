@@ -97,6 +97,19 @@
   - type: PresetIdCard
     job: CaesarLegionAuxilia
 
+#Misfits Change /Add/: Legion Slave sign so the role carries the same legion badge style with its own access data.
+- type: entity
+  parent: N14IDPassportBlank
+  id: N14IDLegionaryBadgeSlave
+  name: distinctive sign
+  description: "The sign of a Legion slave."
+  components:
+  - type: Sprite
+    sprite: Corvax/Objects/Misc/identification.rsi
+    state: sign
+  - type: PresetIdCard
+    job: CaesarLegionSlave
+
 - type: entity
   parent: N14IDPassportBlank
   id: N14IDLegionaryMedalSilver2
