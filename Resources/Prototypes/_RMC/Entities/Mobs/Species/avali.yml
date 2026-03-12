@@ -15,9 +15,9 @@
     drawdepth: Mobs
   - type: Vocal
     sounds:
-      Male: RMCMaleAvali
-      Unsexed: RMCMaleAvali
-      Female: RMCFemaleAvali
+      Male: MaleHuman
+      Unsexed: MaleHuman
+      Female: FemaleHuman
   - type: Wagging 
     action: ActionToggleAvaliWagging
   - type: Speech

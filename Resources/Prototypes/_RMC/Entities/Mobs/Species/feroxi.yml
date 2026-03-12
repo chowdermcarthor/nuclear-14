@@ -19,9 +19,9 @@
     allowedEmotes: [ 'Gnash', 'Thump' ] #added thump cuz why not, it makes sense
   - type: Vocal
     sounds:
-      Male: RMCMaleFeroxi
-      Female: RMCFemaleFeroxi
-      Unsexed: RMCMaleFeroxi
+      Male: MaleHuman
+      Female: FemaleHuman
+      Unsexed: MaleHuman
   - type: Sprite
     netsync: false
     noRot: true

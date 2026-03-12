@@ -12,9 +12,9 @@
     allowedEmotes: [ 'RMCSkrellPeep', 'RMCSkrellAnger', 'RMCSkrellTrill', 'RMCSkrellWarble' ]
   - type: Vocal
     sounds:
-      Male: RMCMaleSkrell
-      Unsexed: RMCMaleSkrell
-      Female: RMCFemaleSkrell
+      Male: MaleHuman
+      Unsexed: MaleHuman
+      Female: FemaleHuman
   - type: DamageVisuals
     damageOverlayGroups:
       Brute:

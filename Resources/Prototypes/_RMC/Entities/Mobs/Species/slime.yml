@@ -18,9 +18,9 @@
     proto: slime
   - type: Vocal
     sounds:
-      Male: RMCMaleSlime
-      Female: RMCFemaleSlime
-      Unsexed: RMCMaleSlime
+      Male: MaleSlime
+      Female: FemaleSlime
+      Unsexed: MaleSlime
   - type: DamageVisuals
     damageOverlayGroups:
       Brute:

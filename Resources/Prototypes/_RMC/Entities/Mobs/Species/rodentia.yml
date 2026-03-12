@@ -75,9 +75,9 @@
     animation: WeaponArcClaw
   - type: Vocal
     sounds:
-      Male: RMCMaleRodentia
-      Female: RMCFemaleRodentia
-      Unsexed: RMCMaleRodentia
+      Male: Mouse
+      Female: Mouse
+      Unsexed: Mouse
   - type: Inventory
     speciesId: rodentia
   - type: FixedIdentity

@@ -54,12 +54,12 @@
             <BoxContainer Orientation="Horizontal" HorizontalAlignment="Center" Margin="0 4 0 0">
                 <!-- Left side labels -->
                 <BoxContainer Orientation="Vertical" VerticalAlignment="Center" MinWidth="60">
-                    <RichTextLabel Name="LabelHead" Access="Public" Margin="0 0 4 0"/>
-                    <RichTextLabel Name="LabelLeftArm" Access="Public" Margin="0 10 4 0"/>
-                    <RichTextLabel Name="LabelLeftLeg" Access="Public" Margin="0 10 4 0"/>
+                    <RichTextLabel Name="LabelHead" Access="Public" Margin="0 0 10 0"/>
+                    <RichTextLabel Name="LabelLeftArm" Access="Public" Margin="0 10 10 0"/>
+                    <RichTextLabel Name="LabelLeftLeg" Access="Public" Margin="0 10 10 0"/>
                 </BoxContainer>
                 <!-- Body doll composite -->
-                <PanelContainer MinSize="112 112" Margin="4 0">
+                <PanelContainer MinSize="112 112" Margin="8 0">
                     <TextureRect Name="DollHead" Stretch="KeepAspectCentered" SetSize="112 112" Access="Public"/>
                     <TextureRect Name="DollTorso" Stretch="KeepAspectCentered" SetSize="112 112" Access="Public"/>
                     <TextureRect Name="DollGroin" Stretch="KeepAspectCentered" SetSize="112 112" Access="Public"/>
@@ -74,9 +74,9 @@
                 </PanelContainer>
                 <!-- Right side labels -->
                 <BoxContainer Orientation="Vertical" VerticalAlignment="Center" MinWidth="60">
-                    <RichTextLabel Name="LabelTorso" Access="Public" Margin="4 0 0 0"/>
-                    <RichTextLabel Name="LabelRightArm" Access="Public" Margin="4 10 0 0"/>
-                    <RichTextLabel Name="LabelRightLeg" Access="Public" Margin="4 10 0 0"/>
+                    <RichTextLabel Name="LabelTorso" Access="Public" Margin="10 0 0 0"/>
+                    <RichTextLabel Name="LabelRightArm" Access="Public" Margin="10 10 0 0"/>
+                    <RichTextLabel Name="LabelRightLeg" Access="Public" Margin="10 10 0 0"/>
                 </BoxContainer>
             </BoxContainer>
         </BoxContainer>

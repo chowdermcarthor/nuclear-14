@@ -7,8 +7,8 @@
   components:
   - type: Vocal
     sounds:
-      Male: RMCMaleHuman
-      Unsexed: RMCMaleHuman #sorry fem-leaning enbies
-      Female: RMCFemaleHuman
+      Male: MaleHuman
+      Unsexed: MaleHuman
+      Female: FemaleHuman
   - type: FixedIdentity
     name: cm-chatsan-replacement-human
