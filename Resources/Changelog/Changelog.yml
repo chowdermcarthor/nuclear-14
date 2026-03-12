@@ -1317,3 +1317,44 @@ Entries:
   id: 5637
   time: '2026-03-12T19:02:02.0000000+00:00'
   url: https://github.com/Misfit-Sanctuary/nuclear-14/pull/109
+- author: Cythisiax
+  changes:
+    - type: Fix
+      message: >-
+        Randomized body and severed-part gib emote localization keys so gib chat
+        lines no longer always repeat the same text.
+    - type: Fix
+      message: >-
+        Added explicit inhand visuals for the thermospear so its held sprite
+        displays correctly.
+    - type: Fix
+      message: >-
+        Added explicit inhand visuals for the kebab so its held sprite displays
+        correctly.
+    - type: Fix
+      message: >-
+        Changed the torch glow layer to use the plain string key torch_glow and
+        aligned ToggleableLightVisuals.spriteLayer with it to fix the
+        enum/string mismatch and restore the ground fire sprite visibility.
+    - type: Tweak
+      message: >-
+        Added IRobustRandom and fixed gib message count constants in BodySystem
+        to support varied gib emotes.
+    - type: Tweak
+      message: >-
+        Reworked the Goliath power fist from a wearable hand-slot clothing item
+        into a proper held melee weapon while preserving its melee and
+        throw-on-hit behavior.
+    - type: Tweak
+      message: >-
+        Commented out the old clothing-style power fist definition as part of
+        the prototype rework.
+    - type: Add
+      message: Added three localization variants for misfits-chat-gib-body.
+    - type: Add
+      message: Added three localization variants for misfits-chat-gib-part.
+    - type: Add
+      message: Added a new melee weapon prototype for the Legion Goliath power fist.
+  id: 5638
+  time: '2026-03-12T20:16:09.0000000+00:00'
+  url: https://github.com/Misfit-Sanctuary/nuclear-14/pull/110
