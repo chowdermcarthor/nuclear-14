@@ -955,3 +955,189 @@ Entries:
   id: 5631
   time: '2026-03-11T00:18:08.0000000+00:00'
   url: https://github.com/Misfit-Sanctuary/nuclear-14/pull/102
+- author: Cythisiax
+  changes:
+    - type: Add
+      message: RMC Webbing System, Sprites, and Rigging.
+    - type: Add
+      message: >-
+        Double-grab system. Grab once, grab twice triggers a 10 second timer the
+        victim can resist. If not resisted, victim is buckled into both hands
+        and can be thrown, with a 30 second suffocate crit timer. Victim can
+        resist and break free if they move.
+    - type: Add
+      message: Flat 15% speed debuff applied to wielded weapons.
+    - type: Add
+      message: >-
+        MisfitsATM system tied into persistent currency. Press E or click to
+        open the currency menu.
+    - type: Add
+      message: Cooking sounds to relevant entities.
+    - type: Add
+      message: Sounds to Pipboys and other relevant items.
+    - type: Add
+      message: >-
+        Vertibird entity as a prop/event piece. Sprite is currently 32x32, needs
+        to be made larger.
+    - type: Add
+      message: >-
+        Enclave department (whitelist/admin/event only) with loadouts, ID tags,
+        and access. Includes Enclave Officer, Soldier, and Scientist.
+    - type: Add
+      message: Localized sound ambience on interaction, such as terminal click sounds.
+    - type: Add
+      message: >-
+        Pipboy group chat system with map tracking, contacts with mutual
+        acceptance required, individual location sharing options between
+        contacts, and a messenger interface. Added a pipboy masterlist with
+        visibility toggle and chat messaging with no map telemetry. Password
+        locking added to pipboys. All pipboys assigned a randomized number on
+        spawn, discovery, or addition. Pipboy messages fall inside chatsanitizer
+        and are logged. Renamed NanoChat to Instant Messenger.
+    - type: Add
+      message: Behemoth mob.
+    - type: Tweak
+      message: Removed armor with resistance values from character setup and loadouts.
+    - type: Tweak
+      message: >-
+        Robots are now damaged and destroyed by explosions if the explosion
+        passes a threshold.
+    - type: Tweak
+      message: >-
+        C4 can now be attached to wall entities to destroy non-destructible
+        walls.
+    - type: Tweak
+      message: >-
+        Fixed emote and say obfuscation with masks on. Fixed localization
+        uncapitalized issue.
+    - type: Tweak
+      message: Removed boldness from inline emote into speech.
+    - type: Tweak
+      message: >-
+        Pathfinding system now has less vertex scanning, NPCs should no longer
+        circle. Needs further testing.
+    - type: Tweak
+      message: >-
+        Legion Centurion only now has access to a tactical map with realtime
+        data of all players carrying legion medallion ID tags. Same applied to
+        NCR Captain only, located underground in their bunker.
+    - type: Tweak
+      message: >-
+        Reduced passive emotes for hunger, now only triggers per stage of hunger
+        and thirst instead of repeating.
+    - type: Tweak
+      message: >-
+        Added passive emotes for day/night cycle. Day/night adjusted to 1 hour
+        day and 30 minutes night, including 15 minutes dusk and 15 minutes dawn.
+        Set in Wendover, Utah in the Salt Flats. Midnight is now greyscale so
+        silhouettes remain visible.
+    - type: Tweak
+      message: >-
+        Consolidated Ahelp and Mhelp into one Help button with a selection
+        between Mentor and Admin help.
+    - type: Tweak
+      message: Removed Actions button from the chat window.
+    - type: Tweak
+      message: >-
+        Fixed BoS not having the wasteland encryption key to access :w radio
+        chat.
+    - type: Tweak
+      message: Bonfire now has two sprite states, on and off.
+    - type: Tweak
+      message: >-
+        Added relevant forced emotes to assault and victim interactions through
+        forced mechanics to provide roleplay context to actions.
+    - type: Tweak
+      message: >-
+        Both N14CurrencyLegionAureus and N14CurrencyLegionDenarius can now be
+        smelted with their respective materials, gold and silver.
+    - type: Tweak
+      message: >-
+        Radiation flavortext no longer accumulates near radiation or spawner
+        exposure, and instead triggers off radiation damage taken per threshold.
+    - type: Tweak
+      message: Changed player mutant species to mutantnco from DesertRose.
+    - type: Tweak
+      message: >-
+        Supermutants now have their own organ set separate from MobHuman and
+        MobGhoul for future modifiers and offsets.
+    - type: Tweak
+      message: Removed combat mode exclamation mark from NPCs.
+    - type: Tweak
+      message: >-
+        Added 3 second cooldown timer to combat mode with a local ping sound
+        indicating escalation into combat mode.
+    - type: Tweak
+      message: >-
+        Landmines can now be disarmed, unanchored, moved, and picked up. To
+        reactivate they must be anchored again. Higher tier mines crafted with
+        more materials have a bigger explosion radius but beep. Kick mines do
+        not beep, do not delimb, and do not put victims into crit state.
+    - type: Tweak
+      message: >-
+        Hunger and thirst moved to their own damage types. Hunger stages are
+        Malnutrition and Starvation. Thirst stage is Dehydration.
+    - type: Fix
+      message: Various Legion issues.
+    - type: Fix
+      message: >-
+        Mob sound system, fixed aggro triggers no longer overlapping with idle
+        and melee sounds.
+    - type: Fix
+      message: Backpack slot not working with power armor.
+    - type: Fix
+      message: Player ghosts unable to use ladders.
+    - type: Fix
+      message: >-
+        Currency menu now correctly displays a deposit message on Z press
+        instead of triggering incorrectly. Will be used for ATMs to give
+        contextual input, placeholdered for future implementation.
+    - type: Fix
+      message: 'Broken PRs #97 and #99 caused by repository defork merge conflict.'
+    - type: Fix
+      message: >-
+        Chemistry system errors broadly adjusted with fires, boiling, and
+        hotplates.
+    - type: Fix
+      message: >-
+        Shove system sprite errors that caused entities to flash green and not
+        actually shove or apply knockdown.
+    - type: Fix
+      message: >-
+        Cooking system ingredient detection was entirely non-functional. Skewer
+        sprites updated with appropriate ingredient reagents, can no longer eat
+        a metal skewer with no food attached. Microwave and propane grill fixed.
+        Leading placeholder added for food spoiling mechanic tied to round
+        duration exceeding 8 hours.
+    - type: Fix
+      message: >-
+        Propane grill alpha no longer flashes jarring white when activated,
+        reduced to a more grey left-on indicator.
+    - type: Fix
+      message: >-
+        Mapping inconsistencies. Map converted to a full square with adjusted
+        borders aligned to player bounds. All walls are now mineable and can be
+        excavated to create tunnels. Critical locations retain indestructible
+        walls but have entry points with regular rocks, most notably the BoS
+        base. Removed Legion tech spawns for stimpaks and laser weapons. Removed
+        spawners producing hundreds of raiders at the military base complex.
+        Nerfed turret spam, damage output, and fire rate to a burst fire, pause,
+        burst fire pattern.
+    - type: Fix
+      message: >-
+        Lathes GUI not registering storage component under Storage or filtering
+        craftable items by available materials.
+    - type: Fix
+      message: >-
+        Supermutant mobs no longer squished to 32x32, now match player
+        supermutant species size of 32x48.
+    - type: Fix
+      message: >-
+        Sentrybot sprite squishing resolved, dragging disabled, sounds fixed.
+        General overhaul of all mob sounds and the aggro, taunt, idle, and
+        attack system.
+    - type: Fix
+      message: Guidebook fixed again.
+  id: 5632
+  time: '2026-03-12T01:28:38.0000000+00:00'
+  url: https://github.com/Misfit-Sanctuary/nuclear-14/pull/103
