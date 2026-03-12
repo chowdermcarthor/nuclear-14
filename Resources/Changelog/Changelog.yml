@@ -1240,3 +1240,12 @@ Entries:
   id: 5635
   time: '2026-03-12T09:22:00.0000000+00:00'
   url: https://github.com/Misfit-Sanctuary/nuclear-14/pull/107
+- author: cythisiax
+  changes:
+    - type: Fix
+      message: >-
+        Persistent currency fired before TryGetMind, tweaked, was already in DB
+        just not following. Fixed.
+  id: 5636
+  time: '2026-03-12T15:49:07.0000000+00:00'
+  url: https://github.com/Misfit-Sanctuary/nuclear-14/pull/108
