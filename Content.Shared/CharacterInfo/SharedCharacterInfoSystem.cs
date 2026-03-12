@@ -64,9 +64,6 @@ public sealed class CharacterPersistentStats
     // Allocation confirmation
     public bool StatsConfirmed;
 
-    // #Misfits Add - Currency wallet balances (populated server-side from PersistentCurrencyComponent)
+    // #Misfits Add - Currency wallet balance (populated server-side from PersistentCurrencyComponent)
     public int Bottlecaps;
-    public int NCRDollars;
-    public int LegionDenarii;
-    public int PrewarMoney;
 }

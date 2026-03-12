@@ -47,6 +47,7 @@ namespace Content.Server.Database
         public DbSet<AdminMessage> AdminMessages { get; set; } = null!;
         public DbSet<RoleWhitelist> RoleWhitelists { get; set; } = null!;
         public DbSet<BanTemplate> BanTemplate { get; set; } = null!;
+        public DbSet<CharacterCurrency> CharacterCurrency { get; set; } = default!; // #Misfits Change - Persistent currency
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -115,6 +116,11 @@ namespace Content.Server.Database
 
             modelBuilder.Entity<PlayTime>()
                 .HasIndex(v => new { v.PlayerId, Role = v.Tracker })
+                .IsUnique();
+
+            // #Misfits Change - One row per player-character pair for persistent currency
+            modelBuilder.Entity<CharacterCurrency>()
+                .HasIndex(c => new { c.PlayerId, c.CharacterName })
                 .IsUnique();
 
             modelBuilder.Entity<AdminLogPlayer>()
@@ -977,6 +983,31 @@ namespace Content.Server.Database
         public string Tracker { get; set; } = null!;
 
         public TimeSpan TimeSpent { get; set; }
+    }
+
+    // #Misfits Change - Persistent bottle-cap balance per character, stored in the database.
+    [Table("character_currency")]
+    public sealed class CharacterCurrency
+    {
+        [Required, Key, DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+        public int Id { get; set; }
+
+        /// <summary>
+        /// The player's user ID (Guid form of NetUserId).
+        /// </summary>
+        [Required]
+        public Guid PlayerId { get; set; }
+
+        /// <summary>
+        /// The in-game character name this balance belongs to.
+        /// </summary>
+        [Required]
+        public string CharacterName { get; set; } = null!;
+
+        /// <summary>
+        /// Persistent Bottle Caps balance.
+        /// </summary>
+        public int Bottlecaps { get; set; }
     }
 
     [Table("uploaded_resource_log")]

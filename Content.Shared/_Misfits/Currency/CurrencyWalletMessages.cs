@@ -13,15 +13,12 @@ public sealed partial class OpenCurrencyWalletEvent : InstantActionEvent
 }
 
 /// <summary>
-/// Sent from the server to the client with current currency balances so the wallet UI can be shown/updated.
+/// Sent from the server to the client with the current Bottle Caps balance so the wallet UI can be shown/updated.
 /// </summary>
 [Serializable, NetSerializable]
 public sealed class CurrencyWalletStateMessage : EntityEventArgs
 {
     public int Bottlecaps;
-    public int NCRDollars;
-    public int LegionDenarii;
-    public int PrewarMoney;
 }
 
 /// <summary>

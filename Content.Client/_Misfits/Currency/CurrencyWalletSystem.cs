@@ -59,7 +59,7 @@ public sealed class CurrencyWalletSystem : EntitySystem
     {
         EnsureWindow();
 
-        _window!.UpdateState(msg.Bottlecaps, msg.NCRDollars, msg.LegionDenarii, msg.PrewarMoney);
+        _window!.UpdateState(msg.Bottlecaps);
         _window.OpenCentered();
     }
 

@@ -1,7 +1,7 @@
 <DefaultWindow xmlns="https://spacestation14.io"
                xmlns:cc="clr-namespace:Content.Client.Administration.UI.CustomControls"
                Title="{Loc 'currency-wallet-window-title'}"
-               MinSize="320 300">
+               MinSize="320 180">
     <BoxContainer Orientation="Vertical" SeparationOverride="8" Margin="8 8 8 8">
         <!-- Deposit In Hand -->
         <BoxContainer Orientation="Horizontal" SeparationOverride="4">
@@ -19,39 +19,6 @@
             <Label Text="Withdraw: " />
             <LineEdit Name="BottlecapsAmount" PlaceHolder="Amount" HorizontalExpand="True" />
             <Button Name="BottlecapsWithdraw" Text="Withdraw" />
-        </BoxContainer>
-
-        <!-- NCR Dollars -->
-        <BoxContainer Orientation="Horizontal" SeparationOverride="4">
-            <Label Text="NCR Dollars: " />
-            <Label Name="NCRDollarsLabel" Text="0" HorizontalExpand="True" />
-        </BoxContainer>
-        <BoxContainer Orientation="Horizontal" SeparationOverride="4">
-            <Label Text="Withdraw: " />
-            <LineEdit Name="NCRDollarsAmount" PlaceHolder="Amount" HorizontalExpand="True" />
-            <Button Name="NCRDollarsWithdraw" Text="Withdraw" />
-        </BoxContainer>
-
-        <!-- Legion Denarii -->
-        <BoxContainer Orientation="Horizontal" SeparationOverride="4">
-            <Label Text="Denarii: " />
-            <Label Name="LegionDenariiLabel" Text="0" HorizontalExpand="True" />
-        </BoxContainer>
-        <BoxContainer Orientation="Horizontal" SeparationOverride="4">
-            <Label Text="Withdraw: " />
-            <LineEdit Name="LegionDenariiAmount" PlaceHolder="Amount" HorizontalExpand="True" />
-            <Button Name="LegionDenariiWithdraw" Text="Withdraw" />
-        </BoxContainer>
-
-        <!-- Pre-War Money -->
-        <BoxContainer Orientation="Horizontal" SeparationOverride="4">
-            <Label Text="Pre-War Money: " />
-            <Label Name="PrewarMoneyLabel" Text="0" HorizontalExpand="True" />
-        </BoxContainer>
-        <BoxContainer Orientation="Horizontal" SeparationOverride="4">
-            <Label Text="Withdraw: " />
-            <LineEdit Name="PrewarMoneyAmount" PlaceHolder="Amount" HorizontalExpand="True" />
-            <Button Name="PrewarMoneyWithdraw" Text="Withdraw" />
         </BoxContainer>
     </BoxContainer>
 </DefaultWindow>

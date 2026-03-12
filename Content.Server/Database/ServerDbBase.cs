@@ -202,7 +202,7 @@ namespace Content.Server.Database
             var gender = sex == Sex.Male ? Gender.Male : Gender.Female;
             if (Enum.TryParse<Gender>(profile.Gender, true, out var genderVal))
                 gender = genderVal;
-            
+
             // Corvax-TTS-Start
             var voice = profile.Voice;
             if (voice == String.Empty)
@@ -1715,6 +1715,50 @@ INSERT INTO player_round (players_id, rounds_id) VALUES ({players[player]}, {id}
             db.DbContext.RoleWhitelists.Remove(entry);
             await db.DbContext.SaveChangesAsync();
             return true;
+        }
+
+        #endregion
+
+        // #Misfits Change - Persistent currency
+
+        #region Currency
+
+        public async Task<int> GetCharacterCurrencyAsync(
+            Guid playerId, string characterName, CancellationToken cancel = default)
+        {
+            await using var db = await GetDb(cancel);
+
+            var row = await db.DbContext.CharacterCurrency
+                .Where(c => c.PlayerId == playerId && c.CharacterName == characterName)
+                .SingleOrDefaultAsync(cancel);
+
+            return row?.Bottlecaps ?? 0;
+        }
+
+        public async Task UpsertCharacterCurrencyAsync(
+            Guid playerId, string characterName, int bottlecaps)
+        {
+            await using var db = await GetDb();
+
+            var existing = await db.DbContext.CharacterCurrency
+                .Where(c => c.PlayerId == playerId && c.CharacterName == characterName)
+                .SingleOrDefaultAsync();
+
+            if (existing != null)
+            {
+                existing.Bottlecaps = bottlecaps;
+            }
+            else
+            {
+                db.DbContext.CharacterCurrency.Add(new CharacterCurrency
+                {
+                    PlayerId = playerId,
+                    CharacterName = characterName,
+                    Bottlecaps = bottlecaps,
+                });
+            }
+
+            await db.DbContext.SaveChangesAsync();
         }
 
         #endregion

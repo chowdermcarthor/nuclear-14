@@ -18,17 +18,11 @@ public sealed partial class CurrencyWalletWindow : DefaultWindow
 
         DepositInHandButton.OnPressed += _ => OnDepositInHandRequest?.Invoke();
         BottlecapsWithdraw.OnPressed += _ => TryWithdraw(CurrencyType.Bottlecaps, BottlecapsAmount);
-        NCRDollarsWithdraw.OnPressed += _ => TryWithdraw(CurrencyType.NCRDollars, NCRDollarsAmount);
-        LegionDenariiWithdraw.OnPressed += _ => TryWithdraw(CurrencyType.LegionDenarii, LegionDenariiAmount);
-        PrewarMoneyWithdraw.OnPressed += _ => TryWithdraw(CurrencyType.PrewarMoney, PrewarMoneyAmount);
     }
 
-    public void UpdateState(int bottlecaps, int ncrDollars, int legionDenarii, int prewarMoney)
+    public void UpdateState(int bottlecaps)
     {
         BottlecapsLabel.Text = bottlecaps.ToString();
-        NCRDollarsLabel.Text = ncrDollars.ToString();
-        LegionDenariiLabel.Text = legionDenarii.ToString();
-        PrewarMoneyLabel.Text = prewarMoney.ToString();
     }
 
     private void TryWithdraw(CurrencyType type, Robust.Client.UserInterface.Controls.LineEdit lineEdit)

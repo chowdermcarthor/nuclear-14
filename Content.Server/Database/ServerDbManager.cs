@@ -336,10 +336,24 @@ namespace Content.Server.Database
         void InjectTestNotification(DatabaseNotification notification);
 
         #endregion
-    }
 
-    /// <summary>
-    /// Represents a notification sent between servers via the database layer.
+        // #Misfits Change - Persistent currency
+
+        #region Currency
+
+        /// <summary>
+        /// Get a character's persistent Bottle Caps balance.
+        /// Returns null if no record exists yet.
+        /// </summary>
+        Task<int> GetCharacterCurrencyAsync(Guid playerId, string characterName, CancellationToken cancel = default);
+
+        /// <summary>
+        /// Create or update a character's persistent Bottle Caps balance.
+        /// </summary>
+        Task UpsertCharacterCurrencyAsync(Guid playerId, string characterName, int bottlecaps);
+
+        #endregion
+    }
     /// </summary>
     /// <remarks>
     /// <para>
@@ -1013,6 +1027,24 @@ namespace Content.Server.Database
         {
             HandleDatabaseNotification(notification);
         }
+
+        // #Misfits Change - Persistent currency
+
+        #region Currency
+
+        public Task<int> GetCharacterCurrencyAsync(Guid playerId, string characterName, CancellationToken cancel)
+        {
+            DbReadOpsMetric.Inc();
+            return RunDbCommand(() => _db.GetCharacterCurrencyAsync(playerId, characterName, cancel));
+        }
+
+        public Task UpsertCharacterCurrencyAsync(Guid playerId, string characterName, int bottlecaps)
+        {
+            DbWriteOpsMetric.Inc();
+            return RunDbCommand(() => _db.UpsertCharacterCurrencyAsync(playerId, characterName, bottlecaps));
+        }
+
+        #endregion
 
         private async void HandleDatabaseNotification(DatabaseNotification notification)
         {

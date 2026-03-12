@@ -87,14 +87,11 @@ public sealed class CharacterInfoSystem : EntitySystem
             };
         }
 
-        // #Misfits Add - Attach currency balances from PersistentCurrencyComponent
+        // #Misfits Add - Attach currency balance from PersistentCurrencyComponent
         if (TryComp<PersistentCurrencyComponent>(entity, out var currency))
         {
             evnt.PersistentStats ??= new CharacterPersistentStats();
-            evnt.PersistentStats.Bottlecaps   = currency.Bottlecaps;
-            evnt.PersistentStats.NCRDollars   = currency.NCRDollars;
-            evnt.PersistentStats.LegionDenarii = currency.LegionDenarii;
-            evnt.PersistentStats.PrewarMoney  = currency.PrewarMoney;
+            evnt.PersistentStats.Bottlecaps = currency.Bottlecaps;
         }
 
         RaiseNetworkEvent(evnt, args.SenderSession);

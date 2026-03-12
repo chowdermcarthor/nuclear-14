@@ -248,10 +248,7 @@ public sealed class FactionBankTerminalSystem : EntitySystem
         // Reuse the existing wallet state message — opens the same wallet window the HUD button does.
         var msg = new CurrencyWalletStateMessage
         {
-            Bottlecaps    = wallet.Bottlecaps,
-            NCRDollars    = wallet.NCRDollars,
-            LegionDenarii = wallet.LegionDenarii,
-            PrewarMoney   = wallet.PrewarMoney,
+            Bottlecaps = wallet.Bottlecaps,
         };
 
         RaiseNetworkEvent(msg, actor.PlayerSession.Channel);
