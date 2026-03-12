@@ -44,7 +44,13 @@ namespace Content.Client.Lathe.UI
             {
                 case LatheUpdateState msg:
                     if (_menu != null)
+                    {
                         _menu.Recipes = msg.Recipes;
+                        // #Misfits Fix: Pass server-computed available material amounts so the
+                        // client can accurately determine CanProduce without relying on
+                        // PhysicalCompositionComponent being synced from storage entities.
+                        _menu.ServerAvailableMaterials = msg.AvailableMaterials;
+                    }
                     _menu?.PopulateRecipes();
                     _menu?.UpdateCategories();
                     _menu?.PopulateQueueList(msg.Queue);

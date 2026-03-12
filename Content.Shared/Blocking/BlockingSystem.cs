@@ -217,6 +217,7 @@ public sealed partial class BlockingSystem : EntitySystem
 
         component.IsBlocking = true;
         Dirty(item, component);
+        RaiseLocalEvent(item, new ShieldBlockingStartedEvent(user, item));
 
         return true;
     }
@@ -276,6 +277,7 @@ public sealed partial class BlockingSystem : EntitySystem
 
         component.IsBlocking = false;
         Dirty(item, component);
+        RaiseLocalEvent(item, new ShieldBlockingStoppedEvent(user, item));
 
         return true;
     }
@@ -355,3 +357,9 @@ public sealed partial class BlockingSystem : EntitySystem
         }
     }
 }
+
+// #Misfits Change /Add/: Explicit blocking toggle events let server-side chat react only to active shield raise/lower actions.
+public readonly record struct ShieldBlockingStartedEvent(EntityUid User, EntityUid Item);
+
+// #Misfits Change /Add/: Separate stop event prevents equip/drop lifecycle noise from producing chat messages.
+public readonly record struct ShieldBlockingStoppedEvent(EntityUid User, EntityUid Item);

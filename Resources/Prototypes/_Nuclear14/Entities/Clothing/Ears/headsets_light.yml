@@ -53,7 +53,7 @@
         startValue: 3.0
         endValue: 2.0
         isLooped: true
-        property: Radius
+        property: AnimatedRadius
         enabled: false
         reverseWhenFinished: true
       - !type:PulseBehaviour
@@ -63,7 +63,7 @@
         minValue: 0.1
         maxValue: 2.0
         isLooped: true
-        property: Radius
+        property: AnimatedRadius
         enabled: false
   - type: ToggleableLightVisuals
     spriteLayer: light

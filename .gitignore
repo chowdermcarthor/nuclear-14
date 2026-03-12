@@ -334,3 +334,15 @@ SpaceStation14.slnx
 SpaceStation14.slnx
 *.slnx
 Scripts/bat/buildAllRelease - AutoDrop.bat
+Tools/dmm_to_ss14.py
+Tools/pahrump_dmm/Pahrump-Above-3.dmm
+Tools/pahrump_dmm/Pahrump-Dungeons.dmm
+Tools/pahrump_dmm/Pahrump-Surface-2.dmm
+Tools/pahrump_dmm/Pahrump-Underground-1.dmm
+Resources/Maps/Misfits/PahrumpAbove.yml
+Resources/Maps/Misfits/PahrumpSurface.yml
+Resources/Maps/Misfits/PahrumpUnderground.yml
+.claude/CLAUDE.md
+Resources/Prototypes/Maps/Pools/default.yml
+Resources/Prototypes/Maps/Misfits/Pahrump.yml
+Resources/Prototypes/Maps/Pools/default.yml

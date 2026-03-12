@@ -309,8 +309,23 @@ namespace Content.Server.Lathe
                 return;
 
             var producing = component.CurrentRecipe ?? component.Queue.FirstOrDefault();
+            var availableRecipes = GetAvailableRecipes(uid, component);
 
-            var state = new LatheUpdateState(GetAvailableRecipes(uid, component), component.Queue, producing);
+            // #Misfits Change Add: Compute total available material amounts (pool + physical storage)
+            // server-side and send them in state so the client can accurately check CanProduce
+            // without relying on PhysicalCompositionComponent being available client-side.
+            var materialIds = new HashSet<ProtoId<MaterialPrototype>>();
+            foreach (var recipeId in availableRecipes)
+            {
+                if (_proto.TryIndex(recipeId, out LatheRecipePrototype? recipe))
+                    foreach (var matId in recipe.Materials.Keys)
+                        materialIds.Add(matId);
+            }
+            var availableMaterials = new Dictionary<ProtoId<MaterialPrototype>, int>();
+            foreach (var matId in materialIds)
+                availableMaterials[matId] = _materialStorage.GetAvailableMaterialAmount(uid, matId);
+
+            var state = new LatheUpdateState(availableRecipes, component.Queue, producing, availableMaterials);
             _uiSys.SetUiState(uid, LatheUiKey.Key, state);
         }
 
@@ -357,7 +372,10 @@ namespace Content.Server.Lathe
 
         private void OnStorageContainerModified(EntityUid uid, LatheComponent component, ref EntInsertedIntoContainerMessage args)
         {
-            if (!HasComp<STBlueprintComponent>(args.Entity))
+            // #Misfits Fix: Refresh UI state when blueprints (recipe list changes) or
+            // physical material entities (canProduce / available material amounts change)
+            // are inserted into storage.
+            if (!HasComp<STBlueprintComponent>(args.Entity) && !HasComp<MaterialComponent>(args.Entity))
                 return;
 
             UpdateUserInterfaceState(uid, component);
@@ -365,7 +383,9 @@ namespace Content.Server.Lathe
 
         private void OnStorageContainerModified(EntityUid uid, LatheComponent component, ref EntRemovedFromContainerMessage args)
         {
-            if (!HasComp<STBlueprintComponent>(args.Entity))
+            // #Misfits Fix: Same as insertion - refresh when blueprints or material
+            // entities are removed so available amounts are recalculated.
+            if (!HasComp<STBlueprintComponent>(args.Entity) && !HasComp<MaterialComponent>(args.Entity))
                 return;
 
             UpdateUserInterfaceState(uid, component);

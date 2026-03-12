@@ -7,9 +7,8 @@ using Content.Shared.Chat;
 namespace Content.Server._Misfits.Combat;
 
 /// <summary>
-/// Hooks <see cref="BlockingUserComponent"/> lifecycle events to send local-area emote chat messages
-/// so nearby players see "* Name raises their shield *" / "* Name lowers their shield *" in the emote
-/// channel instead of floating sprite popups.
+/// Hooks explicit shield blocking toggle events to send local-area emote chat messages so nearby players
+/// see shield raise/lower text in the emote channel instead of observer popup text.
 /// </summary>
 public sealed class BlockingChatSystem : EntitySystem
 {
@@ -19,38 +18,37 @@ public sealed class BlockingChatSystem : EntitySystem
     {
         base.Initialize();
 
-        // BlockingUserComponent is dynamically added/removed by BlockingSystem when blocking starts/stops.
-        SubscribeLocalEvent<BlockingUserComponent, ComponentStartup>(OnBlockingStarted);
-        SubscribeLocalEvent<BlockingUserComponent, ComponentShutdown>(OnBlockingStopped);
+        SubscribeLocalEvent<BlockingComponent, ShieldBlockingStartedEvent>(OnBlockingStarted);
+        SubscribeLocalEvent<BlockingComponent, ShieldBlockingStoppedEvent>(OnBlockingStopped);
     }
 
-    private void OnBlockingStarted(EntityUid uid, BlockingUserComponent comp, ComponentStartup args)
+    private void OnBlockingStarted(EntityUid uid, BlockingComponent comp, ref ShieldBlockingStartedEvent args)
     {
         // Resolve the shield's display name; fall back to a generic string if the item is gone.
-        var shieldName = comp.BlockingItem.HasValue && Exists(comp.BlockingItem.Value)
-            ? Name(comp.BlockingItem.Value)
+        var shieldName = Exists(args.Item)
+            ? Name(args.Item)
             : "shield";
 
         var message = Loc.GetString("misfits-chat-blocking-start", ("shield", shieldName));
 
         // Send as a local-area emote from the blocker — visible to nearby players in the Emotes channel.
-        _chat.TrySendInGameICMessage(uid, message, InGameICChatType.Emote,
+        _chat.TrySendInGameICMessage(args.User, message, InGameICChatType.Emote,
             ChatTransmitRange.Normal, ignoreActionBlocker: true);
     }
 
-    private void OnBlockingStopped(EntityUid uid, BlockingUserComponent comp, ComponentShutdown args)
+    private void OnBlockingStopped(EntityUid uid, BlockingComponent comp, ref ShieldBlockingStoppedEvent args)
     {
         // Skip if the entity itself is being deleted; sending chat from a terminating entity causes errors.
-        if (TerminatingOrDeleted(uid))
+        if (TerminatingOrDeleted(args.User))
             return;
 
-        var shieldName = comp.BlockingItem.HasValue && Exists(comp.BlockingItem.Value)
-            ? Name(comp.BlockingItem.Value)
+        var shieldName = Exists(args.Item)
+            ? Name(args.Item)
             : "shield";
 
         var message = Loc.GetString("misfits-chat-blocking-stop", ("shield", shieldName));
 
-        _chat.TrySendInGameICMessage(uid, message, InGameICChatType.Emote,
+        _chat.TrySendInGameICMessage(args.User, message, InGameICChatType.Emote,
             ChatTransmitRange.Normal, ignoreActionBlocker: true);
     }
 }

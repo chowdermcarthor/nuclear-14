@@ -2,6 +2,7 @@
 using Content.Server.Chat.Systems;
 using Content.Shared.Chat;
 using Content.Shared.Damage.Components;
+using Content.Shared.Ensnaring.Components;
 using Content.Shared.IdentityManagement;
 using Content.Shared.Mobs.Components;
 using Content.Shared.Throwing;
@@ -23,6 +24,10 @@ public sealed class ThrowImpactChatSystem : EntitySystem
     private void OnThrowHitBy(EntityUid uid, MobStateComponent component, ThrowHitByEvent args)
     {
         if (args.User is not { } user)
+            return;
+
+        // Dedicated ensnare chat handles bolas and other thrown ensnaring tools.
+        if (TryComp<EnsnaringComponent>(args.Thrown, out var ensnaring) && ensnaring.CanThrowTrigger)
             return;
 
         var targetName = Identity.Entity(uid, EntityManager);

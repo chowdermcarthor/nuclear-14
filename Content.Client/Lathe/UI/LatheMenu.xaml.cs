@@ -8,6 +8,7 @@ using Content.Shared.DeltaV.Salvage.Components; // DeltaV
 using Content.Shared.DeltaV.Salvage.Systems; // DeltaV
 using Content.Shared.Lathe;
 using Content.Shared.Lathe.Prototypes;
+using Content.Shared.Materials;
 using Content.Shared._NC.Crafting.Components;
 using Content.Shared.Prototypes; // #Misfits Fix - HasComponent extension on EntityPrototype
 using Content.Shared.Research.Prototypes;
@@ -19,7 +20,6 @@ using Robust.Client.UserInterface;
 using Robust.Client.UserInterface.Controls;
 using Robust.Client.UserInterface.CustomControls;
 using Robust.Client.UserInterface.XAML;
-using Robust.Shared.Prototypes;
 using Robust.Shared.Timing; // DeltaV
 
 namespace Content.Client.Lathe.UI;
@@ -49,6 +49,11 @@ public sealed partial class LatheMenu : DefaultWindow
     public ProtoId<LatheCategoryPrototype>? CurrentCategory;
 
     public EntityUid Entity;
+
+    // #Misfits Change Add: Server-provided total available material amounts (pool + physical
+    // storage). Used in CanProduce/tooltip so blueprint recipes show correctly even when the
+    // client hasn't yet synced storage entity components.
+    public Dictionary<ProtoId<MaterialPrototype>, int>? ServerAvailableMaterials;
 
     private uint? _lastMiningPoints; // DeltaV: used to avoid Loc.GetString every frame
 
@@ -184,7 +189,12 @@ public sealed partial class LatheMenu : DefaultWindow
 
         foreach (var prototype in sortedItemRecipesToShow)
         {
-            var canProduce = _lathe.CanProduce(Entity, prototype, quantity, component: lathe);
+            // #Misfits Fix: Use server-provided material amounts when available so that
+            // materials physically stored in the workbench storage container (not just
+            // the material pool) are counted, enabling the button correctly.
+            var canProduce = ServerAvailableMaterials != null
+                ? _lathe.CanProduce(Entity, prototype, quantity, ServerAvailableMaterials, component: lathe)
+                : _lathe.CanProduce(Entity, prototype, quantity, component: lathe);
 
             var control = new RecipeControl(_lathe, prototype, () => GenerateTooltipText(prototype), canProduce, GetRecipeDisplayControl(prototype));
             control.OnButtonPressed += s =>
@@ -198,7 +208,10 @@ public sealed partial class LatheMenu : DefaultWindow
 
         foreach (var prototype in sortedBlueprintRecipesToShow)
         {
-            var canProduce = _lathe.CanProduce(Entity, prototype, quantity, component: lathe);
+            // #Misfits Fix: Same server-material-amount check for blueprint recipes.
+            var canProduce = ServerAvailableMaterials != null
+                ? _lathe.CanProduce(Entity, prototype, quantity, ServerAvailableMaterials, component: lathe)
+                : _lathe.CanProduce(Entity, prototype, quantity, component: lathe);
 
             var control = new RecipeControl(_lathe, prototype, () => GenerateTooltipText(prototype), canProduce, GetRecipeDisplayControl(prototype));
             control.OnButtonPressed += s =>
@@ -253,7 +266,11 @@ public sealed partial class LatheMenu : DefaultWindow
             }
 
             // Only include recipes the player can currently build
-            if (_lathe.CanProduce(Entity, proto, quantity, component: lathe))
+            // #Misfits Fix: Use server-provided material amounts when available.
+            var canBuild = ServerAvailableMaterials != null
+                ? _lathe.CanProduce(Entity, proto, quantity, ServerAvailableMaterials, component: lathe)
+                : _lathe.CanProduce(Entity, proto, quantity, component: lathe);
+            if (canBuild)
                 buildable.Add(proto);
         }
 
@@ -296,7 +313,11 @@ public sealed partial class LatheMenu : DefaultWindow
             var unit = Loc.GetString(proto.Unit);
             var sheets = adjustedAmount / (float) sheetVolume;
 
-            var availableAmount = _materialStorage.GetAvailableMaterialAmount(Entity, id);
+            // #Misfits Fix: Use server-provided material amounts if available so that
+            // physical storage items (not yet composition-synced on client) are reflected.
+            var availableAmount = ServerAvailableMaterials != null
+                ? ServerAvailableMaterials.GetValueOrDefault(id, 0)
+                : _materialStorage.GetAvailableMaterialAmount(Entity, id);
             var missingAmount = Math.Max(0, adjustedAmount - availableAmount);
             var missingSheets = missingAmount / (float) sheetVolume;
 

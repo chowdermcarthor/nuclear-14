@@ -428,6 +428,9 @@
     sprite: _Nuclear14/Clothing/Head/FalloutHats/tribalhoodoutcast.rsi
   - type: Clothing
     sprite: _Nuclear14/Clothing/Head/FalloutHats/tribalhoodoutcast.rsi
+  - type: Tag #Misfits Change /Fix/: Hide humanoid hair so it does not clip through the tribal outcast hood.
+    tags:
+    - HidesHair
   - type: Armor
     modifiers:
       coefficients:

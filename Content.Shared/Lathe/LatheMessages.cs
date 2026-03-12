@@ -1,3 +1,4 @@
+using Content.Shared.Materials;
 using Content.Shared.Research.Prototypes;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Serialization;
@@ -13,11 +14,17 @@ public sealed class LatheUpdateState : BoundUserInterfaceState
 
     public LatheRecipePrototype? CurrentlyProducing;
 
-    public LatheUpdateState(List<ProtoId<LatheRecipePrototype>> recipes, List<LatheRecipePrototype> queue, LatheRecipePrototype? currentlyProducing = null)
+    // #Misfits Change Add: Server-computed available material amounts (pool + physical storage)
+    // sent to the client so PopulateRecipes can accurately enable/disable recipe buttons even
+    // when PhysicalCompositionComponent is not yet synced to the client.
+    public Dictionary<ProtoId<MaterialPrototype>, int> AvailableMaterials;
+
+    public LatheUpdateState(List<ProtoId<LatheRecipePrototype>> recipes, List<LatheRecipePrototype> queue, LatheRecipePrototype? currentlyProducing = null, Dictionary<ProtoId<MaterialPrototype>, int>? availableMaterials = null)
     {
         Recipes = recipes;
         Queue = queue;
         CurrentlyProducing = currentlyProducing;
+        AvailableMaterials = availableMaterials ?? new Dictionary<ProtoId<MaterialPrototype>, int>();
     }
 }
 

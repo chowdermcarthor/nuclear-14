@@ -322,6 +322,7 @@ public sealed class ToggleableClothingSystem : EntitySystem
         var comp = toggleable.Comp;
         var attachedClothings = comp.ClothingUids;
         var container = comp.Container;
+        var previousStatus = GetAttachedToggleStatus(toggleable, comp);
 
         if (!CanToggleClothing(user, toggleable))
             return;
@@ -333,6 +334,8 @@ public sealed class ToggleableClothingSystem : EntitySystem
             UnequipClothing(user, toggleable, attachedUid, slot!);
         else
             EquipClothing(user, toggleable, attachedUid, slot!);
+
+        RaiseToggleableClothingToggledEvent(user, toggleable, previousStatus);
     }
 
     /// <summary>
@@ -343,6 +346,7 @@ public sealed class ToggleableClothingSystem : EntitySystem
         var comp = toggleable.Comp;
         var attachedClothings = comp.ClothingUids;
         var container = comp.Container;
+        var previousStatus = GetAttachedToggleStatus(toggleable, comp);
 
         if (!CanToggleClothing(user, toggleable))
             return;
@@ -354,6 +358,31 @@ public sealed class ToggleableClothingSystem : EntitySystem
             foreach (var clothing in attachedClothings)
                 if (!container!.Contains(clothing.Key))
                     UnequipClothing(user, toggleable, clothing.Key, clothing.Value);
+
+        RaiseToggleableClothingToggledEvent(user, toggleable, previousStatus);
+    }
+
+    // #Misfits Change /Add/: Raise a single event only when a toggleable clothing item fully deploys or fully retracts.
+    private void RaiseToggleableClothingToggledEvent(
+        EntityUid user,
+        Entity<ToggleableClothingComponent> toggleable,
+        ToggleableClothingAttachedStatus previousStatus)
+    {
+        var currentStatus = GetAttachedToggleStatus(toggleable, toggleable.Comp);
+
+        if (previousStatus == currentStatus)
+            return;
+
+        if (previousStatus == ToggleableClothingAttachedStatus.NoneToggled
+            && currentStatus == ToggleableClothingAttachedStatus.AllToggled)
+        {
+            RaiseLocalEvent(toggleable.Owner, new ToggleableClothingToggledEvent(user, true));
+            return;
+        }
+
+        if (previousStatus == ToggleableClothingAttachedStatus.AllToggled
+            && currentStatus == ToggleableClothingAttachedStatus.NoneToggled)
+            RaiseLocalEvent(toggleable.Owner, new ToggleableClothingToggledEvent(user, false));
     }
 
     private bool CanToggleClothing(EntityUid user, Entity<ToggleableClothingComponent> toggleable)
@@ -530,6 +559,9 @@ public sealed partial class ToggleClothingEvent : InstantActionEvent
 public sealed partial class ToggleClothingDoAfterEvent : SimpleDoAfterEvent
 {
 }
+
+// #Misfits Change /Add/: Fired when a toggleable clothing item fully deploys or fully retracts its attached pieces.
+public readonly record struct ToggleableClothingToggledEvent(EntityUid User, bool Activated);
 
 /// <summary>
 ///     Event raises on toggleable clothing when someone trying to toggle it

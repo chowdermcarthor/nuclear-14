@@ -35,11 +35,11 @@ public sealed class PointingChatSystem : EntitySystem
     /// </summary>
     private void OnAfterPointed(EntityUid uid, MetaDataComponent component, ref AfterPointedAtEvent ev)
     {
-        // Resolve the display name of the entity being pointed at.
-        var pointedName = Identity.Entity(ev.Pointed, EntityManager);
-
-        // The message text; the emote system wraps it as "* <name> <message> *" in chat.
-        var message = Loc.GetString("pointing-chat-point-at-other", ("other", pointedName));
+        // Use a dedicated reflexive string for self-pointing so the chat line reads
+        // "<name> points at themselves" instead of formatting the actor as a target name.
+        var message = uid == ev.Pointed
+            ? Loc.GetString("pointing-chat-point-at-self")
+            : Loc.GetString("pointing-chat-point-at-other", ("other", Identity.Entity(ev.Pointed, EntityManager)));
 
         if (HasComp<GhostComponent>(uid))
         {

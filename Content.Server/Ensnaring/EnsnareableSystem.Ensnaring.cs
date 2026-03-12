@@ -1,7 +1,9 @@
 using System.Linq;
 using Content.Server.Body.Systems;
+using Content.Server.Chat.Systems;
 using Content.Shared.Alert;
 using Content.Shared.Body.Part;
+using Content.Shared.Chat;
 using Content.Shared.CombatMode.Pacification;
 using Content.Shared.Damage.Components;
 using Content.Shared.Damage.Systems;
@@ -62,6 +64,17 @@ public sealed partial class EnsnareableSystem
             return;
 
         TryEnsnare(args.Target, uid, component);
+
+        if (component.Ensnared != args.Target)
+            return;
+
+        var ensnareName = Identity.Entity(uid, EntityManager);
+        var targetName = Identity.Entity(args.Target, EntityManager);
+        _chat.TrySendInGameICMessage(args.Target,
+            Loc.GetString("misfits-chat-ensnare-hit", ("target", targetName), ("ensnare", ensnareName)),
+            InGameICChatType.Emote,
+            ChatTransmitRange.Normal,
+            ignoreActionBlocker: true);
     }
 
     /// <summary>
@@ -130,10 +143,36 @@ public sealed partial class EnsnareableSystem
         if (!_doAfter.TryStartDoAfter(doAfterEventArgs))
             return;
 
-        if (user == target)
+        if (component.CanThrowTrigger)
+        {
+            var ensnareName = Identity.Entity(ensnare, EntityManager);
+
+            if (user == target)
+            {
+                _chat.TrySendInGameICMessage(target,
+                    Loc.GetString("misfits-chat-ensnare-free-start-self", ("ensnare", ensnareName)),
+                    InGameICChatType.Emote,
+                    ChatTransmitRange.Normal,
+                    ignoreActionBlocker: true);
+            }
+            else
+            {
+                var targetName = Identity.Entity(target, EntityManager);
+                _chat.TrySendInGameICMessage(user,
+                    Loc.GetString("misfits-chat-ensnare-free-start-other", ("ensnare", ensnareName), ("target", targetName)),
+                    InGameICChatType.Emote,
+                    ChatTransmitRange.Normal,
+                    ignoreActionBlocker: true);
+            }
+        }
+        else if (user == target)
+        {
             _popup.PopupEntity(Loc.GetString("ensnare-component-try-free", ("ensnare", ensnare)), target, target);
+        }
         else
+        {
             _popup.PopupEntity(Loc.GetString("ensnare-component-try-free-other", ("ensnare", ensnare), ("user", Identity.Entity(target, EntityManager))), user, user);
+        }
     }
 
     /// <summary>

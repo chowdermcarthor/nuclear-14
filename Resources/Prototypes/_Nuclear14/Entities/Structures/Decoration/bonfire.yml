@@ -90,15 +90,6 @@
         - MidImpassable
         - LowImpassable
         hard: false
-  - type: StepTrigger
-    requiredTriggeredSpeed: 0
-    intersectRatio: 0.1
-    triggerGroups:
-      types:
-      - Lava
-  - type: TileEntityEffect
-    effects:
-    - !type:FlammableReaction
-      multiplier: 2
-      multiplierOnExisting: 0.75
-    - !type:Ignite
+  # Misfits Change /Fix/ Removed StepTrigger and TileEntityEffect (Ignite) — they fired unconditionally
+  # regardless of lit state, burning players/items walking over an unlit bonfire.
+  # Heating is handled by BonfireHeaterSystem, which is already gated behind IsHotEvent.

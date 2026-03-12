@@ -3,6 +3,7 @@
 # All strings are the action portion only; the emote system wraps them as: "* <name> <message> *"
 
 ## PointingChatSystem
+pointing-chat-point-at-self = points at themselves
 pointing-chat-point-at-other = points at {$other}
 
 ## OfferItemSystem
@@ -40,6 +41,26 @@ spear-block-deflected-emote = deflects {$thrower}'s {$spear}, sending it to the 
 ## GrabChatSystem
 # Emote broadcast from the puller when they start dragging another mob.
 misfits-chat-grab-start = grabs {$grabbed}
+
+## BlockingChatSystem
+# Emote broadcast from the blocker when they raise or lower a shield.
+misfits-chat-blocking-start = raises {$shield}
+misfits-chat-blocking-stop = lowers {$shield}
+
+## PowerArmorChatSystem
+# Emote broadcast when a power armor suit fully deploys or retracts its attached pieces.
+misfits-chat-power-armor-close = locks into {$armor}
+misfits-chat-power-armor-open = disengages {$armor}
+
+## EnsnareableSystem
+# Emotes for thrown bolas and similar throw-triggered ensnares.
+misfits-chat-ensnare-hit = is hit by {$ensnare} and snared
+misfits-chat-ensnare-free-start-self = starts working free from {$ensnare}
+misfits-chat-ensnare-free-start-other = starts removing {$ensnare} from {$target}
+misfits-chat-ensnare-free-fail-self = fails to get free of {$ensnare}
+misfits-chat-ensnare-free-fail-other = fails to remove {$ensnare} from {$target}
+misfits-chat-ensnare-free-complete-self = breaks free of {$ensnare}
+misfits-chat-ensnare-free-complete-other = removes {$ensnare} from {$target}
 
 ## DoubleGrabSystem
 # Carrier locks the victim into an active carry hold.

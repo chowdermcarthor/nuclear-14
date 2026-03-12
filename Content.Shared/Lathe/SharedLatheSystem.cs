@@ -66,6 +66,30 @@ public abstract class SharedLatheSystem : EntitySystem
         return true;
     }
 
+    /// <summary>
+    /// #Misfits Change Add: Overload that checks craftability using a pre-computed
+    /// material amounts dictionary (server-provided) rather than querying the entity
+    /// directly.  Used client-side so recipe buttons correctly reflect materials that
+    /// are physically stored in attached storage containers but whose composition
+    /// components may not be fully synced to the client yet.
+    /// </summary>
+    public bool CanProduce(EntityUid uid, LatheRecipePrototype recipe, int amount, Dictionary<ProtoId<MaterialPrototype>, int> availableMaterials, LatheComponent? component = null)
+    {
+        if (!Resolve(uid, ref component))
+            return false;
+        if (!HasRecipe(uid, recipe, component))
+            return false;
+
+        foreach (var (material, needed) in recipe.Materials)
+        {
+            var adjustedAmount = AdjustMaterial(needed, recipe.ApplyMaterialDiscount, component.MaterialUseMultiplier);
+            var available = availableMaterials.GetValueOrDefault(material, 0);
+            if (available < adjustedAmount * amount)
+                return false;
+        }
+        return true;
+    }
+
     private void OnEmagged(EntityUid uid, EmagLatheRecipesComponent component, ref GotEmaggedEvent args)
     {
         args.Handled = true;
