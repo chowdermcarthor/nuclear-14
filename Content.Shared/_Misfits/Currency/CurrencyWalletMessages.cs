@@ -19,6 +19,12 @@ public sealed partial class OpenCurrencyWalletEvent : InstantActionEvent
 public sealed class CurrencyWalletStateMessage : EntityEventArgs
 {
     public int Bottlecaps;
+
+    /// <summary>
+    /// When true the client should open/focus the wallet window.
+    /// When false the client only updates the balance if the window is already visible.
+    /// </summary>
+    public bool OpenWindow;
 }
 
 /// <summary>

@@ -3,6 +3,7 @@ using System.IO;
 using System.Text.Json;
 using Content.Server.Chat.Managers;
 using Content.Server.Database;
+using Content.Server.GameTicking;
 using Content.Server.Mind;
 using Content.Shared._Misfits.Currency;
 using Content.Shared._Misfits.Currency.Components;
@@ -48,13 +49,16 @@ public sealed class PersistentCurrencySystem : EntitySystem
         _log = Logger.GetSawmill("persistent_currency");
 
         SubscribeLocalEvent<ConsumableCurrencyComponent, UseInHandEvent>(OnUseCurrency);
-        SubscribeLocalEvent<PersistentCurrencyComponent, ComponentStartup>(OnCurrencyStartup);
         SubscribeLocalEvent<PersistentCurrencyComponent, PlayerAttachedEvent>(OnPlayerAttached);
         SubscribeLocalEvent<PersistentCurrencyComponent, ComponentShutdown>(OnCurrencyShutdown);
         SubscribeLocalEvent<PersistentCurrencyComponent, OpenCurrencyWalletEvent>(OnOpenWallet);
         SubscribeNetworkEvent<WithdrawCurrencyRequest>(OnWithdrawRequest);
         SubscribeNetworkEvent<OpenWalletHudMessage>(OnHudOpenWallet); // #Misfits Change - HUD button support
         SubscribeNetworkEvent<DepositHeldCurrencyRequest>(OnDepositHeldRequest); // #Misfits Change - wallet Deposit In Hand button
+
+        // #Misfits Fix - Use PlayerSpawnCompleteEvent to load currency; ComponentStartup and
+        // PlayerAttachedEvent fire before mind attachment so TryGetMind always fails.
+        SubscribeLocalEvent<PlayerSpawnCompleteEvent>(OnPlayerSpawnComplete);
 
         // One-time migration from legacy JSON file to database
         MigrateJsonToDatabase();
@@ -145,6 +149,7 @@ public sealed class PersistentCurrencySystem : EntitySystem
         var stateMsg = new CurrencyWalletStateMessage
         {
             Bottlecaps = comp.Bottlecaps,
+            OpenWindow = true,
         };
 
         RaiseNetworkEvent(stateMsg, actor.PlayerSession.Channel);
@@ -339,15 +344,14 @@ public sealed class PersistentCurrencySystem : EntitySystem
         args.Handled = true;
     }
 
-    private void OnCurrencyStartup(Entity<PersistentCurrencyComponent> ent, ref ComponentStartup args)
+    // #Misfits Fix - Load currency on spawn, when mind is guaranteed to be ready.
+    private void OnPlayerSpawnComplete(PlayerSpawnCompleteEvent args)
     {
-        // #Misfits Change - action intentionally not granted; wallet is accessed via the AlertsUI HUD button instead
+        if (!TryComp<PersistentCurrencyComponent>(args.Mob, out var comp))
+            return;
 
-        // Load currency from file when component starts up
-        if (TryComp<ActorComponent>(ent, out var actor))
-        {
-            LoadCurrencyAsync(ent, ent.Comp, actor.PlayerSession);
-        }
+        if (args.Player.AttachedEntity == args.Mob)
+            LoadCurrencyAsync(args.Mob, comp, args.Player);
     }
 
     private void OnCurrencyShutdown(Entity<PersistentCurrencyComponent> ent, ref ComponentShutdown args)
@@ -357,7 +361,7 @@ public sealed class PersistentCurrencySystem : EntitySystem
 
     private void OnPlayerAttached(Entity<PersistentCurrencyComponent> ent, ref PlayerAttachedEvent args)
     {
-        // Load currency when a player is attached to their character
+        // Handles reconnects and late-attachment; LoadCurrencyAsync is idempotent (checks Loaded)
         LoadCurrencyAsync(ent, ent.Comp, args.Player);
     }
 
@@ -389,6 +393,16 @@ public sealed class PersistentCurrencySystem : EntitySystem
 
         comp.Loaded = true;
         Dirty(uid, comp);
+
+        // #Misfits Fix - Send updated wallet state to client after async load completes.
+        // Without this the wallet window shows 0 if opened before the load finishes.
+        if (TryComp<ActorComponent>(uid, out var actor))
+        {
+            RaiseNetworkEvent(new CurrencyWalletStateMessage
+            {
+                Bottlecaps = comp.Bottlecaps,
+            }, actor.PlayerSession.Channel);
+        }
     }
 
     private void SaveCurrency(string userId, string characterName, PersistentCurrencyComponent comp)

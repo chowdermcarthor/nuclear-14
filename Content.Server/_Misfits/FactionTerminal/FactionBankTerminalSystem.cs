@@ -265,6 +265,7 @@ public sealed class FactionBankTerminalSystem : EntitySystem
         var msg = new CurrencyWalletStateMessage
         {
             Bottlecaps = wallet.Bottlecaps,
+            OpenWindow = true,
         };
 
         RaiseNetworkEvent(msg, session.Channel);

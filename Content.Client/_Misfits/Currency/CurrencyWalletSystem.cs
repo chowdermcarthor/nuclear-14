@@ -57,10 +57,19 @@ public sealed class CurrencyWalletSystem : EntitySystem
 
     private void OnCurrencyWalletState(CurrencyWalletStateMessage msg)
     {
-        EnsureWindow();
-
-        _window!.UpdateState(msg.Bottlecaps);
-        _window.OpenCentered();
+        // #Misfits Fix - Only open/focus the window when the server explicitly requests it
+        // (HUD button, ATM interaction). Background updates (load, deposit, withdraw) just
+        // refresh the balance if the window happens to be open already.
+        if (msg.OpenWindow)
+        {
+            EnsureWindow();
+            _window!.UpdateState(msg.Bottlecaps);
+            _window.OpenCentered();
+        }
+        else if (_window is { Disposed: false, IsOpen: true })
+        {
+            _window.UpdateState(msg.Bottlecaps);
+        }
     }
 
     private void EnsureWindow()
