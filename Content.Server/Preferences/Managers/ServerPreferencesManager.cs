@@ -192,7 +192,7 @@ namespace Content.Server.Preferences.Managers
                 {
                     PrefsLoaded = true,
                     Prefs = new PlayerPreferences(
-                        new[] { new KeyValuePair<int, ICharacterProfile>(0, HumanoidCharacterProfile.Random()) },
+                        new[] { new KeyValuePair<int, ICharacterProfile>(0, HumanoidCharacterProfile.RandomWithSpecies()) }, // #Misfits Change - Default Human species for guest/no-auth profiles instead of randomising
                         0, Color.Transparent)
                 };
 
@@ -308,7 +308,7 @@ namespace Content.Server.Preferences.Managers
             var prefs = await _db.GetPlayerPreferencesAsync(userId, cancel);
             if (prefs is null)
             {
-                return await _db.InitPrefsAsync(userId, HumanoidCharacterProfile.Random(), cancel);
+                return await _db.InitPrefsAsync(userId, HumanoidCharacterProfile.RandomWithSpecies(), cancel); // #Misfits Change - Default Human species for new players instead of randomising
             }
 
             return prefs;
