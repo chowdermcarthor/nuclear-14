@@ -45,7 +45,6 @@
   - type: PsionicInsulation
 #  - type: Ghoulify # Forge-Change
   - type: GhoulifyOnRadiationDeath # #Misfits Change: humans who die to radiation become ghouls instead
-  - type: Woundable # #Misfits Add: enable wound & bleed system for human players
 
 - type: entity
   parent: BaseSpeciesDummy

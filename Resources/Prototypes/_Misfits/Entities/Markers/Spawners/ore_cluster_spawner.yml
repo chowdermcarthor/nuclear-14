@@ -14,13 +14,13 @@
   components:
   - type: Transform
     anchored: true
+  - type: Marker  # Misfits Add — required for Show Spawns (showmarkers command) visibility
   - type: Clickable
   - type: InteractionOutline
   - type: Sprite
-    # Uses the biome spawner marker icon so it's visible to admins in-world
-    # and click-erasable via the Persistent Entity Spawn tool erase mode.
+    # Uses the biome spawner marker icon so it's visible to admins via Show Spawns.
     snapCardinals: true
-    drawdepth: BelowFloor
+    drawdepth: Overdoors
     sprite: _Nuclear14/Markers/biome.rsi
     color: "#FF6600"  # orange tint to distinguish from biome markers
 

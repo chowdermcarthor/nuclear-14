@@ -1,6 +1,5 @@
-// Misfits Change - Plays a short local-area ping when a player activates combat mode (Num1).
+// Misfits Change - Plays a short local-area ping when a player or NPC activates combat mode.
 // Anti-spam cooldown prevents rapidly toggling the sound by flicking combat mode on and off.
-using Content.Server.NPC.HTN;
 using Content.Shared.CombatMode;
 using Robust.Server.Audio;
 using Robust.Shared.Audio;
@@ -56,10 +55,6 @@ public sealed class CombatModePingSystem : EntitySystem
 
     private void OnCombatModeActivated(EntityUid uid, CombatModeComponent comp, CombatModeActivatedEvent args)
     {
-        // NPCs use the same CombatModeComponent; skip them entirely.
-        if (HasComp<HTNComponent>(uid))
-            return;
-
         // Enforce anti-spam cooldown so rapid on/off toggling cannot replay the ping.
         var now = _timing.CurTime;
         if (_lastPingTime.TryGetValue(uid, out var lastPing) &&
@@ -68,6 +63,7 @@ public sealed class CombatModePingSystem : EntitySystem
 
         _lastPingTime[uid] = now;
 
+        // #Misfits Tweak - NPCs also play the ping when they aggro, not just players.
         // Play positional ping audible within local/voice range (~10 tiles).
         _audio.PlayPvs(
             new SoundPathSpecifier(PingSound),

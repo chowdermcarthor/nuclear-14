@@ -8,7 +8,9 @@ using Content.Server.GameTicking;
 using Content.Server.Mind;
 using Content.Shared._Misfits.PlayerData;
 using Content.Shared._Misfits.PlayerData.Components;
+using Content.Shared._Misfits.SpecialStats; // #Misfits Add - SPECIAL effects event
 using Content.Shared.Mobs;
+using Content.Shared.Movement.Systems; // #Misfits Add - refresh movement speed after SPECIAL load
 using Robust.Server.GameObjects;
 using Robust.Shared.ContentPack;
 using Robust.Shared.Player;
@@ -25,6 +27,8 @@ public sealed class PersistentPlayerDataSystem : EntitySystem
     [Dependency] private readonly IServerDbManager _db = default!;
     [Dependency] private readonly IResourceManager _resourceManager = default!;
     [Dependency] private readonly MindSystem _mind = default!;
+    // #Misfits Add - Used to re-evaluate movement speed after SPECIAL stats are loaded.
+    [Dependency] private readonly MovementSpeedModifierSystem _movement = default!;
 
     // #Misfits Add - Sawmill for data system logging
     private ISawmill _log = default!;
@@ -172,6 +176,10 @@ public sealed class PersistentPlayerDataSystem : EntitySystem
         AppendHistory(comp, $"Allocated S.P.E.C.I.A.L.: S{msg.Strength} P{msg.Perception} E{msg.Endurance} C{msg.Charisma} I{msg.Intelligence} A{msg.Agility} L{msg.Luck}.");
         Dirty(entity.Value, comp);
         SavePlayer(comp);
+
+        // #Misfits Add - Re-apply stat-driven gameplay effects with the newly confirmed values.
+        RaiseLocalEvent(entity.Value, new SpecialStatsReadyEvent());
+        _movement.RefreshMovementSpeedModifiers(entity.Value);
     }
 
     // ── Data load/save helpers ─────────────────────────────────────────────────
@@ -238,6 +246,10 @@ public sealed class PersistentPlayerDataSystem : EntitySystem
         comp.Loaded = true;
         Dirty(uid, comp);
         SavePlayer(comp);
+
+        // #Misfits Add - Trigger stat-driven gameplay effects (stamina pool, movement speed).
+        RaiseLocalEvent(uid, new SpecialStatsReadyEvent());
+        _movement.RefreshMovementSpeedModifiers(uid);
     }
 
     private void SavePlayer(PersistentPlayerDataComponent comp)

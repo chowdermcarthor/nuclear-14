@@ -26,6 +26,8 @@ public sealed class HeadsetSystem : SharedHeadsetSystem
         SubscribeLocalEvent<HeadsetComponent, EncryptionChannelsChangedEvent>(OnKeysChanged);
 
         SubscribeLocalEvent<WearingHeadsetComponent, EntitySpokeEvent>(OnSpeak);
+        // Misfits Add - broadcast acronym/smiley emotes over headset radio
+        SubscribeLocalEvent<WearingHeadsetComponent, EntitySpokeRadioEmoteEvent>(OnSpokeRadioEmote);
 
         SubscribeLocalEvent<HeadsetComponent, EmpPulseEvent>(OnEmpPulse);
     }
@@ -60,6 +62,19 @@ public sealed class HeadsetSystem : SharedHeadsetSystem
             args.Channel = null; // prevent duplicate messages from other listeners.
         }
     }
+
+    // Misfits Add - routes acronym/smiley emotes over the headset's radio channel
+    private void OnSpokeRadioEmote(EntityUid uid, WearingHeadsetComponent component, EntitySpokeRadioEmoteEvent args)
+    {
+        if (args.Channel != null
+            && TryComp(component.Headset, out EncryptionKeyHolderComponent? keys)
+            && keys.Channels.Contains(args.Channel.ID))
+        {
+            _radio.SendRadioEmote(uid, args.EmoteText, args.Channel, component.Headset, args.Language);
+            args.Channel = null; // prevent duplicate broadcasts
+        }
+    }
+    // End Misfits Add
 
     protected override void OnGotEquipped(EntityUid uid, HeadsetComponent component, GotEquippedEvent args)
     {

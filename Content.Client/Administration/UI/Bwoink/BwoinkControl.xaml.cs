@@ -1,6 +1,7 @@
 using System.Linq;
 using System.Text;
 using Content.Client.Administration.Managers;
+using Content.Client.Administration.Systems; // #Misfits Add — for BwoinkSystem.GhostFollow
 using Content.Client.Administration.UI.CustomControls;
 using Content.Client.UserInterface.Systems.Bwoink;
 using Content.Shared.Administration;
@@ -12,6 +13,7 @@ using Robust.Client.UserInterface.Controls;
 using Robust.Client.UserInterface.XAML;
 using Robust.Shared.Network;
 using Robust.Shared.Configuration;
+using Robust.Shared.GameObjects; // #Misfits Add — for IEntitySystemManager
 using Robust.Shared.Utility;
 
 namespace Content.Client.Administration.UI.Bwoink
@@ -26,6 +28,7 @@ namespace Content.Client.Administration.UI.Bwoink
         [Dependency] private readonly IClientConsoleHost _console = default!;
         [Dependency] private readonly IUserInterfaceManager _ui = default!;
         [Dependency] private readonly IConfigurationManager _cfg = default!;
+        [Dependency] private readonly IEntitySystemManager _entitySystem = default!; // #Misfits Add — for ghost-follow via BwoinkSystem
         public AdminAHelpUIHandler AHelpHelper = default!;
 
         private PlayerInfo? _currentPlayer;
@@ -163,10 +166,12 @@ namespace Content.Client.Administration.UI.Bwoink
                     _console.ExecuteCommand($"kick \"{_currentPlayer.Username}\"");
             };
 
+            // #Misfits Change — Follow now forces aghost mode before following so the admin
+            // orbits the target as a ghost rather than moving their character/possession.
             Follow.OnPressed += _ =>
             {
                 if (_currentPlayer is not null)
-                    _console.ExecuteCommand($"follow \"{_currentPlayer.NetEntity}\"");
+                    _entitySystem.GetEntitySystem<BwoinkSystem>().GhostFollow(_currentPlayer.SessionId);
             };
 
             Respawn.OnPressed += _ =>

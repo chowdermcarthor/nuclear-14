@@ -7,12 +7,19 @@ using Content.Shared.IdentityManagement;
 using Content.Shared.Mobs.Components;
 using Content.Shared.Throwing;
 using Content.Shared.FixedPoint;
+using Robust.Shared.Timing;
 
 namespace Content.Server._Misfits.Combat;
 
 public sealed class ThrowImpactChatSystem : EntitySystem
 {
     [Dependency] private readonly ChatSystem _chat = default!;
+    [Dependency] private readonly IGameTiming _gameTiming = default!;
+
+    // #Misfits Fix: deduplicate messages when a thrown item has multiple fixtures
+    // that each fire StartCollideEvent for the same (user, thrown, target) pair in one tick.
+    private readonly HashSet<(EntityUid User, EntityUid Thrown, EntityUid Target)> _processedThisTick = new();
+    private GameTick _lastCleanupTick;
 
     public override void Initialize()
     {
@@ -24,6 +31,19 @@ public sealed class ThrowImpactChatSystem : EntitySystem
     private void OnThrowHitBy(EntityUid uid, MobStateComponent component, ThrowHitByEvent args)
     {
         if (args.User is not { } user)
+            return;
+
+        // Clear dedup set once per tick so it never grows unbounded.
+        var curTick = _gameTiming.CurTick;
+        if (curTick != _lastCleanupTick)
+        {
+            _processedThisTick.Clear();
+            _lastCleanupTick = curTick;
+        }
+
+        // Skip if we already sent messages for this exact (user, thrown, target) this tick.
+        var key = (user, args.Thrown, uid);
+        if (!_processedThisTick.Add(key))
             return;
 
         // Dedicated ensnare chat handles bolas and other thrown ensnaring tools.

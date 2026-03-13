@@ -347,9 +347,10 @@
       - state: soldier
 
 # Rangers
+# Misfits Fix - Patrol/Field/Veteran Rangers should spawn at NCR spawn point, not generic Wastelander
 - type: entity
   id: N14SpawnPointRangerRecruit
-  parent: N14SpawnPointWastelander
+  parent: N14SpawnPointNCRCadet
   name: patrol ranger
   components:
   - type: SpawnPoint

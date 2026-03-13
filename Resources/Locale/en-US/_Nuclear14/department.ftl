@@ -16,7 +16,7 @@ Townsfolk = Townsfolk
 department-Townsfolk = Townsfolk
 department-Followers = Followers of the Apocalypse
 department-Zetan = Zetan
-department-Rangers = Rangers
+department-Rangers = NCR Rangers
 
 # Descriptions
 department-BrotherhoodOfSteel-description = A unified Brotherhood of Steel chapter.

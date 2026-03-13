@@ -258,10 +258,25 @@ public sealed partial class ChatSystem : SharedChatSystem
         var allowEmoteStripping = desiredType == InGameICChatType.Telepathic;
         message = SanitizeInGameICMessage(source, message, out var emoteStr, shouldCapitalize, shouldPunctuate, shouldCapitalizeTheWordI, allowEmoteStripping);
 
-        // Was there an emote in the message? If so, send it.
-        if (player != null && emoteStr != message && emoteStr != null)
+        // Misfits Tweak - Detect radio prefix BEFORE routing the emote so acronym/smiley emotes
+        // on a radio channel broadcast over radio instead of firing as a local emote.
+        RadioChannelPrototype? radioChannel = null;
+        string? radioMessage = null;
+        var isRadioMessage = checkRadioPrefix
+            && TryProccessRadioMessage(source, message, out radioMessage, out radioChannel);
+
+        // Route the emote: over radio if this was a radio message, otherwise fire locally.
+        if (player != null && emoteStr != null && emoteStr != message)
         {
-            SendEntityEmote(source, emoteStr, range, nameOverride, language, ignoreActionBlocker);
+            if (isRadioMessage && radioChannel != null)
+            {
+                // Broadcast emote over the radio channel (e.g. "[Wasteland] Viktoriya laughs over radio.")
+                RaiseLocalEvent(source, new EntitySpokeRadioEmoteEvent(emoteStr, radioChannel, language));
+            }
+            else
+            {
+                SendEntityEmote(source, emoteStr, range, nameOverride, language, ignoreActionBlocker);
+            }
         }
 
         // This can happen if the entire string is sanitized out.
@@ -272,14 +287,12 @@ public sealed partial class ChatSystem : SharedChatSystem
         if (language.SpeechOverride.ChatTypeOverride is { } chatTypeOverride)
             desiredType = chatTypeOverride;
 
-        // This message may have a radio prefix, and should then be whispered to the resolved radio channel
-        if (checkRadioPrefix)
+        // If a radio prefix was found, send the message body (if any) over the channel.
+        if (isRadioMessage)
         {
-            if (TryProccessRadioMessage(source, message, out var modMessage, out var channel))
-            {
-                SendEntityWhisper(source, modMessage, range, channel, nameOverride, language, hideLog, ignoreActionBlocker);
-                return;
-            }
+            if (!string.IsNullOrEmpty(radioMessage))
+                SendEntityWhisper(source, radioMessage, range, radioChannel, nameOverride, language, hideLog, ignoreActionBlocker);
+            return;
         }
 
         // Otherwise, send whatever type.
@@ -799,13 +812,17 @@ public sealed partial class ChatSystem : SharedChatSystem
         var newMessage = message.Trim();
         newMessage = SanitizeMessageReplaceWords(newMessage);
 
-        // Misfits Fix - Emote/smiley stripping must run BEFORE capitalization and punctuation.
-        // SanitizeMessagePeriod appends "." when the message ends in a letter, which breaks
-        // text-based acronym matches (e.g. "rofl" → "Rofl." fails EndsWith("rofl")).
-        if (allowEmoteStripping)
+        // Misfits Fix - Sanitization must run BEFORE capitalization and punctuation, because
+        // SanitizeMessagePeriod appends "." which would break EndsWith checks on letter-ending tokens.
+        //
+        // Acronyms (lol, rofl, idk, …) fire on ALL spoken channels — no restriction.
+        // Symbol smileys (:), o7, …) only fire on Telepathic (allowEmoteStripping gate below).
+        _sanitizer.TrySanitizeAcronyms(newMessage, source, out newMessage, out emoteStr);
+
+        // Only strip symbol-based keyboard emotes on the Telepathic channel.
+        // If an acronym already matched above, skip the symbol pass to avoid double-emoting.
+        if (allowEmoteStripping && emoteStr == null)
             _sanitizer.TrySanitizeOutSmilies(newMessage, source, out newMessage, out emoteStr);
-        else
-            emoteStr = null;
 
         if (capitalize)
             newMessage = SanitizeMessageCapital(newMessage);
@@ -1051,6 +1068,26 @@ public sealed class CheckIgnoreSpeechBlockerEvent : EntityEventArgs
     {
         Sender = sender;
         IgnoreBlocker = ignoreBlocker;
+    }
+}
+
+/// <summary>
+/// Raised on an entity when an acronym/smiley emote fires while the player was speaking on a radio channel.
+/// HeadsetSystem and IntrinsicRadioSystem subscribe to this to broadcast the emote over the channel.
+/// </summary>
+/// <remarks>Misfits Add</remarks>
+public sealed class EntitySpokeRadioEmoteEvent : EntityEventArgs
+{
+    public readonly string EmoteText;
+    /// <summary>Set to null by handlers once consumed, to prevent duplicate broadcasts.</summary>
+    public RadioChannelPrototype? Channel;
+    public readonly LanguagePrototype Language;
+
+    public EntitySpokeRadioEmoteEvent(string emoteText, RadioChannelPrototype channel, LanguagePrototype language)
+    {
+        EmoteText = emoteText;
+        Channel = channel;
+        Language = language;
     }
 }
 

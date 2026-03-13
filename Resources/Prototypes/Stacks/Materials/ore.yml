@@ -38,7 +38,7 @@
 
 - type: stack
   id: SpaceQuartz
-  name: space quartz
+  name: quartz # Misfits Change - Fallout relevance, renamed from "space quartz"
   icon: { sprite: /Textures/Objects/Materials/ore.rsi, state: spacequartz }
   spawn: SpaceQuartz1
   maxCount: 30

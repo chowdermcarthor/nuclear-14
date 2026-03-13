@@ -18,7 +18,7 @@
           orGroup: RandomMed
         - id: N14CleanGauze10
           amount: 1
-        - id: N14RadXPill
-          amount: 1
+        # - id: N14RadXPill  #Misfits Fix: Legion doesn't use Rad-X (modern chem), removed
+        #   amount: 1
         - id: Flare
           amount: 2

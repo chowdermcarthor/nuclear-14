@@ -33,27 +33,6 @@
     state: ointment
   - type: Item
     heldPrefix: ointment
-  - type: WoundTreater
-    wound: Burn
-    treats: true
-    consumable: true
-    group: Burn
-    damage: -5
-    unskilledDamage: -5
-    canUseUnskilled: true
-    skills:
-      RMCSkillMedical: 2
-    treatBeginSound:
-      path: "/Audio/Items/Medical/ointment_begin.ogg"
-    treatEndSound:
-      path: "/Audio/_RMC/Medical/ointment.ogg"
-    userPopup: cm-ointment-user-popup
-    targetPopup: cm-ointment-target-popup
-    othersPopup: cm-ointment-others-popup
-    noneSelfPopup: cm-ointment-none-self-popup
-    noneOtherPopup: cm-ointment-none-other-popup
-    noWoundsOnUserPopup: cm-burns-already-treated-self-popup
-    noWoundsOnTargetPopup: cm-burns-already-treated-target-popup
   - type: MedicallyUnskilledDoAfter
     min: 2
     doAfter: 1
@@ -103,25 +82,6 @@
     state: gauze
   - type: Item
     heldPrefix: gauze
-  - type: WoundTreater
-    wound: Brute
-    treats: true
-    group: Brute
-    consumable: true
-    canUseUnskilled: true
-    skills:
-      RMCSkillMedical: 2
-    treatBeginSound:
-      path: "/Audio/_RMC/Medical/bandage.ogg"
-    treatEndSound:
-      path: "/Audio/Items/Medical/brutepack_end.ogg"
-    userPopup: cm-gauze-user-popup
-    targetPopup: cm-gauze-target-popup
-    othersPopup: cm-gauze-others-popup
-    noneSelfPopup: cm-gauze-none-self-popup
-    noneOtherPopup: cm-gauze-none-other-popup
-    noWoundsOnUserPopup: cm-wounds-already-treated-self-popup
-    noWoundsOnTargetPopup: cm-wounds-already-treated-target-popup
   - type: MedicallyUnskilledDoAfter
     min: 2
     doAfter: 1
@@ -167,31 +127,6 @@
     state: line_brute
   - type: Item
     heldPrefix: line_brute
-  - type: WoundTreater
-    wound: Brute
-    treats: false
-    group: Brute
-    consumable: false
-    scalingDoAfter: 0.25
-    damage: -10
-    canUseUnskilled: false
-    skills:
-      RMCSkillMedical: 2
-    treatBeginSound:
-      path: "/Audio/_RMC/Medical/bandage.ogg"
-    treatEndSound:
-      path: "/Audio/Items/Medical/brutepack_end.ogg"
-    userPopup: cm-surgical-line-user-popup
-    targetPopup: cm-surgical-line-target-popup
-    othersPopup: cm-surgical-line-others-popup
-    targetStartPopup: cm-surgical-line-start-target-popup
-    userFinishPopup: cm-surgical-line-finish-user-popup
-    targetFinishPopup: cm-surgical-line-finish-target-popup
-    othersFinishPopup: cm-surgical-line-finish-others-popup
-    noneSelfPopup: cm-surgical-line-none-self-popup
-    noneOtherPopup: cm-surgical-line-none-other-popup
-    noWoundsOnUserPopup: cm-wounds-already-treated-self-popup
-    noWoundsOnTargetPopup: cm-wounds-already-treated-target-popup
   - type: MedicallyUnskilledDoAfter
     min: 2
     doAfter: 3
@@ -211,31 +146,6 @@
     state: line_burn
   - type: Item
     heldPrefix: line_burn
-  - type: WoundTreater
-    wound: Burn
-    treats: false
-    group: Burn
-    consumable: false
-    scalingDoAfter: 0.25
-    damage: -10
-    canUseUnskilled: false
-    skills:
-      RMCSkillMedical: 2
-    treatBeginSound:
-      path: "/Audio/_RMC/Medical/bandage.ogg"
-    treatEndSound:
-      path: "/Audio/Items/Medical/brutepack_end.ogg"
-    userPopup: cm-synthgraft-user-popup
-    targetPopup: cm-synthgraft-target-popup
-    othersPopup: cm-synthgraft-others-popup
-    targetStartPopup: cm-synthgraft-start-target-popup
-    userFinishPopup: cm-synthgraft-finish-user-popup
-    targetFinishPopup: cm-synthgraft-finish-target-popup
-    othersFinishPopup: cm-synthgraft-finish-others-popup
-    noneSelfPopup: cm-synthgraft-none-self-popup
-    noneOtherPopup: cm-synthgraft-none-other-popup
-    noWoundsOnUserPopup: cm-burns-already-treated-self-popup
-    noWoundsOnTargetPopup: cm-burns-already-treated-target-popup
   - type: MedicallyUnskilledDoAfter
     min: 2
     doAfter: 3
@@ -262,27 +172,6 @@
     state: burnkit
   - type: Item
     heldPrefix: burnkit
-  - type: WoundTreater
-    wound: Burn
-    treats: true
-    group: Burn
-    consumable: true
-    damage: -12
-    unskilledDamage: -3
-    canUseUnskilled: true
-    skills:
-      RMCSkillMedical: 2
-    treatBeginSound:
-      path: "/Audio/_RMC/Medical/bandage.ogg"
-    treatEndSound:
-      path: "/Audio/Items/Medical/brutepack_end.ogg"
-    userPopup: cm-burn-kit-user-popup
-    targetPopup: cm-burn-kit-target-popup
-    othersPopup: cm-burn-kit-others-popup
-    noneSelfPopup: cm-burn-kit-none-self-popup
-    noneOtherPopup: cm-burn-kit-none-other-popup
-    noWoundsOnUserPopup: cm-burns-already-treated-self-popup
-    noWoundsOnTargetPopup: cm-burns-already-treated-target-popup
   - type: MedicallyUnskilledDoAfter
     min: 2
     doAfter: 3
@@ -330,27 +219,6 @@
     state: traumakit
   - type: Item
     heldPrefix: traumakit
-  - type: WoundTreater
-    wound: Brute
-    treats: true
-    group: Brute
-    consumable: true
-    damage: -12
-    unskilledDamage: -3
-    canUseUnskilled: true
-    skills:
-      RMCSkillMedical: 2
-    treatBeginSound:
-      path: "/Audio/_RMC/Medical/bandage.ogg"
-    treatEndSound:
-      path: "/Audio/Items/Medical/brutepack_end.ogg"
-    userPopup: cm-trauma-kit-user-popup
-    targetPopup: cm-trauma-kit-target-popup
-    othersPopup: cm-trauma-kit-others-popup
-    noneSelfPopup: cm-trauma-kit-none-self-popup
-    noneOtherPopup: cm-trauma-kit-none-other-popup
-    noWoundsOnUserPopup: cm-wounds-already-treated-self-popup
-    noWoundsOnTargetPopup: cm-wounds-already-treated-target-popup
   - type: MedicallyUnskilledDoAfter
     min: 2
     doAfter: 3
@@ -387,27 +255,6 @@
   components:
   - type: Sprite
     state: burnkit_upgraded
-  - type: WoundTreater
-    wound: Burn
-    treats: true
-    group: Burn
-    consumable: true
-    damage: -36
-    unskilledDamage: -9
-    canUseUnskilled: true
-    skills:
-      RMCSkillMedical: 2
-    treatBeginSound:
-      path: "/Audio/_RMC/Medical/bandage.ogg"
-    treatEndSound:
-      path: "/Audio/Items/Medical/brutepack_end.ogg"
-    userPopup: cm-burn-kit-user-popup
-    targetPopup: cm-burn-kit-target-popup
-    othersPopup: cm-burn-kit-others-popup
-    noneSelfPopup: cm-burn-kit-none-self-popup
-    noneOtherPopup: cm-burn-kit-none-other-popup
-    noWoundsOnUserPopup: cm-burns-already-treated-self-popup
-    noWoundsOnTargetPopup: cm-burns-already-treated-target-popup
 
 - type: entity
   id: CMUpgradedBurnKit1
@@ -440,14 +287,6 @@
   components:
   - type: Sprite
     state: traumakit_upgraded
-  - type: WoundTreater
-    wound: Brute
-    treats: true
-    group: Brute
-    consumable: true
-    damage: -36
-    unskilledDamage: -9
-    canUseUnskilled: true
 
 - type: entity
   id: CMUpgradedTraumaKit1

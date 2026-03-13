@@ -32,7 +32,7 @@ materials-normality = normality
 
 # Ores
 materials-raw-iron = raw iron
-materials-raw-quartz = raw quartz
+materials-raw-quartz = quartz # Misfits Change - Fallout relevance, renamed from "raw quartz"
 materials-raw-gold = raw gold
 materials-raw-silver = raw silver
 materials-raw-plasma = raw plasma

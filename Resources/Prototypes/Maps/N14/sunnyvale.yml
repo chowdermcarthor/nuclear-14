@@ -53,7 +53,7 @@
             # BoSWashingtonScribe: [ 2, 0 ]
             # BoSWashingtonKnight: [ 2, 2 ]
             # BoSWashingtonInitiate: [ 0, 2 ]
-            BoSWestElderCommander: [ 1, 1 ]
+            BoSWestElderCommander: [ 1, 0 ] # #Misfits Tweak - 0 active slots (admin-notify role)
             # BoSWestPaladin: [ 1, 2 ]
             # BoSWestKnight: [ 2, 3 ]
             BoSWestScribe: [ 1, 2 ]

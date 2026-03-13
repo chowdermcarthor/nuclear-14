@@ -46,21 +46,22 @@
   items:
     - N14ClothingOuterJacketLettermanBrown
 
-- type: loadout
-  id: N14LoadoutOuterRobeConusrobe
-  category: Outer
-  cost: 5
-  requirements:
-    - !type:CharacterItemGroupRequirement
-      group: N14LoadoutOuter
-    - !type:CharacterJobRequirement # Forge-Change
-      inverted: true
-      jobs:
-      - BoSMidSerf
-      - CaesarLegionSlave
-      - NCRPisoner
-  items:
-    -  N14ClothingOuterConusrobe   # Forge-Change replacement with the fanatic version
+# #Misfits Change /Comment-out/: Conus robe loadout removed — underlying prototype disabled.
+# - type: loadout
+#   id: N14LoadoutOuterRobeConusrobe
+#   category: Outer
+#   cost: 5
+#   requirements:
+#     - !type:CharacterItemGroupRequirement
+#       group: N14LoadoutOuter
+#     - !type:CharacterJobRequirement # Forge-Change
+#       inverted: true
+#       jobs:
+#       - BoSMidSerf
+#       - CaesarLegionSlave
+#       - NCRPisoner
+#   items:
+#     -  N14ClothingOuterConusrobe   # Forge-Change replacement with the fanatic version
 
 - type: loadout
   id: N14ClothingOuterFlannelRed

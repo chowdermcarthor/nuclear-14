@@ -45,5 +45,12 @@ namespace Content.Client.Administration.Systems
             _lastTypingUpdateSent = (_timing.RealTime, typing);
             RaiseNetworkEvent(new BwoinkClientTypingUpdated(channel, typing));
         }
+
+        // #Misfits Add — sends a ghost-follow request to the server for the AHelp Follow button.
+        // Server will ensure aghost mode is active before starting the orbit.
+        public void GhostFollow(NetUserId targetUserId)
+        {
+            RaiseNetworkEvent(new BwoinkAdminGhostFollowMessage(targetUserId));
+        }
     }
 }

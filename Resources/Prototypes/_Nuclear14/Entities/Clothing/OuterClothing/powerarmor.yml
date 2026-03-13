@@ -55,10 +55,10 @@
     walkModifier: 0.5
     sprintModifier: 0.5
   - type: MultiHandedItem
-  - type: Reflect # #Misfits Change Tweak: Small-caliber rounds (sub-5.56mm) ricochet off power armor at 75% chance. Innate - always active regardless of movement.
+  - type: Reflect # #Misfits Change Tweak: Small-caliber rounds (sub-5.56mm) ricochet off power armor at 30% chance. Innate - always active regardless of movement.
     reflects:
       - SmallCaliber
-    reflectProb: 0.5
+    reflectProb: 0.3
     innate: true
     spread: 90
   - type: SpearBlock # #Misfits Change Add: Power armor deflects thrown polearms; falls to ground instead of embedding.
@@ -149,11 +149,11 @@
     sprite: _Nuclear14/Clothing/OuterClothing/PowerArmor/t60tesla.rsi
   - type: Clothing
     sprite: _Nuclear14/Clothing/OuterClothing/PowerArmor/t60tesla.rsi
-  - type: Reflect # #Misfits Change Tweak: Tesla coils deflect energy and small-caliber rounds at 75% (innate). Heavy rounds still penetrate.
+  - type: Reflect # #Misfits Change Tweak: Tesla coils deflect energy and small-caliber rounds at 30% (innate). Heavy rounds still penetrate.
     reflects:
       - SmallCaliber
       - Energy
-    reflectProb: 0.5
+    reflectProb: 0.3
     innate: true
     spread: 90
   - type: UserInterface
@@ -198,10 +198,10 @@
       gloves: N14ClothingPAGauntletsDark
       shoes: N14ClothingPABootsDark
       back: N14ClothingPowerSystemsBack
-  - type: Reflect # #Misfits Change Tweak: X-01 advanced armor ricochets small-caliber rounds at 75% (innate).
+  - type: Reflect # #Misfits Change Tweak: X-01 advanced armor ricochets small-caliber rounds at 30% (innate).
     reflects:
       - SmallCaliber
-    reflectProb: 0.5
+    reflectProb: 0.3
     innate: true
     spread: 90
 
@@ -251,10 +251,10 @@
       gloves: N14ClothingPAGauntletsDark
       shoes: N14ClothingPABootsDark
       back: N14ClothingPowerSystemsBack
-  - type: Reflect # #Misfits Change Tweak: X-02 armor ricochets small-caliber rounds at 75% (innate).
+  - type: Reflect # #Misfits Change Tweak: X-02 armor ricochets small-caliber rounds at 30% (innate).
     reflects:
       - SmallCaliber
-    reflectProb: 0.5
+    reflectProb: 0.3
     innate: true
     spread: 90
 
@@ -321,10 +321,10 @@
       gloves: N14ClothingPAGauntletsDark
       shoes: N14ClothingPABootsDark
       back: N14ClothingPowerSystemsBack
-  - type: Reflect # #Misfits Change Tweak: Raider power armor ricochets small-caliber rounds at 75% (innate).
+  - type: Reflect # #Misfits Change Tweak: Raider power armor ricochets small-caliber rounds at 30% (innate).
     reflects:
       - SmallCaliber
-    reflectProb: 0.5
+    reflectProb: 0.3
     innate: true
     spread: 90
   - type: ClothingSpeedModifier # Forge-Change
@@ -470,10 +470,10 @@
       gloves: N14ClothingPAGauntletsDark
       shoes: N14ClothingPABootsDark
       back: N14ClothingPowerSystemsBack
-  - type: Reflect # #Misfits Change Tweak: T-51BC ricochets small-caliber rounds at 75% (innate).
+  - type: Reflect # #Misfits Change Tweak: T-51BC ricochets small-caliber rounds at 30% (innate).
     reflects:
       - SmallCaliber
-    reflectProb: 0.5
+    reflectProb: 0.3
     innate: true
     spread: 90
 
@@ -510,10 +510,10 @@
       gloves: N14ClothingPAGauntlets
       shoes: N14ClothingPABoots
       back: N14ClothingPowerSystemsBack
-  - type: Reflect # #Misfits Change Tweak: Salvaged NCR T-45 ricochets small-caliber rounds at 75% (innate).
+  - type: Reflect # #Misfits Change Tweak: Salvaged NCR T-45 ricochets small-caliber rounds at 30% (innate).
     reflects:
       - SmallCaliber
-    reflectProb: 0.5
+    reflectProb: 0.3
     innate: true
     spread: 90
 
@@ -538,10 +538,10 @@
         Radiation: 0.6
   - type: ExplosionResistance
     damageCoefficient: 0.55
-  - type: Reflect # #Misfits Change Tweak: T-51bc "Canadian Shield" ricochets small-caliber rounds at 75% (innate).
+  - type: Reflect # #Misfits Change Tweak: T-51bc "Canadian Shield" ricochets small-caliber rounds at 30% (innate).
     reflects:
       - SmallCaliber
-    reflectProb: 0.5
+    reflectProb: 0.3
     innate: true
     spread: 90
 
@@ -588,10 +588,10 @@
       gloves: N14ClothingPAGauntlets
       shoes: N14ClothingPABoots
       back: N14ClothingPowerSystemsBack
-  - type: Reflect # #Misfits Change Tweak: Washington BoS T-51 ricochets small-caliber rounds at 75% (innate).
+  - type: Reflect # #Misfits Change Tweak: Washington BoS T-51 ricochets small-caliber rounds at 30% (innate).
     reflects:
       - SmallCaliber
-    reflectProb: 0.5
+    reflectProb: 0.3
     innate: true
     spread: 90
 

@@ -1,6 +1,9 @@
 - type: job
   id: VaultDoctor
   weight: 70
+  hideWithoutJobWhitelist: false # #Misfits Tweak - no whitelist gate
+  hideIfPlaytimeRequirementsNotMet: false # #Misfits Tweak - always visible
+  jobWhitelistBypassesRoleTimers: true # #Misfits Change - open to all
   name: job-name-vault-doctor
   description: job-description-vault-doctor
   requirements:

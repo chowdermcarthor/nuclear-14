@@ -39,7 +39,10 @@ public sealed class TemperatureSystem : EntitySystem
 
     public override void Initialize()
     {
-        SubscribeLocalEvent<TemperatureComponent, OnTemperatureChangeEvent>(EnqueueDamage);
+        // #Misfits Tweak: Temperature damage disabled — we do not use thermal damage.
+        // EnqueueDamage subscription removed to prevent ShouldUpdateDamage set from growing
+        // forever with no drain (UpdateDamage() is also commented out below).
+        // SubscribeLocalEvent<TemperatureComponent, OnTemperatureChangeEvent>(EnqueueDamage);
         SubscribeLocalEvent<TemperatureComponent, AtmosExposedUpdateEvent>(OnAtmosExposedUpdate);
         SubscribeLocalEvent<TemperatureComponent, RejuvenateEvent>(OnRejuvenate);
         SubscribeLocalEvent<AlertsComponent, OnTemperatureChangeEvent>(ServerAlert);
@@ -60,30 +63,34 @@ public sealed class TemperatureSystem : EntitySystem
     {
         base.Update(frameTime);
 
-        // conduct heat from the surface to the inside of entities with internal temperatures
-        var query = EntityQueryEnumerator<InternalTemperatureComponent, TemperatureComponent>();
-        while (query.MoveNext(out var uid, out var comp, out var temp))
-        {
-            // don't do anything if they equalised
-            var diff = Math.Abs(temp.CurrentTemperature - comp.Temperature);
-            if (diff < 0.1f)
-                continue;
-
-            // heat flow in W/m^2 as per fourier's law in 1D.
-            var q = comp.Conductivity * diff / comp.Thickness;
-
-            // convert to J then K
-            var joules = q * comp.Area * frameTime;
-            var degrees = joules / GetHeatCapacity(uid, temp);
-            if (temp.CurrentTemperature < comp.Temperature)
-                degrees *= -1;
-
-            // exchange heat between inside and surface
-            comp.Temperature += degrees;
-            ForceChangeTemperature(uid, temp.CurrentTemperature - degrees, temp);
-        }
-
-        UpdateDamage(frameTime);
+        // #Misfits Tweak: Internal temperature conduction loop and damage processing disabled.
+        // We do not use thermal damage or suit conduction in this fork.
+        // Commenting out rather than deleting to preserve the original logic for reference.
+        //
+        // // conduct heat from the surface to the inside of entities with internal temperatures
+        // var query = EntityQueryEnumerator<InternalTemperatureComponent, TemperatureComponent>();
+        // while (query.MoveNext(out var uid, out var comp, out var temp))
+        // {
+        //     // don't do anything if they equalised
+        //     var diff = Math.Abs(temp.CurrentTemperature - comp.Temperature);
+        //     if (diff < 0.1f)
+        //         continue;
+        //
+        //     // heat flow in W/m^2 as per fourier's law in 1D.
+        //     var q = comp.Conductivity * diff / comp.Thickness;
+        //
+        //     // convert to J then K
+        //     var joules = q * comp.Area * frameTime;
+        //     var degrees = joules / GetHeatCapacity(uid, temp);
+        //     if (temp.CurrentTemperature < comp.Temperature)
+        //         degrees *= -1;
+        //
+        //     // exchange heat between inside and surface
+        //     comp.Temperature += degrees;
+        //     ForceChangeTemperature(uid, temp.CurrentTemperature - degrees, temp);
+        // }
+        //
+        // UpdateDamage(frameTime);
     }
 
     private void UpdateDamage(float frameTime)

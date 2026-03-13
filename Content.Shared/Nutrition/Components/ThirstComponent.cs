@@ -7,7 +7,7 @@ using Robust.Shared.Serialization.TypeSerializers.Implementations.Custom;
 
 namespace Content.Shared.Nutrition.Components;
 
-[RegisterComponent, NetworkedComponent, Access(typeof(ThirstSystem))]
+[RegisterComponent, NetworkedComponent, Access(typeof(ThirstSystem), typeof(Content.Shared._Misfits.SpecialStats.SpecialEnduranceSystem))] // #Misfits Change - allow SpecialEnduranceSystem to reduce BaseDecayRate via Endurance SPECIAL buff.
 [AutoGenerateComponentState, AutoGenerateComponentPause]
 public sealed partial class ThirstComponent : Component
 {

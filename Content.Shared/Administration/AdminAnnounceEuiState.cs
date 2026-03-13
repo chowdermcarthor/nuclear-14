@@ -7,6 +7,12 @@ namespace Content.Shared.Administration
     {
         Station,
         Server,
+        // #Misfits Add — faction-targeted announcements so admins can address
+        // specific groups from their in-universe leadership (Legate, Captain, Elder, Director).
+        FactionLegion,
+        FactionNCR,
+        FactionBOS,
+        FactionEnclave,
     }
 
     [Serializable, NetSerializable]

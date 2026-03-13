@@ -21,6 +21,8 @@ misfits-chat-double-grab-throw = hurls {$victim} across the room
 # Broadcast when a carried or locked-in entity struggles.
 misfits-chat-struggle-carried = struggles against {$carrier}'s grip
 misfits-chat-locker-struggle = struggles inside {$container}
+# Broadcast when a trapped entity successfully forces their way out.
+misfits-chat-locker-breakout = breaks out of {$container}
 
 ## InjectorSystem / HypospraySystem
 # Broadcast when a player injects another entity.
@@ -35,6 +37,9 @@ misfits-chat-cuff-self = restrains themselves
 # Emotes broadcast when a player visibly removes worn gear from another player.
 misfits-chat-strip-remove = removes {$item} from {$target}
 misfits-chat-strip-victim-remove = has their {$item} removed by {$user}
+# Emotes broadcast when a player applies an ingestion-blocking item to another player.
+misfits-chat-gag-apply = gags {$target} with {$item}
+misfits-chat-gag-victim = is gagged with {$item} by {$user}
 
 ## FactionBankTerminalSystem
 # Observable emote broadcast to bystanders when a player uses a terminal.

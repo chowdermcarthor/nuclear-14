@@ -46,4 +46,6 @@ chatsan-rolls-laughing = rolls on the floor laughing.
 chatsan-shakes-head = shakes { POSS-ADJ($ent) } head.
 chatsan-nods = nods.
 chatsan-looks-flustered = looks flustered.
+# Misfits Add - "over the radio" suffix appended to emotes sent via radio channel
+chatsan-radio-emote-suffix = over the radio
 # End Misfits Add

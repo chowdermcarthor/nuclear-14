@@ -95,25 +95,6 @@
     count: 10
   - type: StackPrice
     price: 2 # Forge-Change
-  - type: WoundTreater # #Misfits Add - clean gauze stops brute wounds alongside Healing component
-    wound: Brute
-    treats: true
-    consumable: false
-    showNoWoundsPopup: false
-    group: Brute
-    scalingDoAfter: 0.1
-    damage: -5
-    treatBeginSound:
-      path: /Audio/Items/Medical/brutepack_begin.ogg
-    treatEndSound:
-      path: /Audio/Items/Medical/brutepack_end.ogg
-    userPopup: wounds-bandage-begin-user
-    targetPopup: wounds-bandage-begin-target
-    othersPopup: wounds-bandage-begin-others
-    userFinishPopup: wounds-bandage-finish-user
-    targetFinishPopup: wounds-bandage-finish-target
-    noneSelfPopup: wounds-treat-none-self
-    noneOtherPopup: wounds-treat-none-other
   - type: Butcherable
     butcheringType: Knife
     spawned:

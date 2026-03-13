@@ -4,10 +4,10 @@
   name: legionnaire heater shield #Misfits Change /Fix/: corrected visible name
   description: He had seen worse battles.
   components:
-    - type: Reflect # #Misfits Change Add: Metal heater shield deflects sub-5.56mm pistol rounds at 25%; degrades while moving.
+    - type: Reflect # #Misfits Change Add: Metal heater shield deflects sub-5.56mm pistol rounds at 30%; degrades while moving.
       reflects:
         - SmallCaliber
-      reflectProb: 0.5
+      reflectProb: 0.3
       spread: 90
     - type: SpearBlock # #Misfits Change Add: Legionnaire heater shield deflects thrown polearms.
     - type: Construction

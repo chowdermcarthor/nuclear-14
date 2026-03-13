@@ -9,8 +9,8 @@
             <GridContainer Name="AlertContainer" Columns="1" HorizontalAlignment="Right" VerticalAlignment="Center" Access="Public" />
         </PanelContainer>
         <partStatus:PartStatusControl Name="PartStatus" Access="Protected"/>
-        <!-- #Misfits Change - Currency wallet button in status bar -->
-        <misfitsCurrency:CurrencyWalletGui Name="CurrencyWallet" HorizontalAlignment="Right" Access="Protected" />
+        <!-- #Misfits Tweak - Currency wallet button hidden; accessible via Character screen instead -->
+        <!--<misfitsCurrency:CurrencyWalletGui Name="CurrencyWallet" HorizontalAlignment="Right" Access="Protected" />-->
     </GridContainer>
     <!-- Shitmed Change End -->
 </widgets:AlertsUI>

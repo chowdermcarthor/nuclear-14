@@ -44,8 +44,8 @@
           Slash: 0.5
           Piercing: 0.5
           Heat: 1
-    - type: Reflect
-      reflectProb: 0.5
+    - type: Reflect # #Misfits Change Tweak: Reduced small-arms ricochet from 50% to 30%
+      reflectProb: 0.3
       spread: 150
     - type: SpearBlock # #Misfits Change Add: Shields deflect thrown polearms; falls to ground instead of embedding.
     - type: ClothingSpeedModifier
@@ -110,8 +110,8 @@
           Slash: 0.5 # Forge-Change
           Piercing: 0.5 # Forge-Change
           Heat: 1 # Forge-Change
-    - type: Reflect
-      reflectProb: 0.5
+    - type: Reflect # #Misfits Change Tweak: Reduced small-arms ricochet from 50% to 30%
+      reflectProb: 0.3
       spread: 150
     - type: ClothingSpeedModifier
       walkModifier: 0.85 # Forge-Change 

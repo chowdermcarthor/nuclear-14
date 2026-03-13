@@ -5,7 +5,7 @@ using Robust.Shared.Toolshed.Errors;
 
 namespace Content.Server.Administration.Toolshed;
 
-[ToolshedCommand, AdminCommand(AdminFlags.Debug)]
+[ToolshedCommand, AdminCommand(AdminFlags.Admin)] // #Misfits Change — lowered from Debug to Admin so all admins can rejuvenate
 public sealed class RejuvenateCommand : ToolshedCommand
 {
     private RejuvenateSystem? _rejuvenate;

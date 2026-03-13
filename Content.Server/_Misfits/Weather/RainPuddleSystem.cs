@@ -79,44 +79,39 @@ public sealed class RainPuddleSystem : EntitySystem
 
     public override void Update(float frameTime)
     {
-        var weatherQuery = EntityQueryEnumerator<WeatherComponent>();
-        while (weatherQuery.MoveNext(out var mapUid, out var weatherComp))
-        {
-            foreach (var (protoId, weatherData) in weatherComp.Weather)
-            {
-                // Hard exclude sentinel/fallback weather IDs — these are never real rain.
-                if (_excludedProtos.Contains(protoId.Id))
-                    continue;
-
-                // Only the explicit Rain prototype may spawn puddles — all others are ignored.
-                if (protoId != RainProtoId)
-                    continue;
-
-                // Only run while weather is fully active (not ramping up or shutting down).
-                if (weatherData.State != WeatherState.Running)
-                    continue;
-
-                // Secondary safety: respect the SpawnPuddles opt-in flag on the prototype itself.
-                if (!_proto.TryIndex<WeatherPrototype>(protoId, out var proto) || !proto.SpawnPuddles)
-                    continue;
-
-                var key = (mapUid, protoId.Id);
-                _accumulators.TryGetValue(key, out var accum);
-                accum += frameTime;
-
-                if (accum < proto.PuddleInterval)
-                {
-                    // Not yet time for the next pass — update and wait
-                    _accumulators[key] = accum;
-                    continue;
-                }
-
-                // Carry over the remainder so intervals stay steady even with frame jitter
-                _accumulators[key] = accum - proto.PuddleInterval;
-
-                SpawnRainPuddles(mapUid, proto);
-            }
-        }
+        // #Misfits Tweak: Rain puddle spawning and blood washing disabled.
+        // We do not need rain to wash blood or to spawn water puddles; the per-player
+        // viewport tile scan was also a medium CPU cost during rain. Commenting out rather
+        // than deleting to preserve the original logic for reference.
+        //
+        // var weatherQuery = EntityQueryEnumerator<WeatherComponent>();
+        // while (weatherQuery.MoveNext(out var mapUid, out var weatherComp))
+        // {
+        //     foreach (var (protoId, weatherData) in weatherComp.Weather)
+        //     {
+        //         if (_excludedProtos.Contains(protoId.Id))
+        //             continue;
+        //         if (protoId != RainProtoId)
+        //             continue;
+        //         if (weatherData.State != WeatherState.Running)
+        //             continue;
+        //         if (!_proto.TryIndex<WeatherPrototype>(protoId, out var proto) || !proto.SpawnPuddles)
+        //             continue;
+        //
+        //         var key = (mapUid, protoId.Id);
+        //         _accumulators.TryGetValue(key, out var accum);
+        //         accum += frameTime;
+        //
+        //         if (accum < proto.PuddleInterval)
+        //         {
+        //             _accumulators[key] = accum;
+        //             continue;
+        //         }
+        //
+        //         _accumulators[key] = accum - proto.PuddleInterval;
+        //         SpawnRainPuddles(mapUid, proto);
+        //     }
+        // }
     }
 
     /// <summary>

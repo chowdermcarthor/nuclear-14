@@ -33,8 +33,8 @@ public sealed partial class NPCBlackboard : IEnumerable<KeyValuePair<string, obj
         {"MovementRange", 1.5f},
         {"RangedRange", 10f},
         {"RotateSpeed", float.MaxValue},
-        {"VisionRadius", 13f}, // Misfits Change: increased aggro range from 10 to 13 tiles
-        {"AggroVisionRadius", 13f}, // Misfits Change: increased aggro range from 10 to 13 tiles
+        {"VisionRadius", 10f},
+        {"AggroVisionRadius", 10f},
     };
 
     /// <summary>

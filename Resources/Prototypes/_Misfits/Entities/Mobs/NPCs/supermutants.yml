@@ -24,7 +24,7 @@
         Blunt: 25
     range: 1.8
   - type: Sprite
-    scale: 0.7273, 1.0909 # Misfits Change /Fix/: normalize 44x44 NPC art to the playable supermutant 32x48 footprint.
+    scale: 1.032, 1.091 # Misfits Tweak: match NCR mutant scale for consistent non-squished appearance.
     drawdepth: Mobs
     layers:
     - map: ["enum.DamageStateVisualLayers.Base"]
@@ -68,7 +68,7 @@
       Dead:
         Base: melee_dead
   - type: Sprite
-    scale: 0.7273, 1.0909 # Misfits Change /Fix/: normalize 44x44 NPC art to the playable supermutant 32x48 footprint.
+    scale: 1.032, 1.091 # Misfits Tweak: match NCR mutant scale for consistent non-squished appearance.
     drawdepth: Mobs
     layers:
     - map: ["enum.DamageStateVisualLayers.Base"]
@@ -124,7 +124,7 @@
       Dead:
         Base: ranged_dead
   - type: Sprite
-    scale: 0.7273, 1.0909 # Misfits Change /Fix/: normalize 44x44 NPC art to the playable supermutant 32x48 footprint.
+    scale: 1.032, 1.091 # Misfits Tweak: match NCR mutant scale for consistent non-squished appearance.
     drawdepth: Mobs
     layers:
     - map: ["enum.DamageStateVisualLayers.Base"]
@@ -168,7 +168,7 @@
       Dead:
         Base: nightkin_dead
   - type: Sprite
-    scale: 0.7273, 1.0909 # Misfits Change /Fix/: normalize 44x44 NPC art to the playable supermutant 32x48 footprint.
+    scale: 1.032, 1.091 # Misfits Tweak: match NCR mutant scale for consistent non-squished appearance.
     drawdepth: Mobs
     layers:
     - map: ["enum.DamageStateVisualLayers.Base"]
@@ -225,7 +225,7 @@
       Dead:
         Base: nightkin_ranged_dead
   - type: Sprite
-    scale: 0.7273, 1.0909 # Misfits Change /Fix/: normalize 44x44 NPC art to the playable supermutant 32x48 footprint.
+    scale: 1.032, 1.091 # Misfits Tweak: match NCR mutant scale for consistent non-squished appearance.
     drawdepth: Mobs
     layers:
     - map: ["enum.DamageStateVisualLayers.Base"]
@@ -282,7 +282,7 @@
       Dead:
         Base: nightkin_boss_dead
   - type: Sprite
-    scale: 0.7273, 1.0909 # Misfits Change /Fix/: normalize 44x44 NPC art to the playable supermutant 32x48 footprint.
+    scale: 1.032, 1.091 # Misfits Tweak: match NCR mutant scale for consistent non-squished appearance.
     drawdepth: Mobs
     layers:
     - map: ["enum.DamageStateVisualLayers.Base"]
@@ -346,7 +346,7 @@
       Dead:
         Base: base_dead
   - type: Sprite
-    scale: 0.7273, 1.0909 # Misfits Change /Fix/: normalize 44x44 NPC art to the playable supermutant 32x48 footprint.
+    scale: 1.032, 1.091 # Misfits Tweak: match NCR mutant scale for consistent non-squished appearance.
     drawdepth: Mobs
     layers:
     - map: ["enum.DamageStateVisualLayers.Base"]
@@ -382,7 +382,7 @@
       Dead:
         Base: base_dead
   - type: Sprite
-    scale: 0.7273, 1.0909 # Misfits Change /Fix/: normalize 44x44 NPC art to the playable supermutant 32x48 footprint.
+    scale: 1.032, 1.091 # Misfits Tweak: match NCR mutant scale for consistent non-squished appearance.
     drawdepth: Mobs
     layers:
     - map: ["enum.DamageStateVisualLayers.Base"]

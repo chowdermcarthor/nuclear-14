@@ -870,8 +870,10 @@
     layers:
     - state: icon
       map: ["movement"]
+    # Misfits Change /Tweak: Use inhand-right (4-directional) so the gatling laser rotates with
+    # the bot's facing direction and looks like it is actively being wielded.
     - sprite: _Nuclear14/Objects/Weapons/Guns/Battery/laser_gatling.rsi
-      state: base
+      state: inhand-right
       offset: 0.0, 0.1
       scale: 0.72, 0.72
     - state: icon
@@ -1037,8 +1039,11 @@
     layers:
     - state: icon
       map: ["movement"]
+    # Misfits Change /Tweak: Use inhand-right (4-directional) so the minigun rotates with the
+    # bot's facing direction and looks like it is actively being wielded, matching the raider NPC
+    # weapon overlay convention used throughout raiders_ranged.yml / faction_humanoids.yml.
     - sprite: _Nuclear14/Objects/Weapons/Guns/Heavy/minigun.rsi
-      state: base
+      state: inhand-right
       offset: 0.0, 0.1
       scale: 0.55, 0.55
     - state: icon

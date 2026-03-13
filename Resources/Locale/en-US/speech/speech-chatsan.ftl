@@ -28,6 +28,9 @@ chatsan-replacement-9 = i know, right
 chatsan-word-10 = idc
 chatsan-replacement-10 = i don't care
 
+chatsan-word-11 = idk # #Misfits Add: upstream FTL gap — slot 11 was uncommented in YAML (Jan 2025 upstream) but never defined
+chatsan-replacement-11 = i don't know
+
 chatsan-word-12 = tbh
 chatsan-replacement-12 = to be honest
 
@@ -56,9 +59,12 @@ chatsan-word-20 = imo
 chatsan-replacement-20 = in my opinion
 
 chatsan-word-21 = pls
+chatsan-replacement-21 = please
 chatsan-word-22 = plz
+chatsan-replacement-22 = please
 chatsan-word-23 = plox
-chatsan-replacement-please = please
+chatsan-replacement-23 = please
+# chatsan-replacement-please = please  # Misfits Fix: replaced by per-numbered keys to match word_replacements.yml mapping
 
 chatsan-word-24 = fr
 chatsan-replacement-24 = for real

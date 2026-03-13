@@ -41,16 +41,18 @@ job-name-bos-initiate = Brotherhood Initiate
 job-description-bos-initiate = Learn the Brotherhood's code, follow orders, and earn your place in the chapter.
 
 # #Misfits Add — Squire loadout kit locale for new Misfits_SqrBasic_Set.
-undecided-loadout-category-misfits-sqr-basic-name = Squire Basic Kit
+# #Misfits Tweak: Removed rank prefix so the kit name is role-neutral.
+undecided-loadout-category-misfits-sqr-basic-name = Basic Kit
 undecided-loadout-category-misfits-sqr-basic-description =
-    A cache containing belongings of a Brotherhood chapter Squire.
+    A cache containing belongings of a Brotherhood chapter member.
     Includes 1 AEP-7, 2 energy cells, 1 combat knife, 1 roll of gauze,
     1 stimpak, and 1 K ration MRE.
 
 # #Misfits Add — Paladin Wattz 2000 kit locale (Paladin-tier exclusive).
-undecided-loadout-category-misfits-pal-wattz-name = Paladin Wattz Kit
+# #Misfits Tweak: Removed rank prefix so the kit name is role-neutral.
+undecided-loadout-category-misfits-pal-wattz-name = Wattz Kit
 undecided-loadout-category-misfits-pal-wattz-description =
-    A cache containing belongings of a Brotherhood chapter Paladin.
+    A cache containing belongings of a Brotherhood chapter member.
     Includes 1 Wattz 2000, 3 heavy microfusion cells, 1 12.7mm pistol,
     2 12.7mm pistol magazines, 1 roll of gauze, 1 stimpak,
     and 1 K ration MRE.

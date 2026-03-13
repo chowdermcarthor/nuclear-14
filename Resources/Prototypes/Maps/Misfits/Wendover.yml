@@ -47,7 +47,7 @@
           TownShopkeeper: [ 1, 1 ]
           TownShopkeeperHelper: [ 1, 1 ] # Forge-Town
           Townsperson: [ 5, 5 ]
-          NCRCaptain: [ 1, 1 ]
+          NCRCaptain: [ 1, 0 ] # #Misfits Tweak - 0 active slots (admin-notify role)
           NCRLT: [ 1, 1 ]
           RangerVeteran: [ 1, 1 ]
           Ranger: [ 1, 1 ]
@@ -67,7 +67,7 @@
           # CaravanLeader: [ 1, 1 ]
           # CaravanTrader: [ 1, 1 ]
           # CaravanGuard: [ 2, 2 ]
-          BoSWestElderCommander: [ 1, 1 ] # Misfits Change
+          BoSWestElderCommander: [ 1, 0 ] # Misfits Change # #Misfits Tweak - 0 active slots (admin-notify role)
           #Misfits Change /Comment-out/: Washington BoS map spawners removed.
           # BoSWashingtonCommander: [ 1, 1 ]
           # BoSWashingtonPaladin: [ 1, 1 ]
@@ -91,7 +91,7 @@
           VaultDweller: [ 4, 4 ]
           VaultEngineer: [ 1, 1 ]
           VaultSecurity: [ 2, 2 ]
-          CaesarLegionLegate: [ 1, 1 ] # Forge-Legion
+          CaesarLegionLegate: [ 1, 0 ] # Forge-Legion # #Misfits Tweak - 0 active slots (admin-notify role)
           CaesarLegionCenturion: [ 1, 1 ] # Forge-Legion
           CaesarLegionVeteranDecanus: [ 1, 1 ] # Forge-Legion
           CaesarLegionDean: [ 1, 1 ] # Forge-Legion
@@ -107,7 +107,7 @@
           CaesarLegionRecruit: [ 6, 6 ] # Forge-Legion
           CaesarLegionAuxilia: [ 4, 4 ] # #Misfits Change - activated
           CaesarLegionSlave: [ 4, 4 ] # Forge-Legion
-          Raider: [ 3, 3 ] # #Misfits Change - activated
+          Raider: [ 6, 6 ] # #Misfits Change - activated; #Misfits Tweak - increased to 6 total slots
           Followers: [ 2, 2 ]
           SyntheticMrHandy: [ 1, 2 ]
           SyntheticProtectron: [ 1, 2 ]

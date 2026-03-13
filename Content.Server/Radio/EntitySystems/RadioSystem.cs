@@ -44,6 +44,8 @@ public sealed class RadioSystem : EntitySystem
         base.Initialize();
         SubscribeLocalEvent<IntrinsicRadioReceiverComponent, RadioReceiveEvent>(OnIntrinsicReceive);
         SubscribeLocalEvent<IntrinsicRadioTransmitterComponent, EntitySpokeEvent>(OnIntrinsicSpeak);
+        // Misfits Add - broadcast acronym/smiley emotes over radio
+        SubscribeLocalEvent<IntrinsicRadioTransmitterComponent, EntitySpokeRadioEmoteEvent>(OnIntrinsicSpokeRadioEmote);
 
         _exemptQuery = GetEntityQuery<TelecomExemptComponent>();
     }
@@ -56,6 +58,17 @@ public sealed class RadioSystem : EntitySystem
             args.Channel = null; // prevent duplicate messages from other listeners.
         }
     }
+
+    // Misfits Add — handler for acronym/smiley emotes on intrinsic radio transmitters
+    private void OnIntrinsicSpokeRadioEmote(EntityUid uid, IntrinsicRadioTransmitterComponent component, EntitySpokeRadioEmoteEvent args)
+    {
+        if (args.Channel != null && component.Channels.Contains(args.Channel.ID))
+        {
+            SendRadioEmote(uid, args.EmoteText, args.Channel, uid, args.Language);
+            args.Channel = null; // prevent duplicate broadcasts
+        }
+    }
+    // End Misfits Add
 
     //Nuclear-14
     /// <summary>
@@ -195,6 +208,97 @@ public sealed class RadioSystem : EntitySystem
         _replay.RecordServerMessage(msg);
         _messages.Remove(message);
     }
+
+    // Misfits Add — broadcasts an emote action over a radio channel using an emote-style wrap
+    // (no speech verb / no quotes) so it reads e.g. "[Wasteland] Viktoriya laughs over radio."
+    public void SendRadioEmote(
+        EntityUid messageSource,
+        string emoteText,
+        RadioChannelPrototype channel,
+        EntityUid radioSource,
+        LanguagePrototype? language = null)
+    {
+        if (language == null)
+            language = _language.GetLanguage(messageSource);
+
+        if (!language.SpeechOverride.AllowRadio)
+            return;
+
+        // Use the same feedback-prevention guard as SendRadioMessage
+        if (!_messages.Add(emoteText))
+            return;
+
+        var nameEv = new TransformSpeakerNameEvent(messageSource, Name(messageSource));
+        RaiseLocalEvent(messageSource, nameEv);
+        var name = FormattedMessage.EscapeText(nameEv.VoiceName);
+
+        // Append "over the radio" so it reads e.g. "laughs over the radio."
+        var emoteBase = emoteText.TrimEnd();
+        if (emoteBase.EndsWith('.'))
+            emoteBase = emoteBase[..^1];
+        var radioEmoteText = $"{emoteBase} {Loc.GetString("chatsan-radio-emote-suffix")}.";
+        var content = FormattedMessage.EscapeText(radioEmoteText);
+
+        var channelText = channel.ShowFrequency
+            ? $"\\[{GetFrequency(messageSource, channel)}\\]"
+            : $"\\[{channel.LocalizedName}\\]";
+
+        var wrappedMessage = Loc.GetString("chat-radio-emote-wrap",
+            ("color", channel.Color),
+            ("channel", channelText),
+            ("name", name),
+            ("emote", content));
+
+        var msg = new ChatMessage(ChatChannel.Radio, content, wrappedMessage, NetEntity.Invalid, null);
+        var ev = new RadioReceiveEvent(messageSource, channel, msg, msg, language, radioSource);
+
+        var sendAttemptEv = new RadioSendAttemptEvent(channel, radioSource);
+        RaiseLocalEvent(ref sendAttemptEv);
+        RaiseLocalEvent(radioSource, ref sendAttemptEv);
+        var canSend = !sendAttemptEv.Cancelled;
+
+        var sourceMapId = Transform(radioSource).MapID;
+        var hasActiveServer = HasActiveServer(sourceMapId, channel.ID);
+        var hasMicro = HasComp<RadioMicrophoneComponent>(radioSource);
+        var frequency = GetFrequency(messageSource, channel);
+
+        var speakerQuery = GetEntityQuery<RadioSpeakerComponent>();
+        var radioQuery = EntityQueryEnumerator<ActiveRadioComponent, TransformComponent>();
+
+        while (canSend && radioQuery.MoveNext(out var receiver, out var radio, out var transform))
+        {
+            if (!radio.ReceiveAllChannels)
+            {
+                if (!radio.Channels.Contains(channel.ID) || (TryComp<IntercomComponent>(receiver, out var intercom) &&
+                                                             !intercom.SupportedChannels.Contains(channel.ID)))
+                    continue;
+            }
+
+            if (!HasComp<GhostComponent>(receiver) && GetFrequency(receiver, channel) != frequency)
+                continue;
+
+            if (!channel.LongRange && transform.MapID != sourceMapId && !radio.GlobalReceive)
+                continue;
+
+            var needServer = !channel.LongRange && (!hasMicro || !speakerQuery.HasComponent(receiver));
+            if (needServer && !hasActiveServer)
+                continue;
+
+            var attemptEv = new RadioReceiveAttemptEvent(channel, radioSource, receiver);
+            RaiseLocalEvent(ref attemptEv);
+            RaiseLocalEvent(receiver, ref attemptEv);
+            if (attemptEv.Cancelled)
+                continue;
+
+            RaiseLocalEvent(receiver, ref ev);
+        }
+
+        _adminLogger.Add(LogType.Chat, LogImpact.Low,
+            $"Radio emote from {ToPrettyString(messageSource):user} on {channel.LocalizedName}: {emoteText}");
+        _replay.RecordServerMessage(msg);
+        _messages.Remove(emoteText);
+    }
+    // End Misfits Add (SendRadioEmote)
 
     private string WrapRadioMessage(
         EntityUid source,

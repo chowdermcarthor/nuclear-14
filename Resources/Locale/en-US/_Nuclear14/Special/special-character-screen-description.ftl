@@ -1,11 +1,11 @@
 # Description of Special labels in character creation screen
-special-character-creation-description-strength = Modifies your Melee damage
-special-character-creation-description-perception = Modifies your shooting accuracy
-special-character-creation-description-endurance = Modifies your HP
-special-character-creation-description-charisma = Gives you accent if below 3
-special-character-creation-description-intelligence = Modifies medicine
-special-character-creation-description-agility = Agility
-special-character-creation-description-luck = Gives you 1% chance to pass bullet
+special-character-creation-description-strength = Your physical power and ability to endure.
+special-character-creation-description-perception = Your awareness around you, and land shots.
+special-character-creation-description-endurance = Your body's resilience against elements.
+special-character-creation-description-charisma = Not currently implemented.
+special-character-creation-description-intelligence = Not currently implemented.
+special-character-creation-description-agility = Your swiftness and ease of movement.
+special-character-creation-description-luck = A strange force that seems to smile upon you.
 
 # Title of Special labels in character creation screen
 special-character-creation-strength = Strength

@@ -40,6 +40,8 @@
   - type: Tag
     tags:
     - JunkPile
+  # #Misfits Add - Enables Luck SPECIAL stat bonus: high-Luck players may find a rare item on opening.
+  - type: LuckJunkBonus
 # No fixture on this base, inherit from further down for fixture
 
 # TODO: Add a loot box mechanic where using the pile does a doAfter then spits out useful items from a loot table.

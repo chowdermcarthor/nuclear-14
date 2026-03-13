@@ -103,6 +103,8 @@
     activatedDamage:
         types:
             Heat: 40
+  # Misfits Fix - WelderComponent restores fuel quantity display when held
+  - type: Welder
   - type: RefillableSolution
     solution: Welder
   - type: SolutionContainerManager
@@ -206,6 +208,8 @@
     activatedDamage:
         types:
             Heat: 35
+  # Misfits Fix - WelderComponent restores fuel quantity display when held
+  - type: Welder
   - type: RefillableSolution
     solution: Welder
   - type: SolutionContainerManager

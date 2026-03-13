@@ -198,7 +198,7 @@
 - type: entity
   parent: OreBase
   id: SpaceQuartz
-  name: space quartz
+  name: quartz # Misfits Change - Fallout relevance, renamed from "space quartz"
   suffix: Full
   components:
   - type: Stack

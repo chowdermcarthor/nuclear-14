@@ -5,6 +5,7 @@ using System.Text.Json;
 using System.Text.Json.Nodes;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
+using Content.Server.Administration.Logs; // #Misfits Add — needed for admin ghost-follow logging
 using Content.Server.Administration.Managers;
 using Content.Server.Afk;
 using Content.Server.Database;
@@ -14,10 +15,14 @@ using Content.Server.Players.RateLimiting;
 using Content.Server.Preferences.Managers;
 using Content.Shared.Administration;
 using Content.Shared.CCVar;
+using Content.Shared.Database; // #Misfits Add — for LogType
+using Content.Shared.Follower; // #Misfits Add — for FollowerSystem (ghost-follow)
 using Content.Shared.GameTicking;
+using Content.Shared.Ghost; // #Misfits Add — for GhostComponent (aghost check)
 using Content.Shared.Mind;
 using Content.Shared.Players.RateLimiting;
 using JetBrains.Annotations;
+using Robust.Server.Console; // #Misfits Add — for IServerConsoleHost (aghost command)
 using Robust.Server.Player;
 using Robust.Shared;
 using Robust.Shared.Configuration;
@@ -46,6 +51,8 @@ namespace Content.Server.Administration.Systems
         [Dependency] private readonly PlayerRateLimitManager _rateLimit = default!;
         [Dependency] private readonly IServerPreferencesManager _preferencesManager = default!;
         [Dependency] private readonly IPlayerLocator _locator = default!;
+        [Dependency] private readonly IServerConsoleHost _consoleHost = default!; // #Misfits Add — execute aghost command for ghost-follow
+        [Dependency] private readonly IAdminLogManager _adminLog = default!; // #Misfits Add — log ghost-follow actions
 
         [GeneratedRegex(@"^https://(?:(?:canary|ptb)\.)?discord\.com/api/webhooks/(\d+)/((?!.*/).*)$")]
         private static partial Regex DiscordRegex();
@@ -110,6 +117,8 @@ namespace Content.Server.Administration.Systems
             SubscribeLocalEvent<GameRunLevelChangedEvent>(OnGameRunLevelChanged);
             SubscribeNetworkEvent<BwoinkClientTypingUpdated>(OnClientTypingUpdated);
             SubscribeLocalEvent<RoundRestartCleanupEvent>(_ => _activeConversations.Clear());
+            // #Misfits Add — ghost-follow from the AHelp/Bwoink panel
+            SubscribeNetworkEvent<BwoinkAdminGhostFollowMessage>(OnBwoinkAdminGhostFollow);
 
         	_rateLimit.Register(
                 RateLimitKey,
@@ -329,6 +338,39 @@ namespace Content.Server.Administration.Systems
                     continue;
 
                 RaiseNetworkEvent(update, admin);
+            }
+        }
+
+        // #Misfits Add — handles "Follow" from the AHelp/Bwoink panel.
+        // Ensures the requesting admin is in aghost mode, then starts following the target's entity.
+        private void OnBwoinkAdminGhostFollow(BwoinkAdminGhostFollowMessage msg, EntitySessionEventArgs args)
+        {
+            var admin = args.SenderSession;
+
+            // Only admins with the Admin flag may ghost-follow.
+            if (!_adminManager.HasAdminFlag(admin, AdminFlags.Admin))
+                return;
+
+            // Look up the target player's current session.
+            if (!_playerManager.TryGetSessionById(msg.TargetUserId, out var targetSession) ||
+                targetSession.AttachedEntity == null)
+                return;
+
+            // Enter aghost mode if not already an admin ghost.
+            var alreadyAGhost = admin.AttachedEntity.HasValue &&
+                EntityManager.TryGetComponent<GhostComponent>(admin.AttachedEntity.Value, out var ghostComp) &&
+                ghostComp.CanGhostInteract;
+
+            if (!alreadyAGhost)
+                _consoleHost.ExecuteCommand(admin, "aghost");
+
+            // Start following the target's attached entity.
+            if (admin.AttachedEntity != null &&
+                EntityManager.TrySystem<FollowerSystem>(out var followerSystem))
+            {
+                _adminLog.Add(LogType.Action,
+                    $"{admin:actor} ghost-followed {EntityManager.ToPrettyString(targetSession.AttachedEntity.Value):subject} via AHelp panel");
+                followerSystem.StartFollowingEntity(admin.AttachedEntity.Value, targetSession.AttachedEntity.Value);
             }
         }
 

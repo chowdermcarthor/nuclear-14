@@ -2,6 +2,9 @@
   id: VaultDweller
   weight: 10
   showBorder: true
+  hideWithoutJobWhitelist: false # #Misfits Tweak - no whitelist gate
+  hideIfPlaytimeRequirementsNotMet: false # #Misfits Tweak - always visible
+  jobWhitelistBypassesRoleTimers: true # #Misfits Change - open to all
   name: job-name-vault-dweller
   description: job-description-vault-dweller
   requirements:

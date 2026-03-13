@@ -39,6 +39,7 @@
           conditions:
           - !type:ReagentThreshold
             min: 50
+          - !type:MobStateCondition #Misfits Tweak: OD can push to crit but never kill
           damage:
             types:
               Poison: 1.5
@@ -84,6 +85,7 @@
         conditions:
         - !type:ReagentThreshold
           min: 50
+        - !type:MobStateCondition #Misfits Tweak: OD can push to crit but never kill
         damage:
           types:
             Poison: 1
@@ -228,6 +230,7 @@
         conditions:
         - !type:ReagentThreshold
           min: 30
+        - !type:MobStateCondition #Misfits Tweak: OD can push to crit but never kill
         damage:
           groups:
             Burn: -2.5
@@ -242,10 +245,11 @@
         conditions:
         - !type:ReagentThreshold
           min: 30
-      - !type:Drunk
-        conditions:
-        - !type:ReagentThreshold
-          min: 30
+      # !type:Drunk — #Misfits Tweak: Removed. TryAddTime stacks per tick → multi-minute overlay on OD.
+      # MovespeedModifier above already communicates the OD state visually.
+      # conditions:
+      # - !type:ReagentThreshold
+      #   min: 30
 
 # Radiation
 - type: reagent
@@ -438,7 +442,8 @@
             Airloss: -1
       - !type:ModifyBleedAmount
         amount: -1
-      - !type:Drunk
+      # !type:Drunk — #Misfits Tweak: Removed. TryAddTime accumulates per metabolism tick, causing ~10 min overlay.
+      # HealingPoultice is a medicine not a drink; Jitter below already signals discomfort without screen distortion.
       - !type:Jitter
       - !type:ChemVomit
         conditions:
@@ -517,7 +522,8 @@
         conditions:
         - !type:ReagentThreshold
           min: 25
-      - !type:Drunk
-        conditions:
-        - !type:ReagentThreshold
-          min: 25
+      # !type:Drunk — #Misfits Tweak: Removed. Same TryAddTime stacking issue as HealingPoultice — OD duration causes indefinite overlay.
+      # MovespeedModifier above already signals the OD state.
+      # conditions:
+      # - !type:ReagentThreshold
+      #   min: 25

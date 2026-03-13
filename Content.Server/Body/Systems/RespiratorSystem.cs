@@ -108,8 +108,14 @@ public sealed class RespiratorSystem : EntitySystem
                     _popupSystem.PopupEntity(Loc.GetString("lung-behavior-gasp"), uid);
                 }
 
-                TakeSuffocationDamage((uid, respirator));
-                respirator.SuffocationCycles += 1;
+                // #Misfits Tweak: Skip passive asphyxiation damage while incapacitated (Critical/SoftCritical).
+                // Crit entities can die from bleeding, toxin, or brute — but NOT from passive crit airloss alone.
+                // An alive entity in vacuum still suffocates normally since IsIncapacitated is false there.
+                if (!_mobState.IsIncapacitated(uid))
+                {
+                    TakeSuffocationDamage((uid, respirator));
+                    respirator.SuffocationCycles += 1;
+                }
                 continue;
             }
 

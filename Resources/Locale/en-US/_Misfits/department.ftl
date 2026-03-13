@@ -11,3 +11,7 @@ department-FEVMutants-description = Hulking FEV-mutated humanoids, feared and mi
 Enclave = Enclave
 department-Enclave = Enclave
 department-Enclave-description = An isolated Enclave remnant cell relying on strict access control, advanced kit, and technological superiority.
+
+# #Misfits Add — Caesar's Legion department strings
+department-CaesarLegion = Caesar's Legion
+department-CaesarLegion-description = Totalitarian legion built on Roman structure, discipline, and conquest. Ave, true to Caesar.

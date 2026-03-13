@@ -124,8 +124,6 @@
   - type: Construction
     graph: N14Stimpak
     node: stimpak
-  - type: WoundBleedReducer # #Misfits Add - halves active wound bleed rates on use
-    bleedReduction: 0.5
 
 - type: entity
   parent: N14Stimpak
@@ -174,8 +172,6 @@
         reagents:
         - ReagentId: RobustHealingMixture
           Quantity: 25
-  - type: WoundBleedReducer # #Misfits Add - reduces active wound bleed rate by 60% on use
-    bleedReduction: 0.6
 
 - type: entity
   parent: N14ChemicalSyringe
@@ -648,8 +644,6 @@
   - type: Construction
     graph: N14HealingPowder
     node: healingpowder
-  - type: WoundBleedReducer # #Misfits Add - reduces active wound bleed rate by 40% when consumed
-    bleedReduction: 0.4
 
 #Misfits Change /Add/: Cleansing powder
 - type: entity
@@ -754,8 +748,6 @@
         reagents:
         - ReagentId: HealingPoultice
           Quantity: 20
-  - type: WoundBleedReducer # #Misfits Add - reduces active wound bleed rate by 35% when consumed
-    bleedReduction: 0.35
 
 - type: entity
   parent: DrinkBase
@@ -834,8 +826,6 @@
         reagents:
         - ReagentId: UltraRobustHealingMixture
           Quantity: 25
-  - type: WoundBleedReducer # #Misfits Add - reduces active wound bleed rate by 75% on use
-    bleedReduction: 0.75
 
 - type: entity
   parent: N14HealingPowder
@@ -894,25 +884,6 @@
       path: "/Audio/Items/Medical/brutepack_begin.ogg"
     healingEndSound:
       path: "/Audio/Items/Medical/brutepack_end.ogg"
-  - type: WoundTreater # #Misfits Add - treats brute wounds alongside Healing component
-    wound: Brute
-    treats: true
-    consumable: false  # stack charges consumed by Healing component above
-    showNoWoundsPopup: false  # silently skip if no wounds; Healing still heals HP
-    group: Brute
-    scalingDoAfter: 0.1
-    damage: -5
-    treatBeginSound:
-      path: /Audio/Items/Medical/brutepack_begin.ogg
-    treatEndSound:
-      path: /Audio/Items/Medical/brutepack_end.ogg
-    userPopup: wounds-bandage-begin-user
-    targetPopup: wounds-bandage-begin-target
-    othersPopup: wounds-bandage-begin-others
-    userFinishPopup: wounds-bandage-finish-user
-    targetFinishPopup: wounds-bandage-finish-target
-    noneSelfPopup: wounds-treat-none-self
-    noneOtherPopup: wounds-treat-none-other
   - type: Stack
     stackType: N14Bandage
     count: 15 #Was 10, Buffed due to limb damage changes
@@ -965,21 +936,6 @@
     layers:
     - state: aloe3
       map: ["base"]
-  - type: WoundTreater # #Misfits Add - treats burn wounds alongside Ointment's Healing component
-    wound: Burn
-    treats: true
-    consumable: false  # stack charges consumed by Healing component (inherited from Ointment)
-    showNoWoundsPopup: false  # silently skip if no wounds; Healing still heals burns
-    group: Burn
-    scalingDoAfter: 0.15
-    damage: -5
-    userPopup: wounds-burnwrap-begin-user
-    targetPopup: wounds-burnwrap-begin-target
-    othersPopup: wounds-burnwrap-begin-others
-    userFinishPopup: wounds-burnwrap-finish-user
-    targetFinishPopup: wounds-burnwrap-finish-target
-    noneSelfPopup: wounds-treat-none-self
-    noneOtherPopup: wounds-treat-none-other
 
 - type: entity
   id: N14AloeSalve1

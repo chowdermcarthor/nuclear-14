@@ -2,6 +2,9 @@
   id: VaultSecurity
   weight: 80
   showBorder: true
+  hideWithoutJobWhitelist: false # #Misfits Tweak - no whitelist gate
+  hideIfPlaytimeRequirementsNotMet: false # #Misfits Tweak - always visible
+  jobWhitelistBypassesRoleTimers: true # #Misfits Change - open to all
   name: job-name-vault-security
   description: job-description-vault-security
   playTimeTracker: VaultSecurity

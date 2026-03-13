@@ -159,6 +159,14 @@
     enabled: true
     toggleOnInteract: true
     IsSpeaker: true
+  - type: IntrinsicRadioReceiver # Misfits Add - Eyebot speaks binary on the Binary radio channel
+  - type: IntrinsicRadioTransmitter
+    channels:
+    - Binary
+  - type: ActiveRadio
+    channels:
+    - Binary
+    - Common
   - type: LanguageKnowledge
     speaks:
     - N14Robot

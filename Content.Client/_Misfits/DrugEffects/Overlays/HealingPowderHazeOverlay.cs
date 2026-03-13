@@ -30,7 +30,7 @@ public sealed class HealingPowderHazeOverlay : Overlay
     private float _visualScale;
 
     private const float PowerDivisor = 30f;
-    private const float Intensity = 0.04f; // #Misfits Change /Tweak:/ Reduced from 0.08 — overlay was too strong
+    private const float Intensity = 0.02f; // #Misfits Tweak: Reduced from 0.04 (was 0.08) — further toned down screen haze
 
     public HealingPowderHazeOverlay()
     {

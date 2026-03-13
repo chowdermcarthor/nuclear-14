@@ -362,6 +362,17 @@ namespace Content.Server.Administration.Systems
                         Icon = new SpriteSpecifier.Rsi(new ResPath("/Textures/Interface/Actions/actions_borg.rsi"), "state-laws"),
                     });
                 }
+
+                // #Misfits Change — Rejuvenate moved from Debug to Admin tab so all admins can use it
+                Verb rejuvenateVerb = new()
+                {
+                    Text = Loc.GetString("rejuvenate-verb-get-data-text"),
+                    Category = VerbCategory.Admin,
+                    Icon = new SpriteSpecifier.Texture(new ("/Textures/Interface/VerbIcons/rejuvenate.svg.192dpi.png")),
+                    Act = () => _rejuvenate.PerformRejuvenate(args.Target),
+                    Impact = LogImpact.Medium
+                };
+                args.Verbs.Add(rejuvenateVerb);
             }
         }
 
@@ -387,19 +398,7 @@ namespace Content.Server.Administration.Systems
                 args.Verbs.Add(verb);
             }
 
-            // Rejuvenate verb
-            if (_toolshed.ActivePermissionController?.CheckInvokable(new CommandSpec(_toolshed.DefaultEnvironment.GetCommand("rejuvenate"), null), player, out _) ?? false)
-            {
-                Verb verb = new()
-                {
-                    Text = Loc.GetString("rejuvenate-verb-get-data-text"),
-                    Category = VerbCategory.Debug,
-                    Icon = new SpriteSpecifier.Texture(new ("/Textures/Interface/VerbIcons/rejuvenate.svg.192dpi.png")),
-                    Act = () => _rejuvenate.PerformRejuvenate(args.Target),
-                    Impact = LogImpact.Medium
-                };
-                args.Verbs.Add(verb);
-            }
+            // #Misfits Change — Rejuvenate verb moved to AddAdminVerbs (Admin tab)
 
             // Control mob verb
             if (_toolshed.ActivePermissionController?.CheckInvokable(new CommandSpec(_toolshed.DefaultEnvironment.GetCommand("mind"), "control"), player, out _) ?? false &&

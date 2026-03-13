@@ -28,20 +28,17 @@
   components:
   - type: FactionBankTerminal       # interaction handled by FactionBankTerminalSystem
   - type: InteractionOutline
-  # Use the unpowered fitness vending machine sprite as a visual stand-in.
+  # Use the static "off" state of the fitness vending machine RSI — no powered/screen layer
+  # so the weights image display is never shown regardless of power state.
   - type: Sprite
     noRot: true
     sprite: Structures/Machines/VendingMachines/fitness.rsi
     layers:
     - state: "off"
-    - state: "off"
-      shader: unshaded
-    - state: "screen"
-      shader: unshaded
   - type: Icon
     sprite: Structures/Machines/VendingMachines/fitness.rsi
     state: "off"
-  - type: Appearance
+  # Appearance component removed — no animated/powered layers means no visual state changes needed.
   - type: Destructible
     thresholds:
     - trigger:

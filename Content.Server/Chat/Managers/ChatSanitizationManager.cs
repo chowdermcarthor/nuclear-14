@@ -184,39 +184,44 @@ public sealed class ChatSanitizationManager : IChatSanitizationManager
         // Facepalm
         { ">_<;", "chatsan-facepalms" },
         // End Misfits Add
+    };
 
-        // Misfits Add - Chat acronyms converted to emote actions instead of spoken text
-        // Laughter variants — ordered longest→shortest to avoid partial matches (lmfao before lmao)
+    // Misfits Add - Text acronyms that fire emote actions on ALL spoken channels (not just Telepathic).
+    // Kept separate from SmileyToEmote so they can be applied unconditionally via TrySanitizeAcronyms.
+    // Ordered longest→shortest within each group to prevent prefix swallowing (e.g. lmfao before lmao).
+    private static readonly Dictionary<string, string> AcronymToEmote = new()
+    {
+        // Laughter
         { "lmfao", "chatsan-laughs-heartily" }, // laughing my f***ing ass off
-        { "rofl", "chatsan-rolls-laughing" },    // rolling on the floor laughing
-        { "lmao", "chatsan-laughs-heartily" },   // laughing my ass off
+        { "rofl",  "chatsan-rolls-laughing" },   // rolling on the floor laughing
+        { "lmao",  "chatsan-laughs-heartily" },  // laughing my ass off
         { "heehee", "chatsan-chuckles" },        // quiet giggle
-        { "hehe", "chatsan-chuckles" },          // quiet laugh
-        { "heh", "chatsan-chuckles" },           // understated chuckle
-        { "kek", "chatsan-laughs" },             // kek (lol variant)
-        { "lel", "chatsan-laughs" },             // lel (lol variant)
-        { "lol", "chatsan-laughs" },             // laugh out loud
+        { "hehe",  "chatsan-chuckles" },         // quiet laugh
+        { "heh",   "chatsan-chuckles" },         // understated chuckle
+        { "kek",   "chatsan-laughs" },           // kek (lol variant)
+        { "lel",   "chatsan-laughs" },           // lel (lol variant)
+        { "lol",   "chatsan-laughs" },           // laugh out loud
         // Expressive / reaction
         { "owo", "chatsan-looks-flustered" },    // flustered/cute reaction
         { "uwu", "chatsan-looks-flustered" },    // flustered/cute reaction
         // Confusion / uncertainty
         { "omfg", "chatsan-surprised" },         // oh my f***ing god
-        { "omg", "chatsan-surprised" },          // oh my god
-        { "wtf", "chatsan-confused" },           // what the f***
-        { "tbh", "chatsan-shrugs" },             // to be honest
-        { "idk", "chatsan-shrugs" },             // I don't know
-        // Head / physical gestures
-        { "smh", "chatsan-shakes-head" },        // shaking my head
-        { "fml", "chatsan-facepalms" },          // f*** my life
-        { "ngl", "chatsan-shifty" },             // not gonna lie (glances sideways)
-        // Social gestures
+        { "omg",  "chatsan-surprised" },         // oh my god
+        { "wtf",  "chatsan-confused" },          // what the f***
+        { "tbh",  "chatsan-shrugs" },            // to be honest
+        { "idk",  "chatsan-shrugs" },            // I don't know
+        // Physical gestures
+        { "smh",  "chatsan-shakes-head" },       // shaking my head
+        { "fml",  "chatsan-facepalms" },         // f*** my life
+        { "ngl",  "chatsan-shifty" },            // not gonna lie
+        // Social
         { "tysm", "chatsan-beams" },             // thank you so much
-        { "thx", "chatsan-nods" },               // thanks
-        { "brb", "chatsan-waves" },              // be right back
-        { "afk", "chatsan-waves" },              // away from keyboard
-        { "np", "chatsan-nods" },                // no problem
-        // End Misfits Add (acronyms)
+        { "thx",  "chatsan-nods" },              // thanks
+        { "brb",  "chatsan-waves" },             // be right back
+        { "afk",  "chatsan-waves" },             // away from keyboard
+        { "np",   "chatsan-nods" },              // no problem
     };
+    // End Misfits Add (AcronymToEmote)
 
     private bool _doSanitize;
 
@@ -287,6 +292,35 @@ public sealed class ChatSanitizationManager : IChatSanitizationManager
         emote = null;
         return false;
     }
+
+    // Misfits Add - Separate acronym check so it fires on ALL spoken channels, not just Telepathic.
+    // Called unconditionally from SanitizeInGameICMessage before capitalize/punctuate passes.
+    public bool TrySanitizeAcronyms(string input, EntityUid speaker, out string sanitized, [NotNullWhen(true)] out string? emote)
+    {
+        if (!_doSanitize)
+        {
+            sanitized = input;
+            emote = null;
+            return false;
+        }
+
+        input = input.TrimEnd();
+
+        foreach (var (acronym, replacement) in AcronymToEmote)
+        {
+            if (input.EndsWith(acronym, true, CultureInfo.InvariantCulture))
+            {
+                sanitized = input.Remove(input.Length - acronym.Length).TrimEnd();
+                emote = Loc.GetString(replacement, ("ent", speaker));
+                return true;
+            }
+        }
+
+        sanitized = input;
+        emote = null;
+        return false;
+    }
+    // End Misfits Add (TrySanitizeAcronyms)
 
     private async void CreateModerationNote(ICommonSession player, string rawMessage, string contextLabel)
     {

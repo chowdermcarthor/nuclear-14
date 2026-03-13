@@ -48,7 +48,6 @@
       types:
         Bloodloss: -1
     damageBleedModifiers: CMBloodlossHuman
-  - type: Woundable
   - type: StatusEffects
     allowed:
     - Stun

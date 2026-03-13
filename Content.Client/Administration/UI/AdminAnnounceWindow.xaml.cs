@@ -23,6 +23,19 @@ namespace Content.Client.Administration.UI
             AnnounceMethod.SetItemMetadata(0, AdminAnnounceType.Station);
             AnnounceMethod.AddItem(_localization.GetString("admin-announce-type-server"));
             AnnounceMethod.SetItemMetadata(1, AdminAnnounceType.Server);
+
+            // #Misfits Add — faction-targeted announce options.
+            // Each entry pre-fills the Announcer field with the canonical in-universe sender name.
+            AnnounceMethod.AddItem(_localization.GetString("admin-announce-type-faction-legion"));
+            AnnounceMethod.SetItemMetadata(2, AdminAnnounceType.FactionLegion);
+            AnnounceMethod.AddItem(_localization.GetString("admin-announce-type-faction-ncr"));
+            AnnounceMethod.SetItemMetadata(3, AdminAnnounceType.FactionNCR);
+            AnnounceMethod.AddItem(_localization.GetString("admin-announce-type-faction-bos"));
+            AnnounceMethod.SetItemMetadata(4, AdminAnnounceType.FactionBOS);
+            AnnounceMethod.AddItem(_localization.GetString("admin-announce-type-faction-enclave"));
+            AnnounceMethod.SetItemMetadata(5, AdminAnnounceType.FactionEnclave);
+            // End #Misfits Add
+
             AnnounceMethod.OnItemSelected += AnnounceMethodOnOnItemSelected;
             Announcement.OnKeyBindUp += AnnouncementOnOnTextChanged;
         }
@@ -35,7 +48,23 @@ namespace Content.Client.Administration.UI
         private void AnnounceMethodOnOnItemSelected(OptionButton.ItemSelectedEventArgs args)
         {
             AnnounceMethod.SelectId(args.Id);
-            Announcer.Editable = ((AdminAnnounceType?)args.Button.SelectedMetadata ?? AdminAnnounceType.Station) == AdminAnnounceType.Station;
+            var type = (AdminAnnounceType?) args.Button.SelectedMetadata ?? AdminAnnounceType.Station;
+
+            // Server type has no editable sender field; all others do.
+            Announcer.Editable = type != AdminAnnounceType.Server;
+
+            // #Misfits Add — auto-fill the sender name with the faction's canonical speaker
+            // so admins don't have to type it every time.  The field remains editable so
+            // unusual situations (e.g. "Acting Captain") can still be typed in manually.
+            Announcer.Text = type switch
+            {
+                AdminAnnounceType.FactionLegion  => _localization.GetString("admin-announce-faction-sender-legion"),
+                AdminAnnounceType.FactionNCR     => _localization.GetString("admin-announce-faction-sender-ncr"),
+                AdminAnnounceType.FactionBOS     => _localization.GetString("admin-announce-faction-sender-bos"),
+                AdminAnnounceType.FactionEnclave => _localization.GetString("admin-announce-faction-sender-enclave"),
+                _                                => _localization.GetString("admin-announce-announcer-default"),
+            };
+            // End #Misfits Add
         }
     }
 }

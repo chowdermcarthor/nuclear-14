@@ -712,6 +712,9 @@
   - type: Access
     tags:
     - IronKey
+  - type: IdCard # Misfits Add - display as "key" not "ID card"
+    nameLocId: n14-id-key-name
+    fullNameLocId: n14-id-key-full-name
 
 - type: entity
   parent: N14IDCard
@@ -725,6 +728,9 @@
   - type: Access
     tags:
     - LegionBrassKey
+  - type: IdCard # Misfits Add - display as "key" not "ID card"
+    nameLocId: n14-id-key-name
+    fullNameLocId: n14-id-key-full-name
 
 - type: entity
   parent: N14IDCard
@@ -738,6 +744,9 @@
   - type: Access
     tags:
     - BronzeKey
+  - type: IdCard # Misfits Add - display as "key" not "ID card"
+    nameLocId: n14-id-key-name
+    fullNameLocId: n14-id-key-full-name
 
 - type: entity
   parent: N14IDCard
@@ -751,6 +760,9 @@
   - type: Access
     tags:
     - SilverKey
+  - type: IdCard # Misfits Add - display as "key" not "ID card"
+    nameLocId: n14-id-key-name
+    fullNameLocId: n14-id-key-full-name
 
 - type: entity
   parent: N14IDCard
@@ -765,6 +777,9 @@
   - type: Access
     groups:
     - GoldenKey
+  - type: IdCard # Misfits Add - display as "key" not "ID card"
+    nameLocId: n14-id-key-name
+    fullNameLocId: n14-id-key-full-name
 
 #MARK: Access Cards
 - type: entity

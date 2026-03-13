@@ -71,7 +71,7 @@
     - type: Reflect # #Misfits Change Add: Riot shields deflect sub-5.56mm rounds at 30%; degrades while moving.
       reflects:
         - SmallCaliber
-      reflectProb: 0.5
+      reflectProb: 0.3
       spread: 90
     - type: SpearBlock # #Misfits Change Add: Riot shield deflects thrown polearms.
     - type: StaticPrice

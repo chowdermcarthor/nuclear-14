@@ -412,6 +412,7 @@
     - type: PortableGenerator
       startChance: 0.5
     - type: FuelGenerator
+      on: true #Misfits Change - generators start on at round start
       targetPower: 5000
       minTargetPower: 1000
       optimalPower: 8000
@@ -448,6 +449,7 @@
     - type: PortableGenerator
       startChance: 0.7
     - type: FuelGenerator
+      on: true #Misfits Change - generators start on at round start
       targetPower: 5000
       minTargetPower: 1000
       optimalPower: 5000
@@ -514,6 +516,7 @@
       board: N14PortableGeneratorWeldingFuelMachineParts
 
     - type: FuelGenerator
+      on: true #Misfits Change - generators start on at round start
       targetPower: 5000
       minTargetPower: 1000
       optimalPower: 8000
