@@ -3,6 +3,7 @@
      panel are saved to JSON and re-spawned automatically on round restart. -->
 <DefaultWindow
     xmlns="https://spacestation14.io"
+    xmlns:misfits="clr-namespace:Content.Client._Misfits.PersistentSpawn"
     Title="{Loc misfits-persistent-spawn-window-title}"
     SetSize="400 450"
     MinSize="350 200">
@@ -24,8 +25,8 @@
              re-measures it with Visible=false (which would zero out DesiredSize and
              break the virtual list height calculation on scroll). Mirrors how the
              engine's EntitySpawnWindow uses DoNotMeasure for the same purpose. -->
-        <DoNotMeasureContainer Visible="False">
+        <misfits:DoNotMeasureContainer Visible="False">
             <EntitySpawnButton Name="MeasureButton" Access="Public"/>
-        </DoNotMeasureContainer>
+        </misfits:DoNotMeasureContainer>
     </BoxContainer>
 </DefaultWindow>

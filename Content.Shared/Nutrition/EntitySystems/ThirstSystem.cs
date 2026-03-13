@@ -251,7 +251,7 @@ public sealed class ThirstSystem : EntitySystem
     {
         if (component.CurrentThirstThreshold <= ThirstThreshold.Dead &&
             component.DehydrationDamage is { } damage &&
-            !_mobState.IsDead(uid))
+            _mobState.IsAlive(uid)) // Misfits Change: was !IsDead — now stops at Critical so dehydration can incapacitate but never kill outright
         {
             _damageable.TryChangeDamage(uid, damage, true, false);
         }

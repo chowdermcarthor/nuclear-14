@@ -434,8 +434,8 @@
   - CaesarLegion #Corvax-Legion
   - BrotherhoodOfSteelSecureArea
 
-# Misfits Change - Super Mutant hostile NPC faction. Hostile to all civilized factions.
-# They are neutral to Raiders (not explicitly hostile). Ported from DesertRose2/desertrose.
+# Misfits Change - Super Mutant hostile NPC faction. Hostile to ALL factions except other Super Mutants.
+# Misfits Tweak - Added Raider, Enclave, Zetan so mutants attack every mob without exception (except own faction).
 - type: npcFaction
   id: SuperMutant
   hostile:
@@ -453,6 +453,9 @@
   - TribalSecureArea
   - Vault
   - VaultSecureArea
+  - Zetan #Misfits Add - Super Mutants attack all, including Zetans
+  - Raider #Misfits Add - Super Mutants attack all, including Raiders
+  - Enclave #Misfits Add - Super Mutants attack all, including Enclave
   - WastelandInsect
   - WastelandAnimal
   - Deathclaw #Misfits Add - Deathclaw is enemy of everything

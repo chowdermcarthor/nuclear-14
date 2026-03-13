@@ -175,7 +175,7 @@ public sealed class HungerSystem : EntitySystem
 
         if (component.CurrentThreshold <= HungerThreshold.Starving &&
             component.StarvationDamage is { } damage &&
-            !_mobState.IsDead(uid))
+            _mobState.IsAlive(uid)) // Misfits Change: was !IsDead — now stops at Critical so malnutrition can incapacitate but never kill outright
         {
             _damageable.TryChangeDamage(uid, damage, true, false);
         }
