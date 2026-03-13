@@ -1503,3 +1503,17 @@ Entries:
   id: 5639
   time: '2026-03-13T09:18:31.0000000+00:00'
   url: https://github.com/Misfit-Sanctuary/nuclear-14/pull/113
+- author: Dpellowski
+  changes:
+    - type: Tweak
+      message: >-
+        Optimized server-side CPU utilization across 12+ systems -
+        PowerNetSystem query caching, FlammableSystem alert batching,
+        NPCSteeringSystem parallelization overhead removal and array pooling,
+        StatusEffectsSystem/MetabolizerSystem reusable list buffers,
+        BloodstreamSystem thundering herd fix, ThermalAmbienceSystem throttling,
+        StomachSystem O(n) removal, physics tick rate reduction (120→60), and
+        NPC update cap (1024→512). Estimated 10-15% total CPU reduction.
+  id: 5640
+  time: '2026-03-13T18:30:40.0000000+00:00'
+  url: https://github.com/Misfit-Sanctuary/nuclear-14/pull/118
