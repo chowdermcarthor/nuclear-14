@@ -83,8 +83,11 @@ public sealed class MisfitsOreClusterSpawnerSystem : EntitySystem
             }
         }
 
-        // Spawner has served its purpose; remove it so it doesn't persist
-        // as a visible/interactable entity in the world.
-        QueueDel(ent);
+        // Do NOT delete — the Persistent Entity Spawner system needs this entity
+        // to remain alive so admins can click-erase it via the placement tool,
+        // which triggers DB removal. The entity is invisible and non-collidable;
+        // it is destroyed naturally when the round ends and the map is torn down.
+        // The persistent system re-creates a fresh instance (fresh MapInitEvent)
+        // on the next round start, generating a new layout.
     }
 }

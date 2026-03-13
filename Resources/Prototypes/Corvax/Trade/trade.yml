@@ -755,6 +755,8 @@
     price: 15
   - proto: RadioHandheld
     price: 75
+  - proto: OreBag # Misfits Add - ore magnet bag for miners on Wendover
+    price: 40
 
 - type: storeCategoryStructured
   id: CaravanBuy2_Sprouts

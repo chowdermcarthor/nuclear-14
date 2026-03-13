@@ -17,7 +17,12 @@
   - type: Clickable
   - type: InteractionOutline
   - type: Sprite
-    visible: false  # invisible in-world; only visible in the map editor
+    # Uses the biome spawner marker icon so it's visible to admins in-world
+    # and click-erasable via the Persistent Entity Spawn tool erase mode.
+    snapCardinals: true
+    drawdepth: BelowFloor
+    sprite: _Nuclear14/Markers/biome.rsi
+    color: "#FF6600"  # orange tint to distinguish from biome markers
 
 # Default: drought rock walls matching Wendover's aesthetic, ~4–9 tile radius
 - type: entity

@@ -49,6 +49,11 @@
         top:
           True: { visible: false }
           False: { visible: true }
+  # Misfits Add — passive area magnet so nearby dropped ores slide in automatically (mirrors OreBag behaviour for anchored box)
+  - type: MisfitsOreBoxMagnet
+    range: 1.5
+    scanInterval: 1.0
+
   - type: Storage
     grid:
     - 0,0,9,5
