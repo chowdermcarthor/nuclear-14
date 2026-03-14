@@ -27,11 +27,15 @@ namespace Content.Client.Credits
         [Dependency] private readonly IResourceManager _resourceManager = default!;
         [Dependency] private readonly IConfigurationManager _cfg = default!;
 
+        // #Misfits Change - Updated patron tiers to match Misfits Patreon tiers
         private static readonly Dictionary<string, int> PatronTierPriority = new()
         {
-            ["Central Commander"] = 1,
-            ["Captain"] = 2,
-            ["Assistant"] = 3
+            // ["Central Commander"] = 1,
+            // ["Captain"] = 2,
+            // ["Assistant"] = 3
+            ["Nuclear"] = 1,
+            ["Gold"] = 2,
+            ["Silver"] = 3
         };
 
         public CreditsWindow()
@@ -84,7 +88,8 @@ namespace Content.Client.Credits
             }
 
             var first = true;
-            foreach (var tier in patrons.GroupBy(p => p.Tier).OrderBy(p => PatronTierPriority[p.Key]))
+            // #Misfits Fix - Use TryGetValue to avoid crash on unknown tiers
+            foreach (var tier in patrons.GroupBy(p => p.Tier).OrderBy(p => PatronTierPriority.TryGetValue(p.Key, out var prio) ? prio : int.MaxValue))
             {
                 if (!first)
                 {

@@ -21,7 +21,7 @@ public sealed partial class MisfitsOreClusterSpawnerComponent : Component
     /// so per-ore randomisation still happens at MapInit.
     /// </summary>
     [DataField(required: true)]
-    public EntProtoId WallEntity = "N14WallRockDroughtSlantedMining";
+    public EntProtoId WallEntity = "N14WallRockMammothSlanted"; // Misfits Tweak - switched from DroughtSlanted to MammothSlanted for visual consistency
 
     /// <summary>
     /// Minimum blob radius in tiles.

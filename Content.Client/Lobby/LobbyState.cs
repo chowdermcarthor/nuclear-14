@@ -143,6 +143,7 @@ namespace Content.Client.Lobby
         {
             UpdateLobbyBackground();
             UpdateLobbyUi();
+            UpdateMapCredit(); // #Misfits Add - update map credit when lobby status changes
         }
 
         private void LobbyLateJoinStatusUpdated()
@@ -226,6 +227,32 @@ namespace Content.Client.Lobby
             _sawmill.Warning("_gameTicker.LobbyBackground was null! No lobby background selected.");
             Lobby!.Background.Texture = null;
             Lobby!.LobbyBackground.SetMarkup(Loc.GetString("lobby-state-background-no-background-text"));
+        }
+
+        // #Misfits Add - Display map name and author credit in the lobby bottom bar
+        private void UpdateMapCredit()
+        {
+            var mapName = _gameTicker.MapName;
+            var mapAuthor = _gameTicker.MapAuthor;
+
+            if (!string.IsNullOrEmpty(mapName))
+            {
+                if (!string.IsNullOrEmpty(mapAuthor))
+                {
+                    Lobby!.MapCredit.SetMarkup(Loc.GetString("lobby-state-map-text",
+                        ("mapName", mapName),
+                        ("mapAuthor", mapAuthor)));
+                }
+                else
+                {
+                    Lobby!.MapCredit.SetMarkup(Loc.GetString("lobby-state-map-no-author-text",
+                        ("mapName", mapName)));
+                }
+            }
+            else
+            {
+                Lobby!.MapCredit.SetMarkup(Loc.GetString("lobby-state-map-no-map-text"));
+            }
         }
 
         private void SetReady(bool newReady)

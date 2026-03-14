@@ -23,8 +23,10 @@ portable-generator-ui-eject = Eject
 portable-generator-ui-eta = (~{ $minutes } min)
 portable-generator-ui-unanchored = Unanchored
 portable-generator-ui-current-output = Current output: {$voltage}
-portable-generator-ui-power-switch = Power: # #Misfits Add: was missing — used as initial label for the status row in GeneratorWindow.xaml
-portable-generator-ui-switch = Output: # #Misfits Add: was missing — used as initial label for the output-voltage switch row in GeneratorWindow.xaml
+# #Misfits Add: was missing — used as initial label for the status row in GeneratorWindow.xaml
+portable-generator-ui-power-switch = Power:
+# #Misfits Add: was missing — used as initial label for the output-voltage switch row in GeneratorWindow.xaml
+portable-generator-ui-switch = Output:
 portable-generator-ui-network-stats = Network:
 portable-generator-ui-network-stats-value = { POWERWATTS($supply) } / { POWERWATTS($load) }
 portable-generator-ui-network-stats-not-connected = Not connected

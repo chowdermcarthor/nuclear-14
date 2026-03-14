@@ -32,10 +32,10 @@
 - type: entity
   id: MisfitsOreClusterSpawner
   parent: MisfitsOreClusterSpawnerBase
-  suffix: Drought Rock
+  suffix: Mammoth Rock
   components:
   - type: MisfitsOreClusterSpawner
-    wallEntity: N14WallRockDroughtSlantedMining
+    wallEntity: N14WallRockMammothSlanted # Misfits Tweak - switched from DroughtSlanted
     minRadius: 4
     maxRadius: 9
     fillChance: 0.65
@@ -44,10 +44,10 @@
 - type: entity
   id: MisfitsOreClusterSpawnerSmall
   parent: MisfitsOreClusterSpawnerBase
-  suffix: Drought Rock Small
+  suffix: Mammoth Rock Small
   components:
   - type: MisfitsOreClusterSpawner
-    wallEntity: N14WallRockDroughtSlantedMining
+    wallEntity: N14WallRockMammothSlanted # Misfits Tweak - switched from DroughtSlanted
     minRadius: 2
     maxRadius: 5
     fillChance: 0.70
@@ -56,10 +56,10 @@
 - type: entity
   id: MisfitsOreClusterSpawnerDense
   parent: MisfitsOreClusterSpawnerBase
-  suffix: Drought Rock Dense
+  suffix: Mammoth Rock Dense
   components:
   - type: MisfitsOreClusterSpawner
-    wallEntity: N14WallRockDroughtSlantedMining
+    wallEntity: N14WallRockMammothSlanted # Misfits Tweak - switched from DroughtSlanted
     minRadius: 5
     maxRadius: 9
     fillChance: 0.85

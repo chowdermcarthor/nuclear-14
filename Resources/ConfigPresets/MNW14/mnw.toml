@@ -61,7 +61,7 @@ id_job_length = 50
 discord = "https://discord.com/invite/8a6y8esphP"
 #forum = "https://forum.rouny-ss14.com"
 github = "https://github.com/Misfit-Sanctuary/nuclear-14"
-patreon = "https://www.patreon.com/15572862/join"
+#patreon = "https://www.patreon.com/15572862/join" # Misfits Change - blanked, Valve TOS conflict on Steam builds
 #website = ""
 wiki = "https://ss14.misfitsystems.net/wiki/index.php/Main_Page"
 

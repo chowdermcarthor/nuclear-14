@@ -74,6 +74,9 @@ namespace Content.Server.GameTicking
 
             var gmTitle = Loc.GetString(preset.ModeTitle);
             var desc = Loc.GetString(preset.Description);
+            // #Misfits Add - Include map author in lobby info text
+            var selectedMap = _gameMapManager.GetSelectedMap();
+            var mapAuthor = selectedMap?.MapAuthor ?? Loc.GetString("game-ticker-unknown-map-author");
             return Loc.GetString(
                 RunLevel == GameRunLevel.PreRoundLobby
                     ? "game-ticker-get-info-preround-text"
@@ -82,6 +85,7 @@ namespace Content.Server.GameTicking
                 ("playerCount", playerCount),
                 ("readyCount", readyCount),
                 ("mapName", stationNames.ToString()),
+                ("mapAuthor", mapAuthor),
                 ("gmTitle", gmTitle),
                 ("desc", desc));
         }
@@ -94,7 +98,9 @@ namespace Content.Server.GameTicking
         private TickerLobbyStatusEvent GetStatusMsg(ICommonSession session)
         {
             _playerGameStatuses.TryGetValue(session.UserId, out var status);
-            return new TickerLobbyStatusEvent(RunLevel != GameRunLevel.PreRoundLobby, LobbyBackground, status == PlayerGameStatus.ReadyToPlay, _roundStartTime, RoundPreloadTime, RoundStartTimeSpan, Paused);
+            // #Misfits Add - Include map name/author for lobby credit display
+            var selectedMap = _gameMapManager.GetSelectedMap();
+            return new TickerLobbyStatusEvent(RunLevel != GameRunLevel.PreRoundLobby, LobbyBackground, status == PlayerGameStatus.ReadyToPlay, _roundStartTime, RoundPreloadTime, RoundStartTimeSpan, Paused, selectedMap?.MapName, selectedMap?.MapAuthor);
         }
 
         private void SendStatusToAll()

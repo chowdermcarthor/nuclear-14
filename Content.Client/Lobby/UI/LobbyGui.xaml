@@ -58,6 +58,10 @@
                         <PanelContainer StyleClasses="AngleRect">
                             <RichTextLabel Name="LobbyBackground" Access="Public" HorizontalAlignment="Center" />
                         </PanelContainer>
+                        <!-- #Misfits Add - Map credit display in lobby bottom bar -->
+                        <PanelContainer StyleClasses="AngleRect">
+                            <RichTextLabel Name="MapCredit" Access="Public" HorizontalAlignment="Center" />
+                        </PanelContainer>
                     </BoxContainer>
                 </Control>
                 <!-- Character setup state -->

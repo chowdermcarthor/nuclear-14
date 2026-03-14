@@ -70,6 +70,6 @@
       - !type:HealthChange
         damage:
           types:
-            Poison: 3
+            Poison: 1 #Misfits Tweak - reduced from 3, cazador venom was too lethal
           groups:
-            Airloss: 3.5
+            Airloss: 1.5 #Misfits Tweak - reduced from 3.5, cazador venom was too lethal

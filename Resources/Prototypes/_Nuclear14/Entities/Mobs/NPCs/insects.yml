@@ -406,7 +406,7 @@
   components:
   - type: MovementSpeedModifier
     baseWalkSpeed : 3
-    baseSprintSpeed : 6
+    baseSprintSpeed : 5 #Misfits Tweak - reduced from 6, cazadors were too fast to outrun
   - type: Sprite
     drawdepth: Mobs
     layers:
@@ -471,7 +471,7 @@
         Quantity: 0.25
   - type: MeleeChemicalInjector
     solution: melee
-    transferAmount: 1.5
+    transferAmount: 0.5 #Misfits Tweak - reduced from 1.5, less venom per sting
   - type: Butcherable
     spawned:
     - id: N14FoodMeatRadRaw
@@ -482,7 +482,7 @@
   - type: MobThresholds
     thresholds:
       0: Alive
-      100: Dead # Corvax-Change
+      75: Dead #Misfits Tweak - reduced from 100, cazadors were too tanky
   - type: AggroSound #Misfits Change
     sound:
       collection: N14CazadorAttack

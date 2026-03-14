@@ -12,6 +12,7 @@
 - type: gameMap
   id: Wendover
   mapName: 'Wendover'
+  mapAuthor: 'mc_rainbow32' # Misfits Add - map credit displayed in lobby
   mapPath: /Maps/Misfits/Wendover.yml
   minPlayers: 0
   stations:

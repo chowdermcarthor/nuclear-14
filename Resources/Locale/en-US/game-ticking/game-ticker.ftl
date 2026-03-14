@@ -11,7 +11,7 @@ game-ticker-player-join-game-message = Welcome to Misfits: Nuclear Wasteland! If
 game-ticker-get-info-text = Hi and welcome to [color=white]Misfits: Nuclear Wasteland![/color]
                             The current round is: [color=white]#{$roundId}[/color]
                             The current player count is: [color=white]{$playerCount}[/color]
-                            The current map is: [color=white]{$mapName}[/color]
+                            The current map is: [color=white]{$mapName}[/color] by [color=white]{$mapAuthor}[/color]
                             The current game mode is: [color=white]{$gmTitle}[/color]
                             >[color=yellow]{$desc}[/color]
 game-ticker-get-info-preround-text = Hi and welcome to [color=white]Misfits: Nuclear Wasteland![/color]
@@ -20,10 +20,11 @@ game-ticker-get-info-preround-text = Hi and welcome to [color=white]Misfits: Nuc
                                 [one] is
                                 *[other] are
                             } ready)
-                            The current map is: [color=white]{$mapName}[/color]
+                            The current map is: [color=white]{$mapName}[/color] by [color=white]{$mapAuthor}[/color]
                             The current game mode is: [color=white]{$gmTitle}[/color]
                             >[color=yellow]{$desc}[/color]
 game-ticker-no-map-selected = [color=yellow]Map not yet selected![/color]
+game-ticker-unknown-map-author = Unknown
 game-ticker-player-no-jobs-available-when-joining = When attempting to join to the game, no jobs were available.
 game-ticker-welcome-to-the-station = You wake up somewhere in Utah.
 
