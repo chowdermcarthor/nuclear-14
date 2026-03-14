@@ -43,6 +43,22 @@ jobs:
         ROBUST_CDN_URL: ${{ secrets.ROBUST_CDN_URL }}
         GITHUB_REPOSITORY: ${{ vars.GITHUB_REPOSITORY }}
 
+    - name: Notify watchdog to update server
+      if: ${{ secrets.SERVER_SSH_KEY != '' }}
+      env:
+        SSH_KEY: ${{ secrets.SERVER_SSH_KEY }}
+        SERVER_HOST: ${{ secrets.SERVER_HOST }}
+        SERVER_USER: ${{ secrets.SERVER_USER }}
+        WATCHDOG_API_USER: ${{ secrets.WATCHDOG_API_USER }}
+        WATCHDOG_API_KEY: ${{ secrets.WATCHDOG_API_KEY }}
+      run: |
+        mkdir -p ~/.ssh
+        echo "$SSH_KEY" > ~/.ssh/deploy_key
+        chmod 600 ~/.ssh/deploy_key
+        ssh -o StrictHostKeyChecking=no -i ~/.ssh/deploy_key "$SERVER_USER@$SERVER_HOST" \
+          "curl -s -f -X POST -u '$WATCHDOG_API_USER:$WATCHDOG_API_KEY' http://localhost:5000/instances/NuclearWasteland/update"
+        rm -f ~/.ssh/deploy_key
+
     # - name: Publish changelog (Discord)
     #   run: Tools/actions_changelogs_since_last_run.py
     #   env:
