@@ -1,0 +1,24 @@
+<!-- #Misfits Add — Standalone ticket log window opened from the Staff tab -->
+<DefaultWindow
+    xmlns="https://spacestation14.io"
+    SetSize="700 450"
+    Title="{Loc misfits-ticket-log-window-title}">
+    <BoxContainer Orientation="Vertical" Margin="4" SeparationOverride="4">
+        <BoxContainer Orientation="Horizontal" SeparationOverride="8">
+            <Label Text="{Loc misfits-staff-tab-ticket-history-title}" StyleClasses="LabelHeading" />
+            <Control HorizontalExpand="True" />
+            <Button Name="RefreshTickets" Text="{Loc misfits-staff-tab-ticket-refresh}" MinWidth="100" />
+        </BoxContainer>
+        <!-- Column headers -->
+        <BoxContainer Orientation="Horizontal" SeparationOverride="4" Margin="0 4 0 2">
+            <Label Text="{Loc misfits-staff-tab-ticket-col-id}" MinWidth="60" StyleClasses="LabelSubText" />
+            <Label Text="{Loc misfits-staff-tab-ticket-col-player}" MinWidth="140" StyleClasses="LabelSubText" />
+            <Label Text="{Loc misfits-staff-tab-ticket-col-status}" MinWidth="120" StyleClasses="LabelSubText" />
+            <Label Text="{Loc misfits-staff-tab-ticket-col-claimed}" MinWidth="140" StyleClasses="LabelSubText" />
+            <Label Text="{Loc misfits-staff-tab-ticket-col-time}" MinWidth="120" StyleClasses="LabelSubText" />
+        </BoxContainer>
+        <ScrollContainer VerticalExpand="True" HScrollEnabled="False">
+            <BoxContainer Name="TicketListContainer" Orientation="Vertical" SeparationOverride="2" />
+        </ScrollContainer>
+    </BoxContainer>
+</DefaultWindow>

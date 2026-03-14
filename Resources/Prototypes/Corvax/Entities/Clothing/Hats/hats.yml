@@ -26,20 +26,21 @@
 #  - type: Clothing
 #    sprite: Corvax/Clothing/Head/Hats/InquisitorCap.rsi
 
+#Misfits Change /Fix/: Redirected sprites — Corvax NCRMPBeret.rsi and InquisitorCap.rsi removed (All Rights Reserved). Using _Nuclear14 NCR equivalents.
 - type: entity
   parent: ClothingHeadBase
   id: N14ClothingHeadHatNCRMPBeret
   components:
   - type: Sprite
-    sprite: Corvax/Clothing/Head/Hats/NCRMPBeret.rsi
+    sprite: _Nuclear14/Clothing/Head/FalloutHats/ncrberetofficer.rsi
   - type: Clothing
-    sprite: Corvax/Clothing/Head/Hats/NCRMPBeret.rsi
+    sprite: _Nuclear14/Clothing/Head/FalloutHats/ncrberetofficer.rsi
 
 - type: entity
   parent: ClothingHeadBase
   id: N14ClothingHeadHatNCRMPCap
   components:
   - type: Sprite
-    sprite: Corvax/Clothing/Head/Hats/InquisitorCap.rsi
+    sprite: _Nuclear14/Clothing/Head/FalloutHats/ncrsidecap.rsi
   - type: Clothing
-    sprite: Corvax/Clothing/Head/Hats/InquisitorCap.rsi
+    sprite: _Nuclear14/Clothing/Head/FalloutHats/ncrsidecap.rsi

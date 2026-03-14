@@ -34,7 +34,7 @@
           - MachineLayer
     - type: Transform
       noRot: true
-    - type: Craftable
+  # - type: Craftable  # #Misfits Remove: Stalker14 crafting system
     - type: Storage
       craft: true
       maxItemSize: Ginormous

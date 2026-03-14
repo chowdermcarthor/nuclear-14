@@ -1,3 +1,5 @@
+// #Misfits Remove: Stalker14 crafting system removed — copyrighted code, using SS14 base construction system instead
+#if false
 /*
 Copyright (C) 2025 Stalker14
 license:
@@ -22,3 +24,5 @@ namespace Content.Shared._NC.Crafting.Components
         public string? BlueprintId = null;
     }
 }
+
+#endif // Stalker14 crafting system disabled

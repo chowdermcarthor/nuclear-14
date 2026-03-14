@@ -54,7 +54,7 @@
         type: StorageBoundUserInterface
       enum.LatheUiKey.Key:
         type: LatheBoundUserInterface
-  - type: Craftable
+  # - type: Craftable  # #Misfits Remove: Stalker14 crafting system
   - type: Storage
     craft: true
     maxItemSize: Ginormous
@@ -228,7 +228,7 @@
         type: StorageBoundUserInterface
       enum.LatheUiKey.Key:
         type: LatheBoundUserInterface
-  - type: Craftable
+  # - type: Craftable  # #Misfits Remove: Stalker14 crafting system
   - type: Storage
     craft: true
     maxItemSize: Ginormous

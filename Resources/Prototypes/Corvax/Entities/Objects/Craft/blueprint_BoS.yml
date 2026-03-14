@@ -1,36 +1,37 @@
-- type: entity
-  parent: N14BaseBlueprint
-  id: N14ClothingOuterPowerArmorT60TeslaBlueprint
-  name: blueprint modernization T-60 power armor
-  suffix: Craft, BoS
-  components:
-    - type: STBlueprint
-      blueprint: N14ClothingOuterPowerArmorT60TeslaRecipe
-
+# #Misfits Remove: Stalker14 crafting system removed — copyrighted code
+# - type: entity
+#   parent: N14BaseBlueprint
+#   id: N14ClothingOuterPowerArmorT60TeslaBlueprint
+#   name: blueprint modernization T-60 power armor
+#   suffix: Craft, BoS
+#   components:
+#     - type: STBlueprint
+#       blueprint: N14ClothingOuterPowerArmorT60TeslaRecipe
+#
 #MARK: Armor
-- type: entity
-  parent: N14BaseBlueprintPaper
-  id: N14ClothingOuterMBoSInitiateArmorBlueprint
-  name: BoS Initiate Armor Blueprint
-  suffix: Craft, BoS
-  components:
-    - type: STBlueprint
-      blueprint: N14ClothingOuterMBoSInitiateArmorRecipe
-
-- type: entity
-  parent: N14BaseBlueprintPaper
-  id: N14ClothingOuterMidwestArmorBlueprint
-  name: BoS Combat Armor Blueprint
-  suffix: Craft, BoS
-  components:
-    - type: STBlueprint
-      blueprint: N14ClothingOuterMidwestArmorRecipe
-
-- type: entity
-  parent: N14BaseBlueprintPaper
-  id: N14ClothingOuterMidwestArmorMK2Blueprint
-  name: BoS MK2 Combat Armor Blueprint
-  suffix: Craft, BoS
-  components:
-    - type: STBlueprint
-      blueprint: N14ClothingOuterMidwestArmorMK2Recipe
+# - type: entity
+#   parent: N14BaseBlueprintPaper
+#   id: N14ClothingOuterMBoSInitiateArmorBlueprint
+#   name: BoS Initiate Armor Blueprint
+#   suffix: Craft, BoS
+#   components:
+#     - type: STBlueprint
+#       blueprint: N14ClothingOuterMBoSInitiateArmorRecipe
+#
+# - type: entity
+#   parent: N14BaseBlueprintPaper
+#   id: N14ClothingOuterMidwestArmorBlueprint
+#   name: BoS Combat Armor Blueprint
+#   suffix: Craft, BoS
+#   components:
+#     - type: STBlueprint
+#       blueprint: N14ClothingOuterMidwestArmorRecipe
+#
+# - type: entity
+#   parent: N14BaseBlueprintPaper
+#   id: N14ClothingOuterMidwestArmorMK2Blueprint
+#   name: BoS MK2 Combat Armor Blueprint
+#   suffix: Craft, BoS
+#   components:
+#     - type: STBlueprint
+#       blueprint: N14ClothingOuterMidwestArmorMK2Recipe

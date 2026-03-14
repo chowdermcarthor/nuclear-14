@@ -8,7 +8,7 @@
   components:
   - type: Sprite
     sprite: _Nuclear14/Objects/Misc/crafting_junk.rsi
-  - type: Craftable # Corvax-Change
+  # - type: Craftable # Corvax-Change  # #Misfits Remove: Stalker14 crafting system
   - type: Tag
     tags:
     - JunkItem

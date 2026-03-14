@@ -208,20 +208,22 @@
   items:
     - ClothingNeckPinNCRFirstlLieutenant
 
-- type: loadout
-  id: LoadoutNCRPinCaptain
-  category: Roles
-  cost: 1
-  exclusive: true
-  requirements:
-    - !type:CharacterJobRequirement
-      jobs:
-        - NCRLT
-    - !type:CharacterPlaytimeRequirement
-      tracker: NCROfficer
-      min: 144000 # 40 hours veterancy unlock
-  items:
-    - ClothingNeckPinNCRCaptain
+# Misfits Change /Comment-out/: LoadoutNCRPinCaptain superseded — NCRCaptain is now a separate job.
+# LoadoutNCRPinCaptainMisfits (bottom of file) correctly gates this to the NCRCaptain job.
+#- type: loadout
+#  id: LoadoutNCRPinCaptain
+#  category: Roles
+#  cost: 1
+#  exclusive: true
+#  requirements:
+#    - !type:CharacterJobRequirement
+#      jobs:
+#        - NCRLT
+#    - !type:CharacterPlaytimeRequirement
+#      tracker: NCROfficer
+#      min: 144000 # 40 hours veterancy unlock
+#  items:
+#    - ClothingNeckPinNCRCaptain
 
 - type: loadout
   id: LoadoutNCRPinMajor
@@ -231,10 +233,10 @@
   requirements:
     - !type:CharacterJobRequirement
       jobs:
-        - NCRLT
+        - NCRCaptain # Misfits Change /Fix/: was NCRLT — Major is above Captain, not Lieutenant
     - !type:CharacterPlaytimeRequirement
       tracker: NCROfficer
-      min: 216000 # 60 hours veterancy unlock
+      min: 72000 # 20 hours as Captain to display Major insignia
   items:
     - ClothingNeckPinNCRMajor
 
@@ -263,6 +265,7 @@
     - !type:CharacterJobRequirement
       jobs:
         - NCRMedic
+        - NCRDoctor # Misfits Change /Add/: NCRDoctor is a separate job, should also get the doctor pin
   items:
     - ClothingNeckPinNCRDoctor
 
@@ -275,6 +278,7 @@
     - !type:CharacterJobRequirement
       jobs:
         - NCRMedic # Forge-Change
+        - NCRDoctor # Misfits Change /Add/: NCRDoctor is a separate job, should also qualify
     - !type:CharacterPlaytimeRequirement
       tracker: NCRDoctor # Forge-Change
       min: 72000 # 20 hours veterancy unlock

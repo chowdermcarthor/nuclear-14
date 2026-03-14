@@ -9,7 +9,7 @@ using Content.Shared.DeltaV.Salvage.Systems; // DeltaV
 using Content.Shared.Lathe;
 using Content.Shared.Lathe.Prototypes;
 using Content.Shared.Materials;
-using Content.Shared._NC.Crafting.Components;
+// using Content.Shared._NC.Crafting.Components; // #Misfits Remove: Stalker14 crafting system
 using Content.Shared.Prototypes; // #Misfits Fix - HasComponent extension on EntityPrototype
 using Content.Shared.Research.Prototypes;
 using Robust.Shared.Prototypes;

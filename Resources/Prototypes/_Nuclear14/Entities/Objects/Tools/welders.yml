@@ -20,7 +20,7 @@
     color: orange
   - type: Cautery
     speed: 0.6
-  - type: Craftable # Corvax-Change
+  # - type: Craftable # Corvax-Change  # #Misfits Remove: Stalker14 crafting system
   - type: Tag # Corvax-Change
     tags:
       - N14Welder

@@ -151,11 +151,12 @@
   - type: Clothing
     sprite: Corvax/Clothing/Uniforms/Jumpsuit/shortjumpsuit.rsi
 
+#Misfits Change /Fix/: Redirected sprite — Corvax NCRMPUniform.rsi removed (All Rights Reserved). Using _Nuclear14 NCR MP uniform.
 - type: entity
   parent: N14ClothingUniformBase
   id: N14ClothingUniformJumpsuitNCRMP
   components:
   - type: Sprite
-    sprite: Corvax/Clothing/Uniforms/Jumpsuit/NCRMPUniform.rsi
+    sprite: _Nuclear14/Clothing/Uniforms/FalloutSuits/NCRmp.rsi
   - type: Clothing
-    sprite: Corvax/Clothing/Uniforms/Jumpsuit/NCRMPUniform.rsi
+    sprite: _Nuclear14/Clothing/Uniforms/FalloutSuits/NCRmp.rsi

@@ -67,7 +67,7 @@
     price: 8
   - type: FollowDistance
     backStrength: 6
-  - type: Craftable
+  # - type: Craftable  # #Misfits Remove: Stalker14 crafting system
 
 - type: entity
   name: N14BaseInternalPistol

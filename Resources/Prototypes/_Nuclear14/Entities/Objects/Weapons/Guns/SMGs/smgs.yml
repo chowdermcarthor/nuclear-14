@@ -14,7 +14,7 @@
     backStrength: 6
   - type: StaticPrice
     price: 100
-  - type: Craftable
+  # - type: Craftable  # #Misfits Remove: Stalker14 crafting system
 
 - type: entity
   name: 10mm SMG

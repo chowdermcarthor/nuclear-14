@@ -60,6 +60,9 @@ misfits-staff-tab-ticket-col-player = Player
 misfits-staff-tab-ticket-col-status = Status
 misfits-staff-tab-ticket-col-claimed = Claimed By
 misfits-staff-tab-ticket-col-time = Time
+misfits-staff-tab-ticket-log-btn = Ticket Log
+misfits-staff-tab-ticket-log-desc = View all current-round tickets (open, claimed, resolved).
+misfits-ticket-log-window-title = Ticket Log
 
 # Admin tab button descriptions
 misfits-admin-tab-kick-desc = Open the player actions panel (kick, warn, etc.)

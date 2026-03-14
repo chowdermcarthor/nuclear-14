@@ -14,7 +14,7 @@
       - RawMaterial
   - type: Damageable
     damageContainer: Inorganic
-  - type: Craftable
+  # - type: Craftable  # #Misfits Remove: Stalker14 crafting system
   - type: Destructible
     thresholds:
     - trigger:

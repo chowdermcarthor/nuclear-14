@@ -1,72 +1,73 @@
-- type: entity
-  parent: N14BaseBlueprint
-  id: N14ClothingOuterPowerArmorT45NCRBlueprint
-  name: blueprint removal servo drives of the T-45
-  suffix: Craft, NCR
-  components:
-    - type: STBlueprint
-      blueprint: N14ClothingOuterPowerArmorT45NCRRecipe
-
-- type: entity
-  parent: N14BaseBlueprint
-  id: N14ClothingOuterPowerArmorT51NCRBlueprint
-  name: blueprint removal servo drives of the T-51
-  suffix: Craft, NCR
-  components:
-    - type: STBlueprint
-      blueprint: N14ClothingOuterPowerArmorT51NCRRecipe
-
-- type: entity
-  parent: N14BaseBlueprint
-  id: N14ClothingOuterPowerArmorT60NCRBlueprint
-  name: blueprint removal servo drives of the T-60
-  suffix: Craft, NCR
-  components:
-    - type: STBlueprint
-      blueprint: N14ClothingOuterPowerArmorT60NCRRecipe
-
-- type: entity
-  parent: N14BaseBlueprint
-  id: N14ClothingOuterPowerArmorRaiderBlueprint
-  name: blueprint removal servo drives of the Raider
-  suffix: Craft, NCR
-  components:
-    - type: STBlueprint
-      blueprint: N14ClothingOuterPowerArmorRaiderNCRRecipe
-
-- type: entity
-  parent: N14BaseBlueprint
-  id: N14ClothingOuterPowerArmorAdvanced1NCRBlueprint
-  name: blueprint removal servo drives of the X-01
-  suffix: Craft, NCR
-  components:
-    - type: STBlueprint
-      blueprint: N14ClothingOuterPowerArmorAdvanced1NCRRecipe
-
+# #Misfits Remove: Stalker14 crafting system removed — copyrighted code
+# - type: entity
+#   parent: N14BaseBlueprint
+#   id: N14ClothingOuterPowerArmorT45NCRBlueprint
+#   name: blueprint removal servo drives of the T-45
+#   suffix: Craft, NCR
+#   components:
+#     - type: STBlueprint
+#       blueprint: N14ClothingOuterPowerArmorT45NCRRecipe
+#
+# - type: entity
+#   parent: N14BaseBlueprint
+#   id: N14ClothingOuterPowerArmorT51NCRBlueprint
+#   name: blueprint removal servo drives of the T-51
+#   suffix: Craft, NCR
+#   components:
+#     - type: STBlueprint
+#       blueprint: N14ClothingOuterPowerArmorT51NCRRecipe
+#
+# - type: entity
+#   parent: N14BaseBlueprint
+#   id: N14ClothingOuterPowerArmorT60NCRBlueprint
+#   name: blueprint removal servo drives of the T-60
+#   suffix: Craft, NCR
+#   components:
+#     - type: STBlueprint
+#       blueprint: N14ClothingOuterPowerArmorT60NCRRecipe
+#
+# - type: entity
+#   parent: N14BaseBlueprint
+#   id: N14ClothingOuterPowerArmorRaiderBlueprint
+#   name: blueprint removal servo drives of the Raider
+#   suffix: Craft, NCR
+#   components:
+#     - type: STBlueprint
+#       blueprint: N14ClothingOuterPowerArmorRaiderNCRRecipe
+#
+# - type: entity
+#   parent: N14BaseBlueprint
+#   id: N14ClothingOuterPowerArmorAdvanced1NCRBlueprint
+#   name: blueprint removal servo drives of the X-01
+#   suffix: Craft, NCR
+#   components:
+#     - type: STBlueprint
+#       blueprint: N14ClothingOuterPowerArmorAdvanced1NCRRecipe
+#
 #MARK: Armor
-- type: entity
-  parent: N14BaseBlueprintPaper
-  id: N14ClothingOuterNCRVestDesertBlueprint
-  name: blueprint NCR vest desert
-  suffix: Craft, NCR
-  components:
-    - type: STBlueprint
-      blueprint: N14ClothingOuterNCRVestDesertRecipe
-
-- type: entity
-  parent: N14BaseBlueprintPaper
-  id: N14ClothingOuterNCRCombatArmorBlueprint
-  name: blueprint NCR combat armor
-  suffix: Craft, NCR
-  components:
-    - type: STBlueprint
-      blueprint: N14ClothingOuterNCRCombatArmorRecipe
-
-- type: entity
-  parent: N14BaseBlueprintPaper
-  id: N14ClothingOuterNCRCombatArmorMK2Blueprint
-  name: blueprint NCR MK2 combat armor
-  suffix: Craft, NCR
-  components:
-    - type: STBlueprint
-      blueprint: N14ClothingOuterNCRCombatArmorMK2Recipe
+# - type: entity
+#   parent: N14BaseBlueprintPaper
+#   id: N14ClothingOuterNCRVestDesertBlueprint
+#   name: blueprint NCR vest desert
+#   suffix: Craft, NCR
+#   components:
+#     - type: STBlueprint
+#       blueprint: N14ClothingOuterNCRVestDesertRecipe
+#
+# - type: entity
+#   parent: N14BaseBlueprintPaper
+#   id: N14ClothingOuterNCRCombatArmorBlueprint
+#   name: blueprint NCR combat armor
+#   suffix: Craft, NCR
+#   components:
+#     - type: STBlueprint
+#       blueprint: N14ClothingOuterNCRCombatArmorRecipe
+#
+# - type: entity
+#   parent: N14BaseBlueprintPaper
+#   id: N14ClothingOuterNCRCombatArmorMK2Blueprint
+#   name: blueprint NCR MK2 combat armor
+#   suffix: Craft, NCR
+#   components:
+#     - type: STBlueprint
+#       blueprint: N14ClothingOuterNCRCombatArmorMK2Recipe

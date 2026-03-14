@@ -38,7 +38,7 @@
     backStrength: 5
   - type: Wieldable
     wieldedSpeedModifier: 0.82
-  - type: Craftable
+  # - type: Craftable  # #Misfits Remove: Stalker14 crafting system
 
 - type: entity
   name: shotgun

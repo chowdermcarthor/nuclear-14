@@ -9,7 +9,7 @@
     - outerClothing
   - type: Sprite
     state: icon
-  - type: Craftable
+  # - type: Craftable  # #Misfits Remove: Stalker14 crafting system
   - type: Storage
     grid:
     - 0,0,2,1

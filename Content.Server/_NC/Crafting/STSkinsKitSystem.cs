@@ -1,3 +1,5 @@
+// #Misfits Remove: Stalker14 crafting system removed — copyrighted code, using SS14 base construction system instead
+#if false
 /*
 Copyright (C) 2025 Stalker14
 license:
@@ -78,3 +80,5 @@ public sealed class STSkinsKitSystem : EntitySystem
         }
     }
 }
+
+#endif // Stalker14 crafting system disabled

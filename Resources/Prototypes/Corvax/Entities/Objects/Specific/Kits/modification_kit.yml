@@ -11,8 +11,8 @@
     - state: gear
   - type: Item
     size: Normal
-  - type: Craftable
-  - type: STSkinsKit
+  # - type: Craftable  # #Misfits Remove: Stalker14 crafting system
+  # - type: STSkinsKit  # #Misfits Remove: Stalker14 crafting system
 
 - type: entity
   id: N14ModificationkitRevolver44Tribal

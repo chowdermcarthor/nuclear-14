@@ -13,7 +13,7 @@ using Content.Shared.Atmos;
 using Content.Shared.Chemistry.Components;
 using Content.Shared.Chemistry.EntitySystems;
 using Content.Shared.Chemistry.Reagent;
-using Content.Shared.Crafting.Prototypes;
+// using Content.Shared.Crafting.Prototypes; // #Misfits Remove: Stalker14 crafting system
 using Content.Shared.UserInterface;
 using Content.Shared.Database;
 using Content.Shared.Emag.Components;
@@ -21,7 +21,7 @@ using Content.Shared.Examine;
 using Content.Shared.Lathe;
 using Content.Shared.Materials;
 using Content.Shared.Storage;
-using Content.Shared._NC.Crafting.Components;
+// using Content.Shared._NC.Crafting.Components; // #Misfits Remove: Stalker14 crafting system
 using Content.Shared.Power;
 using Content.Shared.ReagentSpeed;
 using Content.Shared.Research.Components;
@@ -173,37 +173,14 @@ namespace Content.Server.Lathe
             };
             RaiseLocalEvent(uid, ev);
 
-            AddStorageBlueprintRecipes(uid, ev.Recipes);
+            // #Misfits Remove: Stalker14 blueprint recipe integration removed
+            // AddStorageBlueprintRecipes(uid, ev.Recipes);
 
             return ev.Recipes;
         }
 
-        private void AddStorageBlueprintRecipes(EntityUid uid, List<ProtoId<LatheRecipePrototype>> recipes)
-        {
-            if (!TryComp<StorageComponent>(uid, out var storage))
-                return;
-
-            foreach (var stored in storage.Container.ContainedEntities)
-            {
-                if (!TryComp<STBlueprintComponent>(stored, out var blueprint) || string.IsNullOrWhiteSpace(blueprint.BlueprintId))
-                    continue;
-
-                if (!_proto.TryIndex<CraftingPrototype>(blueprint.BlueprintId, out var craftingProto))
-                    continue;
-
-                foreach (var resultProto in craftingProto.ResultProtos)
-                {
-                    if (!TryGetRecipesFromEntity(resultProto, out var latheRecipes))
-                        continue;
-
-                    foreach (var latheRecipe in latheRecipes)
-                    {
-                        if (!recipes.Contains(latheRecipe.ID))
-                            recipes.Add(latheRecipe.ID);
-                    }
-                }
-            }
-        }
+        // #Misfits Remove: Stalker14 blueprint recipe integration removed — copyrighted code
+        // private void AddStorageBlueprintRecipes(...) { ... }
 
         public static List<ProtoId<LatheRecipePrototype>> GetAllBaseRecipes(LatheComponent component)
         {
@@ -377,10 +354,9 @@ namespace Content.Server.Lathe
 
         private void OnStorageContainerModified(EntityUid uid, LatheComponent component, ref EntInsertedIntoContainerMessage args)
         {
-            // #Misfits Fix: Refresh UI state when blueprints (recipe list changes) or
-            // physical material entities (canProduce / available material amounts change)
-            // are inserted into storage.
-            if (!HasComp<STBlueprintComponent>(args.Entity) && !HasComp<MaterialComponent>(args.Entity))
+            // #Misfits Fix: Refresh UI state when physical material entities
+            // (canProduce / available material amounts change) are inserted into storage.
+            if (!HasComp<MaterialComponent>(args.Entity))
                 return;
 
             UpdateUserInterfaceState(uid, component);
@@ -388,9 +364,9 @@ namespace Content.Server.Lathe
 
         private void OnStorageContainerModified(EntityUid uid, LatheComponent component, ref EntRemovedFromContainerMessage args)
         {
-            // #Misfits Fix: Same as insertion - refresh when blueprints or material
+            // #Misfits Fix: Same as insertion - refresh when material
             // entities are removed so available amounts are recalculated.
-            if (!HasComp<STBlueprintComponent>(args.Entity) && !HasComp<MaterialComponent>(args.Entity))
+            if (!HasComp<MaterialComponent>(args.Entity))
                 return;
 
             UpdateUserInterfaceState(uid, component);

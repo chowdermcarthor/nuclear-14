@@ -7,7 +7,7 @@
     backStrength: 6
   - type: StaticPrice
     price: 20
-  - type: Craftable
+  # - type: Craftable  # #Misfits Remove: Stalker14 crafting system
 
 - type: entity
   name: 9mm revolver

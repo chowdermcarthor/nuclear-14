@@ -30,7 +30,7 @@
     steps: 2
     zeroVisible: false
   - type: Appearance
-  - type: Craftable
+  # - type: Craftable  # #Misfits Remove: Stalker14 crafting system
 
 - type: entity
   id: Magazine556Rifle

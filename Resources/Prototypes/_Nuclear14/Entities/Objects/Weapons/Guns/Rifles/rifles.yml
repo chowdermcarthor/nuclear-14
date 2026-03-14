@@ -28,7 +28,7 @@
     backStrength: 4 # Corvax-Change
   - type: StaticPrice
     price: 100
-  - type: Craftable
+  # - type: Craftable  # #Misfits Remove: Stalker14 crafting system
 
 - type: entity
   name: R-91 Rifle

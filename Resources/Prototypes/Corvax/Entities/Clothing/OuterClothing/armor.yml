@@ -359,14 +359,15 @@
 #  - type: ExplosionResistance
 #    damageCoefficient: 0.8
 
+#Misfits Change /Fix/: Redirected sprite — Corvax falloutNCRpaddedwebvest.rsi removed (All Rights Reserved). Using _Nuclear14 NCR web vest.
 - type: entity
   parent: N14ClothingOuterNCRVestDesert
   id: N14ClothingOuterNCRVestpaddedWebDesert
   components:
   - type: Sprite
-    sprite: Corvax/Clothing/OuterClothing/Armor/falloutNCRpaddedwebvest.rsi
+    sprite: _Nuclear14/Clothing/OuterClothing/Armor/falloutNCRwebvest.rsi
   - type: Clothing
-    sprite: Corvax/Clothing/OuterClothing/Armor/falloutNCRpaddedwebvest.rsi
+    sprite: _Nuclear14/Clothing/OuterClothing/Armor/falloutNCRwebvest.rsi
   - type: Armor
     modifiers:
       coefficients:
@@ -388,14 +389,15 @@
       enum.StorageUiKey.Key:
         type: StorageBoundUserInterface
 
+#Misfits Change /Fix/: Redirected sprite — Corvax falloutNCRveteranarmor.rsi removed (All Rights Reserved). Using _Nuclear14 NCR plate vest.
 - type: entity
   parent: N14ClothingOuterNCRVestDesert
   id: N14ClothingOuterNCRVeteranArmorDesert
   components:
   - type: Sprite
-    sprite: Corvax/Clothing/OuterClothing/Armor/falloutNCRveteranarmor.rsi
+    sprite: _Nuclear14/Clothing/OuterClothing/Armor/falloutNCRplatevest.rsi
   - type: Clothing
-    sprite: Corvax/Clothing/OuterClothing/Armor/falloutNCRveteranarmor.rsi
+    sprite: _Nuclear14/Clothing/OuterClothing/Armor/falloutNCRplatevest.rsi
   - type: Armor
     modifiers:
       coefficients:
@@ -406,14 +408,15 @@
   - type: ExplosionResistance
     damageCoefficient: 0.9
 
+#Misfits Change /Fix/: Redirected sprite — Corvax falloutcombatveteranNCR.rsi removed (All Rights Reserved). Using _Nuclear14 NCR combat armor mk2.
 - type: entity
   parent: N14ClothingOuterNCRCombatArmor
   id: N14ClothingOuterNCRCombatVeteranArmorDesert
   components:
   - type: Sprite
-    sprite: Corvax/Clothing/OuterClothing/Armor/falloutcombatveteranNCR.rsi
+    sprite: _Nuclear14/Clothing/OuterClothing/Armor/falloutcombatNCRmk2.rsi
   - type: Clothing
-    sprite: Corvax/Clothing/OuterClothing/Armor/falloutcombatveteranNCR.rsi
+    sprite: _Nuclear14/Clothing/OuterClothing/Armor/falloutcombatNCRmk2.rsi
   - type: Armor
     modifiers:
       coefficients:
@@ -443,14 +446,15 @@
 #  - type: ExplosionResistance
 #    damageCoefficient: 0.75
 
+#Misfits Change /Fix/: Redirected sprite — Corvax NCRMPArmorWest.rsi removed (All Rights Reserved). Using _Nuclear14 NCR vest.
 - type: entity
   parent: N14FalloutArmorBase
   id: N14ClothingOuterNCRMPArmorWest
   components:
   - type: Sprite
-    sprite: Corvax/Clothing/OuterClothing/Armor/NCRMPArmorWest.rsi
+    sprite: _Nuclear14/Clothing/OuterClothing/Armor/falloutNCRvest.rsi
   - type: Clothing
-    sprite: Corvax/Clothing/OuterClothing/Armor/NCRMPArmorWest.rsi
+    sprite: _Nuclear14/Clothing/OuterClothing/Armor/falloutNCRvest.rsi
   - type: TemperatureProtection
     coefficient: 0.2
   - type: Armor

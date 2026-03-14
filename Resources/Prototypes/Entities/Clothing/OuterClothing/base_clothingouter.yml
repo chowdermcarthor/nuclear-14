@@ -8,7 +8,7 @@
     - outerClothing
   - type: Sprite
     state: icon
-  - type: Craftable # Corvax-Change
+  # - type: Craftable # Corvax-Change  # #Misfits Remove: Stalker14 crafting system
 
 - type: entity
   abstract: true
