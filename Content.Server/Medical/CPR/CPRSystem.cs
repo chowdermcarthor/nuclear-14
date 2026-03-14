@@ -94,17 +94,13 @@ public sealed class CPRSystem : EntitySystem
 
         // #Misfits Change Add: surface CPR attempts to nearby players in the emote channel.
         var targetName = Identity.Entity(target, EntityManager);
-        var performerName = Identity.Entity(performer, EntityManager);
         _chat.TrySendInGameICMessage(performer,
             Loc.GetString("misfits-chat-cpr-start", ("target", targetName)),
             InGameICChatType.Emote,
             ChatTransmitRange.Normal,
             ignoreActionBlocker: true);
-        _chat.TrySendInGameICMessage(target,
-            Loc.GetString("misfits-chat-cpr-victim", ("user", performerName)),
-            InGameICChatType.Emote,
-            ChatTransmitRange.Normal,
-            ignoreActionBlocker: true);
+        // #Misfits Fix: removed victim emote — emote system prepends entity name which caused
+        // broken formatting and "you" is wrong for a message visible to everyone.
 
         var playingStream = _audio.PlayPvs(performer.Comp.CPRSound, performer, AudioParams.Default);
         if (!playingStream.HasValue)

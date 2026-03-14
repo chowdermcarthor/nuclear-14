@@ -242,7 +242,6 @@ public sealed class FoodSystem : EntitySystem
     // #Misfits Change Add: keep coercive feeding visible even when sprite overlap hides the action.
     private void TrySendForcedFeedingEmotes(EntityUid user, EntityUid target, EntityUid food)
     {
-        var userName = Identity.Entity(user, EntityManager);
         var targetName = Identity.Entity(target, EntityManager);
         var foodName = Identity.Entity(food, EntityManager);
 
@@ -251,11 +250,9 @@ public sealed class FoodSystem : EntitySystem
             InGameICChatType.Emote,
             ChatTransmitRange.Normal,
             ignoreActionBlocker: true);
-        _chat.TrySendInGameICMessage(target,
-            Loc.GetString("misfits-chat-force-feed-victim", ("user", userName), ("item", foodName)),
-            InGameICChatType.Emote,
-            ChatTransmitRange.Normal,
-            ignoreActionBlocker: true);
+        // #Misfits Fix: removed victim emote — it broke because the emote system prepends the
+        // entity name, causing "TargetName UserName is trying to force you…" and "you" is wrong
+        // for a message visible to everyone. The user emote above already covers it.
     }
 
     private void OnDoAfter(Entity<FoodComponent> entity, ref ConsumeDoAfterEvent args)

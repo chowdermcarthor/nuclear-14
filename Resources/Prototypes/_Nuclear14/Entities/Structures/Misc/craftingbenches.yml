@@ -275,8 +275,8 @@
     - WoodenBuckler
     # Forge-Change-Start
     # Blueprints
-    - N14ClothingOuterCombatArmorBlueprint
-    - N14ClothingOuterCombatArmorMK2Blueprint
+    #- N14ClothingOuterCombatArmorBlueprint  # #Misfits Remove: Blueprint recipe deleted with Stalker14 crafting system
+    #- N14ClothingOuterCombatArmorMK2Blueprint  # #Misfits Remove: Blueprint recipe deleted with Stalker14 crafting system
     # Forge-Change-End
     # #Misfits Fix: Faction armor blueprint printing recipes REMOVED from staticRecipes.
     # Blueprint items are world-found. Placing one in storage dynamically unlocks the

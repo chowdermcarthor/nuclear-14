@@ -91,8 +91,8 @@ misfits-chat-gib-part-3 = has their {$part} ripped into bloody chunks.
 ## DoubleGrabSystem
 # Carrier locks the victim into an active carry hold.
 misfits-chat-double-grab-cinch = pins {$victim} in a firm grip
-# Emote from the victim when they are picked up.
-misfits-chat-double-grab-victim = is forcibly picked up by {$carrier}
+# #Misfits Fix: victim emote removed — redundant with performer's "pins" emote above.
+# misfits-chat-double-grab-victim = is forcibly picked up by {$carrier}
 # Victim breaks free during the pending-grab phase.
 misfits-chat-double-grab-resist = breaks free from {$carrier}'s grip
 # Victim gasps while being choked during an active carry.

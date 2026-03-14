@@ -239,7 +239,6 @@ public sealed class DrinkSystem : SharedDrinkSystem
     // #Misfits Change Add: mirror force-drink attempts into the same emote channel used by other coercive actions.
     private void TrySendForcedDrinkingEmotes(EntityUid user, EntityUid target, EntityUid item)
     {
-        var userName = Identity.Entity(user, EntityManager);
         var targetName = Identity.Entity(target, EntityManager);
         var itemName = Identity.Entity(item, EntityManager);
 
@@ -248,11 +247,9 @@ public sealed class DrinkSystem : SharedDrinkSystem
             InGameICChatType.Emote,
             ChatTransmitRange.Normal,
             ignoreActionBlocker: true);
-        _chat.TrySendInGameICMessage(target,
-            Loc.GetString("misfits-chat-force-drink-victim", ("user", userName), ("item", itemName)),
-            InGameICChatType.Emote,
-            ChatTransmitRange.Normal,
-            ignoreActionBlocker: true);
+        // #Misfits Fix: removed victim emote — emote system prepends entity name which caused
+        // broken formatting ("TargetName UserName is trying to force you…") and "you" is wrong
+        // for a message visible to everyone. The user emote above already covers it.
     }
 
     /// <summary>

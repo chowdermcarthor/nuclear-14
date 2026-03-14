@@ -52,7 +52,6 @@ public sealed class ThrowImpactChatSystem : EntitySystem
 
         var targetName = Identity.Entity(uid, EntityManager);
         var itemName = Identity.Entity(args.Thrown, EntityManager);
-        var userName = Identity.Entity(user, EntityManager);
 
         if (TryComp<DamageOtherOnHitComponent>(args.Thrown, out var damage) && IsPoisonous(damage))
         {
@@ -61,12 +60,8 @@ public sealed class ThrowImpactChatSystem : EntitySystem
                 InGameICChatType.Emote,
                 ChatTransmitRange.Normal,
                 ignoreActionBlocker: true);
-
-            _chat.TrySendInGameICMessage(uid,
-                Loc.GetString("misfits-chat-throw-poison-hit-victim", ("user", userName), ("item", itemName)),
-                InGameICChatType.Emote,
-                ChatTransmitRange.Normal,
-                ignoreActionBlocker: true);
+            // #Misfits Fix: removed redundant victim emote — performer's emote already
+            // communicates the hit to everyone nearby.
             return;
         }
 
@@ -75,12 +70,8 @@ public sealed class ThrowImpactChatSystem : EntitySystem
             InGameICChatType.Emote,
             ChatTransmitRange.Normal,
             ignoreActionBlocker: true);
-
-        _chat.TrySendInGameICMessage(uid,
-            Loc.GetString("misfits-chat-throw-hit-victim", ("user", userName), ("item", itemName)),
-            InGameICChatType.Emote,
-            ChatTransmitRange.Normal,
-            ignoreActionBlocker: true);
+        // #Misfits Fix: removed redundant victim emote — performer's emote already
+        // communicates the hit to everyone nearby.
     }
 
     private static bool IsPoisonous(DamageOtherOnHitComponent component)

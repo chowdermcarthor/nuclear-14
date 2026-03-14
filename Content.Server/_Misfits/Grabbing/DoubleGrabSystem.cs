@@ -179,12 +179,8 @@ public sealed class DoubleGrabSystem : EntitySystem
             InGameICChatType.Emote,
             ChatTransmitRange.Normal,
             ignoreActionBlocker: true);
-
-        _chat.TrySendInGameICMessage(victim,
-            Loc.GetString("misfits-chat-double-grab-victim", ("carrier", Identity.Entity(carrier, EntityManager))),
-            InGameICChatType.Emote,
-            ChatTransmitRange.Normal,
-            ignoreActionBlocker: true);
+        // #Misfits Fix: removed redundant victim emote — performer's "pins {victim} in a firm grip"
+        // already communicates the action to everyone nearby.
 
         if (TryComp<CarryingSlowdownComponent>(carrier, out var slowdown))
             _carryingSlowdown.SetModifier(carrier, grab.CarrySpeedModifier, grab.CarrySpeedModifier, slowdown);
