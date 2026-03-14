@@ -1,4 +1,4 @@
-]633;E;{ echo "$HEADER"\x3b sed 's/^/#/' "Resources/Prototypes/Corvax/Loadouts/sponsor.yml"\x3b } > /tmp/ls_tmp.yml;eb05ffb1-3932-4db4-84df-2fcf0721dd1b]633;C#Misfits Change /Remove/: Entire file commented out — all loadouts reference entities that used Corvax All Rights Reserved sprites.
+#Misfits Change /Remove/: Entire file commented out — all loadouts reference entities that used Corvax All Rights Reserved sprites.
 #
 #- type: loadout
 #  id: LoadoutNCRN14ClothingHeadHatRangerHelmetSnowFox2

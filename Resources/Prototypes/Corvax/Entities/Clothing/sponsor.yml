@@ -1,4 +1,4 @@
-]633;E;{ echo "$HEADER"\x3b sed 's/^/#/' "Resources/Prototypes/Corvax/Entities/Clothing/sponsor.yml"\x3b } > /tmp/sponsor_tmp.yml;eb05ffb1-3932-4db4-84df-2fcf0721dd1b]633;C#Misfits Change /Remove/: Entire file commented out — all entities used Corvax sprites removed due to All Rights Reserved license (no clean replacement for sponsor cosmetics).
+#Misfits Change /Remove/: Entire file commented out — all entities used Corvax sprites removed due to All Rights Reserved license (no clean replacement for sponsor cosmetics).
 #- type: entity
 #  parent: N14ClothingOuterRangerCombat
 #  id: N14ClothingOuterRangerSnowFox

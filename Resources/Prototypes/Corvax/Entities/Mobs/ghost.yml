@@ -1,4 +1,4 @@
-]633;E;{ echo "$HEADER"\x3b sed 's/^/#/' "Resources/Prototypes/Corvax/Entities/Mobs/ghost.yml"\x3b } > /tmp/ghost_tmp.yml;eb05ffb1-3932-4db4-84df-2fcf0721dd1b]633;C#Misfits Change /Remove/: Entire file commented out — sponsor ghost sprites from Corvax removed due to All Rights Reserved license.
+#Misfits Change /Remove/: Entire file commented out — sponsor ghost sprites from Corvax removed due to All Rights Reserved license.
 #- type: entity
 #  parent: MobObserver
 #  id: SponsorGhost1

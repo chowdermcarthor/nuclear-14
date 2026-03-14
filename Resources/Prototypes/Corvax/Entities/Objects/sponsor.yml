@@ -1,4 +1,4 @@
-]633;E;{ echo "$HEADER"\x3b sed 's/^/#/' "Resources/Prototypes/Corvax/Entities/Objects/sponsor.yml"\x3b } > /tmp/objsponsor_tmp.yml;eb05ffb1-3932-4db4-84df-2fcf0721dd1b]633;C#Misfits Change /Remove/: Entire file commented out — N14PipboyGold and children used goldPipboy.rsi (All Rights Reserved). No sprite replacement available.
+#Misfits Change /Remove/: Entire file commented out — N14PipboyGold and children used goldPipboy.rsi (All Rights Reserved). No sprite replacement available.
 #- type: entity
 #  parent: N14BasePipboy
 #  id: N14PipboyGold
