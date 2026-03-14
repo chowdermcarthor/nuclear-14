@@ -1619,3 +1619,32 @@ Entries:
   id: 5645
   time: '2026-03-14T06:32:49.0000000+00:00'
   url: https://github.com/Misfit-Sanctuary/nuclear-14/pull/127
+- author: cythisiax
+  changes:
+    - type: Fix
+      message: Pip-Boy messaging working in "Pip-Boy Messenger" now.
+    - type: Fix
+      message: chatsanitizer comments again.
+    - type: Fix
+      message: >-
+        chronic pain localization added. No more (chronic-pain-0) Reduced time
+        from 5s > 2 minutes/5 Minutes. No more spam.
+    - type: Fix
+      message: Adjusted vote manager to make sense.
+    - type: Tweak
+      message: Vault Doctors now get carbon on loadout job.
+    - type: Tweak
+      message: >-
+        Reduced ambient distant gunshots from other players 200 meters > 50
+        meters.
+    - type: Tweak
+      message: Total character name length from 64 > 37.
+    - type: Add
+      message: 'Name sanitizer system. '
+    - type: Add
+      message: >-
+        For staff, admin help, mentor help now have ticket system & logged in
+        "Staff" section for Hosts. (PHDR)
+  id: 5646
+  time: '2026-03-14T11:31:31.0000000+00:00'
+  url: https://github.com/Misfit-Sanctuary/nuclear-14/pull/128
