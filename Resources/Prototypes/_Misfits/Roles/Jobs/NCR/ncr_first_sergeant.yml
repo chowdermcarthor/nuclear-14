@@ -45,7 +45,7 @@
     jumpsuit: N14ClothingOfficerUniformNCRDesert # Corvax-Change
     shoes: N14ClothingBootsCombatFilled
     ears: N14ClothingHeadsetNCR # #Misfits Add - NCR radio earpiece
-    neck: ClothingNeckPinNCRMasterSergeant # #Misfits Change - rank pin instead of generic mantle
+    neck: ClothingNeckPinNCRSergeant1st # #Misfits Change - sergeant first class pin for SFC rank
     belt: ClothingBeltNCR
     outerClothing: N14ClothingOuterNCRCombatArmor
     pocket1: NCRfirstsergeantloadoutkits

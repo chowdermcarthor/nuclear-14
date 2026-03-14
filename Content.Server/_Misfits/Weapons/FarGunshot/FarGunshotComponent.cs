@@ -17,13 +17,13 @@ public sealed partial class FarGunshotComponent : Component
     /// Below this, the normal PVS gunshot covers it.
     /// </summary>
     [DataField]
-    public float MinDistance = 20f;
+    public float MinDistance = 10f; // #Misfits Tweak - reduced from 20 to keep far sounds closer-range
 
     /// <summary>
     /// Maximum tile distance at which any far sound is heard at all.
     /// </summary>
     [DataField]
-    public float MaxDistance = 200f;
+    public float MaxDistance = 50f; // #Misfits Tweak - reduced from 200; 200 tiles was way too far
 
     /// <summary>
     /// Optional override for the distant sound.

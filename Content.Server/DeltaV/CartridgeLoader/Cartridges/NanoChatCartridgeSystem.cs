@@ -374,15 +374,23 @@ public sealed class NanoChatCartridgeSystem : EntitySystem
         foreach (var recipient in foundRecipients)
         {
             // Find any cartridges that have this card
-            var cartridgeQuery = EntityQueryEnumerator<NanoChatCartridgeComponent, ActiveRadioComponent>();
-            while (cartridgeQuery.MoveNext(out var receiverUid, out var receiverCart, out _))
+            var cartridgeQuery = EntityQueryEnumerator<NanoChatCartridgeComponent, ActiveRadioComponent, CartridgeComponent>();
+            while (cartridgeQuery.MoveNext(out var receiverUid, out var receiverCart, out _, out var receiverCartridge))
             {
                 if (receiverCart.Card != recipient.Owner)
                     continue;
 
+                // #Misfits Fix - Resolve station from the PDA (loader) entity, not the cartridge itself.
+                // Cartridges are containerized inside PDA entities and have invalid GridUid,
+                // causing GetOwningStation() to return null. Use the loader (PDA) instead.
+                var recipientEntity = receiverCartridge.LoaderUid ?? receiverUid;
+                var senderEntity = TryComp<CartridgeComponent>(sender, out var senderCartridge)
+                    ? senderCartridge.LoaderUid ?? sender.Owner
+                    : sender.Owner;
+
                 // Check if devices are on same station/map
-                var recipientStation = _station.GetOwningStation(receiverUid);
-                var senderStation = _station.GetOwningStation(sender);
+                var recipientStation = _station.GetOwningStation(recipientEntity);
+                var senderStation = _station.GetOwningStation(senderEntity);
 
                 // Both entities must be on a station
                 if (recipientStation == null || senderStation == null)

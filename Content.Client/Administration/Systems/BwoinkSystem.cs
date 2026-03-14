@@ -1,5 +1,7 @@
 ﻿#nullable enable
+using System.Linq; // #Misfits Add — for LINQ ticket filtering
 using Content.Client.UserInterface.Systems.Bwoink;
+using Content.Shared._Misfits.Administration; // #Misfits Add — ticket system types
 using Content.Shared.Administration;
 using JetBrains.Annotations;
 using Robust.Client.Audio;
@@ -19,9 +21,52 @@ namespace Content.Client.Administration.Systems
         public event EventHandler<BwoinkTextMessage>? OnBwoinkTextMessageRecieved;
         private (TimeSpan Timestamp, bool Typing) _lastTypingUpdateSent;
 
+        // #Misfits Add — ticket events for the UI
+        public event Action<HelpTicketInfo>? OnTicketUpdated;
+        public event Action<List<HelpTicketInfo>>? OnTicketListReceived;
+
+        public override void Initialize()
+        {
+            base.Initialize();
+
+            // #Misfits Add — subscribe to ticket messages from server
+            SubscribeNetworkEvent<HelpTicketUpdatedMessage>(OnTicketUpdatedMsg);
+            SubscribeNetworkEvent<HelpTicketListMessage>(OnTicketListMsg);
+        }
+
         protected override void OnBwoinkTextMessage(BwoinkTextMessage message, EntitySessionEventArgs eventArgs)
         {
             OnBwoinkTextMessageRecieved?.Invoke(this, message);
+        }
+
+        // #Misfits Add — relay ticket updates to the UI
+        private void OnTicketUpdatedMsg(HelpTicketUpdatedMessage msg)
+        {
+            if (msg.Ticket.Type == HelpTicketType.AdminHelp)
+                OnTicketUpdated?.Invoke(msg.Ticket);
+        }
+
+        private void OnTicketListMsg(HelpTicketListMessage msg)
+        {
+            var ahelpTickets = msg.Tickets.Where(t => t.Type == HelpTicketType.AdminHelp).ToList();
+            if (ahelpTickets.Count > 0)
+                OnTicketListReceived?.Invoke(ahelpTickets);
+        }
+
+        // #Misfits Add — send ticket claim/resolve requests
+        public void ClaimTicket(int ticketId)
+        {
+            RaiseNetworkEvent(new HelpTicketClaimMessage(ticketId, HelpTicketType.AdminHelp));
+        }
+
+        public void ResolveTicket(int ticketId)
+        {
+            RaiseNetworkEvent(new HelpTicketResolveMessage(ticketId, HelpTicketType.AdminHelp));
+        }
+
+        public void RequestTicketList()
+        {
+            RaiseNetworkEvent(new HelpTicketRequestListMessage(HelpTicketType.AdminHelp));
         }
 
         public void Send(NetUserId channelId, string text, bool playSound)

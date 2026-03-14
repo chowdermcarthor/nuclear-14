@@ -3,23 +3,33 @@
 // SOS beacon, waypoints, dead drops, encrypted channels, status, radio relay).
 using Content.Server.Administration.Logs;
 using Content.Server.CartridgeLoader;
+using Content.Server.Chat.Managers; // #Misfits Fix - direct chat notification
+using Content.Server.PDA.Ringer; // #Misfits Fix - direct ringer playback
 using Content.Shared._Misfits.PipBoy;
 using Content.Shared.Access.Components;
 using Content.Shared.CartridgeLoader; // #Misfits Change - also provides CartridgeLoaderComponent for notifications
+using Content.Shared.Chat; // #Misfits Fix - ChatChannel for direct notification
 using Content.Shared.Database;
 using Content.Shared.DeltaV.CartridgeLoader.Cartridges;
 using Content.Shared.DeltaV.NanoChat;
 using Content.Shared.PDA;
+using Robust.Server.GameObjects; // #Misfits Fix - ActorComponent lookup
+using Robust.Shared.Containers; // #Misfits Fix - container traversal
+using Robust.Shared.Player; // #Misfits Fix - player session
 using Robust.Shared.Timing;
+using Robust.Shared.Utility; // #Misfits Fix - FormattedMessage
 
 namespace Content.Server._Misfits.PipBoy;
 
 public sealed class PipBoyHubCartridgeSystem : EntitySystem
 {
     [Dependency] private readonly CartridgeLoaderSystem _cartridge = default!;
+    [Dependency] private readonly IChatManager _chatManager = default!; // #Misfits Fix - direct chat notifications
     [Dependency] private readonly IAdminLogManager _adminLogger = default!;
     [Dependency] private readonly IGameTiming _timing = default!;
     [Dependency] private readonly PipBoyNetworkSystem _network = default!;
+    [Dependency] private readonly RingerSystem _ringer = default!; // #Misfits Fix - direct ringer playback
+    [Dependency] private readonly SharedContainerSystem _container = default!; // #Misfits Fix - container lookup
     [Dependency] private readonly SharedNanoChatSystem _nanoChat = default!;
 
     private const int MaxNameLength = 42;
@@ -695,17 +705,34 @@ public sealed class PipBoyHubCartridgeSystem : EntitySystem
         return new NanoChatRecipient(number, info.Name, info.JobTitle);
     }
 
-    // #Misfits Add - Send a PDA notification to the player holding the PDA that contains this card.
-    // Uses the established CartridgeLoader notification pipeline (ringtone + chat channel).
+    // #Misfits Fix - Send a PDA notification directly to the player holding the PDA.
+    // Bypasses the CartridgeLoader → PdaSystem event chain and sends the chat message
+    // + ringer vibration directly, ensuring notifications are never silently dropped.
     private void NotifyCardHolder(EntityUid cardUid, string header, string body)
     {
         if (!TryComp<NanoChatCardComponent>(cardUid, out var card) || card.PdaUid is not {} pdaUid)
             return;
 
-        if (!TryComp<CartridgeLoaderComponent>(pdaUid, out var loader))
+        // Play the ringer vibration popup ("Your Pip-Boy vibrates")
+        _ringer.RingerPlayRingtone(pdaUid);
+
+        // Find the player holding this PDA and send them the chat notification directly
+        if (!_container.TryGetContainingContainer((pdaUid, null, null), out var container)
+            || !TryComp<ActorComponent>(container.Owner, out var actor))
             return;
 
-        _cartridge.SendNotification(pdaUid, header, body, loader);
+        var escapedBody = FormattedMessage.EscapeText(body);
+        var wrappedMessage = Loc.GetString("pda-notification-message",
+            ("header", header),
+            ("message", escapedBody));
+
+        _chatManager.ChatMessageToOne(
+            ChatChannel.Notifications,
+            escapedBody,
+            wrappedMessage,
+            EntityUid.Invalid,
+            false,
+            actor.PlayerSession.Channel);
     }
 
     // #Misfits Add - Truncate a string for notification display.

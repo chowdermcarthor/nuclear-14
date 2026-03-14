@@ -6,6 +6,12 @@
         <SplitContainer Orientation="Horizontal" VerticalExpand="True">
             <cc:PlayerListControl Access="Public" Name="ChannelSelector" HorizontalExpand="True" SizeFlagsStretchRatio="1" />
             <BoxContainer Orientation="Vertical" HorizontalExpand="True" SizeFlagsStretchRatio="2">
+                <!-- #Misfits Add — Ticket status bar shown above the chat area -->
+                <BoxContainer Name="TicketStatusBar" Access="Public" Orientation="Horizontal" HorizontalExpand="True" Visible="False">
+                    <RichTextLabel Name="TicketStatusLabel" Access="Public" HorizontalExpand="True" />
+                    <Button Name="ClaimTicket" Access="Public" Text="{Loc 'ticket-system-claim-button'}" StyleClasses="OpenRight" Visible="True" />
+                    <Button Name="ResolveTicket" Access="Public" Text="{Loc 'ticket-system-resolve-button'}" StyleClasses="OpenLeft" Visible="True" />
+                </BoxContainer>
                 <BoxContainer Access="Public" Name="MHelpArea" VerticalExpand="True" />
                 <BoxContainer Orientation="Horizontal" HorizontalExpand="True">
                     <CheckBox Visible="True" Name="PlaySound" Access="Public" Text="Bwoink?" Pressed="True" />

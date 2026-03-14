@@ -100,7 +100,8 @@ public partial struct NanoChatRecipient
 [Serializable, NetSerializable, DataRecord]
 public partial struct NanoChatMessage
 {
-    public const int MaxContentLength = 256;
+    // #Misfits Change - Increased from 256 to 1024 so longer RP messages aren't truncated
+    public const int MaxContentLength = 1024;
 
     /// <summary>
     ///     When the message was sent.

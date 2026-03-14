@@ -1,4 +1,4 @@
-<!-- #Misfits Change - Staff Panel tab for admin menu -->
+<!-- #Misfits Change - Staff Panel tab for admin menu (permissions + ticket log) -->
 <Control
     xmlns="https://spacestation14.io"
     xmlns:cc="clr-namespace:Content.Client.Administration.UI.CustomControls"
@@ -9,5 +9,27 @@
             <cc:CommandButton Command="permissions" Text="{Loc misfits-staff-tab-permissions-btn}" MinWidth="180" />
             <Label Text="{Loc misfits-staff-tab-permissions-desc}" VerticalAlignment="Center" StyleClasses="LabelSubText" />
         </BoxContainer>
+
+        <!-- #Misfits Add — Ticket History section -->
+        <PanelContainer Name="TicketHistorySection" StyleClasses="BackgroundDark" VerticalExpand="True" Margin="0 8 0 0">
+            <BoxContainer Orientation="Vertical" Margin="4">
+                <BoxContainer Orientation="Horizontal" SeparationOverride="8">
+                    <Label Text="{Loc misfits-staff-tab-ticket-history-title}" StyleClasses="LabelHeading" />
+                    <Control HorizontalExpand="True" />
+                    <Button Name="RefreshTickets" Text="{Loc misfits-staff-tab-ticket-refresh}" MinWidth="100" />
+                </BoxContainer>
+                <!-- Column headers -->
+                <BoxContainer Orientation="Horizontal" SeparationOverride="4" Margin="0 4 0 2">
+                    <Label Text="{Loc misfits-staff-tab-ticket-col-id}" MinWidth="60" StyleClasses="LabelSubText" />
+                    <Label Text="{Loc misfits-staff-tab-ticket-col-player}" MinWidth="140" StyleClasses="LabelSubText" />
+                    <Label Text="{Loc misfits-staff-tab-ticket-col-status}" MinWidth="100" StyleClasses="LabelSubText" />
+                    <Label Text="{Loc misfits-staff-tab-ticket-col-claimed}" MinWidth="140" StyleClasses="LabelSubText" />
+                    <Label Text="{Loc misfits-staff-tab-ticket-col-time}" MinWidth="120" StyleClasses="LabelSubText" />
+                </BoxContainer>
+                <ScrollContainer VerticalExpand="True" HScrollEnabled="False">
+                    <BoxContainer Name="TicketListContainer" Orientation="Vertical" SeparationOverride="2" />
+                </ScrollContainer>
+            </BoxContainer>
+        </PanelContainer>
     </BoxContainer>
 </Control>

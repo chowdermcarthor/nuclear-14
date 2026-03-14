@@ -36,9 +36,9 @@ ui-round-timer-label = Round End
 ui-vote-round-decision-title = Extend the round?
 ui-vote-round-decision-yes = Yes
 ui-vote-round-decision-no = No
-ui-vote-round-decision-yes-won = Vote passed to extend the round: Yes { $yesVotes }, No { $noVotes } ({ $total } connected). The round continues!
-ui-vote-round-decision-no-won = Vote passed to end the round: Yes { $yesVotes }, No { $noVotes } ({ $total } connected). Calling the shuttle.
-ui-vote-round-decision-tie = Extend-round vote tied: Yes { $yesVotes }, No { $noVotes } ({ $total } connected). Defaulting to extending the round.
+ui-vote-round-decision-yes-won = Extend-round vote: { $yesVotes } to extend, { $noVotes } to end ({ $total } connected). The round continues!
+ui-vote-round-decision-no-won = Extend-round vote: { $yesVotes } to extend, { $noVotes } to end ({ $total } connected). Calling the shuttle.
+ui-vote-round-decision-tie = Extend-round vote tied: { $yesVotes } to extend, { $noVotes } to end ({ $total } connected). Defaulting to extending the round.
 
 ui-vote-gamemode-title = Next gamemode
 ui-vote-gamemode-tie = Tie for gamemode vote! Picking... { $picked }

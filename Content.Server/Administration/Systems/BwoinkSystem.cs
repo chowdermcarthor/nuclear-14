@@ -13,6 +13,7 @@ using Content.Server.Discord;
 using Content.Server.GameTicking;
 using Content.Server.Players.RateLimiting;
 using Content.Server.Preferences.Managers;
+using Content.Shared._Misfits.Administration; // #Misfits Add — ticket system shared types
 using Content.Shared.Administration;
 using Content.Shared.CCVar;
 using Content.Shared.Database; // #Misfits Add — for LogType
@@ -91,6 +92,10 @@ namespace Content.Server.Administration.Systems
         private int _maxAdditionalChars;
         private readonly Dictionary<NetUserId, DateTime> _activeConversations = new();
 
+        // #Misfits Add — AHelp ticket tracking (per-round, in-memory)
+        private int _nextTicketId = 1;
+        private readonly Dictionary<NetUserId, HelpTicketInfo> _tickets = new();
+
         public override void Initialize()
         {
             base.Initialize();
@@ -116,9 +121,20 @@ namespace Content.Server.Administration.Systems
 
             SubscribeLocalEvent<GameRunLevelChangedEvent>(OnGameRunLevelChanged);
             SubscribeNetworkEvent<BwoinkClientTypingUpdated>(OnClientTypingUpdated);
-            SubscribeLocalEvent<RoundRestartCleanupEvent>(_ => _activeConversations.Clear());
+            SubscribeLocalEvent<RoundRestartCleanupEvent>(_ =>
+            {
+                _activeConversations.Clear();
+                // #Misfits Add — reset tickets on round restart
+                _tickets.Clear();
+                _nextTicketId = 1;
+            });
             // #Misfits Add — ghost-follow from the AHelp/Bwoink panel
             SubscribeNetworkEvent<BwoinkAdminGhostFollowMessage>(OnBwoinkAdminGhostFollow);
+
+            // #Misfits Add — ticket system handlers
+            SubscribeNetworkEvent<HelpTicketClaimMessage>(OnTicketClaim);
+            SubscribeNetworkEvent<HelpTicketResolveMessage>(OnTicketResolve);
+            SubscribeNetworkEvent<HelpTicketRequestListMessage>(OnTicketRequestList);
 
         	_rateLimit.Register(
                 RateLimitKey,
@@ -372,6 +388,123 @@ namespace Content.Server.Administration.Systems
                     $"{admin:actor} ghost-followed {EntityManager.ToPrettyString(targetSession.AttachedEntity.Value):subject} via AHelp panel");
                 followerSystem.StartFollowingEntity(admin.AttachedEntity.Value, targetSession.AttachedEntity.Value);
             }
+        }
+
+        // #Misfits Add — ticket system: create or reopen a ticket when a player sends a message
+        private void EnsureTicket(NetUserId playerId, string playerName)
+        {
+            if (_tickets.TryGetValue(playerId, out var existing))
+            {
+                // If resolved and player sends another message, reopen as a new ticket
+                if (existing.Status == HelpTicketStatus.Resolved)
+                {
+                    var newTicket = new HelpTicketInfo
+                    {
+                        TicketId = _nextTicketId++,
+                        PlayerId = playerId,
+                        PlayerName = playerName,
+                        Status = HelpTicketStatus.Open,
+                        Type = HelpTicketType.AdminHelp,
+                        CreatedAt = DateTime.Now,
+                    };
+                    _tickets[playerId] = newTicket;
+                    BroadcastTicketUpdate(newTicket);
+                    SendTicketSystemMessage(playerId, Loc.GetString("ticket-system-created", ("id", newTicket.TicketId), ("player", playerName)));
+                }
+                return; // ticket already open or claimed — do nothing extra
+            }
+
+            var ticket = new HelpTicketInfo
+            {
+                TicketId = _nextTicketId++,
+                PlayerId = playerId,
+                PlayerName = playerName,
+                Status = HelpTicketStatus.Open,
+                Type = HelpTicketType.AdminHelp,
+                CreatedAt = DateTime.Now,
+            };
+            _tickets[playerId] = ticket;
+            BroadcastTicketUpdate(ticket);
+            SendTicketSystemMessage(playerId, Loc.GetString("ticket-system-created", ("id", ticket.TicketId), ("player", playerName)));
+        }
+
+        // #Misfits Add — broadcast a ticket update to all admins with Adminhelp flag
+        private void BroadcastTicketUpdate(HelpTicketInfo ticket)
+        {
+            var msg = new HelpTicketUpdatedMessage(ticket);
+            foreach (var admin in GetTargetAdmins())
+            {
+                RaiseNetworkEvent(msg, admin);
+            }
+        }
+
+        // #Misfits Add — send a system chat message into the ticket conversation visible to admins
+        private void SendTicketSystemMessage(NetUserId playerId, string text)
+        {
+            var sysMsg = new BwoinkTextMessage(
+                userId: playerId,
+                trueSender: SystemUserId,
+                text: $"[color=cyan]{text}[/color]",
+                sentAt: DateTime.Now,
+                playSound: false
+            );
+
+            foreach (var admin in GetTargetAdmins())
+            {
+                RaiseNetworkEvent(sysMsg, admin);
+            }
+        }
+
+        // #Misfits Add — admin claims a ticket
+        private void OnTicketClaim(HelpTicketClaimMessage msg, EntitySessionEventArgs args)
+        {
+            if (msg.Type != HelpTicketType.AdminHelp)
+                return;
+
+            if (!(_adminManager.GetAdminData(args.SenderSession)?.HasFlag(AdminFlags.Adminhelp) ?? false))
+                return;
+
+            // Find the ticket
+            var ticket = _tickets.Values.FirstOrDefault(t => t.TicketId == msg.TicketId);
+            if (ticket == null || ticket.Status == HelpTicketStatus.Resolved)
+                return;
+
+            ticket.Status = HelpTicketStatus.Claimed;
+            ticket.ClaimedByName = args.SenderSession.Name;
+            ticket.ClaimedById = args.SenderSession.UserId;
+            BroadcastTicketUpdate(ticket);
+            SendTicketSystemMessage(ticket.PlayerId, Loc.GetString("ticket-system-claimed", ("id", ticket.TicketId), ("admin", args.SenderSession.Name)));
+        }
+
+        // #Misfits Add — admin resolves a ticket
+        private void OnTicketResolve(HelpTicketResolveMessage msg, EntitySessionEventArgs args)
+        {
+            if (msg.Type != HelpTicketType.AdminHelp)
+                return;
+
+            if (!(_adminManager.GetAdminData(args.SenderSession)?.HasFlag(AdminFlags.Adminhelp) ?? false))
+                return;
+
+            var ticket = _tickets.Values.FirstOrDefault(t => t.TicketId == msg.TicketId);
+            if (ticket == null || ticket.Status == HelpTicketStatus.Resolved)
+                return;
+
+            ticket.Status = HelpTicketStatus.Resolved;
+            BroadcastTicketUpdate(ticket);
+            SendTicketSystemMessage(ticket.PlayerId, Loc.GetString("ticket-system-resolved", ("id", ticket.TicketId), ("admin", args.SenderSession.Name)));
+        }
+
+        // #Misfits Add — admin requests full ticket list (e.g. on connect or UI open)
+        private void OnTicketRequestList(HelpTicketRequestListMessage msg, EntitySessionEventArgs args)
+        {
+            if (msg.Type != HelpTicketType.AdminHelp)
+                return;
+
+            if (!(_adminManager.GetAdminData(args.SenderSession)?.HasFlag(AdminFlags.Adminhelp) ?? false))
+                return;
+
+            var list = _tickets.Values.ToList();
+            RaiseNetworkEvent(new HelpTicketListMessage(list), args.SenderSession.Channel);
         }
 
         private void OnServerNameChanged(string obj)
@@ -732,6 +865,33 @@ namespace Content.Server.Administration.Systems
         private void OnBwoinkInternal(BwoinkParams bwoinkParams)
         {
             _activeConversations[bwoinkParams.Message.UserId] = DateTime.Now;
+
+            // #Misfits Add — create ticket when a non-admin player sends a message
+            if (bwoinkParams.SenderAdmin == null || !bwoinkParams.SenderAdmin.HasFlag(AdminFlags.Adminhelp))
+            {
+                EnsureTicket(bwoinkParams.Message.UserId, bwoinkParams.SenderName);
+            }
+
+            // #Misfits Add — force admins to claim a ticket before replying
+            if (bwoinkParams.SenderAdmin != null
+                && bwoinkParams.SenderAdmin.HasFlag(AdminFlags.Adminhelp)
+                && !bwoinkParams.FromWebhook
+                && _tickets.TryGetValue(bwoinkParams.Message.UserId, out var openTicket)
+                && openTicket.Status == HelpTicketStatus.Open)
+            {
+                // Reject the message and tell the admin to claim first
+                if (bwoinkParams.SenderChannel != null)
+                {
+                    var rejectText = Loc.GetString("ticket-system-must-claim-first");
+                    var rejectMsg = new BwoinkTextMessage(
+                        bwoinkParams.Message.UserId,
+                        SystemUserId,
+                        $"[color=red]{rejectText}[/color]",
+                        playSound: false);
+                    RaiseNetworkEvent(rejectMsg, bwoinkParams.SenderChannel);
+                }
+                return;
+            }
 
             var escapedText = FormattedMessage.EscapeText(bwoinkParams.Message.Text);
             var adminColor = _config.GetCVar(CCVars.AdminBwoinkColor);

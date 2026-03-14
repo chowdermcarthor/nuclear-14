@@ -47,7 +47,8 @@ comp-pda-ui-toggle-flashlight-button = Toggle Flashlight
 
 pda-bound-user-interface-music-button = Music Instrument
 
-pda-bound-user-interface-music-button-description = Play music on your PDA
+# #Misfits Change - Rebranded for Pip-Boy
+pda-bound-user-interface-music-button-description = Play music on your Pip-Boy
 
 comp-pda-ui-unknown = Unknown
 

@@ -72,6 +72,10 @@ public sealed partial class MentorHelpSystem : SharedMentorHelpSystem
 
     private int _maxAdditionalChars;
 
+    // #Misfits Add — MHelp ticket tracking (per-round, in-memory)
+    private int _nextTicketId = 1;
+    private readonly Dictionary<NetUserId, HelpTicketInfo> _mhelpTickets = new();
+
     public override void Initialize()
     {
         base.Initialize();
@@ -97,7 +101,18 @@ public sealed partial class MentorHelpSystem : SharedMentorHelpSystem
 
         SubscribeNetworkEvent<MentorHelpClientTypingUpdated>(OnClientTypingUpdated);
         SubscribeLocalEvent<GameRunLevelChangedEvent>(OnGameRunLevelChanged);
-        SubscribeLocalEvent<RoundRestartCleanupEvent>(_ => _activeConversations.Clear());
+        SubscribeLocalEvent<RoundRestartCleanupEvent>(_ =>
+        {
+            _activeConversations.Clear();
+            // #Misfits Add — reset mentor tickets on round restart
+            _mhelpTickets.Clear();
+            _nextTicketId = 1;
+        });
+
+        // #Misfits Add — mentor ticket system handlers
+        SubscribeNetworkEvent<HelpTicketClaimMessage>(OnTicketClaim);
+        SubscribeNetworkEvent<HelpTicketResolveMessage>(OnTicketResolve);
+        SubscribeNetworkEvent<HelpTicketRequestListMessage>(OnTicketRequestList);
 
         _rateLimit.Register(
             RateLimitKey,
@@ -252,6 +267,116 @@ public sealed partial class MentorHelpSystem : SharedMentorHelpSystem
         return JsonSerializer.Deserialize<WebhookData>(content);
     }
 
+    // #Misfits Add — mentor ticket system: create or reopen a ticket when a player sends a message
+    private void EnsureMentorTicket(NetUserId playerId, string playerName)
+    {
+        if (_mhelpTickets.TryGetValue(playerId, out var existing))
+        {
+            if (existing.Status == HelpTicketStatus.Resolved)
+            {
+                var newTicket = new HelpTicketInfo
+                {
+                    TicketId = _nextTicketId++,
+                    PlayerId = playerId,
+                    PlayerName = playerName,
+                    Status = HelpTicketStatus.Open,
+                    Type = HelpTicketType.MentorHelp,
+                    CreatedAt = DateTime.Now,
+                };
+                _mhelpTickets[playerId] = newTicket;
+                BroadcastMentorTicketUpdate(newTicket);
+                SendMentorTicketSystemMessage(playerId, Loc.GetString("ticket-system-created", ("id", newTicket.TicketId), ("player", playerName)));
+            }
+            return;
+        }
+
+        var ticket = new HelpTicketInfo
+        {
+            TicketId = _nextTicketId++,
+            PlayerId = playerId,
+            PlayerName = playerName,
+            Status = HelpTicketStatus.Open,
+            Type = HelpTicketType.MentorHelp,
+            CreatedAt = DateTime.Now,
+        };
+        _mhelpTickets[playerId] = ticket;
+        BroadcastMentorTicketUpdate(ticket);
+        SendMentorTicketSystemMessage(playerId, Loc.GetString("ticket-system-created", ("id", ticket.TicketId), ("player", playerName)));
+    }
+
+    private void BroadcastMentorTicketUpdate(HelpTicketInfo ticket)
+    {
+        var msg = new HelpTicketUpdatedMessage(ticket);
+        foreach (var mentor in GetTargetMentors())
+        {
+            RaiseNetworkEvent(msg, mentor);
+        }
+    }
+
+    private void SendMentorTicketSystemMessage(NetUserId playerId, string text)
+    {
+        var sysMsg = new MentorHelpTextMessage(
+            userId: playerId,
+            trueSender: SystemUserId,
+            text: $"[color=cyan]{text}[/color]",
+            sentAt: DateTime.Now,
+            playSound: false
+        );
+
+        foreach (var mentor in GetTargetMentors())
+        {
+            RaiseNetworkEvent(sysMsg, mentor);
+        }
+    }
+
+    private void OnTicketClaim(HelpTicketClaimMessage msg, EntitySessionEventArgs args)
+    {
+        if (msg.Type != HelpTicketType.MentorHelp)
+            return;
+
+        if (!(_adminManager.GetAdminData(args.SenderSession)?.HasFlag(AdminFlags.ViewNotes) ?? false))
+            return;
+
+        var ticket = _mhelpTickets.Values.FirstOrDefault(t => t.TicketId == msg.TicketId);
+        if (ticket == null || ticket.Status == HelpTicketStatus.Resolved)
+            return;
+
+        ticket.Status = HelpTicketStatus.Claimed;
+        ticket.ClaimedByName = args.SenderSession.Name;
+        ticket.ClaimedById = args.SenderSession.UserId;
+        BroadcastMentorTicketUpdate(ticket);
+        SendMentorTicketSystemMessage(ticket.PlayerId, Loc.GetString("ticket-system-claimed", ("id", ticket.TicketId), ("admin", args.SenderSession.Name)));
+    }
+
+    private void OnTicketResolve(HelpTicketResolveMessage msg, EntitySessionEventArgs args)
+    {
+        if (msg.Type != HelpTicketType.MentorHelp)
+            return;
+
+        if (!(_adminManager.GetAdminData(args.SenderSession)?.HasFlag(AdminFlags.ViewNotes) ?? false))
+            return;
+
+        var ticket = _mhelpTickets.Values.FirstOrDefault(t => t.TicketId == msg.TicketId);
+        if (ticket == null || ticket.Status == HelpTicketStatus.Resolved)
+            return;
+
+        ticket.Status = HelpTicketStatus.Resolved;
+        BroadcastMentorTicketUpdate(ticket);
+        SendMentorTicketSystemMessage(ticket.PlayerId, Loc.GetString("ticket-system-resolved", ("id", ticket.TicketId), ("admin", args.SenderSession.Name)));
+    }
+
+    private void OnTicketRequestList(HelpTicketRequestListMessage msg, EntitySessionEventArgs args)
+    {
+        if (msg.Type != HelpTicketType.MentorHelp)
+            return;
+
+        if (!(_adminManager.GetAdminData(args.SenderSession)?.HasFlag(AdminFlags.ViewNotes) ?? false))
+            return;
+
+        var list = _mhelpTickets.Values.ToList();
+        RaiseNetworkEvent(new HelpTicketListMessage(list), args.SenderSession.Channel);
+    }
+
     private void OnFooterIconChanged(string url) => _footerIconUrl = url;
     private void OnAvatarChanged(string url) => _avatarUrl = url;
     private void OnServerNameChanged(string obj) => _serverName = obj;
@@ -273,6 +398,12 @@ public sealed partial class MentorHelpSystem : SharedMentorHelpSystem
             return;
 
         _activeConversations[message.UserId] = DateTime.Now;
+
+        // #Misfits Add — create ticket when a non-mentor player sends a message
+        if (!senderMentor)
+        {
+            EnsureMentorTicket(message.UserId, senderSession.Name);
+        }
 
         var escapedText = FormattedMessage.EscapeText(message.Text);
         var mentorColor = "#9B59B6"; // Purple for mentors

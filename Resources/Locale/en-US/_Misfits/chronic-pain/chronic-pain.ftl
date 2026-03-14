@@ -1,13 +1,13 @@
-## Chronic pain popup messages — shown periodically to players with the chronic pain trait.
-## Each entry is a short emote/thought reflecting persistent wasteland pain.
-## Keys are numbered to match the localizedDataset prefix+count format (chronic-pain-1 through chronic-pain-10).
-chronic-pain-1 = Your old wounds twinge with a familiar ache.
-chronic-pain-2 = A dull throb reminds you of injuries that never quite healed.
-chronic-pain-3 = Your joints ache and stiffen — a reminder of the wasteland.
-chronic-pain-4 = An old scar flares up with unexpected sharpness.
-chronic-pain-5 = The familiar ache in your bones won't let you forget.
-chronic-pain-6 = A persistent headache pounds at the back of your skull.
-chronic-pain-7 = A sharp pain shoots through your side without warning.
-chronic-pain-8 = A deep, rhythmic throb pulses through your chest.
-chronic-pain-9 = Your missing nerve endings send phantom pain signals.
-chronic-pain-10 = A muscle spasm doubles you over for a brief moment.
+## Chronic pain self-emote messages — shown only to the player who has the chronic pain trait.
+## Delivered as a private emote-channel message (no popup, invisible to others).
+## Keys are 0-indexed to match the localizedDataset prefix+count format (chronic-pain-0 through chronic-pain-9).
+chronic-pain-0 = You grimace as old wounds flare up without warning.
+chronic-pain-1 = A deep, familiar ache settles into your bones — it never truly left.
+chronic-pain-2 = You shift uncomfortably, your joints stiffening against their will.
+chronic-pain-3 = An old scar pulls tight, sending a sharp reminder down your side.
+chronic-pain-4 = You grit your teeth as a dull throb pulses through your chest.
+chronic-pain-5 = A migraine builds steadily behind your eyes — the wasteland's parting gift.
+chronic-pain-6 = You catch your breath as pain shoots through muscles you'd nearly forgotten.
+chronic-pain-7 = A muscle spasm seizes your back without warning, forcing you to pause.
+chronic-pain-8 = Phantom nerve pain flares up where old injuries never healed properly.
+chronic-pain-9 = You exhale slowly, riding out a wave of aching that never fully fades.

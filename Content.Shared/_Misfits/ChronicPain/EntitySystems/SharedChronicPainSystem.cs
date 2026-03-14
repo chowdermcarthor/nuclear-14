@@ -1,6 +1,5 @@
 // #Misfits Change - Ported from Delta-V chronic pain system
 using Content.Shared._Misfits.ChronicPain.Components;
-using Content.Shared.Popups;
 using JetBrains.Annotations;
 using Robust.Shared.Player;
 using Robust.Shared.Prototypes;
@@ -18,7 +17,6 @@ public abstract partial class SharedChronicPainSystem : EntitySystem
     [Dependency] private readonly IGameTiming _timing = default!;
     [Dependency] protected readonly IPrototypeManager ProtoManager = default!;
     [Dependency] protected readonly IRobustRandom RobustRandom = default!;
-    [Dependency] protected readonly SharedPopupSystem Popup = default!;
 
     public override void Initialize()
     {
@@ -100,16 +98,21 @@ public abstract partial class SharedChronicPainSystem : EntitySystem
         if (effects.Count == 0)
             return;
 
-        var effect = RobustRandom.Pick(effects);
-        // #Misfits TODO: Convert to private chat message — requires server-side event handler
-        // since PopupPredicted is shared/client-predicted and IChatManager is server-only.
-        Popup.PopupPredicted(Loc.GetString(effect), entity, entity);
+        var message = Loc.GetString(RobustRandom.Pick(effects));
+        // #Misfits Change — delegate display to the server override (private emote, self-only)
+        ShowPainEffect(entity, message);
 
         var delaySeconds = RobustRandom.NextDouble()
             * (entity.Comp.MaximumPopupDelay - entity.Comp.MinimumPopupDelay).TotalSeconds
             + entity.Comp.MinimumPopupDelay.TotalSeconds;
         entity.Comp.NextPopupTime = _timing.CurTime + TimeSpan.FromSeconds(delaySeconds);
     }
+
+    /// <summary>
+    ///     Called when a pain message should be shown. Overridden server-side to send a
+    ///     private emote-channel message visible only to the affected player.
+    /// </summary>
+    protected virtual void ShowPainEffect(Entity<ChronicPainComponent> entity, string message) { }
 
     public override void Update(float frameTime)
     {

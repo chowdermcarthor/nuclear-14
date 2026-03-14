@@ -52,6 +52,15 @@ loremaster-obj-legion-steal-enclave = Steal Enclave Tech Data Holotape
 misfits-staff-tab-permissions-btn = Admin Permissions
 misfits-staff-tab-permissions-desc = Search staff by name and manage their ranks and permission flags.
 
+# Staff tab — ticket history section
+misfits-staff-tab-ticket-history-title = Ticket Log
+misfits-staff-tab-ticket-refresh = Refresh
+misfits-staff-tab-ticket-col-id = #
+misfits-staff-tab-ticket-col-player = Player
+misfits-staff-tab-ticket-col-status = Status
+misfits-staff-tab-ticket-col-claimed = Claimed By
+misfits-staff-tab-ticket-col-time = Time
+
 # Admin tab button descriptions
 misfits-admin-tab-kick-desc = Open the player actions panel (kick, warn, etc.)
 misfits-admin-tab-ban-desc = Open the banning panel to ban or unban players.

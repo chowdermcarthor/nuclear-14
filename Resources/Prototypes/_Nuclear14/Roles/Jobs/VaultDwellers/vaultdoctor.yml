@@ -44,12 +44,16 @@
     id: N14VaultDoctorPDA
     ears: N14ClothingHeadsetVaultDweller
     belt: ClothingBeltMedicalFilled
+    gloves: ClothingHandsGlovesNitrile # #Misfits Add - medical gloves for a doctor
+    pocket1: PillCanisterCharcoal # #Misfits Add - activated charcoal (carbon) for overdose/toxin treatment
+    pocket2: N14RadAwayBloodbag # #Misfits Add - RadAway to treat radiation exposure (pairs with RadX in belt)
   innerClothingSkirt: N14ClothingUniformJumpsuitVault14
   storage: # Forge-Change
     back:
     - N14Bandage
     - N14Antidote
     - Portafib
+    - N14Stimpak # #Misfits Add - extra stimpak for the doctor
     - N14CurrencyPrewarMoney100
     - N14CurrencyPrewarMoney100
 

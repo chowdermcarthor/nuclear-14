@@ -28,7 +28,8 @@ chatsan-replacement-9 = i know, right
 chatsan-word-10 = idc
 chatsan-replacement-10 = i don't care
 
-chatsan-word-11 = idk # #Misfits Add: upstream FTL gap — slot 11 was uncommented in YAML (Jan 2025 upstream) but never defined
+# Misfits Add: upstream FTL gap — slot 11 was uncommented in YAML (Jan 2025 upstream) but never defined
+chatsan-word-11 = idk
 chatsan-replacement-11 = i don't know
 
 chatsan-word-12 = tbh

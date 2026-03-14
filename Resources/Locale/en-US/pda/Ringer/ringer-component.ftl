@@ -3,7 +3,8 @@
 
 # For the PDA Ringer screen
 
-comp-ringer-vibration-popup = Your PDA vibrates
+# #Misfits Change - Rebranded PDA vibration popup for Pip-Boy
+comp-ringer-vibration-popup = Your Pip-Boy vibrates
 
 comp-ringer-ui-menu-title = Ringtone
 

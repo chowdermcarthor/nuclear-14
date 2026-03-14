@@ -59,11 +59,11 @@ public sealed partial class ChronicPainComponent : Component
     ///     Minimum time between pain popups.
     /// </summary>
     [DataField]
-    public TimeSpan MinimumPopupDelay = TimeSpan.FromSeconds(5);
+    public TimeSpan MinimumPopupDelay = TimeSpan.FromMinutes(2); // #Misfits Tweak — reduced popup spam (was 5s)
 
     /// <summary>
     ///     Maximum time between pain popups.
     /// </summary>
     [DataField]
-    public TimeSpan MaximumPopupDelay = TimeSpan.FromSeconds(40);
+    public TimeSpan MaximumPopupDelay = TimeSpan.FromMinutes(5); // #Misfits Tweak — reduced popup spam (was 40s)
 }

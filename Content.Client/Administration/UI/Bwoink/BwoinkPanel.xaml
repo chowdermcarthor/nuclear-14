@@ -5,6 +5,6 @@
     HorizontalExpand="True">
     <OutputPanel Name="TextOutput" VerticalExpand="true" />
     <RichTextLabel Name="TypingIndicator" Access="Public" />
-    <HistoryLineEdit Name="SenderLineEdit" />
+    <HistoryLineEdit Name="SenderLineEdit" Access="Public" />
     <RichTextLabel Name="RelayedToDiscordLabel" Access="Public" Visible="False" />
 </BoxContainer>

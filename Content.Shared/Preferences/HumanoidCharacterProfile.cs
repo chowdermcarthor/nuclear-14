@@ -7,6 +7,7 @@ using Content.Shared.GameTicking;
 using Content.Shared.Humanoid;
 using Content.Shared.Humanoid.Prototypes;
 using Content.Shared.Roles;
+using Content.Shared._Misfits.Chat; // #Misfits Add - name slur filter
 using Content.Shared._NC.Speech.Synthesis;
 using Content.Shared._NC.TTS; // Corvax-Fallout-Barks
 using Content.Shared.Traits;
@@ -28,7 +29,7 @@ public sealed partial class HumanoidCharacterProfile : ICharacterProfile
     private static readonly Regex RestrictedNameRegex = new(@"[^a-zA-Z-'0-9 '\-]");
     private static readonly Regex ICNameCaseRegex = new(@"^(?<word>\w)|\b(?<word>\w)(?=\w*$)");
 
-    public const int MaxNameLength = 64;
+    public const int MaxNameLength = 37; // #Misfits Tweak - reduced from 64 to cap character name length
     public const int MaxDescLength = 1024;
 
     /// Job preferences for initial spawn
@@ -482,6 +483,12 @@ public sealed partial class HumanoidCharacterProfile : ICharacterProfile
             name = ICNameCaseRegex.Replace(name, m => m.Groups["word"].Value.ToUpper());
         }
 
+        // #Misfits Add - reject names containing slurs/offensive terms, replace with random name
+        if (configManager.GetCVar(CCVars.RestrictedNames) && NameSanitizer.ContainsBlockedTerm(name))
+        {
+            name = GetName(Species, gender);
+        }
+
         var customspeciename =
             !speciesPrototype.CustomName
             || string.IsNullOrEmpty(Customspeciename)
@@ -489,6 +496,12 @@ public sealed partial class HumanoidCharacterProfile : ICharacterProfile
                 : Customspeciename.Length > MaxNameLength
                     ? FormattedMessage.RemoveMarkupPermissive(Customspeciename)[..MaxNameLength]
                     : FormattedMessage.RemoveMarkupPermissive(Customspeciename);
+
+        // #Misfits Add - also filter custom species names for slurs
+        if (configManager.GetCVar(CCVars.RestrictedNames) && NameSanitizer.ContainsBlockedTerm(customspeciename))
+        {
+            customspeciename = "";
+        }
 
         if (string.IsNullOrEmpty(name))
         {

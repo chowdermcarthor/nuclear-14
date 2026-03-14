@@ -1,4 +1,5 @@
 // #Misfits Change - Client-side mentor help system
+using System.Linq; // #Misfits Add — for LINQ ticket filtering
 using Content.Client._Misfits.UserInterface.Systems.MentorHelp;
 using Content.Shared._Misfits.Administration;
 using JetBrains.Annotations;
@@ -18,9 +19,52 @@ public sealed class MentorHelpSystem : SharedMentorHelpSystem
     public event EventHandler<MentorHelpTextMessage>? OnMentorHelpTextMessageReceived;
     private (TimeSpan Timestamp, bool Typing) _lastTypingUpdateSent;
 
+    // #Misfits Add — ticket events for the UI
+    public event Action<HelpTicketInfo>? OnTicketUpdated;
+    public event Action<List<HelpTicketInfo>>? OnTicketListReceived;
+
+    public override void Initialize()
+    {
+        base.Initialize();
+
+        // #Misfits Add — subscribe to ticket messages from server
+        SubscribeNetworkEvent<HelpTicketUpdatedMessage>(OnTicketUpdatedMsg);
+        SubscribeNetworkEvent<HelpTicketListMessage>(OnTicketListMsg);
+    }
+
     protected override void OnMentorHelpTextMessage(MentorHelpTextMessage message, EntitySessionEventArgs eventArgs)
     {
         OnMentorHelpTextMessageReceived?.Invoke(this, message);
+    }
+
+    // #Misfits Add — relay ticket updates to the UI
+    private void OnTicketUpdatedMsg(HelpTicketUpdatedMessage msg)
+    {
+        if (msg.Ticket.Type == HelpTicketType.MentorHelp)
+            OnTicketUpdated?.Invoke(msg.Ticket);
+    }
+
+    private void OnTicketListMsg(HelpTicketListMessage msg)
+    {
+        var mhelpTickets = msg.Tickets.Where(t => t.Type == HelpTicketType.MentorHelp).ToList();
+        if (mhelpTickets.Count > 0)
+            OnTicketListReceived?.Invoke(mhelpTickets);
+    }
+
+    // #Misfits Add — send ticket claim/resolve requests
+    public void ClaimTicket(int ticketId)
+    {
+        RaiseNetworkEvent(new HelpTicketClaimMessage(ticketId, HelpTicketType.MentorHelp));
+    }
+
+    public void ResolveTicket(int ticketId)
+    {
+        RaiseNetworkEvent(new HelpTicketResolveMessage(ticketId, HelpTicketType.MentorHelp));
+    }
+
+    public void RequestTicketList()
+    {
+        RaiseNetworkEvent(new HelpTicketRequestListMessage(HelpTicketType.MentorHelp));
     }
 
     public void Send(NetUserId channelId, string text, bool playSound)

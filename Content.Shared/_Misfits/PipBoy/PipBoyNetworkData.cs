@@ -149,7 +149,8 @@ public partial struct PipBoyDirectoryEntry
 [Serializable, NetSerializable, DataRecord]
 public partial struct PipBoyGroupMessage
 {
-    public const int MaxContentLength = 256;
+    // #Misfits Change - Increased from 256 to 1024 so longer RP messages aren't truncated
+    public const int MaxContentLength = 1024;
 
     public TimeSpan Timestamp;
     public string Content;
@@ -229,7 +230,8 @@ public partial struct PipBoyWaypoint
 [Serializable, NetSerializable, DataRecord]
 public partial struct PipBoyDeadDrop
 {
-    public const int MaxContentLength = 256;
+    // #Misfits Change - Increased from 256 to 1024 so longer RP messages aren't truncated
+    public const int MaxContentLength = 1024;
     public const float PickupRange = 10f;
 
     public uint Id;

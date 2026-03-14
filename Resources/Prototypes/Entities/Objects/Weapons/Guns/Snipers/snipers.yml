@@ -60,9 +60,9 @@
         Blunt: 2.5
   - type: DamageOtherOnHit
     staminaCost: 7.5
-  - type: FarGunshot # #Misfits Add - distant gunshot audio for players at range
-    minDistance: 30
-    maxDistance: 300
+  - type: FarGunshot # #Misfits Tweak - distant gunshot audio; reduced range from 30/300
+    minDistance: 15
+    maxDistance: 80
 
 - type: entity
   name: Kardashev-Mosin
