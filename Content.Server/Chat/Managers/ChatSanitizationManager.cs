@@ -221,6 +221,9 @@ public sealed class ChatSanitizationManager : IChatSanitizationManager
         { "brb",  "chatsan-waves" },             // be right back
         { "afk",  "chatsan-waves" },             // away from keyboard
         { "np",   "chatsan-nods" },              // no problem
+        // Gestures / salutes
+        { "o7",   "chatsan-salutes" },           // Misfits Add - military salute; fires on all channels
+        { ";_;7", "chatsan-tearfully-salutes" }, // Misfits Add - tearful salute; fires on all channels
     };
     // End Misfits Add (AcronymToEmote)
 

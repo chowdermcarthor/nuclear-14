@@ -45,7 +45,7 @@
     outerClothing: N14ClothingOuterNCRPouchedVestDesert # Forge-Change
     shoes: N14ClothingBootsLeatherFilled
     ears: N14ClothingHeadsetNCR # #Misfits Add - NCR radio earpiece
-    neck: ClothingNeckPinNCRCorporal
+    neck: ClothingNeckPinNCRSpecialist # #Misfits Fix - Specialist rank pin instead of Corporal
     belt: ClothingBeltNCR
     pocket1: NCRcorporalloadoutkits
     id: N14IDNCRDogtagWS

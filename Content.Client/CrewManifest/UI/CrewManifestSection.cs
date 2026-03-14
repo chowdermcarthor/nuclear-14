@@ -16,6 +16,9 @@ public sealed class CrewManifestSection : BoxContainer
         DepartmentPrototype section,
         List<CrewManifestEntry> entries)
     {
+        // #Misfits Tweak - Rank is hidden; parameters kept so call sites don't need changes.
+        _ = prototypeManager;
+        _ = spriteSystem;
         Orientation = LayoutOrientation.Vertical;
         HorizontalExpand = true;
 
@@ -25,10 +28,12 @@ public sealed class CrewManifestSection : BoxContainer
             Text = Loc.GetString($"department-{section.ID}")
         });
 
+        // #Misfits Tweak - Reduced to 1 column; job title/icon (rank) is intentionally
+        // hidden so the manifest only shows names grouped by department.
         var gridContainer = new GridContainer()
         {
             HorizontalExpand = true,
-            Columns = 2
+            Columns = 1
         };
 
         AddChild(gridContainer);
@@ -41,6 +46,9 @@ public sealed class CrewManifestSection : BoxContainer
             };
             name.SetMessage(entry.Name);
 
+            // #Misfits Tweak - Job title/rank column removed; only the player name is shown.
+            // titleContainer (job icon + title) intentionally not added to the grid.
+            /*
             var titleContainer = new BoxContainer()
             {
                 Orientation = LayoutOrientation.Horizontal,
@@ -49,7 +57,6 @@ public sealed class CrewManifestSection : BoxContainer
 
             var title = new RichTextLabel();
             title.SetMessage(entry.JobTitle);
-
 
             if (prototypeManager.TryIndex<JobIconPrototype>(entry.JobIcon, out var jobIcon))
             {
@@ -69,8 +76,10 @@ public sealed class CrewManifestSection : BoxContainer
                 titleContainer.AddChild(title);
             }
 
-            gridContainer.AddChild(name);
             gridContainer.AddChild(titleContainer);
+            */
+
+            gridContainer.AddChild(name);
         }
     }
 }
