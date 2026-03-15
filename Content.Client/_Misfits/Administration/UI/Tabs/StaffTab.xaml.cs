@@ -63,6 +63,7 @@ public sealed partial class StaffTab : Control
             }
 
             _ticketLogWindow = new TicketLogWindow();
+            _ticketLogWindow.OnClose += () => _ticketLogWindow = null; // Clear reference on close
             _ticketLogWindow.OpenCentered();
         };
 
