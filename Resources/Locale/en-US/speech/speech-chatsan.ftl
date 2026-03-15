@@ -178,11 +178,5 @@ chatsan-replacement-59 = see you.
 chatsan-word-60 = u
 chatsan-replacement-60 = you
 
-chatsan-word-99 = jerk
-chatsan-replacement-99 = jerking off
-
-chatsan-word-101 = jerks
-chatsan-replacement-101 = jerks off
-
 chatsan-word-117 = bbt
 chatsan-replacement-117 = I'm a moron

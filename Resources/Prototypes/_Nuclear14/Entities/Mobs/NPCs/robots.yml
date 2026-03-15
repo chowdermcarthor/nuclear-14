@@ -913,9 +913,8 @@
     maxAngle: 12
     angleIncrease: 4
     angleDecay: 12
-    # Misfits Change /Tweak: reduced from 8 to 3 shots/sec — a sustained gatling beam,
-    # not an instant vaporizer.
-    fireRate: 3
+    # Misfits Change /Tweak: bumped to 8 shots/sec for faster suppression fire.
+    fireRate: 8
     soundGunshot:
       collection: N14LaserGatlingGunshot
     useKey: false
@@ -926,20 +925,26 @@
     proto: RedLaser
     fireCost: 50
   - type: Battery
-    maxCharge: 5000
-    startingCharge: 5000
+    # Misfits Change /Tweak: Extremely large charge pool — effectively infinite ammo.
+    maxCharge: 9999999
+    startingCharge: 9999999
   # Misfits Change /Add: Melee stomp/ram attack used by N14RangedHostileCompound as a fallback
   # when the gatling laser battery is depleted (HTN tries ranged first, then melee).
+  # Misfits Change /Tweak: bumped to 40 brute, extended reach, added knockback like power armor.
   - type: MeleeWeapon
     hidden: true
     soundHit:
       path: /Audio/Effects/metal_thud1.ogg
     angle: 0
     animation: WeaponArcPunch
+    range: 1.5
     attackRate: 0.75
     damage:
       groups:
-        Brute: 20
+        Brute: 40
+  - type: MeleeThrowOnHit
+    speed: 10
+    lifetime: 0.025
   - type: HTN
     rootTask:
       task: N14RangedHostileCompound
@@ -1081,8 +1086,8 @@
     maxAngle: 15
     angleIncrease: 5
     angleDecay: 10
-    # 4 shots/sec — sustained suppressive minigun fire.
-    fireRate: 4
+    # Misfits Change /Tweak: bumped to 8 shots/sec for faster suppression fire.
+    fireRate: 8
     soundGunshot:
       collection: N14MinigunGunshot
     useKey: false
@@ -1091,25 +1096,30 @@
       - FullAuto
   - type: BasicEntityAmmoProvider
     proto: N14Bullet5mm
-    # 200-round drum — long enough for sustained suppression before the "reload" break.
-    capacity: 200
-    count: 200
+    # Misfits Change /Tweak: Extremely large drum — effectively infinite ammo.
+    capacity: 99999
+    count: 99999
   - type: RechargeBasicEntityAmmo
-    # 8-second reload pause simulates swapping the feed drum.
-    rechargeCooldown: 8
+    # Misfits Change /Tweak: Near-instant recharge so the drum never truly empties.
+    rechargeCooldown: 0.05
     rechargeSound:
       path: /Audio/Weapons/Guns/MagIn/ltrifle_magin.ogg
   # Fallback stomp/ram when reloading — same HTN compound tries melee automatically.
+  # Misfits Change /Tweak: bumped to 40 brute, extended reach, added knockback like power armor.
   - type: MeleeWeapon
     hidden: true
     soundHit:
       path: /Audio/Effects/metal_thud1.ogg
     angle: 0
     animation: WeaponArcPunch
+    range: 1.5
     attackRate: 0.75
     damage:
       groups:
-        Brute: 20
+        Brute: 40
+  - type: MeleeThrowOnHit
+    speed: 10
+    lifetime: 0.025
   - type: HTN
     rootTask:
       task: N14RangedHostileCompound
