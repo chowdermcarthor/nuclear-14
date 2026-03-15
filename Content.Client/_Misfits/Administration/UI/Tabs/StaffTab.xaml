@@ -11,20 +11,32 @@
             <BoxContainer Orientation="Vertical" Margin="8" SeparationOverride="6">
                 <Label Name="StatsHeader" Text="{Loc misfits-staff-stats-header}" StyleClasses="LabelHeading" />
 
-                <!-- Top-level counters row -->
-                <BoxContainer Orientation="Horizontal" SeparationOverride="16">
-                    <Label Name="TotalTicketsLabel" StyleClasses="LabelSubText" />
-                    <Label Name="OpenTicketsLabel" StyleClasses="LabelSubText" />
-                    <Label Name="ClaimedTicketsLabel" StyleClasses="LabelSubText" />
-                    <Label Name="ResolvedTicketsLabel" StyleClasses="LabelSubText" />
-                    <Label Name="AvgResolutionLabel" StyleClasses="LabelSubText" />
+                <!-- Admin ticket counters -->
+                <BoxContainer Orientation="Horizontal" SeparationOverride="14">
+                    <Label Text="Admin:" StyleClasses="LabelSubText" FontColorOverride="#D4A843" MinWidth="55" />
+                    <Label Name="AdminTotalLabel" StyleClasses="LabelSubText" />
+                    <Label Name="AdminOpenLabel" StyleClasses="LabelSubText" />
+                    <Label Name="AdminClaimedLabel" StyleClasses="LabelSubText" />
+                    <Label Name="AdminResolvedLabel" StyleClasses="LabelSubText" />
                 </BoxContainer>
+
+                <!-- Mentor ticket counters -->
+                <BoxContainer Orientation="Horizontal" SeparationOverride="14">
+                    <Label Text="Mentor:" StyleClasses="LabelSubText" FontColorOverride="#43B4D4" MinWidth="55" />
+                    <Label Name="MentorTotalLabel" StyleClasses="LabelSubText" />
+                    <Label Name="MentorOpenLabel" StyleClasses="LabelSubText" />
+                    <Label Name="MentorClaimedLabel" StyleClasses="LabelSubText" />
+                    <Label Name="MentorResolvedLabel" StyleClasses="LabelSubText" />
+                </BoxContainer>
+
+                <!-- Avg resolution (combined) -->
+                <Label Name="AvgResolutionLabel" StyleClasses="LabelSubText" />
 
                 <!-- Per-staff breakdown header -->
                 <Label Text="{Loc misfits-staff-stats-breakdown-header}" StyleClasses="LabelSubText" Margin="0 4 0 0" />
 
                 <!-- Staff leaderboard grid (populated in code-behind) -->
-                <GridContainer Name="StaffGrid" Columns="4" HSeparationOverride="12" VSeparationOverride="2" />
+                <GridContainer Name="StaffGrid" Columns="4" HSeparationOverride="20" VSeparationOverride="4" />
             </BoxContainer>
         </PanelContainer>
 

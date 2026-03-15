@@ -103,12 +103,32 @@ public sealed partial class StaffTab : Control
     private void RefreshStats()
     {
         var all = _tickets.Values.ToList();
-        var total = all.Count;
-        var open = all.Count(t => t.Status == HelpTicketStatus.Open);
-        var claimed = all.Count(t => t.Status == HelpTicketStatus.Claimed);
-        var resolved = all.Count(t => t.Status == HelpTicketStatus.Resolved);
 
-        // Average resolution time (only for resolved tickets with timestamps)
+        // Split stats by ticket type
+        var adminTickets = all.Where(t => _tickets.Any(kv => kv.Value == t && kv.Key.Item1 == HelpTicketType.AdminHelp)).ToList();
+        var mentorTickets = all.Where(t => _tickets.Any(kv => kv.Value == t && kv.Key.Item1 == HelpTicketType.MentorHelp)).ToList();
+
+        // Easier approach: iterate keyed dictionary
+        var adminList = _tickets.Where(kv => kv.Key.Item1 == HelpTicketType.AdminHelp).Select(kv => kv.Value).ToList();
+        var mentorList = _tickets.Where(kv => kv.Key.Item1 == HelpTicketType.MentorHelp).Select(kv => kv.Value).ToList();
+
+        // Update admin row
+        AdminTotalLabel.Text = Loc.GetString("misfits-staff-stats-total", ("count", adminList.Count));
+        AdminOpenLabel.Text = Loc.GetString("misfits-staff-stats-open", ("count", adminList.Count(t => t.Status == HelpTicketStatus.Open)));
+        AdminClaimedLabel.Text = Loc.GetString("misfits-staff-stats-claimed", ("count", adminList.Count(t => t.Status == HelpTicketStatus.Claimed)));
+        AdminResolvedLabel.Text = Loc.GetString("misfits-staff-stats-resolved", ("count", adminList.Count(t => t.Status == HelpTicketStatus.Resolved)));
+
+        // Update mentor row
+        MentorTotalLabel.Text = Loc.GetString("misfits-staff-stats-total", ("count", mentorList.Count));
+        MentorOpenLabel.Text = Loc.GetString("misfits-staff-stats-open", ("count", mentorList.Count(t => t.Status == HelpTicketStatus.Open)));
+        MentorClaimedLabel.Text = Loc.GetString("misfits-staff-stats-claimed", ("count", mentorList.Count(t => t.Status == HelpTicketStatus.Claimed)));
+        MentorResolvedLabel.Text = Loc.GetString("misfits-staff-stats-resolved", ("count", mentorList.Count(t => t.Status == HelpTicketStatus.Resolved)));
+
+        // Color open counts red when there are unclaimed tickets
+        AdminOpenLabel.FontColorOverride = adminList.Any(t => t.Status == HelpTicketStatus.Open) ? Color.Red : null;
+        MentorOpenLabel.FontColorOverride = mentorList.Any(t => t.Status == HelpTicketStatus.Open) ? Color.Red : null;
+
+        // Average resolution time (combined, only for resolved tickets with timestamps)
         var resolvedWithTime = all
             .Where(t => t.Status == HelpTicketStatus.Resolved && t.ResolvedAt.HasValue)
             .ToList();
@@ -128,15 +148,7 @@ public sealed partial class StaffTab : Control
             avgTimeStr = Loc.GetString("misfits-staff-stats-na");
         }
 
-        // Update summary labels
-        TotalTicketsLabel.Text = Loc.GetString("misfits-staff-stats-total", ("count", total));
-        OpenTicketsLabel.Text = Loc.GetString("misfits-staff-stats-open", ("count", open));
-        ClaimedTicketsLabel.Text = Loc.GetString("misfits-staff-stats-claimed", ("count", claimed));
-        ResolvedTicketsLabel.Text = Loc.GetString("misfits-staff-stats-resolved", ("count", resolved));
         AvgResolutionLabel.Text = Loc.GetString("misfits-staff-stats-avg-time", ("time", avgTimeStr));
-
-        // Color the open count red when there are unclaimed tickets
-        OpenTicketsLabel.FontColorOverride = open > 0 ? Color.Red : null;
 
         // Build per-staff breakdown
         // Collect all staff who claimed or resolved at least one ticket
@@ -177,41 +189,44 @@ public sealed partial class StaffTab : Control
         }
 
         // Header row
-        AddGridHeader(Loc.GetString("misfits-staff-stats-col-name"));
+        AddGridHeader(Loc.GetString("misfits-staff-stats-col-name"), 100);
         AddGridHeader(Loc.GetString("misfits-staff-stats-col-claimed"));
         AddGridHeader(Loc.GetString("misfits-staff-stats-col-resolved"));
         AddGridHeader(Loc.GetString("misfits-staff-stats-col-ratio"));
 
         // Data rows sorted by total activity descending
+        var total = all.Count;
         foreach (var (name, (claimedC, resolvedC)) in staffEntries.OrderByDescending(e => e.Value.claimedCount + e.Value.resolvedCount))
         {
             var ratio = total > 0
                 ? $"{(double)(claimedC + resolvedC) / total * 100:F0}%"
                 : "0%";
 
-            AddGridCell(name);
+            AddGridCell(name, 100);
             AddGridCell(claimedC.ToString());
             AddGridCell(resolvedC.ToString());
             AddGridCell(ratio);
         }
     }
 
-    private void AddGridHeader(string text)
+    private void AddGridHeader(string text, int minWidth = 80)
     {
         StaffGrid.AddChild(new Label
         {
             Text = text,
             StyleClasses = { "LabelSubText" },
             FontColorOverride = Color.LightGray,
+            MinWidth = minWidth,
         });
     }
 
-    private void AddGridCell(string text)
+    private void AddGridCell(string text, int minWidth = 80)
     {
         StaffGrid.AddChild(new Label
         {
             Text = text,
             StyleClasses = { "LabelSubText" },
+            MinWidth = minWidth,
         });
     }
 

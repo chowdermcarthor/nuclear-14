@@ -42,15 +42,16 @@ public sealed class LoreMasterClientSystem : EntitySystem
     }
 
     /// <summary>
-    /// Ask the server to issue a fully custom (admin-typed) objective to the highest-ranking
-    /// online faction member. No prototype is involved — title and description are freeform.
+    /// Ask the server to issue a fully custom (admin-typed) objective to a specific faction member.
+    /// No prototype is involved — title and description are freeform.
     /// </summary>
-    // #Misfits Add - custom order support
-    public void IssueCustomObjective(string factionId, string customTitle, string customDescription)
+    // #Misfits Tweak - added targetPlayerName so admin can pick any member, not just highest-ranked.
+    public void IssueCustomObjective(string factionId, string targetPlayerName, string customTitle, string customDescription)
     {
         RaiseNetworkEvent(new IssueCustomLoreMasterObjectiveEvent
         {
             FactionId = factionId,
+            TargetPlayerName = targetPlayerName,
             CustomTitle = customTitle,
             CustomDescription = customDescription,
         });
@@ -64,5 +65,19 @@ public sealed class LoreMasterClientSystem : EntitySystem
     private void OnObjectiveResult(LoreMasterObjectiveResultEvent msg)
     {
         OnObjectiveResultReceived?.Invoke(msg);
+    }
+
+    /// <summary>
+    /// Ask the server to remove a specific objective from a faction member.
+    /// </summary>
+    // #Misfits Add - objective removal support
+    public void RemoveObjective(string factionId, string targetPlayerName, string objectiveTitle)
+    {
+        RaiseNetworkEvent(new RemoveLoreMasterObjectiveEvent
+        {
+            FactionId = factionId,
+            TargetPlayerName = targetPlayerName,
+            ObjectiveTitle = objectiveTitle,
+        });
     }
 }

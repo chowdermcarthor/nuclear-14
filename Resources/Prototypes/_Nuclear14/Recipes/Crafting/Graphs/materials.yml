@@ -24,3 +24,21 @@
               doAfter: 2
     - node: paper
       entity: N14Paper
+
+# Produces 1 gunpowder unit from 1 sulfur powder + 1 coal + 1 fertilizer ore
+- type: constructionGraph
+  id: N14GunpowderCraft
+  start: start
+  graph:
+    - node: start
+      edges:
+        - to: gunpowder
+          steps:
+            - material: Sulfur
+              amount: 1
+            - material: Coal
+              amount: 1
+            - material: FertilizerOre
+              amount: 1
+    - node: gunpowder
+      entity: N14Gunpowder1

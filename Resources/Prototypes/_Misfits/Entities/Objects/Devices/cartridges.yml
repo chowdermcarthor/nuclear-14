@@ -26,6 +26,6 @@
       sprite: _Nuclear14/Objects/Misc/pipboy.rsi
       state: pda
   - type: WastelandMap
-    mapTexturePath: _Misfits/Maps/wendover_map.png
+    mapTexturePath: _Misfits/Maps/WendoverCF.png
     mapTitle: Tactical Map - Wendover
-    worldBounds: "-517,-308,484,311"
+    worldBounds: "-463,-344,462,298"

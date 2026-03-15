@@ -1,6 +1,6 @@
 // #Misfits Add: Broadcasts a chat emote and plays a grab sound when a mob entity is pulled/grabbed by another entity.
-using Content.Server.Chat.Systems;
-using Content.Shared.Chat;
+// Chat messages are throttled via MisfitsEmoteThrottleSystem to prevent spam from rapid grab-release toggling.
+using Content.Server._Misfits.Chat.Systems;
 using Content.Shared.IdentityManagement;
 using Content.Shared.Mobs.Components;
 using Content.Shared.Movement.Pulling.Components;
@@ -18,7 +18,7 @@ namespace Content.Server._Misfits.Pulling;
 /// </summary>
 public sealed class GrabChatSystem : EntitySystem
 {
-    [Dependency] private readonly ChatSystem _chat = default!;
+    [Dependency] private readonly MisfitsEmoteThrottleSystem _throttle = default!;
     [Dependency] private readonly SharedAudioSystem _audio = default!;
 
     // Sound played at the puller's position when a grab starts — a cloth rustle
@@ -53,9 +53,8 @@ public sealed class GrabChatSystem : EntitySystem
         var pulledName = Identity.Entity(uid, EntityManager);
         var message = Loc.GetString("misfits-chat-grab-start", ("grabbed", pulledName));
 
-        // Broadcast as an emote from the puller so nearby players see it in the Emotes channel.
-        _chat.TrySendInGameICMessage(args.PullerUid, message, InGameICChatType.Emote,
-            ChatTransmitRange.Normal, ignoreActionBlocker: true);
+        // Throttle system sends the first message immediately and clumps repeats.
+        _throttle.SendThrottledEmote(args.PullerUid, "grab", message);
 
         // Play a short cloth/fabric rustle at the puller to reinforce the physical action.
         _audio.PlayPvs(GrabSound, args.PullerUid);

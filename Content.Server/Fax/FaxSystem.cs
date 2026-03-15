@@ -409,6 +409,9 @@ public sealed class FaxSystem : EntitySystem
         component.DestinationFaxAddress = null;
         component.KnownFaxes.Clear();
 
+        // #Misfits Add — Always inject the virtual COMMAND fax so every machine can contact admins
+        component.KnownFaxes[FaxConstants.FaxCommandAddress] = FaxConstants.FaxCommandName;
+
         var payload = new NetworkPayload()
         {
             { DeviceNetworkConstants.Command, FaxConstants.FaxPingCommand }
@@ -517,6 +520,23 @@ public sealed class FaxSystem : EntitySystem
 
         TryComp<LabelComponent>(sendEntity, out var labelComponent);
 
+        // #Misfits Add — If destination is the virtual COMMAND address, notify admins instead of sending via device network
+        if (component.DestinationFaxAddress == FaxConstants.FaxCommandAddress)
+        {
+            NotifyAdminsCommand(component.FaxName, nameMod?.BaseName ?? metadata.EntityName, paper.Content, args.Actor);
+
+            _adminLogger.Add(LogType.Action, LogImpact.Low,
+                $"{ToPrettyString(args.Actor):actor} " +
+                $"sent fax from \"{component.FaxName}\" {ToPrettyString(uid):tool} " +
+                $"to COMMAND " +
+                $"of {ToPrettyString(sendEntity):subject}: {paper.Content}");
+
+            component.SendTimeoutRemaining += component.SendTimeout;
+            _audioSystem.PlayPvs(component.SendSound, uid);
+            UpdateUserInterface(uid, component);
+            return;
+        }
+
         var payload = new NetworkPayload()
         {
             { DeviceNetworkConstants.Command, FaxConstants.FaxPrintCommand },
@@ -571,6 +591,11 @@ public sealed class FaxSystem : EntitySystem
         _popupSystem.PopupEntity(Loc.GetString("fax-machine-popup-received", ("from", faxName)), uid);
         _appearanceSystem.SetData(uid, FaxMachineVisuals.VisualState, FaxMachineVisualState.Printing);
 
+        // #Misfits Add — When an admin sends a fax (fromAddress is null), show a larger popup
+        // so nearby players notice the incoming correspondence from leadership
+        if (fromAddress == null)
+            _popupSystem.PopupEntity(Loc.GetString("fax-machine-popup-received-leadership", ("fax", component.FaxName)), uid, Shared.Popups.PopupType.Medium);
+
         if (component.NotifyAdmins)
             NotifyAdmins(faxName);
 
@@ -615,5 +640,20 @@ public sealed class FaxSystem : EntitySystem
     {
         _chat.SendAdminAnnouncement(Loc.GetString("fax-machine-chat-notify", ("fax", faxName)));
         _audioSystem.PlayGlobal("/Audio/Machines/high_tech_confirm.ogg", Filter.Empty().AddPlayers(_adminManager.ActiveAdmins), false, AudioParams.Default.WithVolume(-8f));
+    }
+
+    /// <summary>
+    ///     #Misfits Add — Notifies admins when a player sends a fax to the virtual COMMAND destination.
+    ///     Includes the originating fax name, paper title, and content so admins can respond via the faxui panel.
+    /// </summary>
+    private void NotifyAdminsCommand(string fromFaxName, string paperName, string content, EntityUid actor)
+    {
+        _chat.SendAdminAnnouncement(Loc.GetString("fax-machine-chat-notify-command",
+            ("fax", fromFaxName),
+            ("paper", paperName),
+            ("actor", ToPrettyString(actor))));
+        _audioSystem.PlayGlobal("/Audio/Machines/high_tech_confirm.ogg",
+            Filter.Empty().AddPlayers(_adminManager.ActiveAdmins), false,
+            AudioParams.Default.WithVolume(-4f));
     }
 }

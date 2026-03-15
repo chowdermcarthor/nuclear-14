@@ -30,6 +30,10 @@ namespace Content.Client.Construction.UI
         ItemList Recipes { get; }
         ItemList RecipeStepList { get; }
 
+        // #Misfits Add: Craftable Now panel
+        ItemList CraftableRecipes { get; }
+        void SetCraftableNowVisible(bool visible);
+
         event EventHandler<(string search, string catagory)> PopulateRecipes;
         event EventHandler<ItemList.Item?> RecipeSelected;
         event EventHandler<bool> BuildButtonToggled;
@@ -84,6 +88,10 @@ namespace Content.Client.Construction.UI
             Recipes.OnItemSelected += obj => RecipeSelected?.Invoke(this, obj.ItemList[obj.ItemIndex]);
             Recipes.OnItemDeselected += _ => RecipeSelected?.Invoke(this, null);
 
+            // #Misfits Add: selecting from the Craftable Now list shares the same RecipeSelected event
+            CraftableRecipes.OnItemSelected += obj => RecipeSelected?.Invoke(this, obj.ItemList[obj.ItemIndex]);
+            CraftableRecipes.OnItemDeselected += _ => RecipeSelected?.Invoke(this, null);
+
             SearchBar.OnTextChanged += _ => PopulateRecipes?.Invoke(this, (SearchBar.Text, Categories[Category.SelectedId]));
             Category.OnItemSelected += obj =>
             {
@@ -120,6 +128,9 @@ namespace Content.Client.Construction.UI
             TargetDesc.SetMessage(description);
             TargetTexture.Texture = iconTexture;
         }
+
+        // #Misfits Add: show or hide the entire Craftable Now section (label + list + separator)
+        public void SetCraftableNowVisible(bool visible) => CraftableNowSection.Visible = visible;
 
         public void ClearRecipeInfo()
         {

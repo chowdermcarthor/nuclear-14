@@ -1,0 +1,17 @@
+<!-- Focused quick-reply window for bwoinking a specific player from the info panel -->
+<ui:FancyWindow
+    xmlns="https://spacestation14.io"
+    xmlns:ui="clr-namespace:Content.Client.UserInterface.Controls"
+    Title="Admin Help"
+    MinSize="420 300"
+    SetSize="500 400">
+    <BoxContainer Orientation="Vertical" HorizontalExpand="True" VerticalExpand="True">
+        <!-- Target player label -->
+        <RichTextLabel Name="TargetLabel" Access="Public" Margin="4 4 4 2" />
+        <!-- Chat history -->
+        <OutputPanel Name="ChatOutput" Access="Public" VerticalExpand="True" Margin="4 0 4 0" />
+        <!-- Input -->
+        <HistoryLineEdit Name="InputLine" Access="Public" Margin="4 2 4 4"
+                         PlaceHolder="{Loc 'ticket-system-quick-reply-placeholder'}" />
+    </BoxContainer>
+</ui:FancyWindow>

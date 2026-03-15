@@ -38,9 +38,9 @@
   #   - Any Pip-Boy with a BOS holotag inserted (MisfitsWastelandMapCartridge via WastelandMapCartridgeSystem)
   # If adding new BOS map consumers, set tacticalFeed: Brotherhood on their WastelandMap component.
   - type: WastelandMap
-    mapTexturePath: _Misfits/Maps/wendover_map.png
+    mapTexturePath: _Misfits/Maps/WendoverCF.png
     mapTitle: Tactical Map - Wendover
-    worldBounds: "-517,-308,484,311"
+    worldBounds: "-463,-344,462,298"
     tacticalFeed: Brotherhood
     trackBrotherhoodHolotags: true
   - type: ActivatableUI
@@ -82,9 +82,9 @@
   # All NCR dogtags inherit IdCardNCR from N14IDNCRDogtag, so every NCR
   # member appears as a blip on the feed regardless of who opens it.
   - type: WastelandMap
-    mapTexturePath: _Misfits/Maps/wendover_map.png
+    mapTexturePath: _Misfits/Maps/WendoverCF.png
     mapTitle: NCR Tactical Map - Wendover
-    worldBounds: "-517,-308,484,311"
+    worldBounds: "-463,-344,462,298"
     tacticalFeed: NCR
   - type: AccessReader
     access: [["NCR"]] # #Misfits Tweak - was [["NCRCaptain"]], opened to all NCR

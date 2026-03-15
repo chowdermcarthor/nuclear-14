@@ -45,6 +45,8 @@ public sealed class LoreMasterSystem : EntitySystem
         ["NCR"]                = ("NCR",                  "#cc2f2f"),
         ["BrotherhoodOfSteel"] = ("Brotherhood of Steel", "#4f81bd"),
         ["CaesarLegion"]       = ("Caesar's Legion",      "#8B0000"),
+        ["Vault"]              = ("Vault",                "#FFD700"),  // #Misfits Add - gold for vault-tec
+        ["Townsfolk"]          = ("Town",                 "#8FBC8F"),  // #Misfits Add - muted green for townsfolk
     };
 
     // #Misfits Add - maps faction ID → objective-issuer locale key for the custom objective prototype.
@@ -54,6 +56,8 @@ public sealed class LoreMasterSystem : EntitySystem
         ["NCR"]                = "ncr",
         ["BrotherhoodOfSteel"] = "brotherhoodofsteel",
         ["CaesarLegion"]       = "caesarlegion",
+        ["Vault"]              = "vault",       // #Misfits Add
+        ["Townsfolk"]          = "townsfolk",   // #Misfits Add
     };
 
     public override void Initialize()
@@ -62,6 +66,7 @@ public sealed class LoreMasterSystem : EntitySystem
         SubscribeNetworkEvent<RequestLoreMasterFactionInfoEvent>(OnRequestFactionInfo);
         SubscribeNetworkEvent<IssueLoreMasterObjectiveEvent>(OnIssueObjective);
         SubscribeNetworkEvent<IssueCustomLoreMasterObjectiveEvent>(OnIssueCustomObjective); // #Misfits Add
+        SubscribeNetworkEvent<RemoveLoreMasterObjectiveEvent>(OnRemoveObjective); // #Misfits Add - objective removal
     }
 
     // ── Query ─────────────────────────────────────────────────────────────
@@ -93,13 +98,19 @@ public sealed class LoreMasterSystem : EntitySystem
             return;
         }
 
-        // Find the session object for the top-ranked member
-        var topMember = members[0];
+        // #Misfits Tweak - use the admin-selected target; fall back to highest-ranked if none specified.
+        var targetName = string.IsNullOrEmpty(msg.TargetPlayerName) ? members[0].PlayerName : msg.TargetPlayerName;
+        if (!members.Any(m => m.PlayerName == targetName))
+        {
+            Respond(args.SenderSession, false, $"'{targetName}' is not an online member of {msg.FactionId}.");
+            return;
+        }
+
         ICommonSession? targetSession = null;
         var actorQuery = EntityQueryEnumerator<ActorComponent>();
         while (actorQuery.MoveNext(out _, out var actor))
         {
-            if (actor.PlayerSession.Name == topMember.PlayerName)
+            if (actor.PlayerSession.Name == targetName)
             {
                 targetSession = actor.PlayerSession;
                 break;
@@ -136,7 +147,7 @@ public sealed class LoreMasterSystem : EntitySystem
             {
                 // unique: true blocked the assignment — the member already has this objective
                 Respond(args.SenderSession, false,
-                    $"Could not assign '{msg.ObjectivePrototype}'.\n{topMember.PlayerName} already has this objective assigned.");
+                    $"Could not assign '{msg.ObjectivePrototype}'.\n{targetName} already has this objective assigned.");
             }
             else
             {
@@ -153,8 +164,16 @@ public sealed class LoreMasterSystem : EntitySystem
         if (info != null)
             SendFactionOrderNotification(targetSession, msg.FactionId, info.Value.Title, info.Value.Description);
 
+        // #Misfits Add - broadcast to admin chat so all admins see who issued what to whom
+        var objTitle = info?.Title ?? msg.ObjectivePrototype;
+        var objDesc  = info?.Description ?? string.Empty;
+        var adminNotice = string.IsNullOrEmpty(objDesc)
+            ? $"{args.SenderSession.Name} issued '{objTitle}' to {targetName} ({msg.FactionId})"
+            : $"{args.SenderSession.Name} issued '{objTitle}' to {targetName} ({msg.FactionId}): {objDesc}";
+        _chat.SendAdminAnnouncement(adminNotice);
+
         Respond(args.SenderSession, true,
-            $"Issued '{msg.ObjectivePrototype}' to {topMember.PlayerName} ({topMember.JobName}).");
+            $"Issued '{msg.ObjectivePrototype}' to {targetName}.");
     }
 
     // ── Custom objective issuance ──────────────────────────────────────────
@@ -180,12 +199,19 @@ public sealed class LoreMasterSystem : EntitySystem
             return;
         }
 
-        var topMember = members[0];
+        // #Misfits Tweak - use the admin-selected target; fall back to highest-ranked if none specified.
+        var targetName = string.IsNullOrEmpty(msg.TargetPlayerName) ? members[0].PlayerName : msg.TargetPlayerName;
+        if (!members.Any(m => m.PlayerName == targetName))
+        {
+            Respond(args.SenderSession, false, $"'{targetName}' is not an online member of {msg.FactionId}.");
+            return;
+        }
+
         ICommonSession? targetSession = null;
         var actorQuery = EntityQueryEnumerator<ActorComponent>();
         while (actorQuery.MoveNext(out _, out var actor))
         {
-            if (actor.PlayerSession.Name == topMember.PlayerName)
+            if (actor.PlayerSession.Name == targetName)
             {
                 targetSession = actor.PlayerSession;
                 break;
@@ -221,11 +247,107 @@ public sealed class LoreMasterSystem : EntitySystem
         // Deliver in-world faction notification (same style as preset objectives).
         SendFactionOrderNotification(targetSession, msg.FactionId, title, msg.CustomDescription.Trim());
 
+        // #Misfits Add - broadcast to admin chat so all admins see who issued what to whom
+        var customDesc = msg.CustomDescription.Trim();
+        var customAdminNotice = string.IsNullOrEmpty(customDesc)
+            ? $"{args.SenderSession.Name} issued order to {targetName} ({msg.FactionId}): {title}"
+            : $"{args.SenderSession.Name} issued order to {targetName} ({msg.FactionId}): {title} — {customDesc}";
+        _chat.SendAdminAnnouncement(customAdminNotice);
+
         Respond(args.SenderSession, true,
-            $"Custom order issued to {topMember.PlayerName} ({topMember.JobName}): {title}");
+            $"Custom order issued to {targetName}: {title}");
     }
 
     // ── Helpers ───────────────────────────────────────────────────────────
+
+    // ── Objective removal ──────────────────────────────────────────────────
+
+    // #Misfits Add - remove a specific objective from a faction member by title match.
+    private void OnRemoveObjective(RemoveLoreMasterObjectiveEvent msg, EntitySessionEventArgs args)
+    {
+        if (!_adminManager.IsAdmin(args.SenderSession))
+            return;
+
+        var targetName = msg.TargetPlayerName.Trim();
+        if (string.IsNullOrEmpty(targetName))
+        {
+            Respond(args.SenderSession, false, "No target specified.");
+            return;
+        }
+
+        // Find the target's session
+        ICommonSession? targetSession = null;
+        var actorQuery = EntityQueryEnumerator<ActorComponent>();
+        while (actorQuery.MoveNext(out _, out var actor))
+        {
+            if (actor.PlayerSession.Name == targetName)
+            {
+                targetSession = actor.PlayerSession;
+                break;
+            }
+        }
+
+        if (targetSession?.AttachedEntity == null)
+        {
+            Respond(args.SenderSession, false, $"Could not locate session for '{targetName}'.");
+            return;
+        }
+
+        if (!_minds.TryGetMind(targetSession.AttachedEntity.Value, out var mindId, out var mind))
+        {
+            Respond(args.SenderSession, false, "Target has no mind.");
+            return;
+        }
+
+        // Find the objective by title match and remove it
+        for (var i = 0; i < mind.Objectives.Count; i++)
+        {
+            var objUid = mind.Objectives[i];
+            if (Name(objUid) == msg.ObjectiveTitle)
+            {
+                _minds.TryRemoveObjective(mindId, mind, i);
+
+                // Notify the player that the order was revoked
+                SendFactionOrderRevocationNotification(targetSession, msg.FactionId, msg.ObjectiveTitle);
+
+                // Admin chat announcement
+                _chat.SendAdminAnnouncement(
+                    $"{args.SenderSession.Name} revoked order from {targetName} ({msg.FactionId}): {msg.ObjectiveTitle}");
+
+                Respond(args.SenderSession, true,
+                    $"Removed '{msg.ObjectiveTitle}' from {targetName}.");
+                return;
+            }
+        }
+
+        Respond(args.SenderSession, false,
+            $"No objective titled '{msg.ObjectiveTitle}' found on {targetName}.");
+    }
+
+    /// <summary>
+    /// Sends an in-world notification to a player when an order is revoked.
+    /// </summary>
+    private void SendFactionOrderRevocationNotification(ICommonSession session, string factionId, string title)
+    {
+        if (session.AttachedEntity == null)
+            return;
+
+        var (displayName, color) = FactionConfig.TryGetValue(factionId, out var cfg)
+            ? cfg
+            : ("Command", "#ffffff");
+
+        var plain = $"[{displayName}] Order Revoked: {title}";
+        var wrapped = $"[color={color}][bold][{displayName}] — Order Revoked[/bold][/color]\n" +
+                      $"[italic]{title}[/italic]";
+
+        _chat.ChatMessageToOne(
+            ChatChannel.Server,
+            plain,
+            wrapped,
+            EntityUid.Invalid,
+            hideChat: false,
+            session.Channel);
+    }
 
     /// <summary>
     /// Builds a list of online members in the given faction, sorted by job weight descending (most senior first).

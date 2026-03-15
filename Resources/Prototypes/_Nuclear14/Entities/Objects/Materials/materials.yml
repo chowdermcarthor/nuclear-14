@@ -57,6 +57,9 @@
           Quantity: 10
   - type: StaticPrice # Forge-Change
     price: 1 # PH
+  - type: Construction # Misfits Fix - required so the construction system doesn't delete the spawned entity after crafting
+    graph: N14GunpowderCraft
+    node: gunpowder
 
 - type: entity
   parent: N14Gunpowder

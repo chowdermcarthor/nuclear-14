@@ -155,7 +155,7 @@
 #      enum.WastelandMapUiKey.Key:
 #        type: WastelandMapBoundUserInterface
 #  - type: WastelandMap
-#    mapTexturePath: _Misfits/Maps/wendover_map.png
+#    mapTexturePath: _Misfits/Maps/WendoverCF.png
 #    mapTitle: Brotherhood Tactical HUD
 #    worldBounds: "-517,-308,484,311"
 #    tacticalFeed: Brotherhood

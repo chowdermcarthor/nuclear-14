@@ -1,4 +1,5 @@
 using System.Linq;
+using Content.Client._Misfits.Construction; // #Misfits Add
 using Content.Client.UserInterface.Systems.MenuBar.Widgets;
 using Content.Shared.Construction.Prototypes;
 using Content.Shared.Tag;
@@ -33,6 +34,7 @@ namespace Content.Client.Construction.UI
 
         private readonly IConstructionMenuView _constructionView;
         private readonly EntityWhitelistSystem _whitelistSystem;
+        private readonly MisfitsCraftableNowSystem _craftableNow; // #Misfits Add
 
         private ConstructionSystem? _constructionSystem;
         private ConstructionPrototype? _selected;
@@ -82,6 +84,7 @@ namespace Content.Client.Construction.UI
             IoCManager.InjectDependencies(this);
             _constructionView = new ConstructionMenu();
             _whitelistSystem = _entManager.System<EntityWhitelistSystem>();
+            _craftableNow = _entManager.System<MisfitsCraftableNowSystem>(); // #Misfits Add
 
             // This is required so that if we load after the system is initialized, we can bind to it immediately
             if (_systemManager.TryGetEntitySystem<ConstructionSystem>(out var constructionSystem))
@@ -192,6 +195,49 @@ namespace Content.Client.Construction.UI
             }
 
             // There is apparently no way to set which
+
+            PopulateCraftableNow(); // #Misfits Add
+        }
+
+        // #Misfits Add: fills the "Craftable Now" section with every recipe whose material
+        // requirements can be satisfied by stacks in the player's hands, bags, or on the ground.
+        private void PopulateCraftableNow()
+        {
+            var player = _playerManager.LocalEntity;
+            var craftableList = _constructionView.CraftableRecipes;
+            craftableList.Clear();
+
+            if (player == null)
+            {
+                _constructionView.SetCraftableNowVisible(false);
+                return;
+            }
+
+            foreach (var recipe in _prototypeManager.EnumeratePrototypes<ConstructionPrototype>())
+            {
+                if (recipe.Hide)
+                    continue;
+
+                if (_whitelistSystem.IsWhitelistFail(recipe.EntityWhitelist, player.Value))
+                    continue;
+
+                if (!_craftableNow.IsCraftable(recipe, player.Value))
+                    continue;
+
+                craftableList.Add(GetItem(recipe, craftableList));
+            }
+
+            // Alpha-sort to match the main list.
+            // ItemList doesn't support sorting in-place, so rebuild it sorted.
+            var sorted = new List<ItemList.Item>();
+            for (var i = 0; i < craftableList.Count; i++)
+                sorted.Add(craftableList[i]);
+            sorted.Sort((a, b) => string.Compare(a.Text, b.Text, StringComparison.InvariantCulture));
+            craftableList.Clear();
+            foreach (var item in sorted)
+                craftableList.Add(item);
+
+            _constructionView.SetCraftableNowVisible(craftableList.Count > 0);
         }
 
         private void PopulateCategories()

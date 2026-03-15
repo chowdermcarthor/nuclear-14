@@ -8,8 +8,6 @@
   - !type:CharacterWhitelistRequirement
   - !type:MinPlayersRequirement
     min: 0
-  - !type:CharacterOverallTimeRequirement
-    min: 144000 # 40 hours
   startingGear: RaiderGear
   alwaysUseSpawner: true
   icon: "JobIconRaider"

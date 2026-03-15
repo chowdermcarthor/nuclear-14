@@ -16,9 +16,9 @@
     layers:
     - state: keycard_vault
   - type: WastelandMap
-    mapTexturePath: _Misfits/Maps/wendover_map.png
+    mapTexturePath: _Misfits/Maps/WendoverCF.png
     mapTitle: General Atomics Navigation
-    worldBounds: "-517,-308,484,311"
+    worldBounds: "-463,-344,462,298"
     # No tacticalFeed - standalone personal map, no faction blip sharing
   - type: WastelandMapAction
     requiredSlot: IDCARD
@@ -36,6 +36,6 @@
   categories: [ HideSpawnMenu ]
   components:
   - type: WastelandMap
-    mapTexturePath: _Misfits/Maps/wendover_map.png
+    mapTexturePath: _Misfits/Maps/WendoverCF.png
     mapTitle: RobCo Industries Navigation
-    worldBounds: "-517,-308,484,311"
+    worldBounds: "-463,-344,462,298"

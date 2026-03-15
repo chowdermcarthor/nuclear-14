@@ -6,6 +6,10 @@ misfits-admin-menu-staff-tab = Staff
 # #Misfits Change - LoreMaster tab for faction objective management
 misfits-admin-menu-loremaster-tab = Loremaster
 
+## Fax Manager shortcut
+loremaster-tab-fax-manager = Fax Manager
+loremaster-tab-fax-manager-hint = Open the admin fax panel to read and respond to player faxes
+
 ## LoreMaster tab UI strings
 loremaster-tab-faction-label = Faction:
 loremaster-tab-refresh = Refresh
@@ -18,6 +22,7 @@ loremaster-tab-no-members = No online members found.
 loremaster-tab-no-objectives = (no objectives assigned)
 loremaster-tab-target-none = Target: (none online)
 loremaster-tab-target-label = Will issue to: {$name} ({$job})
+loremaster-tab-target-selector-label = Target:
 loremaster-tab-member-count = Online members: {$count}
 loremaster-tab-issuing = Issuing...
 
@@ -30,6 +35,8 @@ loremaster-tab-custom-title-placeholder = e.g. Secure the perimeter
 loremaster-tab-custom-desc-placeholder = Optional — additional detail for the recipient
 loremaster-tab-custom-issue-button = Issue Custom Order
 loremaster-tab-custom-error-no-title = Custom order title cannot be empty.
+loremaster-tab-remove-button = Remove
+loremaster-tab-removing = Removing...
 
 ## Per-faction objective selector labels
 # NCR

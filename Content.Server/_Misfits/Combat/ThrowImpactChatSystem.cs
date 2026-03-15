@@ -1,6 +1,6 @@
 // #Misfits Add: broadcast local emotes for thrown impacts and poison-bearing thrown items.
-using Content.Server.Chat.Systems;
-using Content.Shared.Chat;
+// Chat messages are throttled via MisfitsEmoteThrottleSystem to prevent spam from rapid throws.
+using Content.Server._Misfits.Chat.Systems;
 using Content.Shared.Damage.Components;
 using Content.Shared.Ensnaring.Components;
 using Content.Shared.IdentityManagement;
@@ -13,7 +13,7 @@ namespace Content.Server._Misfits.Combat;
 
 public sealed class ThrowImpactChatSystem : EntitySystem
 {
-    [Dependency] private readonly ChatSystem _chat = default!;
+    [Dependency] private readonly MisfitsEmoteThrottleSystem _throttle = default!;
     [Dependency] private readonly IGameTiming _gameTiming = default!;
 
     // #Misfits Fix: deduplicate messages when a thrown item has multiple fixtures
@@ -55,21 +55,15 @@ public sealed class ThrowImpactChatSystem : EntitySystem
 
         if (TryComp<DamageOtherOnHitComponent>(args.Thrown, out var damage) && IsPoisonous(damage))
         {
-            _chat.TrySendInGameICMessage(user,
-                Loc.GetString("misfits-chat-throw-poison-hit", ("target", targetName), ("item", itemName)),
-                InGameICChatType.Emote,
-                ChatTransmitRange.Normal,
-                ignoreActionBlocker: true);
+            _throttle.SendThrottledEmote(user, "throw",
+                Loc.GetString("misfits-chat-throw-poison-hit", ("target", targetName), ("item", itemName)));
             // #Misfits Fix: removed redundant victim emote — performer's emote already
             // communicates the hit to everyone nearby.
             return;
         }
 
-        _chat.TrySendInGameICMessage(user,
-            Loc.GetString("misfits-chat-throw-hit", ("target", targetName), ("item", itemName)),
-            InGameICChatType.Emote,
-            ChatTransmitRange.Normal,
-            ignoreActionBlocker: true);
+        _throttle.SendThrottledEmote(user, "throw",
+            Loc.GetString("misfits-chat-throw-hit", ("target", targetName), ("item", itemName)));
         // #Misfits Fix: removed redundant victim emote — performer's emote already
         // communicates the hit to everyone nearby.
     }

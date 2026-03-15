@@ -51,7 +51,7 @@ public sealed class LoreMasterObjectiveSnapshot
 }
 
 /// <summary>
-/// Admin → server: issue a specific objective prototype to the highest-ranking online member of a faction.
+/// Admin → server: issue a specific objective prototype to a chosen online member of a faction.
 /// </summary>
 [Serializable, NetSerializable]
 public sealed class IssueLoreMasterObjectiveEvent : EntityEventArgs
@@ -59,16 +59,22 @@ public sealed class IssueLoreMasterObjectiveEvent : EntityEventArgs
     public string FactionId = string.Empty;
     /// <summary>Entity prototype ID of the objective to create, e.g. "KillNCRHeadObjective".</summary>
     public string ObjectivePrototype = string.Empty;
+    /// <summary>Player name of the target faction member. Falls back to highest-ranked if empty.</summary>
+    // #Misfits Tweak - added so admins can target a specific member rather than always the top-ranked.
+    public string TargetPlayerName = string.Empty;
 }
 
 /// <summary>
-/// Admin → server: issue a fully custom (admin-typed) objective to the highest-ranking online
-/// member of a faction. Title and description are provided directly; no prototype is used.
+/// Admin → server: issue a fully custom (admin-typed) objective to a chosen online member of a faction.
+/// Title and description are provided directly; no prototype is used.
 /// </summary>
 [Serializable, NetSerializable]
 public sealed class IssueCustomLoreMasterObjectiveEvent : EntityEventArgs
 {
     public string FactionId = string.Empty;
+    /// <summary>Player name of the target faction member. Falls back to highest-ranked if empty.</summary>
+    // #Misfits Tweak - added so admins can target a specific member rather than always the top-ranked.
+    public string TargetPlayerName = string.Empty;
     /// <summary>Admin-supplied title shown in the C menu objective list.</summary>
     public string CustomTitle = string.Empty;
     /// <summary>Admin-supplied description shown beneath the title.</summary>
@@ -83,4 +89,18 @@ public sealed class LoreMasterObjectiveResultEvent : EntityEventArgs
 {
     public bool Success;
     public string Message = string.Empty;
+}
+
+/// <summary>
+/// Admin → server: remove a specific objective from a faction member by matching its title.
+/// </summary>
+// #Misfits Add - allows admins to revoke issued orders from the Loremaster tab.
+[Serializable, NetSerializable]
+public sealed class RemoveLoreMasterObjectiveEvent : EntityEventArgs
+{
+    public string FactionId = string.Empty;
+    /// <summary>Player name of the faction member whose objective should be removed.</summary>
+    public string TargetPlayerName = string.Empty;
+    /// <summary>Exact title of the objective to remove (matched against Name(objectiveEntity)).</summary>
+    public string ObjectiveTitle = string.Empty;
 }

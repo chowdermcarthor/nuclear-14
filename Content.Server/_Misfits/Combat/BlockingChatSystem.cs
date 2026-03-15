@@ -1,8 +1,8 @@
 // #Misfits Add: Broadcasts emote chat messages to nearby players when a player raises or lowers their shield.
 // Replaces the observer-visible PopupEntity calls that were commented out of Content.Shared/Blocking/BlockingSystem.cs.
-using Content.Server.Chat.Systems;
+// Chat messages are throttled via MisfitsEmoteThrottleSystem to prevent spam from rapid shield toggling.
+using Content.Server._Misfits.Chat.Systems;
 using Content.Shared.Blocking;
-using Content.Shared.Chat;
 
 namespace Content.Server._Misfits.Combat;
 
@@ -12,7 +12,7 @@ namespace Content.Server._Misfits.Combat;
 /// </summary>
 public sealed class BlockingChatSystem : EntitySystem
 {
-    [Dependency] private readonly ChatSystem _chat = default!;
+    [Dependency] private readonly MisfitsEmoteThrottleSystem _throttle = default!;
 
     public override void Initialize()
     {
@@ -31,9 +31,8 @@ public sealed class BlockingChatSystem : EntitySystem
 
         var message = Loc.GetString("misfits-chat-blocking-start", ("shield", shieldName));
 
-        // Send as a local-area emote from the blocker — visible to nearby players in the Emotes channel.
-        _chat.TrySendInGameICMessage(args.User, message, InGameICChatType.Emote,
-            ChatTransmitRange.Normal, ignoreActionBlocker: true);
+        // Throttle system sends the first message immediately and clumps repeats.
+        _throttle.SendThrottledEmote(args.User, "block", message);
     }
 
     private void OnBlockingStopped(EntityUid uid, BlockingComponent comp, ref ShieldBlockingStoppedEvent args)
@@ -48,7 +47,7 @@ public sealed class BlockingChatSystem : EntitySystem
 
         var message = Loc.GetString("misfits-chat-blocking-stop", ("shield", shieldName));
 
-        _chat.TrySendInGameICMessage(args.User, message, InGameICChatType.Emote,
-            ChatTransmitRange.Normal, ignoreActionBlocker: true);
+        // Throttle system sends the first message immediately and clumps repeats.
+        _throttle.SendThrottledEmote(args.User, "block", message);
     }
 }

@@ -69,7 +69,7 @@
 #    netsync: false
 #    sprite: Corvax/Clothing/Head/PowerArmorHelmets/t45westbos.rsi
 #  - type: WastelandMap
-#    mapTexturePath: _Misfits/Maps/wendover_map.png
+#    mapTexturePath: _Misfits/Maps/WendoverCF.png
 #    mapTitle: Brotherhood Tactical HUD
 #    worldBounds: "-517,-308,484,311"
 #    tacticalFeed: Brotherhood
@@ -91,7 +91,7 @@
 #    netsync: false
 #    sprite: Corvax/Clothing/Head/PowerArmorHelmets/t51westboselder.rsi
 #  - type: WastelandMap
-#    mapTexturePath: _Misfits/Maps/wendover_map.png
+#    mapTexturePath: _Misfits/Maps/WendoverCF.png
 #    mapTitle: Brotherhood Tactical HUD
 #    worldBounds: "-517,-308,484,311"
 #    tacticalFeed: Brotherhood

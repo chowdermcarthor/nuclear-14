@@ -21,8 +21,8 @@ namespace Content.Shared._NC14.DayNightCycle
                 // Default Fallout-inspired color cycle
                 component.TimeEntries = new List<TimeEntry>
                 {
-                    new() { Time = 0.00f, ColorHex = "#121224" }, // Midnight       – dark navy, never fully black
-                    new() { Time = 0.04f, ColorHex = "#18182D" }, // Very early night
+                    new() { Time = 0.00f, ColorHex = "#060610" }, // Midnight       – #Misfits Tweak: darkened from #121224 for a proper pitch-black feel
+                    new() { Time = 0.04f, ColorHex = "#0C0C1C" }, // Very early night – #Misfits Tweak: darkened from #18182D to match new midnight
                     new() { Time = 0.08f, ColorHex = "#4A3420" }, // Early dawn      – first warm hint
                     new() { Time = 0.17f, ColorHex = "#7A5C34" }, // Dawn            – amber glow
                     new() { Time = 0.25f, ColorHex = "#A87448" }, // Sunrise         – warm orange
@@ -33,8 +33,8 @@ namespace Content.Shared._NC14.DayNightCycle
                     new() { Time = 0.67f, ColorHex = "#CCA050" }, // Late afternoon  – deepening gold
                     new() { Time = 0.75f, ColorHex = "#B07840" }, // Sunset          – warm orange
                     new() { Time = 0.83f, ColorHex = "#7A4A2C" }, // Dusk            – deep amber-red
-                    new() { Time = 0.92f, ColorHex = "#241B38" }, // Early night     – blue-purple
-                    new() { Time = 1.00f, ColorHex = "#121224" }  // Back to Midnight
+                    new() { Time = 0.92f, ColorHex = "#1C1430" }, // Early night     – #Misfits Tweak: darkened from #241B38 to smooth into new midnight
+                    new() { Time = 1.00f, ColorHex = "#060610" }  // Back to Midnight – #Misfits Tweak: darkened from #121224
                 };
             }
         }

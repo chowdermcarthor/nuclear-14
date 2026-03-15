@@ -152,7 +152,7 @@ public sealed partial class MentorHelpSystem : SharedMentorHelpSystem
             dcTicket.ResolvedById = null;
             dcTicket.ResolvedAt = DateTime.UtcNow;
             BroadcastMentorTicketUpdate(dcTicket);
-            SendMentorTicketSystemMessage(dcTicket.PlayerId, Loc.GetString("ticket-system-auto-resolved-disconnect", ("id", dcTicket.TicketId)));
+            SendMentorTicketSystemMessage(dcTicket.PlayerId, Loc.GetString("ticket-system-auto-resolved-disconnect", ("id", dcTicket.TicketId), ("type", "MHELP")));
         }
 
         var statusText = e.NewStatus switch
@@ -302,7 +302,7 @@ public sealed partial class MentorHelpSystem : SharedMentorHelpSystem
                 };
                 _mhelpTickets[playerId] = newTicket;
                 BroadcastMentorTicketUpdate(newTicket);
-                SendMentorTicketSystemMessage(playerId, Loc.GetString("ticket-system-created", ("id", newTicket.TicketId), ("player", playerName)));
+                SendMentorTicketSystemMessage(playerId, Loc.GetString("ticket-system-created", ("id", newTicket.TicketId), ("player", playerName), ("type", "MHELP")));
             }
             return;
         }
@@ -318,7 +318,7 @@ public sealed partial class MentorHelpSystem : SharedMentorHelpSystem
         };
         _mhelpTickets[playerId] = ticket;
         BroadcastMentorTicketUpdate(ticket);
-        SendMentorTicketSystemMessage(playerId, Loc.GetString("ticket-system-created", ("id", ticket.TicketId), ("player", playerName)));
+        SendMentorTicketSystemMessage(playerId, Loc.GetString("ticket-system-created", ("id", ticket.TicketId), ("player", playerName), ("type", "MHELP")));
     }
 
     private void BroadcastMentorTicketUpdate(HelpTicketInfo ticket)
@@ -367,7 +367,7 @@ public sealed partial class MentorHelpSystem : SharedMentorHelpSystem
         ticket.ClaimedByName = args.SenderSession.Name;
         ticket.ClaimedById = args.SenderSession.UserId;
         BroadcastMentorTicketUpdate(ticket);
-        SendMentorTicketSystemMessage(ticket.PlayerId, Loc.GetString("ticket-system-claimed", ("id", ticket.TicketId), ("role", "Mentor"), ("admin", args.SenderSession.Name)));
+        SendMentorTicketSystemMessage(ticket.PlayerId, Loc.GetString("ticket-system-claimed", ("id", ticket.TicketId), ("role", "Mentor"), ("admin", args.SenderSession.Name), ("type", "MHELP")));
     }
 
     private void OnTicketResolve(HelpTicketResolveMessage msg, EntitySessionEventArgs args)
@@ -388,7 +388,7 @@ public sealed partial class MentorHelpSystem : SharedMentorHelpSystem
         ticket.ResolvedById = args.SenderSession.UserId;
         ticket.ResolvedAt = DateTime.UtcNow;
         BroadcastMentorTicketUpdate(ticket);
-        SendMentorTicketSystemMessage(ticket.PlayerId, Loc.GetString("ticket-system-resolved", ("id", ticket.TicketId), ("role", "Mentor"), ("admin", args.SenderSession.Name)));
+        SendMentorTicketSystemMessage(ticket.PlayerId, Loc.GetString("ticket-system-resolved", ("id", ticket.TicketId), ("role", "Mentor"), ("admin", args.SenderSession.Name), ("type", "MHELP")));
     }
 
     // #Misfits Add — unclaim handler returns a claimed ticket to Open
@@ -408,7 +408,7 @@ public sealed partial class MentorHelpSystem : SharedMentorHelpSystem
         ticket.ClaimedByName = null;
         ticket.ClaimedById = null;
         BroadcastMentorTicketUpdate(ticket);
-        SendMentorTicketSystemMessage(ticket.PlayerId, Loc.GetString("ticket-system-unclaimed", ("id", ticket.TicketId), ("role", "Mentor"), ("admin", args.SenderSession.Name)));
+        SendMentorTicketSystemMessage(ticket.PlayerId, Loc.GetString("ticket-system-unclaimed", ("id", ticket.TicketId), ("role", "Mentor"), ("admin", args.SenderSession.Name), ("type", "MHELP")));
     }
 
     // #Misfits Add — reopen handler returns a resolved ticket to Open
@@ -431,7 +431,7 @@ public sealed partial class MentorHelpSystem : SharedMentorHelpSystem
         ticket.ResolvedById = null;
         ticket.ResolvedAt = null;
         BroadcastMentorTicketUpdate(ticket);
-        SendMentorTicketSystemMessage(ticket.PlayerId, Loc.GetString("ticket-system-reopened", ("id", ticket.TicketId), ("role", "Mentor"), ("admin", args.SenderSession.Name)));
+        SendMentorTicketSystemMessage(ticket.PlayerId, Loc.GetString("ticket-system-reopened", ("id", ticket.TicketId), ("role", "Mentor"), ("admin", args.SenderSession.Name), ("type", "MHELP")));
     }
 
     private void OnTicketRequestList(HelpTicketRequestListMessage msg, EntitySessionEventArgs args)
@@ -483,7 +483,7 @@ public sealed partial class MentorHelpSystem : SharedMentorHelpSystem
             openTicket.ClaimedByName = senderSession.Name;
             openTicket.ClaimedById = senderSession.UserId;
             BroadcastMentorTicketUpdate(openTicket);
-            SendMentorTicketSystemMessage(openTicket.PlayerId, Loc.GetString("ticket-system-auto-claimed", ("id", openTicket.TicketId), ("role", "Mentor"), ("admin", senderSession.Name)));
+            SendMentorTicketSystemMessage(openTicket.PlayerId, Loc.GetString("ticket-system-auto-claimed", ("id", openTicket.TicketId), ("role", "Mentor"), ("admin", senderSession.Name), ("type", "MHELP")));
         }
 
         var escapedText = FormattedMessage.EscapeText(message.Text);

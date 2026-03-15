@@ -55,7 +55,8 @@ public sealed class AdminFaxEui : BaseEui
             }
             case AdminFaxEuiMsg.Send sendData:
             {
-                var printout = new FaxPrintout(sendData.Content, sendData.Title, null, null, sendData.StampState,
+                // #Misfits Fix — use PaperOffice prototype so admin faxes display the correct sprite
+                var printout = new FaxPrintout(sendData.Content, sendData.Title, null, "PaperOffice", sendData.StampState,
                         new() { new StampDisplayInfo { StampedName = sendData.From, StampedColor = sendData.StampColor } });
                 _faxSystem.Receive(_entityManager.GetEntity(sendData.Target), printout);
                 break;

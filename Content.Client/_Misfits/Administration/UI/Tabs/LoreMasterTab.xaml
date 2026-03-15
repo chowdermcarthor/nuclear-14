@@ -7,6 +7,15 @@
     MinSize="50 50">
     <BoxContainer Orientation="Vertical" SeparationOverride="8" VerticalExpand="True">
 
+        <!-- Fax Manager shortcut -->
+        <BoxContainer Orientation="Horizontal" SeparationOverride="8">
+            <Button Name="FaxManagerButton" Text="{Loc loremaster-tab-fax-manager}" Access="Public" MinWidth="140"/>
+            <Label Text="{Loc loremaster-tab-fax-manager-hint}" VerticalAlignment="Center" Modulate="#808080"/>
+        </BoxContainer>
+
+        <!-- Separator -->
+        <PanelContainer MinHeight="1" Modulate="#404040"/>
+
         <!-- Top bar: faction selector + refresh -->
         <BoxContainer Orientation="Horizontal" SeparationOverride="8">
             <Label Text="{Loc loremaster-tab-faction-label}" VerticalAlignment="Center"/>
@@ -24,17 +33,13 @@
         <!-- Separator -->
         <PanelContainer MinHeight="1" Modulate="#404040"/>
 
-        <!-- Issue new objective section -->
+        <!-- Issue new orders: target selector -->
+        <!-- #Misfits Tweak - replaced preset ObjectiveSelector/IssueButton with a per-member TargetSelector -->
         <Label Text="{Loc loremaster-tab-issue-header}" Modulate="#87CEFA"/>
         <BoxContainer Orientation="Horizontal" SeparationOverride="8">
-            <Label Text="{Loc loremaster-tab-objective-label}" VerticalAlignment="Center"/>
-            <OptionButton Name="ObjectiveSelector" Access="Public" HorizontalExpand="True"/>
+            <Label Text="{Loc loremaster-tab-target-selector-label}" VerticalAlignment="Center" MinWidth="60"/>
+            <OptionButton Name="TargetSelector" Access="Public" HorizontalExpand="True"/>
         </BoxContainer>
-        <BoxContainer Orientation="Horizontal" SeparationOverride="8">
-            <Label Name="TargetLabel" Access="Public" VerticalAlignment="Center" HorizontalExpand="True" StyleClasses="LabelSubText"/>
-            <Button Name="IssueButton" Text="{Loc loremaster-tab-issue-button}" Access="Public" MinWidth="130"/>
-        </BoxContainer>
-        <Label Name="ResultLabel" Access="Public"/>
 
         <!-- Separator -->
         <PanelContainer MinHeight="1" Modulate="#404040"/>
@@ -56,6 +61,7 @@
             <Control HorizontalExpand="True"/>
             <Button Name="IssueCustomButton" Text="{Loc loremaster-tab-custom-issue-button}" Access="Public" MinWidth="160"/>
         </BoxContainer>
+        <Label Name="ResultLabel" Access="Public"/>
 
     </BoxContainer>
 </Control>

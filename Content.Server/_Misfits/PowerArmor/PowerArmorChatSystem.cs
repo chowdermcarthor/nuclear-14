@@ -1,7 +1,7 @@
 // #Misfits Add: Broadcasts local emote chat when power armor deploys or retracts via the suit toggle action.
 // #Misfits Add: Also handles emote chat for the brace stance hotkey (PowerArmorBraceSystem).
-using Content.Server.Chat.Systems;
-using Content.Shared.Chat;
+// Chat messages are throttled via MisfitsEmoteThrottleSystem to prevent spam from rapid toggling.
+using Content.Server._Misfits.Chat.Systems;
 using Content.Shared.Clothing.EntitySystems;
 using Content.Shared._Misfits.PowerArmor;
 
@@ -14,7 +14,7 @@ namespace Content.Server._Misfits.PowerArmor;
 /// </summary>
 public sealed class PowerArmorChatSystem : EntitySystem
 {
-    [Dependency] private readonly ChatSystem _chat = default!;
+    [Dependency] private readonly MisfitsEmoteThrottleSystem _throttle = default!;
 
     public override void Initialize()
     {
@@ -41,8 +41,7 @@ public sealed class PowerArmorChatSystem : EntitySystem
             args.Activated ? "misfits-chat-power-armor-close" : "misfits-chat-power-armor-open",
             ("armor", armorName));
 
-        _chat.TrySendInGameICMessage(args.User, message, InGameICChatType.Emote,
-            ChatTransmitRange.Normal, ignoreActionBlocker: true);
+        _throttle.SendThrottledEmote(args.User, "powerarmor", message);
     }
 
     private void OnBraceActivated(EntityUid uid, PowerArmorBraceComponent component, PowerArmorBraceActivatedEvent args)
@@ -53,8 +52,7 @@ public sealed class PowerArmorChatSystem : EntitySystem
         var armorName = Exists(args.Armor) ? Name(args.Armor) : "power armor";
         var message = Loc.GetString("misfits-chat-power-armor-brace-activate", ("armor", armorName));
 
-        _chat.TrySendInGameICMessage(args.User, message, InGameICChatType.Emote,
-            ChatTransmitRange.Normal, ignoreActionBlocker: true);
+        _throttle.SendThrottledEmote(args.User, "brace", message);
     }
 
     private void OnBraceDeactivated(EntityUid uid, PowerArmorBraceComponent component, PowerArmorBraceDeactivatedEvent args)
@@ -65,7 +63,6 @@ public sealed class PowerArmorChatSystem : EntitySystem
         var armorName = Exists(args.Armor) ? Name(args.Armor) : "power armor";
         var message = Loc.GetString("misfits-chat-power-armor-brace-deactivate", ("armor", armorName));
 
-        _chat.TrySendInGameICMessage(args.User, message, InGameICChatType.Emote,
-            ChatTransmitRange.Normal, ignoreActionBlocker: true);
+        _throttle.SendThrottledEmote(args.User, "brace", message);
     }
 }

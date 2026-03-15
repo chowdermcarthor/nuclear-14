@@ -12,11 +12,11 @@
   canBeAntag: false
   setPreference: true
   overrideConsoleVisibility: true
+  whitelisted: true # #Misfits Fix — allow job-whitelist fallback in lobby visibility filter
   hideWithoutWhitelist: true # #Misfits Change
   spawnLoadout: false
   applyTraits: false
   requirements:
-    - !type:CharacterWhitelistRequirement
     - !type:CharacterSpeciesRequirement
       species:
         - SuperMutant

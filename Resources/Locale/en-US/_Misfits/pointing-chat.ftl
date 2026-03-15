@@ -101,3 +101,6 @@ misfits-chat-double-grab-gasp = gasps for air
 ## PersistentCurrencySystem — new keys
 misfits-currency-unsupported-type = Only Bottlecaps can be deposited.
 
+## MisfitsEmoteThrottleSystem
+misfits-emote-clump = {$message} (x{$count})
+

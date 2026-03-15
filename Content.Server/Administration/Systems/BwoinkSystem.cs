@@ -223,7 +223,7 @@ namespace Content.Server.Administration.Systems
                 dcTicket.ResolvedById = null;
                 dcTicket.ResolvedAt = DateTime.UtcNow;
                 BroadcastTicketUpdate(dcTicket);
-                SendTicketSystemMessage(dcTicket.PlayerId, Loc.GetString("ticket-system-auto-resolved-disconnect", ("id", dcTicket.TicketId)));
+                SendTicketSystemMessage(dcTicket.PlayerId, Loc.GetString("ticket-system-auto-resolved-disconnect", ("id", dcTicket.TicketId), ("type", "AHELP")));
             }
 
             // Notify all admins if a player disconnects or reconnects
@@ -426,7 +426,7 @@ namespace Content.Server.Administration.Systems
                     };
                     _tickets[playerId] = newTicket;
                     BroadcastTicketUpdate(newTicket);
-                    SendTicketSystemMessage(playerId, Loc.GetString("ticket-system-created", ("id", newTicket.TicketId), ("player", playerName)));
+                    SendTicketSystemMessage(playerId, Loc.GetString("ticket-system-created", ("id", newTicket.TicketId), ("player", playerName), ("type", "AHELP")));
                 }
                 return; // ticket already open or claimed — do nothing extra
             }
@@ -442,7 +442,7 @@ namespace Content.Server.Administration.Systems
             };
             _tickets[playerId] = ticket;
             BroadcastTicketUpdate(ticket);
-            SendTicketSystemMessage(playerId, Loc.GetString("ticket-system-created", ("id", ticket.TicketId), ("player", playerName)));
+            SendTicketSystemMessage(playerId, Loc.GetString("ticket-system-created", ("id", ticket.TicketId), ("player", playerName), ("type", "AHELP")));
         }
 
         // #Misfits Add — broadcast a ticket update to all admins with Adminhelp flag
@@ -495,7 +495,7 @@ namespace Content.Server.Administration.Systems
             ticket.ClaimedByName = args.SenderSession.Name;
             ticket.ClaimedById = args.SenderSession.UserId;
             BroadcastTicketUpdate(ticket);
-            SendTicketSystemMessage(ticket.PlayerId, Loc.GetString("ticket-system-claimed", ("id", ticket.TicketId), ("role", "Admin"), ("admin", args.SenderSession.Name)));
+            SendTicketSystemMessage(ticket.PlayerId, Loc.GetString("ticket-system-claimed", ("id", ticket.TicketId), ("role", "Admin"), ("admin", args.SenderSession.Name), ("type", "AHELP")));
         }
 
         // #Misfits Add — admin resolves a ticket
@@ -516,7 +516,7 @@ namespace Content.Server.Administration.Systems
             ticket.ResolvedById = args.SenderSession.UserId;
             ticket.ResolvedAt = DateTime.Now;
             BroadcastTicketUpdate(ticket);
-            SendTicketSystemMessage(ticket.PlayerId, Loc.GetString("ticket-system-resolved", ("id", ticket.TicketId), ("role", "Admin"), ("admin", args.SenderSession.Name)));
+            SendTicketSystemMessage(ticket.PlayerId, Loc.GetString("ticket-system-resolved", ("id", ticket.TicketId), ("role", "Admin"), ("admin", args.SenderSession.Name), ("type", "AHELP")));
         }
 
         // #Misfits Add — admin unclaims (releases) a ticket back to Open
@@ -536,7 +536,7 @@ namespace Content.Server.Administration.Systems
             ticket.ClaimedByName = null;
             ticket.ClaimedById = null;
             BroadcastTicketUpdate(ticket);
-            SendTicketSystemMessage(ticket.PlayerId, Loc.GetString("ticket-system-unclaimed", ("id", ticket.TicketId), ("role", "Admin"), ("admin", args.SenderSession.Name)));
+            SendTicketSystemMessage(ticket.PlayerId, Loc.GetString("ticket-system-unclaimed", ("id", ticket.TicketId), ("role", "Admin"), ("admin", args.SenderSession.Name), ("type", "AHELP")));
         }
 
         // #Misfits Add — admin reopens a resolved ticket
@@ -559,7 +559,7 @@ namespace Content.Server.Administration.Systems
             ticket.ResolvedById = null;
             ticket.ResolvedAt = null;
             BroadcastTicketUpdate(ticket);
-            SendTicketSystemMessage(ticket.PlayerId, Loc.GetString("ticket-system-reopened", ("id", ticket.TicketId), ("role", "Admin"), ("admin", args.SenderSession.Name)));
+            SendTicketSystemMessage(ticket.PlayerId, Loc.GetString("ticket-system-reopened", ("id", ticket.TicketId), ("role", "Admin"), ("admin", args.SenderSession.Name), ("type", "AHELP")));
         }
 
         // #Misfits Add — admin requests full ticket list (e.g. on connect or UI open)
@@ -956,6 +956,30 @@ namespace Content.Server.Administration.Systems
                 EnsureTicket(bwoinkParams.Message.UserId, bwoinkParams.SenderName);
             }
 
+            // #Misfits Add — when an admin messages a player who has no ticket, create one pre-claimed
+            if (bwoinkParams.SenderAdmin != null
+                && bwoinkParams.SenderAdmin.HasFlag(AdminFlags.Adminhelp)
+                && !bwoinkParams.FromWebhook
+                && !_tickets.ContainsKey(bwoinkParams.Message.UserId))
+            {
+                // Resolve the target player's display name
+                var targetName = bwoinkParams.Message.UserId.ToString();
+                if (_playerManager.TryGetSessionById(bwoinkParams.Message.UserId, out var targetSession))
+                    targetName = targetSession.Name;
+
+                // Create the ticket and immediately claim it for this admin
+                EnsureTicket(bwoinkParams.Message.UserId, targetName);
+
+                if (_tickets.TryGetValue(bwoinkParams.Message.UserId, out var newTicket))
+                {
+                    newTicket.Status = HelpTicketStatus.Claimed;
+                    newTicket.ClaimedByName = bwoinkParams.SenderName;
+                    newTicket.ClaimedById = bwoinkParams.SenderId;
+                    BroadcastTicketUpdate(newTicket);
+                    SendTicketSystemMessage(newTicket.PlayerId, Loc.GetString("ticket-system-auto-claimed", ("id", newTicket.TicketId), ("admin", bwoinkParams.SenderName), ("type", "AHELP")));
+                }
+            }
+
             // #Misfits Change — auto-claim ticket on first admin reply instead of rejecting
             if (bwoinkParams.SenderAdmin != null
                 && bwoinkParams.SenderAdmin.HasFlag(AdminFlags.Adminhelp)
@@ -967,7 +991,7 @@ namespace Content.Server.Administration.Systems
                 openTicket.ClaimedByName = bwoinkParams.SenderName;
                 openTicket.ClaimedById = bwoinkParams.SenderId;
                 BroadcastTicketUpdate(openTicket);
-                SendTicketSystemMessage(openTicket.PlayerId, Loc.GetString("ticket-system-auto-claimed", ("id", openTicket.TicketId), ("role", "Admin"), ("admin", bwoinkParams.SenderName)));
+                SendTicketSystemMessage(openTicket.PlayerId, Loc.GetString("ticket-system-auto-claimed", ("id", openTicket.TicketId), ("admin", bwoinkParams.SenderName), ("type", "AHELP")));
             }
 
             var escapedText = FormattedMessage.EscapeText(bwoinkParams.Message.Text);

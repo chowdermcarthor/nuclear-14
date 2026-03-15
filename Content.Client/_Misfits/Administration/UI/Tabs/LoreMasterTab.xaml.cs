@@ -12,6 +12,7 @@ using Robust.Shared.GameObjects;
 using Robust.Shared.IoC;
 using Robust.Shared.Maths;
 using Robust.Shared.Localization;
+using Robust.Shared.Console;
 
 namespace Content.Client._Misfits.Administration.UI.Tabs;
 
@@ -26,40 +27,20 @@ public sealed partial class LoreMasterTab : Control
         ("NCR",                  "NCR"),
         ("Brotherhood of Steel", "BrotherhoodOfSteel"),
         ("Caesar's Legion",      "CaesarLegion"),
+        ("Vault",                "Vault"),
+        ("Town",                 "Townsfolk"),
     };
 
-    /// <summary>
-    /// Per-faction objective choices exposed in the "Issue" selector.
-    /// Keyed by faction prototype ID. Each entry is (display label, objective entity prototype ID).
-    /// </summary>
-    private static readonly Dictionary<string, List<(string Display, string Proto)>> FactionObjectives = new()
-    {
-        ["NCR"] = new()
-        {
-            (Loc.GetString("loremaster-obj-ncr-kill"),          "KillNCRHeadObjective"),
-            (Loc.GetString("loremaster-obj-ncr-steal-enclave"), "NCRStealObjective"),
-            (Loc.GetString("loremaster-obj-ncr-steal-bosw"),    "NCRStealBOSWObjective"),
-            (Loc.GetString("loremaster-obj-ncr-steal-legion"),  "NCRStealLegionObjective"),
-        },
-        ["BrotherhoodOfSteel"] = new()
-        {
-            (Loc.GetString("loremaster-obj-bosw-kill"),          "KillBOSWHeadObjective"),
-            (Loc.GetString("loremaster-obj-bosw-steal-geck"),    "BOSWStealObjective"),
-            (Loc.GetString("loremaster-obj-bosw-steal-ncr"),     "BOSWStealNCRObjective"),
-            (Loc.GetString("loremaster-obj-bosw-steal-legion"),  "BOSWStealLegionObjective"),
-        },
-        ["CaesarLegion"] = new()
-        {
-            (Loc.GetString("loremaster-obj-legion-kill"),           "KillLegionHeadObjective"),
-            (Loc.GetString("loremaster-obj-legion-steal-ncr"),      "LegionStealNCRObjective"),
-            (Loc.GetString("loremaster-obj-legion-steal-bosw"),     "LegionStealBOSWObjective"),
-            (Loc.GetString("loremaster-obj-legion-steal-enclave"),  "LegionStealEnclaveObjective"),
-        },
-    };
+    // #Misfits Tweak - FactionObjectives preset list removed: kill/steal presets were disabled (low-RP).
+    //                  Custom orders via the Loremaster tab are now the only way to issue objectives.
+    // private static readonly Dictionary<string, List<(string Display, string Proto)>> FactionObjectives = ...
 
     // ── IoC refs ───────────────────────────────────────────────────────────
 
     private LoreMasterClientSystem _loreMaster = default!;
+
+    // #Misfits Tweak - cache of last-refreshed faction member list used to resolve TargetSelector index → player name.
+    private List<LoreMasterMemberInfo> _currentMembers = new();
 
     // ── Constructor ────────────────────────────────────────────────────────
 
@@ -74,9 +55,13 @@ public sealed partial class LoreMasterTab : Control
 
         // #Misfits Change /Fix/ - OnItemSelected fires BEFORE SelectedId is updated; call Select() to commit it first.
         FactionSelector.OnItemSelected += args => { FactionSelector.Select(args.Id); OnFactionChanged(); };
+        // #Misfits Fix - same pattern: commit the selection so SelectedId is current when Issue is pressed.
+        TargetSelector.OnItemSelected += args => TargetSelector.Select(args.Id);
         RefreshButton.OnPressed += _ => RequestRefresh();
-        IssueButton.OnPressed += _ => OnIssuePressed();
-        IssueCustomButton.OnPressed += _ => OnIssueCustomPressed(); // #Misfits Add
+        // #Misfits Add - open the admin fax manager panel via the server console command
+        FaxManagerButton.OnPressed += _ => IoCManager.Resolve<IConsoleHost>().ExecuteCommand("faxui");
+        // #Misfits Tweak - IssueButton (preset objectives) removed — presets are disabled.
+        IssueCustomButton.OnPressed += _ => OnIssueCustomPressed();
 
         OnFactionChanged();
     }
@@ -105,17 +90,12 @@ public sealed partial class LoreMasterTab : Control
 
     private void OnFactionChanged()
     {
-        ObjectiveSelector.Clear();
-        if (FactionObjectives.TryGetValue(CurrentFactionId, out var objectives))
-        {
-            foreach (var (display, _) in objectives)
-                ObjectiveSelector.AddItem(display);
-        }
-
+        // #Misfits Tweak - ObjectiveSelector removed (presets disabled); clear TargetSelector instead.
+        TargetSelector.Clear();
+        _currentMembers.Clear();
         MembersContainer.RemoveAllChildren();
         StatusLabel.Text = string.Empty;
         ResultLabel.Text = string.Empty;
-        TargetLabel.Text = Loc.GetString("loremaster-tab-target-none");
     }
 
     private void RequestRefresh()
@@ -141,23 +121,23 @@ public sealed partial class LoreMasterTab : Control
                 Text = Loc.GetString("loremaster-tab-no-members"),
                 Modulate = Color.Gray,
             });
-            TargetLabel.Text = Loc.GetString("loremaster-tab-target-none");
+            // TargetSelector remains empty — no members to select.
             return;
         }
 
-        var highest = msg.Members[0];
-        TargetLabel.Text = Loc.GetString("loremaster-tab-target-label",
-            ("name", highest.PlayerName), ("job", highest.JobName));
+        // #Misfits Tweak - populate TargetSelector so admin can pick any faction member.
+        _currentMembers = msg.Members;
+        TargetSelector.Clear();
+        foreach (var m in msg.Members)
+            TargetSelector.AddItem($"{m.PlayerName}  [{m.JobName}]");
 
         foreach (var member in msg.Members)
         {
-            var isTop = member == highest;
-
-            // Member header — star-mark the highest-ranking member so the admin knows who will receive orders
+            // Member header — all members shown equally; TargetSelector shows who receives the order.
             MembersContainer.AddChild(new Label
             {
-                Text = $"{(isTop ? "★ " : "  ")}{member.PlayerName}  [{member.JobName}]",
-                Modulate = isTop ? Color.LightSkyBlue : Color.LightGray,
+                Text = $"  {member.PlayerName}  [{member.JobName}]",
+                Modulate = Color.LightGray,
             });
 
             if (member.Objectives.Count == 0)
@@ -175,11 +155,38 @@ public sealed partial class LoreMasterTab : Control
                     // Progress bar row styled to match ObjectiveConditionsControl colour convention:
                     // green = complete, white = in-progress
                     var pct = (int)(obj.Progress * 100f);
-                    MembersContainer.AddChild(new Label
+
+                    // #Misfits Add - row with objective text + [Remove] button
+                    var objRow = new BoxContainer
+                    {
+                        Orientation = BoxContainer.LayoutOrientation.Horizontal,
+                        SeparationOverride = 6,
+                    };
+                    objRow.AddChild(new Label
                     {
                         Text = $"   [{pct,3}%]  {obj.Title}",
                         Modulate = obj.Progress >= 1f ? Color.LimeGreen : Color.White,
+                        HorizontalExpand = true,
                     });
+
+                    // Capture values for the closure
+                    var capturedPlayerName = member.PlayerName;
+                    var capturedTitle = obj.Title;
+                    var removeBtn = new Button
+                    {
+                        Text = Loc.GetString("loremaster-tab-remove-button"),
+                        Modulate = new Color(0.9f, 0.3f, 0.3f),
+                        MinWidth = 70,
+                    };
+                    removeBtn.OnPressed += _ =>
+                    {
+                        ResultLabel.Text = Loc.GetString("loremaster-tab-removing");
+                        ResultLabel.Modulate = Color.Yellow;
+                        _loreMaster.RemoveObjective(CurrentFactionId, capturedPlayerName, capturedTitle);
+                    };
+                    objRow.AddChild(removeBtn);
+                    MembersContainer.AddChild(objRow);
+
                     if (!string.IsNullOrWhiteSpace(obj.Description))
                     {
                         MembersContainer.AddChild(new Label
@@ -205,24 +212,11 @@ public sealed partial class LoreMasterTab : Control
             RequestRefresh(); // auto-refresh to show the newly issued objective
     }
 
-    private void OnIssuePressed()
-    {
-        if (!FactionObjectives.TryGetValue(CurrentFactionId, out var objectives))
-            return;
-        if (ObjectiveSelector.ItemCount == 0)
-            return;
-        var idx = ObjectiveSelector.SelectedId;
-        if (idx < 0 || idx >= objectives.Count)
-            return;
+    // #Misfits Tweak - OnIssuePressed removed: preset objectives (ObjectiveSelector) are disabled.
+    //                  Custom orders via OnIssueCustomPressed are the only issuance path now.
+    // private void OnIssuePressed() { ... }
 
-        var proto = objectives[idx].Proto;
-        ResultLabel.Text = Loc.GetString("loremaster-tab-issuing");
-        ResultLabel.Modulate = Color.Yellow;
-
-        _loreMaster.IssueObjective(CurrentFactionId, proto);
-    }
-
-    // #Misfits Add - issue a fully admin-typed (freeform) objective to the top-ranked faction member.
+    // #Misfits Tweak - Issues to the admin-selected faction member, not just the highest-ranked.
     private void OnIssueCustomPressed()
     {
         var title = CustomTitleEdit.Text.Trim();
@@ -233,9 +227,26 @@ public sealed partial class LoreMasterTab : Control
             return;
         }
 
+        // #Misfits Tweak - require a valid target selection before issuing.
+        if (_currentMembers.Count == 0 || TargetSelector.ItemCount == 0)
+        {
+            ResultLabel.Text = Loc.GetString("loremaster-tab-target-none");
+            ResultLabel.Modulate = Color.OrangeRed;
+            return;
+        }
+
+        var selIdx = TargetSelector.SelectedId;
+        if (selIdx < 0 || selIdx >= _currentMembers.Count)
+        {
+            ResultLabel.Text = Loc.GetString("loremaster-tab-target-none");
+            ResultLabel.Modulate = Color.OrangeRed;
+            return;
+        }
+
+        var targetName = _currentMembers[selIdx].PlayerName;
         ResultLabel.Text = Loc.GetString("loremaster-tab-issuing");
         ResultLabel.Modulate = Color.Yellow;
 
-        _loreMaster.IssueCustomObjective(CurrentFactionId, title, CustomDescEdit.Text.Trim());
+        _loreMaster.IssueCustomObjective(CurrentFactionId, targetName, title, CustomDescEdit.Text.Trim());
     }
 }

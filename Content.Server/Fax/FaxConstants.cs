@@ -29,4 +29,9 @@ public static class FaxConstants
     public const string FaxPaperStampStateData = "fax_data_stamp_state";
     public const string FaxPaperStampedByData = "fax_data_stamped_by";
     public const string FaxSyndicateData = "fax_data_i_am_syndicate";
+
+    // #Misfits Add — Virtual address for the LEADERSHIP fax destination
+    // All fax machines expose this peer so players can fax leadership and admins get notified
+    public const string FaxCommandAddress = "fax_virtual_command";
+    public const string FaxCommandName = "LEADERSHIP";
 }

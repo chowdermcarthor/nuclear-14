@@ -1,12 +1,10 @@
 // #Misfits Add: Broadcasts an emote chat message to nearby players when a player points at an entity.
 // Ghosts are routed to Dead chat instead of the IC emote channel.
-using Content.Server.Chat.Systems;
-using Content.Shared.Chat;
-using Content.Shared.Ghost;
+// Chat messages are throttled via MisfitsEmoteThrottleSystem to prevent rapid-fire spam;
+// the visual pointing arrow still fires at the normal 0.5 s rate.
+using Content.Server._Misfits.Chat.Systems;
 using Content.Shared.IdentityManagement;
 using Content.Shared.Pointing;
-using Robust.Server.Player;
-using Robust.Shared.GameObjects;
 
 namespace Content.Server._Misfits.Pointing;
 
@@ -14,11 +12,11 @@ namespace Content.Server._Misfits.Pointing;
 /// Hooks <see cref="AfterPointedAtEvent"/> to send a local-area emote chat message so nearby
 /// players see "* John Smith points at Jane Doe *" in the emote channel whenever someone points.
 /// Ghosts are routed to Dead chat so other ghosts can see the gesture.
+/// Repeated messages within the throttle window are clumped into a single "(xN)" summary.
 /// </summary>
 public sealed class PointingChatSystem : EntitySystem
 {
-    [Dependency] private readonly ChatSystem _chat = default!;
-    [Dependency] private readonly IPlayerManager _playerManager = default!;
+    [Dependency] private readonly MisfitsEmoteThrottleSystem _throttle = default!;
 
     public override void Initialize()
     {
@@ -30,8 +28,7 @@ public sealed class PointingChatSystem : EntitySystem
 
     /// <summary>
     /// Sends a chat message when a player points at another entity.
-    /// Ghosts are routed to Dead chat; living players get a local-area emote.
-    /// Bypasses the action blocker because pointing is already gated by PointingSystem.
+    /// The throttle system handles ghost → Dead chat routing and clump summaries.
     /// </summary>
     private void OnAfterPointed(EntityUid uid, MetaDataComponent component, ref AfterPointedAtEvent ev)
     {
@@ -41,20 +38,7 @@ public sealed class PointingChatSystem : EntitySystem
             ? Loc.GetString("pointing-chat-point-at-self")
             : Loc.GetString("pointing-chat-point-at-other", ("other", Identity.Entity(ev.Pointed, EntityManager)));
 
-        if (HasComp<GhostComponent>(uid))
-        {
-            // TrySendInGameICMessage silently drops ghost messages when no player session is
-            // passed (the OOC guard requires a non-null session). Resolve the session and call
-            // TrySendInGameOOCMessage directly so the Dead-chat path completes.
-            if (!_playerManager.TryGetSessionByEntity(uid, out var session))
-                return;
-
-            _chat.TrySendInGameOOCMessage(uid, message, InGameOOCChatType.Dead, false, player: session);
-            return;
-        }
-
-        // Living players: send as a local-area emote — visible to nearby players in the Emotes channel.
-        _chat.TrySendInGameICMessage(uid, message, InGameICChatType.Emote,
-            ChatTransmitRange.Normal, ignoreActionBlocker: true);
+        // Throttle system sends the first message immediately and clumps repeats.
+        _throttle.SendThrottledEmote(uid, "point", message);
     }
 }

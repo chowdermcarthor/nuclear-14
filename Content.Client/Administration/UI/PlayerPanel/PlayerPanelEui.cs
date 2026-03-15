@@ -1,4 +1,5 @@
 using Content.Client.Administration.Managers;
+using Content.Client._Misfits.Administration.UI; // #Misfits Add — for QuickBwoinkWindow
 using Content.Client.Eui;
 using Content.Shared.Administration;
 using Content.Shared.Eui;
@@ -18,6 +19,9 @@ public sealed class PlayerPanelEui : BaseEui
 
     private PlayerPanel PlayerPanel { get;  }
 
+    // #Misfits Add — focused quick-reply window instance (one at a time)
+    private QuickBwoinkWindow? _quickBwoinkWindow;
+
     public PlayerPanelEui()
     {
         PlayerPanel = new PlayerPanel(_admin);
@@ -28,7 +32,25 @@ public sealed class PlayerPanelEui : BaseEui
         PlayerPanel.OnKick += username => _console.ExecuteCommand($"kick \"{username}\"");
         PlayerPanel.OnOpenBanPanel += id => _console.ExecuteCommand($"banpanel \"{id}\"");
         PlayerPanel.OnOpenBans += id => _console.ExecuteCommand($"banlist \"{id}\"");
-        PlayerPanel.OnAhelp += id => _console.ExecuteCommand($"openahelp \"{id}\"");
+        // #Misfits Change — open a focused quick-reply window instead of the full admin panel
+        // This prevents accidental messaging of the wrong player.
+        PlayerPanel.OnAhelp += id =>
+        {
+            if (id == null)
+                return;
+
+            // Reuse existing window if it targets the same player
+            if (_quickBwoinkWindow is { Disposed: false })
+            {
+                _quickBwoinkWindow.MoveToFront();
+                return;
+            }
+
+            var targetName = PlayerPanel.TargetUsername ?? id.Value.ToString();
+            _quickBwoinkWindow = new QuickBwoinkWindow(id.Value, targetName);
+            _quickBwoinkWindow.OnClose += () => _quickBwoinkWindow = null;
+            _quickBwoinkWindow.OpenCentered();
+        };
         PlayerPanel.OnWhitelistToggle += (id, whitelisted) =>
         {
             _console.ExecuteCommand(whitelisted ? $"whitelistremove \"{id}\"" : $"whitelistadd \"{id}\"");

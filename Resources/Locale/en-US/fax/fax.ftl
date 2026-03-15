@@ -24,5 +24,7 @@ fax-machine-ui-paper-inserted = Paper in tray
 fax-machine-ui-paper-not-inserted = No paper
 
 fax-machine-chat-notify = Received new fax message from "{$fax}" fax
+fax-machine-chat-notify-command = FAX TO LEADERSHIP from "{$fax}" fax — paper "{$paper}" sent by {$actor}. Use faxui to respond.
+fax-machine-popup-received-leadership = The {$fax} fax machine whirs to life — incoming correspondence from leadership.
 
 fax-machine-printed-paper-name = printed paper
