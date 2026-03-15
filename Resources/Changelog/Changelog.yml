@@ -1672,3 +1672,48 @@ Entries:
   id: 5648
   time: '2026-03-15T00:24:06.0000000+00:00'
   url: https://github.com/Misfit-Sanctuary/nuclear-14/pull/131
+- author: cythisiax
+  changes:
+    - type: Tweak
+      message: >-
+        Further additions to ticket system, and isolation of player roster &
+        A/MHelp sent by player.
+    - type: Tweak
+      message: >-
+        Admin verb to have right click display "Open Player Options" for Instant
+        info, instead of 3 context menus to get.
+    - type: Tweak
+      message: >-
+        Inline chat application of standing, pending, and sent helps instead of
+        relying on menu to check tickets.
+    - type: Tweak
+      message: >-
+        Adjusted CPR, Asphyxiate system. Asxphyxiation occurs to >190, CPR
+        applys -1% aphysx per action.
+    - type: Tweak
+      message: >-
+        Upon leaving crit hardcrit, players no longer instantly stand. >> 8
+        second timer. Stimpaks introduce 2sec, same as healpowder.
+    - type: Tweak
+      message: Adjusted autochat removal for slurs.
+    - type: Tweak
+      message: Removed auto-applied objectives that were pretty LRP.
+    - type: Tweak
+      message: Raider faction is no longer allied with NPC Raiders.
+    - type: Tweak
+      message: Ghouls are no longer allied with NPC faction ghouls.
+    - type: Tweak
+      message: Robots are no longer allied with NPC faction robots.
+    - type: Fix
+      message: NCR Vet not able to open ranger door.
+    - type: Fix
+      message: >-
+        Further removal of ForgeCorvax blueprints system from _NC hidden under
+        N14 base.
+    - type: Fix
+      message: CPR locale issue
+    - type: Fix
+      message: Warpers broke somewhere with Vault.yml due to removed content. fixed.
+  id: 5649
+  time: '2026-03-15T03:51:48.0000000+00:00'
+  url: https://github.com/Misfit-Sanctuary/nuclear-14/pull/132
