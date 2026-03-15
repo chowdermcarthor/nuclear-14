@@ -1731,3 +1731,14 @@ Entries:
   id: 5651
   time: '2026-03-15T15:44:42.0000000+00:00'
   url: https://github.com/Misfit-Sanctuary/nuclear-14/pull/133
+- author: cythisiax
+  changes:
+    - type: Fix
+      message: >-
+        Someone had deliberately injected jerk → "jerking off" and jerks →
+        "jerks off" into the word-replacement table. Both are now gone.
+    - type: Tweak
+      message: Sentry bots.
+  id: 5652
+  time: '2026-03-15T23:06:15.0000000+00:00'
+  url: https://github.com/Misfit-Sanctuary/nuclear-14/pull/135
