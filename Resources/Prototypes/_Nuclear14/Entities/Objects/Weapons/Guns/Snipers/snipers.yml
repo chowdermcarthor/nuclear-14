@@ -28,6 +28,14 @@
     backStrength: 3
   - type: StaticPrice
     price: 75
+  # #Misfits Add — scope attachment slot; inherited by all lever-action carbines
+  - type: ItemSlots
+    slots:
+      gun_scope:
+        name: Scope Slot
+        whitelist:
+          tags:
+          - RifleScope
 
 - type: entity
   name: lee enfield rifle
@@ -58,6 +66,14 @@
       - N14Cartridge308Rifle
   - type: StaticPrice
     price: 100
+  # #Misfits Add — scope attachment slot on Lee Enfield
+  - type: ItemSlots
+    slots:
+      gun_scope:
+        name: Scope Slot
+        whitelist:
+          tags:
+          - RifleScope
 
 - type: entity
   name: Anti-Materiel rifle
@@ -116,6 +132,12 @@
           tags:
             - N14Cartridge50
             - N14Cartridge50HEIAP
+      # #Misfits Add — scope attachment slot on anti-materiel rifle
+      gun_scope:
+        name: Scope Slot
+        whitelist:
+          tags:
+          - RifleScope
   - type: MagazineVisuals
     magState: mag
     steps: 1
@@ -163,6 +185,14 @@
     backStrength: 3
   - type: StaticPrice
     price: 175
+  # #Misfits Add — scope attachment slot on .50 NCR rifle
+  - type: ItemSlots
+    slots:
+      gun_scope:
+        name: Scope Slot
+        whitelist:
+          tags:
+          - RifleScope
 
 - type: entity
   name: lever action carbine

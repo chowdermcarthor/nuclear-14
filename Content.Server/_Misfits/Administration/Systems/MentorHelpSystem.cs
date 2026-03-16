@@ -136,6 +136,16 @@ public sealed partial class MentorHelpSystem : SharedMentorHelpSystem
 
     private void OnPlayerStatusChanged(object? sender, SessionStatusEventArgs e)
     {
+        // #Misfits Add — push existing mentor ticket list to newly connected mentors/admins
+        // so they see tickets created before they joined.
+        if (e.NewStatus == SessionStatus.InGame
+            && (_adminManager.GetAdminData(e.Session)?.HasFlag(AdminFlags.ViewNotes) ?? false))
+        {
+            var list = _mhelpTickets.Values.ToList();
+            if (list.Count > 0)
+                RaiseNetworkEvent(new HelpTicketListMessage(list), e.Session.Channel);
+        }
+
         if (e.NewStatus != SessionStatus.Connected && e.NewStatus != SessionStatus.Disconnected)
             return;
 

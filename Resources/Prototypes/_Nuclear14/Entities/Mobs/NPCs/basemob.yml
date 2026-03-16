@@ -103,6 +103,8 @@
       Parched: 50
       Dead: 0
     baseDecayRate: 0.0 # Decay rate decreased to 0, because hostile mobs can be way too easily defeated by slowness applied to them.
+  - type: NPCRetaliation # Aggro on the attacker when damaged from any range
+    attackMemoryLength: 30
   - type: NpcFactionMember
     factions:
     - WastelandAnimal

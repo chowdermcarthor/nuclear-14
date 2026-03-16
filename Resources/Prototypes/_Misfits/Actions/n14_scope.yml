@@ -1,0 +1,16 @@
+# N14 scope toggle action
+# Granted automatically when the player picks up a gun with N14ScopeComponent
+# (built-in scope) or a gun whose gun_scope slot contains a scope attachment.
+
+- type: entity
+  id: N14ActionToggleScope
+  name: Toggle Scope
+  description: Look through the scope to shift your view forward.
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: InstantAction
+    checkCanInteract: true
+    icon:
+      sprite: _RMC/Actions/scope_actions.rsi
+      state: sniperscope
+    event: !type:N14ScopeToggleEvent {}

@@ -1,0 +1,25 @@
+# Power armor integrity HUD alert — shown on the wearer's alert bar while
+# PA is equipped. Severity 0 = broken/empty, severity 4 = full health.
+# Uses battery RSI as placeholder art until custom sprites are made.
+
+- type: alertCategory
+  id: PowerArmorIntegrity
+
+- type: alert
+  id: PowerArmorIntegrity
+  category: PowerArmorIntegrity
+  icons:
+  - sprite: /Textures/Interface/Alerts/battery.rsi
+    state: battery0
+  - sprite: /Textures/Interface/Alerts/battery.rsi
+    state: battery3
+  - sprite: /Textures/Interface/Alerts/battery.rsi
+    state: battery5
+  - sprite: /Textures/Interface/Alerts/battery.rsi
+    state: battery8
+  - sprite: /Textures/Interface/Alerts/battery.rsi
+    state: battery10
+  name: alerts-power-armor-integrity-name
+  description: alerts-power-armor-integrity-desc
+  minSeverity: 0
+  maxSeverity: 4

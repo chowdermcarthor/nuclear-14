@@ -6,9 +6,10 @@
     MinSize="50 50">
     <BoxContainer Orientation="Vertical" SeparationOverride="10">
 
-        <!-- Round Stats Summary -->
-        <PanelContainer Name="StatsPanel">
-            <BoxContainer Orientation="Vertical" Margin="8" SeparationOverride="6">
+        <!-- Round Stats Summary (scrollable so staff grid doesn't overlap buttons below) -->
+        <PanelContainer Name="StatsPanel" MaxHeight="280">
+            <ScrollContainer HScrollEnabled="false" VScrollEnabled="true">
+                <BoxContainer Orientation="Vertical" Margin="8" SeparationOverride="6">
                 <Label Name="StatsHeader" Text="{Loc misfits-staff-stats-header}" StyleClasses="LabelHeading" />
 
                 <!-- Admin ticket counters -->
@@ -36,8 +37,9 @@
                 <Label Text="{Loc misfits-staff-stats-breakdown-header}" StyleClasses="LabelSubText" Margin="0 4 0 0" />
 
                 <!-- Staff leaderboard grid (populated in code-behind) -->
-                <GridContainer Name="StaffGrid" Columns="4" HSeparationOverride="20" VSeparationOverride="4" />
+                <GridContainer Name="StaffGrid" Columns="4" HSeparationOverride="30" VSeparationOverride="4" />
             </BoxContainer>
+            </ScrollContainer>
         </PanelContainer>
 
         <!-- Existing action buttons -->

@@ -13,3 +13,6 @@
     falloffStartTiles: 5.0
     maxFalloffTiles: 18.0
     minDamageMultiplier: 0.57
+  # #Misfits Add: 5.56mm is a medium-caliber rifle round; power armor has a low chance to glance it.
+  - type: Reflective
+    reflective: MediumCaliber

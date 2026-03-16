@@ -1,9 +1,13 @@
 // #Misfits Change - Player-controlled mobs scream on barbed-wire style hazards, bleed start, and severe impacts.
+// #Misfits Tweak - Screams now only trigger when the player is near-crit (≥60% of crit threshold).
+//                  Cooldown raised to 5 s and hit threshold to 20 to reduce noise on light combat.
 using Content.Server.Chat.Systems;
 using Content.Server.Damage.Components;
 using Content.Server.Damage.Systems;
 using Content.Server._Misfits.Chat.Events;
 using Content.Shared.Damage;
+using Content.Shared.Damage.Components;
+using Content.Shared.Mobs;
 using Content.Shared.Mobs.Components;
 using Content.Shared.Mobs.Systems;
 using Robust.Shared.Player;
@@ -13,15 +17,24 @@ namespace Content.Server._Misfits.Chat.Systems;
 
 /// <summary>
 /// Triggers scream emotes for attached player mobs when they hit painful hazard milestones.
+/// Screams on damage/bleed are gated behind a near-crit health check so they don't fire
+/// on routine melee hits at full health.
 /// </summary>
 public sealed class PlayerPainScreamSystem : EntitySystem
 {
-    private static readonly TimeSpan ScreamCooldown = TimeSpan.FromSeconds(2.5);
-    private const float HeavyImpactDamageThreshold = 15f;
+    private static readonly TimeSpan ScreamCooldown = TimeSpan.FromSeconds(5.0);
+    private const float HeavyImpactDamageThreshold = 20f;
+
+    /// <summary>
+    /// Fraction of the crit damage threshold that the entity must have accumulated
+    /// before damage/bleed screams are allowed.  0.6 = 60 % of the way to crit.
+    /// </summary>
+    private const float NearCritFraction = 0.6f;
 
     [Dependency] private readonly ChatSystem _chat = default!;
     [Dependency] private readonly IGameTiming _timing = default!;
     [Dependency] private readonly MobStateSystem _mobState = default!;
+    [Dependency] private readonly MobThresholdSystem _mobThreshold = default!;
 
     private readonly Dictionary<EntityUid, TimeSpan> _nextScreamTime = new();
 
@@ -48,12 +61,20 @@ public sealed class PlayerPainScreamSystem : EntitySystem
         if (args.DamageDelta.GetTotal().Float() < HeavyImpactDamageThreshold)
             return;
 
+        // Only scream on hits when the player is already near-crit — avoids noise on light combat.
+        if (!IsNearCrit(ent))
+            return;
+
         TryScream(ent);
     }
 
     private void OnBleedAmountChanged(Entity<ActorComponent> ent, ref BleedAmountChangedEvent args)
     {
         if (args.PreviousBleedAmount > 0 || args.NewBleedAmount <= 0)
+            return;
+
+        // New bleed only warrants a scream when the player is already hurting.
+        if (!IsNearCrit(ent))
             return;
 
         TryScream(ent);
@@ -68,6 +89,22 @@ public sealed class PlayerPainScreamSystem : EntitySystem
             return;
 
         TryScream((args.Tripper, actor));
+    }
+
+    /// <summary>
+    /// Returns true when the entity's accumulated damage is at or above
+    /// <see cref="NearCritFraction"/> of its critical-state damage threshold.
+    /// </summary>
+    private bool IsNearCrit(EntityUid uid)
+    {
+        if (!TryComp<DamageableComponent>(uid, out var damageable))
+            return false;
+
+        if (!_mobThreshold.TryGetThresholdForState(uid, MobState.Critical, out var critThreshold)
+            || critThreshold is null)
+            return false;
+
+        return damageable.TotalDamage.Float() >= critThreshold.Value.Float() * NearCritFraction;
     }
 
     private bool IsPainfulHazard(Entity<DamageUserOnTriggerComponent> ent)

@@ -246,6 +246,15 @@ namespace Content.Server.Administration.Systems
                 return;
 
             RaiseNetworkEvent(new BwoinkDiscordRelayUpdated(!string.IsNullOrWhiteSpace(_webhookUrl)), e.Session);
+
+            // #Misfits Add — push existing ticket list to newly connected admins so they
+            // see tickets created before they joined.
+            if (_adminManager.GetAdminData(e.Session)?.HasFlag(AdminFlags.Adminhelp) ?? false)
+            {
+                var list = _tickets.Values.ToList();
+                if (list.Count > 0)
+                    RaiseNetworkEvent(new HelpTicketListMessage(list), e.Session.Channel);
+            }
         }
 
         private void NotifyAdmins(ICommonSession session, string message, PlayerStatusType statusType)

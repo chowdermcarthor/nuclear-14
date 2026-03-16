@@ -25,6 +25,7 @@ public sealed partial class LoreMasterTab : Control
     private static readonly List<(string Display, string Id)> Factions = new()
     {
         ("NCR",                  "NCR"),
+        ("NCR Rangers",          "Rangers"),
         ("Brotherhood of Steel", "BrotherhoodOfSteel"),
         ("Caesar's Legion",      "CaesarLegion"),
         ("Vault",                "Vault"),

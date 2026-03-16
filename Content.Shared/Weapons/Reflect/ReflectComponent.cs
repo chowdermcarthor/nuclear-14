@@ -35,6 +35,11 @@ public sealed partial class ReflectComponent : Component
     [DataField("reflectProb"), ViewVariables(VVAccess.ReadWrite), AutoNetworkedField]
     public float ReflectProb = 0.25f;
 
+    // #Misfits Change Add: Per-type probability overrides that take precedence over ReflectProb.
+    // Allows different deflect chances for e.g. MediumCaliber (rifle rounds) vs SmallCaliber (pistol rounds).
+    [DataField, AutoNetworkedField]
+    public Dictionary<ReflectType, float> ReflectProbByType = new();
+
     /// <summary>
     /// The maximum velocity a wielder can move at before losing effectiveness.
     /// </summary>
@@ -61,4 +66,5 @@ public enum ReflectType : byte
     NonEnergy = 1 << 0,
     Energy = 1 << 1,
     SmallCaliber = 1 << 2, // #Misfits Change Add: Small-caliber rounds (sub-5.56mm class: .22lr, 5mm, 9mm, 10mm, .45 ACP). Power armor ricochets these at high probability.
+    MediumCaliber = 1 << 3, // #Misfits Change Add: Intermediate/full-power rifle rounds (5.56mm, 7.62mm). Power armor ricochets these at lower probability than small-caliber.
 }

@@ -99,11 +99,25 @@ public sealed class ReflectSystem : EntitySystem
             !_toggle.IsActivated(reflector) ||
             !TryComp<ReflectiveComponent>(projectile, out var reflective) ||
             (reflect.Reflects & reflective.Reflective) == 0x0 ||
-            !_random.Prob(reflect.ReflectProb) ||
             !TryComp<PhysicsComponent>(projectile, out var physics))
         {
             return false;
         }
+
+        // #Misfits Change Add: Use per-type probability override if defined, otherwise fall back to ReflectProb.
+        var matchedType = reflective.Reflective & reflect.Reflects;
+        var prob = reflect.ReflectProb;
+        foreach (ReflectType type in Enum.GetValues<ReflectType>())
+        {
+            if (type == ReflectType.None) continue;
+            if ((matchedType & type) != 0 && reflect.ReflectProbByType.TryGetValue(type, out var typeProb))
+            {
+                prob = typeProb;
+                break;
+            }
+        }
+        if (!_random.Prob(prob))
+            return false;
 
         var rotation = _random.NextAngle(-reflect.Spread / 2, reflect.Spread / 2).Opposite();
         var existingVelocity = _physics.GetMapLinearVelocity(projectile, component: physics);
@@ -132,6 +146,21 @@ public sealed class ReflectSystem : EntitySystem
                     : Loc.GetString("reflect-unknown-shooter");
                 _popup.PopupEntity(
                     Loc.GetString("reflect-shot-small-caliber",
+                        ("shooter", shooterName), ("bullet", bulletName), ("target", targetName)),
+                    user,
+                    PopupType.Medium);
+            }
+            // #Misfits Change Add: Descriptive message for medium-caliber rounds glancing off power armor.
+            else if ((reflective.Reflective & ReflectType.MediumCaliber) != 0)
+            {
+                TryComp<ProjectileComponent>(projectile, out var pComp);
+                var targetName = Identity.Name(user, EntityManager);
+                var bulletName = Name(projectile);
+                var shooterName = pComp?.Shooter is { } shooterId
+                    ? Identity.Name(shooterId, EntityManager)
+                    : Loc.GetString("reflect-unknown-shooter");
+                _popup.PopupEntity(
+                    Loc.GetString("reflect-shot-medium-caliber",
                         ("shooter", shooterName), ("bullet", bulletName), ("target", targetName)),
                     user,
                     PopupType.Medium);

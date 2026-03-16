@@ -9,6 +9,7 @@
     - category: Stamina
     - alertType: SuitPower
     - alertType: ModsuitPower # Goobstation - Modsuits
+    - category: PowerArmorIntegrity # #Misfits Add: Power armor structural integrity HUD
     - category: Internals
     - alertType: Fire
     - alertType: Handcuffed

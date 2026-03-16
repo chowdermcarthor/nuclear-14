@@ -335,5 +335,4 @@ trait-name-N14PowerArmorTraining = Power Armor Training
 trait-description-N14PowerArmorTraining =
     You have received formal training in the operation of power armor suits.
     Without this training, the weight distribution, servo-assisted limbs, and integrated systems
-    of power armor are too complex to operate safely.
-    [color=yellow]Required to equip any power armor.[/color]
+    of power armor are too complex to operate safely. [color=yellow]Required to equip any power armor.[/color]

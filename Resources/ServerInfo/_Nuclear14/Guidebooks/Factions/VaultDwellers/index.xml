@@ -1,13 +1,9 @@
 <Document>
 # Vault Dwellers
 
-Vault-Tec Corporation constructed over a hundred underground vaults before the Great War of 2077 — ostensibly to shelter the American population, but in reality to conduct controlled sociological and scientific experiments on sealed communities over generations. Most vaults were designed to introduce a hidden variable: extreme isolation, internal predators, psychological manipulation, or resource scarcity. The results were meant to be observed.
+## Core Mission
 
-The vault in this region has survived intact. Its residents have lived in regulated isolation, largely unaware of how the surface world has changed — or of what their vault was ultimately designed to do to them.
-
-## Life in the Vault
-
-All vault functions flow through the Overseer's authority. Vault systems are aging but functional. A critical component failure could force the door open — beginning a contact with the surface world that changes everything.
+"To maintain optimal operational efficiency, preserve pure human genetics, and strictly execute all directives handed down by 'Management' to prepare for the eventual reclamation of the surface."
 
 ## Roles
 
@@ -46,8 +42,4 @@ All vault functions flow through the Overseer's authority. Vault systems are agi
 <Box>
 [color=#a4885c]Your role:[/color] Live vault life. Follow protocols, contribute to community work, and try to make sense of what is happening. If the door opens, every assumption you have about the world will be tested — starting immediately.
 </Box>
-
-## Relations
-
-Vault Dwellers begin the round in isolation. If the door opens, how they engage the surface world depends on the Overseer's judgment and the vault's experiment parameters. Other factions will be curious, calculating, or hostile — depending on what they believe the vault contains.
 </Document>
