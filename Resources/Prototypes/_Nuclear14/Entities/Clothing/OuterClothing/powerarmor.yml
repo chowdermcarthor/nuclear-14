@@ -38,13 +38,11 @@
   - type: ClothingSpeedModifier
     walkModifier: 0.2
     sprintModifier: 0.2
-  - type: Armor
+  - type: Armor # #Misfits Change: Melee coefficients raised to reduce double-dip with integrity. Heat removed — integrity is sole laser protection.
     modifiers:
       coefficients:
-        Blunt: 0.5
-        Slash: 0.5
-        Piercing: 0.55
-        Heat: 0.55
+        Blunt: 0.75
+        Slash: 0.75
         Caustic: 0.75
         Radiation: 0.6
   - type: UserInterface
@@ -111,13 +109,11 @@
     sprite: _Nuclear14/Clothing/OuterClothing/PowerArmor/t51.rsi
   - type: Clothing
     sprite: _Nuclear14/Clothing/OuterClothing/PowerArmor/t51.rsi
-  - type: Armor
+  - type: Armor # #Misfits Change: Melee coefficients raised to reduce double-dip with integrity. Heat removed — integrity is sole laser protection.
     modifiers:
       coefficients:
-        Blunt: 0.45
-        Slash: 0.45
-        Piercing: 0.5
-        Heat: 0.5
+        Blunt: 0.70
+        Slash: 0.70
         Caustic: 0.75
         Radiation: 0.6
   - type: UserInterface
@@ -151,13 +147,11 @@
     sprite: _Nuclear14/Clothing/OuterClothing/PowerArmor/t60.rsi
   - type: Clothing
     sprite: _Nuclear14/Clothing/OuterClothing/PowerArmor/t60.rsi
-  - type: Armor
+  - type: Armor # #Misfits Change: Melee coefficients raised to reduce double-dip with integrity. Heat removed — integrity is sole laser protection.
     modifiers:
       coefficients:
-        Blunt: 0.475
-        Slash: 0.475
-        Piercing: 0.525
-        Heat: 0.525
+        Blunt: 0.725
+        Slash: 0.725
         Caustic: 0.75
         Radiation: 0.6
   - type: UserInterface
@@ -233,13 +227,11 @@
     sprite: _Nuclear14/Clothing/OuterClothing/PowerArmor/advanced1.rsi
   - type: Clothing
     sprite: _Nuclear14/Clothing/OuterClothing/PowerArmor/advanced1.rsi
-  - type: Armor
+  - type: Armor # #Misfits Change: Melee coefficients raised to reduce double-dip with integrity. Heat removed — integrity is sole laser protection.
     modifiers:
       coefficients:
-        Blunt: 0.4
-        Slash: 0.4
-        Piercing: 0.5
-        Heat: 0.5
+        Blunt: 0.65
+        Slash: 0.65
         Caustic: 0.75
         Radiation: 0.6
   - type: ExplosionResistance
@@ -282,13 +274,11 @@
   - type: ClothingSpeedModifier
     walkModifier: 0.2
     sprintModifier: 0.2
-  - type: Armor
+  - type: Armor # #Misfits Change: Melee coefficients raised to reduce double-dip with integrity. Heat removed — integrity is sole laser protection.
     modifiers:
       coefficients:
-        Blunt: 0.45
-        Slash: 0.45
-        Piercing: 0.55
-        Heat: 0.55
+        Blunt: 0.70
+        Slash: 0.70
         Caustic: 0.75
         Radiation: 0.6
   - type: ExplosionResistance
@@ -340,13 +330,11 @@
     sprite: _Nuclear14/Clothing/OuterClothing/PowerArmor/hellfire.rsi
   - type: Clothing
     sprite: _Nuclear14/Clothing/OuterClothing/PowerArmor/hellfire.rsi
-  - type: Armor
+  - type: Armor # #Misfits Change: Melee coefficients raised to reduce double-dip with integrity. Heat removed — integrity is sole laser protection.
     modifiers:
       coefficients:
-        Blunt: 0.45
-        Slash: 0.45
-        Piercing: 0.5
-        Heat: 0.5
+        Blunt: 0.70
+        Slash: 0.70
         Caustic: 0.75
         Radiation: 0.5
   - type: ExplosionResistance
@@ -380,13 +368,11 @@
     sprite: _Nuclear14/Clothing/OuterClothing/PowerArmor/raider.rsi
   - type: Clothing
     sprite: _Nuclear14/Clothing/OuterClothing/PowerArmor/raider.rsi
-  - type: Armor
+  - type: Armor # #Misfits Change: Melee coefficients raised to reduce double-dip with integrity. Heat removed — integrity is sole laser protection.
     modifiers:
       coefficients:
-        Blunt: 0.55
-        Slash: 0.55
-        Piercing: 0.6
-        Heat: 0.6
+        Blunt: 0.80
+        Slash: 0.80
         Caustic: 0.75
         Radiation: 0.65
   - type: ExplosionResistance
@@ -429,13 +415,11 @@
     sprite: _Nuclear14/Clothing/OuterClothing/PowerArmor/midwest.rsi
   - type: Clothing
     sprite: _Nuclear14/Clothing/OuterClothing/PowerArmor/midwest.rsi
-  - type: Armor
+  - type: Armor # #Misfits Change: Melee coefficients raised to reduce double-dip with integrity. Heat removed — integrity is sole laser protection.
     modifiers:
       coefficients:
-        Blunt: 0.475
-        Slash: 0.475
-        Piercing: 0.525
-        Heat: 0.525
+        Blunt: 0.725
+        Slash: 0.725
         Caustic: 0.75
         Radiation: 0.6
   - type: ExplosionResistance
@@ -481,13 +465,11 @@
     sprite: _Nuclear14/Clothing/OuterClothing/PowerArmor/midwestcommander.rsi
   - type: Clothing
     sprite: _Nuclear14/Clothing/OuterClothing/PowerArmor/midwestcommander.rsi
-  - type: Armor
+  - type: Armor # #Misfits Change: Melee coefficients raised to reduce double-dip with integrity. Heat removed — integrity is sole laser protection.
     modifiers:
       coefficients:
-        Blunt: 0.45
-        Slash: 0.45
-        Piercing: 0.5
-        Heat: 0.5
+        Blunt: 0.70
+        Slash: 0.70
         Caustic: 0.75
         Radiation: 0.6
   - type: Storage
@@ -539,13 +521,11 @@
     sprite: _Nuclear14/Clothing/OuterClothing/PowerArmor/t51bc.rsi
   - type: Clothing
     sprite: _Nuclear14/Clothing/OuterClothing/PowerArmor/t51bc.rsi
-  - type: Armor
+  - type: Armor # #Misfits Change: Melee coefficients raised to reduce double-dip with integrity. Heat removed — integrity is sole laser protection.
     modifiers:
       coefficients:
-        Blunt: 0.425
-        Slash: 0.425
-        Piercing: 0.475
-        Heat: 0.475
+        Blunt: 0.675
+        Slash: 0.675
         Caustic: 0.75
         Radiation: 0.6
   - type: TemperatureProtection
@@ -599,13 +579,11 @@
     sprite: _Nuclear14/Clothing/OuterClothing/PowerArmor/t45ncr.rsi
   - type: Clothing
     sprite: _Nuclear14/Clothing/OuterClothing/PowerArmor/t45ncr.rsi
-  - type: Armor
+  - type: Armor # #Misfits Change: Melee coefficients raised to reduce double-dip with integrity. Heat removed — integrity is sole laser protection.
     modifiers:
       coefficients:
-        Blunt: 0.55
-        Slash: 0.55
-        Piercing: 0.6
-        Heat: 0.6
+        Blunt: 0.80
+        Slash: 0.80
         Caustic: 0.75
         Radiation: 0.65
   - type: TemperatureProtection
@@ -639,13 +617,11 @@
     sprite: _Nuclear14/Clothing/OuterClothing/PowerArmor/canadianshield.rsi
   - type: Clothing
     sprite: _Nuclear14/Clothing/OuterClothing/PowerArmor/canadianshield.rsi
-  - type: Armor
+  - type: Armor # #Misfits Change: Melee coefficients raised to reduce double-dip with integrity. Heat removed — integrity is sole laser protection.
     modifiers:
       coefficients:
-        Blunt: 0.425
-        Slash: 0.425
-        Piercing: 0.475
-        Heat: 0.475
+        Blunt: 0.675
+        Slash: 0.675
         Caustic: 0.75
         Radiation: 0.6
   - type: ExplosionResistance
@@ -675,13 +651,11 @@
     sprite: _Nuclear14/Clothing/OuterClothing/PowerArmor/t51wash.rsi
   - type: Clothing
     sprite: _Nuclear14/Clothing/OuterClothing/PowerArmor/t51wash.rsi
-  - type: Armor
+  - type: Armor # #Misfits Change: Melee coefficients raised to reduce double-dip with integrity. Heat removed — integrity is sole laser protection.
     modifiers:
       coefficients:
-        Blunt: 0.45
-        Slash: 0.45
-        Piercing: 0.5
-        Heat: 0.5
+        Blunt: 0.70
+        Slash: 0.70
         Caustic: 0.75
         Radiation: 0.6
   - type: ExplosionResistance
@@ -733,13 +707,11 @@
     sprite: _Nuclear14/Clothing/OuterClothing/PowerArmor/t51washelite.rsi
   - type: Clothing
     sprite: _Nuclear14/Clothing/OuterClothing/PowerArmor/t51washelite.rsi
-  - type: Armor
+  - type: Armor # #Misfits Change: Melee coefficients raised to reduce double-dip with integrity. Heat removed — integrity is sole laser protection.
     modifiers:
       coefficients:
-        Blunt: 0.425
-        Slash: 0.425
-        Piercing: 0.5
-        Heat: 0.5
+        Blunt: 0.675
+        Slash: 0.675
         Caustic: 0.75
         Radiation: 0.6
   - type: Storage

@@ -11,3 +11,6 @@ power-armor-integrity-verb-message = Check the armor's structural integrity.
 ## HUD Alert
 alerts-power-armor-integrity-name = Armor Integrity
 alerts-power-armor-integrity-desc = Shows the structural integrity of your power armor. When depleted, the armor no longer absorbs damage. Repair with a welder.
+
+## Self-repair prevention
+power-armor-integrity-no-self-repair = You can't repair power armor while wearing it. Remove the suit or have someone else weld it.

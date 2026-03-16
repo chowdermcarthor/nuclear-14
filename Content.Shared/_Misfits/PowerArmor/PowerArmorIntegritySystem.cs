@@ -6,6 +6,7 @@ using Content.Shared.Damage;
 using Content.Shared.Damage.Components;
 using Content.Shared.Examine;
 using Content.Shared.FixedPoint;
+using Content.Shared.Interaction;
 using Content.Shared.Inventory;
 using Content.Shared.Popups;
 using Content.Shared.Rounding;
@@ -56,6 +57,9 @@ public sealed class PowerArmorIntegritySystem : EntitySystem
         // Show/clear HUD alert when armor is equipped or removed.
         SubscribeLocalEvent<PowerArmorIntegrityComponent, ClothingGotEquippedEvent>(OnEquipped);
         SubscribeLocalEvent<PowerArmorIntegrityComponent, ClothingGotUnequippedEvent>(OnUnequipped);
+
+        // Block self-repair: can't weld your own suit while wearing it.
+        SubscribeLocalEvent<PowerArmorIntegrityComponent, InteractUsingEvent>(OnInteractUsing, before: new[] { typeof(SharedArmorSystem) });
     }
 
     /// <summary>
@@ -83,6 +87,29 @@ public sealed class PowerArmorIntegritySystem : EntitySystem
         // Only absorb positive (incoming) damage — don't interfere with healing.
         var incomingDamage = args.Args.Damage;
         if (!incomingDamage.AnyPositive())
+            return;
+
+        // Penetration scaling: heavy-calibre rounds overwhelm the plating.
+        // Total positive damage is compared against the penetration threshold;
+        // above it, absorption is linearly reduced toward zero at the cap.
+        var totalPositive = 0f;
+        foreach (var (_, amount) in incomingDamage.DamageDict)
+        {
+            if (amount > 0)
+                totalPositive += (float) amount;
+        }
+
+        if (totalPositive > comp.PenetrationThreshold && comp.PenetrationCap > comp.PenetrationThreshold)
+        {
+            var penetrationFactor = Math.Clamp(
+                (totalPositive - comp.PenetrationThreshold) / (comp.PenetrationCap - comp.PenetrationThreshold),
+                0f, 1f);
+
+            // Scale absorption down — a round at the cap punches clean through.
+            effectiveAbsorption *= 1f - penetrationFactor;
+        }
+
+        if (effectiveAbsorption <= 0f)
             return;
 
         // Split each damage type: armorShare goes to armor HP, rest to wearer.
@@ -121,6 +148,33 @@ public sealed class PowerArmorIntegritySystem : EntitySystem
         if (_net.IsServer && armorShare.AnyPositive())
         {
             _damageable.TryChangeDamage(uid, armorShare, ignoreResistances: true, interruptsDoAfters: false);
+        }
+    }
+
+    /// <summary>
+    ///     Prevents the wearer from repairing their own power armor while wearing it.
+    ///     Must exit the suit or have another player weld it.
+    /// </summary>
+    private void OnInteractUsing(EntityUid uid, PowerArmorIntegrityComponent comp, InteractUsingEvent args)
+    {
+        if (args.Handled)
+            return;
+
+        // Only care if the armor is inside a container (i.e. worn).
+        if (!_container.TryGetContainingContainer((uid, null, null), out var container))
+            return;
+
+        // If the person trying to repair is the one wearing the armor, block it.
+        if (container.Owner != args.User)
+            return;
+
+        args.Handled = true;
+
+        if (_net.IsServer)
+        {
+            _popup.PopupEntity(
+                Loc.GetString("power-armor-integrity-no-self-repair"),
+                args.User, args.User, PopupType.MediumCaution);
         }
     }
 

@@ -52,6 +52,24 @@ public sealed partial class PowerArmorIntegrityComponent : Component
     };
 
     /// <summary>
+    ///     Per-hit damage threshold below which the armor absorbs normally.
+    ///     Hits above this overwhelm the plating and absorption scales down.
+    ///     At <see cref="PenetrationCap"/> damage the armor absorbs nothing.
+    ///     Models how heavy-calibre rounds (.308+) and apex predators punch
+    ///     through while lighter rounds (9 mm, 5.56) are well-contained.
+    /// </summary>
+    [DataField, AutoNetworkedField]
+    public float PenetrationThreshold = 20f;
+
+    /// <summary>
+    ///     Damage value at or above which the hit fully overwhelms the armor
+    ///     (effective absorption → 0). Must be greater than
+    ///     <see cref="PenetrationThreshold"/>.
+    /// </summary>
+    [DataField, AutoNetworkedField]
+    public float PenetrationCap = 50f;
+
+    /// <summary>
     ///     When integrity drops to zero the armor is considered broken and
     ///     provides no absorption at all. This flag tracks that state.
     /// </summary>
