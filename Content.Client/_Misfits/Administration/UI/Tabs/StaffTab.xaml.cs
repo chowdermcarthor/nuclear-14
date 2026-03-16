@@ -189,10 +189,10 @@ public sealed partial class StaffTab : Control
         }
 
         // Header row
-        AddGridHeader(Loc.GetString("misfits-staff-stats-col-name"), 100);
-        AddGridHeader(Loc.GetString("misfits-staff-stats-col-claimed"));
-        AddGridHeader(Loc.GetString("misfits-staff-stats-col-resolved"));
-        AddGridHeader(Loc.GetString("misfits-staff-stats-col-ratio"));
+        AddGridHeader(Loc.GetString("misfits-staff-stats-col-name"), 120);
+        AddGridHeader(Loc.GetString("misfits-staff-stats-col-claimed"), 90);
+        AddGridHeader(Loc.GetString("misfits-staff-stats-col-resolved"), 90);
+        AddGridHeader(Loc.GetString("misfits-staff-stats-col-ratio"), 70);
 
         // Data rows sorted by total activity descending
         var total = all.Count;
@@ -202,10 +202,10 @@ public sealed partial class StaffTab : Control
                 ? $"{(double)(claimedC + resolvedC) / total * 100:F0}%"
                 : "0%";
 
-            AddGridCell(name, 100);
-            AddGridCell(claimedC.ToString());
-            AddGridCell(resolvedC.ToString());
-            AddGridCell(ratio);
+            AddGridCell(name, 120);
+            AddGridCell(claimedC.ToString(), 90);
+            AddGridCell(resolvedC.ToString(), 90);
+            AddGridCell(ratio, 70);
         }
     }
 
