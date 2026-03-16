@@ -37,6 +37,59 @@ public sealed class NcContractCard : PanelContainer
 
     private void BuildUi()
     {
+        // #Misfits Add — show a stripped-down locked card when tier is not yet accessible
+        if (_data.Locked)
+        {
+            var lockedRow = new BoxContainer
+            {
+                Orientation = BoxContainer.LayoutOrientation.Horizontal,
+                HorizontalExpand = true,
+                Modulate = new Color(1f, 1f, 1f, 0.4f)
+            };
+            AddChild(lockedRow);
+
+            var stripColor = DifficultyColor(_data.Difficulty, false);
+            lockedRow.AddChild(new PanelContainer
+            {
+                MinSize = new(4, 0),
+                VerticalExpand = true,
+                PanelOverride = new StyleBoxFlat { BackgroundColor = stripColor },
+                Margin = new(0, 0, 6, 0)
+            });
+
+            var lockedPanel = new PanelContainer
+            {
+                HorizontalExpand = true,
+                PanelOverride = new StyleBoxFlat
+                {
+                    BackgroundColor = new(0.04f, 0.04f, 0.05f, 0.85f),
+                    BorderColor = stripColor,
+                    BorderThickness = new(1),
+                    ContentMarginLeftOverride = 8,
+                    ContentMarginRightOverride = 8,
+                    ContentMarginTopOverride = 6,
+                    ContentMarginBottomOverride = 6
+                }
+            };
+            lockedRow.AddChild(lockedPanel);
+
+            var lockedCol = new BoxContainer { Orientation = BoxContainer.LayoutOrientation.Vertical, HorizontalExpand = true };
+            lockedPanel.AddChild(lockedCol);
+
+            lockedCol.AddChild(new Label
+            {
+                Text = _data.Name,
+                Modulate = Color.FromHex("#808080")
+            });
+            lockedCol.AddChild(new Label
+            {
+                Text = Loc.GetString("nc-contract-card-locked-hint", ("tier", DifficultyName(_data.Difficulty))),
+                Modulate = Color.FromHex("#FF6666"),
+                FontColorOverride = Color.FromHex("#FF6666")
+            });
+            return;
+        }
+
         var borderColor = DifficultyColor(_data.Difficulty, _data.Completed);
 
         var row = new BoxContainer
@@ -593,26 +646,42 @@ public sealed class NcContractCard : PanelContainer
     // Difficulty
     // =====================
 
+    // #Misfits Change — updated from 3-tier (Easy/Medium/Hard) to 6-tier (Bronze/Iron/Silver/Gold/Mithril/Diamond)
     private Color DifficultyColor(string diff, bool completed)
     {
         var baseColor = diff switch
         {
-            "Easy" => Color.FromHex("#4CAF50"),
+            "Bronze"  => Color.FromHex("#CD7F32"),
+            "Iron"    => Color.FromHex("#8C8C8C"),
+            "Silver"  => Color.FromHex("#C0C0C0"),
+            "Gold"    => Color.FromHex("#FFD700"),
+            "Mithril" => Color.FromHex("#4FC3E8"),
+            "Diamond" => Color.FromHex("#B9F2FF"),
+            // Legacy fallbacks so old data doesn't break
+            "Easy"   => Color.FromHex("#4CAF50"),
             "Medium" => Color.FromHex("#FFC107"),
-            "Hard" => Color.FromHex("#F44336"),
-            _ => Color.FromHex("#9E9E9E")
+            "Hard"   => Color.FromHex("#F44336"),
+            _        => Color.FromHex("#9E9E9E")
         };
 
         return completed ? Brighten(baseColor, 0.7f) : baseColor;
     }
 
+    // #Misfits Change — updated from 3-tier to 6-tier difficulty names
     private string DifficultyName(string diff) =>
         diff switch
         {
-            "Easy" => Loc.GetString("nc-store-difficulty-easy"),
+            "Bronze"  => Loc.GetString("nc-store-difficulty-bronze"),
+            "Iron"    => Loc.GetString("nc-store-difficulty-iron"),
+            "Silver"  => Loc.GetString("nc-store-difficulty-silver"),
+            "Gold"    => Loc.GetString("nc-store-difficulty-gold"),
+            "Mithril" => Loc.GetString("nc-store-difficulty-mithril"),
+            "Diamond" => Loc.GetString("nc-store-difficulty-diamond"),
+            // Legacy fallbacks
+            "Easy"   => Loc.GetString("nc-store-difficulty-easy"),
             "Medium" => Loc.GetString("nc-store-difficulty-medium"),
-            "Hard" => Loc.GetString("nc-store-difficulty-hard"),
-            _ => diff
+            "Hard"   => Loc.GetString("nc-store-difficulty-hard"),
+            _        => diff
         };
 
     private static Color Brighten(Color c, float f) =>

@@ -1,3 +1,4 @@
+using Content.Shared._Misfits.Trade; // #Misfits Add — TierRosterEntry
 using Content.Shared._NC.Trade;
 using Robust.Client.Player;
 using Robust.Client.UserInterface;
@@ -92,7 +93,11 @@ public sealed class NcStoreStructuredBoundUi(EntityUid owner, Enum uiKey) : Boun
             _menu.Visible = false;
     }
 
-    private void ApplyDynamic(StoreDynamicState st) =>
+    private void ApplyDynamic(StoreDynamicState st)
+    {
+        // #Misfits Add — push tier state into the menu before populating contracts
+        _menu!.SetTierState(st.PlayerUnlockedTiers, st.Roster);
+
         _menu!.ApplyDynamicState(
             st.BalanceByCurrency,
             st.RemainingById,
@@ -103,6 +108,7 @@ public sealed class NcStoreStructuredBoundUi(EntityUid owner, Enum uiKey) : Boun
             st.HasSellTab,
             st.HasContractsTab,
             st.Contracts);
+    }
 
     private void EnsureMenuCreated()
     {

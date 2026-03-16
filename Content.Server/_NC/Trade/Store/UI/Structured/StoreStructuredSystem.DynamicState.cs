@@ -1,3 +1,5 @@
+using Content.Server._Misfits.Trade; // #Misfits Add — NcContractRosterComponent
+using Content.Shared._Misfits.Trade; // #Misfits Add — NcTierProgressComponent, TierRosterEntry
 using Content.Shared._NC.Trade;
 using Content.Shared.Stacks;
 using Robust.Shared.Containers;
@@ -113,16 +115,32 @@ public sealed partial class StoreStructuredSystem : EntitySystem
                     buf.CrateTotals[kvp.Key] = kvp.Value;
         }
 
+        // #Misfits Add — retrieve player's unlocked tiers for locking contracts on the client
+        HashSet<string>? unlockedTiers = null;
+        if (hasContractsTab && TryComp(user, out NcTierProgressComponent? tp))
+            unlockedTiers = tp.UnlockedTiers;
+
         if (hasContractsTab && comp.Contracts.Count > 0)
         {
             foreach (var c in comp.Contracts.Values)
-                buf.Contracts.Add(MapContractToClient(c));
+            {
+                var cd = MapContractToClient(c);
+                // #Misfits Add — lock contract if this tier is not yet unlocked by the player
+                if (unlockedTiers != null && !unlockedTiers.Contains(c.Difficulty))
+                    cd.Locked = true;
+                buf.Contracts.Add(cd);
+            }
         }
 
         if (scratch.EqualsLast(buf, comp.CatalogRevision, hasBuyTab, hasSellTab, hasContractsTab))
             return;
 
         comp.UiRevision = unchecked(comp.UiRevision + 1);
+
+        // #Misfits Add — gather Hall of Fame roster from vendor component
+        var roster = TryComp(uid, out NcContractRosterComponent? rosterComp)
+            ? rosterComp.GetSnapshot()
+            : new List<TierRosterEntry>();
 
         _ui.SetUiState(
             uid,
@@ -138,7 +156,10 @@ public sealed partial class StoreStructuredSystem : EntitySystem
                 buf.Contracts,
                 hasBuyTab,
                 hasSellTab,
-                hasContractsTab
+                hasContractsTab,
+                // #Misfits Add — tier progression data for the client
+                unlockedTiers ?? new HashSet<string> { "Bronze" },
+                roster
             )
         );
 

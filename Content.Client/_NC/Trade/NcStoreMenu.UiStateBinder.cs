@@ -64,6 +64,7 @@ public sealed partial class NcStoreMenu
                     h = h * 31 + (c.Name?.GetHashCode() ?? 0);
                     h = h * 31 + (c.Targets?.Count ?? 0);
                     h = h * 31 + (c.Rewards?.Count ?? 0);
+                    h = h * 31 + (c.Locked ? 1 : 0); // #Misfits Add — locked state changes need a repopulate
                 }
 
                 return h;

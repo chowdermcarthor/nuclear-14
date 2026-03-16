@@ -42,7 +42,7 @@ public sealed class GraveCreationSystem : EntitySystem
             EntityManager,
             args.User,
             component.DigDelay,
-            new GraveCreationDoAfterEvent(args.ClickLocation),
+            new GraveCreationDoAfterEvent(GetNetCoordinates(args.ClickLocation)),
             uid,
             used: uid)
         {
@@ -74,7 +74,8 @@ public sealed class GraveCreationSystem : EntitySystem
             return;
 
         // Snap the spawn point to the nearest tile centre for clean placement.
-        var spawnCoords = args.SpawnCoordinates.SnapToGrid(EntityManager);
+        // Convert NetCoordinates back to EntityCoordinates for spawn/engine APIs.
+        var spawnCoords = GetCoordinates(args.SpawnCoordinates).SnapToGrid(EntityManager);
         var graveEnt = Spawn(component.GravePrototype, spawnCoords);
 
         // Pre-open the freshly-dug grave — the creation action IS the initial dig.

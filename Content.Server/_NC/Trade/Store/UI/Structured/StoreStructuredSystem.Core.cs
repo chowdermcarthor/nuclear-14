@@ -1,6 +1,7 @@
 using System.Linq;
 using Content.Server.Popups;
 using Content.Server.Storage.Components;
+using Content.Shared._Misfits.Trade; // #Misfits Add — tier progression events
 using Content.Shared._NC.Trade;
 using Content.Shared.Access.Components;
 using Content.Shared.Stacks;
@@ -417,6 +418,11 @@ public sealed partial class StoreStructuredSystem : EntitySystem
         _loader.EnsureLoaded(uid, comp, "UiOpenAttempt");
 
         SendCatalog(uid, comp, user);
+
+        // #Misfits Add — notify tier system on vendor open (awards Bronze badge on first visit)
+        if (comp.ContractPresets.Count > 0)
+            RaiseLocalEvent(user, new MisfitsContractFirstAccessEvent(uid, user));
+
         UpdateDynamicState(uid, comp, user);
     }
 
@@ -575,10 +581,20 @@ public sealed partial class StoreStructuredSystem : EntitySystem
             !_xform.InRange(sX.Coordinates, uX.Coordinates, AutoCloseDistance))
             return;
 
+        // #Misfits Add — capture difficulty before the contract is consumed on claim
+        string? contractDifficulty = null;
+        if (comp.Contracts.TryGetValue(msg.ContractId, out var contractBeforeClaim))
+            contractDifficulty = contractBeforeClaim.Difficulty;
+
         if (_contracts.TryClaim(uid, user, msg.ContractId))
         {
             _audio.PlayPvs(new SoundPathSpecifier("/Audio/Effects/Cargo/ping.ogg"), user);
             _popups.PopupEntity(Loc.GetString("nc-store-contract-completed"), uid, user);
+
+            // #Misfits Add — notify tier system of completed contract
+            if (contractDifficulty != null)
+                RaiseLocalEvent(user, new MisfitsContractClaimedEvent(uid, user, msg.ContractId, contractDifficulty));
+
             UpdateDynamicState(uid, comp, user);
             return;
         }

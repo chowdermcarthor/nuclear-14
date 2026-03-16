@@ -328,6 +328,7 @@ trait-description-N14GooglyEyes =
 
 trait-name-N14PetDogNCRK9Medical = NCR Medical K9
 trait-description-N14PetDogNCRK9Medical =
+    You (might) have an NCRA trained medical dog companion assigned to you.
 
 # Misfits Add
 trait-name-N14PowerArmorTraining = Power Armor Training
@@ -336,4 +337,3 @@ trait-description-N14PowerArmorTraining =
     Without this training, the weight distribution, servo-assisted limbs, and integrated systems
     of power armor are too complex to operate safely.
     [color=yellow]Required to equip any power armor.[/color]
-     You (might) have an NCRA trained medical dog companion assigned to you.

@@ -59,6 +59,8 @@
     contractPresets:
     - PresetBazar
   # #Misfits Change — removed TownieShopkeeper access restriction so any player can use the city terminal
+  # #Misfits Add — track Hall of Fame roster for the tier contract system
+  - type: NcContractRoster
 
 - type: entity
   id: TrademachineTickets

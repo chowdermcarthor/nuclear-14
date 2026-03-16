@@ -49,6 +49,12 @@ nc-store-contracts-empty = No active contracts yet. Check back later.
 nc-store-difficulty-easy = Easy
 nc-store-difficulty-medium = Medium
 nc-store-difficulty-hard = Hard
+nc-store-difficulty-bronze = Bronze
+nc-store-difficulty-iron = Iron
+nc-store-difficulty-silver = Silver
+nc-store-difficulty-gold = Gold
+nc-store-difficulty-mithril = Mithril
+nc-store-difficulty-diamond = Diamond
 nc-store-contract-title = Contract ({ $difficulty })
 nc-store-contract-badge-single = One-time
 nc-store-contract-badge-single-tooltip =
@@ -72,6 +78,15 @@ nc-store-contract-title-pretty = Contract: { $difficulty } - { $goal }
 nc-store-contract-title-pretty-nogoal = Contract: { $difficulty }
 
 nc-store-contract-desc-default = Fulfill the contract requirements and claim the reward.
+
+# Misfits Add — 6-tier contract system UI strings
+nc-contract-tier-first-access = You've registered with the caravan network — Bronze tier unlocked!
+nc-contract-tier-unlocked = { $tier } tier unlocked! Keep pushing.
+nc-store-tab-tier-hall-of-fame = Hall of Fame
+nc-store-hall-of-fame-empty = No one has completed contracts yet this round.
+nc-store-hall-of-fame-entry = { $name } — { $tier } ({ $count } completed)
+nc-contract-tier-locked = Locked — complete { $prevTier } tier contracts to unlock.
+nc-contract-card-locked-hint = { $tier } tier — not yet unlocked.
 nc-store-contract-desc-generated = Required: { $goals }
 
 nc-store-contract-goal-inline = { $item } x{ $count }

@@ -35,22 +35,11 @@
             <PanelContainer Name="TabContracts"
                             VerticalExpand="True"
                             StyleClasses="PanelBackgroundBaseDark">
-                <BoxContainer Orientation="Vertical"
+                <!-- #Misfits Change — replaced flat ContractList with tier TabContainer for Bronze/Iron/Silver/Gold/Mithril/Diamond tiers + Hall of Fame -->
+                <TabContainer Name="TierTabs"
                               VerticalExpand="True"
                               HorizontalExpand="True"
-                              Margin="6 4 6 4">
-
-                    <Label Text="{Loc 'nc-store-tab-contracts'}"
-                           StyleClasses="LabelHeading"
-                           Margin="0 0 0 6" />
-
-                    <ScrollContainer VerticalExpand="True"
-                                     HorizontalExpand="True">
-                        <BoxContainer Name="ContractList"
-                                      Orientation="Vertical"
-                                      SeparationOverride="8" />
-                    </ScrollContainer>
-                </BoxContainer>
+                              Margin="4" />
             </PanelContainer>
 
         </TabContainer>

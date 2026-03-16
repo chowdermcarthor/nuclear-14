@@ -9,6 +9,8 @@ public sealed class ContractClientData
     public string Description = string.Empty;
     public string Difficulty = string.Empty;
     public string Id = string.Empty;
+    // #Misfits Add — true when the player has not yet unlocked this tier
+    public bool Locked;
     public string Name = string.Empty;
     public int Progress;
 

@@ -1,3 +1,4 @@
+using Content.Shared._Misfits.Trade;
 using Robust.Shared.Serialization;
 
 namespace Content.Shared._NC.Trade;
@@ -16,7 +17,10 @@ public sealed class StoreDynamicState : BoundUserInterfaceState
         List<ContractClientData> contracts,
         bool hasBuyTab,
         bool hasSellTab,
-        bool hasContractsTab)
+        bool hasContractsTab,
+        // #Misfits Add — tier progression data
+        HashSet<string> playerUnlockedTiers,
+        List<TierRosterEntry> roster)
     {
         Revision = revision;
         CatalogRevision = catalogRevision;
@@ -29,6 +33,8 @@ public sealed class StoreDynamicState : BoundUserInterfaceState
         HasBuyTab = hasBuyTab;
         HasSellTab = hasSellTab;
         HasContractsTab = hasContractsTab;
+        PlayerUnlockedTiers = playerUnlockedTiers;
+        Roster = roster;
     }
 
     public int Revision { get; }
@@ -46,4 +52,10 @@ public sealed class StoreDynamicState : BoundUserInterfaceState
     public bool HasBuyTab { get; }
     public bool HasSellTab { get; }
     public bool HasContractsTab { get; }
+
+    // #Misfits Add — which contract tiers this player has unlocked
+    public HashSet<string> PlayerUnlockedTiers { get; }
+
+    // #Misfits Add — Hall of Fame roster entries for this vendor
+    public List<TierRosterEntry> Roster { get; }
 }
