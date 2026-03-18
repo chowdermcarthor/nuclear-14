@@ -150,7 +150,7 @@
     node: paper
   - type: PhysicalComposition
     materialComposition:
-      N14Paper: 100 # Misfits Fix: was Paper: 100, which caused lathes to eject vanilla SheetPaper1 instead of N14Paper1
+      N14Paper: 100
   - type: Extractable
     grindableSolutionName: paper
   - type: SolutionContainerManager

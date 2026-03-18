@@ -337,11 +337,9 @@ materials-scrap = scrap
 materials-raw-aluminum = raw aluminum
 materials-raw-sulfur = raw sulfur
 materials-sulfur = sulfur
-# Misfits Add: Currency materials — keys were camelCase raw strings with no FTL entries, rendering blank in lathe material panel
 legionAurei = aureus
 legiondenarius = denarius
 ncrCredit = NCR credit
-# Misfits Add: Missing material keys for N14 organics/crafting materials
 materials-fertilizer = fertilizer
 materials-timber = timber
 materials-N14paper = paper
