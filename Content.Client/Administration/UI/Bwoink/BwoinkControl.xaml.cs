@@ -250,12 +250,13 @@ namespace Content.Client.Administration.UI.Bwoink
                 }
             };
 
-            // Request ticket list on load
-            bwoinkSys.RequestTicketList();
-
             // Subscribe to ticket updates
             bwoinkSys.OnTicketUpdated += OnTicketUpdated;
             bwoinkSys.OnTicketListReceived += OnTicketListReceived;
+
+            // #Misfits Fix — subscribe first to avoid dropping the first list response
+            // when opening AHelp as a late-joining admin.
+            bwoinkSys.RequestTicketList();
         }
 
         // #Misfits Add — ticket event handlers

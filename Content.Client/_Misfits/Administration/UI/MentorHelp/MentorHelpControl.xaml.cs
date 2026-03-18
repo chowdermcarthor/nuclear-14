@@ -190,12 +190,13 @@ public sealed partial class MentorHelpControl : Control
             }
         };
 
-        // Request ticket list on load
-        mentorSys.RequestTicketList();
-
         // Subscribe to ticket updates
         mentorSys.OnTicketUpdated += OnTicketUpdated;
         mentorSys.OnTicketListReceived += OnTicketListReceived;
+
+        // #Misfits Fix — subscribe first to avoid dropping the first list response
+        // when opening MHelp as a late-joining mentor/admin.
+        mentorSys.RequestTicketList();
     }
 
     public void OnMentorHelp(NetUserId channel)
