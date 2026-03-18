@@ -1,0 +1,60 @@
+# #Misfits Add - Enclave Junior Officer role (First Lieutenant / Second Lieutenant).
+
+- type: job
+  id: EnclaveJuniorOfficer
+  setPreference: true
+  hideWithoutJobWhitelist: true
+  weight: 110
+  overrideConsoleVisibility: false
+  canBeAntag: false
+  name: job-name-enclave-junior-officer
+  description: job-description-enclave-junior-officer
+  playTimeTracker: EnclaveJuniorOfficer
+  requirements:
+    - !type:CharacterSpeciesRequirement
+      species:
+      - Human
+      - Ghoul
+      - SuperMutant
+    - !type:CharacterDepartmentTimeRequirement
+      department: Enclave
+      min: 72000 # 20 hours
+    - !type:CharacterPlaytimeRequirement
+      tracker: EnclaveNCO
+      min: 36000 # 10 hours
+  startingGear: EnclaveJuniorOfficerGear
+  icon: "JobIconNcrLeader"
+  supervisors: job-supervisors-enclave-junior-officer
+  alwaysUseSpawner: true
+  accessGroups:
+  - EnclaveJuniorOfficer
+  special:
+  - !type:AddComponentSpecial
+    components:
+      - type: NpcFactionMember
+        factions:
+          - Enclave
+
+- type: startingGear
+  id: EnclaveJuniorOfficerGear
+  equipment:
+    head: N14ClothingHeadHatEnclaveOfficer
+    back: N14ClothingBackpackMilitary
+    jumpsuit: N14ClothingUniformJumpsuitEnclave
+    outerClothing: N14ClothingOuterEnclaverOfficerCoat
+    shoes: N14ClothingBootsCombatFilled
+    gloves: N14ClothingHandsGlovesCombat
+    neck: ClothingNeckPinEnclaveSecondLieutenant
+    belt: ClothingBeltMilitary
+    ears: N14ClothingHeadsetEnclave
+    pocket1: EnclaveOfficerloadoutkits
+    pocket2: RadioHandheld
+    id: N14IDEnclaveOfficer
+  satchel: N14ClothingBackpackSatchelMilitaryFilled
+  duffelbag: N14ClothingBackpackDuffelMilitaryFilled
+  storage:
+    back:
+    - N14BoxPlasticFilledMilitary
+
+- type: playTimeTracker
+  id: EnclaveJuniorOfficer

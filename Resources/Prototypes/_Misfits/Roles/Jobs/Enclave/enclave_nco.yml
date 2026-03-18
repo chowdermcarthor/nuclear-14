@@ -1,0 +1,59 @@
+# #Misfits Add - Enclave NCO role (Sergeant through Master Sergeant).
+
+- type: job
+  id: EnclaveNCO
+  setPreference: true
+  hideWithoutJobWhitelist: true
+  weight: 105
+  overrideConsoleVisibility: false
+  canBeAntag: false
+  name: job-name-enclave-nco
+  description: job-description-enclave-nco
+  playTimeTracker: EnclaveNCO
+  requirements:
+    - !type:CharacterSpeciesRequirement
+      species:
+      - Human
+      - Ghoul
+      - SuperMutant
+    - !type:CharacterDepartmentTimeRequirement
+      department: Enclave
+      min: 36000 # 10 hours
+    - !type:CharacterPlaytimeRequirement
+      tracker: EnclaveEnlisted
+      min: 36000 # 10 hours
+  startingGear: EnclaveNCOGear
+  icon: "JobIconNcrSoldier"
+  supervisors: job-supervisors-enclave-nco
+  alwaysUseSpawner: true
+  accessGroups:
+  - EnclaveNCO
+  special:
+  - !type:AddComponentSpecial
+    components:
+      - type: NpcFactionMember
+        factions:
+          - Enclave
+
+- type: startingGear
+  id: EnclaveNCOGear
+  equipment:
+    head: N14ClothingHeadHatEnclavePeacekeeperCap
+    back: N14ClothingBackpackMilitary
+    jumpsuit: N14ClothingUniformJumpsuitEnclave
+    outerClothing: N14ClothingOuterEnclaveArmor
+    shoes: N14ClothingBootsCombatFilled
+    gloves: N14ClothingHandsGlovesCombat
+    neck: ClothingNeckPinEnclaveSergeant
+    belt: ClothingBeltMilitary
+    ears: N14ClothingHeadsetEnclave
+    pocket1: EnclaveSoldierloadoutkits
+    id: N14IDEnclaveTrooper
+  satchel: N14ClothingBackpackSatchelMilitaryFilled
+  duffelbag: N14ClothingBackpackDuffelMilitaryFilled
+  storage:
+    back:
+    - N14BoxPlasticFilledMilitary
+
+- type: playTimeTracker
+  id: EnclaveNCO

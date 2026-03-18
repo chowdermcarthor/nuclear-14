@@ -1,31 +1,27 @@
-# #Misfits Add - Enclave Scientist role (mid-tier science).
-# #Misfits Change - Expanded species, added rank pin, tiered access, playtime gate.
+# #Misfits Add - Enclave Junior Scientist role (entry-level science).
 
 - type: job
-  id: EnclaveScientist
+  id: EnclaveJuniorScientist
   setPreference: true
   hideWithoutJobWhitelist: true
-  weight: 106
+  weight: 98
   overrideConsoleVisibility: false
   canBeAntag: false
-  name: job-name-enclave-scientist
-  description: job-description-enclave-scientist
-  playTimeTracker: EnclaveScientist
+  name: job-name-enclave-junior-scientist
+  description: job-description-enclave-junior-scientist
+  playTimeTracker: EnclaveJuniorScientist
   requirements:
     - !type:CharacterSpeciesRequirement
       species:
       - Human
       - Ghoul
       - SuperMutant
-    - !type:CharacterDepartmentTimeRequirement
-      department: Enclave
-      min: 36000 # 10 hours
-  startingGear: EnclaveScientistGear
+  startingGear: EnclaveJuniorScientistGear
   icon: "JobIconScientist"
-  supervisors: job-supervisors-enclave-scientist
+  supervisors: job-supervisors-enclave-junior-scientist
   alwaysUseSpawner: true
   accessGroups:
-  - EnclaveScientist
+  - EnclaveJuniorScientist
   special:
   - !type:AddComponentSpecial
     components:
@@ -35,13 +31,13 @@
       - type: CPRTraining
 
 - type: startingGear
-  id: EnclaveScientistGear
+  id: EnclaveJuniorScientistGear
   equipment:
     head: N14ClothingHeadHatEnclaveScientist
     back: N14ClothingBackpackSatchelMilitary
     jumpsuit: N14ClothingUniformJumpsuitEnclave
     shoes: N14ClothingBootsLeatherFilled
-    neck: ClothingNeckPinEnclaveScientist
+    neck: ClothingNeckPinEnclaveJuniorScientist
     belt: ClothingBeltMilitary
     ears: N14ClothingHeadsetEnclave
     pocket2: EnclaveScientistloadoutkits
@@ -52,4 +48,4 @@
     - N14BoxPlasticFilledMilitary
 
 - type: playTimeTracker
-  id: EnclaveScientist
+  id: EnclaveJuniorScientist

@@ -1,0 +1,201 @@
+# #Misfits Add - Enclave rank pin entities for the expanded role hierarchy.
+# Uses NCR pin sprites as placeholders until custom Enclave art is created.
+
+# Base Enclave pin — all others inherit from this.
+- type: entity
+  parent: ClothingNeckPinBase
+  id: ClothingNeckPinEnclavePrivate
+  name: enclave private pin
+  description: A United States Government rank insignia showing the wearer's rank.
+  components:
+  - type: Sprite
+    sprite: _Nuclear14/Clothing/Neck/Misc/pins.rsi
+    layers:
+    - state: private
+  - type: Clothing
+    sprite: _Nuclear14/Clothing/Neck/Misc/pins.rsi
+    clothingVisuals:
+      neck:
+      - state: gold-equipped
+
+# Enlisted ranks
+- type: entity
+  parent: ClothingNeckPinEnclavePrivate
+  id: ClothingNeckPinEnclavePFC
+  name: enclave private first class pin
+  components:
+  - type: Sprite
+    sprite: _Nuclear14/Clothing/Neck/Misc/pins.rsi
+    layers:
+    - state: private1st
+
+- type: entity
+  parent: ClothingNeckPinEnclavePrivate
+  id: ClothingNeckPinEnclaveSpecialist
+  name: enclave specialist pin
+  components:
+  - type: Sprite
+    sprite: _Nuclear14/Clothing/Neck/Misc/pins.rsi
+    layers:
+    - state: specialist
+
+# NCO ranks
+- type: entity
+  parent: ClothingNeckPinEnclavePrivate
+  id: ClothingNeckPinEnclaveSergeant
+  name: enclave sergeant pin
+  components:
+  - type: Sprite
+    sprite: _Nuclear14/Clothing/Neck/Misc/pins.rsi
+    layers:
+    - state: sergeant
+
+- type: entity
+  parent: ClothingNeckPinEnclavePrivate
+  id: ClothingNeckPinEnclaveStaffSergeant
+  name: enclave staff sergeant pin
+  components:
+  - type: Sprite
+    sprite: _Nuclear14/Clothing/Neck/Misc/pins.rsi
+    layers:
+    - state: sergeant1st
+
+- type: entity
+  parent: ClothingNeckPinEnclavePrivate
+  id: ClothingNeckPinEnclaveSFC
+  name: enclave sergeant first class pin
+  components:
+  - type: Sprite
+    sprite: _Nuclear14/Clothing/Neck/Misc/pins.rsi
+    layers:
+    - state: mastersergeant
+
+- type: entity
+  parent: ClothingNeckPinEnclavePrivate
+  id: ClothingNeckPinEnclaveMasterSergeant
+  name: enclave master sergeant pin
+  components:
+  - type: Sprite
+    sprite: _Nuclear14/Clothing/Neck/Misc/pins.rsi
+    layers:
+    - state: sergeantmajor
+
+# Junior Officer ranks
+- type: entity
+  parent: ClothingNeckPinEnclavePrivate
+  id: ClothingNeckPinEnclaveSecondLieutenant
+  name: enclave second lieutenant pin
+  components:
+  - type: Sprite
+    sprite: _Nuclear14/Clothing/Neck/Misc/pins.rsi
+    layers:
+    - state: secondlieutenant
+  - type: Clothing
+    sprite: _Nuclear14/Clothing/Neck/Misc/pins.rsi
+    clothingVisuals:
+      neck:
+      - state: silver-equipped
+
+- type: entity
+  parent: ClothingNeckPinEnclaveSecondLieutenant
+  id: ClothingNeckPinEnclaveFirstLieutenant
+  name: enclave first lieutenant pin
+  components:
+  - type: Sprite
+    sprite: _Nuclear14/Clothing/Neck/Misc/pins.rsi
+    layers:
+    - state: firstlieutenant
+
+# Senior Officer ranks
+- type: entity
+  parent: ClothingNeckPinEnclaveSecondLieutenant
+  id: ClothingNeckPinEnclaveCaptain
+  name: enclave captain pin
+  components:
+  - type: Sprite
+    sprite: _Nuclear14/Clothing/Neck/Misc/pins.rsi
+    layers:
+    - state: captain
+
+- type: entity
+  parent: ClothingNeckPinEnclaveSecondLieutenant
+  id: ClothingNeckPinEnclaveMajor
+  name: enclave major pin
+  components:
+  - type: Sprite
+    sprite: _Nuclear14/Clothing/Neck/Misc/pins.rsi
+    layers:
+    - state: major
+
+# Commander ranks
+- type: entity
+  parent: ClothingNeckPinEnclaveSecondLieutenant
+  id: ClothingNeckPinEnclaveLtColonel
+  name: enclave lieutenant colonel pin
+  components:
+  - type: Sprite
+    sprite: _Nuclear14/Clothing/Neck/Misc/pins.rsi
+    layers:
+    - state: major
+
+- type: entity
+  parent: ClothingNeckPinEnclaveSecondLieutenant
+  id: ClothingNeckPinEnclaveColonel
+  name: enclave colonel pin
+  components:
+  - type: Sprite
+    sprite: _Nuclear14/Clothing/Neck/Misc/pins.rsi
+    layers:
+    - state: captain
+
+- type: entity
+  parent: ClothingNeckPinEnclaveSecondLieutenant
+  id: ClothingNeckPinEnclaveGeneral
+  name: enclave general pin
+  components:
+  - type: Sprite
+    sprite: _Nuclear14/Clothing/Neck/Misc/pins.rsi
+    layers:
+    - state: captain
+
+# Science ranks
+- type: entity
+  parent: ClothingNeckPinEnclavePrivate
+  id: ClothingNeckPinEnclaveJuniorScientist
+  name: enclave junior scientist pin
+  description: A United States Government research division insignia showing the wearer's rank.
+  components:
+  - type: Sprite
+    sprite: _Nuclear14/Clothing/Neck/Misc/pins.rsi
+    layers:
+    - state: recruit
+  - type: Clothing
+    sprite: _Nuclear14/Clothing/Neck/Misc/pins.rsi
+    clothingVisuals:
+      neck:
+      - state: empty-equipped
+
+- type: entity
+  parent: ClothingNeckPinEnclaveJuniorScientist
+  id: ClothingNeckPinEnclaveScientist
+  name: enclave scientist pin
+  components:
+  - type: Sprite
+    sprite: _Nuclear14/Clothing/Neck/Misc/pins.rsi
+    layers:
+    - state: doctor
+  - type: Clothing
+    sprite: _Nuclear14/Clothing/Neck/Misc/pins.rsi
+    clothingVisuals:
+      neck:
+      - state: red-equipped
+
+- type: entity
+  parent: ClothingNeckPinEnclaveScientist
+  id: ClothingNeckPinEnclaveHeadScientist
+  name: enclave head scientist pin
+  components:
+  - type: Sprite
+    sprite: _Nuclear14/Clothing/Neck/Misc/pins.rsi
+    layers:
+    - state: chiefphysician

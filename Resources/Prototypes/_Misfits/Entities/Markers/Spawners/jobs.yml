@@ -521,14 +521,14 @@
       - state: green
       - state: investigator
 
-# Enclave
+# Enclave — expanded 8-role hierarchy (#Misfits Change)
 - type: entity
   parent: SpawnPointJobBase
-  id: MisfitsSpawnPointEnclaveOfficer
-  name: Enclave Officer
+  id: MisfitsSpawnPointEnclaveCommander
+  name: Enclave Commander
   components:
   - type: SpawnPoint
-    job_id: EnclaveOfficer
+    job_id: EnclaveCommander
   - type: Sprite
     sprite: _Nuclear14/Markers/Jobs/ncr.rsi
     layers:
@@ -536,24 +536,84 @@
       - state: lt
 
 - type: entity
-  parent: MisfitsSpawnPointEnclaveOfficer
-  id: MisfitsSpawnPointEnclaveSoldier
-  name: Enclave Soldier
+  parent: MisfitsSpawnPointEnclaveCommander
+  id: MisfitsSpawnPointEnclaveSeniorOfficer
+  name: Enclave Senior Officer
   components:
   - type: SpawnPoint
-    job_id: EnclaveSoldier
+    job_id: EnclaveSeniorOfficer
+  - type: Sprite
+    layers:
+      - state: green
+      - state: lt
+
+- type: entity
+  parent: MisfitsSpawnPointEnclaveCommander
+  id: MisfitsSpawnPointEnclaveJuniorOfficer
+  name: Enclave Junior Officer
+  components:
+  - type: SpawnPoint
+    job_id: EnclaveJuniorOfficer
+  - type: Sprite
+    layers:
+      - state: green
+      - state: lt
+
+- type: entity
+  parent: MisfitsSpawnPointEnclaveCommander
+  id: MisfitsSpawnPointEnclaveNCO
+  name: Enclave NCO
+  components:
+  - type: SpawnPoint
+    job_id: EnclaveNCO
   - type: Sprite
     layers:
       - state: green
       - state: soldier
 
 - type: entity
-  parent: MisfitsSpawnPointEnclaveOfficer
+  parent: MisfitsSpawnPointEnclaveCommander
+  id: MisfitsSpawnPointEnclaveEnlisted
+  name: Enclave Enlisted
+  components:
+  - type: SpawnPoint
+    job_id: EnclaveEnlisted
+  - type: Sprite
+    layers:
+      - state: green
+      - state: soldier
+
+- type: entity
+  parent: MisfitsSpawnPointEnclaveCommander
+  id: MisfitsSpawnPointEnclaveHeadScientist
+  name: Enclave Head Scientist
+  components:
+  - type: SpawnPoint
+    job_id: EnclaveHeadScientist
+  - type: Sprite
+    layers:
+      - state: green
+      - state: medic
+
+- type: entity
+  parent: MisfitsSpawnPointEnclaveCommander
   id: MisfitsSpawnPointEnclaveScientist
   name: Enclave Scientist
   components:
   - type: SpawnPoint
     job_id: EnclaveScientist
+  - type: Sprite
+    layers:
+      - state: green
+      - state: medic
+
+- type: entity
+  parent: MisfitsSpawnPointEnclaveCommander
+  id: MisfitsSpawnPointEnclaveJuniorScientist
+  name: Enclave Junior Scientist
+  components:
+  - type: SpawnPoint
+    job_id: EnclaveJuniorScientist
   - type: Sprite
     layers:
       - state: green

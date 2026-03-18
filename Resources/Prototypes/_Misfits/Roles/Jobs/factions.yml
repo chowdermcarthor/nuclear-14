@@ -19,15 +19,21 @@
   - SuperMutant
 
 # #Misfits Add - Enclave department is job-whitelist-only and sorted below other special departments.
+# #Misfits Change - Expanded from 3 roles to 8 (5 military + 3 science).
 - type: department
   id: Enclave
   description: department-Enclave-description
   color: "#2d5d91"
   weight: -101
   roles:
-  - EnclaveOfficer
-  - EnclaveSoldier
+  - EnclaveCommander
+  - EnclaveSeniorOfficer
+  - EnclaveJuniorOfficer
+  - EnclaveNCO
+  - EnclaveEnlisted
+  - EnclaveHeadScientist
   - EnclaveScientist
+  - EnclaveJuniorScientist
 
 # #Misfits Add — Caesar's Legion department. Groups all Legion roles for the
 # character-creation screen and for department-based requirements/lookups.

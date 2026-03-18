@@ -1,25 +1,27 @@
-# #Misfits Add - Enclave soldier role with explicit job-whitelist visibility.
+# #Misfits Add - Enclave Enlisted role (Private through Specialist).
 
 - type: job
-  id: EnclaveSoldier
+  id: EnclaveEnlisted
   setPreference: true
   hideWithoutJobWhitelist: true
-  weight: 110
+  weight: 100
   overrideConsoleVisibility: false
   canBeAntag: false
-  name: job-name-enclave-soldier
-  description: job-description-enclave-soldier
-  playTimeTracker: EnclaveSoldier
+  name: job-name-enclave-enlisted
+  description: job-description-enclave-enlisted
+  playTimeTracker: EnclaveEnlisted
   requirements:
     - !type:CharacterSpeciesRequirement
       species:
       - Human
-  startingGear: EnclaveSoldierGear
+      - Ghoul
+      - SuperMutant
+  startingGear: EnclaveEnlistedGear
   icon: "JobIconNcrSoldier"
   supervisors: job-supervisors-enclave
   alwaysUseSpawner: true
-  access:
-  - Enclave
+  accessGroups:
+  - EnclaveEnlisted
   special:
   - !type:AddComponentSpecial
     components:
@@ -28,7 +30,7 @@
           - Enclave
 
 - type: startingGear
-  id: EnclaveSoldierGear
+  id: EnclaveEnlistedGear
   equipment:
     head: N14ClothingHeadHatEnclavePeacekeeperCap
     back: N14ClothingBackpackMilitary
@@ -36,6 +38,7 @@
     outerClothing: N14ClothingOuterEnclavePeacekeeper
     shoes: N14ClothingBootsCombatFilled
     gloves: N14ClothingHandsGlovesCombat
+    neck: ClothingNeckPinEnclavePrivate
     belt: ClothingBeltMilitary
     ears: N14ClothingHeadsetEnclave
     pocket1: EnclaveSoldierloadoutkits
@@ -47,4 +50,4 @@
     - N14BoxPlasticFilledMilitary
 
 - type: playTimeTracker
-  id: EnclaveSoldier
+  id: EnclaveEnlisted

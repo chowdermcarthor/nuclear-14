@@ -1,16 +1,15 @@
-# #Misfits Add - Enclave Scientist role (mid-tier science).
-# #Misfits Change - Expanded species, added rank pin, tiered access, playtime gate.
+# #Misfits Add - Enclave Head Scientist role (senior science leadership).
 
 - type: job
-  id: EnclaveScientist
+  id: EnclaveHeadScientist
   setPreference: true
   hideWithoutJobWhitelist: true
-  weight: 106
+  weight: 112
   overrideConsoleVisibility: false
   canBeAntag: false
-  name: job-name-enclave-scientist
-  description: job-description-enclave-scientist
-  playTimeTracker: EnclaveScientist
+  name: job-name-enclave-head-scientist
+  description: job-description-enclave-head-scientist
+  playTimeTracker: EnclaveHeadScientist
   requirements:
     - !type:CharacterSpeciesRequirement
       species:
@@ -19,13 +18,17 @@
       - SuperMutant
     - !type:CharacterDepartmentTimeRequirement
       department: Enclave
+      min: 108000 # 30 hours
+    - !type:CharacterPlaytimeRequirement
+      tracker: EnclaveScientist
       min: 36000 # 10 hours
-  startingGear: EnclaveScientistGear
+  startingGear: EnclaveHeadScientistGear
   icon: "JobIconScientist"
-  supervisors: job-supervisors-enclave-scientist
+  supervisors: job-supervisors-enclave-head-scientist
+  requireAdminNotify: true
   alwaysUseSpawner: true
   accessGroups:
-  - EnclaveScientist
+  - EnclaveHeadScientist
   special:
   - !type:AddComponentSpecial
     components:
@@ -35,13 +38,13 @@
       - type: CPRTraining
 
 - type: startingGear
-  id: EnclaveScientistGear
+  id: EnclaveHeadScientistGear
   equipment:
     head: N14ClothingHeadHatEnclaveScientist
     back: N14ClothingBackpackSatchelMilitary
     jumpsuit: N14ClothingUniformJumpsuitEnclave
     shoes: N14ClothingBootsLeatherFilled
-    neck: ClothingNeckPinEnclaveScientist
+    neck: ClothingNeckPinEnclaveHeadScientist
     belt: ClothingBeltMilitary
     ears: N14ClothingHeadsetEnclave
     pocket2: EnclaveScientistloadoutkits
@@ -52,4 +55,4 @@
     - N14BoxPlasticFilledMilitary
 
 - type: playTimeTracker
-  id: EnclaveScientist
+  id: EnclaveHeadScientist

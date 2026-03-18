@@ -1,0 +1,74 @@
+# #Misfits Add - Enclave tiered access levels and groups for expanded role hierarchy.
+
+- type: accessLevel
+  id: EnclaveNCO
+  name: id-card-access-level-enclave-nco
+
+- type: accessLevel
+  id: EnclaveOfficer
+  name: id-card-access-level-enclave-officer
+
+- type: accessLevel
+  id: EnclaveCommand
+  name: id-card-access-level-enclave-command
+
+- type: accessLevel
+  id: EnclaveScience
+  name: id-card-access-level-enclave-science
+
+# Access groups — cumulative, higher ranks inherit lower access.
+
+- type: accessGroup
+  id: EnclaveEnlisted
+  tags:
+  - Enclave
+
+- type: accessGroup
+  id: EnclaveNCO
+  tags:
+  - Enclave
+  - EnclaveNCO
+
+- type: accessGroup
+  id: EnclaveJuniorOfficer
+  tags:
+  - Enclave
+  - EnclaveNCO
+  - EnclaveOfficer
+
+- type: accessGroup
+  id: EnclaveSeniorOfficer
+  tags:
+  - Enclave
+  - EnclaveNCO
+  - EnclaveOfficer
+  - EnclaveScience
+
+- type: accessGroup
+  id: EnclaveCommand
+  tags:
+  - Enclave
+  - EnclaveNCO
+  - EnclaveOfficer
+  - EnclaveScience
+  - EnclaveCommand
+
+- type: accessGroup
+  id: EnclaveJuniorScientist
+  tags:
+  - Enclave
+  - EnclaveScience
+
+- type: accessGroup
+  id: EnclaveScientist
+  tags:
+  - Enclave
+  - EnclaveScience
+
+- type: accessGroup
+  id: EnclaveHeadScientist
+  tags:
+  - Enclave
+  - EnclaveNCO
+  - EnclaveOfficer
+  - EnclaveScience

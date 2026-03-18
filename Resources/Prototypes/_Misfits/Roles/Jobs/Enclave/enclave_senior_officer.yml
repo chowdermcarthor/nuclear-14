@@ -1,27 +1,33 @@
-# #Misfits Add - Enclave officer role with explicit job-whitelist visibility.
+# #Misfits Add - Enclave Senior Officer role (Major / Captain).
 
 - type: job
-  id: EnclaveOfficer
+  id: EnclaveSeniorOfficer
   setPreference: true
   hideWithoutJobWhitelist: true
-  weight: 120
-  showBorder: true
+  weight: 115
   overrideConsoleVisibility: false
   canBeAntag: false
-  name: job-name-enclave-officer
-  description: job-description-enclave-officer
-  playTimeTracker: EnclaveOfficer
+  name: job-name-enclave-senior-officer
+  description: job-description-enclave-senior-officer
+  playTimeTracker: EnclaveSeniorOfficer
   requirements:
     - !type:CharacterSpeciesRequirement
       species:
       - Human
-  startingGear: EnclaveOfficerGear
+      - Ghoul
+      - SuperMutant
+    - !type:CharacterDepartmentTimeRequirement
+      department: Enclave
+      min: 144000 # 40 hours
+    - !type:CharacterPlaytimeRequirement
+      tracker: EnclaveJuniorOfficer
+      min: 36000 # 10 hours
+  startingGear: EnclaveSeniorOfficerGear
   icon: "JobIconNcrLeader"
-  supervisors: job-supervisors-enclave-officer
-  requireAdminNotify: true
+  supervisors: job-supervisors-enclave-senior-officer
   alwaysUseSpawner: true
-  access:
-  - Enclave
+  accessGroups:
+  - EnclaveSeniorOfficer
   special:
   - !type:AddComponentSpecial
     components:
@@ -30,7 +36,7 @@
           - Enclave
 
 - type: startingGear
-  id: EnclaveOfficerGear
+  id: EnclaveSeniorOfficerGear
   equipment:
     head: N14ClothingHeadHatEnclaveOfficer
     back: N14ClothingBackpackMilitary
@@ -38,6 +44,7 @@
     outerClothing: N14ClothingOuterEnclaverOfficerCoat
     shoes: N14ClothingBootsCombatFilled
     gloves: N14ClothingHandsGlovesCombat
+    neck: ClothingNeckPinEnclaveCaptain
     belt: ClothingBeltMilitary
     ears: N14ClothingHeadsetEnclave
     pocket1: EnclaveOfficerloadoutkits
@@ -50,4 +57,4 @@
     - N14BoxPlasticFilledMilitary
 
 - type: playTimeTracker
-  id: EnclaveOfficer
+  id: EnclaveSeniorOfficer

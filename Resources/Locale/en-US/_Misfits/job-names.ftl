@@ -1,10 +1,20 @@
-# #Misfits Add - Enclave job locale.
-job-name-enclave-officer = Enclave Officer
-job-description-enclave-officer = Command the Enclave cell, protect its secrecy, and direct field operations with superior technology.
-job-name-enclave-soldier = Enclave Soldier
-job-description-enclave-soldier = Serve as the Enclave's disciplined frontline trooper and carry out the officer's mission.
+# #Misfits Add - Enclave job locale (expanded 8-role hierarchy).
+job-name-enclave-commander = Enclave Commander
+job-description-enclave-commander = Lead the Enclave cell with absolute authority, coordinate military and science branches, and ensure operational security.
+job-name-enclave-senior-officer = Enclave Senior Officer
+job-description-enclave-senior-officer = Serve as the Commander's right hand, directing field operations and managing subordinate officers.
+job-name-enclave-junior-officer = Enclave Junior Officer
+job-description-enclave-junior-officer = Lead squads in the field, execute mission objectives, and bridge the gap between NCOs and senior command.
+job-name-enclave-nco = Enclave NCO
+job-description-enclave-nco = Maintain discipline, train enlisted personnel, and ensure tactical readiness on the ground.
+job-name-enclave-enlisted = Enclave Enlisted
+job-description-enclave-enlisted = Serve as the Enclave's frontline trooper, follow orders, and execute the mission.
+job-name-enclave-head-scientist = Enclave Head Scientist
+job-description-enclave-head-scientist = Direct the Enclave's research programs, oversee junior scientists, and advise command on technical matters.
 job-name-enclave-scientist = Enclave Scientist
-job-description-enclave-scientist = Safeguard Enclave research, maintain advanced equipment, and keep the cell operational.# Synthetics job names and descriptions (Misfits-specific)
+job-description-enclave-scientist = Conduct field research, maintain advanced equipment, and support the cell's scientific mission.
+job-name-enclave-junior-scientist = Enclave Junior Scientist
+job-description-enclave-junior-scientist = Assist senior scientists, learn Enclave protocols, and contribute to ongoing research.# Synthetics job names and descriptions (Misfits-specific)
 
 # Synthetics
 job-name-synthetic-mr-handy = Mr. Handy
