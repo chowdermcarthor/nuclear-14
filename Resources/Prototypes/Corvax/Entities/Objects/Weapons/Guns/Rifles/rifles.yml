@@ -135,7 +135,7 @@
     price: 100
 
 - type: entity
-  name: Ak-112pn
+  name: AK-112LMG
   parent: N14WeaponRifleBase
   id: N14WeaponRifleAk112pn
   description: This Ak-112 rifle is equipped with an extended army-style magazine, making it even more enjoyable to spray everyone with fire than ever before. It uses the same 5.45 ammunition

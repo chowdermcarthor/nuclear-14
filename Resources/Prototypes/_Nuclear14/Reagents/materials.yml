@@ -81,6 +81,20 @@
   price: 0.05 # Corvax-Change
 
 # Materials
+# Misfits Fix: N14Paper needs its own material prototype so lathe-type machines
+# (ammo workshop, etc.) eject N14Paper1 instead of vanilla SheetPaper1.
+# N14Paper entities previously used PhysicalComposition: Paper: 100, which caused
+# them to enter the upstream Paper material pool and eject as SheetPaper1 —
+# making the output unusable in N14 hand-crafting recipes (e.g. cardboard).
+- type: material
+  id: N14Paper
+  stackEntity: N14Paper1
+  name: materials-N14paper
+  unit: materials-unit-piece
+  icon: { sprite: /Textures/_Nuclear14/Objects/Misc/clutter.rsi, state: paper }
+  color: "#d9d9d9"
+  price: 0.0003
+
 - type: material
   id: N14Gunpowder
   stackEntity: N14Gunpowder1
