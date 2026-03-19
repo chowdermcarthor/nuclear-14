@@ -1,6 +1,7 @@
 - type: job
   id: TribalHealer
   setPreference: true
+  jobWhitelistBypassesRoleTimers: true
   weight: 40
   showBorder: true
   overrideConsoleVisibility: false
@@ -13,9 +14,14 @@
       species:
       - Human
       - Ghoul
-    - !type:CharacterDepartmentTimeRequirement
-      department: Tribe
-      min: 0 # 2 hours
+    - !type:CharacterLogicOrRequirement
+      requirements:
+        - !type:CharacterPlaytimeRequirement
+          tracker: Wastelander
+          min: 18000 # 5 hours
+        - !type:CharacterPlaytimeRequirement
+          tracker: Survivor
+          min: 18000 # 5 hours
   startingGear: TribalHealerGear
   alwaysUseSpawner: true
   icon: "JobIconTribalMedic" # Corvax-Change

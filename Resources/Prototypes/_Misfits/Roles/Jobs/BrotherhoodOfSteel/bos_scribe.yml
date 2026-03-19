@@ -63,9 +63,9 @@
       species:
       - Human
       - Ghoul
-    - !type:CharacterDepartmentTimeRequirement
-      department: BrotherhoodOfSteel
-      min: 0 # #Misfits Tweak - BoS unlocked up to Senior
+    - !type:CharacterPlaytimeRequirement
+      tracker: BoSMidSquire
+      min: 18000 # 5 hours
   startingGear: BoSScribeGear
   alwaysUseSpawner: true
   icon: "JobIconBosMScriptor"

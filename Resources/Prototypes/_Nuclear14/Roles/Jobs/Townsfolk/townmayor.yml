@@ -17,7 +17,7 @@
       - Ghoul
     - !type:CharacterDepartmentTimeRequirement
       department: Townsfolk
-      min: 0 # #Misfits Tweak - was 36000 (10 hours); set to 0 so anyone can join
+      min: 216000 # 60 hours
   startingGear: TownMayorGear
   icon: "JobIconTownMayor" # Corvax-Change
   supervisors: job-supervisors-townsfolk

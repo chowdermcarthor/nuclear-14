@@ -1,6 +1,7 @@
 - type: job
   id: Followers
   setPreference: true # Forge-Change
+  jobWhitelistBypassesRoleTimers: true
   name: job-name-followers
   description: job-description-followers
   playTimeTracker: Followers
@@ -9,7 +10,15 @@
   supervisors: job-supervisors-followers
   accessGroups:
   - FollowersApocalypse
-  requirements: # Misfits Change: block non-human species
+  requirements:
+  - !type:CharacterLogicOrRequirement
+    requirements:
+      - !type:CharacterPlaytimeRequirement
+        tracker: Survivor
+        min: 18000 # 5 hours
+      - !type:CharacterPlaytimeRequirement
+        tracker: Wastelander
+        min: 18000 # 5 hours
   - !type:CharacterSpeciesRequirement
     inverted: true
     species:

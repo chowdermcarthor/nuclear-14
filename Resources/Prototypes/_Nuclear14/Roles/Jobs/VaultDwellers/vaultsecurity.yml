@@ -14,7 +14,7 @@
     - Human
   - !type:CharacterDepartmentTimeRequirement
     department: Vault
-    min: 0 # 5 hours
+    min: 36000 # 10 hours
   setPreference: true
   overrideConsoleVisibility: true
   canBeAntag: false

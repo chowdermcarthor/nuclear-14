@@ -17,8 +17,9 @@
           species:
             - Human
             - Ghoul
-    - !type:CharacterOverallTimeRequirement
-      min: 0
+    - !type:CharacterPlaytimeRequirement
+      tracker: BoSInitiate
+      min: 18000 # 5 hours
   startingGear: BoSMidSquireGear
   alwaysUseSpawner: true
   icon: "JobIconBosMSquire" # Forge-Change

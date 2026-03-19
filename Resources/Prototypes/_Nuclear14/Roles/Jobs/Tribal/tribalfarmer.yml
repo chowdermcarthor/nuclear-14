@@ -1,6 +1,7 @@
 - type: job
   id: TribalFarmer
   setPreference: true
+  jobWhitelistBypassesRoleTimers: true
   weight: 30
   overrideConsoleVisibility: false
   canBeAntag: false
@@ -12,9 +13,14 @@
       species:
       - Human
       - Ghoul
-    - !type:CharacterDepartmentTimeRequirement
-      department: Tribe
-      min: 0 # 2 hours
+    - !type:CharacterLogicOrRequirement
+      requirements:
+        - !type:CharacterPlaytimeRequirement
+          tracker: Wastelander
+          min: 18000 # 5 hours
+        - !type:CharacterPlaytimeRequirement
+          tracker: Survivor
+          min: 18000 # 5 hours
   startingGear: TribalFarmerGear
   alwaysUseSpawner: true
   icon: "JobIconTribalFarmer" # Corvax-Change

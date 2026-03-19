@@ -15,9 +15,9 @@
       species:
       - Human
       - Ghoul
-    - !type:CharacterDepartmentTimeRequirement
-      department: BrotherhoodOfSteel
-      min: 0 # 15 hours
+    - !type:CharacterPlaytimeRequirement
+      tracker: BoSPaladin
+      min: 144000 # 40 hours
   startingGear: BoSMidPaladinGear
   alwaysUseSpawner: true
   icon: "JobIconBosMPaladin" # Corvax-Change

@@ -11,7 +11,7 @@
     - Human
   - !type:CharacterDepartmentTimeRequirement
     department: Vault
-    min: 0 # #Misfits Tweak - was 36000 (10 hours); open to all
+    min: 216000 # 60 hours
   playTimeTracker: Overseer
   weight: 100
   startingGear: OverseerGear

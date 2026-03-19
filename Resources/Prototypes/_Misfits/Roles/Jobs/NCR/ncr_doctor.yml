@@ -17,10 +17,7 @@
       - Ghoul
     - !type:CharacterDepartmentTimeRequirement
       department: NCR
-      min: 0
-    - !type:CharacterPlaytimeRequirement
-      tracker: NCRMedic
-      min: 0
+      min: 36000 # 10 hours
   startingGear: NCRDoctorGear
   icon: "JobIconNcrMedic"
   supervisors: job-supervisors-ncr-lt

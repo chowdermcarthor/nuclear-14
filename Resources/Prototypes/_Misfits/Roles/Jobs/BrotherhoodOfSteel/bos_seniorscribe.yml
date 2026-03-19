@@ -14,9 +14,9 @@
       species:
       - Human
       - Ghoul
-    - !type:CharacterDepartmentTimeRequirement
-      department: BrotherhoodOfSteel
-      min: 0 # 5 hours
+    - !type:CharacterPlaytimeRequirement
+      tracker: BoSScribe
+      min: 72000 # 20 hours
   startingGear: BoSMidScribeGear
   alwaysUseSpawner: true
   icon: "JobIconBosMScriptor" # Corvax-Change

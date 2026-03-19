@@ -1,6 +1,7 @@
 - type: job
   id: TownDeputy # Renamed to "Guard", don't touch the prototype ID
   setPreference: true
+  jobWhitelistBypassesRoleTimers: true
   weight: 70
   overrideConsoleVisibility: true
   canBeAntag: false
@@ -14,7 +15,7 @@
       - Ghoul
     - !type:CharacterDepartmentTimeRequirement
       department: Townsfolk
-      min: 0 # 4 hours
+      min: 36000 # 10 hours
   startingGear: TownDeputyGear
   icon: "JobIconTownDeputy" # Forge-Change
   supervisors: job-supervisors-townsfolk

@@ -14,12 +14,9 @@
       species:
       - Human
       - Ghoul
-    - !type:CharacterDepartmentTimeRequirement
-      department: NCR
-      min: 0 # #Misfits Tweak - NCR LT accessible to all
-    - !type:CharacterPlaytimeRequirement # Corvax-Add
-      tracker: NCRNCO
-      min: 0 # #Misfits Tweak - NCR LT accessible to all
+    - !type:CharacterPlaytimeRequirement
+      tracker: NCRFirstSergeant
+      min: 18000 # 5 hours
   weight: 110
   startingGear: NCRLTGear
   icon: "JobIconNcrLeader" # Corvax-Change

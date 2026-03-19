@@ -14,9 +14,9 @@
       species:
       - Human
       - Ghoul
-    - !type:CharacterDepartmentTimeRequirement
-      department: NCR
-      min: 0 # 3 hours Corvax-Change
+    - !type:CharacterPlaytimeRequirement
+      tracker: NCRCadet
+      min: 18000 # 5 hours
   startingGear: NCRSoldierGear
   icon: "JobIconNcrSoldier" # Corvax-Change
   supervisors: job-supervisors-ncr

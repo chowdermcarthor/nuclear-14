@@ -1,6 +1,7 @@
 - type: job
   id: TownShopkeeper
   setPreference: true
+  jobWhitelistBypassesRoleTimers: true
   weight: 50
   showBorder: true
   overrideConsoleVisibility: false
@@ -13,12 +14,9 @@
       species:
       - Human
       - Ghoul
-    - !type:CharacterDepartmentTimeRequirement
-      department: Townsfolk
-      min: 0 # 2 hours
-    - !type:CharacterPlaytimeRequirement # Forge-Add
+    - !type:CharacterPlaytimeRequirement
       tracker: TownShopkeeperHelper
-      min: 0 # 4 hours
+      min: 18000 # 5 hours
   startingGear: TownShopkeeperGear
   icon: "JobIconTownShopKeeper" # Corvax-Change
   supervisors: job-supervisors-townsfolk

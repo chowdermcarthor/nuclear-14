@@ -67,12 +67,9 @@
     - !type:CharacterSpeciesRequirement
       species:
       - Human
-    - !type:CharacterDepartmentTimeRequirement
-      department: BrotherhoodOfSteel
-      min: 0 # #Misfits Tweak - gated by Senior Knight role time instead
-    - !type:CharacterPlaytimeRequirement # #Misfits Tweak - 20 hours as Senior Knight to unlock Head Knight
+    - !type:CharacterPlaytimeRequirement
       tracker: BoSMidKnight
-      min: 72000 # 20 hours
+      min: 144000 # 40 hours
   startingGear: BoSHeadKnightGear
   alwaysUseSpawner: true
   icon: "JobIconBosMKnight"

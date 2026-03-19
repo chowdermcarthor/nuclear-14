@@ -1,6 +1,7 @@
 - type: job
   id: TribalElder
   setPreference: true
+  jobWhitelistBypassesRoleTimers: true
   weight: 60
   overrideConsoleVisibility: false
   canBeAntag: false
@@ -14,7 +15,7 @@
       - Ghoul
     - !type:CharacterDepartmentTimeRequirement
       department: Tribe
-      min: 14400 # 4 hours
+      min: 216000 # 60 hours
   startingGear: TribalElderGear
   alwaysUseSpawner: true
   icon: "JobIconTribalLeader" # Corvax-Change

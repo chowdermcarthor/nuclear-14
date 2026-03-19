@@ -14,12 +14,9 @@
       species:
       - Human
       - Ghoul
-    - !type:CharacterDepartmentTimeRequirement
-      department: NCR
-      min: 216000
     - !type:CharacterPlaytimeRequirement
-      tracker: NCRNCO
-      min: 43200
+      tracker: NCROfficer
+      min: 18000 # 5 hours
   weight: 120
   startingGear: NCRCaptainGear
   icon: "JobIconNcrLeader"

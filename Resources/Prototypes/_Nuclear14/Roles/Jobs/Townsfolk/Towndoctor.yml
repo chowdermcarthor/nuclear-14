@@ -1,6 +1,7 @@
 - type: job
   id: TownDoctor
   setPreference: true
+  jobWhitelistBypassesRoleTimers: true
   weight: 60
   showBorder: true
   overrideConsoleVisibility: false
@@ -15,7 +16,7 @@
       - Ghoul
     - !type:CharacterDepartmentTimeRequirement
       department: Townsfolk
-      min: 0
+      min: 18000 # 5 hours
   startingGear: TownDoctorGear
   icon: "JobIconTownMedic" # Corvax-Change
   supervisors: job-supervisors-townsfolk

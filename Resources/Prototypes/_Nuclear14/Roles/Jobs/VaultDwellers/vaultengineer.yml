@@ -10,9 +10,9 @@
   - !type:CharacterSpeciesRequirement
     species:
     - Human
-  - !type:CharacterDepartmentTimeRequirement
-    department: Vault
-    min: 0 # 2 hours
+  - !type:CharacterPlaytimeRequirement
+    tracker: VaultDweller
+    min: 18000 # 5 hours
   setPreference: true
   overrideConsoleVisibility: true
   canBeAntag: false

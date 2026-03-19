@@ -8,15 +8,16 @@
   description: job-description-caesar-legionnaire-recruit
   playTimeTracker: CaesarLegionLegionnaireRecruit
   requirements:
-  - !type:CharacterSpeciesRequirement
-    species:
-    - Human
-  - !type:CharacterSexRequirement
-    sex: Male
-  - !type:CharacterGenderRequirement
-    gender: Male
-  - !type:CharacterOverallTimeRequirement
-    min: 0 # 1 hour
+    - !type:CharacterPlaytimeRequirement
+      tracker: CaesarLegionFrumentarii
+      min: 18000 # 5 hours
+    - !type:CharacterSpeciesRequirement
+      species:
+      - Human
+    - !type:CharacterSexRequirement
+      sex: Male
+    - !type:CharacterGenderRequirement
+      gender: Male
   startingGear: CaesarLegionLegionnaireRecruitGear
   alwaysUseSpawner: true
   icon: "JobIconlegionerRecruit"

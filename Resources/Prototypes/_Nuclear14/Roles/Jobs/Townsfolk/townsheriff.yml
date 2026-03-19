@@ -1,6 +1,7 @@
 - type: job
   id: TownSheriff # Renamed to "Marshal", don't touch the prototype ID
   setPreference: true
+  jobWhitelistBypassesRoleTimers: true
   weight: 80
   showBorder: true
   overrideConsoleVisibility: false
@@ -15,10 +16,7 @@
       - Ghoul
     - !type:CharacterDepartmentTimeRequirement
       department: Townsfolk
-      min: 0 # 8 hours
-    - !type:CharacterPlaytimeRequirement # Corvax-Add
-      tracker: TownDeputy
-      min: 0 # 4 hours
+      min: 72000 # 20 hours
   startingGear: TownSheriffGear
   icon: "JobIconTownSheriff" # Corvax-Change
   supervisors: job-supervisors-townsfolk

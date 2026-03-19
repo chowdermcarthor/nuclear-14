@@ -8,17 +8,21 @@
   description: job-description-caesar-legion-orator
   playTimeTracker: CaesarLegionOrator
   requirements:
-  - !type:CharacterDepartmentTimeRequirement
-      department: CaesarLegion
-      min: 0 # #Misfits Tweak - accessible up to Vet Decanus
-  #- !type:CharacterWhitelistRequirement # #Misfits Tweak - whitelist removed, accessible up to Vet Decanus
-  - !type:CharacterSpeciesRequirement
-    species:
-    - Human
-  - !type:CharacterSexRequirement
-    sex: Male
-  - !type:CharacterGenderRequirement
-    gender: Male
+    - !type:CharacterLogicOrRequirement
+      requirements:
+        - !type:CharacterPlaytimeRequirement
+          tracker: CaesarLegionRecruit
+          min: 18000 # 5 hours
+        - !type:CharacterPlaytimeRequirement
+          tracker: CaesarLegionSlave
+          min: 18000 # 5 hours
+    - !type:CharacterSpeciesRequirement
+      species:
+      - Human
+    - !type:CharacterSexRequirement
+      sex: Male
+    - !type:CharacterGenderRequirement
+      gender: Male
   startingGear: CaesarLegionOratorGear
   alwaysUseSpawner: true
   icon: "JobIconlegionerVenator"

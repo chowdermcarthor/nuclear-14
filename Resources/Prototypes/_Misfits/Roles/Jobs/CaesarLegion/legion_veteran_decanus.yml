@@ -10,19 +10,16 @@
   description: job-description-caesar-legion-veteran-decanus
   playTimeTracker: CaesarLegionVeteranDecanus
   requirements:
-  - !type:CharacterDepartmentTimeRequirement
-      department: CaesarLegion
-      min: 0 # #Misfits Tweak - accessible up to Vet Decanus
-  - !type:CharacterPlaytimeRequirement
-      tracker: CaesarLegionDean
-      min: 0 # #Misfits Tweak - accessible up to Vet Decanus
-  - !type:CharacterSpeciesRequirement
-    species:
-    - Human
-  - !type:CharacterSexRequirement
-    sex: Male
-  - !type:CharacterGenderRequirement
-    gender: Male
+    - !type:CharacterPlaytimeRequirement
+      tracker: CaesarLegionPrimeDecanus
+      min: 18000 # 5 hours
+    - !type:CharacterSpeciesRequirement
+      species:
+      - Human
+    - !type:CharacterSexRequirement
+      sex: Male
+    - !type:CharacterGenderRequirement
+      gender: Male
   startingGear: CaesarLegionVeteranDecanusGear
   alwaysUseSpawner: true
   icon: "JobIconlegionerDean"

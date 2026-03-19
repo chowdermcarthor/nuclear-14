@@ -13,9 +13,6 @@
       species:
       - Human
       - Ghoul
-    - !type:CharacterDepartmentTimeRequirement # Forge-Add
-      department: Townsfolk
-      min: 0 # 2 hours
   startingGear: WastelandChaplainGear
   icon: "JobIconWastelandChaplain" # Forge-Change
   supervisors: job-supervisors-townsfolk

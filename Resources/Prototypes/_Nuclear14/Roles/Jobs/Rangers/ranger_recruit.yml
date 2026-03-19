@@ -1,6 +1,7 @@
 - type: job
   id: RangerRecruit
   setPreference: true
+  jobWhitelistBypassesRoleTimers: true
   name: job-name-ranger-patrol
   description: job-description-ranger-patrol
   playTimeTracker: RangerRecruit
@@ -18,7 +19,9 @@
         factions:
           - Rangers
   requirements:
-    - !type:CharacterWhitelistRequirement
+    - !type:CharacterDepartmentTimeRequirement
+      department: NCR
+      min: 72000 # 20 hours
     - !type:CharacterSpeciesRequirement # #Misfits Change - robots and super mutants cannot be Rangers
       inverted: true
       species:
