@@ -20,6 +20,7 @@
     - NCRFirstSergeant
     - NCRLT
     - NCRCaptain
+    - NCRMajor # Misfits Add: NCRMajor was missing from NCR armor loadout
     - NCRMPinvestigator
     - NCRRanger
     - RangerVeteran #Misfits Change - consolidated NCRRangerVeteran into RangerVeteran
@@ -51,6 +52,7 @@
     - NCRFirstSergeant
     - NCRLT
     - NCRCaptain
+    - NCRMajor # Misfits Add: NCRMajor was missing from NCR armor loadout
     - NCRMPinvestigator
     - NCRRanger
     - RangerVeteran #Misfits Change - consolidated NCRRangerVeteran into RangerVeteran
@@ -82,6 +84,7 @@
     - NCRFirstSergeant
     - NCRLT
     - NCRCaptain
+    - NCRMajor # Misfits Add: NCRMajor was missing from NCR armor loadout
     - NCRMPinvestigator
     - NCRRanger
     - RangerVeteran #Misfits Change - consolidated NCRRangerVeteran into RangerVeteran
@@ -104,9 +107,12 @@
     - NCRFirstSergeant
     - NCRLT
     - NCRCaptain
+    - NCRMajor # Misfits Add: NCRMajor authority warrants access to combat veteran armor
   - !type:CharacterPlaytimeRequirement
     tracker: NCRNCO
     min: 72000 # 20 hours veterancy unlock
+    # Misfits Note: Only NCRSGT accumulates NCRNCO time; StaffSgt/FirstSgt/NCRLT/Captain/Major use their own trackers.
+    # TODO: Split into per-tracker entries so each senior role can unlock via their own playtime.
   items:
   - N14ClothingOuterNCRCombatVeteranArmorDesert
 

@@ -269,6 +269,8 @@
   items:
     - ClothingNeckPinNCRDoctor
 
+# Misfits Change /Fix/: Split into two entries — NCRMedic and NCRDoctor use different trackers;
+# the original single entry used NCRDoctor tracker, blocking NCRMedic players who never accumulate NCRDoctor time.
 - type: loadout
   id: LoadoutNCRPinChiefPhysician
   category: Roles
@@ -277,10 +279,24 @@
   requirements:
     - !type:CharacterJobRequirement
       jobs:
-        - NCRMedic # Forge-Change
-        - NCRDoctor # Misfits Change /Add/: NCRDoctor is a separate job, should also qualify
+        - NCRDoctor # NCRDoctor earns Chief Physician pin through NCRDoctor tracker
     - !type:CharacterPlaytimeRequirement
-      tracker: NCRDoctor # Forge-Change
+      tracker: NCRDoctor
+      min: 72000 # 20 hours veterancy unlock
+  items:
+    - ClothingNeckPinNCRChiefPhysician
+
+- type: loadout
+  id: LoadoutNCRPinChiefPhysicianMedic
+  category: Roles
+  cost: 1
+  exclusive: true
+  requirements:
+    - !type:CharacterJobRequirement
+      jobs:
+        - NCRMedic # NCRMedic earns Chief Physician pin through their own NCRMedic tracker
+    - !type:CharacterPlaytimeRequirement
+      tracker: NCRMedic
       min: 72000 # 20 hours veterancy unlock
   items:
     - ClothingNeckPinNCRChiefPhysician
@@ -335,6 +351,7 @@
         - NCRFirstSergeant
         - NCRLT
         - NCRCaptain
+        - NCRMajor # Misfits Add: NCRMajor was missing from shared NCR cosmetics
         - NCRMPinvestigator
         - NCRRanger
         - RangerVeteran
@@ -361,6 +378,7 @@
         - NCRFirstSergeant
         - NCRLT
         - NCRCaptain
+        - NCRMajor # Misfits Add: NCRMajor was missing from shared NCR cosmetics
         - NCRMPinvestigator
         - NCRRanger
         - RangerVeteran
@@ -402,6 +420,7 @@
         - NCRFirstSergeant
         - NCRLT
         - NCRCaptain
+        - NCRMajor # Misfits Add: NCRMajor was missing from shared NCR cosmetics
         - NCRMPinvestigator
         - NCRRanger
         - RangerVeteran
@@ -428,6 +447,7 @@
         - NCRFirstSergeant
         - NCRLT
         - NCRCaptain
+        - NCRMajor # Misfits Add: NCRMajor was missing from shared NCR cosmetics
         - NCRMPinvestigator
         - NCRRanger
         - RangerVeteran
@@ -454,6 +474,7 @@
         - NCRFirstSergeant
         - NCRLT
         - NCRCaptain
+        - NCRMajor # Misfits Add: NCRMajor was missing from shared NCR cosmetics
         - NCRMPinvestigator
         - NCRRanger
         - RangerVeteran
@@ -506,6 +527,7 @@
         - NCRFirstSergeant
         - NCRLT
         - NCRCaptain
+        - NCRMajor # Misfits Add: NCRMajor was missing from shared NCR cosmetics
         - NCRMPinvestigator
         - NCRRanger
         - RangerVeteran
@@ -532,6 +554,7 @@
         - NCRFirstSergeant
         - NCRLT
         - NCRCaptain
+        - NCRMajor # Misfits Add: NCRMajor was missing from shared NCR cosmetics
         - NCRMPinvestigator
         - NCRRanger
         - RangerVeteran
@@ -558,6 +581,7 @@
         - NCRFirstSergeant
         - NCRLT
         - NCRCaptain
+        - NCRMajor # Misfits Add: NCRMajor was missing from shared NCR cosmetics
         - NCRMPinvestigator
         - NCRRanger
         - RangerVeteran
@@ -584,6 +608,7 @@
         - NCRFirstSergeant
         - NCRLT
         - NCRCaptain
+        - NCRMajor # Misfits Add: NCRMajor was missing from shared NCR cosmetics
         - NCRMPinvestigator
         - NCRRanger
         - RangerVeteran
@@ -639,3 +664,15 @@
         - NCRCaptain
   items:
     - ClothingNeckPinNCRCaptain
+
+- type: loadout
+  id: LoadoutNCRPinMajorMisfits
+  category: Roles
+  cost: 1
+  exclusive: true
+  requirements:
+    - !type:CharacterJobRequirement
+      jobs:
+        - NCRMajor # Base rank pin for the NCRMajor job — selectable without a time gate since it is their starting rank
+  items:
+    - ClothingNeckPinNCRMajor
