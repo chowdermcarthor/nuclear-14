@@ -1979,3 +1979,16 @@ Entries:
   id: 5667
   time: '2026-03-23T19:54:58.0000000+00:00'
   url: https://github.com/Misfit-Sanctuary/nuclear-14/pull/162
+- author: Cythisiax
+  changes:
+    - type: Tweak
+      message: >-
+        Dan's BP recipes/ removed should-be-non-obtainables (NCR > Sierra, BoS >
+        T45, Legion remove Cent BP)
+    - type: Tweak
+      message: map barrier fix by chance (no more china)
+    - type: Add
+      message: audit log for ticket system (history)
+  id: 5668
+  time: '2026-03-23T21:20:46.0000000+00:00'
+  url: https://github.com/Misfit-Sanctuary/nuclear-14/pull/167
