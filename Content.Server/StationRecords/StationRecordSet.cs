@@ -33,7 +33,8 @@ public sealed partial class StationRecordSet
     /// <summary>
     /// Dictionary between a record's type and then each record indexed by id.
     /// </summary>
-    [DataField]
+    // #Misfits Fix: Removed [DataField] — System.RuntimeType is not serializable by Robust,
+    // causing savemap to crash. Station records are runtime-only data repopulated each round.
     private Dictionary<Type, Dictionary<uint, object>> _tables = new();
 
     /// <summary>
