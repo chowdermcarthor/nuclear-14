@@ -25,6 +25,8 @@ ticket-system-toast-reopened-body = Ticket #{$id} from {$player} was reopened
 ticket-system-must-claim-first = You must claim this ticket before replying. Press the Claim button above.
 ticket-system-claim-to-reply = Claim this ticket to reply...
 ticket-system-reminder = [TICKETS] {$count} unclaimed ticket(s) waiting. Use the Help panel to claim them.
+ticket-system-reminder-ahelp = [AHELP TICKET] {$count} unclaimed ticket(s) waiting. Use the Help panel to claim them.
+ticket-system-reminder-mhelp = [MHELP TICKET] {$count} unclaimed ticket(s) waiting. Use the Help panel to claim them.
 
 # Quick Reply window (opened from player info panel Ahelp button)
 ticket-system-quick-reply-title = AHelp — {$player}

@@ -7,6 +7,11 @@
   id: N14BasePlayerSynthetic
   abstract: true
   components:
+  - type: RobotWeaponPickupBlacklist # #Misfits Add: player robot species keep hands for utility items but cannot grab loose weapons.
+    blacklist:
+      components:
+      - Gun
+      - MeleeWeapon
   - type: Appearance # #Misfits Change: allow robot sprites to swap to their built-in dead state
   - type: DamageStateVisuals # #Misfits Change: use robot dead sprites instead of animated hover frames when downed/dead
     states:

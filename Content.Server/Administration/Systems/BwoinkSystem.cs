@@ -986,7 +986,8 @@ namespace Content.Server.Administration.Systems
                 var openCount = _tickets.Values.Count(t => t.Status == HelpTicketStatus.Open);
                 if (openCount > 0)
                 {
-                    _chatManager.SendAdminAnnouncement(Loc.GetString("ticket-system-reminder", ("count", openCount)));
+                    // #Misfits Change — use AHELP-specific reminder so admins can distinguish from MHELP
+                    _chatManager.SendAdminAnnouncement(Loc.GetString("ticket-system-reminder-ahelp", ("count", openCount)));
                 }
             }
         }

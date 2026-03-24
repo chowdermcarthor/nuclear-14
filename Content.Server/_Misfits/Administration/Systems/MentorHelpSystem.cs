@@ -625,7 +625,8 @@ public sealed partial class MentorHelpSystem : SharedMentorHelpSystem
             var openCount = _mhelpTickets.Values.Count(t => t.Status == HelpTicketStatus.Open);
             if (openCount > 0)
             {
-                _chatManager.SendAdminAnnouncement(Loc.GetString("ticket-system-reminder", ("count", openCount)));
+                // #Misfits Change — use MHELP-specific reminder so mentors/admins can distinguish from AHELP
+                _chatManager.SendAdminAnnouncement(Loc.GetString("ticket-system-reminder-mhelp", ("count", openCount)));
             }
         }
     }
