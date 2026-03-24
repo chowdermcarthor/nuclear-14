@@ -52,6 +52,12 @@ namespace Content.Client.Administration.UI.Bwoink
             _adminManager.AdminStatusUpdated += UpdateButtons;
             UpdateButtons();
 
+            // #Misfits Fix — When the server updates the player list (join/leave), PlayerListControl.PopulateList
+            // fires automatically with all players. We subscribe here to run our ticket-filtered PopulateList
+            // immediately afterward, restoring the ahelp-only filter.
+            var adminSystem = _entitySystem.GetEntitySystem<AdminSystem>();
+            adminSystem.PlayerListChanged += _ => PopulateList();
+
             ChannelSelector.OnSelectionChanged += sel =>
             {
                 _currentPlayer = sel;
@@ -331,7 +337,8 @@ namespace Content.Client.Administration.UI.Bwoink
 
         public void OnBwoink(NetUserId channel)
         {
-            ChannelSelector.PopulateList();
+            // #Misfits Fix — Call ticket-filtered PopulateList, not the raw unfiltered one.
+            PopulateList();
         }
 
 
@@ -349,7 +356,8 @@ namespace Content.Client.Administration.UI.Bwoink
                 ChannelSelector.StopFiltering();
             }
 
-            ChannelSelector.PopulateList();
+            // #Misfits Fix — Call ticket-filtered PopulateList, not the raw unfiltered one.
+            PopulateList();
             ChannelSelector.PlayerListContainer.Select(data);
         }
 

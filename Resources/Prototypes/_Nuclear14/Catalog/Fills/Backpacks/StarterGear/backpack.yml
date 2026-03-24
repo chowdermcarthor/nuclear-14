@@ -253,10 +253,11 @@
         - id: N14BoxPlasticFilledMilitary
           prob: 0.8
           orGroup: Box
-        - id: N14CurrencyCap
-          amount: 5
-          maxAmount: 60
-          orGroup: Currency
+        # Misfits Change: Removed bottlecap entry — caps should not be granted via starting gear.
+        #- id: N14CurrencyCap
+        #  amount: 5
+        #  maxAmount: 60
+        #  orGroup: Currency
         - id: N14CleanGauze10
           prob: 0.15
           amount: 1

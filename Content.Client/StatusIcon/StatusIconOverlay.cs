@@ -76,6 +76,9 @@ public sealed class StatusIconOverlay : Overlay
                     continue;
 
                 var curTime = _timing.RealTime;
+                // #Misfits Fix: guard against status icon prototypes with a null Icon to prevent NullReferenceException spam
+                if (proto.Icon == null)
+                    continue;
                 var texture = _sprite.GetFrame(proto.Icon, curTime);
 
                 float yOffset;

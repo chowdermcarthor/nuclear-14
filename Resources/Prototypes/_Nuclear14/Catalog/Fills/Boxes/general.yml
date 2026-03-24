@@ -42,11 +42,12 @@
           amount: 1
         - id: N14RadXPill
           amount: 1
-        - id: N14CurrencyCap
-          amount: 0
-          maxAmount: 100
-          prob: 0.5
-          orGroup: Currency
+        # Misfits Change: Removed bottlecap entry — caps should not be granted via starting gear boxes.
+        #- id: N14CurrencyCap
+        #  amount: 0
+        #  maxAmount: 100
+        #  prob: 0.5
+        #  orGroup: Currency
         - id: Flare
           amount: 2
 

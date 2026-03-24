@@ -42,7 +42,10 @@ public sealed class CPRSystem : EntitySystem
 
     // How many Asphyxiation damage points to heal on CPR success.
     // CPR simulates restoring oxygen delivery, so it should address airloss too.
-    private const float CPRAsphyxiationHeal = 6f; // #Misfits Add - match upstream CPRTrainingComponent default
+    // #Misfits Fix - raised from 6 to 25: 6 was negligible against the crit threshold (100 total damage)
+    // and was completely outpaced by the respirator tick, making it appear to heal zero asphyxiation.
+    // 25 matches the brute heal and can meaningfully pull someone out of early-crit asphyxiation.
+    private const float CPRAsphyxiationHeal = 25f;
 
     // Sound to play when CPR completes (compressions).
     private static readonly SoundPathSpecifier CPRSound =
