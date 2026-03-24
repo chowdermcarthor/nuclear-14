@@ -27,6 +27,12 @@
   - type: ReactionMixer
     reactionTypes:
     - Composting
+  - type: SolutionContainerMixer # #Misfits Fix: Triggers reactions when player clicks to mix,
+    mixDuration: 3                # spawning N14CompostRotted from Dung or CompostingOrganic reactions.
+    mixingSound:
+      path: /Audio/Machines/buzz_loop.ogg
+      params:
+        volume: -5
   - type: SolutionContainerManager
     solutions:
       composting:
@@ -34,6 +40,8 @@
   - type: RefillableSolution
     solution: composting
   - type: ExaminableSolution
+    solution: composting
+  - type: DeleteOnSolutionEmpty # #Misfits Add: Clear spent solution after reaction completes.
     solution: composting
   - type: Sprite
     sprite: _Nuclear14/Objects/Specific/Hydroponics/equipment.rsi

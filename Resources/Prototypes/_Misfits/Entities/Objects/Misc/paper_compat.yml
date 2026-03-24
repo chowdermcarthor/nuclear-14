@@ -1,0 +1,23 @@
+# Compatibility paper prototypes kept so Misfits maps can deserialize after the
+# old RMC paper content was removed from this fork.
+
+- type: entity
+  id: CMPaper
+  parent: Paper
+  name: paper
+  description: A piece of white paper.
+
+- type: entity
+  id: CMPamphletSurgery
+  parent: PaperOffice
+  name: surgery instructional pamphlet
+  description: A pamphlet used to quickly impart vital knowledge. This one has a medical insignia.
+  components:
+  - type: Paper
+    content: |
+      Surgical training notes.
+
+      Field reminder:
+      - Stabilize the patient first.
+      - Keep your tools sterile.
+      - Work methodically and do not rush the incision.

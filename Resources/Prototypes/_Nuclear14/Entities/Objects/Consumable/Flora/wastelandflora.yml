@@ -630,6 +630,8 @@
     solution: food
   - type: SolutionTransfer
     canChangeTransferAmount: false
+  - type: DeleteOnSolutionEmpty # #Misfits Add: Consume item when fully drained into compost box.
+    solution: food
   - type: Sprite
     netsync: false
     sprite: _Nuclear14/Objects/Consumable/Flora/wastelandflora.rsi

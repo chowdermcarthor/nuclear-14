@@ -1,0 +1,204 @@
+# Wendover still references a number of removed CM/RMC map props.
+# These compatibility shims preserve map deserialization without reviving the full old content stack.
+
+- type: entity
+  id: MisfitsMapCompatDecoration
+  abstract: true
+  parent: BaseStructure
+  components:
+  - type: Transform
+    anchored: true
+  - type: Physics
+    canCollide: false
+    bodyType: Static
+
+# Direct compatibility aliases to surviving live content.
+
+- type: entity
+  id: CMDispenserSoda
+  parent: VendingMachineSoda
+  name: soda dispenser
+
+- type: entity
+  id: CMFilingCabinetChestAngled
+  parent: filingCabinetDrawer
+
+- type: entity
+  id: CMFilingCabinetTall
+  parent: filingCabinetTall
+
+- type: entity
+  id: CMGauze10
+  parent: Gauze
+  suffix: 10
+  components:
+  - type: Stack
+    count: 10
+
+- type: entity
+  id: CMRack
+  parent: Rack
+
+- type: entity
+  id: CMShellShotgunBuckshot
+  parent: ShellShotgun
+
+- type: entity
+  id: CMTableReinforcedBlack
+  parent: TableReinforced
+
+- type: entity
+  id: RMCAIConsoleInterface
+  parent: ComputerBroken
+  name: interface console
+  description: A defunct console.
+
+- type: entity
+  id: RMCBedBunkGreen
+  parent: N14BedBunk
+  name: green bunk bed
+
+- type: entity
+  id: RMCBriefcasePaperPen
+  parent: BriefcaseBrown
+  name: brown briefcase
+  components:
+  - type: StorageFill
+    contents:
+    - id: Paper
+    - id: Pen
+
+- type: entity
+  id: RMCCatwalkHybrisaElevator
+  parent: Catwalk
+
+- type: entity
+  id: RMCCatwalkHybrisaLattice
+  parent: Catwalk
+
+- type: entity
+  id: RMCCoffeeCupFilled
+  parent: DrinkCoffee
+  name: coffee
+
+- type: entity
+  id: RMCCrateFreezer
+  parent: CrateFreezer
+
+- type: entity
+  id: RMCCurtainShowerOpen
+  parent: CurtainsBlackOpen
+
+- type: entity
+  id: RMCDoubleDoorEngineerGlass
+  parent: AirlockEngineeringGlass
+
+- type: entity
+  id: RMCDoubleDoorEngineerGlassEngineering
+  parent: AirlockEngineeringGlassLocked
+
+- type: entity
+  id: RMCDropshipWeaponsConsoleProp
+  parent: ComputerBroken
+  name: weapons console
+  description: A defunct control console.
+
+- type: entity
+  id: RMCFoodSnackEATBar
+  parent: FoodSnackEnergyBar
+  name: EAT bar
+
+- type: entity
+  id: RMCIntelPaperScrap
+  parent: PaperScrap
+  name: intel scraps
+
+- type: entity
+  id: RMCLamp
+  parent: Lamp
+
+- type: entity
+  id: RMCLightStickRedSmall
+  parent: GlowstickRed
+  name: small red glowstick
+
+- type: entity
+  id: RMCPropCommunicationsConsoleAlt
+  parent: ComputerBroken
+  name: communications console
+  description: A defunct console.
+
+# Inert prop shims for removed decorative map pieces.
+
+- type: entity
+  id: CMIV
+  parent: MisfitsMapCompatDecoration
+  name: IV drip
+  description: A basic intravenous drip stand.
+  components:
+  - type: Sprite
+    sprite: Objects/Misc/Lights/lampint.rsi
+    state: lamp-int
+
+- type: entity
+  id: CMOverheadPipe
+  parent: MisfitsMapCompatDecoration
+  name: overhead pipe
+  description: A fixed utility pipe.
+  components:
+  - type: Sprite
+    sprite: Structures/Piping/Atmospherics/pipe.rsi
+    drawdepth: ThinPipe
+    state: pipeStraight
+
+- type: entity
+  id: RMCDeskFanTan
+  parent: MisfitsMapCompatDecoration
+  name: desk fan
+  description: A small desk fan.
+  components:
+  - type: Sprite
+    sprite: Structures/Piping/Atmospherics/tinyfan.rsi
+    state: icon
+
+# Desert scrub stand-ins using surviving wasteland flora art.
+
+- type: entity
+  id: RMCGrassDesert7
+  parent: MisfitsMapCompatDecoration
+  name: desert grass
+  description: Dry scrub clinging to life.
+  components:
+  - type: Sprite
+    sprite: _Nuclear14/Structures/Decoration/flora.rsi
+    state: tall_grass_7
+
+- type: entity
+  id: RMCGrassDesertHeavy2
+  parent: MisfitsMapCompatDecoration
+  name: heavy desert grass
+  description: Dry scrub clinging to life.
+  components:
+  - type: Sprite
+    sprite: _Nuclear14/Structures/Decoration/flora.rsi
+    state: tall_grass_2
+
+- type: entity
+  id: RMCGrassDesertHeavy4
+  parent: MisfitsMapCompatDecoration
+  name: heavy desert grass
+  description: Dry scrub clinging to life.
+  components:
+  - type: Sprite
+    sprite: _Nuclear14/Structures/Decoration/flora.rsi
+    state: tall_grass_4
+
+- type: entity
+  id: RMCGrassDesertHeavy5
+  parent: MisfitsMapCompatDecoration
+  name: heavy desert grass
+  description: Dry scrub clinging to life.
+  components:
+  - type: Sprite
+    sprite: _Nuclear14/Structures/Decoration/flora.rsi
+    state: tall_grass_5

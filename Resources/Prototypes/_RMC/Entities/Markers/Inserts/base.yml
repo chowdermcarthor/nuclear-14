@@ -1,9 +1,0 @@
-﻿- type: entity
-  parent: MarkerBase
-  id: RMCMapInsertBase
-  abstract: true
-  name: Map Insert Base
-  components:
-  - type: Sprite
-    sprite: _RMC/Markers/landmarks.rsi
-    state: nightmare_insert
