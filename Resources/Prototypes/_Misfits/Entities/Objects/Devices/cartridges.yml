@@ -28,4 +28,5 @@
   - type: WastelandMap
     mapTexturePath: _Misfits/Maps/WendoverCF.png
     mapTitle: Tactical Map - Wendover
-    worldBounds: "-463,-344,462,298"
+    # #Misfits Fix - Match the corrected Wendover AABB so Pip-Boy map markers stay aligned with the shared image.
+    worldBounds: "-517,-308,484,311"

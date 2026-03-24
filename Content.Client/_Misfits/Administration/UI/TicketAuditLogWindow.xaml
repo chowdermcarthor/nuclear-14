@@ -1,0 +1,52 @@
+<DefaultWindow
+    xmlns="https://spacestation14.io"
+    Title="{Loc 'ticket-audit-log-window-title'}"
+    MinWidth="700"
+    MinHeight="450">
+    <BoxContainer Orientation="Vertical" VerticalExpand="True" Margin="4">
+
+        <!-- Filter row -->
+        <BoxContainer Orientation="Horizontal" HorizontalExpand="True" Margin="0 0 0 4">
+            <Label Text="{Loc 'ticket-audit-log-filter-label'}" Margin="0 0 4 0" VerticalAlignment="Center" />
+            <LineEdit
+                Name="PlayerFilterEdit"
+                Access="Public"
+                HorizontalExpand="True"
+                PlaceHolder="{Loc 'ticket-audit-log-filter-placeholder'}" />
+            <Button
+                Name="FilterButton"
+                Access="Public"
+                Text="{Loc 'ticket-audit-log-filter-button'}"
+                StyleClasses="OpenLeft"
+                Margin="4 0 0 0" />
+            <Button
+                Name="ClearFilterButton"
+                Access="Public"
+                Text="{Loc 'ticket-audit-log-clear-button'}"
+                StyleClasses="OpenLeft" />
+        </BoxContainer>
+
+        <!-- Header row -->
+        <BoxContainer Orientation="Horizontal" HorizontalExpand="True" Margin="0 0 0 2">
+            <Label Text="{Loc 'ticket-audit-log-header-time'}"   MinWidth="140" />
+            <Label Text="{Loc 'ticket-audit-log-header-id'}"     MinWidth="50" />
+            <Label Text="{Loc 'ticket-audit-log-header-event'}"  MinWidth="110" />
+            <Label Text="{Loc 'ticket-audit-log-header-player'}" MinWidth="170" />
+            <Label Text="{Loc 'ticket-audit-log-header-admin'}"  HorizontalExpand="True" />
+        </BoxContainer>
+
+        <!-- Scrollable event list -->
+        <ScrollContainer VerticalExpand="True" HorizontalExpand="True">
+            <BoxContainer Name="EventList" Access="Public" Orientation="Vertical" HorizontalExpand="True" />
+        </ScrollContainer>
+
+        <!-- Pagination row -->
+        <BoxContainer Orientation="Horizontal" HorizontalExpand="True" Margin="0 4 0 0">
+            <Button Name="PrevPageButton" Access="Public" Text="{Loc 'ticket-audit-log-prev'}" Disabled="True" />
+            <Label Name="PageLabel" Access="Public" HorizontalExpand="True" HorizontalAlignment="Center"
+                   Text="{Loc 'ticket-audit-log-page-placeholder'}" />
+            <Button Name="NextPageButton" Access="Public" Text="{Loc 'ticket-audit-log-next'}" Disabled="True" />
+        </BoxContainer>
+
+    </BoxContainer>
+</DefaultWindow>

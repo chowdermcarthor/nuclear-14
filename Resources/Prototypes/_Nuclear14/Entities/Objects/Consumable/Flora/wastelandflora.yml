@@ -624,6 +624,14 @@
           Quantity: 1
         - ReagentId: N14RadParticleFood
           Quantity: 1
+  # #Misfits Add: Allow clicking produce onto the compost box to pour its food solution in,
+  # which triggers the CompostingOrganic reaction (Nutriment → N14CompostRotted).
+  - type: DrainableSolution
+    solution: food
+  - type: SolutionTransfer
+    canChangeTransferAmount: false
+  - type: DeleteOnSolutionEmpty # #Misfits Add: Consume item when fully drained into compost box.
+    solution: food
   - type: Sprite
     netsync: false
     sprite: _Nuclear14/Objects/Consumable/Flora/wastelandflora.rsi

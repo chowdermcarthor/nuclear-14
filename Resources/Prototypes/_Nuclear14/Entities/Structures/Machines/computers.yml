@@ -24,7 +24,8 @@
   - type: WastelandMap
     mapTexturePath: _Misfits/Maps/WendoverCF.png
     mapTitle: Legion Tactical Map - Wendover
-    worldBounds: "-463,-344,462,298"
+    # #Misfits Fix - Use the corrected Wendover AABB so Legion blips align with the rendered map image.
+    worldBounds: "-517,-308,484,311"
     tacticalFeed: Legion
   - type: ActivatableUI
     key: enum.WastelandMapUiKey.Key

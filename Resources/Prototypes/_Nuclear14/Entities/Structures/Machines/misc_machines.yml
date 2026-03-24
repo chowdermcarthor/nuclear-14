@@ -40,7 +40,8 @@
   - type: WastelandMap
     mapTexturePath: _Misfits/Maps/WendoverCF.png
     mapTitle: Tactical Map - Wendover
-    worldBounds: "-463,-344,462,298"
+    # #Misfits Fix - Use the corrected Wendover AABB so faction blips align with the rendered map image.
+    worldBounds: "-517,-308,484,311"
     tacticalFeed: Brotherhood
     trackBrotherhoodHolotags: true
   - type: ActivatableUI
@@ -84,7 +85,8 @@
   - type: WastelandMap
     mapTexturePath: _Misfits/Maps/WendoverCF.png
     mapTitle: NCR Tactical Map - Wendover
-    worldBounds: "-463,-344,462,298"
+    # #Misfits Fix - Use the corrected Wendover AABB so NCR blips align with the rendered map image.
+    worldBounds: "-517,-308,484,311"
     tacticalFeed: NCR
   - type: AccessReader
     access: [["NCR"]] # #Misfits Tweak - was [["NCRCaptain"]], opened to all NCR

@@ -1701,6 +1701,61 @@ namespace Content.Server.Database.Migrations.Postgres
                     b.ToTable("atm_placement", (string)null);
                 });
 
+            // #Misfits Add — Help ticket lifecycle audit log (cross-round, append-only).
+            modelBuilder.Entity("Content.Server.Database.HelpTicketEvent", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("integer")
+                        .HasColumnName("help_ticket_event_id");
+
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
+
+                    b.Property<Guid?>("AdminId")
+                        .HasColumnType("uuid")
+                        .HasColumnName("admin_id");
+
+                    b.Property<string>("AdminName")
+                        .HasColumnType("text")
+                        .HasColumnName("admin_name");
+
+                    b.Property<int>("EventType")
+                        .HasColumnType("integer")
+                        .HasColumnName("event_type");
+
+                    b.Property<DateTime>("OccurredAt")
+                        .HasColumnType("timestamp with time zone")
+                        .HasColumnName("occurred_at");
+
+                    b.Property<Guid>("PlayerId")
+                        .HasColumnType("uuid")
+                        .HasColumnName("player_id");
+
+                    b.Property<string>("PlayerName")
+                        .IsRequired()
+                        .HasColumnType("text")
+                        .HasColumnName("player_name");
+
+                    b.Property<int>("TicketId")
+                        .HasColumnType("integer")
+                        .HasColumnName("ticket_id");
+
+                    b.Property<int>("TicketType")
+                        .HasColumnType("integer")
+                        .HasColumnName("ticket_type");
+
+                    b.HasKey("Id")
+                        .HasName("PK_help_ticket_event");
+
+                    b.HasIndex("OccurredAt")
+                        .HasDatabaseName("IX_help_ticket_event_occurred_at");
+
+                    b.HasIndex("PlayerId")
+                        .HasDatabaseName("IX_help_ticket_event_player_id");
+
+                    b.ToTable("help_ticket_event", (string)null);
+                });
+
             modelBuilder.Entity("Content.Server.Database.Admin", b =>
                 {
                     b.HasOne("Content.Server.Database.AdminRank", "AdminRank")

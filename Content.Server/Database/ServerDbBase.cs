@@ -2021,6 +2021,40 @@ INSERT INTO player_round (players_id, rounds_id) VALUES ({players[player]}, {id}
 
         #endregion
 
+        // #Misfits Change - Persistent admin help ticket audit log (append-only, cross-round)
+
+        #region HelpTicketAuditLog
+
+        public async Task AddHelpTicketEventAsync(HelpTicketEvent ticketEvent)
+        {
+            await using var db = await GetDb();
+            db.DbContext.HelpTicketEvent.Add(ticketEvent);
+            await db.DbContext.SaveChangesAsync();
+        }
+
+        public async Task<(List<HelpTicketEvent> Events, int TotalCount)> GetHelpTicketEventsAsync(
+            Guid? playerId, int limit, int offset, CancellationToken cancel = default)
+        {
+            await using var db = await GetDb(cancel);
+
+            var query = db.DbContext.HelpTicketEvent.AsQueryable();
+
+            if (playerId.HasValue)
+                query = query.Where(e => e.PlayerId == playerId.Value);
+
+            var total = await query.CountAsync(cancel);
+
+            var events = await query
+                .OrderByDescending(e => e.OccurredAt)
+                .Skip(offset)
+                .Take(limit)
+                .ToListAsync(cancel);
+
+            return (events, total);
+        }
+
+        #endregion
+
         protected void NotificationReceived(DatabaseNotification notification) =>
             OnNotificationReceived?.Invoke(notification);
 

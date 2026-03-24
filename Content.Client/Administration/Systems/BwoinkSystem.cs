@@ -25,6 +25,8 @@ namespace Content.Client.Administration.Systems
         // #Misfits Add — ticket events for the UI
         public event Action<HelpTicketInfo>? OnTicketUpdated;
         public event Action<List<HelpTicketInfo>>? OnTicketListReceived;
+        // #Misfits Add — audit log response from server DB query
+        public event Action<HelpTicketAuditResponseMessage>? OnAuditLogReceived;
 
         // #Misfits Add — track known tickets to only toast on new or significant state changes
         private readonly Dictionary<int, HelpTicketStatus> _knownTickets = new();
@@ -36,6 +38,8 @@ namespace Content.Client.Administration.Systems
             // #Misfits Add — subscribe to ticket messages from server
             SubscribeNetworkEvent<HelpTicketUpdatedMessage>(OnTicketUpdatedMsg);
             SubscribeNetworkEvent<HelpTicketListMessage>(OnTicketListMsg);
+            // #Misfits Add — subscribe to audit log responses from server
+            SubscribeNetworkEvent<HelpTicketAuditResponseMessage>(OnAuditLogMsg);
         }
 
         protected override void OnBwoinkTextMessage(BwoinkTextMessage message, EntitySessionEventArgs eventArgs)
@@ -65,6 +69,12 @@ namespace Content.Client.Administration.Systems
             // #Misfits Fix — always notify listeners, including empty lists,
             // so UI caches can clear stale entries between rounds.
             OnTicketListReceived?.Invoke(ahelpTickets);
+        }
+
+        // #Misfits Add — relay server DB audit log response to the UI
+        private void OnAuditLogMsg(HelpTicketAuditResponseMessage msg)
+        {
+            OnAuditLogReceived?.Invoke(msg);
         }
 
         // #Misfits Add — show a toast popup for notable ticket events
@@ -134,6 +144,17 @@ namespace Content.Client.Administration.Systems
         public void RequestTicketList()
         {
             RaiseNetworkEvent(new HelpTicketRequestListMessage(HelpTicketType.AdminHelp));
+        }
+
+        // #Misfits Add — request a page of the persistent audit log from the server DB
+        public void RequestAuditLog(Guid? filterPlayerId = null, int limit = 100, int offset = 0)
+        {
+            RaiseNetworkEvent(new HelpTicketAuditRequestMessage
+            {
+                FilterPlayerId = filterPlayerId,
+                Limit = limit,
+                Offset = offset,
+            });
         }
 
         public void Send(NetUserId channelId, string text, bool playSound)

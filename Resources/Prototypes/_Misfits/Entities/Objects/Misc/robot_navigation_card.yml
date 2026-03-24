@@ -18,7 +18,8 @@
   - type: WastelandMap
     mapTexturePath: _Misfits/Maps/WendoverCF.png
     mapTitle: General Atomics Navigation
-    worldBounds: "-463,-344,462,298"
+    # #Misfits Fix - Match the corrected Wendover AABB so robot map markers line up with the rendered image.
+    worldBounds: "-517,-308,484,311"
     # No tacticalFeed - standalone personal map, no faction blip sharing
   - type: WastelandMapAction
     requiredSlot: IDCARD
@@ -38,4 +39,5 @@
   - type: WastelandMap
     mapTexturePath: _Misfits/Maps/WendoverCF.png
     mapTitle: RobCo Industries Navigation
-    worldBounds: "-463,-344,462,298"
+    # #Misfits Fix - Match the corrected Wendover AABB so robot map markers line up with the rendered image.
+    worldBounds: "-517,-308,484,311"

@@ -3,6 +3,7 @@ using System.Text;
 using Content.Client.Administration.Managers;
 using Content.Client.Administration.Systems; // #Misfits Add — for BwoinkSystem.GhostFollow
 using Content.Client.Administration.UI.CustomControls;
+using Content.Client._Misfits.Administration.UI; // #Misfits Add — TicketAuditLogWindow
 using Content.Client.UserInterface.Systems.Bwoink;
 using Content.Shared._Misfits.Administration; // #Misfits Add — ticket system types
 using Content.Shared.Administration;
@@ -219,6 +220,20 @@ namespace Content.Client.Administration.UI.Bwoink
                 uiController.PopOut();
             };
 
+            // #Misfits Add — open persistent cross-round ticket audit log window
+            var auditWindow = (TicketAuditLogWindow?) null;
+            AuditLog.OnPressed += _ =>
+            {
+                if (auditWindow is { Disposed: false })
+                {
+                    auditWindow.MoveToFront();
+                    return;
+                }
+
+                auditWindow = new TicketAuditLogWindow();
+                auditWindow.OpenCentered();
+            };
+
             // #Misfits Add — ticket claim/resolve button handlers
             var bwoinkSys = _entitySystem.GetEntitySystem<BwoinkSystem>();
 
@@ -270,7 +285,10 @@ namespace Content.Client.Administration.UI.Bwoink
         {
             _tickets[ticket.PlayerId] = ticket;
             UpdateTicketStatusBar();
-            ChannelSelector.PlayerListContainer.DirtyList();
+            // #Misfits Fix — DirtyList() only redraws already-visible rows; it won't add a brand-new
+            // ticketed player to the filtered list. PopulateList() re-runs the ticket filter so the
+            // player shows up immediately in the panel (e.g. admin sends first via Player Panel).
+            PopulateList();
         }
 
         private void OnTicketListReceived(List<HelpTicketInfo> tickets)
@@ -283,7 +301,9 @@ namespace Content.Client.Administration.UI.Bwoink
                 _tickets[ticket.PlayerId] = ticket;
             }
             UpdateTicketStatusBar();
-            ChannelSelector.PlayerListContainer.DirtyList();
+            // #Misfits Fix — same as OnTicketUpdated: use PopulateList() so the filtered list
+            // reflects the full updated ticket set rather than only resorting visible rows.
+            PopulateList();
         }
 
         /// <summary>

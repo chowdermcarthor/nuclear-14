@@ -212,9 +212,10 @@
     - !type:CharacterJobRequirement
       jobs:
         - NCRSGT
-    - !type:CharacterPlaytimeRequirement
-      tracker: NCRNCO
-      min: 36000 # 600 minutes
+    # Misfits Tweak - Removed the NCRNCO hour gate so any NCRSGT can take the NCR radio backpack.
+    # - !type:CharacterPlaytimeRequirement
+    #   tracker: NCRNCO
+    #   min: 36000 # 10 hours
     - !type:CharacterItemGroupRequirement
       group: N14LodaoutBags
   items:

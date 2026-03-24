@@ -72,6 +72,7 @@ nc-store-contract-claim-tooltip-repeatable = Turn in current progress on the con
 nc-store-contract-claim-tooltip-not-done = Contract conditions are not met yet. Not enough items.
 nc-store-contract-completed = Contract completed successfully!
 nc-store-contract-goal-line = { $item }: { $count } pcs.
+nc-store-contract-goal-progress-line = { $item }: { $progress }/{ $count } pcs.
 nc-store-contract-progress-line = Completion progress: { $progress } of { $required }
 nc-store-currency-format = { $amount } { $currency }
 nc-store-contract-title-pretty = Contract: { $difficulty } - { $goal }

@@ -69,3 +69,13 @@
   components:
   - type: PresetIdCard
     job: NCRCaptain
+
+- type: entity
+  parent: N14IDNCRDogtagCaptain
+  id: N14IDNCRDogtagMajor
+  name: major's dogtags
+  description: An ID dogtag worn by NCR majors.
+  suffix: Major
+  components:
+  - type: PresetIdCard
+    job: NCRMajor

@@ -157,3 +157,74 @@ public sealed class HelpTicketRequestListMessage : EntityEventArgs
         Type = type;
     }
 }
+
+// ──────────────────── Audit Log ──────────────────────
+
+/// <summary>
+/// The type of lifecycle change that was recorded for a ticket in the persistent audit log.
+/// </summary>
+[Serializable, NetSerializable]
+public enum HelpTicketEventType
+{
+    /// <summary>A player sent their first message and created the ticket.</summary>
+    Created,
+    /// <summary>An admin/mentor claimed the ticket.</summary>
+    Claimed,
+    /// <summary>An admin/mentor released the claim, returning the ticket to Open.</summary>
+    Unclaimed,
+    /// <summary>An admin/mentor marked the ticket as resolved.</summary>
+    Resolved,
+    /// <summary>An admin/mentor reopened a previously resolved ticket.</summary>
+    Reopened,
+    /// <summary>The ticket was auto-resolved because the player disconnected.</summary>
+    AutoResolved,
+}
+
+/// <summary>
+/// One persistent audit log entry returned from the database.
+/// </summary>
+[Serializable, NetSerializable]
+public sealed class HelpTicketAuditEntry
+{
+    /// <summary>Database event row ID.</summary>
+    public int EventId { get; init; }
+    /// <summary>The player who created/owns the ticket.</summary>
+    public Guid PlayerId { get; init; }
+    public string PlayerName { get; init; } = string.Empty;
+    /// <summary>In-round sequential ticket number (1, 2, 3…).</summary>
+    public int TicketId { get; init; }
+    public HelpTicketType TicketType { get; init; }
+    public HelpTicketEventType EventType { get; init; }
+    /// <summary>Null when created by the player or auto-resolved by the system.</summary>
+    public string? AdminName { get; init; }
+    public Guid? AdminId { get; init; }
+    public DateTime OccurredAt { get; init; }
+}
+
+/// <summary>
+/// Admin → Server: request audit log entries from the database.
+/// Optionally filtered to a specific player.
+/// </summary>
+[Serializable, NetSerializable]
+public sealed class HelpTicketAuditRequestMessage : EntityEventArgs
+{
+    /// <summary>When set, only return events for this player. Null returns all players.</summary>
+    public Guid? FilterPlayerId { get; init; }
+    /// <summary>Maximum number of entries to return (default 100).</summary>
+    public int Limit { get; init; } = 100;
+    /// <summary>Number of entries to skip for pagination (default 0).</summary>
+    public int Offset { get; init; } = 0;
+}
+
+/// <summary>
+/// Server → Admin: audit log entries retrieved from the database.
+/// </summary>
+[Serializable, NetSerializable]
+public sealed class HelpTicketAuditResponseMessage : EntityEventArgs
+{
+    public List<HelpTicketAuditEntry> Entries { get; init; } = new();
+    /// <summary>Total matching row count (for pagination).</summary>
+    public int TotalCount { get; init; }
+    /// <summary>Offset that was used to produce this page.</summary>
+    public int Offset { get; init; }
+}

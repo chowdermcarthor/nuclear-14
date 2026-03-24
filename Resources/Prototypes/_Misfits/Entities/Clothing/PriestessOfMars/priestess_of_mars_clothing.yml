@@ -3,11 +3,18 @@
 # but carry the lore-accurate Priestess of Mars display names and descriptions.
 
 # Robes — worn in the uniform/jumpsuit slot
+# #Misfits Change — override sprites to use the new bespoke Priestess of Mars uniform RSI
 - type: entity
   parent: N14ClothingUniformJumpsuitBOSRed
   id: N14PriestessOfMarsRobes
   name: Priestess of Mars Robes
   description: A deep crimson undersuit adorned with sacred iconography of the god of war. Worn by the holy women who bless Caesar's warriors before battle.
+  components:
+  - type: Sprite
+    sprite: _Misfits/Clothing/CaesarLegion/priestessrobes.rsi
+    state: icon
+  - type: Clothing
+    sprite: _Misfits/Clothing/CaesarLegion/priestessrobes.rsi
 
 # Cloak — worn in the neck slot; the toggleable hood state is inherited
 - type: entity

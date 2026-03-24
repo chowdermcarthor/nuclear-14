@@ -1,5 +1,5 @@
 # #Misfits Add - Stealth Boy item. Uses Pip-Boy sprite from _Nuclear14, tinted blue.
-# Activates via UseInHand. Fades the user's sprite to near-invisible for 30 seconds.
+# Activates via UseInHand or its hotkey action. Fades the user's sprite to near-invisible for 30 seconds.
 # One-time use — deleted on activation.
 # #Misfits Change - Parented to N14BasePipboy so it also functions as a full Pip-Boy
 # with all preinstalled cartridges (Hub, Groups, Directory, Settings, Map, etc.).
@@ -25,5 +25,11 @@
     fadeInTime: 1.5
     fadeOutTime: 2
     minOpacity: 0.15
+  - type: ActionGrant
+    actions:
+    - ActionActivateStealthBoy
+  - type: ItemActionGrant
+    actions:
+    - ActionActivateStealthBoy
   - type: StaticPrice
     price: 800

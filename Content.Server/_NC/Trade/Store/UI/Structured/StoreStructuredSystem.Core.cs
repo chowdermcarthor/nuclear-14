@@ -420,8 +420,9 @@ public sealed partial class StoreStructuredSystem : EntitySystem
         SendCatalog(uid, comp, user);
 
         // #Misfits Add — notify tier system on vendor open (awards Bronze badge on first visit)
+        // broadcast: true is required so the broadcast-subscribed ContractTierSystem handler fires
         if (comp.ContractPresets.Count > 0)
-            RaiseLocalEvent(user, new MisfitsContractFirstAccessEvent(uid, user));
+            RaiseLocalEvent(user, new MisfitsContractFirstAccessEvent(uid, user), broadcast: true);
 
         UpdateDynamicState(uid, comp, user);
     }
@@ -592,21 +593,17 @@ public sealed partial class StoreStructuredSystem : EntitySystem
             _popups.PopupEntity(Loc.GetString("nc-store-contract-completed"), uid, user);
 
             // #Misfits Add — notify tier system of completed contract
+            // broadcast: true is required so the broadcast-subscribed ContractTierSystem handler fires
             if (contractDifficulty != null)
-                RaiseLocalEvent(user, new MisfitsContractClaimedEvent(uid, user, msg.ContractId, contractDifficulty));
+                RaiseLocalEvent(user, new MisfitsContractClaimedEvent(uid, user, msg.ContractId, contractDifficulty), broadcast: true);
 
             UpdateDynamicState(uid, comp, user);
             return;
         }
 
-        NcInventorySnapshot? crateSnap = null;
-        EntityUid crate = default;
-        _logic.TryGetPulledClosedCrate(user, out crate);
-        var userSnap = _logic.BuildInventorySnapshot(user);
-        if (crate != default)
-            crateSnap = _logic.BuildInventorySnapshot(crate);
-
-        UpdateContractsProgress(comp, userSnap, crateSnap);
+        // #Misfits Fix — claim failed: still send the full dynamic state so the
+        // client sees up-to-date progress (previously only server data was refreshed)
+        UpdateDynamicState(uid, comp, user);
     }
 
     private void MarkDirty(EntityUid storeUid)

@@ -26,6 +26,9 @@
     # - !type:CreateEntityReactionEffect
       # entity: N14CompostRotted
 
+# #Misfits Fix: Removed Water requirement — the compost box is a pour-in container
+# with no water supply, and the bucket (water + dung) method still works fine
+# because this reaction has no requiredMixerCategories restriction.
 - type: reaction
   id: Composting
   source: true # breakdown of existing resource
@@ -35,8 +38,25 @@
   reactants:
     Dung:
       amount: 10
-    Water:
-      amount: 10
+  effects:
+    - !type:CreateEntityReactionEffect
+      entity: N14CompostRotted
+
+# #Misfits Add: Organic / food-waste composting — fires only in the compost box
+# (requiredMixerCategories gates it to entities with ReactionMixer type Composting).
+# Lets N14FloraProduce, N14ProduceBase, and N14FoodProduceBase items be composted by
+# pouring their food solution into the box.
+- type: reaction
+  id: CompostingOrganic
+  source: true
+  impact: Low
+  quantized: true
+  conserveEnergy: false
+  requiredMixerCategories:
+    - Composting
+  reactants:
+    Nutriment:
+      amount: 3
   effects:
     - !type:CreateEntityReactionEffect
       entity: N14CompostRotted

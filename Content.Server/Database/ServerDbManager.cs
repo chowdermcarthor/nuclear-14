@@ -384,12 +384,23 @@ namespace Content.Server.Database
 
         // #Misfits Change - Persistent ATM placements
 
-        #region AtmPlacements
-
+        #region AtmPlacements  // #Misfits Change
         Task<List<AtmPlacement>> GetAllAtmPlacementsAsync(CancellationToken cancel = default);
         Task UpsertAtmPlacementAsync(AtmPlacement placement);
         Task RemoveAtmPlacementAsync(string placementKey);
+        #endregion
 
+        // #Misfits Change - Persistent admin help ticket audit log
+        #region HelpTicketAuditLog
+        /// <summary>Append one lifecycle event to the persistent audit log. Fire-and-forget safe.</summary>
+        Task AddHelpTicketEventAsync(HelpTicketEvent ticketEvent);
+
+        /// <summary>
+        /// Retrieve audit log entries, newest first. Optionally filter to a specific player.
+        /// Returns the page of events and the total matching row count for pagination.
+        /// </summary>
+        Task<(List<HelpTicketEvent> Events, int TotalCount)> GetHelpTicketEventsAsync(
+            Guid? playerId, int limit, int offset, CancellationToken cancel = default);
         #endregion
     }
     /// </summary>
@@ -1192,7 +1203,26 @@ namespace Content.Server.Database
 
         #endregion
 
-        private async void HandleDatabaseNotification(DatabaseNotification notification)
+        // #Misfits Change - Persistent admin help ticket audit log
+
+        #region HelpTicketAuditLog
+
+        public Task AddHelpTicketEventAsync(HelpTicketEvent ticketEvent)
+        {
+            DbWriteOpsMetric.Inc();
+            return RunDbCommand(() => _db.AddHelpTicketEventAsync(ticketEvent));
+        }
+
+        public Task<(List<HelpTicketEvent> Events, int TotalCount)> GetHelpTicketEventsAsync(
+            Guid? playerId, int limit, int offset, CancellationToken cancel = default)
+        {
+            DbReadOpsMetric.Inc();
+            return RunDbCommand(() => _db.GetHelpTicketEventsAsync(playerId, limit, offset, cancel));
+        }
+
+        #endregion
+
+        private void HandleDatabaseNotification(DatabaseNotification notification)
         {
             lock (_notificationHandlers)
             {

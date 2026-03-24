@@ -3,7 +3,12 @@
   parent: BaseStructure
   id: N14CompostBox
   name: compost box
-  description: Insert animal dung in here to produce compost.
+  # #Misfits Fix: Reworked to function as a pour-in solution container (like a bucket).
+  # The old ItemSlots + SolutionContainerMixer approach couldn't extract reagents from
+  # slotted items (FinishMix uses TryGetFitsInDispenser which none of our items had).
+  # Now: click N14Dung or produce items on the box to pour their reagents in; the
+  # Composting / CompostingOrganic reactions fire automatically when thresholds are met.
+  description: Pour animal dung or organic matter in here to produce compost.
   placement:
     mode: SnapgridCenter
   components:
@@ -22,13 +27,22 @@
   - type: ReactionMixer
     reactionTypes:
     - Composting
-    # mixMessage: "compost-mixing-success"
-  - type: SolutionContainerMixer
-    mixDuration: 5
+  - type: SolutionContainerMixer # #Misfits Fix: Triggers reactions when player clicks to mix,
+    mixDuration: 3                # spawning N14CompostRotted from Dung or CompostingOrganic reactions.
     mixingSound:
       path: /Audio/Machines/buzz_loop.ogg
       params:
         volume: -5
+  - type: SolutionContainerManager
+    solutions:
+      composting:
+        maxVol: 250
+  - type: RefillableSolution
+    solution: composting
+  - type: ExaminableSolution
+    solution: composting
+  - type: DeleteOnSolutionEmpty # #Misfits Add: Clear spent solution after reaction completes.
+    solution: composting
   - type: Sprite
     sprite: _Nuclear14/Objects/Specific/Hydroponics/equipment.rsi
     snapCardinals: true
@@ -37,15 +51,6 @@
   - type: ApcPowerReceiver
     powerLoad: 0
     needsPower: false
-  - type: ItemSlots
-    slots:
-      mixer:
-        whitelist:
-          tags:
-            - ComposterCompatible
-  - type: ContainerContainer
-    containers:
-      mixer: !type:ContainerSlot
 
 
 # Seed Extractor

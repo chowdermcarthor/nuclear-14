@@ -53,6 +53,7 @@ namespace Content.Server.Database
         public DbSet<PersistentTile> PersistentTile { get; set; } = default!; // #Misfits Change - Persistent tile spawn
         public DbSet<PersistentDecal> PersistentDecal { get; set; } = default!; // #Misfits Change - Persistent decal spawn
         public DbSet<AtmPlacement> AtmPlacement { get; set; } = default!; // #Misfits Change - Persistent ATM placements
+        public DbSet<HelpTicketEvent> HelpTicketEvent { get; set; } = default!; // #Misfits Change - Persistent help ticket audit log
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -149,6 +150,13 @@ namespace Content.Server.Database
             modelBuilder.Entity<AtmPlacement>()
                 .HasIndex(a => a.PlacementKey)
                 .IsUnique();
+
+            // #Misfits Change - Index help_ticket_event by player and time for efficient audit queries
+            modelBuilder.Entity<HelpTicketEvent>()
+                .HasIndex(e => e.PlayerId);
+
+            modelBuilder.Entity<HelpTicketEvent>()
+                .HasIndex(e => e.OccurredAt);
 
             modelBuilder.Entity<AdminLogPlayer>()
                 .HasOne(player => player.Player)
@@ -1144,6 +1152,46 @@ namespace Content.Server.Database
         public string MapName { get; set; } = string.Empty;
         public int TileX { get; set; }
         public int TileY { get; set; }
+    }
+
+    // #Misfits Change - Append-only audit log of every help-ticket lifecycle event.
+    // One row per event (Created, Claimed, Unclaimed, Resolved, Reopened, AutoResolved).
+    // Survives round restarts so staff actions can be reviewed across all rounds.
+    [Table("help_ticket_event")]
+    public sealed class HelpTicketEvent
+    {
+        [Required, Key, DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+        public int Id { get; set; }
+
+        /// <summary>The player who owns the ticket.</summary>
+        [Required]
+        public Guid PlayerId { get; set; }
+
+        /// <summary>Player name captured at time of the event.</summary>
+        [Required]
+        public string PlayerName { get; set; } = null!;
+
+        /// <summary>In-round sequential ticket number (1, 2, 3…).</summary>
+        [Required]
+        public int TicketId { get; set; }
+
+        /// <summary>HelpTicketType stored as int (AdminHelp=0, MentorHelp=1).</summary>
+        [Required]
+        public int TicketType { get; set; }
+
+        /// <summary>HelpTicketEventType stored as int (Created=0, Claimed=1, …).</summary>
+        [Required]
+        public int EventType { get; set; }
+
+        /// <summary>Name of the admin/mentor involved; null for player-created and auto-resolved events.</summary>
+        public string? AdminName { get; set; }
+
+        /// <summary>Guid of the admin/mentor; null when no admin is involved.</summary>
+        public Guid? AdminId { get; set; }
+
+        /// <summary>UTC timestamp when this event occurred.</summary>
+        [Required]
+        public DateTime OccurredAt { get; set; }
     }
 
     [Table("uploaded_resource_log")]

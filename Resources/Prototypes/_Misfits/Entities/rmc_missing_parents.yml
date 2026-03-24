@@ -41,24 +41,6 @@
   parent: MarkerBase
   id: DecalSpawnerBase
 
-# ClothingNeckOmnisexualPin - pride pin for omnisexual flag
-# Referenced by: _RMC/Entities/Clothing/Neck/pins.yml
-- type: entity
-  parent: ClothingNeckPinBase
-  id: ClothingNeckOmnisexualPin
-  name: omnisexual pin
-  description: be omni do crime
-  components:
-  - type: Sprite
-    sprite: _RMC/Objects/Clothing/HelmetGarb/HelmetCovers/pride_pins.rsi
-    layers:
-    - state: omni
-  - type: Clothing
-    sprite: _RMC/Objects/Clothing/HelmetGarb/HelmetCovers/pride_pins.rsi
-    clothingVisuals:
-      neck:
-      - state: omni
-
 # Mannequin - display mannequin base for clothing display
 # Referenced by: _RMC/Entities/Structures/mannequin.yml
 - type: entity

@@ -30,3 +30,29 @@ ticket-system-reminder = [TICKETS] {$count} unclaimed ticket(s) waiting. Use the
 ticket-system-quick-reply-title = AHelp — {$player}
 ticket-system-quick-reply-target = Messaging: {$player}
 ticket-system-quick-reply-placeholder = Type a message to send...
+
+# Audit Log window
+ticket-audit-log-button = Audit Log
+ticket-audit-log-window-title = Help Ticket Audit Log
+ticket-audit-log-filter-label = Filter by Player ID:
+ticket-audit-log-filter-placeholder = Paste a player GUID to filter…
+ticket-audit-log-filter-button = Filter
+ticket-audit-log-clear-button = Clear
+ticket-audit-log-prev = ← Prev
+ticket-audit-log-next = Next →
+ticket-audit-log-page = Page {$page} of {$total} ({$count} total events)
+ticket-audit-log-page-placeholder = Loading…
+ticket-audit-log-empty = No ticket events found.
+ticket-audit-log-header-time = Time
+ticket-audit-log-header-id = Ticket
+ticket-audit-log-header-event = Event
+ticket-audit-log-header-player = Player
+ticket-audit-log-header-admin = Admin
+
+# Audit event type display names
+ticket-audit-event-created = Created
+ticket-audit-event-claimed = Claimed
+ticket-audit-event-unclaimed = Unclaimed
+ticket-audit-event-resolved = Resolved
+ticket-audit-event-reopened = Reopened
+ticket-audit-event-auto-resolved = Auto-Resolved

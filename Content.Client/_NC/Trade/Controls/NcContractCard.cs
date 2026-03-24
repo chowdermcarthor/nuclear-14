@@ -156,10 +156,10 @@ public sealed class NcContractCard : PanelContainer
         if (_data.Targets is { Count: > 0 })
         {
             foreach (var t in _data.Targets)
-                root.AddChild(BuildTargetRow(t.TargetItem, t.Required));
+                root.AddChild(BuildTargetRow(t.TargetItem, t.Required, t.Progress));
         }
         else
-            root.AddChild(BuildTargetRow(_data.TargetItem, _data.Required));
+            root.AddChild(BuildTargetRow(_data.TargetItem, _data.Required, _data.Progress));
 
         if (!_data.Completed)
         {
@@ -445,7 +445,7 @@ public sealed class NcContractCard : PanelContainer
     // Targets / tooltips
     // =====================
 
-    private Control BuildTargetRow(string? protoId, int required)
+    private Control BuildTargetRow(string? protoId, int required, int progress)
     {
         EntityPrototype? targetProto = null;
         if (!string.IsNullOrWhiteSpace(protoId))
@@ -477,10 +477,16 @@ public sealed class NcContractCard : PanelContainer
         }
 
         var targetName = targetProto?.Name ?? protoId ?? Loc.GetString("nc-store-unknown-item");
+
+        // #Misfits Change — show per-target progress so players see how many items they own
+        var clamped = Math.Clamp(progress, 0, required);
+        var progressColor = clamped >= required ? "#4CAF50" : "#C9C9C9";
         targetRow.AddChild(
             new Label
             {
-                Text = Loc.GetString("nc-store-contract-goal-line", ("item", targetName), ("count", required)),
+                Text = Loc.GetString("nc-store-contract-goal-progress-line",
+                    ("item", targetName), ("progress", clamped), ("count", required)),
+                Modulate = Color.FromHex(progressColor),
                 MouseFilter = MouseFilterMode.Ignore
             });
 

@@ -1,9 +1,0 @@
-# Misfits Fix - Commented out: RSI file _RMC/Mobs/Customization/human_facial_hair.rsi does not exist in this codebase.
-#
-# ﻿- type: marking
-#   id: RMCHumanFacialHairSoulfulSelleck
-#   bodyPart: FacialHair
-#   markingCategory: FacialHair
-#   sprites:
-#   - sprite: _RMC/Mobs/Customization/human_facial_hair.rsi
-#     state: soulful_selleck

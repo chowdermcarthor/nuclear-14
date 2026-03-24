@@ -225,20 +225,22 @@
 #  items:
 #    - ClothingNeckPinNCRCaptain
 
-- type: loadout
-  id: LoadoutNCRPinMajor
-  category: Roles
-  cost: 1
-  exclusive: true
-  requirements:
-    - !type:CharacterJobRequirement
-      jobs:
-        - NCRCaptain # Misfits Change /Fix/: was NCRLT — Major is above Captain, not Lieutenant
-    - !type:CharacterPlaytimeRequirement
-      tracker: NCROfficer
-      min: 72000 # 20 hours as Captain to display Major insignia
-  items:
-    - ClothingNeckPinNCRMajor
+# Misfits Change - Disabled: NCR Major insignia should no longer be selectable in character setup.
+# The NCRMajor job now receives the correct collar pin through starting gear instead.
+#- type: loadout
+#  id: LoadoutNCRPinMajor
+#  category: Roles
+#  cost: 1
+#  exclusive: true
+#  requirements:
+#    - !type:CharacterJobRequirement
+#      jobs:
+#        - NCRCaptain # Misfits Change /Fix/: was NCRLT — Major is above Captain, not Lieutenant
+#    - !type:CharacterPlaytimeRequirement
+#      tracker: NCROfficer
+#      min: 72000 # 20 hours as Captain to display Major insignia
+#  items:
+#    - ClothingNeckPinNCRMajor
 
 # Misfits Change - Disabled: armor/weapons removed from roundstart loadout menu
 #- type: loadout # Corvax Fallout
@@ -665,14 +667,15 @@
   items:
     - ClothingNeckPinNCRCaptain
 
-- type: loadout
-  id: LoadoutNCRPinMajorMisfits
-  category: Roles
-  cost: 1
-  exclusive: true
-  requirements:
-    - !type:CharacterJobRequirement
-      jobs:
-        - NCRMajor # Base rank pin for the NCRMajor job — selectable without a time gate since it is their starting rank
-  items:
-    - ClothingNeckPinNCRMajor
+# Misfits Change - Disabled: NCR Major insignia is now granted by NCRMajor starting gear, not the character setup menu.
+#- type: loadout
+#  id: LoadoutNCRPinMajorMisfits
+#  category: Roles
+#  cost: 1
+#  exclusive: true
+#  requirements:
+#    - !type:CharacterJobRequirement
+#      jobs:
+#        - NCRMajor # Base rank pin for the NCRMajor job — selectable without a time gate since it is their starting rank
+#  items:
+#    - ClothingNeckPinNCRMajor

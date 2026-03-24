@@ -310,11 +310,12 @@ public sealed partial class LatheMenu : DefaultWindow
                 continue;
 
             var adjustedAmount = SharedLatheSystem.AdjustMaterial(amount, prototype.ApplyMaterialDiscount, multiplier);
+            var sheetVolume = _materialStorage.GetSheetVolume(proto);
 
             var unit = Loc.GetString(proto.Unit);
-            // #Misfits Change: Display raw material amounts instead of sheet-converted values
-            // so players see the actual numbers that match what stacks report (e.g. 700, not 7).
-            var displayAmount = (float) adjustedAmount;
+            // Divide by sheet volume so the displayed number matches how many physical
+            // stacks/sheets a player needs to insert (e.g. 8000 raw ÷ 100 = 80 sheets).
+            var sheets = adjustedAmount / (float) sheetVolume;
 
             // #Misfits Fix: Use server-provided material amounts if available so that
             // physical storage items (not yet composition-synced on client) are reflected.
@@ -322,18 +323,18 @@ public sealed partial class LatheMenu : DefaultWindow
                 ? ServerAvailableMaterials.GetValueOrDefault(id, 0)
                 : _materialStorage.GetAvailableMaterialAmount(Entity, id);
             var missingAmount = Math.Max(0, adjustedAmount - availableAmount);
-            var missingDisplay = (float) missingAmount;
+            var missingSheets = missingAmount / (float) sheetVolume;
 
             var name = Loc.GetString(proto.Name);
 
             string tooltipText;
-            if (missingDisplay > 0)
+            if (missingSheets > 0)
             {
-                tooltipText = Loc.GetString("lathe-menu-material-amount-missing", ("amount", displayAmount), ("missingAmount", missingDisplay), ("unit", unit), ("material", name));
+                tooltipText = Loc.GetString("lathe-menu-material-amount-missing", ("amount", sheets), ("missingAmount", missingSheets), ("unit", unit), ("material", name));
             }
             else
             {
-                var amountText = Loc.GetString("lathe-menu-material-amount", ("amount", displayAmount), ("unit", unit));
+                var amountText = Loc.GetString("lathe-menu-material-amount", ("amount", sheets), ("unit", unit));
                 tooltipText = Loc.GetString("lathe-menu-tooltip-display", ("material", name), ("amount", amountText));
             }
 

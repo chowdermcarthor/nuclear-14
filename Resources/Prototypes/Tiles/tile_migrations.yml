@@ -61,3 +61,24 @@
 - type: tileAlias
   id: FloorPlanetAsphalt
   target: FloorAsphalt
+
+# 2026-03-24
+# Misfits: CM/RMC tile definitions were removed, but persisted tile records can still
+# reference the old IDs from previous rounds. Map them to the closest surviving tiles
+# so persistent spawn restore remains clean without requiring manual DB cleanup.
+
+- type: tileAlias
+  id: CMPlanetBeachGrassNE
+  target: FloorPlanetGrass
+
+- type: tileAlias
+  id: CMPlanetBeachGrassEast
+  target: FloorPlanetGrass
+
+- type: tileAlias
+  id: RMCFloorHybrisaBeige
+  target: FloorConcrete
+
+- type: tileAlias
+  id: CMFloorPlating
+  target: Plating

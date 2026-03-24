@@ -15,7 +15,7 @@
   availableFaction:
   - BrotherhoodOfSteel
   materials:
-    Steel: 1000
+    Steel: 10
 
     Glass: 5
 
@@ -31,7 +31,7 @@
   availableFaction:
   - BrotherhoodOfSteel
   materials:
-    Steel: 1000
+    Steel: 10
 
     Glass: 5
 
@@ -49,7 +49,7 @@
   availableFaction:
   - BrotherhoodOfSteel
   materials:
-    Steel: 1000
+    Steel: 10
 
     Glass: 5
 
@@ -65,7 +65,7 @@
   availableFaction:
   - BrotherhoodOfSteel
   materials:
-    Steel: 1500
+    Steel: 15
 
     Scrap: 5
 
@@ -80,7 +80,7 @@
   availableFaction:
   - BrotherhoodOfSteel
   materials:
-    Steel: 3500
+    Steel: 35
 
     Glass: 15
 
@@ -98,7 +98,7 @@
   availableFaction:
   - BrotherhoodOfSteel
   materials:
-    Steel: 3500
+    Steel: 35
 
     Glass: 15
 
@@ -116,7 +116,7 @@
   availableFaction:
   - BrotherhoodOfSteel
   materials:
-    Steel: 3500
+    Steel: 35
 
     Glass: 20
 
@@ -134,7 +134,7 @@
   availableFaction:
   - BrotherhoodOfSteel
   materials:
-    Steel: 3500
+    Steel: 35
 
     Glass: 20
 
@@ -152,7 +152,7 @@
   availableFaction:
   - BrotherhoodOfSteel
   materials:
-    Steel: 3000
+    Steel: 30
 
     Glass: 20
 
@@ -170,7 +170,7 @@
   availableFaction:
   - BrotherhoodOfSteel
   materials:
-    Steel: 3500
+    Steel: 35
 
     Glass: 20
 
@@ -189,7 +189,7 @@
   availableFaction:
   - BrotherhoodOfSteel
   materials:
-    Steel: 6000
+    Steel: 60
 
     Glass: 30
 
@@ -209,7 +209,7 @@
   availableFaction:
   - BrotherhoodOfSteel
   materials:
-    Steel: 6000
+    Steel: 60
 
     Glass: 30
 
@@ -227,7 +227,7 @@
   availableFaction:
   - BrotherhoodOfSteel
   materials:
-    Steel: 6000
+    Steel: 60
 
     Glass: 35
 
@@ -247,7 +247,7 @@
   availableFaction:
   - BrotherhoodOfSteel
   materials:
-    Steel: 6000
+    Steel: 60
 
     Glass: 30
 
@@ -265,7 +265,7 @@
   availableFaction:
   - BrotherhoodOfSteel
   materials:
-    Steel: 6000
+    Steel: 60
 
     Glass: 40
 
@@ -283,7 +283,7 @@
   availableFaction:
   - BrotherhoodOfSteel
   materials:
-    Steel: 6000
+    Steel: 60
 
     Glass: 50
 
@@ -302,7 +302,7 @@
   availableFaction:
   - BrotherhoodOfSteel
   materials:
-    Steel: 10500
+    Steel: 105
 
     Glass: 70
 
@@ -322,7 +322,7 @@
   availableFaction:
   - BrotherhoodOfSteel
   materials:
-    Steel: 9500
+    Steel: 95
 
     Glass: 70
 
@@ -342,7 +342,7 @@
   availableFaction:
   - BrotherhoodOfSteel
   materials:
-    Steel: 11000
+    Steel: 110
 
     Glass: 65
 
@@ -362,7 +362,7 @@
   availableFaction:
   - BrotherhoodOfSteel
   materials:
-    Steel: 12000
+    Steel: 120
 
     Glass: 75
 
@@ -387,7 +387,7 @@
   availableFaction:
   - BrotherhoodOfSteel
   materials:
-    Cloth: 500
+    Cloth: 5
 
     Thread: 5
 
@@ -405,7 +405,7 @@
   availableFaction:
   - BrotherhoodOfSteel
   materials:
-    Cloth: 500
+    Cloth: 5
 
     Thread: 5
 
@@ -423,7 +423,7 @@
   availableFaction:
   - BrotherhoodOfSteel
   materials:
-    Cloth: 500
+    Cloth: 5
 
     Thread: 5
 
@@ -439,7 +439,7 @@
   availableFaction:
   - BrotherhoodOfSteel
   materials:
-    Steel: 3500
+    Steel: 35
 
     Cloth: 15
 
@@ -457,7 +457,7 @@
   availableFaction:
   - BrotherhoodOfSteel
   materials:
-    Steel: 3500
+    Steel: 35
 
     Cloth: 15
 
@@ -475,7 +475,7 @@
   availableFaction:
   - BrotherhoodOfSteel
   materials:
-    Steel: 3500
+    Steel: 35
 
     Cloth: 12
 
@@ -494,7 +494,7 @@
   availableFaction:
   - BrotherhoodOfSteel
   materials:
-    Steel: 6000
+    Steel: 60
 
     Cloth: 17
 
@@ -514,7 +514,7 @@
   availableFaction:
   - BrotherhoodOfSteel
   materials:
-    Steel: 6000
+    Steel: 60
 
     Cloth: 17
 
@@ -534,7 +534,7 @@
   availableFaction:
   - BrotherhoodOfSteel
   materials:
-    Steel: 7000
+    Steel: 70
 
     Cloth: 20
 
@@ -554,7 +554,7 @@
   availableFaction:
   - BrotherhoodOfSteel
   materials:
-    Steel: 7000
+    Steel: 70
 
     Cloth: 20
 
@@ -574,7 +574,7 @@
   availableFaction:
   - BrotherhoodOfSteel
   materials:
-    Steel: 6500
+    Steel: 65
 
     Cloth: 17
 
@@ -595,7 +595,7 @@
   availableFaction:
   - BrotherhoodOfSteel
   materials:
-    Steel: 12000
+    Steel: 120
 
     N14Iron: 37
 
@@ -621,7 +621,7 @@
   availableFaction:
   - BrotherhoodOfSteel
   materials:
-    Glass: 1000
+    Glass: 10
 
     Circuitry: 5
 
@@ -637,7 +637,7 @@
   availableFaction:
   - BrotherhoodOfSteel
   materials:
-    Lead: 1000
+    Lead: 10
 
     N14Brass: 5
 
@@ -654,7 +654,7 @@
   availableFaction:
   - BrotherhoodOfSteel
   materials:
-    Glass: 2500
+    Glass: 25
 
     Circuitry: 20
 
@@ -672,7 +672,7 @@
   availableFaction:
   - BrotherhoodOfSteel
   materials:
-    Glass: 2500
+    Glass: 25
 
     Circuitry: 20
 
@@ -689,7 +689,7 @@
   availableFaction:
   - BrotherhoodOfSteel
   materials:
-    Glass: 4000
+    Glass: 40
 
     Circuitry: 35
 
@@ -707,7 +707,7 @@
   availableFaction:
   - BrotherhoodOfSteel
   materials:
-    Glass: 4000
+    Glass: 40
 
     Circuitry: 35
 
@@ -724,7 +724,7 @@
   availableFaction:
   - BrotherhoodOfSteel
   materials:
-    Glass: 8500
+    Glass: 85
 
     Circuitry: 65
 
@@ -744,7 +744,7 @@
   availableFaction:
   - BrotherhoodOfSteel
   materials:
-    Glass: 8000
+    Glass: 80
 
     Circuitry: 65
 
@@ -762,7 +762,7 @@
   availableFaction:
   - BrotherhoodOfSteel
   materials:
-    Glass: 9000
+    Glass: 90
 
     Circuitry: 65
 
@@ -785,7 +785,7 @@
   availableFaction:
   - Townsfolk
   materials:
-    Steel: 1000
+    Steel: 10
 
     Scrap: 5
 
@@ -799,7 +799,7 @@
   availableFaction:
   - Townsfolk
   materials:
-    Steel: 1500
+    Steel: 15
 
     Scrap: 5
 
@@ -813,7 +813,7 @@
   availableFaction:
   - Townsfolk
   materials:
-    Steel: 1000
+    Steel: 10
 
     Scrap: 5
 
@@ -827,7 +827,7 @@
   availableFaction:
   - Townsfolk
   materials:
-    Steel: 1000
+    Steel: 10
 
     N14Iron: 2
 
@@ -841,7 +841,7 @@
   availableFaction:
   - Townsfolk
   materials:
-    Steel: 1000
+    Steel: 10
 
     Leather: 2
 
@@ -855,7 +855,7 @@
   availableFaction:
   - Townsfolk
   materials:
-    Steel: 2000
+    Steel: 20
 
     Wood: 10
 
@@ -869,7 +869,7 @@
   availableFaction:
   - Townsfolk
   materials:
-    Steel: 2000
+    Steel: 20
 
     Wood: 10
 
@@ -883,7 +883,7 @@
   availableFaction:
   - Townsfolk
   materials:
-    Steel: 2000
+    Steel: 20
 
     Wood: 10
 
@@ -898,7 +898,7 @@
   availableFaction:
   - Townsfolk
   materials:
-    Steel: 3500
+    Steel: 35
 
     N14Iron: 7
 
@@ -914,7 +914,7 @@
   availableFaction:
   - Townsfolk
   materials:
-    Steel: 3000
+    Steel: 30
 
     N14Iron: 7
 
@@ -928,7 +928,7 @@
   availableFaction:
   - Townsfolk
   materials:
-    Steel: 4000
+    Steel: 40
 
     Wood: 25
 
@@ -944,7 +944,7 @@
   availableFaction:
   - Townsfolk
   materials:
-    Steel: 4000
+    Steel: 40
 
     Wood: 15
 
@@ -960,7 +960,7 @@
   availableFaction:
   - Townsfolk
   materials:
-    Steel: 3000
+    Steel: 30
 
     N14Iron: 7
 
@@ -976,7 +976,7 @@
   availableFaction:
   - Townsfolk
   materials:
-    Steel: 2500
+    Steel: 25
 
     Wood: 25
 
@@ -990,7 +990,7 @@
   availableFaction:
   - Townsfolk
   materials:
-    Steel: 3000
+    Steel: 30
 
     Wood: 20
 
@@ -1006,7 +1006,7 @@
   availableFaction:
   - Townsfolk
   materials:
-    Steel: 3500
+    Steel: 35
 
     N14Iron: 7
 
@@ -1022,7 +1022,7 @@
   availableFaction:
   - Townsfolk
   materials:
-    Steel: 3500
+    Steel: 35
 
     Wood: 25
 
@@ -1039,7 +1039,7 @@
   availableFaction:
   - Townsfolk
   materials:
-    Steel: 6000
+    Steel: 60
 
     N14Iron: 12
 
@@ -1055,7 +1055,7 @@
   availableFaction:
   - Townsfolk
   materials:
-    Steel: 6000
+    Steel: 60
 
     N14Iron: 12
 
@@ -1071,7 +1071,7 @@
   availableFaction:
   - Townsfolk
   materials:
-    Steel: 5000
+    Steel: 50
 
     Wood: 15
 
@@ -1089,7 +1089,7 @@
   availableFaction:
   - Townsfolk
   materials:
-    Steel: 6500
+    Steel: 65
 
     Wood: 15
 
@@ -1105,7 +1105,7 @@
   availableFaction:
   - Townsfolk
   materials:
-    Steel: 6000
+    Steel: 60
 
     N14Iron: 12
 
@@ -1121,7 +1121,7 @@
   availableFaction:
   - Townsfolk
   materials:
-    Steel: 5500
+    Steel: 55
 
     Wood: 15
 
@@ -1137,7 +1137,7 @@
   availableFaction:
   - Townsfolk
   materials:
-    Steel: 5000
+    Steel: 50
 
     N14Iron: 10
 
@@ -1153,7 +1153,7 @@
   availableFaction:
   - Townsfolk
   materials:
-    Steel: 6000
+    Steel: 60
 
     Wood: 25
 
@@ -1170,7 +1170,7 @@
   availableFaction:
   - Townsfolk
   materials:
-    Steel: 9500
+    Steel: 95
 
     N14Iron: 20
 
@@ -1188,7 +1188,7 @@
   availableFaction:
   - Townsfolk
   materials:
-    Steel: 9500
+    Steel: 95
 
     N14Iron: 20
 
@@ -1204,7 +1204,7 @@
   availableFaction:
   - Townsfolk
   materials:
-    Steel: 9000
+    Steel: 90
 
     Wood: 45
 
@@ -1220,7 +1220,7 @@
   availableFaction:
   - Townsfolk
   materials:
-    Steel: 9000
+    Steel: 90
 
     N14Iron: 20
 
@@ -1236,7 +1236,7 @@
   availableFaction:
   - Townsfolk
   materials:
-    Steel: 9000
+    Steel: 90
 
     Wood: 40
 
@@ -1257,7 +1257,7 @@
   availableFaction:
   - Townsfolk
   materials:
-    Leather: 500
+    Leather: 5
 
     Cloth: 5
 
@@ -1273,7 +1273,7 @@
   availableFaction:
   - Townsfolk
   materials:
-    Leather: 500
+    Leather: 5
 
     Cloth: 5
 
@@ -1289,7 +1289,7 @@
   availableFaction:
   - Townsfolk
   materials:
-    Leather: 700
+    Leather: 7
 
     Cloth: 5
 
@@ -1306,7 +1306,7 @@
   availableFaction:
   - Townsfolk
   materials:
-    Cloth: 1700
+    Cloth: 17
 
     Thread: 17
 
@@ -1324,7 +1324,7 @@
   availableFaction:
   - Townsfolk
   materials:
-    Leather: 1700
+    Leather: 17
 
     Cloth: 17
 
@@ -1342,7 +1342,7 @@
   availableFaction:
   - Townsfolk
   materials:
-    Leather: 1700
+    Leather: 17
 
     Cloth: 17
 
@@ -1360,7 +1360,7 @@
   availableFaction:
   - Townsfolk
   materials:
-    Leather: 1500
+    Leather: 15
 
     Cloth: 10
 
@@ -1377,7 +1377,7 @@
   availableFaction:
   - Townsfolk
   materials:
-    Steel: 5000
+    Steel: 50
 
     Leather: 17
 
@@ -1395,7 +1395,7 @@
   availableFaction:
   - Townsfolk
   materials:
-    Steel: 5000
+    Steel: 50
 
     Cloth: 17
 
@@ -1413,7 +1413,7 @@
   availableFaction:
   - Townsfolk
   materials:
-    Leather: 2500
+    Leather: 25
 
     Steel: 40
 
@@ -1431,7 +1431,7 @@
   availableFaction:
   - Townsfolk
   materials:
-    Steel: 6000
+    Steel: 60
 
     N14Iron: 12
 
@@ -1450,7 +1450,7 @@
   availableFaction:
   - Townsfolk
   materials:
-    Steel: 10500
+    Steel: 105
 
     Cloth: 25
 
@@ -1470,7 +1470,7 @@
   availableFaction:
   - Townsfolk
   materials:
-    Steel: 9500
+    Steel: 95
 
     Leather: 22
 
@@ -1488,7 +1488,7 @@
   availableFaction:
   - Townsfolk
   materials:
-    Leather: 5100
+    Leather: 51
 
     Cloth: 45
 
@@ -1511,7 +1511,7 @@
   availableFaction:
   - Townsfolk
   materials:
-    Lead: 1000
+    Lead: 10
 
     N14Brass: 5
 
@@ -1527,7 +1527,7 @@
   availableFaction:
   - Townsfolk
   materials:
-    Lead: 1000
+    Lead: 10
 
     N14Brass: 5
 
@@ -1543,7 +1543,7 @@
   availableFaction:
   - Townsfolk
   materials:
-    Lead: 1000
+    Lead: 10
 
     N14Brass: 5
 
@@ -1559,7 +1559,7 @@
   availableFaction:
   - Townsfolk
   materials:
-    Steel: 1000
+    Steel: 10
 
     Lead: 5
 
@@ -1575,7 +1575,7 @@
   availableFaction:
   - Townsfolk
   materials:
-    Steel: 1000
+    Steel: 10
 
     Lead: 5
 
@@ -1592,7 +1592,7 @@
   availableFaction:
   - Townsfolk
   materials:
-    Lead: 3000
+    Lead: 30
 
     N14Brass: 20
 
@@ -1608,7 +1608,7 @@
   availableFaction:
   - Townsfolk
   materials:
-    Lead: 2500
+    Lead: 25
 
     N14Brass: 20
 
@@ -1624,7 +1624,7 @@
   availableFaction:
   - Townsfolk
   materials:
-    Lead: 3000
+    Lead: 30
 
     Plastic: 10
 
@@ -1640,7 +1640,7 @@
   availableFaction:
   - Townsfolk
   materials:
-    Steel: 2500
+    Steel: 25
 
     Lead: 20
 
@@ -1656,7 +1656,7 @@
   availableFaction:
   - Townsfolk
   materials:
-    Steel: 2500
+    Steel: 25
 
     Lead: 20
 
@@ -1673,7 +1673,7 @@
   availableFaction:
   - Townsfolk
   materials:
-    Lead: 4000
+    Lead: 40
 
     N14Brass: 35
 
@@ -1689,7 +1689,7 @@
   availableFaction:
   - Townsfolk
   materials:
-    Lead: 4500
+    Lead: 45
 
     N14Brass: 35
 
@@ -1705,7 +1705,7 @@
   availableFaction:
   - Townsfolk
   materials:
-    Lead: 4500
+    Lead: 45
 
     N14Brass: 30
 
@@ -1721,7 +1721,7 @@
   availableFaction:
   - Townsfolk
   materials:
-    Steel: 4000
+    Steel: 40
 
     Lead: 35
 
@@ -1737,7 +1737,7 @@
   availableFaction:
   - Townsfolk
   materials:
-    Steel: 4000
+    Steel: 40
 
     Lead: 35
 
@@ -1754,7 +1754,7 @@
   availableFaction:
   - Townsfolk
   materials:
-    Lead: 7500
+    Lead: 75
 
     N14Brass: 55
 
@@ -1770,7 +1770,7 @@
   availableFaction:
   - Townsfolk
   materials:
-    Lead: 8500
+    Lead: 85
 
     N14Brass: 55
 
@@ -1786,7 +1786,7 @@
   availableFaction:
   - Townsfolk
   materials:
-    Steel: 7500
+    Steel: 75
 
     Lead: 70
 
@@ -1802,7 +1802,7 @@
   availableFaction:
   - Townsfolk
   materials:
-    Steel: 7500
+    Steel: 75
 
     Lead: 65
 

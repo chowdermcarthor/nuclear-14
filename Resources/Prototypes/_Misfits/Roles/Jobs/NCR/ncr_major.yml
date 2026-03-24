@@ -43,8 +43,8 @@
             - NCR
 
 # Major shares the Captain's visual loadout — distinct rank is represented via
-# the access level. If a Major-specific collar pin or dogtag is added later,
-# update neck: and id: here accordingly.
+# the access level. Use the Major collar pin directly so the rank is shown
+# without relying on character setup loadout selection.
 - type: startingGear
   id: NCRMajorGear
   equipment:
@@ -53,13 +53,13 @@
     jumpsuit: N14ClothingOfficerUniformNCRDesert
     outerClothing: N14ClothingOuterNCRDressJacketCO
     shoes: N14ClothingBootsCombatFilled
-    neck: ClothingNeckPinNCRCaptain
+    neck: ClothingNeckPinNCRMajor
     belt: ClothingBeltNCR
     eyes: ClothingEyesGlassesSunglasses
     ears: N14ClothingHeadsetNCR
     pocket1: NCRcaptainloadoutkits
     pocket2: RadioHandheld
-    id: N14IDNCRDogtagCaptain
+    id: N14IDNCRDogtagMajor
   innerClothingSkirt: N14ClothingOfficerUniformNCRDesert
   satchel: N14ClothingBackpackSatchelNCRFilled
   storage:

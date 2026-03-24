@@ -139,6 +139,8 @@ namespace Content.Server.Administration.Systems
             SubscribeNetworkEvent<HelpTicketUnclaimMessage>(OnTicketUnclaim);
             SubscribeNetworkEvent<HelpTicketReopenMessage>(OnTicketReopen);
             SubscribeNetworkEvent<HelpTicketRequestListMessage>(OnTicketRequestList);
+            // #Misfits Add — subscribe to admin audit log requests so past-round tickets can be queried
+            SubscribeNetworkEvent<HelpTicketAuditRequestMessage>(OnAuditRequest);
 
         	_rateLimit.Register(
                 RateLimitKey,
@@ -226,6 +228,7 @@ namespace Content.Server.Administration.Systems
                 SendTicketSystemMessage(dcTicket.PlayerId, Loc.GetString("ticket-system-auto-resolved-disconnect", ("id", dcTicket.TicketId), ("type", "AHELP")));
                 // #Misfits Add — persist disconnect auto-resolve so ticket history survives round resets.
                 LogAHelpTicketEvent(dcTicket, "auto-resolved on disconnect", "System", LogImpact.Medium);
+                PersistTicketEvent(dcTicket, HelpTicketEventType.AutoResolved);
             }
 
             // Notify all admins if a player disconnects or reconnects
@@ -440,6 +443,7 @@ namespace Content.Server.Administration.Systems
                     SendTicketSystemMessage(playerId, Loc.GetString("ticket-system-created", ("id", newTicket.TicketId), ("player", playerName), ("type", "AHELP")));
                     // #Misfits Add — persist reopened-as-new ticket creation for long-term audits.
                     LogAHelpTicketEvent(newTicket, "created (from previously resolved conversation)", playerName, LogImpact.Low);
+                    PersistTicketEvent(newTicket, HelpTicketEventType.Created);
                 }
                 return; // ticket already open or claimed — do nothing extra
             }
@@ -458,6 +462,7 @@ namespace Content.Server.Administration.Systems
             SendTicketSystemMessage(playerId, Loc.GetString("ticket-system-created", ("id", ticket.TicketId), ("player", playerName), ("type", "AHELP")));
             // #Misfits Add — persist ticket creation for cross-round staffing analytics.
             LogAHelpTicketEvent(ticket, "created", playerName, LogImpact.Low);
+            PersistTicketEvent(ticket, HelpTicketEventType.Created);
         }
 
         // #Misfits Add — broadcast a ticket update to all admins with Adminhelp flag
@@ -514,6 +519,7 @@ namespace Content.Server.Administration.Systems
             SendTicketSystemMessage(ticket.PlayerId, Loc.GetString("ticket-system-claimed", ("id", ticket.TicketId), ("role", "Admin"), ("admin", args.SenderSession.Name), ("type", "AHELP")));
             // #Misfits Add — persist claims so staff handling volume can be audited historically.
             LogAHelpTicketEvent(ticket, "claimed", args.SenderSession.Name, LogImpact.Low);
+            PersistTicketEvent(ticket, HelpTicketEventType.Claimed, args.SenderSession.Name, args.SenderSession.UserId.UserId);
         }
 
         // #Misfits Add — admin resolves a ticket
@@ -538,6 +544,7 @@ namespace Content.Server.Administration.Systems
             // #Misfits Add — persist resolutions with timing to support promotion/performance reviews.
             var age = (DateTime.Now - ticket.CreatedAt).TotalMinutes;
             LogAHelpTicketEvent(ticket, $"resolved ({age:F1}m since created)", args.SenderSession.Name, LogImpact.Medium);
+            PersistTicketEvent(ticket, HelpTicketEventType.Resolved, args.SenderSession.Name, args.SenderSession.UserId.UserId);
         }
 
         // #Misfits Add — admin unclaims (releases) a ticket back to Open
@@ -560,6 +567,7 @@ namespace Content.Server.Administration.Systems
             SendTicketSystemMessage(ticket.PlayerId, Loc.GetString("ticket-system-unclaimed", ("id", ticket.TicketId), ("role", "Admin"), ("admin", args.SenderSession.Name), ("type", "AHELP")));
             // #Misfits Add — persist unclaims for queue-handoff auditability.
             LogAHelpTicketEvent(ticket, "unclaimed", args.SenderSession.Name, LogImpact.Low);
+            PersistTicketEvent(ticket, HelpTicketEventType.Unclaimed, args.SenderSession.Name, args.SenderSession.UserId.UserId);
         }
 
         // #Misfits Add — admin reopens a resolved ticket
@@ -585,6 +593,7 @@ namespace Content.Server.Administration.Systems
             SendTicketSystemMessage(ticket.PlayerId, Loc.GetString("ticket-system-reopened", ("id", ticket.TicketId), ("role", "Admin"), ("admin", args.SenderSession.Name), ("type", "AHELP")));
             // #Misfits Add — persist reopen events to track unresolved churn over time.
             LogAHelpTicketEvent(ticket, "reopened", args.SenderSession.Name, LogImpact.Medium);
+            PersistTicketEvent(ticket, HelpTicketEventType.Reopened, args.SenderSession.Name, args.SenderSession.UserId.UserId);
         }
 
         // #Misfits Add — central helper for persistent AHELP ticket lifecycle logging.
@@ -592,6 +601,30 @@ namespace Content.Server.Administration.Systems
         {
             _adminLog.Add(LogType.AdminMessage, impact,
                 $"AHELP ticket #{ticket.TicketId} {action} | player={ticket.PlayerName} ({ticket.PlayerId}) | actor={actorName} | status={ticket.Status}");
+        }
+
+        // #Misfits Add — write one lifecycle event row to the persistent DB audit log (fire-and-forget).
+        private void PersistTicketEvent(
+            HelpTicketInfo ticket, HelpTicketEventType eventType, string? adminName = null, Guid? adminId = null)
+        {
+            var record = new HelpTicketEvent
+            {
+                PlayerId = ticket.PlayerId.UserId,
+                PlayerName = ticket.PlayerName,
+                TicketId = ticket.TicketId,
+                TicketType = (int) ticket.Type,
+                EventType = (int) eventType,
+                AdminName = adminName,
+                AdminId = adminId,
+                OccurredAt = DateTime.UtcNow,
+            };
+            var task = _dbManager.AddHelpTicketEventAsync(record);
+            // Log without crashing the outer caller if the DB is unavailable.
+            task.ContinueWith(t =>
+            {
+                if (t.IsFaulted)
+                    Log.Error($"[HelpTicket] Failed to persist {eventType} event for ticket #{ticket.TicketId}: {t.Exception}");
+            }, TaskScheduler.Default);
         }
 
         // #Misfits Add — persist individual ticket messages so complete conversation history is auditable.
@@ -614,6 +647,33 @@ namespace Content.Server.Administration.Systems
 
             var list = _tickets.Values.ToList();
             RaiseNetworkEvent(new HelpTicketListMessage(list), args.SenderSession.Channel);
+        }
+
+        // #Misfits Add — admin requests persistent audit log from DB (cross-round, paginated)
+        private async void OnAuditRequest(HelpTicketAuditRequestMessage msg, EntitySessionEventArgs args)
+        {
+            if (!(_adminManager.GetAdminData(args.SenderSession)?.HasFlag(AdminFlags.Adminhelp) ?? false))
+                return;
+
+            var (events, total) = await _dbManager.GetHelpTicketEventsAsync(
+                msg.FilterPlayerId, msg.Limit, msg.Offset);
+
+            var entries = events.Select(e => new HelpTicketAuditEntry
+            {
+                EventId = e.Id,
+                PlayerId = e.PlayerId,
+                PlayerName = e.PlayerName,
+                TicketId = e.TicketId,
+                TicketType = (HelpTicketType) e.TicketType,
+                EventType = (HelpTicketEventType) e.EventType,
+                AdminName = e.AdminName,
+                AdminId = e.AdminId,
+                OccurredAt = e.OccurredAt,
+            }).ToList();
+
+            RaiseNetworkEvent(
+                new HelpTicketAuditResponseMessage { Entries = entries, TotalCount = total, Offset = msg.Offset },
+                args.SenderSession.Channel);
         }
 
         private void OnServerNameChanged(string obj)

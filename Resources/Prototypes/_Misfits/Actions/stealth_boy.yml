@@ -1,0 +1,15 @@
+# #Misfits Add: Hotkey action for the Stealth Boy consumable.
+# Granted while the device is held or equipped so it mirrors other toggleable utility items.
+
+- type: entity
+  id: ActionActivateStealthBoy
+  name: Activate Stealth Boy
+  description: Trigger the Stealth Boy's light-bending field and fade from view for a short time.
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: InstantAction
+    useDelay: 0.25
+    icon:
+      sprite: _Nuclear14/Objects/Misc/pipboy.rsi
+      state: pda
+    event: !type:ActivateStealthBoyActionEvent

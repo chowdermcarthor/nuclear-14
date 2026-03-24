@@ -1,6 +1,7 @@
 // #Misfits Add - Shared Stealth Boy logic. Handles activation, opacity interpolation,
 // and expiry for the Fallout Stealth Boy device. Ported/inspired by RMC-14 stealth system,
 // simplified to remove evasion and skill dependencies.
+using Content.Shared.Actions;
 using Content.Shared.Interaction.Events;
 using Content.Shared.Popups;
 using Robust.Shared.Network;
@@ -18,6 +19,7 @@ public abstract class SharedStealthBoySystem : EntitySystem
     {
         base.Initialize();
         SubscribeLocalEvent<StealthBoyComponent, UseInHandEvent>(OnUseInHand);
+        SubscribeLocalEvent<StealthBoyComponent, ActivateStealthBoyActionEvent>(OnActivateAction);
     }
 
     private void OnUseInHand(Entity<StealthBoyComponent> ent, ref UseInHandEvent args)
@@ -35,6 +37,15 @@ public abstract class SharedStealthBoySystem : EntitySystem
 
         args.Handled = true;
         Activate(ent, args.User);
+    }
+
+    private void OnActivateAction(Entity<StealthBoyComponent> ent, ref ActivateStealthBoyActionEvent args)
+    {
+        if (args.Handled)
+            return;
+
+        args.Handled = true;
+        Activate(ent, args.Performer);
     }
 
     protected void Activate(Entity<StealthBoyComponent> item, EntityUid user)
@@ -120,3 +131,8 @@ public abstract class SharedStealthBoySystem : EntitySystem
         }
     }
 }
+
+/// <summary>
+/// Fired when the Stealth Boy hotkey button is pressed so the item can activate from hand or worn slots.
+/// </summary>
+public sealed partial class ActivateStealthBoyActionEvent : InstantActionEvent;

@@ -16,7 +16,7 @@
   availableFaction:
   - NCR
   materials:
-    Steel: 1000
+    Steel: 10
 
     Scrap: 5
 
@@ -30,7 +30,7 @@
   availableFaction:
   - NCR
   materials:
-    Steel: 1500
+    Steel: 15
 
     Scrap: 5
 
@@ -44,7 +44,7 @@
   availableFaction:
   - NCR
   materials:
-    Steel: 1000
+    Steel: 10
 
     Scrap: 5
 
@@ -58,7 +58,7 @@
   availableFaction:
   - NCR
   materials:
-    Steel: 1000
+    Steel: 10
 
     N14Iron: 2
 
@@ -72,7 +72,7 @@
   availableFaction:
   - NCR
   materials:
-    Steel: 1500
+    Steel: 15
 
     N14Iron: 2
 
@@ -86,7 +86,7 @@
   availableFaction:
   - NCR
   materials:
-    Steel: 2000
+    Steel: 20
 
     Wood: 10
 
@@ -100,7 +100,7 @@
   availableFaction:
   - NCR
   materials:
-    Steel: 2000
+    Steel: 20
 
     Wood: 10
 
@@ -114,7 +114,7 @@
   availableFaction:
   - NCR
   materials:
-    Steel: 2000
+    Steel: 20
 
     Wood: 10
 
@@ -128,7 +128,7 @@
   availableFaction:
   - NCR
   materials:
-    Steel: 1500
+    Steel: 15
 
     Wood: 10
 
@@ -142,7 +142,7 @@
   availableFaction:
   - NCR
   materials:
-    Steel: 1500
+    Steel: 15
 
     Wood: 10
 
@@ -157,7 +157,7 @@
   availableFaction:
   - NCR
   materials:
-    Steel: 3000
+    Steel: 30
 
     N14Iron: 7
 
@@ -173,7 +173,7 @@
   availableFaction:
   - NCR
   materials:
-    Steel: 3500
+    Steel: 35
 
     Wood: 25
 
@@ -189,7 +189,7 @@
   availableFaction:
   - NCR
   materials:
-    Steel: 4000
+    Steel: 40
 
     Wood: 20
 
@@ -207,7 +207,7 @@
   availableFaction:
   - NCR
   materials:
-    Steel: 4000
+    Steel: 40
 
     Wood: 15
 
@@ -223,7 +223,7 @@
   availableFaction:
   - NCR
   materials:
-    Steel: 3500
+    Steel: 35
 
     N14Iron: 7
 
@@ -239,7 +239,7 @@
   availableFaction:
   - NCR
   materials:
-    Steel: 3500
+    Steel: 35
 
     Wood: 15
 
@@ -255,7 +255,7 @@
   availableFaction:
   - NCR
   materials:
-    Steel: 3500
+    Steel: 35
 
     N14Iron: 7
 
@@ -271,7 +271,7 @@
   availableFaction:
   - NCR
   materials:
-    Steel: 3500
+    Steel: 35
 
     N14Iron: 7
 
@@ -287,7 +287,7 @@
   availableFaction:
   - NCR
   materials:
-    Steel: 4000
+    Steel: 40
 
     Wood: 20
 
@@ -303,7 +303,7 @@
   availableFaction:
   - NCR
   materials:
-    Steel: 4000
+    Steel: 40
 
     Wood: 15
 
@@ -323,7 +323,7 @@
   - NCR
   - Rangers
   materials:
-    Steel: 6000
+    Steel: 60
 
     Wood: 25
 
@@ -341,7 +341,7 @@
   availableFaction:
   - NCR
   materials:
-    Steel: 6000
+    Steel: 60
 
     N14Iron: 12
 
@@ -359,7 +359,7 @@
   availableFaction:
   - NCR
   materials:
-    Steel: 6500
+    Steel: 65
 
     Wood: 15
 
@@ -375,7 +375,7 @@
   availableFaction:
   - NCR
   materials:
-    Steel: 7000
+    Steel: 70
 
     Wood: 15
 
@@ -391,7 +391,7 @@
   availableFaction:
   - NCR
   materials:
-    Steel: 6000
+    Steel: 60
 
     N14Iron: 12
 
@@ -407,7 +407,7 @@
   availableFaction:
   - NCR
   materials:
-    Steel: 6000
+    Steel: 60
 
     N14Iron: 15
 
@@ -423,7 +423,7 @@
   availableFaction:
   - NCR
   materials:
-    Steel: 6000
+    Steel: 60
 
     N14Iron: 12
 
@@ -439,7 +439,7 @@
   availableFaction:
   - NCR
   materials:
-    Steel: 6000
+    Steel: 60
 
     N14Iron: 12
 
@@ -456,7 +456,7 @@
   - NCR
   - Rangers
   materials:
-    Steel: 6000
+    Steel: 60
 
     N14Iron: 15
 
@@ -474,7 +474,7 @@
   availableFaction:
   - NCR
   materials:
-    Steel: 6000
+    Steel: 60
 
     N14Iron: 12
 
@@ -492,7 +492,7 @@
   - NCR
   - Rangers
   materials:
-    Steel: 12000
+    Steel: 120
 
     N14Iron: 30
 
@@ -510,7 +510,7 @@
   availableFaction:
   - NCR
   materials:
-    Steel: 11500
+    Steel: 115
 
     N14Iron: 27
 
@@ -528,7 +528,7 @@
   availableFaction:
   - NCR
   materials:
-    Steel: 11500
+    Steel: 115
 
     N14Iron: 25
 
@@ -546,7 +546,7 @@
   availableFaction:
   - NCR
   materials:
-    Steel: 10500
+    Steel: 105
 
     N14Iron: 20
 
@@ -564,7 +564,7 @@
   availableFaction:
   - NCR
   materials:
-    Steel: 10500
+    Steel: 105
 
     N14Iron: 22
 
@@ -580,7 +580,7 @@
   availableFaction:
   - NCR
   materials:
-    Steel: 12000
+    Steel: 120
 
     N14Iron: 37
 
@@ -603,7 +603,7 @@
   availableFaction:
   - NCR
   materials:
-    Cloth: 800
+    Cloth: 8
 
     Thread: 5
 
@@ -619,7 +619,7 @@
   availableFaction:
   - NCR
   materials:
-    Cloth: 800
+    Cloth: 8
 
     Thread: 5
 
@@ -635,7 +635,7 @@
   availableFaction:
   - NCR
   materials:
-    Cloth: 800
+    Cloth: 8
 
     Thread: 5
 
@@ -652,7 +652,7 @@
   availableFaction:
   - NCR
   materials:
-    Steel: 3000
+    Steel: 30
 
     Cloth: 15
 
@@ -670,7 +670,7 @@
   availableFaction:
   - NCR
   materials:
-    Steel: 3000
+    Steel: 30
 
     Cloth: 15
 
@@ -688,7 +688,7 @@
   availableFaction:
   - NCR
   materials:
-    Cloth: 1700
+    Cloth: 17
 
     Thread: 12
 
@@ -704,7 +704,7 @@
   availableFaction:
   - NCR
   materials:
-    Cloth: 1700
+    Cloth: 17
 
     Thread: 12
 
@@ -720,7 +720,7 @@
   availableFaction:
   - NCR
   materials:
-    Cloth: 1700
+    Cloth: 17
 
     Thread: 12
 
@@ -736,7 +736,7 @@
   availableFaction:
   - NCR
   materials:
-    Cloth: 1700
+    Cloth: 17
 
     Thread: 17
 
@@ -755,7 +755,7 @@
   availableFaction:
   - NCR
   materials:
-    Steel: 6000
+    Steel: 60
 
     Cloth: 22
 
@@ -774,7 +774,7 @@
   - NCR
   - Rangers
   materials:
-    Leather: 3000
+    Leather: 30
 
     Cloth: 30
 
@@ -793,7 +793,7 @@
   - NCR
   - Rangers
   materials:
-    Leather: 3000
+    Leather: 30
 
     Cloth: 30
 
@@ -812,7 +812,7 @@
   - NCR
   - Rangers
   materials:
-    Leather: 2500
+    Leather: 25
 
     Cloth: 25
 
@@ -829,7 +829,7 @@
   availableFaction:
   - NCR
   materials:
-    Steel: 11500
+    Steel: 115
 
     Cloth: 32
 
@@ -849,7 +849,7 @@
   availableFaction:
   - NCR
   materials:
-    Steel: 12000
+    Steel: 120
 
     N14Iron: 45
 
@@ -870,7 +870,7 @@
   - NCR
   - Rangers
   materials:
-    Steel: 12000
+    Steel: 120
 
     Leather: 30
 
@@ -891,7 +891,7 @@
   - NCR
   - Rangers
   materials:
-    Steel: 12000
+    Steel: 120
 
     Leather: 37
 
@@ -913,7 +913,7 @@
   availableFaction:
   - NCR
   materials:
-    Steel: 12000
+    Steel: 120
 
     N14Iron: 45
 
@@ -938,7 +938,7 @@
   availableFaction:
   - NCR
   materials:
-    Lead: 1000
+    Lead: 10
 
     N14Brass: 5
 
@@ -954,7 +954,7 @@
   availableFaction:
   - NCR
   materials:
-    Lead: 1000
+    Lead: 10
 
     N14Brass: 5
 
@@ -970,7 +970,7 @@
   availableFaction:
   - NCR
   materials:
-    Lead: 1000
+    Lead: 10
 
     N14Brass: 5
 
@@ -986,7 +986,7 @@
   availableFaction:
   - NCR
   materials:
-    Steel: 1000
+    Steel: 10
 
     Lead: 5
 
@@ -1002,7 +1002,7 @@
   availableFaction:
   - NCR
   materials:
-    Steel: 1000
+    Steel: 10
 
     Lead: 5
 
@@ -1019,7 +1019,7 @@
   availableFaction:
   - NCR
   materials:
-    Lead: 2500
+    Lead: 25
 
     N14Brass: 15
 
@@ -1035,7 +1035,7 @@
   availableFaction:
   - NCR
   materials:
-    Lead: 2500
+    Lead: 25
 
     N14Brass: 15
 
@@ -1051,7 +1051,7 @@
   availableFaction:
   - NCR
   materials:
-    Lead: 2500
+    Lead: 25
 
     Plastic: 5
 
@@ -1067,7 +1067,7 @@
   availableFaction:
   - NCR
   materials:
-    Steel: 2500
+    Steel: 25
 
     Lead: 20
 
@@ -1083,7 +1083,7 @@
   availableFaction:
   - NCR
   materials:
-    Steel: 2500
+    Steel: 25
 
     Lead: 20
 
@@ -1099,7 +1099,7 @@
   availableFaction:
   - NCR
   materials:
-    Steel: 2500
+    Steel: 25
 
     Lead: 20
 
@@ -1116,7 +1116,7 @@
   availableFaction:
   - NCR
   materials:
-    Lead: 4500
+    Lead: 45
 
     N14Brass: 35
 
@@ -1132,7 +1132,7 @@
   availableFaction:
   - NCR
   materials:
-    Lead: 4500
+    Lead: 45
 
     N14Brass: 35
 
@@ -1148,7 +1148,7 @@
   availableFaction:
   - NCR
   materials:
-    Lead: 4500
+    Lead: 45
 
     N14Brass: 35
 
@@ -1164,7 +1164,7 @@
   availableFaction:
   - NCR
   materials:
-    Lead: 4500
+    Lead: 45
 
     N14Brass: 35
 
@@ -1180,7 +1180,7 @@
   availableFaction:
   - NCR
   materials:
-    Steel: 4000
+    Steel: 40
 
     Lead: 35
 
@@ -1196,7 +1196,7 @@
   availableFaction:
   - NCR
   materials:
-    Steel: 4000
+    Steel: 40
 
     Lead: 35
 
@@ -1212,7 +1212,7 @@
   availableFaction:
   - NCR
   materials:
-    Steel: 4500
+    Steel: 45
 
     Lead: 40
 
@@ -1229,7 +1229,7 @@
   availableFaction:
   - NCR
   materials:
-    Lead: 10200
+    Lead: 102
 
     N14Brass: 102
 
@@ -1247,7 +1247,7 @@
   availableFaction:
   - NCR
   materials:
-    Lead: 8500
+    Lead: 85
 
     N14Brass: 55
 
@@ -1263,7 +1263,7 @@
   availableFaction:
   - NCR
   materials:
-    Lead: 9000
+    Lead: 90
 
     N14Brass: 60
 
@@ -1279,7 +1279,7 @@
   availableFaction:
   - NCR
   materials:
-    Steel: 8000
+    Steel: 80
 
     Lead: 65
 
@@ -1295,7 +1295,7 @@
   availableFaction:
   - NCR
   materials:
-    Steel: 8500
+    Steel: 85
 
     Lead: 65
 
@@ -1311,7 +1311,7 @@
   availableFaction:
   - NCR
   materials:
-    Steel: 8000
+    Steel: 80
 
     Lead: 65
 
@@ -1332,7 +1332,7 @@
   availableFaction:
   - CaesarLegion
   materials:
-    N14Iron: 500
+    N14Iron: 5
 
     Leather: 2
 
@@ -1346,7 +1346,7 @@
   availableFaction:
   - CaesarLegion
   materials:
-    Wood: 1000
+    Wood: 10
 
     Leather: 2
 
@@ -1360,7 +1360,7 @@
   availableFaction:
   - CaesarLegion
   materials:
-    Scrap: 1000
+    Scrap: 10
 
     ScrapSteel: 5
 
@@ -1374,7 +1374,7 @@
   availableFaction:
   - CaesarLegion
   materials:
-    Wood: 1000
+    Wood: 10
 
     N14Iron: 2
 
@@ -1388,7 +1388,7 @@
   availableFaction:
   - CaesarLegion
   materials:
-    Wood: 1000
+    Wood: 10
 
     N14Iron: 2
 
@@ -1404,7 +1404,7 @@
   availableFaction:
   - CaesarLegion
   materials:
-    N14Iron: 500
+    N14Iron: 5
 
     Scrap: 10
 
@@ -1421,7 +1421,7 @@
   availableFaction:
   - CaesarLegion
   materials:
-    N14Iron: 1500
+    N14Iron: 15
 
     Leather: 7
 
@@ -1437,7 +1437,7 @@
   availableFaction:
   - CaesarLegion
   materials:
-    Steel: 2500
+    Steel: 25
 
     N14Iron: 7
 
@@ -1453,7 +1453,7 @@
   availableFaction:
   - CaesarLegion
   materials:
-    N14Iron: 1200
+    N14Iron: 12
 
     Wood: 15
 
@@ -1469,7 +1469,7 @@
   availableFaction:
   - CaesarLegion
   materials:
-    N14Iron: 1500
+    N14Iron: 15
 
     Leather: 7
 
@@ -1485,7 +1485,7 @@
   availableFaction:
   - CaesarLegion
   materials:
-    N14Iron: 1700
+    N14Iron: 17
 
     Steel: 20
 
@@ -1501,7 +1501,7 @@
   availableFaction:
   - CaesarLegion
   materials:
-    Steel: 3000
+    Steel: 30
 
     Wood: 20
 
@@ -1517,7 +1517,7 @@
   availableFaction:
   - CaesarLegion
   materials:
-    Scrap: 2500
+    Scrap: 25
 
     ScrapSteel: 15
 
@@ -1533,7 +1533,7 @@
   availableFaction:
   - CaesarLegion
   materials:
-    Wood: 2500
+    Wood: 25
 
     N14Iron: 10
 
@@ -1550,7 +1550,7 @@
   availableFaction:
   - CaesarLegion
   materials:
-    Steel: 6000
+    Steel: 60
 
     N14Iron: 15
 
@@ -1568,7 +1568,7 @@
   availableFaction:
   - CaesarLegion
   materials:
-    Steel: 5000
+    Steel: 50
 
     N14Iron: 17
 
@@ -1584,7 +1584,7 @@
   availableFaction:
   - CaesarLegion
   materials:
-    Steel: 6000
+    Steel: 60
 
     Wood: 25
 
@@ -1600,7 +1600,7 @@
   availableFaction:
   - CaesarLegion
   materials:
-    Wood: 5000
+    Wood: 50
 
     N14Iron: 15
 
@@ -1616,7 +1616,7 @@
   availableFaction:
   - CaesarLegion
   materials:
-    Steel: 4500
+    Steel: 45
 
     N14Iron: 20
 
@@ -1634,7 +1634,7 @@
   availableFaction:
   - CaesarLegion
   materials:
-    Steel: 5000
+    Steel: 50
 
     N14Iron: 17
 
@@ -1650,7 +1650,7 @@
   availableFaction:
   - CaesarLegion
   materials:
-    Steel: 6000
+    Steel: 60
 
     N14Iron: 17
 
@@ -1666,7 +1666,7 @@
   availableFaction:
   - CaesarLegion
   materials:
-    Wood: 4500
+    Wood: 45
 
     Leather: 5
 
@@ -1681,7 +1681,7 @@
   availableFaction:
   - CaesarLegion
   materials:
-    Steel: 12000
+    Steel: 120
 
     N14Iron: 30
 
@@ -1699,7 +1699,7 @@
   availableFaction:
   - CaesarLegion
   materials:
-    Wood: 9000
+    Wood: 90
 
     N14Iron: 35
 
@@ -1717,7 +1717,7 @@
   availableFaction:
   - CaesarLegion
   materials:
-    Steel: 10000
+    Steel: 100
 
     N14Iron: 30
 
@@ -1735,7 +1735,7 @@
   availableFaction:
   - CaesarLegion
   materials:
-    Steel: 10500
+    Steel: 105
 
     N14Iron: 27
 
@@ -1753,7 +1753,7 @@
   availableFaction:
   - CaesarLegion
   materials:
-    Steel: 9000
+    Steel: 90
 
     N14Iron: 35
 
@@ -1771,7 +1771,7 @@
   availableFaction:
   - CaesarLegion
   materials:
-    Steel: 12000
+    Steel: 120
 
     N14Iron: 37
 
@@ -1794,7 +1794,7 @@
   availableFaction:
   - CaesarLegion
   materials:
-    Leather: 500
+    Leather: 5
 
     Cloth: 5
 
@@ -1810,7 +1810,7 @@
   availableFaction:
   - CaesarLegion
   materials:
-    Leather: 700
+    Leather: 7
 
     Cloth: 5
 
@@ -1827,7 +1827,7 @@
   availableFaction:
   - CaesarLegion
   materials:
-    Leather: 1500
+    Leather: 15
 
     Cloth: 12
 
@@ -1845,7 +1845,7 @@
   availableFaction:
   - CaesarLegion
   materials:
-    Leather: 1700
+    Leather: 17
 
     Cloth: 12
 
@@ -1863,7 +1863,7 @@
   availableFaction:
   - CaesarLegion
   materials:
-    Leather: 1500
+    Leather: 15
 
     Cloth: 10
 
@@ -1880,7 +1880,7 @@
   availableFaction:
   - CaesarLegion
   materials:
-    Leather: 3000
+    Leather: 30
 
     Steel: 45
 
@@ -1900,7 +1900,7 @@
   availableFaction:
   - CaesarLegion
   materials:
-    Leather: 2500
+    Leather: 25
 
     Cloth: 22
 
@@ -1920,7 +1920,7 @@
   availableFaction:
   - CaesarLegion
   materials:
-    Steel: 5000
+    Steel: 50
 
     Leather: 20
 
@@ -1938,7 +1938,7 @@
   availableFaction:
   - CaesarLegion
   materials:
-    Leather: 2500
+    Leather: 25
 
     Cloth: 17
 
@@ -1957,7 +1957,7 @@
   availableFaction:
   - CaesarLegion
   materials:
-    Steel: 10000
+    Steel: 100
 
     Leather: 35
 
@@ -1977,7 +1977,7 @@
   availableFaction:
   - CaesarLegion
   materials:
-    Steel: 10500
+    Steel: 105
 
     Leather: 35
 
@@ -1999,7 +1999,7 @@
   availableFaction:
   - CaesarLegion
   materials:
-    Steel: 10500
+    Steel: 105
 
     Leather: 45
 
@@ -2024,7 +2024,7 @@
   availableFaction:
   - CaesarLegion
   materials:
-    Lead: 1000
+    Lead: 10
 
     N14Brass: 10
 
@@ -2040,7 +2040,7 @@
   availableFaction:
   - CaesarLegion
   materials:
-    Lead: 1000
+    Lead: 10
 
     Scrap: 5
 
@@ -2056,7 +2056,7 @@
   availableFaction:
   - CaesarLegion
   materials:
-    Lead: 1000
+    Lead: 10
 
     N14Brass: 5
 
@@ -2073,7 +2073,7 @@
   availableFaction:
   - CaesarLegion
   materials:
-    Lead: 2500
+    Lead: 25
 
     Scrap: 15
 
@@ -2089,7 +2089,7 @@
   availableFaction:
   - CaesarLegion
   materials:
-    Steel: 2000
+    Steel: 20
 
     Lead: 25
 
@@ -2105,7 +2105,7 @@
   availableFaction:
   - CaesarLegion
   materials:
-    Lead: 2000
+    Lead: 20
 
     Scrap: 10
 
@@ -2122,7 +2122,7 @@
   availableFaction:
   - CaesarLegion
   materials:
-    Lead: 4500
+    Lead: 45
 
     N14Brass: 35
 
@@ -2138,7 +2138,7 @@
   availableFaction:
   - CaesarLegion
   materials:
-    Lead: 4000
+    Lead: 40
 
     N14Brass: 35
 
@@ -2154,7 +2154,7 @@
   availableFaction:
   - CaesarLegion
   materials:
-    Steel: 4500
+    Steel: 45
 
     N14Gunpowder: 50
 
@@ -2171,7 +2171,7 @@
   availableFaction:
   - CaesarLegion
   materials:
-    Steel: 10000
+    Steel: 100
 
     N14Gunpowder: 80
 
@@ -2189,7 +2189,7 @@
   availableFaction:
   - CaesarLegion
   materials:
-    Lead: 10200
+    Lead: 102
 
     N14Brass: 102
 
@@ -2207,7 +2207,7 @@
   availableFaction:
   - CaesarLegion
   materials:
-    Steel: 8000
+    Steel: 80
 
     N14Gunpowder: 100
 
