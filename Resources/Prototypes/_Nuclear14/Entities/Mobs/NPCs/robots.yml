@@ -191,8 +191,8 @@
     angle: 0
     animation: WeaponArcPunch
     damage:
-      groups:
-        Brute: 5
+      types:
+        Slash: 30 #Misfits Tweak - assaultron claws should hit like a dedicated slashing melee threat
   # - type: GhostRole
     # prob: 1
     # makeSentient: true

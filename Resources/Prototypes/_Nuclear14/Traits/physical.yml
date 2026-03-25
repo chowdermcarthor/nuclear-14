@@ -540,6 +540,7 @@
 #        - N14BrotherBeep
 # #Misfits Add: Power Armor Training perk — required to equip any N14PowerArmor item.
 # Available to all characters so power armor access is controlled by trait choice rather than faction lock.
+- type: trait
   id: N14PowerArmorTraining
   category: Physical
   points: -3

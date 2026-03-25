@@ -311,6 +311,16 @@
   - type: MovementSpeedModifier
     baseWalkSpeed: 3.0
     baseSprintSpeed: 6.0
+  - type: MeleeWeapon
+    hidden: true
+    soundHit:
+      collection: N14AssaultronAttack
+    angle: 0
+    animation: WeaponArcPunch
+    range: 1.5
+    damage:
+      types:
+        Slash: 30 # #Misfits Tweak: player assaultrons should match the NPC claw damage profile
   - type: NpcFactionMember
     factions:
     - Wastelander
