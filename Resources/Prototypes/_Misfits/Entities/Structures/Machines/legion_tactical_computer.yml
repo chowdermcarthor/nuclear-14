@@ -13,7 +13,7 @@
 #    access: [["CaesarLegionCenturion"]]
 #  - type: ActivatableUIRequiresAccess
 #  - type: WastelandMap
-#    mapTexturePath: _Misfits/Maps/WendoverCF.png
+#    mapTexturePath: _Misfits/Maps/wendover_map.png
 #    mapTitle: Legion Tactical Map - Wendover
 #    worldBounds: "-517,-308,484,311"
 #    tacticalFeed: Legion

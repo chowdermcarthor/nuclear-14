@@ -295,7 +295,7 @@
         type: WastelandMapBoundUserInterface
   # #Misfits Change - Enclave tactical map HUD; action fires from helmet (HEAD slot), not suit
   - type: WastelandMap
-    mapTexturePath: _Misfits/Maps/WendoverCF.png
+    mapTexturePath: _Misfits/Maps/wendover_map.png
     mapTitle: Enclave Tactical HUD
     # #Misfits Fix - Match the corrected Wendover AABB so helmet-linked tactical markers align with the map art.
     worldBounds: "-517,-308,484,311"
@@ -436,7 +436,7 @@
       enum.WastelandMapUiKey.Key:
         type: WastelandMapBoundUserInterface
   - type: WastelandMap
-    mapTexturePath: _Misfits/Maps/WendoverCF.png
+    mapTexturePath: _Misfits/Maps/wendover_map.png
     mapTitle: Brotherhood Tactical HUD
     # #Misfits Fix - Match the corrected Wendover AABB so helmet-linked tactical markers align with the map art.
     worldBounds: "-517,-308,484,311"
@@ -493,7 +493,7 @@
       enum.WastelandMapUiKey.Key:
         type: WastelandMapBoundUserInterface
   - type: WastelandMap
-    mapTexturePath: _Misfits/Maps/WendoverCF.png
+    mapTexturePath: _Misfits/Maps/wendover_map.png
     mapTitle: Brotherhood Tactical HUD
     # #Misfits Fix - Match the corrected Wendover AABB so helmet-linked tactical markers align with the map art.
     worldBounds: "-517,-308,484,311"
@@ -545,7 +545,7 @@
       enum.WastelandMapUiKey.Key:
         type: WastelandMapBoundUserInterface
   - type: WastelandMap
-    mapTexturePath: _Misfits/Maps/WendoverCF.png
+    mapTexturePath: _Misfits/Maps/wendover_map.png
     mapTitle: Brotherhood Tactical HUD
     # #Misfits Fix - Match the corrected Wendover AABB so helmet-linked tactical markers align with the map art.
     worldBounds: "-517,-308,484,311"
@@ -673,7 +673,7 @@
       enum.WastelandMapUiKey.Key:
         type: WastelandMapBoundUserInterface
   - type: WastelandMap
-    mapTexturePath: _Misfits/Maps/WendoverCF.png
+    mapTexturePath: _Misfits/Maps/wendover_map.png
     mapTitle: Brotherhood Tactical HUD
     # #Misfits Fix - Match the corrected Wendover AABB so helmet-linked tactical markers align with the map art.
     worldBounds: "-517,-308,484,311"
@@ -736,7 +736,7 @@
       enum.WastelandMapUiKey.Key:
         type: WastelandMapBoundUserInterface
   - type: WastelandMap
-    mapTexturePath: _Misfits/Maps/WendoverCF.png
+    mapTexturePath: _Misfits/Maps/wendover_map.png
     mapTitle: Brotherhood Tactical HUD
     # #Misfits Fix - Match the corrected Wendover AABB so helmet-linked tactical markers align with the map art.
     worldBounds: "-517,-308,484,311"

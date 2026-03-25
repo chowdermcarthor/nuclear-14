@@ -539,16 +539,10 @@
 #      languagesUnderstood:
 #        - N14BrotherBeep
 # #Misfits Add: Power Armor Training perk — required to equip any N14PowerArmor item.
-# Restricted to Brotherhood of Steel department; they are the primary power armor users in-world.
-# Non-BoS access can be added via additional CharacterDepartmentRequirements if needed later.
-- type: trait
+# Available to all characters so power armor access is controlled by trait choice rather than faction lock.
   id: N14PowerArmorTraining
   category: Physical
   points: -3
-  requirements:
-    - !type:CharacterDepartmentRequirement
-      departments:
-        - BrotherhoodOfSteel
   functions:
     - !type:TraitAddComponent
       components:

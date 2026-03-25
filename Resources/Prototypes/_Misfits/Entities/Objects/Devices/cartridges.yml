@@ -26,7 +26,7 @@
       sprite: _Nuclear14/Objects/Misc/pipboy.rsi
       state: pda
   - type: WastelandMap
-    mapTexturePath: _Misfits/Maps/WendoverCF.png
+    mapTexturePath: _Misfits/Maps/wendover_map.png
     mapTitle: Tactical Map - Wendover
     # #Misfits Fix - Match the corrected Wendover AABB so Pip-Boy map markers stay aligned with the shared image.
     worldBounds: "-517,-308,484,311"

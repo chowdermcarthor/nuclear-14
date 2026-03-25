@@ -16,7 +16,7 @@
     layers:
     - state: keycard_vault
   - type: WastelandMap
-    mapTexturePath: _Misfits/Maps/WendoverCF.png
+    mapTexturePath: _Misfits/Maps/wendover_map.png
     mapTitle: General Atomics Navigation
     # #Misfits Fix - Match the corrected Wendover AABB so robot map markers line up with the rendered image.
     worldBounds: "-517,-308,484,311"
@@ -37,7 +37,7 @@
   categories: [ HideSpawnMenu ]
   components:
   - type: WastelandMap
-    mapTexturePath: _Misfits/Maps/WendoverCF.png
+    mapTexturePath: _Misfits/Maps/wendover_map.png
     mapTitle: RobCo Industries Navigation
     # #Misfits Fix - Match the corrected Wendover AABB so robot map markers line up with the rendered image.
     worldBounds: "-517,-308,484,311"

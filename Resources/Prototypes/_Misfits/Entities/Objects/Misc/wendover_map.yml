@@ -9,7 +9,7 @@
   description: A weathered paper map of the Wendover area. Useful for navigating the wasteland.
   components:
   - type: WastelandMap
-    mapTexturePath: _Misfits/Maps/WendoverCF.png
+    mapTexturePath: _Misfits/Maps/wendover_map.png
     mapTitle: Wendover Area Map
     # World tile bounds of the rendered image (left, bottom, right, top).
     # #Misfits Fix - Restored the wider Wendover AABB so tactical markers line up with the NCR-side map art.

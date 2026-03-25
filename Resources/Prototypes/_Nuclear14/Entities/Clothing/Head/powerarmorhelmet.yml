@@ -76,7 +76,7 @@
   description: An old helmet used with T-45 Power Armor suits. The Brotherhood of Steel keeps a tactical map feed active inside the visor.
   components:
   - type: WastelandMap
-    mapTexturePath: _Misfits/Maps/WendoverCF.png
+    mapTexturePath: _Misfits/Maps/wendover_map.png
     mapTitle: Brotherhood Tactical HUD
     # #Misfits Fix - Match the corrected Wendover AABB so helmet-linked tactical markers align with the map art.
     worldBounds: "-517,-308,484,311"
@@ -234,7 +234,7 @@
   description: A T-60 helmet carrying Brotherhood of Steel livery. The tactical map feed is active on the visor.
   components:
   - type: WastelandMap
-    mapTexturePath: _Misfits/Maps/WendoverCF.png
+    mapTexturePath: _Misfits/Maps/wendover_map.png
     mapTitle: Brotherhood Tactical HUD
     # #Misfits Fix - Match the corrected Wendover AABB so helmet-linked tactical markers align with the map art.
     worldBounds: "-517,-308,484,311"
@@ -344,7 +344,7 @@
     damageCoefficient: 0.85
   # #Misfits Change - Enclave tactical HUD
   - type: WastelandMap
-    mapTexturePath: _Misfits/Maps/WendoverCF.png
+    mapTexturePath: _Misfits/Maps/wendover_map.png
     mapTitle: Enclave Tactical HUD
     # #Misfits Fix - Match the corrected Wendover AABB so helmet-linked tactical markers align with the map art.
     worldBounds: "-517,-308,484,311"
@@ -387,7 +387,7 @@
     damageCoefficient: 0.85
   # #Misfits Change - Enclave tactical HUD
   - type: WastelandMap
-    mapTexturePath: _Misfits/Maps/WendoverCF.png
+    mapTexturePath: _Misfits/Maps/wendover_map.png
     mapTitle: Enclave Tactical HUD
     # #Misfits Fix - Match the corrected Wendover AABB so helmet-linked tactical markers align with the map art.
     worldBounds: "-517,-308,484,311"
@@ -462,7 +462,7 @@
   - type: ExplosionResistance
     damageCoefficient: 0.85
   - type: WastelandMap
-    mapTexturePath: _Misfits/Maps/WendoverCF.png
+    mapTexturePath: _Misfits/Maps/wendover_map.png
     mapTitle: Brotherhood Tactical HUD
     # #Misfits Fix - Match the corrected Wendover AABB so helmet-linked tactical markers align with the map art.
     worldBounds: "-517,-308,484,311"
@@ -570,7 +570,7 @@
   - type: ExplosionResistance
     damageCoefficient: 0.85
   - type: WastelandMap
-    mapTexturePath: _Misfits/Maps/WendoverCF.png
+    mapTexturePath: _Misfits/Maps/wendover_map.png
     mapTitle: Brotherhood Tactical HUD
     # #Misfits Fix - Match the corrected Wendover AABB so helmet-linked tactical markers align with the map art.
     worldBounds: "-517,-308,484,311"
@@ -615,7 +615,7 @@
     pulseTime: 2
     toggleAction: PulseThermalVision
   - type: WastelandMap
-    mapTexturePath: _Misfits/Maps/WendoverCF.png
+    mapTexturePath: _Misfits/Maps/wendover_map.png
     mapTitle: Brotherhood Tactical HUD
     # #Misfits Fix - Match the corrected Wendover AABB so helmet-linked tactical markers align with the map art.
     worldBounds: "-517,-308,484,311"
@@ -645,7 +645,7 @@
       shader: unshaded
       map: [ "light" ]
   - type: WastelandMap
-    mapTexturePath: _Misfits/Maps/WendoverCF.png
+    mapTexturePath: _Misfits/Maps/wendover_map.png
     mapTitle: Brotherhood Tactical HUD
     # #Misfits Fix - Match the corrected Wendover AABB so helmet-linked tactical markers align with the map art.
     worldBounds: "-517,-308,484,311"
@@ -679,7 +679,7 @@
     pulseTime: 2
     toggleAction: PulseThermalVision
   - type: WastelandMap
-    mapTexturePath: _Misfits/Maps/WendoverCF.png
+    mapTexturePath: _Misfits/Maps/wendover_map.png
     mapTitle: Brotherhood Tactical HUD
     # #Misfits Fix - Match the corrected Wendover AABB so helmet-linked tactical markers align with the map art.
     worldBounds: "-517,-308,484,311"
