@@ -11,7 +11,7 @@
   - type: DamageOtherOnHit
     damage:
       types:
-        Piercing: 35
+        Piercing: 40
   - type: MeleeWeapon
     damage:
       types:

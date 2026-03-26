@@ -12,13 +12,13 @@
     attackRate: 1.35
     damage:
       types:
-        Blunt: 5
+        Blunt: 15
   - type: Wieldable
   - type: IncreaseDamageOnWield
     damage:
       types:
-        Blunt: 30
-        Structural: 25
+        Blunt: 45
+        Structural: 45
   - type: Item
     size: Large
   - type: Clothing
@@ -47,13 +47,13 @@
   - type: MeleeWeapon
     damage:
       types:
-        Blunt: 5
+        Blunt: 15
   - type: Wieldable
   - type: IncreaseDamageOnWield
     damage:
       types:
-        Blunt: 35
-        Structural: 30
+        Blunt: 55
+        Structural: 35
   - type: MeleeThrowOnHit
     speed: 10
     lifetime: 0.025
@@ -80,13 +80,13 @@
   - type: MeleeWeapon
     damage:
       types:
-        Blunt: 5
+        Blunt: 25
   - type: Wieldable
   - type: IncreaseDamageOnWield
     damage:
       types:
-        Blunt: 30
-        Structural: 10
+        Blunt: 40
+        Structural: 25
   - type: Clothing
     sprite: _Nuclear14/Objects/Weapons/Melee/tribalbigclub.rsi
     quickEquip: false
@@ -108,15 +108,16 @@
   - type: MeleeWeapon
     damage:
       types:
-        Blunt: 5
+        Blunt: 10
+        Slash: 10
   - type: Wieldable
   - type: IncreaseDamageOnWield
     damage:
       types:
-        Blunt: 25
-        Piercing: 5
-        Slash: 10
-        Structural: 10
+        Blunt: 30
+        Piercing: 10
+        Slash: 15
+        Structural: 30
   - type: Clothing
     sprite: _Nuclear14/Objects/Weapons/Melee/tribaljaggedbigclub.rsi
     quickEquip: false
@@ -139,8 +140,8 @@
     attackRate: 1
     damage:
       types:
-        Blunt: 14
-        Piercing: 4
+        Blunt: 20
+        Piercing: 10
   - type: Item
     size: Normal
   - type: Clothing

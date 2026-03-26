@@ -17,11 +17,11 @@
   - type: DamageOtherOnHit
     damage:
       types:
-        Slash: 35
+        Slash: 48
   - type: MeleeWeapon
     damage:
       types:
-        Slash: 23
+        Slash: 34
     soundHit:
         path: /Audio/Weapons/bladeslice.ogg
   - type: Item
@@ -102,7 +102,7 @@
       collection: MetalThud
     activatedDamage:
         types:
-            Heat: 40
+            Heat: 55
   # Misfits Fix - WelderComponent restores fuel quantity display when held
   - type: Welder
   - type: RefillableSolution
@@ -207,7 +207,7 @@
       collection: MetalThud
     activatedDamage:
         types:
-            Heat: 35
+            Heat: 50
   # Misfits Fix - WelderComponent restores fuel quantity display when held
   - type: Welder
   - type: RefillableSolution

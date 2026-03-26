@@ -11,14 +11,14 @@
     wideAnimationRotation: -135
     damage:
       types:
-        Blunt: 15
+        Blunt: 20
     soundHit:
       collection: MetalThud
   - type: Wieldable
   - type: IncreaseDamageOnWield
     damage:
       types:
-        Blunt: 10
+        Blunt: 15
   - type: Item
     size: Large
   - type: Tool
@@ -72,14 +72,14 @@
     attackRate: 0.7
     damage:
       types:
-        Blunt: 5
+        Blunt: 10
     angle: 0
     animation: WeaponArcThrust
   - type: Wieldable
   - type: IncreaseDamageOnWield
     damage:
       types:
-        Blunt: 10
+        Blunt: 15
   - type: Item
     size: Large
   - type: Clothing

@@ -36,7 +36,7 @@
     wideAnimationRotation: -135
     damage:
       types:
-        Blunt: 24
+        Blunt: 38
   - type: Sprite
     sprite: _Nuclear14/Objects/Weapons/Melee/tribalclub.rsi
     state: icon
@@ -61,7 +61,7 @@
     wideAnimationRotation: -135
     damage:
       types:
-        Blunt: 22
+        Blunt: 42
   - type: Sprite
     sprite: _Nuclear14/Objects/Weapons/Melee/pipe.rsi
     state: icon
@@ -109,7 +109,7 @@
     wideAnimationRotation: -135
     damage:
       types:
-        Blunt: 16
+        Blunt: 26
         Piercing: 4
   - type: Sprite
     sprite: _Nuclear14/Objects/Weapons/Melee/trenchclub.rsi

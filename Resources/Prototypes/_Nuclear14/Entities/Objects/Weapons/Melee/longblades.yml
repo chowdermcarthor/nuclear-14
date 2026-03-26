@@ -10,8 +10,8 @@
   - type: DamageOtherOnHit
     damage:
       types:
-        Slash: 14
-        Piercing: 6
+        Slash: 28
+        Piercing: 10
     soundHit:
       collection: N14BladeMediumSwing
   - type: Clothing
@@ -47,8 +47,8 @@
   - type: DamageOtherOnHit
     damage:
       types:
-        Slash: 15
-        Piercing: 6
+        Slash: 30
+        Piercing: 10
   - type: MeleeWeapon
     damage:
       types:
@@ -84,7 +84,7 @@
   - type: MeleeWeapon
     damage:
       types:
-        Slash: 12
+        Slash: 32
         Piercing: 4
     soundHit:
         path: /Audio/Weapons/bladeslice.ogg
@@ -114,7 +114,7 @@
   - type: DamageOtherOnHit
     damage:
       types:
-        Slash: 18
+        Slash: 20
         Piercing: 9
   - type: Sharp
   - type: MeleeWeapon
@@ -176,13 +176,13 @@
   - type: DamageOtherOnHit
     damage:
       types:
-        Slash: 15
-        Piercing: 6
+        Slash: 32
+        Piercing: 18
   - type: MeleeWeapon
     damage:
       types:
-        Slash: 20
-        Piercing: 8
+        Slash: 40
+        Piercing: 10
     soundHit:
         path: /Audio/Weapons/bladeslice.ogg
   - type: Item
@@ -207,13 +207,13 @@
   - type: DamageOtherOnHit
     damage:
       types:
-        Slash: 14
-        Piercing: 6
+        Slash: 40
+        Piercing: 8
   - type: MeleeWeapon
     damage:
       types:
-        Slash: 14
-        Piercing: 6
+        Slash: 38
+        Piercing: 9
     soundHit:
         path: /Audio/Weapons/bladeslice.ogg
   - type: Item
@@ -233,8 +233,8 @@
   - type: MeleeWeapon
     damage:
       types:
-        Slash: 18
-        Piercing: 7
+        Slash: 32
+        Piercing: 8
     soundHit:
         path: /Audio/Weapons/bladeslice.ogg
   - type: Item
@@ -260,8 +260,8 @@
   - type: MeleeWeapon
     damage:
       types:
-        Piercing: 13
-        Slash: 8
+        Piercing: 24
+        Slash: 18
     soundHit:
         path: /Audio/Weapons/bladeslice.ogg
   - type: Item
