@@ -64,6 +64,12 @@ public sealed class FaxSystem : EntitySystem
     [ValidatePrototypeId<EntityPrototype>]
     private const string OfficePaperPrototypeId = "PaperOffice";
 
+    private const int LeadershipInboxLimit = 100;
+    private readonly List<AdminFaxInboxEntry> _leadershipInbox = new();
+
+    // #Misfits Add - Raised whenever a LEADERSHIP-directed fax is recorded for admin inbox viewing.
+    public event Action? LeadershipInboxUpdated;
+
     public override void Initialize()
     {
         base.Initialize();
@@ -523,7 +529,23 @@ public sealed class FaxSystem : EntitySystem
         // #Misfits Add — If destination is the virtual COMMAND address, notify admins instead of sending via device network
         if (component.DestinationFaxAddress == FaxConstants.FaxCommandAddress)
         {
-            NotifyAdminsCommand(component.FaxName, nameMod?.BaseName ?? metadata.EntityName, paper.Content, args.Actor);
+            var paperTitle = nameMod?.BaseName ?? metadata.EntityName;
+            NotifyAdminsCommand(component.FaxName, paperTitle, paper.Content, args.Actor);
+
+            // #Misfits Add - Keep a bounded LEADERSHIP inbox for the admin fax manager.
+            var senderName = TryComp<MetaDataComponent>(args.Actor, out var actorMeta)
+                ? actorMeta.EntityName
+                : ToPrettyString(args.Actor);
+            RecordLeadershipFax(component.FaxName,
+                FaxConstants.FaxCommandName,
+                senderName,
+                paperTitle,
+                paper.Content);
+
+            // #Misfits Add - Also deliver command faxes to mapped LEADERSHIP fax machines as physical paper.
+            var printout = new FaxPrintout(paper.Content, paperTitle, labelComponent?.CurrentLabel,
+                metadata.EntityPrototype?.ID ?? OfficePaperPrototypeId, paper.StampState, paper.StampedBy);
+            DeliverToLeadershipFaxes(uid, component.FaxName, printout);
 
             _adminLogger.Add(LogType.Action, LogImpact.Low,
                 $"{ToPrettyString(args.Actor):actor} " +
@@ -561,6 +583,29 @@ public sealed class FaxSystem : EntitySystem
         }
 
         _deviceNetworkSystem.QueuePacket(uid, component.DestinationFaxAddress, payload);
+
+        // #Misfits Add - Mirror all fax sends to mapped LEADERSHIP machine(s) by name, regardless of dynamic net IDs.
+        // Skip if this fax was already sent directly to a LEADERSHIP target to prevent duplicate printouts.
+        if (!string.Equals(faxName, FaxConstants.FaxCommandName, StringComparison.OrdinalIgnoreCase))
+        {
+            var mirroredPrintout = new FaxPrintout(paper.Content,
+                nameMod?.BaseName ?? metadata.EntityName,
+                labelComponent?.CurrentLabel,
+                metadata.EntityPrototype?.ID ?? OfficePaperPrototypeId,
+                paper.StampState,
+                paper.StampedBy);
+            DeliverToLeadershipFaxes(uid, component.FaxName, mirroredPrintout);
+        }
+
+        // #Misfits Add - Keep the admin faxui inbox in sync for every sent fax.
+        var normalSenderName = TryComp<MetaDataComponent>(args.Actor, out var normalActorMeta)
+            ? normalActorMeta.EntityName
+            : ToPrettyString(args.Actor);
+        RecordLeadershipFax(component.FaxName,
+            faxName,
+            normalSenderName,
+            nameMod?.BaseName ?? metadata.EntityName,
+            paper.Content);
 
         _adminLogger.Add(LogType.Action, LogImpact.Low,
             $"{ToPrettyString(args.Actor):actor} " +
@@ -640,6 +685,42 @@ public sealed class FaxSystem : EntitySystem
     {
         _chat.SendAdminAnnouncement(Loc.GetString("fax-machine-chat-notify", ("fax", faxName)));
         _audioSystem.PlayGlobal("/Audio/Machines/high_tech_confirm.ogg", Filter.Empty().AddPlayers(_adminManager.ActiveAdmins), false, AudioParams.Default.WithVolume(-8f));
+    }
+
+    // #Misfits Add - Expose a snapshot of the LEADERSHIP inbox to Admin Fax EUI state.
+    public List<AdminFaxInboxEntry> GetLeadershipInboxSnapshot()
+    {
+        return new List<AdminFaxInboxEntry>(_leadershipInbox);
+    }
+
+    // #Misfits Add - Persist incoming command faxes for later inspection in faxui.
+    private void RecordLeadershipFax(string sourceFaxName, string destinationFaxName, string senderName, string paperTitle, string content)
+    {
+        _leadershipInbox.Add(new AdminFaxInboxEntry(sourceFaxName, destinationFaxName, senderName, paperTitle, content));
+
+        if (_leadershipInbox.Count > LeadershipInboxLimit)
+            _leadershipInbox.RemoveAt(0);
+
+        LeadershipInboxUpdated?.Invoke();
+    }
+
+    // #Misfits Add - Route command faxes to every mapped LEADERSHIP fax machine for paper trail convenience.
+    private void DeliverToLeadershipFaxes(EntityUid sourceFaxUid, string sourceFaxName, FaxPrintout printout)
+    {
+        var faxes = EntityQueryEnumerator<FaxMachineComponent>();
+        while (faxes.MoveNext(out var targetUid, out var targetFax))
+        {
+            if (targetUid == sourceFaxUid)
+                continue;
+
+            if (!string.Equals(targetFax.FaxName, FaxConstants.FaxCommandName, StringComparison.OrdinalIgnoreCase))
+                continue;
+
+            Receive(targetUid, printout, null, targetFax);
+
+            _adminLogger.Add(LogType.Action, LogImpact.Low,
+                $"Routed COMMAND fax from \"{sourceFaxName}\" to LEADERSHIP machine \"{targetFax.FaxName}\" {ToPrettyString(targetUid):tool}.");
+        }
     }
 
     /// <summary>

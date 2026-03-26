@@ -624,14 +624,17 @@
           Quantity: 1
         - ReagentId: N14RadParticleFood
           Quantity: 1
-  # #Misfits Add: Allow clicking produce onto the compost box to pour its food solution in,
-  # which triggers the CompostingOrganic reaction (Nutriment → N14CompostRotted).
-  - type: DrainableSolution
-    solution: food
-  - type: SolutionTransfer
-    canChangeTransferAmount: false
-  - type: DeleteOnSolutionEmpty # #Misfits Add: Consume item when fully drained into compost box.
-    solution: food
+  # #Misfits Change: DrainableSolution + SolutionTransfer + DeleteOnSolutionEmpty removed.
+  # FoodProduceBase inherits RefillableSolution(food) from FoodInjectableBase, which made
+  # produce valid solution-transfer targets. Combined with DrainableSolution+SolutionTransfer,
+  # clicking produce A on produce B would pour A's food solution INTO B (Branch 2 of
+  # SolutionTransferSystem), inflate B's volume, then DeleteOnSolutionEmpty would delete A —
+  # exactly the "units merging into produce" behaviour that broke stacking. These components
+  # also prevented proper count-based stacking from working. Stack component (count:1 re-add
+  # via #Misfits Fix below) is the intended stacking mechanism.
+  # NOTE: Produce can no longer be clicked onto the compost box to pour its solution.
+  #       If that feature is needed, it requires a separate implementation that does not
+  #       route through SolutionTransfer on the produce itself.
   - type: Sprite
     netsync: false
     sprite: _Nuclear14/Objects/Consumable/Flora/wastelandflora.rsi

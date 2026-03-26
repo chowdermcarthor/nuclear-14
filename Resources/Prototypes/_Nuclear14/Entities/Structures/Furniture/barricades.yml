@@ -4,6 +4,9 @@
   name: sandbags
   description: A sandbag fortification.
   components:
+  - type: Construction # #Misfits Add: constructable via (G) menu using sand + thread
+    graph: N14SandbagBarricade
+    node: sandbag
   - type: Sprite
     sprite: _Nuclear14/Structures/Furniture/barricades.rsi
     netsync: false

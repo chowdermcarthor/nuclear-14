@@ -16,4 +16,12 @@ public sealed partial class CCVars
     /// </summary>
     public static readonly CVarDef<int> ZoomLevels =
         CVarDef.Create("fov.zoom_levels", 7, CVar.SERVER | CVar.REPLICATED);
+
+    // #Misfits Add — Allows the server to lock out player-controlled zoom to prevent meta abuse via extended view range.
+    /// <summary>
+    ///     If true, players can use the ZoomIn/ZoomOut/ResetZoom keybinds to adjust their viewport.
+    ///     Disabled by default to prevent meta-gaming (e.g. zooming out to spot mobs beyond normal sight range).
+    /// </summary>
+    public static readonly CVarDef<bool> AllowPlayerZoom =
+        CVarDef.Create("fov.allow_player_zoom", false, CVar.SERVER | CVar.REPLICATED);
 }

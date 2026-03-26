@@ -98,6 +98,10 @@ namespace Content.Server.Administration.Systems
         private int _nextTicketId = 1;
         private readonly Dictionary<NetUserId, HelpTicketInfo> _tickets = new();
 
+        // #Misfits Add — per-channel message history for the current round so late-joining
+        // admins can see the full conversation when they open the bwoink panel.
+        private readonly Dictionary<NetUserId, List<BwoinkTextMessage>> _messageHistory = new();
+
         public override void Initialize()
         {
             base.Initialize();
@@ -129,6 +133,8 @@ namespace Content.Server.Administration.Systems
                 // #Misfits Add — reset tickets on round restart
                 _tickets.Clear();
                 _nextTicketId = 1;
+                // #Misfits Add — clear message history so stale conversations don't leak across rounds
+                _messageHistory.Clear();
             });
             // #Misfits Add — ghost-follow from the AHelp/Bwoink panel
             SubscribeNetworkEvent<BwoinkAdminGhostFollowMessage>(OnBwoinkAdminGhostFollow);
@@ -259,6 +265,16 @@ namespace Content.Server.Administration.Systems
                 var list = _tickets.Values.ToList();
                 if (list.Count > 0)
                     RaiseNetworkEvent(new HelpTicketListMessage(list), e.Session.Channel);
+
+                // #Misfits Add — replay all stored bwoink message history so the late-joining
+                // admin can read the full conversation threads in the bwoink panel.
+                foreach (var (_, messages) in _messageHistory)
+                {
+                    foreach (var historyMsg in messages)
+                    {
+                        RaiseNetworkEvent(historyMsg, e.Session.Channel);
+                    }
+                }
             }
         }
 
@@ -311,6 +327,14 @@ namespace Content.Server.Administration.Systems
                 sentAt: DateTime.Now,
                 playSound: false
             );
+
+            // #Misfits Add — store status messages in history for late-joining admin replay
+            if (!_messageHistory.TryGetValue(session.UserId, out var statusHistory))
+            {
+                statusHistory = new List<BwoinkTextMessage>();
+                _messageHistory[session.UserId] = statusHistory;
+            }
+            statusHistory.Add(bwoinkMessage);
 
             var admins = GetTargetAdmins();
             foreach (var admin in admins)
@@ -487,6 +511,14 @@ namespace Content.Server.Administration.Systems
                 sentAt: DateTime.Now,
                 playSound: false
             );
+
+            // #Misfits Add — store system messages in history for late-joining admin replay
+            if (!_messageHistory.TryGetValue(playerId, out var sysHistory))
+            {
+                sysHistory = new List<BwoinkTextMessage>();
+                _messageHistory[playerId] = sysHistory;
+            }
+            sysHistory.Add(sysMsg);
 
             foreach (var admin in GetTargetAdmins())
             {
@@ -1143,6 +1175,16 @@ namespace Content.Server.Administration.Systems
             // If it's not an admin / admin chooses to keep the sound then play it.
             var playSound = bwoinkParams.SenderAdmin == null || bwoinkParams.Message.PlaySound;
             var msg = new BwoinkTextMessage(bwoinkParams.Message.UserId, bwoinkParams.SenderId, bwoinkText, playSound: playSound);
+
+            // #Misfits Add — store message in per-channel history for late-joining admin replay.
+            // Sound is suppressed on replayed messages so admins don't hear a burst of bwoinks.
+            var historyMsg = new BwoinkTextMessage(msg.UserId, msg.TrueSender, msg.Text, msg.SentAt, playSound: false);
+            if (!_messageHistory.TryGetValue(msg.UserId, out var history))
+            {
+                history = new List<BwoinkTextMessage>();
+                _messageHistory[msg.UserId] = history;
+            }
+            history.Add(historyMsg);
 
             // #Misfits Add — persist each AHELP message for long-term moderation audits.
             var senderIsStaff = bwoinkParams.SenderAdmin?.HasFlag(AdminFlags.Adminhelp) ?? false;

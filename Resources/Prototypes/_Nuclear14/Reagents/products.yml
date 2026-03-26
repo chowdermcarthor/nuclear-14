@@ -5,6 +5,13 @@
   desc: reagent-desc-abraxocleaner
   physicalDesc: reagent-physical-desc-abrasive
   color: "#e0dbd1"
+  reactiveEffects:
+    SurgicalInstrument:
+      methods: [ Touch ]
+      effects:
+      - !type:ChemSterilizeSurgical
+        dirtAmount: 8
+        dnaAmount: 1
   metabolisms:
     Poison: # TODO: Add negative effects
       effects:
@@ -73,6 +80,13 @@
   desc: reagent-desc-turpentine
   physicalDesc: reagent-physical-desc-strong-smelling
   color: "#98cbf5"
+  reactiveEffects:
+    SurgicalInstrument:
+      methods: [ Touch ]
+      effects:
+      - !type:ChemSterilizeSurgical
+        dirtAmount: 14
+        dnaAmount: 2
   metabolisms:
     Poison:
       effects: # TODO: Add negative effects

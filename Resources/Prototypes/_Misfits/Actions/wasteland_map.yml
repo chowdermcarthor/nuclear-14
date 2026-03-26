@@ -10,3 +10,18 @@
       state: pda
     event: !type:OpenUiActionEvent
       key: enum.WastelandMapUiKey.Key
+
+# #Misfits Add — ghost observer variant: skips interaction checks so spectators can view the map
+- type: entity
+  id: ActionGhostViewWastelandMap
+  name: action-name-ghost-view-wasteland-map
+  description: action-desc-ghost-view-wasteland-map
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: InstantAction
+    icon:
+      sprite: _Nuclear14/Objects/Misc/clutter.rsi
+      state: map
+    checkCanInteract: false
+    event: !type:OpenUiActionEvent
+      key: enum.WastelandMapUiKey.Key

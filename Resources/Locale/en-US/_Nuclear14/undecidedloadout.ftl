@@ -84,27 +84,26 @@ undecided-loadout-category-engi-breach-description =
 
 # NCRA Medic Kits
 
-undecided-loadout-category-med-surg-name = Medic Surgeon Kit
+undecided-loadout-category-med-surg-name = Medic Advanced Field Kit
 undecided-loadout-category-med-surg-description =
     Includes 1 lab coat, 1 filled medical belt, 1 pair of nitrile gloves,
-    1 medic beret, 1 scalpel, 1 hemostat, 1 retractor, 1 cautery,
-    1 electric saw, 1 bonesetter, 1 bottle of bone gel, 1 9mm SMG,
-    3 9mm SMG magazines, 1 9mm pistol, 2 9mm pistol magazines,
-    1 super stimpak, 1 bruise pack, 1 ointment pack, 1 blood pack,
-    1 antidote bottle, 1 C ration MRE, 1 stimpak, 1 RadAway blood bag,
-    2 gauze packs, and 1 flare.
+    1 medic beret, 1 compact defibrillator, 1 9mm SMG, 3 9mm SMG magazines,
+    1 9mm pistol, 2 9mm pistol magazines, 1 super stimpak, 1 trauma pack,
+    1 ointment pack, 1 Med-X injector, 1 antidote bottle, 1 C ration MRE,
+    1 stimpak, 1 RadAway blood bag, 2 gauze packs, and 1 flare.
 
 undecided-loadout-category-med-doc-name = Medic Field Kit
 undecided-loadout-category-med-doc-description =
     Includes 1 filled medical belt, 1 pair of nitrile gloves, 1 medic beret,
-    1 9mm SMG, 3 9mm SMG magazines, 1 9mm pistol, 2 9mm pistol magazines,
-    1 bruise pack, 1 ointment pack, 1 blood pack, 1 antidote bottle,
+    2 smelling salts, 1 9mm SMG, 3 9mm SMG magazines, 1 9mm pistol,
+    2 9mm pistol magazines, 1 trauma pack, 1 ointment pack, 1 antidote bottle,
     1 C ration MRE, 2 stimpaks, 1 RadAway blood bag, 2 gauze packs, and 1 flare.
 
-undecided-loadout-category-med-combat-name = Medic Combat Kit
+undecided-loadout-category-med-combat-name = NCR Combat Medic Kit
 undecided-loadout-category-med-combat-description =
-    Includes 1 filled medical belt, 1 medic metal helmet, 1 pump-action shotgun,
-    1 box of 12 gauge shells, 1 9mm pistol, 2 9mm pistol magazines,
+    Includes 1 filled medical belt, 1 pair of nitrile gloves, 1 medic metal helmet,
+    1 compact defibrillator, 1 9mm SMG with 3 magazines, 1 9mm pistol with 2 magazines,
+    1 super stimpak, 1 trauma pack, 1 ointment pack, 1 Med-X injector,
     1 antidote syringe, 1 C ration MRE, 2 stimpaks,
     1 RadAway blood bag, 2 gauze packs, and 1 flare.
 

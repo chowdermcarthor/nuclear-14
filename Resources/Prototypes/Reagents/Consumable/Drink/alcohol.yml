@@ -157,6 +157,13 @@
   physicalDesc: reagent-physical-desc-strong-smelling
   flavor: alcohol
   color: "#b05b3c"
+  reactiveEffects:
+    SurgicalInstrument:
+      methods: [ Touch ]
+      effects:
+      - !type:ChemSterilizeSurgical
+        dirtAmount: 10
+        dnaAmount: 1
   boilingPoint: 78.2
   meltingPoint: -114.1
   metabolisms:

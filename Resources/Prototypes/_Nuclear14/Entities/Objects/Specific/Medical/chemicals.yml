@@ -908,6 +908,10 @@
   name: ethanol bottle
   description: A small brown glass bottle containing ethanol. Great for disinfecting wounds.
   components:
+  - type: SurgeryCleansDirt #Misfits Add - Lets the ethanol bottle directly sanitize contaminated surgery tools.
+    dirtAmount: 12
+    dnaAmount: 1
+    cleanDelay: 2.0
   - type: SolutionContainerManager
     solutions:
       drink:

@@ -76,15 +76,16 @@ binds:
 - function: CameraReset
   type: State
   key: NumpadNum8
-- function: ZoomOut
-  type: State
-  key: NumpadNum4
-- function: ZoomIn
-  type: State
-  key: NumpadNum6
-- function: ResetZoom
-  type: State
-  key: NumpadNum5
+# [Misfits] Zoom keybinds disabled — prevents meta abuse via extended view range (NumpadNum4/5/6).
+#- function: ZoomOut
+#  type: State
+#  key: NumpadNum4
+#- function: ZoomIn
+#  type: State
+#  key: NumpadNum6
+#- function: ResetZoom
+#  type: State
+#  key: NumpadNum5
 # Misc
 - function: ShowEscapeMenu
   type: State

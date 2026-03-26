@@ -994,9 +994,11 @@
         maxVol: 14
         reagents:
         - ReagentId: Nutriment
-          Quantity: 10
+          Quantity: 7
         - ReagentId: Vitamin
           Quantity: 4
+        - ReagentId: Sugar # Misfits Add - apples are naturally sugary; small amount accumulates across multiple apples
+          Quantity: 3
   - type: Sprite
     sprite: Objects/Specific/Hydroponics/apple.rsi
   - type: Produce

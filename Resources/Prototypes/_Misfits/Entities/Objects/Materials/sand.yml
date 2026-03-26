@@ -1,0 +1,62 @@
+# Sand pile — dug from desert tiles with a shovel.
+# Used at the forge to smelt into glass, or in construction to build sandbag barricades.
+# Sprite placeholder: uses powder_brass from materials.rsi tinted to a sandy colour.
+# Replace with dedicated sand.rsi sprites when custom art is available.
+
+- type: entity
+  parent: N14MaterialBase
+  id: N14Sand
+  name: sand
+  description: A pile of coarse desert sand. Can be smelted into glass at a forge.
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Sprite
+    sprite: /Textures/_Nuclear14/Objects/Misc/materials.rsi
+    state: powder_brass
+    color: "#c9b87c"
+    layers:
+    - state: powder_brass
+      map: ["base"]
+  - type: Stack
+    stackType: N14Sand
+    count: 15
+    baseLayer: base
+    layerStates:
+    - powder_brass
+    - powder_brass
+    - powder_brass
+  - type: PhysicalComposition
+    materialComposition:
+      N14Sand: 100
+  - type: Item
+    heldPrefix: powder_brass
+    size: Small
+  - type: Tag
+    tags:
+    - RawMaterial
+  - type: StaticPrice
+    price: 1
+
+- type: entity
+  parent: N14Sand
+  id: N14Sand10
+  suffix: 10
+  components:
+  - type: Stack
+    count: 10
+
+- type: entity
+  parent: N14Sand
+  id: N14Sand1
+  suffix: Single
+  components:
+  - type: Stack
+    count: 1
+
+- type: entity
+  parent: N14Sand
+  id: N14Sand5
+  suffix: 5
+  components:
+  - type: Stack
+    count: 5

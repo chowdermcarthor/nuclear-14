@@ -68,6 +68,15 @@
     tags:
     - BypassInteractionRangeChecks
   - type: UniversalLanguageSpeaker # Ghosts should understand any language.
+  # #Misfits Add — give ghosts a Wendover area map they can open via the action hotbar
+  - type: WastelandMap
+    mapTexturePath: _Misfits/Maps/wendover_map.png
+    mapTitle: Wendover Area Map
+    worldBounds: "-517,-308,484,311"
+  - type: UserInterface
+    interfaces:
+      enum.WastelandMapUiKey.Key:
+        type: WastelandMapBoundUserInterface
 
 - type: entity
   id: ActionGhostBoo

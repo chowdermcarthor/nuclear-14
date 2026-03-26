@@ -601,6 +601,7 @@
     - N14IngotCopper
     - N14SheetSteel
     - N14SheetGlass
+    - N14SheetGlassSand # #Misfits Add: smelt sand into glass as an alternative to quartz
     - N14IngotLead
     - SulfurPowder
     # Scrap

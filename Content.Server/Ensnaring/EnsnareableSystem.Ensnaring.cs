@@ -63,6 +63,11 @@ public sealed partial class EnsnareableSystem
         if (!component.CanThrowTrigger)
             return;
 
+        // #Misfits Fix: If the proximity sweep in Update() already ensnared this target,
+        // skip to avoid a duplicate chat emote.
+        if (component.Ensnared != null)
+            return;
+
         TryEnsnare(args.Target, uid, component);
 
         if (component.Ensnared != args.Target)

@@ -31,6 +31,16 @@ namespace Content.Client.Administration.Systems
         // #Misfits Add — track known tickets to only toast on new or significant state changes
         private readonly Dictionary<int, HelpTicketStatus> _knownTickets = new();
 
+        // #Misfits Add — authoritative ticket cache, keyed by PlayerId. Populated by server
+        // pushes and request responses. New UI subscribers (BwoinkControl, TicketLogWindow, etc.)
+        // can read CachedTickets immediately instead of waiting for an async response.
+        private readonly Dictionary<NetUserId, HelpTicketInfo> _cachedTickets = new();
+
+        /// <summary>
+        /// Returns the current cached ticket data. Safe to read at any time.
+        /// </summary>
+        public IReadOnlyDictionary<NetUserId, HelpTicketInfo> CachedTickets => _cachedTickets;
+
         public override void Initialize()
         {
             base.Initialize();
@@ -52,6 +62,8 @@ namespace Content.Client.Administration.Systems
         {
             if (msg.Ticket.Type == HelpTicketType.AdminHelp)
             {
+                // Update local cache before notifying UI
+                _cachedTickets[msg.Ticket.PlayerId] = msg.Ticket;
                 ShowTicketToast(msg.Ticket);
                 OnTicketUpdated?.Invoke(msg.Ticket);
             }
@@ -63,8 +75,12 @@ namespace Content.Client.Administration.Systems
             // #Misfits Fix — replace known ticket cache from authoritative server list.
             // This prevents old round ticket IDs from persisting client-side.
             _knownTickets.Clear();
+            _cachedTickets.Clear();
             foreach (var t in ahelpTickets)
+            {
                 _knownTickets[t.TicketId] = t.Status;
+                _cachedTickets[t.PlayerId] = t;
+            }
 
             // #Misfits Fix — always notify listeners, including empty lists,
             // so UI caches can clear stale entries between rounds.

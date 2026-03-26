@@ -164,6 +164,10 @@
   name: Abraxo Cleaner
   description: Abraxo brand detergent.
   components:
+  - type: SurgeryCleansDirt #Misfits Add - Lets Abraxo cleaner bottle function as a low-grade surgical instrument sanitizer.
+    dirtAmount: 8
+    dnaAmount: 1
+    cleanDelay: 2.5
   - type: Sprite
     state: abraxo
   - type: SolutionContainerManager

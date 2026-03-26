@@ -29,6 +29,29 @@
     sprite: _Nuclear14/Structures/Storage/Crates/aluminiumcrate.rsi
   - type: Sprite
     sprite: _Nuclear14/Structures/Storage/Crates/aluminiumcrate.rsi
+  # #Misfits Add — use a custom construction graph so deconstruction gives aluminum ingots
+  - type: Construction
+    graph: N14CrateAluminium
+    node: n14cratealuminium
+    containers:
+      - entity_storage
+  # #Misfits Add — spawn aluminum ingots when destroyed by damage
+  - type: Destructible
+    thresholds:
+    - trigger:
+        !type:DamageTrigger
+        damage: 50
+      behaviors:
+      - !type:DoActsBehavior
+        acts: ["Destruction"]
+      - !type:PlaySoundBehavior
+        sound:
+          collection: MetalBreak
+      - !type:SpawnEntitiesBehavior
+        spawn:
+          N14IngotAluminum1:
+            min: 2
+            max: 4
 
 - type: entity
   parent: [ N14CrateFootlocker, N14BaseLockerStorageFill ]

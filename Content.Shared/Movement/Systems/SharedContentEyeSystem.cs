@@ -26,6 +26,9 @@ public abstract class SharedContentEyeSystem : EntitySystem
     public int ZoomLevels { get; private set; } = 1;
     public Vector2 MinZoom { get; private set; } = Vector2.One;
 
+    // #Misfits Add — tracks whether player-controlled zoom is permitted (see fov.allow_player_zoom CVar).
+    private bool _allowPlayerZoom;
+
     [Dependency] private readonly SharedEyeSystem _eye = default!;
 
     public override void Initialize()
@@ -54,6 +57,9 @@ public abstract class SharedContentEyeSystem : EntitySystem
             ZoomLevels = value;
             RecalculateZoomLevels();
         }, true);
+
+        // #Misfits Change — subscribe to the allow_player_zoom CVar so zoom can be toggled server-side without restart.
+        Subs.CVar(_config, CCVars.AllowPlayerZoom, value => _allowPlayerZoom = value, true);
     }
 
     public override void Shutdown()
@@ -69,18 +75,30 @@ public abstract class SharedContentEyeSystem : EntitySystem
 
     private void ResetZoom(ICommonSession? session)
     {
+        // #Misfits Change — bail out if player zoom is disabled server-side.
+        if (!_allowPlayerZoom)
+            return;
+
         if (TryComp(session?.AttachedEntity, out ContentEyeComponent? eye))
             ResetZoom(session.AttachedEntity.Value, eye);
     }
 
     private void ZoomOut(ICommonSession? session)
     {
+        // #Misfits Change — bail out if player zoom is disabled server-side (prevents meta via extended view range).
+        if (!_allowPlayerZoom)
+            return;
+
         if (TryComp(session?.AttachedEntity, out ContentEyeComponent? eye))
             SetZoom(session.AttachedEntity.Value, eye.TargetZoom * ZoomMod, eye: eye);
     }
 
     private void ZoomIn(ICommonSession? session)
     {
+        // #Misfits Change — bail out if player zoom is disabled server-side.
+        if (!_allowPlayerZoom)
+            return;
+
         if (TryComp(session?.AttachedEntity, out ContentEyeComponent? eye))
             SetZoom(session.AttachedEntity.Value, eye.TargetZoom / ZoomMod, eye: eye);
     }
@@ -104,6 +122,12 @@ public abstract class SharedContentEyeSystem : EntitySystem
 
     private void OnContentZoomRequest(RequestTargetZoomEvent msg, EntitySessionEventArgs args)
     {
+        var isAdmin = _admin.IsAdmin(args.SenderSession);
+
+        // #Misfits Change — if player zoom is disabled server-side, only admins may change zoom via the console command.
+        if (!_allowPlayerZoom && !isAdmin)
+            return;
+
         var ignoreLimit = msg.IgnoreLimit && _admin.HasAdminFlag(args.SenderSession, AdminFlags.Debug);
 
         if (TryComp<ContentEyeComponent>(args.SenderSession.AttachedEntity, out var content))

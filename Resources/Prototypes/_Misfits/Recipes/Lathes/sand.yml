@@ -1,0 +1,8 @@
+# Smelt sand into glass at the forge — alternative to the RawQuartz recipe.
+- type: latheRecipe
+  id: N14SheetGlassSand
+  result: SheetGlass1
+  applyMaterialDiscount: false
+  completetime: 3
+  materials:
+    N14Sand: 200

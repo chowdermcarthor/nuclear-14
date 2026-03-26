@@ -20,8 +20,8 @@ namespace Content.Client._Misfits.Administration.UI.Tabs;
 public sealed partial class StaffTab : Control
 {
     // Window references
-    private TicketLogWindow? _ticketLogWindow;
-    private AuditLogWindow? _auditLogWindow;
+    // private TicketLogWindow? _ticketLogWindow; // Removed — redundant with Audit Log
+    private TicketAuditLogWindow? _auditLogWindow;
 
     // Ticket data from both systems, keyed by (Type, TicketId)
     private readonly Dictionary<(HelpTicketType, int), HelpTicketInfo> _tickets = new();
@@ -47,21 +47,7 @@ public sealed partial class StaffTab : Control
             ContentMarginBottomOverride = 4,
         };
 
-        // Ticket log button
-        OpenTicketLog.OnPressed += _ =>
-        {
-            if (_ticketLogWindow is { Disposed: false })
-            {
-                _ticketLogWindow.MoveToFront();
-                return;
-            }
-
-            _ticketLogWindow = new TicketLogWindow();
-            _ticketLogWindow.OnClose += () => _ticketLogWindow = null;
-            _ticketLogWindow.OpenCentered();
-        };
-
-        // Audit log button — opens the cross-ticket audit window
+        // Audit log button — opens the persistent DB-backed audit log window (cross-round)
         OpenAuditLog.OnPressed += _ =>
         {
             if (_auditLogWindow is { Disposed: false })
@@ -70,8 +56,7 @@ public sealed partial class StaffTab : Control
                 return;
             }
 
-            _auditLogWindow = new AuditLogWindow();
-            _auditLogWindow.OnClose += () => _auditLogWindow = null;
+            _auditLogWindow = new TicketAuditLogWindow();
             _auditLogWindow.OpenCentered();
         };
 
@@ -256,7 +241,7 @@ public sealed partial class StaffTab : Control
     {
         base.Dispose(disposing);
 
-        _ticketLogWindow?.Close();
+        // _ticketLogWindow?.Close(); // Removed — redundant with Audit Log
         _auditLogWindow?.Close();
 
         if (_bwoinkSys != null)

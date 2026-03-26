@@ -170,6 +170,7 @@
   - type: EarthDigging
   - type: Shovel
   - type: GraveCreator # #Misfits Add: create a new grave on empty ground
+  - type: SandDigger # #Misfits Add: dig sand from desert tiles
 
 - type: entity
   name: zappy shovel
@@ -218,6 +219,7 @@
   - type: EarthDigging
   - type: Shovel
   - type: GraveCreator # #Misfits Add: create a new grave on empty ground
+  - type: SandDigger # #Misfits Add: dig sand from desert tiles
 
 
 #MARK: Saws

@@ -3,7 +3,7 @@ using System.Text;
 using Content.Client.Administration.Managers;
 using Content.Client.Administration.Systems; // #Misfits Add — for BwoinkSystem.GhostFollow
 using Content.Client.Administration.UI.CustomControls;
-using Content.Client._Misfits.Administration.UI; // #Misfits Add — TicketAuditLogWindow
+
 using Content.Client.UserInterface.Systems.Bwoink;
 using Content.Shared._Misfits.Administration; // #Misfits Add — ticket system types
 using Content.Shared.Administration;
@@ -222,20 +222,6 @@ namespace Content.Client.Administration.UI.Bwoink
                 uiController.PopOut();
             };
 
-            // #Misfits Add — open persistent cross-round ticket audit log window
-            var auditWindow = (TicketAuditLogWindow?) null;
-            AuditLog.OnPressed += _ =>
-            {
-                if (auditWindow is { Disposed: false })
-                {
-                    auditWindow.MoveToFront();
-                    return;
-                }
-
-                auditWindow = new TicketAuditLogWindow();
-                auditWindow.OpenCentered();
-            };
-
             // #Misfits Add — ticket claim/resolve button handlers
             var bwoinkSys = _entitySystem.GetEntitySystem<BwoinkSystem>();
 
@@ -277,8 +263,16 @@ namespace Content.Client.Administration.UI.Bwoink
             bwoinkSys.OnTicketUpdated += OnTicketUpdated;
             bwoinkSys.OnTicketListReceived += OnTicketListReceived;
 
-            // #Misfits Fix — subscribe first to avoid dropping the first list response
-            // when opening AHelp as a late-joining admin.
+            // #Misfits Fix — seed local ticket cache from BwoinkSystem's cached data so the
+            // panel is populated immediately, even if the server push arrived before this
+            // control was created (late-joining admin or opened panel after tickets exist).
+            foreach (var (playerId, ticket) in bwoinkSys.CachedTickets)
+            {
+                _tickets[playerId] = ticket;
+            }
+            PopulateList();
+
+            // Also request a fresh list from the server to ensure we're in sync
             bwoinkSys.RequestTicketList();
         }
 

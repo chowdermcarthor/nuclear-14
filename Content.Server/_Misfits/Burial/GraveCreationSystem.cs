@@ -1,5 +1,6 @@
 using Content.Shared._Misfits.Burial;
 using Content.Shared._Misfits.Burial.Components;
+using Content.Shared._Misfits.SandDigging;
 using Content.Shared.Burial.Components;
 using Content.Shared.Coordinates.Helpers;
 using Content.Shared.DoAfter;
@@ -87,6 +88,11 @@ public sealed class GraveCreationSystem : EntitySystem
             _storage.TryOpenStorage(args.User, graveEnt);
         }
 
-        _popup.PopupClient(Loc.GetString("grave-creation-complete"), graveEnt, args.User);
+        // Grave digging should always yield sand for shovels that support sand digging,
+        // regardless of tile type, so users always receive material from digging work.
+        if (TryComp<SandDiggerComponent>(uid, out var sandDigger))
+            Spawn(sandDigger.SandPrototype, spawnCoords);
+
+        _popup.PopupEntity(Loc.GetString("grave-creation-complete"), graveEnt, args.User);
     }
 }

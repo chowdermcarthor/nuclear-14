@@ -33,7 +33,13 @@ public sealed partial class TicketLogWindow : DefaultWindow
 
         RefreshTickets.OnPressed += _ => _bwoinkSys.RequestTicketList();
 
-        // Fetch current list on open
+        // Seed from cached data so the list is populated immediately,
+        // even if the server push arrived before this window was opened.
+        foreach (var (_, ticket) in _bwoinkSys.CachedTickets)
+            _tickets[ticket.TicketId] = ticket;
+        RebuildList();
+
+        // Also request a fresh list from the server to ensure sync
         _bwoinkSys.RequestTicketList();
     }
 

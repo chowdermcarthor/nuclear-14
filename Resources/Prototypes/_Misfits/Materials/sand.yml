@@ -1,0 +1,9 @@
+# Sand material definition — consumed by the forge (Lathe system) and construction system.
+- type: material
+  id: N14Sand
+  stackEntity: N14Sand1
+  name: materials-n14-sand
+  unit: materials-unit-pile
+  icon: { sprite: /Textures/_Nuclear14/Objects/Misc/materials.rsi, state: powder_brass }
+  color: "#c9b87c"
+  price: 0.01

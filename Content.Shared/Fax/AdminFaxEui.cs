@@ -7,10 +7,12 @@ namespace Content.Shared.Fax;
 public sealed class AdminFaxEuiState : EuiStateBase
 {
     public List<AdminFaxEntry> Entries { get; }
+    public List<AdminFaxInboxEntry> InboxEntries { get; }
 
-    public AdminFaxEuiState(List<AdminFaxEntry> entries)
+    public AdminFaxEuiState(List<AdminFaxEntry> entries, List<AdminFaxInboxEntry> inboxEntries)
     {
         Entries = entries;
+        InboxEntries = inboxEntries;
     }
 }
 
@@ -26,6 +28,25 @@ public sealed class AdminFaxEntry
         Uid = uid;
         Name = name;
         Address = address;
+    }
+}
+
+[Serializable, NetSerializable]
+public sealed class AdminFaxInboxEntry
+{
+    public string SourceFaxName { get; }
+    public string DestinationFaxName { get; }
+    public string SenderName { get; }
+    public string PaperTitle { get; }
+    public string Content { get; }
+
+    public AdminFaxInboxEntry(string sourceFaxName, string destinationFaxName, string senderName, string paperTitle, string content)
+    {
+        SourceFaxName = sourceFaxName;
+        DestinationFaxName = destinationFaxName;
+        SenderName = senderName;
+        PaperTitle = paperTitle;
+        Content = content;
     }
 }
 

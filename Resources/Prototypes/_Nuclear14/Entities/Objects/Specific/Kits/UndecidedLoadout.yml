@@ -84,9 +84,7 @@
     - NCRA_MechanicSet
     - NCRA_DemolitionSet
     - NCRA_BreacherSet
-    # #Misfits Add - Medic kits folded in from consolidated NCR Medic role
-    - NCRA_SurgeonSet
-    - NCRA_DoctorSet
+    # #Misfits Change - all three medic kit options consolidated into one combat medic kit
     - NCRA_ComMedSet
 
 - type: entity

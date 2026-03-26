@@ -12,12 +12,6 @@
             <Label Text="{Loc misfits-staff-tab-permissions-desc}" VerticalAlignment="Center" StyleClasses="LabelSubText" />
         </BoxContainer>
 
-        <!-- Ticket Log button -->
-        <BoxContainer Orientation="Horizontal" SeparationOverride="8">
-            <Button Name="OpenTicketLog" Text="{Loc misfits-staff-tab-ticket-log-btn}" MinWidth="180" />
-            <Label Text="{Loc misfits-staff-tab-ticket-log-desc}" VerticalAlignment="Center" StyleClasses="LabelSubText" />
-        </BoxContainer>
-
         <!-- #Misfits Add - Audit Log button: opens the ticket audit window with filtering and per-ticket chat access -->
         <BoxContainer Orientation="Horizontal" SeparationOverride="8">
             <Button Name="OpenAuditLog" Text="{Loc misfits-staff-tab-audit-log-btn}" MinWidth="180" />

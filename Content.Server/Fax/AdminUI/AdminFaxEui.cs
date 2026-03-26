@@ -24,7 +24,15 @@ public sealed class AdminFaxEui : BaseEui
 
     public override void Opened()
     {
+        // #Misfits Add - Keep faxui in sync with live LEADERSHIP inbox updates.
+        _faxSystem.LeadershipInboxUpdated += OnLeadershipInboxUpdated;
         StateDirty();
+    }
+
+    public override void Closed()
+    {
+        _faxSystem.LeadershipInboxUpdated -= OnLeadershipInboxUpdated;
+        base.Closed();
     }
 
     public override AdminFaxEuiState GetNewState()
@@ -35,7 +43,7 @@ public sealed class AdminFaxEui : BaseEui
         {
             entries.Add(new AdminFaxEntry(_entityManager.GetNetEntity(uid), fax.FaxName, device.Address));
         }
-        return new AdminFaxEuiState(entries);
+        return new AdminFaxEuiState(entries, _faxSystem.GetLeadershipInboxSnapshot());
     }
 
     public override void HandleMessage(EuiMessageBase msg)
@@ -55,12 +63,17 @@ public sealed class AdminFaxEui : BaseEui
             }
             case AdminFaxEuiMsg.Send sendData:
             {
-                // #Misfits Fix — use PaperOffice prototype so admin faxes display the correct sprite
-                var printout = new FaxPrintout(sendData.Content, sendData.Title, null, "PaperOffice", sendData.StampState,
+                // #Misfits Fix - CMPaper avoids PaperOffice visual ERROR artifacts in admin fax sends.
+                var printout = new FaxPrintout(sendData.Content, sendData.Title, null, "CMPaper", sendData.StampState,
                         new() { new StampDisplayInfo { StampedName = sendData.From, StampedColor = sendData.StampColor } });
                 _faxSystem.Receive(_entityManager.GetEntity(sendData.Target), printout);
                 break;
             }
         }
+    }
+
+    private void OnLeadershipInboxUpdated()
+    {
+        StateDirty();
     }
 }

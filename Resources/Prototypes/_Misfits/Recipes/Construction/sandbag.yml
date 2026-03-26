@@ -1,0 +1,40 @@
+# Sandbag barricade — constructible via (G) construction menu.
+# Requires sand (dug from desert tiles) and thread (for the bag fabric).
+
+# Construction menu entry
+- type: construction
+  name: sandbag barricade
+  id: N14BarricadeSandbagSingleConstruction
+  graph: N14SandbagBarricade
+  startNode: start
+  targetNode: sandbag
+  category: construction-category-structures
+  description: A sandbag fortification. Requires sand and thread.
+  icon:
+    sprite: _Nuclear14/Structures/Furniture/barricades.rsi
+    state: sandbag_single
+  objectType: Structure
+  placementMode: SnapgridCenter
+  canBuildInImpassable: false
+  canRotate: false
+  hide: false
+  conditions:
+    - !type:TileNotBlocked
+
+# Construction graph defining the build steps
+- type: constructionGraph
+  id: N14SandbagBarricade
+  start: start
+  graph:
+    - node: start
+      edges:
+        - to: sandbag
+          steps:
+            - material: N14Sand
+              amount: 5
+              doAfter: 2
+            - material: Thread
+              amount: 2
+              doAfter: 1
+    - node: sandbag
+      entity: N14BarricadeSandbagSingle

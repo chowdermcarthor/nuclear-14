@@ -140,6 +140,19 @@
   - type: Construction
     graph: N14Bed
     node: mattress
+  - type: Destructible
+    thresholds:
+      - trigger:
+          !type:DamageTrigger
+          damage: 75
+        behaviors:
+          - !type:DoActsBehavior
+            acts: ["Destruction"]
+          - !type:SpawnEntitiesBehavior
+            spawn:
+              MaterialCloth1:
+                min: 1
+                max: 2
 
 - type: entity
   parent: N14Bed
@@ -150,6 +163,19 @@
   - type: Sprite
     state: mattress1
     snapCardinals: true
+  - type: Destructible
+    thresholds:
+      - trigger:
+          !type:DamageTrigger
+          damage: 75
+        behaviors:
+          - !type:DoActsBehavior
+            acts: ["Destruction"]
+          - !type:SpawnEntitiesBehavior
+            spawn:
+              MaterialCloth1:
+                min: 1
+                max: 2
 
 - type: entity
   parent: N14BedMattressDirty1

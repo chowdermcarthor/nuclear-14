@@ -1,3 +1,33 @@
+# #Misfits Add — construction graph for aluminium crate so it gives aluminum ingots on deconstruct
+- type: constructionGraph
+  id: N14CrateAluminium
+  start: start
+  graph:
+    - node: start
+      edges:
+        - to: n14cratealuminium
+          steps:
+            - material: Aluminum
+              amount: 5
+              doAfter: 5
+
+    - node: n14cratealuminium
+      entity: N14CrateAluminium
+      edges:
+        - to: start
+          steps:
+            - tool: Screwing
+              doAfter: 5
+          conditions:
+            - !type:StorageWelded
+              welded: false
+          completed:
+            - !type:SpawnPrototype
+              prototype: N14IngotAluminum1
+              amount: 5
+            - !type:EmptyAllContainers
+            - !type:DeleteEntity
+
 # Sacks
 - type: constructionGraph
   id: N14Sack
