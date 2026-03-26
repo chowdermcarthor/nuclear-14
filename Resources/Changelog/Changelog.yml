@@ -2124,3 +2124,52 @@ Entries:
   id: 5675
   time: '2026-03-26T15:40:19.0000000+00:00'
   url: https://github.com/Misfit-Sanctuary/nuclear-14/pull/191
+- author: cythisiax
+  changes:
+    - type: Add
+      message: >-
+        WendoverMap accessibility to player ghosts while in ghost- also added to
+        junkpiles with 5% spawn chance
+    - type: Add
+      message: FoodApple now has a sugar reagent added alongside other base values.
+    - type: Tweak
+      message: Destroying/deconstructing an aluminum crate provides aluminum.
+    - type: Tweak
+      message: >-
+        made NCR specialist's medic kit relevant- stimpaks, med-x, defib, trauma
+        pack, ointment, antidot, radaway, bloodbag.
+    - type: Tweak
+      message: >-
+        more surgical cleaning options, missing N14 prototypes, (ethanol,
+        abraxo)
+    - type: Tweak
+      message: >-
+        flags that allowed clientside zoom in/out with binds has been flagged
+        false, zoom is affixed 1.0. (To be circumvented in the future with scope
+        system. Not sure why this was even possible, as zoom command was
+        disabled for players entirely.)
+    - type: Tweak
+      message: >-
+        (And a fix) N14Shovel at current made graves, but now once graves are
+        dug, produces sand. Sand can be used to make glass in Lathe Forge, and
+        then construction menu to make sandbags.
+    - type: Fix
+      message: N14Flora had solution transferrable component, ruining stacking, removed
+    - type: Tweak
+      message: Make all mineable rocks produce orevein chance
+    - type: Tweak
+      message: >-
+        bola now uses proximity detection for ensnare, self remove is 10
+        seconds, other party remove is 3.5
+  id: 5676
+  time: '2026-03-26T19:52:39.0000000+00:00'
+  url: https://github.com/Misfit-Sanctuary/nuclear-14/pull/190
+- author: Chancerous1
+  changes:
+    - type: Tweak
+      message: Fixed FAX names - Factions can now fax admins for RP purposes
+    - type: Tweak
+      message: Removed unnecessary faxes
+  id: 5677
+  time: '2026-03-26T21:40:42.0000000+00:00'
+  url: https://github.com/Misfit-Sanctuary/nuclear-14/pull/193
