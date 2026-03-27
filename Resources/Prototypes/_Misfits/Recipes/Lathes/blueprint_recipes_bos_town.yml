@@ -387,11 +387,11 @@
   availableFaction:
   - BrotherhoodOfSteel
   materials:
-    Cloth: 500
+    Cloth: 5
 
     Thread: 5
 
-    Steel: 10
+    Steel: 1000
 
     Leather: 2
 
@@ -405,11 +405,11 @@
   availableFaction:
   - BrotherhoodOfSteel
   materials:
-    Cloth: 500
+    Cloth: 5
 
     Thread: 5
 
-    Steel: 10
+    Steel: 1000
 
     Leather: 2
 
@@ -423,7 +423,7 @@
   availableFaction:
   - BrotherhoodOfSteel
   materials:
-    Cloth: 500
+    Cloth: 5
 
     Thread: 5
 
@@ -621,7 +621,7 @@
   availableFaction:
   - BrotherhoodOfSteel
   materials:
-    Glass: 1000
+    Glass: 10
 
     Circuitry: 5
 
@@ -637,7 +637,7 @@
   availableFaction:
   - BrotherhoodOfSteel
   materials:
-    Lead: 1000
+    Lead: 10
 
     N14Brass: 5
 
@@ -654,7 +654,7 @@
   availableFaction:
   - BrotherhoodOfSteel
   materials:
-    Glass: 2500
+    Glass: 25
 
     Circuitry: 20
 
@@ -672,7 +672,7 @@
   availableFaction:
   - BrotherhoodOfSteel
   materials:
-    Glass: 2500
+    Glass: 25
 
     Circuitry: 20
 
@@ -689,7 +689,7 @@
   availableFaction:
   - BrotherhoodOfSteel
   materials:
-    Glass: 4000
+    Glass: 40
 
     Circuitry: 35
 
@@ -707,7 +707,7 @@
   availableFaction:
   - BrotherhoodOfSteel
   materials:
-    Glass: 4000
+    Glass: 40
 
     Circuitry: 35
 
@@ -724,7 +724,7 @@
   availableFaction:
   - BrotherhoodOfSteel
   materials:
-    Glass: 8500
+    Glass: 85
 
     Circuitry: 65
 
@@ -744,7 +744,7 @@
   availableFaction:
   - BrotherhoodOfSteel
   materials:
-    Glass: 8000
+    Glass: 80
 
     Circuitry: 65
 
@@ -762,7 +762,7 @@
   availableFaction:
   - BrotherhoodOfSteel
   materials:
-    Glass: 9000
+    Glass: 90
 
     Circuitry: 65
 
@@ -1257,7 +1257,7 @@
   availableFaction:
   - Townsfolk
   materials:
-    Leather: 500
+    Leather: 5
 
     Cloth: 5
 
@@ -1273,7 +1273,7 @@
   availableFaction:
   - Townsfolk
   materials:
-    Leather: 500
+    Leather: 5
 
     Cloth: 5
 
@@ -1289,7 +1289,7 @@
   availableFaction:
   - Townsfolk
   materials:
-    Leather: 700
+    Leather: 7
 
     Cloth: 5
 
@@ -1306,13 +1306,13 @@
   availableFaction:
   - Townsfolk
   materials:
-    Cloth: 1700
+    Cloth: 17
 
     Thread: 17
 
     Leather: 15
 
-    Steel: 25
+    Steel: 2500
 
 
 - type: latheRecipe
@@ -1324,13 +1324,13 @@
   availableFaction:
   - Townsfolk
   materials:
-    Leather: 1700
+    Leather: 17
 
     Cloth: 17
 
     Thread: 15
 
-    Steel: 25
+    Steel: 2500
 
 
 - type: latheRecipe
@@ -1342,13 +1342,13 @@
   availableFaction:
   - Townsfolk
   materials:
-    Leather: 1700
+    Leather: 17
 
     Cloth: 17
 
     Thread: 17
 
-    Steel: 20
+    Steel: 2000
 
 
 - type: latheRecipe
@@ -1360,7 +1360,7 @@
   availableFaction:
   - Townsfolk
   materials:
-    Leather: 1500
+    Leather: 15
 
     Cloth: 10
 
@@ -1413,9 +1413,9 @@
   availableFaction:
   - Townsfolk
   materials:
-    Leather: 2500
+    Leather: 25
 
-    Steel: 40
+    Steel: 4000
 
     Cloth: 20
 
@@ -1488,13 +1488,13 @@
   availableFaction:
   - Townsfolk
   materials:
-    Leather: 5100
+    Leather: 51
 
     Cloth: 45
 
     Thread: 35
 
-    Steel: 70
+    Steel: 7000
 
 
 # =====================================================================
@@ -1511,7 +1511,7 @@
   availableFaction:
   - Townsfolk
   materials:
-    Lead: 1000
+    Lead: 10
 
     N14Brass: 5
 
@@ -1527,7 +1527,7 @@
   availableFaction:
   - Townsfolk
   materials:
-    Lead: 1000
+    Lead: 10
 
     N14Brass: 5
 
@@ -1543,7 +1543,7 @@
   availableFaction:
   - Townsfolk
   materials:
-    Lead: 1000
+    Lead: 10
 
     N14Brass: 5
 
@@ -1592,7 +1592,7 @@
   availableFaction:
   - Townsfolk
   materials:
-    Lead: 3000
+    Lead: 30
 
     N14Brass: 20
 
@@ -1608,7 +1608,7 @@
   availableFaction:
   - Townsfolk
   materials:
-    Lead: 2500
+    Lead: 25
 
     N14Brass: 20
 
@@ -1624,7 +1624,7 @@
   availableFaction:
   - Townsfolk
   materials:
-    Lead: 3000
+    Lead: 30
 
     Plastic: 10
 
@@ -1673,7 +1673,7 @@
   availableFaction:
   - Townsfolk
   materials:
-    Lead: 4000
+    Lead: 40
 
     N14Brass: 35
 
@@ -1689,7 +1689,7 @@
   availableFaction:
   - Townsfolk
   materials:
-    Lead: 4500
+    Lead: 45
 
     N14Brass: 35
 
@@ -1705,7 +1705,7 @@
   availableFaction:
   - Townsfolk
   materials:
-    Lead: 4500
+    Lead: 45
 
     N14Brass: 30
 
@@ -1754,7 +1754,7 @@
   availableFaction:
   - Townsfolk
   materials:
-    Lead: 7500
+    Lead: 75
 
     N14Brass: 55
 
@@ -1770,7 +1770,7 @@
   availableFaction:
   - Townsfolk
   materials:
-    Lead: 8500
+    Lead: 85
 
     N14Brass: 55
 

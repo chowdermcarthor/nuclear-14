@@ -20,8 +20,8 @@ lathe-menu-material-amount-missing = { $amount ->
     [1] {NATURALFIXED($amount, 2)} {$unit} of {$material} ([color=red]{NATURALFIXED($missingAmount, 2)} {$unit} missing[/color])
     *[other] {NATURALFIXED($amount, 2)} {MAKEPLURAL($unit)} of {$material} ([color=red]{NATURALFIXED($missingAmount, 2)} {MAKEPLURAL($unit)} missing[/color])
 }
-lathe-menu-material-raw-amount = {NATURALFIXED($amount, 0)} {$material}
-lathe-menu-material-raw-amount-missing = {NATURALFIXED($amount, 0)} {$material} ([color=red]{NATURALFIXED($missingAmount, 0)} missing[/color])
+lathe-menu-material-raw-amount = {$amount} {$material}
+lathe-menu-material-raw-amount-missing = {$amount} {$material} ([color=red]{$missingAmount} missing[/color])
 lathe-menu-no-materials-message = No materials loaded.
 lathe-menu-connected-to-silo-message = Connected to material silo.
 lathe-menu-fabricating-message = Fabricating...

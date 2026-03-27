@@ -15,7 +15,7 @@
   availableFaction:
   - Vault
   materials:
-    Steel: 125
+    Steel: 12500
     Plastic: 25
 
 - type: latheRecipe
@@ -27,7 +27,7 @@
   availableFaction:
   - Vault
   materials:
-    Steel: 75
+    Steel: 7500
     Plastic: 50
 
 - type: latheRecipe
@@ -53,7 +53,7 @@
   availableFaction:
   - Vault
   materials:
-    Steel: 250
+    Steel: 25000
     Plastic: 75
     N14Iron: 50
 
@@ -66,7 +66,7 @@
   availableFaction:
   - Vault
   materials:
-    Steel: 125
+    Steel: 12500
     Glass: 75
     Circuitry: 75
     ScrapElectronic: 25
@@ -82,7 +82,7 @@
   materials:
     Steel: 200
     Glass: 125
-    Circuitry: 100
+    Circuitry: 1
     ScrapElectronic: 50
 
 - type: latheRecipe
@@ -135,7 +135,7 @@
   availableFaction:
   - Vault
   materials:
-    Steel: 275
+    Steel: 27500
     Glass: 175
     Circuitry: 150
     ScrapElectronic: 75
@@ -151,7 +151,7 @@
   - Vault
   materials:
     Steel: 500
-    Glass: 300
+    Glass: 3
     Circuitry: 250
     ScrapElectronic: 150
     Plastic: 50
@@ -179,8 +179,8 @@
   availableFaction:
   - Vault
   materials:
-    Steel: 550
-    Glass: 300
+    Steel: 55000
+    Glass: 3
     Circuitry: 250
     ScrapElectronic: 175
     Plastic: 75
@@ -200,7 +200,7 @@
   - Vault
   materials:
     Cloth: 125
-    Thread: 100
+    Thread: 1
     Plastic: 50
 
 # --- Vault Tier 2 Armor ---
@@ -215,7 +215,7 @@
   materials:
     Leather: 150
     Cloth: 125
-    Thread: 100
+    Thread: 1
     Plastic: 25
 
 - type: latheRecipe
@@ -227,10 +227,10 @@
   availableFaction:
   - Vault
   materials:
-    Leather: 200
+    Leather: 2
     Steel: 100
     Cloth: 150
-    Thread: 100
+    Thread: 1
 
 # --- Vault Tier 3 Armor ---
 - type: latheRecipe
@@ -257,7 +257,7 @@
   availableFaction:
   - Vault
   materials:
-    Steel: 350
+    Steel: 35000
     Cloth: 225
     Thread: 150
     Plastic: 50
@@ -275,7 +275,7 @@
     Steel: 700
     Cloth: 350
     Thread: 250
-    Circuitry: 100
+    Circuitry: 1
     ScrapElectronic: 75
     Plastic: 50
 
@@ -289,11 +289,11 @@
   - Vault
   materials:
     Steel: 900
-    Cloth: 400
+    Cloth: 4
     Thread: 275
     Circuitry: 150
-    ScrapElectronic: 100
-    N14Iron: 100
+    ScrapElectronic: 1
+    N14Iron: 1
 
 # =====================================================================
 # VAULT AMMO RECIPES
@@ -309,7 +309,7 @@
   availableFaction:
   - Vault
   materials:
-    Lead: 100
+    Lead: 1
     N14Brass: 50
     N14Gunpowder: 50
 
@@ -322,7 +322,7 @@
   availableFaction:
   - Vault
   materials:
-    Steel: 75
+    Steel: 7500
     Lead: 50
     N14Gunpowder: 25
 
@@ -349,8 +349,8 @@
   availableFaction:
   - Vault
   materials:
-    Steel: 125
-    Lead: 100
+    Steel: 12500
+    Lead: 1
     N14Gunpowder: 50
 
 # --- Vault Tier 3 Ammo ---
@@ -364,7 +364,7 @@
   - Vault
   materials:
     Glass: 150
-    Circuitry: 100
+    Circuitry: 1
     ScrapElectronic: 75
     Plastic: 25
 
@@ -392,7 +392,7 @@
   - Vault
   materials:
     Glass: 275
-    Circuitry: 200
+    Circuitry: 2
     ScrapElectronic: 150
     Plastic: 50
 
@@ -406,7 +406,7 @@
   - Vault
   materials:
     Glass: 250
-    Circuitry: 200
+    Circuitry: 2
     ScrapElectronic: 125
     Plastic: 50
 
@@ -436,7 +436,7 @@
   availableFaction:
   - Tribe
   materials:
-    Wood: 100
+    Wood: 1
     Leather: 50
 
 - type: latheRecipe
@@ -448,7 +448,7 @@
   availableFaction:
   - Tribe
   materials:
-    Wood: 100
+    Wood: 1
     N14Iron: 50
     Leather: 25
 
@@ -461,7 +461,7 @@
   availableFaction:
   - Tribe
   materials:
-    N14Iron: 100
+    N14Iron: 1
     Scrap: 75
     Wood: 25
 
@@ -501,7 +501,7 @@
   - Tribe
   materials:
     N14Iron: 150
-    Wood: 100
+    Wood: 1
     Leather: 50
 
 - type: latheRecipe
@@ -513,8 +513,8 @@
   availableFaction:
   - Tribe
   materials:
-    N14Iron: 200
-    Leather: 100
+    N14Iron: 2
+    Leather: 1
     Cloth: 50
 
 - type: latheRecipe
@@ -527,8 +527,8 @@
   - Tribe
   materials:
     N14Iron: 175
-    Scrap: 100
-    Steel: 50
+    Scrap: 1
+    Steel: 5000
 
 - type: latheRecipe
   id: N14BPTribeWeaponPistol10mmPipe
@@ -553,7 +553,7 @@
   - Tribe
   materials:
     Scrap: 150
-    ScrapSteel: 100
+    ScrapSteel: 1
     Wood: 50
 
 # --- Tribe Tier 3 Weapons (Elder's war knowledge) ---
@@ -568,7 +568,7 @@
   materials:
     Steel: 200
     N14Iron: 175
-    Scrap: 100
+    Scrap: 1
     N14Brass: 50
 
 - type: latheRecipe
@@ -580,9 +580,9 @@
   availableFaction:
   - Tribe
   materials:
-    Steel: 250
-    N14Iron: 200
-    Scrap: 100
+    Steel: 25000
+    N14Iron: 2
+    Scrap: 1
 
 - type: latheRecipe
   id: N14BPTribeWeaponTribalBigClub
@@ -593,9 +593,9 @@
   availableFaction:
   - Tribe
   materials:
-    Wood: 300
+    Wood: 3
     N14Iron: 150
-    Leather: 100
+    Leather: 1
 
 - type: latheRecipe
   id: N14BPTribeWeaponTribalSpear
@@ -606,7 +606,7 @@
   availableFaction:
   - Tribe
   materials:
-    Wood: 200
+    Wood: 2
     N14Iron: 125
     Leather: 75
 
@@ -648,7 +648,7 @@
   materials:
     Steel: 400
     N14Iron: 250
-    N14Brass: 100
+    N14Brass: 1
     Leather: 50
 
 - type: latheRecipe
@@ -660,7 +660,7 @@
   availableFaction:
   - Tribe
   materials:
-    Wood: 400
+    Wood: 4
     N14Iron: 250
     Leather: 150
     N14Gold: 50
@@ -676,7 +676,7 @@
   materials:
     Steel: 300
     N14Iron: 250
-    Wood: 200
+    Wood: 2
     Leather: 75
 
 - type: latheRecipe
@@ -688,10 +688,10 @@
   availableFaction:
   - Tribe
   materials:
-    Scrap: 400
-    ScrapSteel: 300
-    N14Iron: 200
-    Wood: 100
+    Scrap: 4
+    ScrapSteel: 3
+    N14Iron: 2
+    Wood: 1
 
 - type: latheRecipe
   id: N14BPTribeWeaponSuperSledgeHammer
@@ -704,8 +704,8 @@
   materials:
     Steel: 600
     N14Iron: 350
-    Wood: 100
-    Scrap: 100
+    Wood: 1
+    Scrap: 1
 
 # =====================================================================
 # TRIBE ARMOR RECIPES
@@ -721,7 +721,7 @@
   availableFaction:
   - Tribe
   materials:
-    Leather: 100
+    Leather: 1
     Cloth: 75
     Thread: 50
 
@@ -734,7 +734,7 @@
   availableFaction:
   - Tribe
   materials:
-    Cloth: 100
+    Cloth: 1
     Thread: 75
     Leather: 50
 
@@ -750,7 +750,7 @@
   materials:
     Leather: 175
     Cloth: 125
-    Thread: 100
+    Thread: 1
 
 - type: latheRecipe
   id: N14BPTribeArmorForager
@@ -763,7 +763,7 @@
   materials:
     Leather: 150
     Cloth: 150
-    Thread: 100
+    Thread: 1
 
 - type: latheRecipe
   id: N14BPTribeArmorHunter
@@ -776,7 +776,7 @@
   materials:
     Leather: 175
     Cloth: 125
-    Thread: 100
+    Thread: 1
 
 - type: latheRecipe
   id: N14BPTribeArmorPoncho
@@ -787,7 +787,7 @@
   availableFaction:
   - Tribe
   materials:
-    Cloth: 200
+    Cloth: 2
     Thread: 125
     Leather: 50
 
@@ -801,9 +801,9 @@
   availableFaction:
   - Tribe
   materials:
-    Leather: 300
+    Leather: 3
     N14Iron: 150
-    Cloth: 200
+    Cloth: 2
     Thread: 150
 
 - type: latheRecipe
@@ -816,7 +816,7 @@
   - Tribe
   materials:
     Leather: 275
-    N14Iron: 100
+    N14Iron: 1
     Cloth: 175
     Thread: 125
 
@@ -842,7 +842,7 @@
   availableFaction:
   - Tribe
   materials:
-    Leather: 300
+    Leather: 3
     Steel: 200
     Cloth: 175
     Thread: 150
@@ -857,10 +857,10 @@
   availableFaction:
   - Tribe
   materials:
-    Leather: 400
+    Leather: 4
     Steel: 300
-    N14Iron: 200
-    Cloth: 200
+    N14Iron: 2
+    Cloth: 2
     Thread: 150
 
 - type: latheRecipe
@@ -873,9 +873,9 @@
   - Tribe
   materials:
     Leather: 350
-    Cloth: 200
+    Cloth: 2
     Thread: 150
-    N14Iron: 100
+    N14Iron: 1
 
 # =====================================================================
 # TRIBE AMMO RECIPES
@@ -891,7 +891,7 @@
   availableFaction:
   - Tribe
   materials:
-    Lead: 100
+    Lead: 1
     Scrap: 50
     N14Gunpowder: 75
 
@@ -904,7 +904,7 @@
   availableFaction:
   - Tribe
   materials:
-    Lead: 100
+    Lead: 1
     Scrap: 50
     N14Gunpowder: 50
 
@@ -933,7 +933,7 @@
   materials:
     Lead: 150
     Scrap: 75
-    N14Gunpowder: 100
+    N14Gunpowder: 1
 
 - type: latheRecipe
   id: N14BPTribeAmmoBox556
@@ -946,7 +946,7 @@
   materials:
     Lead: 150
     Scrap: 75
-    N14Gunpowder: 100
+    N14Gunpowder: 1
 
 - type: latheRecipe
   id: N14BPTribeAmmoMag10mmPipe
@@ -971,8 +971,8 @@
   availableFaction:
   - Tribe
   materials:
-    Lead: 200
-    Scrap: 100
+    Lead: 2
+    Scrap: 1
     N14Gunpowder: 150
 
 - type: latheRecipe
@@ -999,7 +999,7 @@
   materials:
     Lead: 125
     Scrap: 75
-    N14Gunpowder: 100
+    N14Gunpowder: 1
 
 # --- Tribe Tier 4 Ammo ---
 - type: latheRecipe
@@ -1011,10 +1011,10 @@
   availableFaction:
   - Tribe
   materials:
-    Lead: 400
-    Scrap: 200
-    N14Gunpowder: 300
-    N14Iron: 100
+    Lead: 4
+    Scrap: 2
+    N14Gunpowder: 3
+    N14Iron: 1
 
 - type: latheRecipe
   id: N14BPTribeAmmoBox45-70
@@ -1040,5 +1040,5 @@
   materials:
     Scrap: 150
     Lead: 150
-    N14Gunpowder: 100
+    N14Gunpowder: 1
 

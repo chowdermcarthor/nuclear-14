@@ -82,4 +82,4 @@
   - type: Lock
   - type: LockVisuals
   - type: AccessReader
-    access: [["VaultOverseer"]]
+    access: [["VaultControlsPanel"]] # Misfits Change - restricted to N14IDCardVaultOverseer only (not in AllAccess)
