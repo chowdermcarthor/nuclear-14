@@ -1457,6 +1457,12 @@
         - id: N14JunkAbraxoCleaner
           prob: 0.05
           orGroup: Junk
+        - id: SurgicalSterileWipe #Misfits Add - Sterile wipe; scavengeable low-grade surgical tool sanitizer
+          prob: 0.05
+          orGroup: Junk
+        - id: SurgicalSterilanSpray #Misfits Add - Sterile spray; rarer but more effective surgical tool sanitizer
+          prob: 0.03
+          orGroup: Junk
         - id: N14Junk8Ball
           prob: 0.05
           orGroup: Junk
