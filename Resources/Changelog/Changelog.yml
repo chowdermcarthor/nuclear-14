@@ -2173,3 +2173,12 @@ Entries:
   id: 5677
   time: '2026-03-26T21:40:42.0000000+00:00'
   url: https://github.com/Misfit-Sanctuary/nuclear-14/pull/193
+- author: Cythisiax
+  changes:
+    - type: Add
+      message: SterileSpray and Ethanol added to junk pile loot rota.
+    - type: Tweak
+      message: N14Dung and N14BrahminDung added despawn timer component
+  id: 5678
+  time: '2026-03-27T05:16:56.0000000+00:00'
+  url: https://github.com/Misfit-Sanctuary/nuclear-14/pull/196
