@@ -2227,3 +2227,14 @@ Entries:
   id: 5679
   time: '2026-03-27T17:55:55.0000000+00:00'
   url: https://github.com/Misfit-Sanctuary/nuclear-14/pull/197
+- author: cythisiax
+  changes:
+    - type: Fix
+      message: Ticket System issue
+    - type: Tweak
+      message: AI values, with debugging commands for HOST permission
+    - type: Tweak
+      message: Baseline constructables (Pending inclusion)
+  id: 5680
+  time: '2026-03-27T23:30:25.0000000+00:00'
+  url: https://github.com/Misfit-Sanctuary/nuclear-14/pull/198
