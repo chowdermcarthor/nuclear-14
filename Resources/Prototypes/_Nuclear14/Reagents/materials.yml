@@ -294,4 +294,33 @@
   unit: materials-unit-roll
   icon: { sprite: /Textures/_Nuclear14/Objects/Misc/materials.rsi, state: thread }
   color: "#d2691e"
+
+# #Misfits Add: Construction material prototypes for the cement/concrete/brick building system.
+# PhysicalComposition on N14MaterialCement, N14MaterialConcrete, and N14MaterialBrick reference these IDs.
+- type: material
+  id: Cement
+  stackEntity: N14MaterialCement1
+  name: materials-cement
+  unit: materials-unit-pile
+  icon: { sprite: /Textures/_Nuclear14/Objects/Misc/materials.rsi, state: powder_brass }
+  color: "#c0bdb8"
+  price: 0.005
+
+- type: material
+  id: Concrete
+  stackEntity: N14MaterialConcrete1
+  name: materials-concrete
+  unit: materials-unit-piece
+  icon: { sprite: /Textures/_Nuclear14/Objects/Misc/materials.rsi, state: scrap_3 }
+  color: "#b0b0b0"
+  price: 0.01
+
+- type: material
+  id: Brick
+  stackEntity: N14MaterialBrick1
+  name: materials-brick
+  unit: materials-unit-piece
+  icon: { sprite: /Textures/_Nuclear14/Objects/Misc/materials.rsi, state: scrap_copper }
+  color: "#8b4513"
+  price: 0.01
   price: 0.01

@@ -17,6 +17,11 @@ enabled = false
 [explosion]
 can_create_vacuum = false
 
+[atmos]
+space_wind = false
+monstermos_depressurization = false
+monstermos_rip_tiles = false
+
 [game]
 desc = "TBD"
 hostname = "Misfits: Nuclear Wasteland"

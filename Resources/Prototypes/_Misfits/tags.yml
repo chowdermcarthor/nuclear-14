@@ -39,4 +39,16 @@
 # #Misfits Change - Tag for Super Mutant species-specific clothing.
 # Used by the supermutant inventory template whitelist to restrict body-worn slots.
 - type: Tag
+  id: SuperMutantClothing
+
+# #Misfits Add - Tags for construction materials (cement/concrete/brick building system).
+# Referenced by TagComponent on N14MaterialCement, N14MaterialConcrete, and N14MaterialBrick.
+- type: Tag
+  id: Cement
+
+- type: Tag
+  id: Concrete
+
+- type: Tag
+  id: Brick
   id: SuperMutantWearable

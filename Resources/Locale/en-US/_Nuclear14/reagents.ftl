@@ -343,6 +343,9 @@ ncrCredit = NCR credit
 materials-fertilizer = fertilizer
 materials-timber = timber
 materials-N14paper = paper
+materials-cement = cement
+materials-concrete = concrete
+materials-brick = brick
 
 reagent-name-gunpowder = gunpowder
 reagent-desc-gunpowder = Small pellet gunpowder. Now just add lead.
@@ -350,6 +353,9 @@ reagent-name-fertilizer = fertilizer
 reagent-desc-fertilizer = Ground fertilizer. Perfect for your plants!
 reagent-name-dung = dung
 reagent-desc-dung = Animal dung. Ripe for turning into compost.
+
+reagent-name-cement = cement
+reagent-desc-cement = A fine gray powder used as a binding agent in construction. Mix with water to make concrete.
 
 
 # Other

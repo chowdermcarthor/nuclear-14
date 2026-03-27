@@ -1,0 +1,10 @@
+# Cement reagent — required by N14MaterialCement's grindable powder solution.
+# Without this prototype, ChemistryGuideDataSystem crashes on startup because
+# it indexes _reagentSources["Cement"] before the key is populated from ReagentPrototype enumeration.
+- type: reagent
+  id: Cement
+  name: reagent-name-cement
+  group: Other
+  desc: reagent-desc-cement
+  physicalDesc: reagent-physical-desc-powdery
+  color: "#c0bdb8"

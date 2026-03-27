@@ -113,7 +113,12 @@ public sealed class ChemistryGuideDataSystem : SharedChemistryGuideDataSystem
                     juiceSolution);
                 foreach (var (id, _) in juiceSolution.Contents)
                 {
-                    _reagentSources[id.Prototype].Add(data);
+                    // #Misfits Fix — Skip reagents in solutions that have no registered ReagentPrototype.
+                    // Using direct [] indexer here would crash if any solution references an undefined
+                    // or server-only reagent. GetReagentSources() already uses GetValueOrDefault safely,
+                    // so skipping unknown reagents here is consistent with that behaviour.
+                    if (_reagentSources.TryGetValue(id.Prototype, out var sources))
+                        sources.Add(data);
                 }
 
                 usedNames.Add(entProto.Name);
@@ -130,7 +135,9 @@ public sealed class ChemistryGuideDataSystem : SharedChemistryGuideDataSystem
                     grindableSolution);
                 foreach (var (id, _) in grindableSolution.Contents)
                 {
-                    _reagentSources[id.Prototype].Add(data);
+                    // #Misfits Fix — same guard as the juice-solution block above.
+                    if (_reagentSources.TryGetValue(id.Prototype, out var sources))
+                        sources.Add(data);
                 }
                 usedNames.Add(entProto.Name);
             }
