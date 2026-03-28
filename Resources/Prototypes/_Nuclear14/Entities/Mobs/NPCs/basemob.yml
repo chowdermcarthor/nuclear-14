@@ -108,6 +108,7 @@
   - type: NpcFactionMember
     factions:
     - WastelandAnimal
+  - type: ProximityNPC # Misfits Add — sleep distant NPCs to reduce tick load
   - type: HTN
     rootTask:
       task: N14RangedHostileCompound
@@ -384,6 +385,8 @@
   abstract: true
   id: N14MobWave
   components:
+  - type: ProximityNPC # Misfits Tweak — wave mobs inherit ProximityNPC from their hostile parent; override to stay awake so they rush immediately
+    startAsleep: false
   - type: HTN
     rootTask:
       task: N14HostileCompound
@@ -444,6 +447,7 @@
 #    whitelist:
 #      components:
 #      - HumanoidAppearance
+  - type: ProximityNPC # Misfits Add — sleep distant NPCs to reduce tick load
   - type: HTN
     rootTask:
       task: SimpleFollowHostileCompound # HTN compound must include FollowCompound so pet can follow its owner

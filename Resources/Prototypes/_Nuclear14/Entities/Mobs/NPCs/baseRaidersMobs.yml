@@ -35,6 +35,7 @@
     - type: MobMover
     - type: SurgeryTarget
       canOperate: false
+    - type: ProximityNPC # Misfits Add — sleep distant NPCs to reduce tick load
     - type: HTN
       rootTask:
         task: N14RangedHostileCompound

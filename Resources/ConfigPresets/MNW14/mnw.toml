@@ -78,6 +78,16 @@ log_late_msg = false
 # "send buffer full" errors during long rounds with 20+ players.
 sendbuffersize = 1048576
 receivebuffersize = 1048576
+# #Misfits Add — network tuning to reduce rubberbanding.
+# buffer_size = 3 gives clients 1 extra tick of jitter absorption (~40ms at 25 TPS).
+# mtu/mtu_expand reduce UDP fragmentation → fewer dropped game states.
+buffer_size = 3
+mtu = 1200
+mtu_expand = true
+
+[sys]
+# #Misfits Add — more precise tick timing on Windows servers (default = 3).
+win_tick_period = 1
 
 [physics]
 grid_splitting = false
@@ -85,7 +95,20 @@ maxlinvelocity = 72
 target_minimum_tickrate = 60
 
 [npc]
+# Maximum NPC AI updates processed per HTN tick (~7 Hz).
+# Lower = less CPU per tick, but distant sleeping NPCs are already culled by
+# ProximityNPCSystem so only awake NPCs consume budget.
+# 512 is intentional — at peak (~50 awake NPCs) this is more than enough.
+# Do NOT raise to 4096; that blows the 40ms tick budget with pathfinding.
 max_updates = 512
+# Pathfinding CPU budget per server tick (ms). Default is 3.
+# Keep this conservative — at 25 TPS (40ms budget), 3ms = 7.5% of budget.
+# Raising to 5 uses 12.5% and leaves less room for physics + game logic.
+pathfinding_time_ms = 3
+# Override all NPC juke cooldowns (seconds). -1 = disabled (use per-NPC YAML defaults).
+# Setting this to e.g. 10 makes ALL NPCs dodge only every 10s — saves CPU but
+# makes combat feel sluggish. Leave disabled and tune per-prototype instead.
+# juke_cooldown_override = -1
 
 [pointing]
 cooldown_seconds = 1

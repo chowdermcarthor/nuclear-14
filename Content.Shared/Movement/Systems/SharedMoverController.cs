@@ -79,12 +79,16 @@ namespace Content.Shared.Movement.Systems
         {
             base.UpdateAfterSolve(prediction, frameTime);
 
-            var query = AllEntityQuery<InputMoverComponent, PhysicsComponent>();
-
-            while (query.MoveNext(out var uid, out var _, out var physics))
-            {
-                //PhysicsSystem.SetLinearVelocity(uid, Vector2.Zero, body: physics);
-            }
+            // #Misfits Change — removed pointless entity query that iterated every
+            // InputMoverComponent+PhysicsComponent entity per physics substep while the
+            // loop body was commented out. At 1500+ NPCs × 2 substeps/tick this wasted
+            // significant CPU on a no-op enumeration.
+            // Original code:
+            // var query = AllEntityQuery<InputMoverComponent, PhysicsComponent>();
+            // while (query.MoveNext(out var uid, out var _, out var physics))
+            // {
+            //     //PhysicsSystem.SetLinearVelocity(uid, Vector2.Zero, body: physics);
+            // }
 
             UsedMobMovement.Clear();
         }

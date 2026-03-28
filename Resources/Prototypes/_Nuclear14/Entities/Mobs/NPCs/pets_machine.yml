@@ -39,6 +39,7 @@
   - type: Repairable
     doAfterDelay: 8
     fuelCost: 15
+  - type: WeldingHealable # Misfits Add - lets welders repair and revive eyebot pets through the silicon welding system
   - type: Pullable
   - type: MobState
     allowedStates:
@@ -50,6 +51,7 @@
       0: Alive
       100: Critical
       200: Dead
+    allowRevives: true # Misfits Fix - repaired pet robots need to transition back out of dead state
   - type: Stamina
     critThreshold: 150
   - type: Destructible

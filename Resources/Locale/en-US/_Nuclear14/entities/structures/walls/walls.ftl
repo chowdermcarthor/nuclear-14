@@ -1,2 +1,16 @@
 ent-N14WallWoodLog = log wall
     .desc = A wall made out of wooden logs.
+ent-N14WallBrick = brick wall
+    .desc = A sturdy brick wall from a pre-war structure.
+ent-N14WallConcreteLight = concrete wall
+    .desc = A concrete wall with a light finish.
+ent-N14WallConcreteDark = concrete wall
+    .desc = A concrete wall with a dark finish.
+ent-N14TentLeatherWall = leather tent wall
+    .desc = A tent wall made out of leather.
+ent-N14TentLeatherCorner = leather tent corner
+    .desc = A corner section of a leather tent.
+ent-N14TentClothWall = cloth tent wall
+    .desc = A tent wall made out of cloth.
+ent-N14TentClothCorner = cloth tent corner
+    .desc = A corner section of a cloth tent.

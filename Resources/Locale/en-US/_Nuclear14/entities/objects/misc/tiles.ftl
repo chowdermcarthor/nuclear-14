@@ -1,0 +1,12 @@
+ent-FloorTileItemWoodOak = oak wood floor tiles
+    .desc = A stack of oak wood floor tiles.
+ent-FloorTileItemWoodHouse = house wood floor tiles
+    .desc = A stack of house wood floor tiles.
+ent-FloorTileItemWoodMaple = maple wood floor tiles
+    .desc = A stack of maple wood floor tiles.
+ent-FloorTileItemMetalBlue = blue metal floor tiles
+    .desc = A stack of blue metal floor tiles.
+ent-FloorTileItemMetalRed = red metal floor tiles
+    .desc = A stack of red metal floor tiles.
+ent-FloorTileItemMetalGreen = green metal floor tiles
+    .desc = A stack of green metal floor tiles.

@@ -42,6 +42,7 @@
       0: Alive
       80: Critical
       160: Dead
+    allowRevives: true # Misfits Fix - organic pets should be revivable by medicine like other tamed animals
   - type: DamageStateVisuals
     states:
       Alive:

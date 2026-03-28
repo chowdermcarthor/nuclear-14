@@ -27,8 +27,8 @@ namespace Content.Client.Administration.Systems
         public event Action<List<HelpTicketInfo>>? OnTicketListReceived;
         // #Misfits Add — audit log response from server DB query
         public event Action<HelpTicketAuditResponseMessage>? OnAuditLogReceived;
-        // #Misfits Add — chat history response from server DB query
-        public event Action<HelpTicketChatResponseMessage>? OnTicketChatReceived;
+        // #Misfits Fix — chat history patched out; re-enable when feature is revisited
+        // public event Action<HelpTicketChatResponseMessage>? OnTicketChatReceived;
 
         // #Misfits Add — track known tickets to only toast on new or significant state changes
         private readonly Dictionary<int, HelpTicketStatus> _knownTickets = new();
@@ -52,8 +52,8 @@ namespace Content.Client.Administration.Systems
             SubscribeNetworkEvent<HelpTicketListMessage>(OnTicketListMsg);
             // #Misfits Add — subscribe to audit log responses from server
             SubscribeNetworkEvent<HelpTicketAuditResponseMessage>(OnAuditLogMsg);
-            // #Misfits Add — subscribe to chat history responses from server
-            SubscribeNetworkEvent<HelpTicketChatResponseMessage>(OnTicketChatMsg);
+            // #Misfits Fix — chat history patched out; subscription disabled
+            // SubscribeNetworkEvent<HelpTicketChatResponseMessage>(OnTicketChatMsg);
         }
 
         protected override void OnBwoinkTextMessage(BwoinkTextMessage message, EntitySessionEventArgs eventArgs)
@@ -106,11 +106,11 @@ namespace Content.Client.Administration.Systems
             OnAuditLogReceived?.Invoke(msg);
         }
 
-        // #Misfits Add — relay server DB chat history response to the UI
-        private void OnTicketChatMsg(HelpTicketChatResponseMessage msg)
-        {
-            OnTicketChatReceived?.Invoke(msg);
-        }
+        // #Misfits Fix — chat history patched out
+        // private void OnTicketChatMsg(HelpTicketChatResponseMessage msg)
+        // {
+        //     OnTicketChatReceived?.Invoke(msg);
+        // }
 
         // #Misfits Add — show a toast popup for notable ticket events
         // #Misfits Fix — DISABLED. TicketToastPopup.Show() adds a child to PopupRoot and
@@ -194,16 +194,16 @@ namespace Content.Client.Administration.Systems
             });
         }
 
-        // #Misfits Add — request the full chat history for a specific ticket from the server DB
-        public void RequestTicketChat(int ticketId, HelpTicketType ticketType, Guid playerId)
-        {
-            RaiseNetworkEvent(new HelpTicketChatRequestMessage
-            {
-                TicketId = ticketId,
-                TicketType = ticketType,
-                PlayerId = playerId,
-            });
-        }
+        // #Misfits Fix — chat history patched out; method disabled
+        // public void RequestTicketChat(int ticketId, HelpTicketType ticketType, Guid playerId)
+        // {
+        //     RaiseNetworkEvent(new HelpTicketChatRequestMessage
+        //     {
+        //         TicketId = ticketId,
+        //         TicketType = ticketType,
+        //         PlayerId = playerId,
+        //     });
+        // }
 
         public void Send(NetUserId channelId, string text, bool playSound)
         {

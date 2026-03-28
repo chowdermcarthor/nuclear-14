@@ -13,6 +13,7 @@
     factions:
     - HostileRobot
   #- type: MobRobotAggro #Misfits Change — removed: NPC hostile robots should be hostile to player robots, not neutral.
+  - type: ProximityNPC # Misfits Add — sleep distant NPCs to reduce tick load
   - type: HTN
     rootTask:
       task: N14HostileCompound

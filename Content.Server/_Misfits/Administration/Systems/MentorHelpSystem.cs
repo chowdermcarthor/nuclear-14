@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using Content.Server.Administration;
 using Content.Server.Administration.Logs;
 using Content.Server.Administration.Managers;
+using Content.Server.Database; // #Misfits Add — IServerDbManager for MHELP chat persistence
 using Content.Server.Afk;
 using Content.Server.Chat.Managers; // #Misfits Add — for IChatManager (ticket admin chat push)
 using Content.Server.Discord;
@@ -49,6 +50,7 @@ public sealed partial class MentorHelpSystem : SharedMentorHelpSystem
     [Dependency] private readonly PlayerRateLimitManager _rateLimit = default!;
     [Dependency] private readonly IChatManager _chatManager = default!; // #Misfits Add — push ticket events to admin chat
     [Dependency] private readonly IAdminLogManager _adminLog = default!;
+    [Dependency] private readonly IServerDbManager _dbManager = default!; // #Misfits Add — persist MHELP chat messages for audit replay
 
     [GeneratedRegex(@"^https://(?:(?:canary|ptb)\.)?discord\.com/api/webhooks/(\d+)/((?!.*/).*)$")]
     private static partial Regex DiscordRegex();
@@ -464,12 +466,35 @@ public sealed partial class MentorHelpSystem : SharedMentorHelpSystem
     }
 
     // Persist mentor-help message traffic for complete historical review.
-    private void LogMentorTicketMessage(int? ticketId, string senderName, bool senderIsMentor, string messageText)
+    // #Misfits Add — playerId is the NetUserId of the player who owns the ticket (not the sender).
+    // Needed so DB messages can be retrieved by player GUID from the Audit Log.
+    private void LogMentorTicketMessage(int? ticketId, NetUserId playerId, string senderName, bool senderIsMentor, string messageText)
     {
         var ticketText = ticketId.HasValue ? $"#{ticketId.Value}" : "<none>";
         var direction = senderIsMentor ? "mentor->player" : "player->mentor";
         _adminLog.Add(LogType.AdminMessage, LogImpact.Low,
             $"MHELP message ticket={ticketText} direction={direction} sender={senderName}: {messageText}");
+
+        // #Misfits Fix — DB chat message persistence patched out; re-enable when feature is revisited.
+        // if (ticketId.HasValue)
+        // {
+        //     var record = new HelpTicketMessage
+        //     {
+        //         TicketId = ticketId.Value,
+        //         TicketType = (int) HelpTicketType.MentorHelp,
+        //         PlayerId = playerId.UserId,
+        //         SenderName = senderName,
+        //         SenderIsStaff = senderIsMentor,
+        //         MessageText = messageText,
+        //         SentAt = DateTime.UtcNow,
+        //     };
+        //     var task = _dbManager.AddHelpTicketMessageAsync(record);
+        //     task.ContinueWith(t =>
+        //     {
+        //         if (t.IsFaulted)
+        //             Log.Error($"[HelpTicket] Failed to persist MHELP chat message for ticket #{ticketId}: {t.Exception}");
+        //     }, TaskScheduler.Default);
+        // }
     }
 
     private void OnTicketRequestList(HelpTicketRequestListMessage msg, EntitySessionEventArgs args)
@@ -539,7 +564,7 @@ public sealed partial class MentorHelpSystem : SharedMentorHelpSystem
         var msg = new MentorHelpTextMessage(message.UserId, senderSession.UserId, senderText, playSound: playSound);
 
         int? ticketId = _mhelpTickets.TryGetValue(message.UserId, out var historyTicket) ? historyTicket.TicketId : null;
-        LogMentorTicketMessage(ticketId, senderSession.Name, senderMentor, message.Text);
+        LogMentorTicketMessage(ticketId, message.UserId, senderSession.Name, senderMentor, message.Text);
 
         // Notify all mentors
         var mentors = GetTargetMentors();

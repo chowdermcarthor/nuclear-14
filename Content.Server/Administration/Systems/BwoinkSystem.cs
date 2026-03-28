@@ -159,7 +159,8 @@ namespace Content.Server.Administration.Systems
             // #Misfits Add — subscribe to admin audit log requests so past-round tickets can be queried
             SubscribeNetworkEvent<HelpTicketAuditRequestMessage>(OnAuditRequest);
             // #Misfits Add — subscribe to chat history requests so admins can replay conversations
-            SubscribeNetworkEvent<HelpTicketChatRequestMessage>(OnChatHistoryRequest);
+            // #Misfits Fix — chat history patched out; server handler disabled
+            // SubscribeNetworkEvent<HelpTicketChatRequestMessage>(OnChatHistoryRequest);
 
             // #Misfits Fix — replay ticket list + message history when an admin readmins.
             // Without this, deadmin → send ahelp → readmin shows the ticket but an empty chat
@@ -716,26 +717,26 @@ namespace Content.Server.Administration.Systems
             _adminLog.Add(LogType.AdminMessage, LogImpact.Low,
                 $"AHELP message ticket={ticketText} direction={direction} sender={senderName}: {messageText}");
 
-            // Persist to DB only when we have enough context to make it useful.
-            if (ticketId.HasValue && playerId.HasValue)
-            {
-                var record = new HelpTicketMessage
-                {
-                    TicketId = ticketId.Value,
-                    TicketType = (int) ticketType,
-                    PlayerId = playerId.Value.UserId,
-                    SenderName = senderName,
-                    SenderIsStaff = senderIsStaff,
-                    MessageText = messageText,
-                    SentAt = DateTime.UtcNow,
-                };
-                var task = _dbManager.AddHelpTicketMessageAsync(record);
-                task.ContinueWith(t =>
-                {
-                    if (t.IsFaulted)
-                        Log.Error($"[HelpTicket] Failed to persist chat message for ticket #{ticketId}: {t.Exception}");
-                }, TaskScheduler.Default);
-            }
+            // #Misfits Fix — DB chat message persistence patched out; re-enable when feature is revisited.
+            // if (ticketId.HasValue && playerId.HasValue)
+            // {
+            //     var record = new HelpTicketMessage
+            //     {
+            //         TicketId = ticketId.Value,
+            //         TicketType = (int) ticketType,
+            //         PlayerId = playerId.Value.UserId,
+            //         SenderName = senderName,
+            //         SenderIsStaff = senderIsStaff,
+            //         MessageText = messageText,
+            //         SentAt = DateTime.UtcNow,
+            //     };
+            //     var task = _dbManager.AddHelpTicketMessageAsync(record);
+            //     task.ContinueWith(t =>
+            //     {
+            //         if (t.IsFaulted)
+            //             Log.Error($"[HelpTicket] Failed to persist chat message for ticket #{ticketId}: {t.Exception}");
+            //     }, TaskScheduler.Default);
+            // }
         }
 
         // #Misfits Add — admin requests full ticket list (e.g. on connect or UI open)
@@ -779,25 +780,33 @@ namespace Content.Server.Administration.Systems
         }
 
         // #Misfits Add — admin requests full chat history for a specific ticket from DB
-        private async void OnChatHistoryRequest(HelpTicketChatRequestMessage msg, EntitySessionEventArgs args)
-        {
-            if (!(_adminManager.GetAdminData(args.SenderSession)?.HasFlag(AdminFlags.Adminhelp) ?? false))
-                return;
-
-            var messages = await _dbManager.GetHelpTicketMessagesAsync(msg.TicketId, (int) msg.TicketType, msg.PlayerId);
-
-            var entries = messages.Select(m => new HelpTicketChatEntry
-            {
-                SenderName = m.SenderName,
-                SenderIsStaff = m.SenderIsStaff,
-                MessageText = m.MessageText,
-                SentAt = m.SentAt,
-            }).ToList();
-
-            RaiseNetworkEvent(
-                new HelpTicketChatResponseMessage { TicketId = msg.TicketId, TicketType = msg.TicketType, Messages = entries },
-                args.SenderSession.Channel);
-        }
+        // #Misfits Fix — wrapped in try-catch: async void exceptions are unobserved and silently
+        // #Misfits Fix — chat history patched out; handler commented out alongside disabled subscription
+        // private async void OnChatHistoryRequest(HelpTicketChatRequestMessage msg, EntitySessionEventArgs args)
+        // {
+        //     if (!(_adminManager.GetAdminData(args.SenderSession)?.HasFlag(AdminFlags.Adminhelp) ?? false))
+        //         return;
+        //     List<HelpTicketChatEntry> entries;
+        //     try
+        //     {
+        //         var messages = await _dbManager.GetHelpTicketMessagesAsync(msg.TicketId, (int) msg.TicketType, msg.PlayerId);
+        //         entries = messages.Select(m => new HelpTicketChatEntry
+        //         {
+        //             SenderName = m.SenderName,
+        //             SenderIsStaff = m.SenderIsStaff,
+        //             MessageText = m.MessageText,
+        //             SentAt = m.SentAt,
+        //         }).ToList();
+        //     }
+        //     catch (Exception ex)
+        //     {
+        //         Log.Error($"[HelpTicket] Failed to load chat history for ticket #{msg.TicketId}: {ex}");
+        //         entries = new List<HelpTicketChatEntry>();
+        //     }
+        //     RaiseNetworkEvent(
+        //         new HelpTicketChatResponseMessage { TicketId = msg.TicketId, TicketType = msg.TicketType, Messages = entries },
+        //         args.SenderSession.Channel);
+        // }
 
         private void OnServerNameChanged(string obj)
         {
