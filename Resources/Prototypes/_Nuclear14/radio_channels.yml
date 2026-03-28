@@ -41,6 +41,7 @@
 - type: radioChannel
   id: VaultSecurity
   name: chat-radio-vault-security
+  keycode: "s"
   frequency: 1354
   color: "#A32B2B"
 

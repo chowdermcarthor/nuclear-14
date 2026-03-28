@@ -2272,3 +2272,16 @@ Entries:
   id: 5683
   time: '2026-03-28T08:55:26.0000000+00:00'
   url: https://github.com/Misfit-Sanctuary/nuclear-14/pull/202
+- author: Cythisiax
+  changes:
+    - type: Tweak
+      message: >-
+        BoS Wattz2K kit replaced with Bozar. No more 1shotting people with
+        Wattz2K. Full circle.
+    - type: Tweak
+      message: Paladin = 10 Hours, Senior Paladin = 40 hours.
+    - type: Fix
+      message: PA brace system mitigation properly applied.
+  id: 5684
+  time: '2026-03-28T19:26:58.0000000+00:00'
+  url: https://github.com/Misfit-Sanctuary/nuclear-14/pull/203
