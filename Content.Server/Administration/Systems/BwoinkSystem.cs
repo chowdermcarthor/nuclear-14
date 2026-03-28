@@ -107,6 +107,12 @@ namespace Content.Server.Administration.Systems
         // thousands of messages cause the client to freeze and crash on F2.
         private const int MaxHistoryPerChannel = 100;
 
+        // #Misfits Fix — track sessions that have already received a history replay this
+        // connection cycle. Prevents double-replay when both OnPlayerStatusChanged and
+        // OnAdminPermsChanged fire on the same connect event, which floods the client
+        // and crashes it before it finishes loading.
+        private readonly HashSet<NetUserId> _replayedSessions = new();
+
         public override void Initialize()
         {
             base.Initialize();
@@ -212,6 +218,9 @@ namespace Content.Server.Administration.Systems
         {
             if (e.NewStatus == SessionStatus.Disconnected)
             {
+                // #Misfits Fix — clear the replay-dedup set so a reconnect gets a fresh replay
+                _replayedSessions.Remove(e.Session.UserId);
+
                 if (_activeConversations.TryGetValue(e.Session.UserId, out var lastMessageTime))
                 {
                     var timeSinceLastMessage = DateTime.Now - lastMessageTime;
@@ -270,33 +279,27 @@ namespace Content.Server.Administration.Systems
 
             RaiseNetworkEvent(new BwoinkDiscordRelayUpdated(!string.IsNullOrWhiteSpace(_webhookUrl)), e.Session);
 
-            // #Misfits Add — push existing ticket list to newly connected admins so they
-            // see tickets created before they joined.
-            if (_adminManager.GetAdminData(e.Session)?.HasFlag(AdminFlags.Adminhelp) ?? false)
-            {
-                var list = _tickets.Values.ToList();
-                if (list.Count > 0)
-                    RaiseNetworkEvent(new HelpTicketListMessage(list, HelpTicketType.AdminHelp), e.Session.Channel);
-
-                // #Misfits Add — replay all stored bwoink message history so the late-joining
-                // admin can read the full conversation threads in the bwoink panel.
-                foreach (var (_, messages) in _messageHistory)
-                {
-                    foreach (var historyMsg in messages)
-                    {
-                        RaiseNetworkEvent(historyMsg, e.Session.Channel);
-                    }
-                }
-            }
+            // #Misfits Fix — history replay is now handled solely by OnAdminPermsChanged to
+            // avoid double-replaying (OnPlayerStatusChanged fires before admin data finishes
+            // loading, then OnPermsChanged fires again when it does). We just mark that the
+            // session connected so OnAdminPermsChanged knows to replay.
         }
 
-        // #Misfits Fix — when an admin readmins (gains Adminhelp flag), replay ticket list
-        // and message history to them. This mirrors the reconnect replay in OnPlayerStatusChanged
-        // but triggers on permission changes instead of session status changes.
+        // #Misfits Fix — when an admin gains (or regains) the Adminhelp flag, replay ticket
+        // list and message history. This is the SOLE replay path — it covers both initial
+        // connect (admin data loads after InGame) and readmin (deadmin → readmin mid-round).
         private void OnAdminPermsChanged(AdminPermsChangedEventArgs args)
         {
-            // Only act when someone gains (or regains) the Adminhelp flag
+            // When someone LOSES admin, clear the dedup set so re-gaining triggers a replay
             if (args.Flags == null || !args.Flags.Value.HasFlag(AdminFlags.Adminhelp))
+            {
+                _replayedSessions.Remove(args.Player.UserId);
+                return;
+            }
+
+            // Skip if we already replayed for this session (guard against multiple
+            // OnPermsChanged invocations during the same connection cycle)
+            if (!_replayedSessions.Add(args.Player.UserId))
                 return;
 
             // Push current ticket list

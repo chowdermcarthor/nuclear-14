@@ -46,7 +46,8 @@ public sealed class MentorHelpSystem : SharedMentorHelpSystem
     {
         if (msg.Ticket.Type == HelpTicketType.MentorHelp)
         {
-            ShowTicketToast(msg.Ticket);
+            // #Misfits Fix — toast system disabled (same crash as BwoinkSystem — see comment there).
+            // ShowTicketToast(msg.Ticket);
             OnTicketUpdated?.Invoke(msg.Ticket);
         }
     }
@@ -71,44 +72,47 @@ public sealed class MentorHelpSystem : SharedMentorHelpSystem
     }
 
     // #Misfits Add — show a toast popup for notable ticket events
-    private void ShowTicketToast(HelpTicketInfo ticket)
-    {
-        var previouslyKnown = _knownTickets.TryGetValue(ticket.TicketId, out var prevStatus);
-        _knownTickets[ticket.TicketId] = ticket.Status;
-
-        string? title = null;
-        string? body = null;
-
-        if (!previouslyKnown && ticket.Status == HelpTicketStatus.Open)
-        {
-            title = Loc.GetString("ticket-system-toast-new-title");
-            body = Loc.GetString("ticket-system-toast-new-body", ("id", ticket.TicketId), ("player", ticket.PlayerName));
-        }
-        else if (previouslyKnown && prevStatus != ticket.Status)
-        {
-            switch (ticket.Status)
-            {
-                case HelpTicketStatus.Claimed:
-                    title = Loc.GetString("ticket-system-toast-claimed-title");
-                    body = Loc.GetString("ticket-system-toast-claimed-body", ("id", ticket.TicketId), ("role", "Mentor"), ("admin", ticket.ClaimedByName ?? "?"));
-                    break;
-                case HelpTicketStatus.Resolved:
-                    title = Loc.GetString("ticket-system-toast-resolved-title");
-                    body = Loc.GetString("ticket-system-toast-resolved-body", ("id", ticket.TicketId), ("role", "Mentor"), ("admin", ticket.ResolvedByName ?? "?"));
-                    break;
-                case HelpTicketStatus.Open when prevStatus == HelpTicketStatus.Resolved:
-                    title = Loc.GetString("ticket-system-toast-reopened-title");
-                    body = Loc.GetString("ticket-system-toast-reopened-body", ("id", ticket.TicketId), ("player", ticket.PlayerName));
-                    break;
-            }
-        }
-
-        if (title != null && body != null)
-        {
-            var toast = new TicketToastPopup();
-            toast.Show(title, body);
-        }
-    }
+    // #Misfits Fix — DISABLED. Same crash as BwoinkSystem — TicketToastPopup mutates the
+    // UI control tree during DoFrameUpdateRecursive, causing "Collection was modified" crash.
+    // Kept for future reimplementation using a safer notification pattern.
+    // private void ShowTicketToast(HelpTicketInfo ticket)
+    // {
+    //     var previouslyKnown = _knownTickets.TryGetValue(ticket.TicketId, out var prevStatus);
+    //     _knownTickets[ticket.TicketId] = ticket.Status;
+    //
+    //     string? title = null;
+    //     string? body = null;
+    //
+    //     if (!previouslyKnown && ticket.Status == HelpTicketStatus.Open)
+    //     {
+    //         title = Loc.GetString("ticket-system-toast-new-title");
+    //         body = Loc.GetString("ticket-system-toast-new-body", ("id", ticket.TicketId), ("player", ticket.PlayerName));
+    //     }
+    //     else if (previouslyKnown && prevStatus != ticket.Status)
+    //     {
+    //         switch (ticket.Status)
+    //         {
+    //             case HelpTicketStatus.Claimed:
+    //                 title = Loc.GetString("ticket-system-toast-claimed-title");
+    //                 body = Loc.GetString("ticket-system-toast-claimed-body", ("id", ticket.TicketId), ("role", "Mentor"), ("admin", ticket.ClaimedByName ?? "?"));
+    //                 break;
+    //             case HelpTicketStatus.Resolved:
+    //                 title = Loc.GetString("ticket-system-toast-resolved-title");
+    //                 body = Loc.GetString("ticket-system-toast-resolved-body", ("id", ticket.TicketId), ("role", "Mentor"), ("admin", ticket.ResolvedByName ?? "?"));
+    //                 break;
+    //             case HelpTicketStatus.Open when prevStatus == HelpTicketStatus.Resolved:
+    //                 title = Loc.GetString("ticket-system-toast-reopened-title");
+    //                 body = Loc.GetString("ticket-system-toast-reopened-body", ("id", ticket.TicketId), ("player", ticket.PlayerName));
+    //                 break;
+    //         }
+    //     }
+    //
+    //     if (title != null && body != null)
+    //     {
+    //         var toast = new TicketToastPopup();
+    //         toast.Show(title, body);
+    //     }
+    // }
 
     // #Misfits Add — send ticket claim/resolve requests
     public void ClaimTicket(int ticketId)
