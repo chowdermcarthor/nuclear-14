@@ -75,8 +75,12 @@ public sealed class PowerArmorIntegritySystem : EntitySystem
 
     /// <summary>
     ///     Core damage interception. Called after armor coefficients have already
-    ///     reduced the incoming damage. Splits the remaining damage between the
-    ///     armor's integrity pool and the wearer.
+    ///     reduced the incoming damage.
+    ///
+    ///     While integrity is above zero: <see cref="PowerArmorIntegrityComponent.BleedthroughRatio"/>
+    ///     (1.5% by default) bleeds through to the player; the remainder is
+    ///     absorbed by the armor's HP pool. When integrity hits zero the armor is
+    ///     broken and this handler returns early, letting full damage through.
     /// </summary>
     private void OnDamageModify(EntityUid uid, PowerArmorIntegrityComponent comp,
         InventoryRelayedEvent<DamageModifyEvent> args)
@@ -91,39 +95,12 @@ public sealed class PowerArmorIntegritySystem : EntitySystem
         if (integrity <= 0)
             return;
 
-        var effectiveAbsorption = GetEffectiveAbsorption(comp, integrity);
-        if (effectiveAbsorption <= 0f)
-            return;
-
         // Only absorb positive (incoming) damage — don't interfere with healing.
         var incomingDamage = args.Args.Damage;
         if (!incomingDamage.AnyPositive())
             return;
 
-        // Penetration scaling: heavy-calibre rounds overwhelm the plating.
-        // Total positive damage is compared against the penetration threshold;
-        // above it, absorption is linearly reduced toward zero at the cap.
-        var totalPositive = 0f;
-        foreach (var (_, amount) in incomingDamage.DamageDict)
-        {
-            if (amount > 0)
-                totalPositive += (float) amount;
-        }
-
-        if (totalPositive > comp.PenetrationThreshold && comp.PenetrationCap > comp.PenetrationThreshold)
-        {
-            var penetrationFactor = Math.Clamp(
-                (totalPositive - comp.PenetrationThreshold) / (comp.PenetrationCap - comp.PenetrationThreshold),
-                0f, 1f);
-
-            // Scale absorption down — a round at the cap punches clean through.
-            effectiveAbsorption *= 1f - penetrationFactor;
-        }
-
-        if (effectiveAbsorption <= 0f)
-            return;
-
-        // Split each damage type: armorShare goes to armor HP, rest to wearer.
+        // Split each damage type: tiny bleedthrough to player, bulk to armor HP.
         var armorShare = new DamageSpecifier();
         var playerShare = new DamageSpecifier();
 
@@ -136,8 +113,8 @@ public sealed class PowerArmorIntegritySystem : EntitySystem
                 continue;
             }
 
-            var toArmor = amount * effectiveAbsorption;
-            var toPlayer = amount - toArmor;
+            var toPlayer = amount * comp.BleedthroughRatio;
+            var toArmor = amount - toPlayer;
 
             // Don't let armor absorb more than its remaining integrity (total, not per-type).
             // This prevents over-absorption on the killing blow.
@@ -151,11 +128,11 @@ public sealed class PowerArmorIntegritySystem : EntitySystem
             playerShare.DamageDict[type] = toPlayer;
         }
 
-        // What reaches the wearer is only the player's share.
+        // Only the 1.5% bleedthrough reaches the wearer.
         args.Args.Damage = playerShare;
 
         // Apply absorbed damage to the armor entity's own DamageableComponent.
-        // Server-only to avoid prediction desync; client reduces wearer damage for prediction.
+        // Server-only to avoid prediction desync; client uses playerShare for prediction.
         if (_net.IsServer && armorShare.AnyPositive())
         {
             _damageable.TryChangeDamage(uid, armorShare, ignoreResistances: true, interruptsDoAfters: false);
@@ -337,12 +314,12 @@ public sealed class PowerArmorIntegritySystem : EntitySystem
                 ("color", color)));
         }
 
-        // Show what absorption the integrity provides.
+        // Show bleedthrough so players know how much damage reaches them while intact.
         msg.PushNewline();
         msg.AddMarkupOrThrow(Loc.GetString("power-armor-integrity-examine-absorption-header"));
         msg.PushNewline();
         msg.AddMarkupOrThrow(Loc.GetString("power-armor-integrity-examine-absorption-value",
-            ("value", (int) (comp.AbsorptionRatio * 100))));
+            ("value", (int) ((1f - comp.BleedthroughRatio) * 100))));
 
         _examine.AddDetailedExamineVerb(args, comp, msg,
             Loc.GetString("power-armor-integrity-verb-text"),
@@ -356,28 +333,6 @@ public sealed class PowerArmorIntegritySystem : EntitySystem
     private FixedPoint2 GetIntegrity(PowerArmorIntegrityComponent comp, DamageableComponent damageable)
     {
         return FixedPoint2.Max(comp.MaxIntegrity - damageable.TotalDamage, 0);
-    }
-
-    /// <summary>
-    ///     Returns the effective absorption ratio based on the armor's current
-    ///     integrity fraction and its degradation tiers.
-    /// </summary>
-    private float GetEffectiveAbsorption(PowerArmorIntegrityComponent comp, FixedPoint2 integrity)
-    {
-        var fraction = (float) integrity / (float) comp.MaxIntegrity;
-
-        // Walk tiers from highest threshold down. Each tier we fall below
-        // overwrites the result; stop on the first tier we're above.
-        var effective = comp.AbsorptionRatio;
-        foreach (var tier in comp.DegradationTiers)
-        {
-            if (fraction <= tier.Threshold)
-                effective = tier.Absorption;
-            else
-                break;
-        }
-
-        return effective;
     }
 
     /// <summary>

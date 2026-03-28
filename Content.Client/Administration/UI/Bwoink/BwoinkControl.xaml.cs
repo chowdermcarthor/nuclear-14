@@ -125,8 +125,14 @@ namespace Content.Client.Administration.UI.Bwoink
 
             ChannelSelector.Comparison = (a, b) =>
             {
-                var ach = AHelpHelper.EnsurePanel(a.SessionId);
-                var bch = AHelpHelper.EnsurePanel(b.SessionId);
+                // #Misfits Fix — use TryGetChannel instead of EnsurePanel. EnsurePanel creates
+                // new BwoinkPanel controls and adds them to BwoinkArea during the sort, which
+                // modifies the UI control tree while DoFrameUpdateRecursive is iterating it,
+                // causing "Collection was modified; enumeration operation may not execute" crash.
+                // TryGetChannel is read-only — if no panel exists yet, the player simply sorts
+                // with zero unread messages and no last-message timestamp (correct defaults).
+                AHelpHelper.TryGetChannel(a.SessionId, out var ach);
+                AHelpHelper.TryGetChannel(b.SessionId, out var bch);
 
                 // Pinned players first
                 if (a.IsPinned != b.IsPinned)
@@ -140,14 +146,14 @@ namespace Content.Client.Administration.UI.Bwoink
 
                 // First, sort by unread. Any chat with unread messages appears first. We just sort based on unread
                 // status, not number of unread messages, so that more recent unread messages take priority.
-                var aUnread = ach.Unread > 0;
-                var bUnread = bch.Unread > 0;
+                var aUnread = ach is { Unread: > 0 };
+                var bUnread = bch is { Unread: > 0 };
                 if (aUnread != bUnread)
                     return aUnread ? -1 : 1;
 
                 // Sort by recent messages during the current round.
-                var aRecent = a.ActiveThisRound && ach.LastMessage != DateTime.MinValue;
-                var bRecent = b.ActiveThisRound && bch.LastMessage != DateTime.MinValue;
+                var aRecent = a.ActiveThisRound && (ach?.LastMessage ?? DateTime.MinValue) != DateTime.MinValue;
+                var bRecent = b.ActiveThisRound && (bch?.LastMessage ?? DateTime.MinValue) != DateTime.MinValue;
                 if (aRecent != bRecent)
                     return aRecent ? -1 : 1;
 
@@ -176,7 +182,7 @@ namespace Content.Client.Administration.UI.Bwoink
                 }
 
                 // Finally, sort by the most recent message.
-                return bch.LastMessage.CompareTo(ach.LastMessage);
+                return (bch?.LastMessage ?? DateTime.MinValue).CompareTo(ach?.LastMessage ?? DateTime.MinValue);
             };
 
 
