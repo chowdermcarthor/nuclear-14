@@ -2434,3 +2434,14 @@ Entries:
   id: 5691
   time: '2026-03-30T04:45:07.0000000+00:00'
   url: https://github.com/Misfit-Sanctuary/nuclear-14/pull/213
+- author: cythisiax
+  changes:
+    - type: Tweak
+      message: CombatMode ping > 3 seconds to 10 seconds.
+    - type: Fix
+      message: MobComponent with AggroSound system
+    - type: Add
+      message: F13 weapon sprites, prototypes to include weapons & armor port.
+  id: 5692
+  time: '2026-03-30T14:38:55.0000000+00:00'
+  url: https://github.com/Misfit-Sanctuary/nuclear-14/pull/214
