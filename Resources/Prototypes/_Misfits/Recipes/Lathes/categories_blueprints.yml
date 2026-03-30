@@ -296,3 +296,8 @@
   id: N14BlueprintTribeAmmoT4
   name: lathe-category-blueprint-tribe-ammo-t4
 
+# === ROBOBRAIN ===
+- type: latheCategory
+  id: N14BlueprintRobobrain
+  name: lathe-category-blueprint-robobrain
+

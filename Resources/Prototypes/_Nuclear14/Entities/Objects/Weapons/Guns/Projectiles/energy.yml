@@ -9,13 +9,11 @@
       collection: EnergyMiss
       params:
         volume: 5
-  - type: Sprite
-    scale: 1.2, 0.5
-    sprite: Objects/Weapons/Guns/Projectiles/projectiles2.rsi
+  - type: Sprite #Misfits Fix — was using stretched ballistic bullet sprite (projectiles2.rsi 'bullet' scale 1.2,0.5). Now uses the proper plasma bolt from plasma.rsi.
+    sprite: _Nuclear14/Objects/Weapons/Guns/Ammunition/Projectiles/plasma.rsi
     layers:
-    - state: bullet
+    - state: plasma
       shader: unshaded
-      color: "#44FF66"
   - type: Fixtures
     fixtures:
       projectile:

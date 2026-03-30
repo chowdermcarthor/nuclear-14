@@ -1,0 +1,24 @@
+# Blueprint crafting recipe for the Robobrain chassis circuit board.
+# Requires: N14BlueprintRobobrainBoard placed in a weapon workbench storage slot.
+#
+# Result: N14RobobrainMachineCircuitboard
+# Used in: standard machine frame construction (Machine graph)
+# → five steel sheets → cable → insert this board → screwdriver
+# → spawns N14MobPlayerRobobrain (empty chassis, ready for brain insertion)
+#
+# Material costs are intentionally steep to reflect the rarity of the
+# technology and to gate player-Robobrain entry behind meaningful effort:
+#   Steel  — structural chassis plating
+#   Glass  — sensor array and cranial dome
+#   Gold   — high-grade pre-war circuitry (valuable, N14 gatherable via ore → lathe)
+
+- type: latheRecipe
+  id: N14BPRobobrainCircuitboard
+  result: N14RobobrainMachineCircuitboard
+  category: N14BlueprintRobobrain
+  completetime: 15
+  requiresBlueprint: true
+  materials:
+    Steel: 2500
+    Glass: 1500
+    Gold: 500

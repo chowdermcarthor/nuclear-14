@@ -1,0 +1,87 @@
+# Playable Robobrain chassis.
+# Built via the standard machine frame construction graph using N14RobobrainMachineCircuitboard
+# (crafted at a weapon workbench with the N14BlueprintRobobrainBoard blueprint).
+#
+# Activation flow:
+#   1. A player surgically extracts their brain (or a ghoul's brain).
+#   2. Brain is placed inside an MMI (Man-Machine Interface) item.
+#   3. MMI is inserted into the borg_brain slot of this chassis.
+#   4. BorgSystem.MMI automatically transfers the player's mind to the chassis.
+#
+# Voluntary exit:
+#   The player uses the "Acidify Brain" action, which floods the cranial cavity
+#   with acid, destroys the inserted brain, and returns the player to ghost form.
+
+- type: entity
+  parent: N14BaseRobotChassis
+  id: N14MobPlayerRobobrain
+  name: Robobrain
+  description: >
+    A hollowed Pre-War military Robobrain chassis. The cranial cavity is vacant,
+    waiting for a living brain to give it purpose.
+  suffix: Player, Empty
+  components:
+
+  # Slower than standard robots — the Robobrain trades speed for firepower
+  - type: MovementSpeedModifier
+    baseWalkSpeed: 1.5
+    baseSprintSpeed: 3
+
+  - type: Sprite
+    sprite: _Nuclear14/Mobs/Robots/robobrain.rsi
+
+  # Built-in laser weapon — hardwired into the chassis, not a swappable module
+  - type: Gun
+    minAngle: 6
+    maxAngle: 12
+    angleIncrease: 2
+    angleDecay: 4
+    fireRate: 1
+
+  - type: BasicEntityAmmoProvider
+    proto: BulletLaser
+    capacity: 9
+    count: 9
+
+  - type: RechargeBasicEntityAmmo
+    rechargeCooldown: 2
+
+  # Slightly higher draw rate than standard borg to account for laser recharge
+  - type: PowerCellDraw
+    drawRate: 1.0
+
+  # Restricted module list — Robobrain focuses on combat, utility, and field medicine
+  - type: BorgChassis
+    maxModules: 4
+    moduleWhitelist:
+      tags:
+      - BorgModuleGeneric     # GPS, Radiation Detection, Tool, Fire Extinguisher
+      - BorgModuleEngineering # Advanced Tool, Construction, RCD
+      - BorgModuleMedical     # Treatment, Defibrillator, Diagnosis
+    hasMindState: on
+    noMindState: off
+
+  # English only — no robotic accent, no binary chatter
+  # The Robobrain was designed to interact fluently with humans
+  - type: LanguageKnowledge
+    speaks:
+    - English
+    - RobotTalk
+    understands:
+    - English
+    - RobotTalk
+
+  # Spawns completely empty — no brain or modules pre-loaded
+  - type: ContainerFill
+    containers:
+      borg_brain: []
+      borg_module: []
+
+  # Marker component — RobobrainAcidifySystem subscribes to ComponentInit on this
+  # and calls _actions.AddAction() to grant the Acidify Brain action at runtime.
+  - type: RobobrainChassis
+
+  # No faction — inherits Wastelander from parent but neutralised here so
+  # the player's own faction relationships drive interaction
+  - type: NpcFactionMember
+    factions: []

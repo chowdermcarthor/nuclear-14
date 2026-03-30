@@ -11,7 +11,6 @@
     blacklist:
       components:
       - Gun
-      - MeleeWeapon
   - type: Appearance # #Misfits Change: allow robot sprites to swap to their built-in dead state
   - type: DamageStateVisuals # #Misfits Change: use robot dead sprites instead of animated hover frames when downed/dead
     states:
@@ -24,12 +23,15 @@
   - type: RobotDownedVisuals # #Misfits Change: force the dead frame while the robot is lying down
   - type: Stripping # #Misfits Change: allow player robots to open strip UI with hover + E
   - type: RobotCriticalSparking # #Misfits Change: spark and crackle while near destruction, stop once repaired
-  - type: Reflect # #Misfits Change: player robots can ricochet ballistic fire off their chassis
+  - type: Reflect # #Misfits Change: player robots can ricochet projectiles off their chassis
     innate: true
     reflectProb: 0.1
     spread: 150
     reflects:
     - NonEnergy
+    - Energy
+    - SmallCaliber
+    - MediumCaliber
 
 - type: entity
   parent: N14BasePlayerSynthetic
@@ -99,6 +101,8 @@
         - BorgModuleDiagnosis
         - BorgModuleTreatment
         - BorgModuleSurgery
+        - N14BorgModuleFlamer # #Misfits Add: Mr. Handy gets an integrated flamer for domestic and combat use
+        - BorgModuleCleaning # #Misfits Add: Mr. Handy is a domestic servant — cleaning module is thematic
       id: # #Misfits Change: pre-load the nav module into the id inventory slot
         - MisfitsRobotNavCard
   - type: ItemSlots
@@ -257,7 +261,7 @@
         - PositronicBrain
       borg_module:
         - N14BorgModulePlasma
-        # - N14BorgModuleFlamer # #Misfits Change: Flamer module disabled - bugged
+        - N14BorgModuleFlamer # #Misfits Change: Flamer module re-enabled — now battery-based to avoid SolutionContainerManager bugs
       id: # #Misfits Change: pre-load the nav module into the id inventory slot
         - MisfitsRobotNavCard # General Atomics Navigation
   - type: ItemSlots
@@ -265,6 +269,122 @@
       cell_slot:
         name: power-cell-slot-component-slot-name-default
         startingItem: PowerCellHyper
+
+- type: entity
+  parent: N14PlayerSyntheticProtectron
+  id: N14PlayerSyntheticProtectronPolice
+  name: protectron police
+  suffix: player, synthetic, police
+  description: A RobCo Industries Protectron police model fitted with an integrated low-power laser emitter.
+  components:
+  - type: HumanoidAppearance
+    species: RobotProtectronPolice
+  - type: Sprite
+    sprite: _Nuclear14/Mobs/Robots/protectron-police.rsi
+    layers:
+    - state: icon
+      map: ["enum.DamageStateVisualLayers.Base", "movement"]
+    - state: icon
+      map: ["enum.BorgVisualLayers.Light"]
+      shader: unshaded
+      visible: false
+    - state: icon
+      shader: unshaded
+      map: ["light"]
+      visible: false
+  - type: Gun # #Misfits Add: police model keeps an eyebot-level integrated laser.
+    minAngle: 9
+    maxAngle: 18
+    angleIncrease: 3
+    angleDecay: 4
+    fireRate: 1
+    soundGunshot:
+      collection: N14RechargerRifleGunshot
+    useKey: false
+    selectedMode: SemiAuto
+    availableModes:
+      - SemiAuto
+  - type: BasicEntityAmmoProvider
+    proto: BulletLaser
+    capacity: 9
+    count: 9
+  - type: RechargeBasicEntityAmmo
+    rechargeCooldown: 2
+    rechargeSound:
+      path: /Audio/Weapons/Guns/MagIn/batrifle_magin.ogg
+  - type: ContainerFill # #Misfits Add: preserve baseline nav/brain and include a utility module.
+    containers:
+      borg_brain:
+        - PositronicBrain
+      borg_module:
+        - BorgModuleTool
+      id:
+        - MisfitsRobotNavCardRobCo
+
+- type: entity
+  parent: N14PlayerSyntheticProtectron
+  id: N14PlayerSyntheticProtectronBuilder
+  name: protectron builder
+  suffix: player, synthetic, builder
+  description: A RobCo Industries Protectron builder model with integrated engineering and RCD utility modules.
+  components:
+  - type: HumanoidAppearance
+    species: RobotProtectronBuilder
+  - type: Sprite
+    sprite: _Nuclear14/Mobs/Robots/protectron-builder.rsi
+    layers:
+    - state: icon
+      map: ["enum.DamageStateVisualLayers.Base", "movement"]
+    - state: icon
+      map: ["enum.BorgVisualLayers.Light"]
+      shader: unshaded
+      visible: false
+    - state: icon
+      shader: unshaded
+      map: ["light"]
+      visible: false
+  - type: ContainerFill # #Misfits Add: builder loadout for structure and maintenance gameplay.
+    containers:
+      borg_brain:
+        - PositronicBrain
+      borg_module:
+        - BorgModuleAdvancedTool
+        - BorgModuleConstruction
+        - BorgModuleRCD
+      id:
+        - MisfitsRobotNavCardRobCo
+
+- type: entity
+  parent: N14PlayerSyntheticProtectron
+  id: N14PlayerSyntheticProtectronFire
+  name: protectron firefighter
+  suffix: player, synthetic, firefighter
+  description: A RobCo Industries Protectron firefighter model equipped for suppression and emergency utility work.
+  components:
+  - type: HumanoidAppearance
+    species: RobotProtectronFire
+  - type: Sprite
+    sprite: _Nuclear14/Mobs/Robots/protectron-fire.rsi
+    layers:
+    - state: icon
+      map: ["enum.DamageStateVisualLayers.Base", "movement"]
+    - state: icon
+      map: ["enum.BorgVisualLayers.Light"]
+      shader: unshaded
+      visible: false
+    - state: icon
+      shader: unshaded
+      map: ["light"]
+      visible: false
+  - type: ContainerFill # #Misfits Add: firefighter loadout emphasizes extinguisher + utility tools.
+    containers:
+      borg_brain:
+        - PositronicBrain
+      borg_module:
+        - BorgModuleFireExtinguisher
+        - BorgModuleTool
+      id:
+        - MisfitsRobotNavCardRobCo
 
 - type: entity
   parent: N14BasePlayerSynthetic
@@ -321,6 +441,25 @@
     damage:
       types:
         Slash: 30 # #Misfits Tweak: player assaultrons should match the NPC claw damage profile
+  - type: Gun # #Misfits Add: Assaultron head laser — devastating focused heat beam, slow fire rate
+    minAngle: 1
+    maxAngle: 6
+    angleIncrease: 2
+    angleDecay: 4
+    fireRate: 0.5
+    useKey: false
+    selectedMode: SemiAuto
+    availableModes:
+      - SemiAuto
+  - type: HitscanBatteryAmmoProvider # #Misfits Add: battery-fed hitscan, 3 shots then long recharge
+    proto: N14AssaultronHeadLaser
+    fireCost: 3000
+  - type: Battery
+    maxCharge: 9000
+    startingCharge: 9000
+  - type: BatterySelfRecharger # #Misfits Add: ~6 seconds per shot recharge
+    autoRecharge: true
+    autoRechargeRate: 500
   - type: NpcFactionMember
     factions:
     - Wastelander
@@ -352,3 +491,274 @@
       cell_slot:
         name: power-cell-slot-component-slot-name-default
         startingItem: PowerCellHyper
+
+# ────────────────────────────────────────────────────────
+# Sentry Bot — Minigun variant (base sentry bot species default)
+# Heavy assault platform with built-in 5mm minigun, missile launcher, and heavy armor.
+# Trades speed for firepower and durability. 50% reflect on all projectile types.
+# ────────────────────────────────────────────────────────
+
+- type: entity
+  parent: N14BasePlayerSynthetic
+  id: N14PlayerSyntheticSentryBotMinigun
+  name: sentry bot
+  suffix: player, synthetic, minigun
+  description: A pre-war military Sentry Bot armed with a 5mm minigun and missile launcher. Massively armored, terrifyingly slow, and built to annihilate everything in its path.
+  components:
+  - type: HumanoidAppearance
+    species: RobotSentryBot
+  - type: Sprite
+    sprite: _Nuclear14/Mobs/Robots/sentrybot.rsi
+    scale: 2.0, 2.0
+    layers:
+    - state: icon
+      map: ["enum.DamageStateVisualLayers.Base", "movement"]
+    - state: icon
+      map: ["enum.BorgVisualLayers.Light"]
+      shader: unshaded
+      visible: false
+    - state: icon
+      shader: unshaded
+      map: ["light"]
+      visible: false
+  - type: SpriteMovement
+    movementLayers:
+      movement:
+        state: walking
+    noMovementLayers:
+      movement:
+        state: icon
+  - type: Speech
+    speechVerb: Robotic
+    speechSounds: Pai
+  - type: MovementSpeedModifier # Sentry bots are extremely slow
+    baseWalkSpeed: 1.0
+    baseSprintSpeed: 1.5
+  - type: MobThresholds # Heavy-class robot — much more durable than standard borgs
+    thresholds:
+      0: Alive
+      350: Dead
+    allowRevives: true
+  - type: Damageable
+    damageContainer: Biological
+    damageModifierSet: N14HeavyRobot
+  - type: Armor # #Misfits Add: innate heavy plating on top of HeavyRobot modifier set
+    modifiers:
+      coefficients:
+        Blunt: 0.65
+        Slash: 0.65
+        Piercing: 0.60
+        Heat: 0.60
+  - type: ExplosionResistance # #Misfits Add: sentry bots shrug off most explosions
+    damageCoefficient: 0.50
+  - type: Reflect # #Misfits Add: 50% reflect on all projectile types — sentry bot heavy plating
+    innate: true
+    reflectProb: 0.5
+    spread: 150
+    reflects:
+    - NonEnergy
+    - Energy
+    - SmallCaliber
+    - MediumCaliber
+  - type: NoPull # Too heavy to drag
+  - type: Gun # #Misfits Add: built-in 5mm minigun — fires in bursts, then overheats
+    minAngle: 5
+    maxAngle: 20
+    angleIncrease: 5
+    angleDecay: 8
+    fireRate: 8
+    soundGunshot:
+      collection: N14MinigunGunshot
+    useKey: false
+    selectedMode: FullAuto
+    availableModes:
+      - FullAuto
+  - type: BasicEntityAmmoProvider # #Misfits Add: limited magazine — overheat system refills after cooldown
+    proto: N14Bullet5mm
+    capacity: 30
+    count: 30
+  - type: SentryBotChassis # #Misfits Add: enables overheat cooldown + missile launch action
+    overheatDuration: 5
+  - type: NpcFactionMember
+    factions:
+    - Wastelander
+  - type: PassiveDamage # #Misfits Add: sentry bots self-repair slowly
+    allowedStates:
+    - Alive
+    - Critical
+    damage:
+      groups:
+        Brute: -0.5
+      types:
+        Heat: -0.5
+        Shock: -0.5
+  - type: RobotSelfRepairAnnouncer
+  - type: Tag
+    tags:
+    - DoorBumpOpener
+    - CanPilot
+    - FootstepSound
+  - type: ContainerFill
+    containers:
+      borg_brain:
+        - PositronicBrain
+      borg_module:
+        - BorgModuleTool
+      id:
+        - MisfitsRobotNavCardRobCo
+  - type: ItemSlots
+    slots:
+      cell_slot:
+        name: power-cell-slot-component-slot-name-default
+        startingItem: PowerCellHyper
+
+# ────────────────────────────────────────────────────────
+# Sentry Bot — Laser Gatling variant
+# Same heavy chassis as minigun variant but armed with a gatling laser.
+# ────────────────────────────────────────────────────────
+
+- type: entity
+  parent: N14PlayerSyntheticSentryBotMinigun
+  id: N14PlayerSyntheticSentryBotLaser
+  name: sentry bot
+  suffix: player, synthetic, laser gatling
+  description: A pre-war military Sentry Bot armed with a gatling laser and missile launcher. Massively armored, terrifyingly slow, and built to annihilate everything in its path.
+  components:
+  - type: HumanoidAppearance
+    species: RobotSentryBotLaser
+  - type: Gun # #Misfits Add: built-in gatling laser — fires in bursts then overheats
+    minAngle: 3
+    maxAngle: 15
+    angleIncrease: 4
+    angleDecay: 10
+    fireRate: 6
+    soundGunshot:
+      collection: N14LaserGatlingGunshot
+    useKey: false
+    selectedMode: FullAuto
+    availableModes:
+      - FullAuto
+  - type: BasicEntityAmmoProvider # #Misfits Add: laser variant uses energy bolts, same overheat system
+    proto: BulletLaser
+    capacity: 20
+    count: 20
+
+# ────────────────────────────────────────────────────────
+# Robobrain — Standard variant (base robobrain species default)
+# Slower than other robots but versatile. Utility and medical borg modules.
+# Uses species-based spawning (roundstart), unlike the MMI-insertion chassis.
+# ────────────────────────────────────────────────────────
+
+- type: entity
+  parent: N14BasePlayerSynthetic
+  id: N14PlayerSyntheticRobobrain
+  name: robobrain
+  suffix: player, synthetic
+  description: A pre-war military Robobrain, now guided by a living mind. Slower but versatile, with integrated utility and medical systems.
+  components:
+  - type: HumanoidAppearance
+    species: RobotRobobrain
+  - type: Sprite
+    sprite: _Nuclear14/Mobs/Robots/robobrain.rsi
+    layers:
+    - state: icon
+      map: ["enum.DamageStateVisualLayers.Base", "movement"]
+    - state: icon
+      map: ["enum.BorgVisualLayers.Light"]
+      shader: unshaded
+      visible: false
+    - state: icon
+      shader: unshaded
+      map: ["light"]
+      visible: false
+  - type: SpriteMovement
+    movementLayers:
+      movement:
+        state: walking
+    noMovementLayers:
+      movement:
+        state: icon
+  - type: Speech
+    speechVerb: Robotic
+    speechSounds: Pai
+  - type: MovementSpeedModifier # Robobrains are slower than most robots
+    baseWalkSpeed: 1.5
+    baseSprintSpeed: 3.0
+  - type: NpcFactionMember
+    factions:
+    - Wastelander
+  - type: PassiveDamage
+    allowedStates:
+    - Alive
+    - Critical
+    damage:
+      groups:
+        Brute: -0.5
+      types:
+        Heat: -0.5
+        Shock: -0.5
+  - type: RobotSelfRepairAnnouncer
+  - type: Tag
+    tags:
+    - DoorBumpOpener
+    - CanPilot
+    - FootstepSound
+  - type: ContainerFill
+    containers:
+      borg_brain:
+        - PositronicBrain
+      borg_module:
+        - BorgModuleDiagnosis
+        - BorgModuleTreatment
+        - BorgModuleTool
+      id:
+        - MisfitsRobotNavCardRobCo
+  - type: ItemSlots
+    slots:
+      cell_slot:
+        name: power-cell-slot-component-slot-name-default
+        startingItem: PowerCellHyper
+
+# ────────────────────────────────────────────────────────
+# Robobrain — Laser variant
+# Same chassis as standard but with a built-in laser emitter (like Police Protectron).
+# ────────────────────────────────────────────────────────
+
+- type: entity
+  parent: N14PlayerSyntheticRobobrain
+  id: N14PlayerSyntheticRobobrainLaser
+  name: robobrain
+  suffix: player, synthetic, laser
+  description: A pre-war military Robobrain fitted with an integrated laser emitter. Slower but armed, with utility support systems.
+  components:
+  - type: HumanoidAppearance
+    species: RobotRobobrainLaser
+  - type: Gun # #Misfits Add: built-in laser — same pattern as Police Protectron eyebot-class
+    minAngle: 9
+    maxAngle: 18
+    angleIncrease: 3
+    angleDecay: 4
+    fireRate: 1
+    soundGunshot:
+      collection: N14RechargerRifleGunshot
+    useKey: false
+    selectedMode: SemiAuto
+    availableModes:
+      - SemiAuto
+  - type: BasicEntityAmmoProvider
+    proto: BulletLaser
+    capacity: 9
+    count: 9
+  - type: RechargeBasicEntityAmmo
+    rechargeCooldown: 2
+    rechargeSound:
+      path: /Audio/Weapons/Guns/MagIn/batrifle_magin.ogg
+  - type: ContainerFill # #Misfits Add: laser variant keeps utility modules but trades medical for combat focus
+    containers:
+      borg_brain:
+        - PositronicBrain
+      borg_module:
+        - BorgModuleTool
+        - BorgModuleDiagnosis
+      id:
+        - MisfitsRobotNavCardRobCo

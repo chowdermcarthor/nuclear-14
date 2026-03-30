@@ -1,0 +1,50 @@
+# Military-designation names for player-controlled Sentry Bot robots.
+# Format: Heavy assault platform identifiers using military designator prefixes.
+
+- type: dataset
+  id: RobotSentryBotFirst
+  values:
+  - SB-0001
+  - SB-0011
+  - SB-0100
+  - SB-0101
+  - SB-0110
+  - SB-0111
+  - SB-1001
+  - SB-1010
+  - SB-1011
+  - SB-1100
+  - SB-1111
+  - HK-0100
+  - HK-0101
+  - HK-0110
+  - HK-1001
+  - HK-1010
+  - HK-1100
+  - HK-1111
+  - MK-0011
+  - MK-0101
+  - MK-0110
+  - MK-1010
+  - MK-1100
+  - TX-0001
+  - TX-0100
+  - TX-0110
+  - TX-1001
+  - TX-1010
+  - TX-1100
+  - WD-0001
+  - WD-0101
+  - WD-0110
+  - WD-1010
+  - WD-1100
+  - GD-0001
+  - GD-0100
+  - GD-0110
+  - GD-1001
+  - GD-1111
+  - AR-0001
+  - AR-0011
+  - AR-0110
+  - AR-1001
+  - AR-1100

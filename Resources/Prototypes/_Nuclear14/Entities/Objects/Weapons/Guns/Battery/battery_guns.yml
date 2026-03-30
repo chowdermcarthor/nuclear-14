@@ -471,7 +471,7 @@
     slots:
       gun_magazine:
         name: Magazine
-        startingItem: N14PowerCellAdvanced
+        startingItem: N14BlueElectronChargePack #Misfits Change — AER-14 prototype fires blue laser to distinguish it from standard red-laser ECP weapons
         insertSound: /Audio/Weapons/Guns/MagIn/batrifle_magin.ogg
         ejectSound: /Audio/Weapons/Guns/MagOut/batrifle_magout.ogg
         whitelist:
@@ -1093,7 +1093,7 @@
     slots:
       gun_magazine:
         name: Power Cell
-        startingItem: N14PowerCellHigh
+        startingItem: N14GreenMicrofusionCell #Misfits Change — RCW fires green laser in Fallout, not red
         insertSound: /Audio/Weapons/Guns/MagIn/batrifle_magin.ogg
         ejectSound: /Audio/Weapons/Guns/MagOut/batrifle_magout.ogg
         whitelist:
@@ -1148,7 +1148,7 @@
     slots:
       gun_magazine:
         name: Power Cell
-        startingItem: N14PowerCellSmall
+        startingItem: N14PulseEnergyCell #Misfits Change — use pulse cell so gun fires correct blue beam effect
         insertSound: /Audio/Weapons/Guns/MagIn/batrifle_magin.ogg
         ejectSound: /Audio/Weapons/Guns/MagOut/batrifle_magout.ogg
         whitelist:
@@ -1200,7 +1200,7 @@
     slots:
       gun_magazine:
         name: Power Cell
-        startingItem: N14PowerCellHigh
+        startingItem: N14PulseMicrofusionCell #Misfits Change — use pulse cell so gun fires correct blue beam effect
         insertSound: /Audio/Weapons/Guns/MagIn/batrifle_magin.ogg
         ejectSound: /Audio/Weapons/Guns/MagOut/batrifle_magout.ogg
         whitelist:
@@ -1256,7 +1256,7 @@
     slots:
       gun_magazine:
         name: Power Cell
-        startingItem: N14PowerCellHigh
+        startingItem: N14PulseMicrofusionCell #Misfits Change — use pulse cell so gun fires correct blue beam effect
         insertSound: /Audio/Weapons/Guns/MagIn/batrifle_magin.ogg
         ejectSound: /Audio/Weapons/Guns/MagOut/batrifle_magout.ogg
         whitelist:
@@ -1312,7 +1312,7 @@
     slots:
       gun_magazine:
         name: Power Cell
-        startingItem: N14PowerCellAdvanced
+        startingItem: N14TeslaElectronChargePack #Misfits Change — use tesla cell so cannon fires energy ball projectile
         insertSound: /Audio/Weapons/Guns/MagIn/batrifle_magin.ogg
         ejectSound: /Audio/Weapons/Guns/MagOut/batrifle_magout.ogg
         whitelist:

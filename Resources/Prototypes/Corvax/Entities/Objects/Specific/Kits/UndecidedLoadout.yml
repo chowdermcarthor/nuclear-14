@@ -650,7 +650,7 @@
 - type: UndecidedLoadoutBackpackSet
   id: VeteranDecanusCommandSet
   name: Veteran Decanus Command
-  description: Includes a Legion shield, a rope belt, a .45 Colt pistol, 2 .45 magazines, a box of .45 ammo, a handcuff box, a bola, 2 healing powder, 2 K rations, and a ceramic flask.
+  description: Includes a Legion shield, an M1 Garand with 4 en-bloc clips, a rope belt, a .45 Colt pistol, 2 .45 magazines, a box of .45 ammo, a handcuff box, a bola, 2 healing powder, 2 K rations, and a ceramic flask.
   sprite:
     sprite: Corvax/Objects/Misc/kits.rsi
     state: base
@@ -660,7 +660,7 @@
 - type: UndecidedLoadoutBackpackSet
   id: VeteranDecanusHunterSet
   name: Veteran Decanus Hunter
-  description: Includes a Legion buckler, a rope belt, a short shotgun, a box of 12 gauge shells, 2 healing poultices, a healing powder, 2 K rations, and a ceramic flask.
+  description: Includes a Legion buckler, an M1 Garand with 4 en-bloc clips, a rope belt, a short shotgun, a box of 12 gauge shells, 2 healing poultices, a healing powder, 2 K rations, and a ceramic flask.
   sprite:
     sprite: Corvax/Objects/Misc/kits.rsi
     state: base
@@ -670,7 +670,7 @@
 - type: UndecidedLoadoutBackpackSet
   id: VeteranDecanusCrusherSet
   name: Veteran Decanus Crusher
-  description: Includes a trench club, a tribal .44 revolver, 2 .44 speedloaders, a box of .44 ammo, a smoke grenade, 2 healing powder, 2 K rations, and a ceramic flask.
+  description: Includes a trench club, an M1 Garand with 4 en-bloc clips, a .45 Colt pistol, 2 .45 magazines, a smoke grenade, 2 healing powder, 2 K rations, and a ceramic flask.
   sprite:
     sprite: Corvax/Objects/Misc/kits.rsi
     state: base

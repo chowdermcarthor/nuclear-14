@@ -1,0 +1,42 @@
+# Robobrain blueprint and machine circuit board.
+#
+# Player acquisition path:
+#   Find N14BlueprintRobobrainBoard (rare loot from military locations)
+#     → Insert into a weapon workbench storage slot
+#     → Unlocks N14BPRobobrainCircuitboard recipe in the workbench (Blueprint tab)
+#     → Craft N14RobobrainMachineCircuitboard using Steel + Glass + Gold
+#     → Use the board in a standard machine frame construction
+#       (5× Steel → cable → insert board → screwdriver)
+#     → Empty N14MobPlayerRobobrain chassis spawns
+#     → Insert an MMI containing a biological brain → player takes control
+
+# Blueprint item — a rare Pre-War military document
+# Insert into a weapon workbench to unlock the chassis circuit board recipe
+- type: entity
+  parent: N14BlueprintBase
+  id: N14BlueprintRobobrainBoard
+  name: Robobrain Assembly Manual
+  description: >
+    A classified Pre-War military field manual for the RB-2851 Robobrain chassis.
+    Contains full fabrication schematics for the cranial housing, motivator array,
+    and optical assembly. Insert it into a weapon workbench to unlock the build schematic.
+  components:
+  - type: Blueprint
+    recipes:
+    - N14BPRobobrainCircuitboard
+
+# Machine circuit board produced by the blueprint recipe.
+# Used in the standard machine frame construction graph (Machine graph):
+#   MachineFrame + this board + screwdriver → N14MobPlayerRobobrain
+- type: entity
+  parent: BaseMachineCircuitboard
+  id: N14RobobrainMachineCircuitboard
+  name: Robobrain chassis board
+  description: >
+    A complex Pre-War military circuit board encoding the base firmware and
+    hardware configuration for a Robobrain chassis frame. Used in machine frame construction.
+  suffix: Machine Board
+  components:
+  - type: MachineBoard
+    # No extra machine part requirements — cost is front-loaded into the blueprint recipe
+    prototype: N14MobPlayerRobobrain

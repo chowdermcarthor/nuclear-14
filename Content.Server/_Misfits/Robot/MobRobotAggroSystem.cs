@@ -160,7 +160,14 @@ public sealed class MobRobotAggroSystem : EntitySystem
     {
         return humanoid.Species == "RobotMrHandy"
             || humanoid.Species == "RobotProtectron"
+            || humanoid.Species == "RobotProtectronPolice"
+            || humanoid.Species == "RobotProtectronBuilder"
+            || humanoid.Species == "RobotProtectronFire"
             || humanoid.Species == "RobotMrGutsy"
-            || humanoid.Species == "RobotAssaultron";
+            || humanoid.Species == "RobotAssaultron"
+            || humanoid.Species == "RobotSentryBot"
+            || humanoid.Species == "RobotSentryBotLaser"
+            || humanoid.Species == "RobotRobobrain"
+            || humanoid.Species == "RobotRobobrainLaser";
     }
 }

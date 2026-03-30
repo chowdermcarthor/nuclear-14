@@ -21,6 +21,21 @@ can_create_vacuum = false
 space_wind = false
 monstermos_depressurization = false
 monstermos_rip_tiles = false
+# #Misfits Add — disable gas equalization. With space_wind, depressurization,
+# and rip_tiles already off, equalization is the only remaining heavy atmos
+# subsystem. On an 8000×4190 map it can saturate its 3ms budget every other
+# tick just spreading gas through opened doors. Disabling it means gases
+# still mix inside a tile but stop actively flowing between tiles.
+monstermos_equalization = false
+# #Misfits Add — reduce atmos sub-tick rate from 15 Hz to 8 Hz.
+# Atmos consumes up to max_process_time ms each sub-tick. At 15 Hz that's
+# every ~2.6 game ticks (at 25 TPS). At 8 Hz it's every ~3.1 ticks,
+# freeing ~1ms/tick for physics and game logic on average.
+tickrate = 8
+# #Misfits Add — tighten atmos time cap from 3ms to 2ms.
+# Pathfinding already claims 3ms. Combined budget was 6ms/40ms = 15%.
+# Reducing atmos to 2ms brings combined to 5ms/40ms = 12.5%.
+max_process_time = 2
 
 [game]
 desc = "TBD"
@@ -84,6 +99,14 @@ receivebuffersize = 1048576
 buffer_size = 3
 mtu = 1200
 mtu_expand = true
+# #Misfits Add — PVS tuning for large maps.
+# pvs_budget: max NEW entities sent to a client per tick (default 50).
+# pvs_enter_budget: max entities re-entering view per tick (default 200).
+# Lower values reduce per-tick serialization cost at the expense of slightly
+# slower entity pop-in when moving fast. On Wendover (8k tiles) pop-in is
+# rarely noticed because most movement is on foot.
+pvs_budget = 30
+pvs_enter_budget = 100
 
 [sys]
 # #Misfits Add — more precise tick timing on Windows servers (default = 3).

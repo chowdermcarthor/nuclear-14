@@ -54,53 +54,40 @@
   - type: FollowDistance
     backStrength: 5
 
-# Integrated flamer weapon for Mr. Gutsy borg module - disabled, bugged. #Misfits Change
-# - type: entity
-#   id: N14BorgWeaponFlamer
-#   parent: WeaponFireGunBase
-#   name: integrated flamer
-#   description: A built-in incendiary projector integrated into the chassis. Fed by a continuously regenerating internal fuel reservoir.
-#   suffix: borg, integrated
-#   categories: [ HideSpawnMenu ]
-#   components:
-#   - type: SolutionContainerManager
-#     solutions:
-#       chamber:
-#         maxVol: 500
-#         reagents:
-#         - ReagentId: WeldingFuel
-#           Quantity: 500
-#   - type: SolutionRegeneration
-#     solution: chamber
-#     generated:
-#       reagents:
-#       - ReagentId: WeldingFuel
-#         Quantity: 200
-#     duration: 1
-#   - type: SolutionAmmoProvider
-#     solutionId: chamber
-#     proto: FireProjectile
-#   - type: Gun
-#     cameraRecoilScalar: 0
-#     fireRate: 10
-#     selectedMode: FullAuto
-#     availableModes:
-#     - FullAuto
-#     soundGunshot:
-#       path: /Audio/_Nuclear14/Weapons/Guns/Flames/flamer.ogg
-#   - type: Sprite
-#     sprite: Objects/Weapons/Guns/Pistols/soaker.rsi
-#     layers:
-#     - state: detail1
-#     - state: detail2
-#       map: ["enum.PowerDeviceVisualLayers.Powered"]
-#     - state: icon
-#       map: [ "enum.DamageStateVisualLayers.Base" ]
-#   - type: Item
-#     sprite: Objects/Weapons/Guns/Pistols/soaker.rsi
-#     size: Normal
-#   - type: FollowDistance
-#     backStrength: 6
+# Integrated flamer weapon for borg modules — battery-based to avoid SolutionContainerManager issues. #Misfits Change
+- type: entity
+  id: N14BorgWeaponFlamer
+  parent: BaseItem
+  name: integrated flamer
+  description: A built-in incendiary projector integrated into the chassis. Draws power from the robot's internal reserves and recharges automatically.
+  suffix: borg, integrated
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Battery
+    maxCharge: 99999
+    startingCharge: 99999
+  - type: BatterySelfRecharger
+    autoRecharge: true
+    autoRechargeRate: 1000
+  - type: ProjectileBatteryAmmoProvider
+    proto: FireProjectile
+    fireCost: 100
+  - type: Gun
+    cameraRecoilScalar: 0
+    fireRate: 10
+    selectedMode: FullAuto
+    availableModes:
+    - FullAuto
+    soundGunshot:
+      path: /Audio/_Nuclear14/Weapons/Guns/Flames/flamer.ogg
+  - type: Sprite
+    sprite: Objects/Weapons/Guns/Pistols/soaker.rsi
+    layers:
+    - state: icon
+  - type: Item
+    size: Normal
+  - type: FollowDistance
+    backStrength: 6
 
 # Plasma caster module - provides the integrated borg plasma rifle. #Misfits Change
 - type: entity
@@ -117,17 +104,68 @@
     items:
     - N14BorgWeaponPlasmaRifle
 
-# Flamer module - disabled, bugged. #Misfits Change
-# - type: entity
-#   id: N14BorgModuleFlamer
-#   parent: [ BaseBorgModule, BaseProviderBorgModule ]
-#   name: flamer cyborg module
-#   description: An incendiary projector module. Provides an integrated flamer for close-range combat. The weapon draws from an internal fuel reservoir that regenerates automatically.
-#   components:
-#   - type: Sprite
-#     layers:
-#     - state: generic
-#     - state: icon-fire-extinguisher
-#   - type: ItemBorgModule
-#     items:
-#     - N14BorgWeaponFlamer
+# Flamer module — provides the integrated borg flamer. #Misfits Change
+- type: entity
+  id: N14BorgModuleFlamer
+  parent: [ BaseBorgModule, BaseProviderBorgModule ]
+  name: flamer cyborg module
+  description: An incendiary projector module. Provides an integrated flamer for close-range combat. The weapon draws from internal power reserves and recharges automatically.
+  components:
+  - type: Sprite
+    layers:
+    - state: generic
+    - state: icon-fire-extinguisher
+  - type: ItemBorgModule
+    items:
+    - N14BorgWeaponFlamer
+
+# Integrated laser weapon for Robobrain laser variant — eyebot-class laser.
+- type: entity
+  id: N14BorgWeaponLaser
+  parent: BaseWeaponBattery
+  name: integrated laser
+  description: An onboard laser emitter integrated into the chassis. Draws from the robot's internal power reserves and recharges automatically.
+  suffix: borg, integrated
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Sprite
+    sprite: _Nuclear14/Objects/Weapons/Guns/Battery/recharger_rifle.rsi
+    layers:
+    - state: icon
+      map: ["enum.GunVisualLayers.Base"]
+  - type: Item
+    sprite: _Nuclear14/Objects/Weapons/Guns/Battery/recharger_rifle.rsi
+    size: Normal
+  - type: Battery
+    maxCharge: 99999
+    startingCharge: 99999
+  - type: BatterySelfRecharger
+    autoRecharge: true
+    autoRechargeRate: 1000
+  - type: HitscanBatteryAmmoProvider
+    proto: RedLaser
+    fireCost: 100
+  - type: Gun
+    fireRate: 2
+    soundGunshot:
+      collection: N14RechargerRifleGunshot
+    selectedMode: SemiAuto
+    availableModes:
+    - SemiAuto
+  - type: FollowDistance
+    backStrength: 5
+
+# Laser module — provides the integrated borg laser.
+- type: entity
+  id: N14BorgModuleLaser
+  parent: [ BaseBorgModule, BaseProviderBorgModule ]
+  name: laser cyborg module
+  description: A laser emitter module. Provides an integrated laser for ranged combat. The weapon draws from internal power reserves and recharges automatically.
+  components:
+  - type: Sprite
+    layers:
+    - state: generic
+    - state: icon-radiation
+  - type: ItemBorgModule
+    items:
+    - N14BorgWeaponLaser

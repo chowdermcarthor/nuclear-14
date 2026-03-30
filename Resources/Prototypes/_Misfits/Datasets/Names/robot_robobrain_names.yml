@@ -1,0 +1,48 @@
+# Scientific-designation names for player-controlled Robobrain robots.
+# Format: Neurological research unit identifiers.
+
+- type: dataset
+  id: RobotRobobrainFirst
+  values:
+  - RB-0001
+  - RB-0011
+  - RB-0100
+  - RB-0101
+  - RB-0110
+  - RB-0111
+  - RB-1001
+  - RB-1010
+  - RB-1011
+  - RB-1100
+  - RB-1111
+  - NR-0001
+  - NR-0011
+  - NR-0100
+  - NR-0101
+  - NR-0110
+  - NR-1001
+  - NR-1010
+  - NR-1100
+  - NR-1111
+  - CB-0001
+  - CB-0011
+  - CB-0100
+  - CB-0101
+  - CB-0110
+  - CB-1010
+  - CB-1100
+  - CB-1111
+  - MN-0001
+  - MN-0011
+  - MN-0100
+  - MN-0101
+  - MN-1001
+  - MN-1010
+  - MN-1100
+  - MN-1111
+  - CV-0001
+  - CV-0011
+  - CV-0100
+  - CV-0110
+  - CV-1010
+  - CV-1100

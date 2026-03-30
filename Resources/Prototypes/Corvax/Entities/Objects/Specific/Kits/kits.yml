@@ -548,9 +548,9 @@
   - type: SpawnItemsOnUse
     items:
       - id: N14LegionnaireShield
-      - id: N14WeaponSniperHunting # #Misfits Change: hunting rifle as Legion baseline primary
-      - id: N14Cartridge308Rifle
-        amount: 8
+      - id: N14WeaponRifleM1Garand # #Misfits Change: M1 Garand replaces hunting rifle for decanus tier
+      - id: GarandEnbloc308
+        amount: 4
       - id: ClothingBeltRope
       - id: N14WeaponPistol45Colt # #Misfits Change: .45 revolver Legion sidearm
       - id: N14MagazinePistol45
@@ -581,9 +581,9 @@
   - type: SpawnItemsOnUse
     items:
       - id: N14LegionnaireBuckler
-      - id: N14WeaponSniperHunting # #Misfits Change: hunting rifle as Legion baseline primary
-      - id: N14Cartridge308Rifle
-        amount: 8
+      - id: N14WeaponRifleM1Garand # #Misfits Change: M1 Garand replaces hunting rifle for decanus tier
+      - id: GarandEnbloc308
+        amount: 4
       - id: ClothingBeltRope
       - id: N14WeaponPistol45Colt # #Misfits Change: .45 revolver Legion sidearm
       - id: N14MagazinePistol45
@@ -613,9 +613,9 @@
   - type: SpawnItemsOnUse
     items:
       - id: N14TrenchClub
-      - id: N14WeaponSniperHunting # #Misfits Change: hunting rifle as Legion baseline primary
-      - id: N14Cartridge308Rifle
-        amount: 8
+      - id: N14WeaponRifleM1Garand # #Misfits Change: M1 Garand replaces hunting rifle for decanus tier
+      - id: GarandEnbloc308
+        amount: 4
       - id: N14WeaponPistol45Colt # #Misfits Change: .45 revolver Legion sidearm (replaces tribal .44)
       - id: N14MagazinePistol45
         amount: 2
@@ -642,9 +642,9 @@
   - type: SpawnItemsOnUse
     items:
       - id: N14LegionnaireShield
-      - id: N14WeaponSniperHunting # #Misfits Change: hunting rifle as Legion baseline primary
-      - id: N14Cartridge308Rifle
-        amount: 8
+      - id: N14WeaponRifleM1Garand # #Misfits Change: M1 Garand replaces hunting rifle for decanus tier
+      - id: GarandEnbloc308
+        amount: 4
       - id: ClothingBeltRope
       - id: N14WeaponPistol45Colt # #Misfits Change: .45 revolver Legion sidearm
       - id: N14MagazinePistol45
@@ -676,9 +676,9 @@
     size: Huge
   - type: SpawnItemsOnUse
     items:
-      - id: N14WeaponSniperHunting # #Misfits Change: hunting rifle as Legion baseline primary (replaces SMG)
-      - id: N14Cartridge308Rifle
-        amount: 8
+      - id: N14WeaponRifleM1Garand # #Misfits Change: M1 Garand replaces hunting rifle for decanus tier
+      - id: GarandEnbloc308
+        amount: 4
       - id: ClothingBeltRope
       - id: N14WeaponPistol45Colt # #Misfits Change: .45 revolver Legion sidearm
       - id: N14MagazinePistol45
@@ -707,9 +707,9 @@
   - type: SpawnItemsOnUse
     items:
       - id: N14SledgeHammer
-      - id: N14WeaponSniperHunting # #Misfits Change: hunting rifle as Legion baseline primary
-      - id: N14Cartridge308Rifle
-        amount: 8
+      - id: N14WeaponRifleM1Garand # #Misfits Change: M1 Garand replaces hunting rifle for decanus tier
+      - id: GarandEnbloc308
+        amount: 4
       - id: N14WeaponPistol45Colt # #Misfits Change: .45 revolver Legion sidearm
       - id: N14MagazinePistol45
         amount: 2

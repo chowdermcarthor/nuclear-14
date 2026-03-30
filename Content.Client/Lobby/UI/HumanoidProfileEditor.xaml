@@ -50,6 +50,11 @@
                                     ToolTip="Species Information"/>
                                 <OptionButton Name="SpeciesButton" HorizontalAlignment="Right" />
                             </BoxContainer>
+                            <BoxContainer Name="RobotModelContainer" HorizontalExpand="True" Visible="False">
+                                <Label Text="Robot Model:" />
+                                <Control HorizontalExpand="True"/>
+                                <OptionButton Name="RobotModelButton" HorizontalAlignment="Right" />
+                            </BoxContainer>
                             <BoxContainer Name="CCustomSpecieName" HorizontalExpand="True">
                                 <Label Text="Custom Species Name:" />
                                 <Control HorizontalExpand="True"/>
@@ -60,7 +65,7 @@
                                 <Control HorizontalExpand="True"/>
                                 <LineEdit Name="AgeEdit" MinSize="40 0" HorizontalAlignment="Right" />
                             </BoxContainer>
-                            <BoxContainer HorizontalExpand="True">
+                            <BoxContainer Name="SexContainer" HorizontalExpand="True">
                                 <Label Text="Sex:" />
                                 <Control HorizontalExpand="True"/>
                                 <OptionButton Name="SexButton" HorizontalAlignment="Right" />
@@ -85,12 +90,12 @@
                                 <Control HorizontalExpand="True"/>
                                 <LineEdit Name="CyborgNameEdit" MinSize="270 0" HorizontalAlignment="Right" />
                             </BoxContainer>
-                            <BoxContainer HorizontalExpand="True">
+                            <BoxContainer Name="ClothingContainer" HorizontalExpand="True">
                                 <Label Text="Clothing:" />
                                 <Control HorizontalExpand="True"/>
                                 <Button Name="ShowClothes" Pressed="True" ToggleMode="True" Text="Show" HorizontalAlignment="Right" />
                             </BoxContainer>
-                            <BoxContainer HorizontalExpand="True">
+                            <BoxContainer Name="LoadoutsContainer" HorizontalExpand="True">
                                 <Label Text="Loadouts:" />
                                 <Control HorizontalExpand="True"/>
                                 <Button Name="ShowLoadouts" Pressed="True" ToggleMode="True" Text="Show" HorizontalAlignment="Right" />
@@ -106,17 +111,17 @@
                                 <OptionButton Name="BarkVoiceButton" HorizontalAlignment="Right" />
                                 <Button Name="BarkVoicePlayButton" Text="Play" MaxWidth="80" />
                             </BoxContainer>
-                            <BoxContainer HorizontalExpand="True">
+                            <BoxContainer Name="HeightContainer" HorizontalExpand="True">
                                 <Label Name="HeightLabel" Text="Height:" MinWidth="110" />
                                 <Slider Name="HeightSlider" MinValue="0.5" Value="1" MaxValue="1.5" HorizontalExpand="True" Margin="5 0 5 0" />
                                 <Button Name="HeightReset" Text="Reset" />
                             </BoxContainer>
-                            <BoxContainer HorizontalExpand="True">
+                            <BoxContainer Name="WidthContainer" HorizontalExpand="True">
                                 <Label Name="WidthLabel" Text="Width:" MinWidth="110" />
                                 <Slider Name="WidthSlider" MinValue="0.5" Value="1" MaxValue="1.5" HorizontalExpand="True" Margin="5 0 5 0" />
                                 <Button Name="WidthReset" Text="Reset" />
                             </BoxContainer>
-                            <BoxContainer HorizontalExpand="True">
+                            <BoxContainer Name="WeightContainer" HorizontalExpand="True">
                                 <Label Name="WeightLabel" />
                             </BoxContainer>
                         </BoxContainer>
@@ -129,7 +134,7 @@
                             <humanoid:SingleMarkingPicker Name="HairStylePicker" Category="Hair" />
                             <humanoid:SingleMarkingPicker Name="FacialHairPicker" Category="FacialHair" />
                         </BoxContainer>
-                        <BoxContainer Margin="10" Orientation="Vertical">
+                        <BoxContainer Name="EyesContainer" Margin="10" Orientation="Vertical">
                             <Label Text="Eyes:" />
                             <humanoid:EyeColorPicker Name="EyeColorPicker" />
                         </BoxContainer>

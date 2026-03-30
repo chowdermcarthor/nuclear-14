@@ -34,3 +34,17 @@ action-desc-toggle-light = Turn the light on and off.
 # Combat mode action loc keys (types.yml uses raw colored markup in upstream)
 action-name-combat-mode-toggle = [color=red]Combat Mode[/color]
 action-desc-combat-mode-toggle = Enter combat mode
+
+# Robot model selector labels for species-backed Protectron variants.
+humanoid-profile-editor-robot-model-protectron-standard = Standard
+humanoid-profile-editor-robot-model-protectron-police = Police
+humanoid-profile-editor-robot-model-protectron-builder = Builder
+humanoid-profile-editor-robot-model-protectron-fire = Firefighter
+
+# Robot model selector labels for Sentry Bot variants.
+humanoid-profile-editor-robot-model-sentrybot-minigun = Minigun
+humanoid-profile-editor-robot-model-sentrybot-laser = Laser Gatling
+
+# Robot model selector labels for Robobrain variants.
+humanoid-profile-editor-robot-model-robobrain-standard = Standard
+humanoid-profile-editor-robot-model-robobrain-laser = Laser

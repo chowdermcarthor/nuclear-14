@@ -1,6 +1,5 @@
 using System.Linq;
 using Content.Client._Misfits.Chat; // #Misfits Change
-using Content.Client._Misfits.Roster; // #Misfits Add
 using Content.Client.Administration.Systems; // #Misfits Change
 using Content.Client.Guidebook.RichText; // #Misfits Change
 using Content.Client.UserInterface.Systems.Chat.Controls;
@@ -74,10 +73,9 @@ public partial class ChatBox : UIWidget, ILinkClickHandler // #Misfits Change â€
         _controller.MessageAdded += OnMessageAdded;
         _controller.RegisterChat(this);
 
-        // #Misfits Add - Wire the Roster button to open the crew manifest window.
-        // Uses RosterUIController so the network send has proper DI/entity-system access.
-        var rosterCtrl = UserInterfaceManager.GetUIController<RosterUIController>();
-        RosterButton.OnPressed += _ => rosterCtrl.RequestRoster();
+        // #Misfits Change - Roster button now triggers the chat-equivalent /players command
+        // so players get the active player list without opening the Crew Manifest UI.
+        RosterButton.OnPressed += _ => _console.ExecuteCommand("players");
 
         _cfg = IoCManager.Resolve<IConfigurationManager>();
         //_chatStackAmount = _cfg.GetCVar(CCVars.ChatStackLastLines);

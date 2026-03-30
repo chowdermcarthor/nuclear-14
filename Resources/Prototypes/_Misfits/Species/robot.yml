@@ -43,6 +43,63 @@
   naming: First # #Misfits Change
 
 - type: species
+  id: RobotProtectronPolice
+  name: species-name-robot-protectron-police
+  roundStart: true
+  order: 14 # #Misfits Add: hidden from main selector, used by Robot Model picker
+  whitelistRequired: true # #Misfits Add
+  restrictedCustomization: true # #Misfits Add
+  jobWhitelistUnlock: SyntheticProtectron # #Misfits Add
+  restrictedJobs: # #Misfits Add
+  - SyntheticProtectron
+  sprites: RobotSprites
+  markingLimits: RobotMarkingLimits
+  prototype: N14PlayerSyntheticProtectronPolice
+  dollPrototype: N14PlayerSyntheticProtectronPolice
+  skinColoration: Hues
+  maleFirstNames: RobotProtectronFirst # #Misfits Add
+  femaleFirstNames: RobotProtectronFirst # #Misfits Add
+  naming: First # #Misfits Add
+
+- type: species
+  id: RobotProtectronBuilder
+  name: species-name-robot-protectron-builder
+  roundStart: true
+  order: 15 # #Misfits Add: hidden from main selector, used by Robot Model picker
+  whitelistRequired: true # #Misfits Add
+  restrictedCustomization: true # #Misfits Add
+  jobWhitelistUnlock: SyntheticProtectron # #Misfits Add
+  restrictedJobs: # #Misfits Add
+  - SyntheticProtectron
+  sprites: RobotSprites
+  markingLimits: RobotMarkingLimits
+  prototype: N14PlayerSyntheticProtectronBuilder
+  dollPrototype: N14PlayerSyntheticProtectronBuilder
+  skinColoration: Hues
+  maleFirstNames: RobotProtectronFirst # #Misfits Add
+  femaleFirstNames: RobotProtectronFirst # #Misfits Add
+  naming: First # #Misfits Add
+
+- type: species
+  id: RobotProtectronFire
+  name: species-name-robot-protectron-fire
+  roundStart: true
+  order: 16 # #Misfits Add: hidden from main selector, used by Robot Model picker
+  whitelistRequired: true # #Misfits Add
+  restrictedCustomization: true # #Misfits Add
+  jobWhitelistUnlock: SyntheticProtectron # #Misfits Add
+  restrictedJobs: # #Misfits Add
+  - SyntheticProtectron
+  sprites: RobotSprites
+  markingLimits: RobotMarkingLimits
+  prototype: N14PlayerSyntheticProtectronFire
+  dollPrototype: N14PlayerSyntheticProtectronFire
+  skinColoration: Hues
+  maleFirstNames: RobotProtectronFirst # #Misfits Add
+  femaleFirstNames: RobotProtectronFirst # #Misfits Add
+  naming: First # #Misfits Add
+
+- type: species
   id: RobotMrGutsy
   name: species-name-robot-mr-gutsy
   roundStart: true
@@ -79,6 +136,82 @@
   maleFirstNames: RobotAssaultronFirst # #Misfits Change
   femaleFirstNames: RobotAssaultronFirst # #Misfits Change
   naming: First # #Misfits Change
+
+- type: species
+  id: RobotSentryBot
+  name: species-name-robot-sentrybot
+  roundStart: true
+  order: 17 # #Misfits Add: sentry bot species
+  whitelistRequired: true
+  restrictedCustomization: true
+  jobWhitelistUnlock: SyntheticSentryBot
+  restrictedJobs:
+  - SyntheticSentryBot
+  sprites: RobotSprites
+  markingLimits: RobotMarkingLimits
+  prototype: N14PlayerSyntheticSentryBotMinigun
+  dollPrototype: N14PlayerSyntheticSentryBotMinigun
+  skinColoration: Hues
+  maleFirstNames: RobotSentryBotFirst
+  femaleFirstNames: RobotSentryBotFirst
+  naming: First
+
+- type: species
+  id: RobotSentryBotLaser
+  name: species-name-robot-sentrybot-laser
+  roundStart: true
+  order: 18 # #Misfits Add: hidden variant, used by model picker
+  whitelistRequired: true
+  restrictedCustomization: true
+  jobWhitelistUnlock: SyntheticSentryBot
+  restrictedJobs:
+  - SyntheticSentryBot
+  sprites: RobotSprites
+  markingLimits: RobotMarkingLimits
+  prototype: N14PlayerSyntheticSentryBotLaser
+  dollPrototype: N14PlayerSyntheticSentryBotLaser
+  skinColoration: Hues
+  maleFirstNames: RobotSentryBotFirst
+  femaleFirstNames: RobotSentryBotFirst
+  naming: First
+
+- type: species
+  id: RobotRobobrain
+  name: species-name-robot-robobrain
+  roundStart: true
+  order: 19 # #Misfits Add: robobrain species
+  whitelistRequired: true
+  restrictedCustomization: true
+  jobWhitelistUnlock: SyntheticRobobrain
+  restrictedJobs:
+  - SyntheticRobobrain
+  sprites: RobotSprites
+  markingLimits: RobotMarkingLimits
+  prototype: N14PlayerSyntheticRobobrain
+  dollPrototype: N14PlayerSyntheticRobobrain
+  skinColoration: Hues
+  maleFirstNames: RobotRobobrainFirst
+  femaleFirstNames: RobotRobobrainFirst
+  naming: First
+
+- type: species
+  id: RobotRobobrainLaser
+  name: species-name-robot-robobrain-laser
+  roundStart: true
+  order: 20 # #Misfits Add: hidden variant, used by model picker
+  whitelistRequired: true
+  restrictedCustomization: true
+  jobWhitelistUnlock: SyntheticRobobrain
+  restrictedJobs:
+  - SyntheticRobobrain
+  sprites: RobotSprites
+  markingLimits: RobotMarkingLimits
+  prototype: N14PlayerSyntheticRobobrainLaser
+  dollPrototype: N14PlayerSyntheticRobobrainLaser
+  skinColoration: Hues
+  maleFirstNames: RobotRobobrainFirst
+  femaleFirstNames: RobotRobobrainFirst
+  naming: First
 
 # Shared marking limits — robots have no body markings but need a valid points block.
 - type: markingPoints

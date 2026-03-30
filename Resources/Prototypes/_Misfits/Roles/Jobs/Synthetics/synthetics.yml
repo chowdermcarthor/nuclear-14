@@ -41,6 +41,9 @@
   - !type:CharacterSpeciesRequirement
     species:
     - RobotProtectron
+    - RobotProtectronPolice # #Misfits Add: model variant shares Protectron whitelist/job.
+    - RobotProtectronBuilder # #Misfits Add: model variant shares Protectron whitelist/job.
+    - RobotProtectronFire # #Misfits Add: model variant shares Protectron whitelist/job.
 
 - type: job
   id: SyntheticMrGutsy
@@ -91,3 +94,49 @@
 
 - type: playTimeTracker
   id: SyntheticAssaultron
+
+- type: job
+  id: SyntheticSentryBot
+  name: job-name-synthetic-sentrybot
+  description: job-description-synthetic-sentrybot
+  playTimeTracker: SyntheticSentryBot
+  icon: JobIconBorg
+  supervisors: job-supervisors-synthetic
+  canBeAntag: false
+  setPreference: true
+  overrideConsoleVisibility: true
+  whitelisted: true
+  hideWithoutWhitelist: true
+  spawnLoadout: false
+  applyTraits: false
+  requirements:
+  - !type:CharacterSpeciesRequirement
+    species:
+    - RobotSentryBot
+    - RobotSentryBotLaser # model variant shares SentryBot whitelist/job.
+
+- type: job
+  id: SyntheticRobobrain
+  name: job-name-synthetic-robobrain
+  description: job-description-synthetic-robobrain
+  playTimeTracker: SyntheticRobobrain
+  icon: JobIconBorg
+  supervisors: job-supervisors-synthetic
+  canBeAntag: false
+  setPreference: true
+  overrideConsoleVisibility: true
+  whitelisted: true
+  hideWithoutWhitelist: true
+  spawnLoadout: false
+  applyTraits: false
+  requirements:
+  - !type:CharacterSpeciesRequirement
+    species:
+    - RobotRobobrain
+    - RobotRobobrainLaser # model variant shares Robobrain whitelist/job.
+
+- type: playTimeTracker
+  id: SyntheticSentryBot
+
+- type: playTimeTracker
+  id: SyntheticRobobrain

@@ -1059,7 +1059,7 @@
   description: The WWII American classic. A semi-automatic battle rifle fed by an 8-round en-bloc clip chambered in .308 Winchester. When the clip runs dry it pings out satisfyingly. Don't stick your thumb in it.
   components:
   - type: Clothing
-    sprite: _Nuclear14/Objects/Weapons/Guns/Rifles/m1garand.rsi
+    sprite: _Nuclear14/Objects/Weapons/Guns/Snipers/hunting.rsi # #Misfits Tweak: use hunting rifle RSI as back-slot placeholder — m1garand.rsi equipped-BACKPACK state eclipses the full character sprite
     quickEquip: false
     slots:
     - Back
@@ -1069,7 +1069,7 @@
     layers:
     - state: base
       map: ["enum.GunVisualLayers.Base"]
-    - state: mag-0
+    - state: mag-1
       map: ["enum.GunVisualLayers.Mag"]
   - type: ChamberMagazineAmmoProvider
     autoEject: true
@@ -1119,7 +1119,7 @@
   description: An M1 Garand with Old Glory herself painted down the stock. "This Machine kills communists!" is scratched into the receiver. Don't let it out of your sight.
   components:
   - type: Clothing
-    sprite: _Nuclear14/Objects/Weapons/Guns/Rifles/oldglory.rsi
+    sprite: _Nuclear14/Objects/Weapons/Guns/Snipers/hunting.rsi # #Misfits Tweak: hunting rifle RSI back-slot placeholder, same as base Garand
     quickEquip: false
     slots:
     - Back
@@ -1129,7 +1129,7 @@
     layers:
     - state: base
       map: ["enum.GunVisualLayers.Base"]
-    - state: mag-0
+    - state: mag-1
       map: ["enum.GunVisualLayers.Mag"]
   - type: StaticPrice
     price: 900
@@ -1142,7 +1142,7 @@
   description: An NCR veteran's M1 Garand, engraved with the motto "I am your rifle, you are on guard duty." Named after the first NCR soldier to fall at Hoover Dam.
   components:
   - type: Clothing
-    sprite: _Nuclear14/Objects/Weapons/Guns/Rifles/pawolskis_retribution.rsi
+    sprite: _Nuclear14/Objects/Weapons/Guns/Snipers/hunting.rsi # #Misfits Tweak: hunting rifle RSI back-slot placeholder, same as base Garand
     quickEquip: false
     slots:
     - Back
@@ -1152,7 +1152,7 @@
     layers:
     - state: base
       map: ["enum.GunVisualLayers.Base"]
-    - state: mag-0
+    - state: mag-1
       map: ["enum.GunVisualLayers.Mag"]
   - type: StaticPrice
     price: 850
@@ -1165,7 +1165,7 @@
   description: A well-tuned scoped M1C rifle crafted by a master gunsmith from the Gunrunners. Proudly issued to NCR Scout Captains. Chambered in 7.62x51 and fitted with a long-range optic.
   components:
   - type: Clothing
-    sprite: _Nuclear14/Objects/Weapons/Guns/Rifles/republics_pride.rsi
+    sprite: _Nuclear14/Objects/Weapons/Guns/Snipers/hunting.rsi # #Misfits Tweak: hunting rifle RSI back-slot placeholder, same as base Garand
     quickEquip: false
     slots:
     - Back
@@ -1175,7 +1175,7 @@
     layers:
     - state: base
       map: ["enum.GunVisualLayers.Base"]
-    - state: mag-0
+    - state: mag-1
       map: ["enum.GunVisualLayers.Mag"]
   - type: GunWieldBonus
     minAngle: -26
@@ -1203,7 +1203,7 @@
   description: A well-tuned scoped M1C rifle looted from a dead NCR lieutenant by the Legion. The NCR star on the stock has been crudely replaced with a Legion bull. Chambered in 7.62x51.
   components:
   - type: Clothing
-    sprite: _Nuclear14/Objects/Weapons/Guns/Rifles/republics_demise.rsi
+    sprite: _Nuclear14/Objects/Weapons/Guns/Snipers/hunting.rsi # #Misfits Tweak: hunting rifle RSI back-slot placeholder, same as base Garand
     quickEquip: false
     slots:
     - Back
@@ -1213,7 +1213,7 @@
     layers:
     - state: base
       map: ["enum.GunVisualLayers.Base"]
-    - state: mag-0
+    - state: mag-1
       map: ["enum.GunVisualLayers.Mag"]
   - type: StaticPrice
     price: 1000

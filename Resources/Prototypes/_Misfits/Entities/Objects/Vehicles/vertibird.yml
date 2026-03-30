@@ -13,7 +13,7 @@
     drawdepth: Mobs
     noRot: true
     offset: 0, 1.8
-    scale: 0.4, 0.4
+    scale: 0.6, 0.6
   - type: Physics
     bodyType: Static
   - type: Fixtures

@@ -1,0 +1,20 @@
+# Robobrain player action — voluntary exit from the chassis.
+# Flooding the cranial cavity with acid dissolves the inserted biological brain,
+# returning the player to ghost form. This action is permanent and irreversible.
+# A 5-second use delay is enforced to prevent accidental activation.
+
+- type: entity
+  id: ActionRobobrainAcidifyBrain
+  name: Acidify Brain
+  description: >
+    Flood the cranial cavity with acid, dissolving your brain and ejecting your
+    consciousness from the Robobrain. Warning: this permanently destroys your brain.
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: InstantAction
+    itemIconStyle: NoItem
+    useDelay: 5.0
+    icon:
+      sprite: Interface/Actions/actions_borg.rsi
+      state: state-laws  # placeholder — a proper acid/brain icon should replace this
+    event: !type:RobobrainAcidifyBrainEvent

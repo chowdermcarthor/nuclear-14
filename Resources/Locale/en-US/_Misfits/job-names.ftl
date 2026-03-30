@@ -25,6 +25,10 @@ job-name-synthetic-protectron = Protectron
 job-description-synthetic-protectron = You are a RobCo Industries Protectron security and utility robot. Slow but sturdy, your chassis can take a beating. Ensure order, protect the community, or simply find your own purpose.
 job-name-synthetic-assaultron = Assaultron
 job-description-synthetic-assaultron = You are a RobCo Industries Assaultron combat robot, built for speed and destruction. Your laser systems and melee capabilities make you a formidable force. Choose your allegiances wisely.
+job-name-synthetic-sentrybot = Sentry Bot
+job-description-synthetic-sentrybot = You are a pre-war military Sentry Bot — a walking weapons platform bristling with armaments. Your massive armored chassis houses a minigun or gatling laser and a missile launcher. What remains of your programming demands annihilation.
+job-name-synthetic-robobrain = Robobrain
+job-description-synthetic-robobrain = You are a pre-war military Robobrain, a cybernetic construct housing a living brain within a robotic chassis. Slower but versatile, with medical and utility capabilities — or an integrated laser if combat is your calling.
 
 # Super Mutant
 job-name-supermutant = Super Mutant

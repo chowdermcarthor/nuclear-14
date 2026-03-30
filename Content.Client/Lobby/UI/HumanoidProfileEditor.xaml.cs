@@ -91,9 +91,30 @@ namespace Content.Client.Lobby.UI
         public JobPrototype? JobOverride;
 
         private List<SpeciesPrototype> _species = new();
+        private readonly List<string> _speciesButtonSpeciesIds = new(); // #Misfits Add: maps visible species dropdown rows to species IDs.
         private List<(string, RequirementsSelector)> _jobPriorities = new();
 
-        // #Misfits Change: robot variant species IDs for the 4-tab robot picker panel
+        // #Misfits Add: robot model families — each base species maps to its selectable variants.
+        private static readonly Dictionary<string, (string SpeciesId, string NameLocKey)[]> RobotModelFamilies = new()
+        {
+            ["RobotProtectron"] = new[]
+            {
+                ("RobotProtectron", "humanoid-profile-editor-robot-model-protectron-standard"),
+                ("RobotProtectronPolice", "humanoid-profile-editor-robot-model-protectron-police"),
+                ("RobotProtectronBuilder", "humanoid-profile-editor-robot-model-protectron-builder"),
+                ("RobotProtectronFire", "humanoid-profile-editor-robot-model-protectron-fire"),
+            },
+            ["RobotSentryBot"] = new[]
+            {
+                ("RobotSentryBot", "humanoid-profile-editor-robot-model-sentrybot-minigun"),
+                ("RobotSentryBotLaser", "humanoid-profile-editor-robot-model-sentrybot-laser"),
+            },
+            ["RobotRobobrain"] = new[]
+            {
+                ("RobotRobobrain", "humanoid-profile-editor-robot-model-robobrain-standard"),
+                ("RobotRobobrainLaser", "humanoid-profile-editor-robot-model-robobrain-laser"),
+            },
+        };
 
         private readonly Dictionary<string, BoxContainer> _jobCategories;
 
@@ -283,12 +304,34 @@ namespace Content.Client.Lobby.UI
             SpeciesButton.OnItemSelected += args =>
             {
                 SpeciesButton.SelectId(args.Id);
-                SetSpecies(_species[args.Id].ID);
+
+                if (args.Id < 0 || args.Id >= _speciesButtonSpeciesIds.Count)
+                    return;
+
+                SetSpecies(_speciesButtonSpeciesIds[args.Id]);
                 RandomizeName(); // #Misfits Change: auto-randomize name on species change
                 UpdateHairPickers();
                 OnSkinColorOnValueChanged();
                 UpdateCustomSpecieNameEdit();
                 UpdateHeightWidthSliders();
+                UpdateRobotAppearanceFieldVisibility(); // #Misfits Add: robot species hide unsupported appearance fields while keeping skin color editable.
+                UpdateRobotModelSelector(); // #Misfits Add: refresh model picker when species changes.
+            };
+
+            RobotModelButton.OnItemSelected += args =>
+            {
+                RobotModelButton.SelectId(args.Id);
+
+                // #Misfits Add: model selector swaps between species variants within the active robot family.
+                var familyOptions = GetActiveModelFamily();
+                if (familyOptions == null || args.Id < 0 || args.Id >= familyOptions.Length)
+                    return;
+
+                var targetSpecies = familyOptions[args.Id].SpeciesId;
+                if (Profile?.Species == targetSpecies)
+                    return;
+
+                SetSpecies(targetSpecies);
             };
 
             #endregion Species
@@ -677,6 +720,7 @@ namespace Content.Client.Lobby.UI
         public void RefreshSpecies()
         {
             SpeciesButton.Clear();
+            _speciesButtonSpeciesIds.Clear();
             _species.Clear();
 
             _species.AddRange(_prototypeManager.EnumeratePrototypes<SpeciesPrototype>()
@@ -686,13 +730,19 @@ namespace Content.Client.Lobby.UI
                     || (o.JobWhitelistUnlock != null && _requirements.IsJobWhitelisted(o.JobWhitelistUnlock.Value.Id))) // #Misfits Change
                 .OrderBy(o => o.Order)); // #Misfits Change: sort by Order field
             var speciesIds = _species.Select(o => o.ID).ToList();
+            var selectedSpeciesId = GetSpeciesSelectionSpeciesId(Profile?.Species);
 
             for (var i = 0; i < _species.Count; i++)
             {
-                SpeciesButton.AddItem(Loc.GetString(_species[i].Name), i);
+                if (IsHiddenProtectronVariantSpecies(_species[i].ID))
+                    continue;
 
-                if (Profile?.Species.Equals(_species[i].ID) == true)
-                    SpeciesButton.SelectId(i);
+                var buttonId = _speciesButtonSpeciesIds.Count;
+                _speciesButtonSpeciesIds.Add(_species[i].ID);
+                SpeciesButton.AddItem(Loc.GetString(_species[i].Name), buttonId);
+
+                if (selectedSpeciesId == _species[i].ID)
+                    SpeciesButton.SelectId(buttonId);
             }
 
             // If our species isn't available, reset it to default
@@ -853,6 +903,8 @@ namespace Content.Client.Lobby.UI
             UpdateHeightWidthSliders();
             UpdateWeight();
             UpdateCharacterRequired();
+            UpdateRobotAppearanceFieldVisibility(); // #Misfits Add: keep robot-only field visibility consistent after profile load/reset.
+            UpdateRobotModelSelector(); // #Misfits Add: keep Robot Model selector in sync after profile load/reset.
 
             RefreshAntags();
             RefreshJobs();
@@ -1499,9 +1551,142 @@ namespace Content.Client.Lobby.UI
             UpdateWeight();
             UpdateSpeciesGuidebookIcon();
             UpdateTabVisibility(newSpecies); // #Misfits Change: hide tabs for restricted species
+            UpdateRobotAppearanceFieldVisibility(); // #Misfits Add: apply robot-specific appearance field locks immediately after species swap.
+            UpdateRobotModelSelector(); // #Misfits Add: update model selector to match selected Protectron variant.
             IsDirty = true;
             ReloadProfilePreview();
             ReloadClothes(); // Species may have job-specific gear, reload the clothes
+        }
+
+        // #Misfits Add: show a dedicated model picker for robot families with multiple variants.
+        private void UpdateRobotModelSelector()
+        {
+            if (Profile == null)
+                return;
+
+            var familyOptions = GetActiveModelFamily();
+            if (familyOptions == null)
+            {
+                RobotModelContainer.Visible = false;
+                return;
+            }
+
+            RobotModelContainer.Visible = true;
+            RobotModelButton.Clear();
+
+            var selectedIndex = 0;
+            for (var i = 0; i < familyOptions.Length; i++)
+            {
+                RobotModelButton.AddItem(Loc.GetString(familyOptions[i].NameLocKey), i);
+
+                if (familyOptions[i].SpeciesId == Profile.Species)
+                    selectedIndex = i;
+            }
+
+            RobotModelButton.SelectId(selectedIndex);
+        }
+
+        // #Misfits Add: returns the model option array for the current species' family, or null if none.
+        private (string SpeciesId, string NameLocKey)[]? GetActiveModelFamily()
+        {
+            if (Profile == null)
+                return null;
+
+            // Check if the species itself is a base key in the dictionary.
+            if (RobotModelFamilies.TryGetValue(Profile.Species, out var options))
+                return options;
+
+            // Otherwise check if it's a hidden variant in any family.
+            foreach (var (_, familyOpts) in RobotModelFamilies)
+            {
+                foreach (var (optId, _) in familyOpts)
+                {
+                    if (optId == Profile.Species)
+                        return familyOpts;
+                }
+            }
+
+            return null;
+        }
+
+        // #Misfits Add: synthetic robots should not expose unsupported humanoid appearance fields.
+        private void UpdateRobotAppearanceFieldVisibility()
+        {
+            if (Profile == null)
+                return;
+
+            var isRobotSpecies = IsRobotSpecies(Profile.Species);
+
+            EyesContainer.Visible = !isRobotSpecies;
+            HeightContainer.Visible = !isRobotSpecies;
+            WidthContainer.Visible = !isRobotSpecies;
+            WeightContainer.Visible = !isRobotSpecies;
+            ClothingContainer.Visible = !isRobotSpecies;
+            LoadoutsContainer.Visible = !isRobotSpecies;
+            SexContainer.Visible = !isRobotSpecies;
+        }
+
+        // #Misfits Add: helper for species checks used by robot-specific character editor behavior.
+        private static bool IsRobotSpecies(string speciesId)
+        {
+            return speciesId == "RobotMrHandy"
+                || speciesId == "RobotProtectron"
+                || speciesId == "RobotProtectronPolice"
+                || speciesId == "RobotProtectronBuilder"
+                || speciesId == "RobotProtectronFire"
+                || speciesId == "RobotMrGutsy"
+                || speciesId == "RobotAssaultron"
+                || speciesId == "RobotSentryBot"
+                || speciesId == "RobotSentryBotLaser"
+                || speciesId == "RobotRobobrain"
+                || speciesId == "RobotRobobrainLaser";
+        }
+
+        // #Misfits Add: variant species are hidden from the main Species dropdown and driven by Robot Model selector.
+        private static bool IsHiddenProtectronVariantSpecies(string speciesId)
+        {
+            return speciesId == "RobotProtectronPolice"
+                || speciesId == "RobotProtectronBuilder"
+                || speciesId == "RobotProtectronFire"
+                || speciesId == "RobotSentryBotLaser"
+                || speciesId == "RobotRobobrainLaser";
+        }
+
+        // #Misfits Add: normalize hidden variants to base Protectron in main species selector.
+        private static string? GetSpeciesSelectionSpeciesId(string? speciesId)
+        {
+            if (speciesId == null)
+                return null;
+
+            if (!IsHiddenProtectronVariantSpecies(speciesId))
+                return speciesId;
+
+            // Map hidden variants back to their base species for the main dropdown.
+            foreach (var (baseSpecies, options) in RobotModelFamilies)
+            {
+                foreach (var (optId, _) in options)
+                {
+                    if (optId == speciesId)
+                        return baseSpecies;
+                }
+            }
+
+            return speciesId;
+        }
+
+        // #Misfits Add: identifies any species that belongs to a robot family with model variants.
+        private static bool IsProtectronModelSpecies(string speciesId)
+        {
+            foreach (var (_, options) in RobotModelFamilies)
+            {
+                foreach (var (optId, _) in options)
+                {
+                    if (optId == speciesId)
+                        return true;
+                }
+            }
+
+            return false;
         }
 
         // #Misfits Change: hide Appearance/Jobs/Antags/Traits/Loadouts/Markings tabs for restricted species
