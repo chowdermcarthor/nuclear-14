@@ -847,9 +847,9 @@
         volume: -3
         maxDistance: 12
   - type: MovementSpeedModifier
-    # Sentry Bots are slow, heavily armored walkers
-    baseWalkSpeed: 1.5
-    baseSprintSpeed: 2.5
+    # Misfits Tweak: reduced further — sentry bots are heavy siege walkers, not pursuit units.
+    baseWalkSpeed: 0.75
+    baseSprintSpeed: 1.2
   # Misfits Change /Add: Prevent players from dragging this robot around.
   # At 350 HP and covered in combat plating it is far too heavy to be moved.
   - type: NoPull
@@ -914,8 +914,8 @@
     maxAngle: 12
     angleIncrease: 4
     angleDecay: 12
-    # Misfits Change /Tweak: bumped to 8 shots/sec for faster suppression fire.
-    fireRate: 8
+    # Misfits Tweak: reduced from 8 → 6 shots/sec to be slightly less overwhelming.
+    fireRate: 6
     soundGunshot:
       collection: N14LaserGatlingGunshot
     useKey: false
@@ -1024,8 +1024,9 @@
         volume: -3
         maxDistance: 12
   - type: MovementSpeedModifier
-    baseWalkSpeed: 1.5
-    baseSprintSpeed: 2.5
+    # Misfits Tweak: reduced further — sentry bots are heavy siege walkers, not pursuit units.
+    baseWalkSpeed: 0.75
+    baseSprintSpeed: 1.2
   # Misfits Change /Add: Prevent players from dragging this robot around.
   - type: NoPull
   - type: MobThresholds
