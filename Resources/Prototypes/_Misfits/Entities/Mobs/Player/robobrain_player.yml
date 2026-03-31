@@ -63,19 +63,20 @@
 
   # English only — no robotic accent, no binary chatter
   # The Robobrain was designed to interact fluently with humans
+  # #Misfits Fix: 'Spanish' is not a valid LanguagePrototype id; N14 uses 'Chinese' as the legacy id for Spanish.
   - type: LanguageKnowledge
     speaks:
     - N14BrotherBeep
     - N14Robot
     - English
     - Latin
-    - Spanish
+    - Chinese
     understands:
     - N14BrotherBeep
     - N14Robot
     - English
     - Latin
-    - Spanish
+    - Chinese
 
   # Spawns completely empty — no brain or modules pre-loaded
   - type: ContainerFill

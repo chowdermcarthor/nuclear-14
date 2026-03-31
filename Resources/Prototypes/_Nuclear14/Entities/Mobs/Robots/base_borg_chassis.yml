@@ -247,19 +247,21 @@
     visMask:
       - PsionicInvisibility
       - Normal
-  - type: LanguageKnowledge # #Misfits Change - standardised robot languages: N14BrotherBeep (faction interop), N14Robot (robot-only), English/Latin/Spanish (common human tongues)
+  - type: LanguageKnowledge # #Misfits Change - standardised robot languages: N14BrotherBeep (faction interop), N14Robot (robot-only), English/Latin/Chinese (common human tongues; 'Chinese' is N14's legacy ID for Spanish)
+    # #Misfits Fix: 'Spanish' is not a valid LanguagePrototype ID in this fork. The in-game
+    # Spanish language uses the legacy prototype id 'Chinese' (see _Nuclear14/Languages/chinese.yml).
     speaks:
     - N14BrotherBeep
     - N14Robot
     - English
     - Latin
-    - Spanish
+    - Chinese
     understands:
     - N14BrotherBeep
     - N14Robot
     - English
     - Latin
-    - Spanish
+    - Chinese
   - type: CanWalk
   - type: NpcFactionMember
     factions:

@@ -175,13 +175,13 @@
     - N14Robot
     - English
     - Latin
-    - Spanish
+    - Chinese # #Misfits Fix: 'Spanish' is not a valid LanguagePrototype id; N14 uses 'Chinese' as the legacy id for Spanish
     understands:
     - N14BrotherBeep
     - N14Robot
     - English
     - Latin
-    - Spanish
+    - Chinese # #Misfits Fix: 'Spanish' is not a valid LanguagePrototype id; N14 uses 'Chinese' as the legacy id for Spanish
   - type: HandheldLight
     toggleOnInteract: false
     addPrefix: true
@@ -279,13 +279,13 @@
     - N14Robot
     - English
     - Latin
-    - Spanish
+    - Chinese # #Misfits Fix: 'Spanish' is not a valid LanguagePrototype id; N14 uses 'Chinese' as the legacy id for Spanish
     understands:
     - N14BrotherBeep
     - N14Robot
     - English
     - Latin
-    - Spanish
+    - Chinese # #Misfits Fix: 'Spanish' is not a valid LanguagePrototype id; N14 uses 'Chinese' as the legacy id for Spanish
 
 - type: entity
   name: Washington BoS Eyebot
