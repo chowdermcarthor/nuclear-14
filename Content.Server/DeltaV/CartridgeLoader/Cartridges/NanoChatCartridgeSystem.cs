@@ -412,7 +412,7 @@ public sealed class NanoChatCartridgeSystem : EntitySystem
                     continue;
 
                 // Needs telecomms
-                if (!HasActiveServer(senderStation.Value) || !HasActiveServer(recipientStation.Value))
+                if (!HasActiveServer(senderStation!.Value) || !HasActiveServer(recipientStation.Value))
                     continue;
 
                 // Check if recipient can receive
