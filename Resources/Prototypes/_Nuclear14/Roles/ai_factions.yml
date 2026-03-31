@@ -411,6 +411,8 @@
 
 - type: npcFaction
   id: HostileRobot
+  friendly: # #Misfits Add - player SentryBots are allies of NPC robots
+  - PlayerSentryBot
   hostile:
   - Wastelander
   - BrotherhoodOfSteel

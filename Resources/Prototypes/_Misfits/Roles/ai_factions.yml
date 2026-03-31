@@ -8,6 +8,24 @@
   hostile:
   - Raider
 
+# #Misfits Add - Player Robot faction for Synthetic job prototypes (Mr. Handy, Protectron, etc.).
+# Kept separate from HostileRobot so NPC robots don't auto-aggro player bots.
+- type: npcFaction
+  id: PlayerRobot
+
+# #Misfits Add - Player SentryBot faction. Allied with HostileRobot so NPC robots treat
+# player SentryBots as allies (protect them, won't aggro) rather than neutral bystanders.
+# Kept separate from PlayerRobot so only SentryBot gets the NPC robot alliance.
+- type: npcFaction
+  id: PlayerSentryBot
+  friendly:
+  - HostileRobot
+
+# #Misfits Add - Player Super Mutant faction for FEV Mutant job prototypes.
+# Kept separate from the NPC SuperMutant faction so NPC mutants don't auto-aggro player mutants.
+- type: npcFaction
+  id: PlayerSuperMutant
+
 #- type: npcFaction
 #  id: BrotherhoodMidwest
 #  friendly:

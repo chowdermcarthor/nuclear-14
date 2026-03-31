@@ -47,6 +47,9 @@ public sealed class LoreMasterSystem : EntitySystem
         ["CaesarLegion"]       = ("Caesar's Legion",      "#8B0000"),
         ["Vault"]              = ("Vault",                "#FFD700"),  // #Misfits Add - gold for vault-tec
         ["Townsfolk"]          = ("Town",                 "#8FBC8F"),  // #Misfits Add - muted green for townsfolk
+        ["PlayerRobot"]        = ("Robots",               "#607d8b"),  // #Misfits Add - steel blue for synthetic robots
+        ["PlayerSuperMutant"]  = ("FEV Mutants",          "#6b8e23"),  // #Misfits Add - olive for FEV mutants
+        ["PlayerRaider"]       = ("Raiders",              "#c0522a"),  // #Misfits Add - rust orange for raiders
     };
 
     // #Misfits Add - maps faction ID → objective-issuer locale key for the custom objective prototype.
@@ -56,8 +59,11 @@ public sealed class LoreMasterSystem : EntitySystem
         ["NCR"]                = "ncr",
         ["BrotherhoodOfSteel"] = "brotherhoodofsteel",
         ["CaesarLegion"]       = "caesarlegion",
-        ["Vault"]              = "vault",       // #Misfits Add
-        ["Townsfolk"]          = "townsfolk",   // #Misfits Add
+        ["Vault"]              = "vault",             // #Misfits Add
+        ["Townsfolk"]          = "townsfolk",         // #Misfits Add
+        ["PlayerRobot"]        = "playerrobot",       // #Misfits Add
+        ["PlayerSuperMutant"]  = "playersupermutant", // #Misfits Add
+        ["PlayerRaider"]       = "playerraider",      // #Misfits Add
     };
 
     public override void Initialize()

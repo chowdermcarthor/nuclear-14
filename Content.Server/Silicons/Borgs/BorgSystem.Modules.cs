@@ -1,4 +1,5 @@
 using System.Linq;
+using Content.Shared.Cuffs.Components;
 using Content.Shared.Hands.Components;
 using Content.Shared.Interaction.Components;
 using Content.Shared.Silicons.Borgs.Components;
@@ -221,7 +222,14 @@ public sealed partial class BorgSystem
             component.HandCounter++;
             _hands.AddHand(chassis, handId, HandLocation.Middle, hands);
             _hands.DoPickup(chassis, hands.Hands[handId], item, hands);
-            EnsureComp<UnremoveableComponent>(item);
+            // #Misfits Fix: do not add UnremoveableComponent to items that must be transferred
+            // out of the borg's hands to function on a target (e.g. Handcuffs).
+            // UnremoveableComponent subscribes to ContainerGettingRemovedAttemptEvent and cancels
+            // ALL container removals, which blocks CuffingSystem.TryAddNewCuffs from moving the
+            // cuff entity into the target's container. The result is a permanent ghost-cuff with
+            // no real entity in the CuffableComponent container and no way to remove it.
+            if (!HasComp<HandcuffComponent>(item))
+                EnsureComp<UnremoveableComponent>(item);
             component.ProvidedItems.Add(handId, item);
         }
 

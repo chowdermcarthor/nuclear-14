@@ -35,6 +35,12 @@
   icon: "JobIconKhan"
   supervisors: job-supervisors-outlaws
   canBeAntag: false
+  special: # #Misfits Add - register with PlayerRaider faction so Loremaster tab can detect this job
+  - !type:AddComponentSpecial
+    components:
+      - type: NpcFactionMember
+        factions:
+          - PlayerRaider
 
 - type: job
   id: Jackal
@@ -51,6 +57,12 @@
   icon: "JobIconJackal"
   supervisors: job-supervisors-outlaws
   canBeAntag: false
+  special: # #Misfits Add - register with PlayerRaider faction so Loremaster tab can detect this job
+  - !type:AddComponentSpecial
+    components:
+      - type: NpcFactionMember
+        factions:
+          - PlayerRaider
 
 - type: job
   id: Viper
@@ -67,6 +79,12 @@
   icon: "JobIconViper"
   supervisors: job-supervisors-outlaws
   canBeAntag: false
+  special: # #Misfits Add - register with PlayerRaider faction so Loremaster tab can detect this job
+  - !type:AddComponentSpecial
+    components:
+      - type: NpcFactionMember
+        factions:
+          - PlayerRaider
 
 - type: job
   id: Gunner
@@ -83,6 +101,12 @@
   icon: "JobIconGunner"
   supervisors: job-supervisors-outlaws
   canBeAntag: false
+  special: # #Misfits Add - register with PlayerRaider faction so Loremaster tab can detect this job
+  - !type:AddComponentSpecial
+    components:
+      - type: NpcFactionMember
+        factions:
+          - PlayerRaider
 
 - type: job
   id: Fiend
@@ -99,6 +123,12 @@
   icon: "JobIconFiend"
   supervisors: job-supervisors-outlaws
   canBeAntag: false
+  special: # #Misfits Add - register with PlayerRaider faction so Loremaster tab can detect this job
+  - !type:AddComponentSpecial
+    components:
+      - type: NpcFactionMember
+        factions:
+          - PlayerRaider
 
 - type: startingGear
   id: RaiderGear

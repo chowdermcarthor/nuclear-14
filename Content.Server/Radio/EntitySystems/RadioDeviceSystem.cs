@@ -41,7 +41,6 @@ public sealed class RadioDeviceSystem : EntitySystem
     [Dependency] private readonly UserInterfaceSystem _ui = default!;
     [Dependency] private readonly INetManager _netMan = default!;
     [Dependency] private readonly LanguageSystem _language = default!;
-    [Dependency] private readonly IPrototypeManager _prototypeManager = default!;
     [Dependency] private readonly IConfigurationManager _cfg = default!; // Forge-Change
 
     // Used to prevent a shitter from using a bunch of radios to spam chat.
@@ -253,7 +252,9 @@ public sealed class RadioDeviceSystem : EntitySystem
         // log to chat so people can identity the speaker/source, but avoid clogging ghost chat if there are many radios
         var message = args.OriginalChatMsg.Message; // The chat system will handle the rest and re-obfuscate if needed.
         var chatType = component.IsSpeaker ? InGameICChatType.Speak : InGameICChatType.Whisper;
-        _chat.TrySendInGameICMessage(uid, message, chatType, ChatTransmitRange.GhostRangeLimit, nameOverride: name, checkRadioPrefix: false, languageOverride: args.Language);
+        // #Misfits Fix - preserve original speaker style (megaphone speech verb/font size) through radio speaker relay.
+        var speechOverride = _chat.GetSpeechVerb(args.MessageSource, message);
+        _chat.TrySendInGameICMessage(uid, message, chatType, ChatTransmitRange.GhostRangeLimit, nameOverride: name, checkRadioPrefix: false, languageOverride: args.Language, speechVerbOverride: speechOverride);
         // Forge-Change-End
     }
 

@@ -728,6 +728,73 @@
       cell_slot:
         name: power-cell-slot-component-slot-name-default
         startingItem: PowerCellHyper
+  # #Misfits Fix: override base chassis Destructible so the player SentryBot behaves like
+  # the NPC variants — the chassis stays in Dead state after the damage threshold fires,
+  # then the TriggerOnMobstateChange explosion below destroys it 8 seconds later.
+  # DoActsBehavior: Destruction is intentionally absent (explosion handles cleanup).
+  # borg_brain is excluded from EmptyContainersBehaviour so the brain is destroyed
+  # with the chassis rather than dropped as a lootable item on the floor.
+  - type: Destructible
+    thresholds:
+    - trigger:
+        !type:DamageTrigger
+        damage: 75
+      behaviors:
+      - !type:PlaySoundBehavior
+        sound:
+          path: /Audio/Machines/warning_buzzer.ogg
+          params:
+            volume: 5
+    - trigger:
+        !type:DamageTrigger
+        damage: 200
+      behaviors:
+      - !type:PlaySoundBehavior
+        sound:
+          path: /Audio/Machines/AI/borg_death.ogg
+    - trigger:
+        !type:DamageTrigger
+        damage: 300
+      behaviors:
+      - !type:PlaySoundBehavior
+        sound:
+          collection: MetalBreak
+      - !type:SpawnEntitiesBehavior
+        spawn:
+          PowerCellHyper:
+            min: 1
+            max: 1
+          N14Scrap1:
+            min: 2
+            max: 4
+          N14ScrapElectronic1:
+            min: 1
+            max: 3
+      - !type:EmptyContainersBehaviour
+        containers:
+        - borg_module
+        - cell_slot
+        # borg_brain intentionally omitted — destroyed with chassis in the explosion below
+  # #Misfits Add: death explosion matching the NPC SentryBot — 8-second beeping fuse
+  # triggered when the chassis enters Dead mob state, then fires a structural explosion.
+  - type: TriggerOnMobstateChange
+    mobState:
+    - Dead
+  - type: OnUseTimerTrigger
+    delay: 8
+    initialBeepDelay: 0
+    beepInterval: 1
+    beepSound:
+      path: /Audio/Machines/Nuke/general_beep.ogg
+      params:
+        volume: -2
+  - type: ExplodeOnTrigger
+  - type: Explosive
+    explosionType: N14DefaultStructural
+    maxIntensity: 4
+    intensitySlope: 4
+    totalIntensity: 24
+    canCreateVacuum: false
 
 # ────────────────────────────────────────────────────────
 # Sentry Bot — Laser Gatling variant

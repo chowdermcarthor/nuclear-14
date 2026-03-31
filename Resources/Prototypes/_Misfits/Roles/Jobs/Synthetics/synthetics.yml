@@ -22,6 +22,12 @@
   - !type:CharacterSpeciesRequirement
     species:
     - RobotMrHandy
+  special: # #Misfits Add - register with PlayerRobot faction so Loremaster tab can detect this job
+  - !type:AddComponentSpecial
+    components:
+      - type: NpcFactionMember
+        factions:
+          - PlayerRobot
 
 - type: job
   id: SyntheticProtectron
@@ -44,6 +50,12 @@
     - RobotProtectronPolice # #Misfits Add: model variant shares Protectron whitelist/job.
     - RobotProtectronBuilder # #Misfits Add: model variant shares Protectron whitelist/job.
     - RobotProtectronFire # #Misfits Add: model variant shares Protectron whitelist/job.
+  special: # #Misfits Add - register with PlayerRobot faction so Loremaster tab can detect this job
+  - !type:AddComponentSpecial
+    components:
+      - type: NpcFactionMember
+        factions:
+          - PlayerRobot
 
 - type: job
   id: SyntheticMrGutsy
@@ -63,6 +75,12 @@
   - !type:CharacterSpeciesRequirement
     species:
     - RobotMrGutsy
+  special: # #Misfits Add - register with PlayerRobot faction so Loremaster tab can detect this job
+  - !type:AddComponentSpecial
+    components:
+      - type: NpcFactionMember
+        factions:
+          - PlayerRobot
 
 - type: job
   id: SyntheticAssaultron
@@ -83,6 +101,12 @@
     species:
     - RobotAssaultron
     - RobotAssaultronTesla
+  special: # #Misfits Add - register with PlayerRobot faction so Loremaster tab can detect this job
+  - !type:AddComponentSpecial
+    components:
+      - type: NpcFactionMember
+        factions:
+          - PlayerRobot
 
 - type: playTimeTracker
   id: SyntheticMrHandy
@@ -115,6 +139,14 @@
     species:
     - RobotSentryBot
     - RobotSentryBotLaser # model variant shares SentryBot whitelist/job.
+  special: # #Misfits Add - register with PlayerRobot faction so Loremaster tab can detect this job;
+         # PlayerSentryBot faction allies with all HostileRobot NPCs (bidirectional friendly)
+  - !type:AddComponentSpecial
+    components:
+      - type: NpcFactionMember
+        factions:
+          - PlayerRobot
+          - PlayerSentryBot
 
 - type: job
   id: SyntheticRobobrain
@@ -135,6 +167,12 @@
     species:
     - RobotRobobrain
     - RobotRobobrainLaser # model variant shares Robobrain whitelist/job.
+  special: # #Misfits Add - register with PlayerRobot faction so Loremaster tab can detect this job
+  - !type:AddComponentSpecial
+    components:
+      - type: NpcFactionMember
+        factions:
+          - PlayerRobot
 
 - type: playTimeTracker
   id: SyntheticSentryBot

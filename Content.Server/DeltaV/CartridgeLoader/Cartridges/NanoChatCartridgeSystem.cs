@@ -371,8 +371,27 @@ public sealed class NanoChatCartridgeSystem : EntitySystem
 
         // Now check if any of these cards can receive
         var deliverableRecipients = new List<Entity<NanoChatCardComponent>>();
+
+        // #Misfits Fix - Resolve the sender's station once up front.
+        // In the Nuclear-14 wasteland there are no station entities, so GetOwningStation() returns null.
+        // When sender has no station we treat delivery as peer-to-peer (no telecomm infrastructure needed).
+        var senderEntity = TryComp<CartridgeComponent>(sender, out var senderCartridge)
+            ? senderCartridge.LoaderUid ?? sender.Owner
+            : sender.Owner;
+        var senderStation = _station.GetOwningStation(senderEntity);
+
         foreach (var recipient in foundRecipients)
         {
+            // #Misfits Fix - Wasteland: no station grid exists, skip all radio/telecomm checks
+            // and deliver directly to any card with a matching number (peer-to-peer).
+            // #Misfits Fix - Use HasValue guard so nullable flow analysis proves non-null UID.
+            if (!senderStation.HasValue)
+            {
+                deliverableRecipients.Add(recipient);
+                continue;
+            }
+            var senderStationUid = senderStation.Value;
+
             // Find any cartridges that have this card
             var cartridgeQuery = EntityQueryEnumerator<NanoChatCartridgeComponent, ActiveRadioComponent, CartridgeComponent>();
             while (cartridgeQuery.MoveNext(out var receiverUid, out var receiverCart, out _, out var receiverCartridge))
@@ -380,28 +399,22 @@ public sealed class NanoChatCartridgeSystem : EntitySystem
                 if (receiverCart.Card != recipient.Owner)
                     continue;
 
-                // #Misfits Fix - Resolve station from the PDA (loader) entity, not the cartridge itself.
-                // Cartridges are containerized inside PDA entities and have invalid GridUid,
-                // causing GetOwningStation() to return null. Use the loader (PDA) instead.
+                // Resolve station from the PDA (loader) entity, not the cartridge itself.
+                // Cartridges are containerized inside PDA entities and have invalid GridUid.
                 var recipientEntity = receiverCartridge.LoaderUid ?? receiverUid;
-                var senderEntity = TryComp<CartridgeComponent>(sender, out var senderCartridge)
-                    ? senderCartridge.LoaderUid ?? sender.Owner
-                    : sender.Owner;
-
-                // Check if devices are on same station/map
                 var recipientStation = _station.GetOwningStation(recipientEntity);
-                var senderStation = _station.GetOwningStation(senderEntity);
 
-                // Both entities must be on a station
-                if (recipientStation == null || senderStation == null)
+                // #Misfits Fix - Use HasValue guard so nullable flow analysis proves non-null UID.
+                if (!recipientStation.HasValue)
                     continue;
+                var recipientStationUid = recipientStation.Value;
 
                 // Must be on same map/station unless long range allowed
-                if (!channel.LongRange && recipientStation != senderStation)
+                if (!channel.LongRange && recipientStationUid != senderStationUid)
                     continue;
 
                 // Needs telecomms
-                if (!HasActiveServer(senderStation.Value) || !HasActiveServer(recipientStation.Value))
+                if (!HasActiveServer(senderStationUid) || !HasActiveServer(recipientStationUid))
                     continue;
 
                 // Check if recipient can receive

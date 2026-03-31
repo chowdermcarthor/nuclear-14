@@ -22,3 +22,10 @@ objective-issuer-brotherhoodofsteel = [color=#4f81bd]Brotherhood of Steel[/color
 # #Misfits Change - Caesar's Legion issuer label for the C character menu objectives panel
 objective-issuer-caesarlegion = [color=#8B0000]Caesar's Legion[/color]
 objective-issuer-geometerofblood = [color=#b22222]The Geometer of Blood[/color]
+# #Misfits Add - issuer labels for Vault and Town factions
+objective-issuer-vault = [color=#FFD700]Vault[/color]
+objective-issuer-townsfolk = [color=#8FBC8F]Town[/color]
+# #Misfits Add - issuer labels for Robots, FEV Mutants, and Raiders
+objective-issuer-playerrobot = [color=#607d8b]Robots[/color]
+objective-issuer-playersupermutant = [color=#6b8e23]FEV Mutants[/color]
+objective-issuer-playerraider = [color=#c0522a]Raiders[/color]
