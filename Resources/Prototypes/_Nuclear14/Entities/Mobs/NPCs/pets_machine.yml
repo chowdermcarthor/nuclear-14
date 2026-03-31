@@ -171,15 +171,17 @@
     - Common
   - type: LanguageKnowledge
     speaks:
-    - N14Robot
-    understands:
-    - N14Dog
-    - N14Insect
+    - N14BrotherBeep
     - N14Robot
     - English
-    - Tribal
-    - Chinese
-    - Sign
+    - Latin
+    - Spanish
+    understands:
+    - N14BrotherBeep
+    - N14Robot
+    - English
+    - Latin
+    - Spanish
   - type: HandheldLight
     toggleOnInteract: false
     addPrefix: true
@@ -271,14 +273,19 @@
     enabled: false
   - type: LanguageSpeaker # Corvax-Change
     currentLanguage: N14BrotherBeep
-  - type: LanguageKnowledge # Corvax-Change
+  - type: LanguageKnowledge # Corvax-Change | #Misfits Change: standardised to match base eyebot language set
     speaks:
     - N14BrotherBeep
+    - N14Robot
+    - English
+    - Latin
+    - Spanish
     understands:
     - N14BrotherBeep
-    - Dog
-    - Universal
+    - N14Robot
     - English
+    - Latin
+    - Spanish
 
 - type: entity
   name: Washington BoS Eyebot

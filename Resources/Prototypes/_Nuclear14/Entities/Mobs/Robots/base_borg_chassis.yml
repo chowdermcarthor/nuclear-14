@@ -247,17 +247,19 @@
     visMask:
       - PsionicInvisibility
       - Normal
-  - type: LanguageKnowledge # #Misfits Add - added N14BrotherBeep so playable robots can speak Brotherhood binary
+  - type: LanguageKnowledge # #Misfits Change - standardised robot languages: N14BrotherBeep (faction interop), N14Robot (robot-only), English/Latin/Spanish (common human tongues)
     speaks:
-    - English
-    - Chinese
-    - RobotTalk
     - N14BrotherBeep
+    - N14Robot
+    - English
+    - Latin
+    - Spanish
     understands:
-    - English
-    - Chinese
-    - RobotTalk
     - N14BrotherBeep
+    - N14Robot
+    - English
+    - Latin
+    - Spanish
   - type: CanWalk
   - type: NpcFactionMember
     factions:

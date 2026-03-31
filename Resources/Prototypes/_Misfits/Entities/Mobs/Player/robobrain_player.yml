@@ -65,11 +65,17 @@
   # The Robobrain was designed to interact fluently with humans
   - type: LanguageKnowledge
     speaks:
+    - N14BrotherBeep
+    - N14Robot
     - English
-    - RobotTalk
+    - Latin
+    - Spanish
     understands:
+    - N14BrotherBeep
+    - N14Robot
     - English
-    - RobotTalk
+    - Latin
+    - Spanish
 
   # Spawns completely empty — no brain or modules pre-loaded
   - type: ContainerFill
