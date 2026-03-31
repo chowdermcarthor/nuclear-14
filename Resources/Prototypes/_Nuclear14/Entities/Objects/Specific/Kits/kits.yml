@@ -603,7 +603,8 @@
       - id: N14ClothingHeadHatNCRHelmetMetalDesert # Forge-Change
       - id: ClothingBeltNCR
       - id: ClothingNeckPinNCRSergeant
-        - id: N14WeaponLMG # Misfits Tweak: keep NCR sergeant roundstart heavy weapon in line with other opening kits.
+      # Misfits Tweak: AutoRifle was too powerful at roundstart; downgraded to standard LMG.
+      - id: N14WeaponLMG
       - id: Magazine308Rifle
         amount: 3
       - id: N14WeaponPistol9mm
