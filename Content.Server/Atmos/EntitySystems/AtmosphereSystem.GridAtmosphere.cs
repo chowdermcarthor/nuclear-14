@@ -61,6 +61,12 @@ public sealed partial class AtmosphereSystem
         InvalidateAllTiles((uid, mapGrid, component));
 
         component.Simulated = AtmosSimulated; // #Misfits Add — apply simulation kill-switch to freshly loaded grids
+        // #Misfits Fix — when simulation is disabled, clear any tile data that was deserialised from the map
+        // YAML. If Tiles is non-empty, GetTileMixture() returns the stale/depleted/null per-tile mixture
+        // instead of falling through to MapAtmosphereComponent, causing suffocation in rooms that had
+        // previously saved atmosphere state. Clearing it forces the MapAtmosphere fallback for every tile.
+        if (!AtmosSimulated)
+            component.Tiles.Clear();
     }
 
     private void OnGridSplit(EntityUid uid, GridAtmosphereComponent originalGridAtmos, ref GridSplitEvent args)

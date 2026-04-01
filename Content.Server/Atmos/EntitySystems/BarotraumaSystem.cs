@@ -1,6 +1,7 @@
 using System.Diagnostics.CodeAnalysis;
 using Content.Server.Administration.Logs;
 using Content.Server.Atmos.Components;
+using Content.Shared._Misfits.CCVar; // #Misfits Add
 using Content.Shared.Alert;
 using Content.Shared.Atmos;
 using Content.Shared.Damage;
@@ -9,6 +10,7 @@ using Content.Shared.FixedPoint;
 using Content.Shared.Inventory;
 using Content.Shared.Inventory.Events;
 using Content.Shared.Mood;
+using Robust.Shared.Configuration; // #Misfits Add
 using Robust.Shared.Containers;
 
 namespace Content.Server.Atmos.EntitySystems
@@ -20,6 +22,7 @@ namespace Content.Server.Atmos.EntitySystems
         [Dependency] private readonly AlertsSystem _alertsSystem = default!;
         [Dependency] private readonly IAdminLogManager _adminLogger = default!;
         [Dependency] private readonly InventorySystem _inventorySystem = default!;
+        [Dependency] private readonly IConfigurationManager _cfg = default!; // #Misfits Add
 
         [Dependency] private readonly ILogManager _logManager = default!;
 
@@ -230,6 +233,12 @@ namespace Content.Server.Atmos.EntitySystems
                 return;
 
             _timer -= UpdateTimer;
+
+            // #Misfits Add — skip all pressure damage when disabled via CVar.
+            // On maps using static MapAtmosphereComponent (atmos_simulated=false), tile pressure
+            // data may be stale or absent, causing spurious low-pressure damage (default 1 kPa < 20 kPa threshold).
+            if (!_cfg.GetCVar(PerformanceCVars.PressureDamage))
+                return;
 
             var enumerator = EntityQueryEnumerator<BarotraumaComponent, DamageableComponent>();
             while (enumerator.MoveNext(out var uid, out var barotrauma, out var damageable))

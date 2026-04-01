@@ -4,10 +4,12 @@
 // This system only exists server-side because ChatSystem and BatterySystem are server-only.
 
 using Content.Server.Chat.Systems;
+using Content.Server.Power.Components;
 using Content.Server.Power.EntitySystems;
 using Content.Shared._Misfits.Robot;
 using Content.Shared.Chat;
 using Content.Shared.Containers.ItemSlots;
+using Content.Shared.Weapons.Ranged.Systems;
 using Robust.Shared.Timing;
 
 namespace Content.Server._Misfits.Robot;
@@ -22,8 +24,37 @@ public sealed class AssaultronBeamChargeEmoteSystem : EntitySystem
     public override void Initialize()
     {
         base.Initialize();
+        SubscribeLocalEvent<AssaultronBeamChargeComponent, AttemptShootEvent>(OnAttemptShoot);
         SubscribeLocalEvent<AssaultronBeamChargeComponent, AssaultronChargeStartedEvent>(OnChargeStarted);
         SubscribeLocalEvent<AssaultronBeamChargeComponent, AssaultronBeamFiredEvent>(OnBeamFired);
+    }
+
+    /// <summary>
+    /// Blocks the shot server-side if the chassis power cell has less charge than
+    /// FireDrainCharge. The shared system handles charge-up/cooldown gating; this
+    /// handler enforces the battery-depletion condition that shared code cannot check
+    /// (BatteryComponent is server-only).
+    /// </summary>
+    private void OnAttemptShoot(EntityUid uid, AssaultronBeamChargeComponent comp, ref AttemptShootEvent args)
+    {
+        // Already cancelled by the shared charge/cooldown gate — nothing to add.
+        if (args.Cancelled || comp.FireDrainCharge <= 0f)
+            return;
+
+        // Still in the charge-up phase — shared system blocks the shot; skip until ready.
+        if (comp.IsCharging)
+            return;
+
+        var cellEntity = _itemSlots.GetItemOrNull(uid, comp.CellSlotId);
+        if (cellEntity == null || !TryComp<BatteryComponent>(cellEntity.Value, out var battery))
+        {
+            args.Cancelled = true;
+            return;
+        }
+
+        // Require at least FireDrainCharge available before allowing the shot.
+        if (battery.CurrentCharge < comp.FireDrainCharge)
+            args.Cancelled = true;
     }
 
     private void OnChargeStarted(EntityUid uid, AssaultronBeamChargeComponent comp, ref AssaultronChargeStartedEvent args)

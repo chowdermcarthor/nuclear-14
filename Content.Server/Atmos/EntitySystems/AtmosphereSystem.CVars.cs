@@ -77,7 +77,13 @@ namespace Content.Server.Atmos.EntitySystems
                 AtmosSimulated = value;
                 var query = EntityQueryEnumerator<GridAtmosphereComponent>();
                 while (query.MoveNext(out _, out var atmos))
+                {
                     atmos.Simulated = value;
+                    // #Misfits Fix — clear stale tile data when disabling so GetTileMixture falls through to
+                    // MapAtmosphereComponent instead of returning depleted/null saved mixtures (suffocation).
+                    if (!value)
+                        atmos.Tiles.Clear();
+                }
             }, true);
         }
     }

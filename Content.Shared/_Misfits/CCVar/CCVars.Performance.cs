@@ -40,4 +40,14 @@ public sealed class PerformanceCVars : CVars
     /// </summary>
     public static readonly CVarDef<bool> AtmosSimulated =
         CVarDef.Create("misfits.atmos_simulated", false, CVar.SERVERONLY);
+
+    /// <summary>
+    /// Whether barotrauma (pressure damage) is applied to entities.
+    /// When false, <c>BarotraumaSystem</c> skips all processing — no low or high
+    /// pressure HP damage is ever dealt. Safe to disable on maps that use a static
+    /// <c>MapAtmosphereComponent</c> rather than live atmos simulation, where tile
+    /// pressure data may be stale or absent.
+    /// </summary>
+    public static readonly CVarDef<bool> PressureDamage =
+        CVarDef.Create("misfits.pressure_damage", false, CVar.SERVERONLY);
 }

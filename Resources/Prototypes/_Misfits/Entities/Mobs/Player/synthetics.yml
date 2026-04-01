@@ -509,6 +509,7 @@
   - type: AssaultronBeamCharge # #Misfits Add: 2-second charge-up before beam fires, 3-second cooldown after
     chargeDuration: 2
     cooldownDuration: 3
+    fireDrainCharge: 900 # #Misfits Add: 50% of PowerCellHyper (1800) per shot — matches Tesla drain cost
   - type: HitscanBatteryAmmoProvider # #Misfits Change: battery pool large enough for continuous fire — beam availability tied to chassis power cell
     proto: N14AssaultronHeadLaser
     fireCost: 100
