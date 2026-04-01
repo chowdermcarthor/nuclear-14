@@ -894,6 +894,11 @@ namespace Content.Server.Database.Migrations.Sqlite
                         .HasColumnType("TEXT")
                         .HasColumnName("station_ai_name");
 
+                    b.Property<string>("SpeechVerbPreference")
+                        .IsRequired()
+                        .HasColumnType("TEXT")
+                        .HasColumnName("speech_verb_preference");
+
                     b.Property<string>("Voice")
                         .IsRequired()
                         .HasColumnType("TEXT")

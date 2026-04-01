@@ -111,6 +111,12 @@
                                 <OptionButton Name="BarkVoiceButton" HorizontalAlignment="Right" />
                                 <Button Name="BarkVoicePlayButton" Text="Play" MaxWidth="80" />
                             </BoxContainer>
+                            <!-- #Misfits Add - vocal style preference -->
+                            <BoxContainer HorizontalExpand="True" Name="SpeechVerbContainer">
+                                <Label Text="Vocal Style:" />
+                                <Control HorizontalExpand="True"/>
+                                <OptionButton Name="SpeechVerbButton" HorizontalAlignment="Right" />
+                            </BoxContainer>
                             <BoxContainer Name="HeightContainer" HorizontalExpand="True">
                                 <Label Name="HeightLabel" Text="Height:" MinWidth="110" />
                                 <Slider Name="HeightSlider" MinValue="0.5" Value="1" MaxValue="1.5" HorizontalExpand="True" Margin="5 0 5 0" />

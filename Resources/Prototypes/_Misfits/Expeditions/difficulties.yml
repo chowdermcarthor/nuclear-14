@@ -89,62 +89,82 @@
 # ── Active expedition categories ──
 # Maps can optionally define factionSpawns: the majority faction in the gather
 # radius determines where ALL players teleport (minority follows majority).
+#
+# Temporarily disabled due to RAM/engine constraints (server OOM at 8 GB):
+#   - Sunnyvale Surface  (SunnyvaleSurface.yml)
+#   - Mercer Island Surface  (MercerIslandSurface.yml)
+#   - Mercer Island Underground  (MercerIslandSewers.yml)
+# Only the Abandoned Vault (SunnyvaleUnderground) is loaded until limits are raised.
+
+# -- DISABLED: N14ExpeditionSurface (Sunnyvale Surface + Mercer Island Surface) --
+# - type: n14ExpeditionDifficulty
+#   id: N14ExpeditionSurface
+#   name: n14-expedition-difficulty-surface
+#   color: "#C8A25C"  # warm wasteland tan
+#   duration: 1800  # 30 minutes
+#   sortOrder: 0
+#   maps:
+#     - path: /Maps/N14/SunnyvaleSurface.yml
+#       factionSpawns:
+#         - factions: [NCR, Rangers]
+#           position: -351.86, -39.23
+#         - factions: [CaesarLegion]
+#           position: 176.79, -90.29
+#         - factions: [BrotherhoodOfSteel]
+#           position: -30.58, -186.30
+#         - factions: [Townsfolk]
+#           position: 67.69, 191.43
+#         - factions: [Wastelander]
+#           position: -351.86, -39.23
+#         - factions: [PlayerRaider, Raider]
+#           position: -351.86, -39.23
+#         - factions: [Tribal]
+#           position: -315.70, -103.91
+#         - factions: [PlayerSuperMutant, SuperMutant]
+#           position: -315.70, -103.91
+#         - factions: [PlayerRobot, PlayerSentryBot]
+#           position: -351.86, -39.23
+#     - path: /Maps/N14/MercerIslandSurface.yml
+#       factionSpawns:
+#         - factions: [NCR, Rangers]
+#           position: 32.56, 103.61
+#         - factions: [CaesarLegion]
+#           position: 106.68, 79.89
+#         - factions: [BrotherhoodOfSteel]
+#           position: 44.90, 136.90
+#         - factions: [Townsfolk]
+#           position: 99.70, 241.69
+#         - factions: [Wastelander]
+#           position: 9.50, 256.95
+#         - factions: [PlayerRaider, Raider]
+#           position: 110.72, 139.17
+#         - factions: [Tribal]
+#           position: 40.30, 39.26
+#         - factions: [PlayerSuperMutant, SuperMutant]
+#           position: 9.50, 256.95
+#         - factions: [PlayerRobot, PlayerSentryBot]
+#           position: 9.50, 256.95
+
+# -- DISABLED: N14ExpeditionUnderground (Sunnyvale Underground + Mercer Island Sewers) --
+# Sunnyvale Underground kept below as the sole active difficulty.
+# - type: n14ExpeditionDifficulty
+#   id: N14ExpeditionUnderground
+#   name: n14-expedition-difficulty-underground
+#   color: "#6B4F3A"  # dark earthy brown
+#   duration: 900  # 15 minutes — underground maps are small
+#   sortOrder: 1
+#   maps:
+#     - path: /Maps/N14/SunnyvaleUnderground.yml
+#       ...
+#     - path: /Maps/N14/MercerIslandSewers.yml
+#       ...
 
 - type: n14ExpeditionDifficulty
-  id: N14ExpeditionSurface
-  name: n14-expedition-difficulty-surface
-  color: "#C8A25C"  # warm wasteland tan
-  duration: 1800  # 30 minutes
-  sortOrder: 0
-  maps:
-    - path: /Maps/N14/SunnyvaleSurface.yml
-      factionSpawns:
-        - factions: [NCR, Rangers]
-          position: -351.86, -39.23
-        - factions: [CaesarLegion]
-          position: 176.79, -90.29
-        - factions: [BrotherhoodOfSteel]
-          position: -30.58, -186.30
-        - factions: [Townsfolk]
-          position: 67.69, 191.43
-        - factions: [Wastelander]
-          position: -351.86, -39.23
-        - factions: [PlayerRaider, Raider]
-          position: -351.86, -39.23
-        - factions: [Tribal]
-          position: -315.70, -103.91
-        - factions: [PlayerSuperMutant, SuperMutant]
-          position: -315.70, -103.91
-        - factions: [PlayerRobot, PlayerSentryBot]
-          position: -351.86, -39.23
-    - path: /Maps/N14/MercerIslandSurface.yml
-      #Misfits Change: Added explicit faction spawn groups for Mercer surface expeditions.
-      factionSpawns:
-        - factions: [NCR, Rangers]
-          position: 32.56, 103.61
-        - factions: [CaesarLegion]
-          position: 106.68, 79.89
-        - factions: [BrotherhoodOfSteel]
-          position: 44.90, 136.90
-        - factions: [Townsfolk]
-          position: 99.70, 241.69
-        - factions: [Wastelander]
-          position: 9.50, 256.95
-        - factions: [PlayerRaider, Raider]
-          position: 110.72, 139.17
-        - factions: [Tribal]
-          position: 40.30, 39.26
-        - factions: [PlayerSuperMutant, SuperMutant]
-          position: 9.50, 256.95
-        - factions: [PlayerRobot, PlayerSentryBot]
-          position: 9.50, 256.95
-
-- type: n14ExpeditionDifficulty
-  id: N14ExpeditionUnderground
-  name: n14-expedition-difficulty-underground
+  id: N14ExpeditionAbandonedVault
+  name: n14-expedition-difficulty-abandoned-vault
   color: "#6B4F3A"  # dark earthy brown
-  duration: 900  # 15 minutes — underground maps are small
-  sortOrder: 1
+  duration: 900  # 15 minutes — underground map
+  sortOrder: 0
   maps:
     - path: /Maps/N14/SunnyvaleUnderground.yml
       factionSpawns:
@@ -166,23 +186,3 @@
           position: -22.25, -44.57
         - factions: [PlayerRobot, PlayerSentryBot]
           position: -22.25, -44.57
-    - path: /Maps/N14/MercerIslandSewers.yml
-      factionSpawns:
-        - factions: [NCR, Rangers]
-          position: 78.92, 43.59
-        - factions: [CaesarLegion]
-          position: 39.42, 113.84
-        - factions: [BrotherhoodOfSteel]
-          position: 46.56, 256.31
-        - factions: [Townsfolk]
-          position: 99.70, 241.69
-        - factions: [Wastelander]
-          position: 71.78, 123.86
-        - factions: [PlayerRaider, Raider]
-          position: 91.30, 99.24
-        - factions: [Tribal]
-          position: 80.06, 94.10
-        - factions: [PlayerSuperMutant, SuperMutant]
-          position: 57.30, 77.60
-        - factions: [PlayerRobot, PlayerSentryBot]
-          position: 71.78, 99.24

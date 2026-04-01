@@ -271,6 +271,9 @@ namespace Content.Client.Lobby.UI
             #endregion
             // Corvax-Fallout-Barks-end
 
+            // #Misfits Add - vocal style
+            InitializeSpeechVerb();
+
             #region Cosmetic Pronouns
 
             _customizePronouns = _cfgManager.GetCVar(CCVars.AllowCosmeticPronouns);
@@ -901,6 +904,7 @@ namespace Content.Client.Lobby.UI
             UpdateSaveButton();
             UpdateMarkings();
             UpdateBarkVoicesControls(); // Corvax-Fallout-Barks
+            UpdateSpeechVerbControls(); // #Misfits Add - vocal style
             UpdateTTSVoicesControls(); // Corvax-TTS
             UpdateHairPickers();
             UpdateCMarkingsHair();

@@ -945,6 +945,11 @@ namespace Content.Server.Database.Migrations.Postgres
                         .HasColumnType("text")
                         .HasColumnName("station_ai_name");
 
+                    b.Property<string>("SpeechVerbPreference")
+                        .IsRequired()
+                        .HasColumnType("text")
+                        .HasColumnName("speech_verb_preference");
+
                     b.Property<string>("Voice")
                         .IsRequired()
                         .HasColumnType("text")
