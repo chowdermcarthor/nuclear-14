@@ -2561,3 +2561,37 @@ Entries:
   id: 5696
   time: '2026-04-01T01:04:37.0000000+00:00'
   url: https://github.com/Misfit-Sanctuary/nuclear-14/pull/225
+- author: cythisiax
+  changes:
+    - type: Add
+      message: >-
+        Added a new Expedition Board with Surface and Underground expeditions,
+        faction-based start points, return flares, launch countdowns, and timed
+        extraction warnings.
+    - type: Add
+      message: >-
+        Added NCR prisoner bracelet key support, including crafted matching keys
+        and officer-based unlocking.
+    - type: Tweak
+      message: SetOOC and SetLOOC now use Admin perission instead of Server permission.
+    - type: Tweak
+      message: Renamed Fern mercenary NPC and spawner labels to Gunners.
+    - type: Tweak
+      message: >-
+        Legion slave collars now take longer to cut off and show a visible emote
+        while removal is in progress.
+    - type: Fix
+      message: Fixed NCR sergeant gunner kits to use the correct LMG magazines.
+    - type: Fix
+      message: >-
+        Fixed prisoner bracelets and slave collars so they use proper lock-based
+        removal instead of becoming permanently stuck.
+    - type: Fix
+      message: Fixed NPC mobs being stored inside crates and lockers.
+    - type: Fix
+      message: >-
+        Fixed timed despawn items like compost disappearing while inside
+        storage.
+  id: 5697
+  time: '2026-04-01T18:27:36.0000000+00:00'
+  url: https://github.com/Misfit-Sanctuary/nuclear-14/pull/227
