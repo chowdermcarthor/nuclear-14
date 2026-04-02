@@ -8,12 +8,12 @@ chat-speech-verb-legion-warcry = warcries
 chat-speech-verb-name-tribal-warcry = Tribal Warcry
 chat-speech-verb-tribal-warcry = warcries
 
-warcry-message-legion-1 = FOR CAESAR! ADVANCE!
+warcry-message-legion-1 = FOR LEGIO VERA! ADVANCE!
 warcry-message-legion-2 = BREAK THEM! NO MERCY!
 warcry-message-legion-3 = SHIELDS HIGH! PRESS ON!
 warcry-message-legion-4 = LEGIONARIES, FORWARD!
 warcry-message-legion-5 = TO GLORY! CUT THEM DOWN!
-warcry-message-legion-6 = CAESAR COMMANDS! CHARGE!
+warcry-message-legion-6 = COLUMN COMMANDS! CHARGE!
 
 warcry-message-tribal-1 = GRAKKA! MORU TAH!
 warcry-message-tribal-2 = BRUKA! NAR TOKK!
