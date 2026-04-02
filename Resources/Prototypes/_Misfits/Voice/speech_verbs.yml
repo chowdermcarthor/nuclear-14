@@ -5,3 +5,53 @@
   - chat-speech-verb-megaphone
   bold: true
   fontSize: 16
+
+# #Misfits Add - vocal style preferences for character creation
+- type: speechVerb
+  id: MisfitsRasp
+  name: chat-speech-verb-name-misfits-rasp
+  speechVerbStrings:
+  - chat-speech-verb-misfits-rasp
+  vocalStyleSelectable: true
+
+- type: speechVerb
+  id: MisfitsSqueak
+  name: chat-speech-verb-name-misfits-squeak
+  speechVerbStrings:
+  - chat-speech-verb-small-mob-1
+  vocalStyleSelectable: true
+
+- type: speechVerb
+  id: MisfitsMumble
+  name: chat-speech-verb-name-misfits-mumble
+  speechVerbStrings:
+  - chat-speech-verb-mumble
+  vocalStyleSelectable: true
+
+- type: speechVerb
+  id: MisfitsSlur
+  name: chat-speech-verb-name-misfits-slur
+  speechVerbStrings:
+  - chat-speech-verb-misfits-slur
+  vocalStyleSelectable: true
+
+- type: speechVerb
+  id: MisfitsStutter
+  name: chat-speech-verb-name-misfits-stutter
+  speechVerbStrings:
+  - chat-speech-verb-stutter
+  vocalStyleSelectable: true
+
+- type: speechVerb
+  id: MisfitsBellow
+  name: chat-speech-verb-name-misfits-bellow
+  speechVerbStrings:
+  - chat-speech-verb-oni-2
+  vocalStyleSelectable: true
+
+- type: speechVerb
+  id: MisfitsCroak
+  name: chat-speech-verb-name-misfits-croak
+  speechVerbStrings:
+  - chat-speech-verb-vox-3
+  vocalStyleSelectable: true

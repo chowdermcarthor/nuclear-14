@@ -10,6 +10,7 @@ using Content.Shared.Roles;
 using Content.Shared._Misfits.Chat; // #Misfits Add - name slur filter
 using Content.Shared._NC.Speech.Synthesis;
 using Content.Shared._NC.TTS; // Corvax-Fallout-Barks
+using Content.Shared.Speech; // #Misfits Add - vocal style
 using Content.Shared.Traits;
 using Robust.Shared.Configuration;
 using Robust.Shared.Enums;
@@ -86,6 +87,9 @@ public sealed partial class HumanoidCharacterProfile : ICharacterProfile
 
     [DataField] // Corvax-Fallout-Barks
     public string BarkVoice { get; set; } = SharedHumanoidAppearanceSystem.DefaultBarkVoice; // Corvax-Fallout-Barks
+
+    [DataField] // #Misfits Add - vocal style preference
+    public string SpeechVerbPreference { get; set; } = "Default";
     
     [DataField] // Corvax-TTS
     public string Voice { get; set; } = SharedHumanoidAppearanceSystem.DefaultVoice; // Corvax-TTS
@@ -152,7 +156,8 @@ public sealed partial class HumanoidCharacterProfile : ICharacterProfile
         HashSet<string> antagPreferences,
         HashSet<string> traitPreferences,
         HashSet<LoadoutPreference> loadoutPreferences,
-        string barkVoice) // Corvax-Fallout-Barks
+        string barkVoice, // Corvax-Fallout-Barks
+        string speechVerbPreference = "Default") // #Misfits Add - vocal style
     {
         Name = name;
         FlavorText = flavortext;
@@ -177,6 +182,7 @@ public sealed partial class HumanoidCharacterProfile : ICharacterProfile
         _traitPreferences = traitPreferences;
         _loadoutPreferences = loadoutPreferences;
         BarkVoice = barkVoice; // Corvax-Fallout-Barks
+        SpeechVerbPreference = speechVerbPreference; // #Misfits Add - vocal style
     }
 
     /// <summary>Copy constructor</summary>
@@ -204,7 +210,8 @@ public sealed partial class HumanoidCharacterProfile : ICharacterProfile
             new HashSet<string>(other.AntagPreferences),
             new HashSet<string>(other.TraitPreferences),
             new HashSet<LoadoutPreference>(other.LoadoutPreferences),
-            other.BarkVoice) // Corvax-Fallout-Barks
+            other.BarkVoice, // Corvax-Fallout-Barks
+            other.SpeechVerbPreference) // #Misfits Add - vocal style
     {
     }
 
@@ -337,6 +344,9 @@ public sealed partial class HumanoidCharacterProfile : ICharacterProfile
     public HumanoidCharacterProfile WithBarkVoice(string barkVoice) => // Corvax-Fallout-Barks
         new(this) { BarkVoice = barkVoice }; // Corvax-Fallout-Barks
 
+    public HumanoidCharacterProfile WithSpeechVerbPreference(string speechVerbId) => // #Misfits Add - vocal style
+        new(this) { SpeechVerbPreference = speechVerbId };
+
     public HumanoidCharacterProfile WithJobPriority(string jobId, JobPriority priority)
     {
         var dictionary = new Dictionary<string, JobPriority>(_jobPriorities);
@@ -417,7 +427,8 @@ public sealed partial class HumanoidCharacterProfile : ICharacterProfile
             && LoadoutPreferences.SequenceEqual(other.LoadoutPreferences)
             && Appearance.MemberwiseEquals(other.Appearance)
             && FlavorText == other.FlavorText
-            && BarkVoice == other.BarkVoice; // Corvax-Fallout-Barks
+            && BarkVoice == other.BarkVoice // Corvax-Fallout-Barks
+            && SpeechVerbPreference == other.SpeechVerbPreference; // #Misfits Add - vocal style
     }
 
     public void EnsureValid(ICommonSession session, IDependencyCollection collection)
@@ -562,6 +573,10 @@ public sealed partial class HumanoidCharacterProfile : ICharacterProfile
             .Distinct()
             .ToList();
 
+        // #Misfits Add - vocal style: fall back to Default if the stored proto no longer exists
+        if (!prototypeManager.HasIndex<SpeechVerbPrototype>(SpeechVerbPreference))
+            SpeechVerbPreference = "Default";
+
         Name = name;
         Customspeciename = customspeciename;
         FlavorText = flavortext;
@@ -633,6 +648,7 @@ public sealed partial class HumanoidCharacterProfile : ICharacterProfile
         hashCode.Add((int) Gender);
         hashCode.Add(Appearance);
         hashCode.Add(BarkVoice); // Corvax-Fallout-Barks
+        hashCode.Add(SpeechVerbPreference); // #Misfits Add - vocal style
         hashCode.Add((int) SpawnPriority);
         hashCode.Add((int) PreferenceUnavailable);
         hashCode.Add(Customspeciename);

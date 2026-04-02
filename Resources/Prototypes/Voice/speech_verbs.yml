@@ -3,6 +3,7 @@
   name: chat-speech-verb-name-default
   speechVerbStrings:
   - chat-speech-verb-default
+  vocalStyleSelectable: true
 
 - type: speechVerb
   id: DefaultQuestion

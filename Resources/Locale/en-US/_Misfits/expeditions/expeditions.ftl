@@ -42,8 +42,11 @@ n14-expedition-timer-expedition = Expedition: {$time} remaining
 n14-expedition-timer-launch = Launching in {$seconds}s...
 n14-expedition-timer-cooldown = Cooldown: {$time} remaining
 
-n14-expedition-difficulty-surface = Surface
-n14-expedition-difficulty-underground = Underground
+n14-expedition-difficulty-abandoned-vault = Abandoned Vault
+
+# Temporarily disabled (RAM/engine constraints — server OOM at 8 GB):
+# n14-expedition-difficulty-surface = Surface
+# n14-expedition-difficulty-underground = Underground
 
 # Old tier names (kept for reference)
 # n14-expedition-difficulty-bronze = Bronze

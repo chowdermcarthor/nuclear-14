@@ -447,6 +447,7 @@ namespace Content.Server.Database
         public string Species { get; set; } = null!;
         public string BarkVoice { get; set; } = null!; // Corvax-Fallout-Barks
         public string Voice { get; set; } = null!; // Corvax-TTS
+        public string SpeechVerbPreference { get; set; } = "Default"; // #Misfits Add - vocal style
         public float Height { get; set; } = 1f;
         public float Width { get; set; } = 1f;
         [Column(TypeName = "jsonb")] public JsonDocument? Markings { get; set; } = null!;

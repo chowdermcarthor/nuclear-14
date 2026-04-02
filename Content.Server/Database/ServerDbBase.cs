@@ -226,6 +226,7 @@ namespace Content.Server.Database
             }
 
             var barkVoice = profile.BarkVoice ?? SharedHumanoidAppearanceSystem.DefaultBarkVoice; // Corvax-Fallout-Barks
+            var speechVerbPreference = string.IsNullOrEmpty(profile.SpeechVerbPreference) ? "Default" : profile.SpeechVerbPreference; // #Misfits Add - vocal style
 
             return new HumanoidCharacterProfile(
                 profile.CharacterName,
@@ -262,7 +263,8 @@ namespace Content.Server.Database
                     CustomName = l.CustomName, CustomDescription = l.CustomDescription,
                     CustomColorTint = l.CustomColorTint, CustomHeirloom = l.CustomHeirloom, Selected = true,
                 }).ToHashSet(),
-                barkVoice // Corvax-Fallout-Barks
+                barkVoice, // Corvax-Fallout-Barks
+                speechVerbPreference // #Misfits Add - vocal style
             );
         }
 
@@ -327,6 +329,7 @@ namespace Content.Server.Database
                 .Select(l => new Loadout(l.LoadoutName, l.CustomName, l.CustomDescription, l.CustomColorTint, l.CustomHeirloom)));
 
             profile.BarkVoice = humanoid.BarkVoice; // Corvax-Fallout-Barks
+            profile.SpeechVerbPreference = humanoid.SpeechVerbPreference; // #Misfits Add - vocal style
 
             return profile;
         }

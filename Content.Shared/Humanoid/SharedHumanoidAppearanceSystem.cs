@@ -8,6 +8,7 @@ using Content.Shared.Humanoid.Prototypes;
 using Content.Shared._Shitmed.Humanoid.Events; // Shitmed Change
 using Content.Shared.IdentityManagement;
 using Content.Shared._NC.Speech.Synthesis; // Corvax-Fallout-Barks
+using Content.Shared.Speech; // #Misfits Add - vocal style
 using Content.Shared._NC.Speech.Synthesis.Components;
 using Content.Shared._NC.TTS; // Corvax-Fallout-Barks
 using Content.Shared.Preferences;
@@ -442,6 +443,7 @@ public abstract class SharedHumanoidAppearanceSystem : EntitySystem
         EnsureDefaultMarkings(uid, humanoid);
         SetBarkVoice(uid, profile.BarkVoice, humanoid); // Corvax-Fallout-Barks
         SetTTSVoice(uid, profile.Voice, humanoid); // Corvax-TTS
+        SetSpeechVerbPreference(uid, profile.SpeechVerbPreference); // #Misfits Add - vocal style
 
         humanoid.Gender = profile.Gender;
         if (TryComp<GrammarComponent>(uid, out var grammar))
@@ -529,6 +531,19 @@ public abstract class SharedHumanoidAppearanceSystem : EntitySystem
         comp.VoicePrototypeId = barkvoiceId;
     }
     // Corvax-Fallout-Barks-end
+
+    // #Misfits Add - vocal style-start
+    /// <summary>
+    ///     Sets the entity's base speech verb from the character's vocal style preference.
+    ///     Does nothing if the preference is "Default" (lets entity/species YAML define the verb instead).
+    /// </summary>
+    public void SetSpeechVerbPreference(EntityUid uid, string speechVerbPreference)
+    {
+        if (speechVerbPreference == "Default" || !TryComp<SpeechComponent>(uid, out var speech))
+            return;
+        speech.SpeechVerb = speechVerbPreference;
+    }
+    // #Misfits Add - vocal style-end
 
     /// <summary>
     ///

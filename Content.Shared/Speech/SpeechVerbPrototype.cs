@@ -45,6 +45,12 @@ public sealed partial class SpeechVerbPrototype : IPrototype
     public int Priority = 0;
 
     /// <summary>
+    ///     Whether this verb appears in the vocal-style picker in character creation.
+    /// </summary>
+    [DataField]
+    public bool VocalStyleSelectable = false;
+
+    /// <summary>
     /// Name shown in the voicemask UI for this verb.
     /// </summary>
     [DataField(required: true)]
