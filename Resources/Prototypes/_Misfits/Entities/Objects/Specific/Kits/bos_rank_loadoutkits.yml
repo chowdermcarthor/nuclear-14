@@ -314,7 +314,7 @@
   - type: SpawnItemsOnUse
     items:
       - id: N14WeaponLaserPistol
-      - id: N14PowerCellSmall
+      - id: N14MicrofusionCellRed
         amount: 2
       - id: N14CombatKnife
       - id: N14CleanGauze10

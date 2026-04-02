@@ -72590,7 +72590,7 @@ entities:
     - type: Transform
       pos: 96.5,178.5
       parent: 2
-- proto: N14PowerCellHigh
+- proto: N14MicrofusionCellRed
   entities:
   - uid: 1873
     components:

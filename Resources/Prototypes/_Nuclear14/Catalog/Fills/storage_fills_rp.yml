@@ -2323,20 +2323,20 @@
         - id: N14MagazinePistol45
           prob: 0.1
           orGroup: Ammunition
-        - id: N14PowerCellHigh
+        - id: N14MicrofusionCellRed
           prob: 0.07
           orGroup: Ammunition
           amount: 1
           maxAmount: 2
-        - id: N14PowerCellSmall
+        - id: N14MicrofusionCellRed
           prob: 0.09
           orGroup: Ammunition
           amount: 1
           maxAmount: 2
-        - id: N14PowerCellAdvanced
+        - id: N14MicrofusionCellBlue
           prob: 0.05
           orGroup: Ammunition
-        - id: N14PowerCellFocused
+        - id: N14MicrofusionCellBlue
           prob: 0.05
           orGroup: Ammunition
         - id: N14PlasmaCartridge

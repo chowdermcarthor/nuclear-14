@@ -1,13 +1,27 @@
-# Misfits hitscan prototypes for pulse, green laser, and tesla weapons.
-# Pulse weapons fire blue electromagnetic pulse shots (distinct from red laser beams).
-# Uses the existing muzzle_blue/beam_blue/impact_blue states already in the stock projectiles.rsi.
-# Green laser: used by the RCW (Rapid-Cycling Weapon) — in Fallout the RCW fires a green laser beam,
-# not the standard red. Sprites are in _Misfits/Objects/Weapons/Guns/Projectiles/green_laser.rsi,
-# recolored from the standard red laser frames.
+# Misfits — Tiered hitscan definitions for microfusion cell and electron charge pack ammunition.
+# Each energy weapon class has 4 colour-coded tiers: Red (lowest) < Green < Blue < Violet (highest).
+# The ammo cell determines beam colour and damage; the gun determines fire rate and accuracy.
 
-# Green laser — for the RCW (same damage as RedMediumLaser, correct colour).
+#MARK: Microfusion Cell Lasers — Red < Green < Blue < Violet
+# Used by N14MicrofusionCellRed/Green/Blue/Violet. All laser weapons accept any of these.
+
 - type: hitscan
-  id: N14GreenMediumLaser
+  id: N14MFLaserRed
+  damage:
+    types:
+      Heat: 17
+  muzzleFlash:
+    sprite: Objects/Weapons/Guns/Projectiles/projectiles.rsi
+    state: muzzle_laser
+  travelFlash:
+    sprite: Objects/Weapons/Guns/Projectiles/projectiles.rsi
+    state: beam
+  impactFlash:
+    sprite: Objects/Weapons/Guns/Projectiles/projectiles.rsi
+    state: impact_laser
+
+- type: hitscan
+  id: N14MFLaserGreen
   damage:
     types:
       Heat: 21
@@ -21,14 +35,11 @@
     sprite: _Misfits/Objects/Weapons/Guns/Projectiles/green_laser.rsi
     state: impact_green_laser
 
-# Blue laser — for the AER-14 prototype laser rifle.
-# Matches the heavy ECP fire cost tier (same damage as RedHeavyLaser) with blue visuals.
-# Uses existing muzzle_blue/beam_blue/impact_blue states from stock projectiles.rsi.
 - type: hitscan
-  id: N14BlueMediumLaser
+  id: N14MFLaserBlue
   damage:
     types:
-      Heat: 42
+      Heat: 25
   muzzleFlash:
     sprite: Objects/Weapons/Guns/Projectiles/projectiles.rsi
     state: muzzle_blue
@@ -39,31 +50,63 @@
     sprite: Objects/Weapons/Guns/Projectiles/projectiles.rsi
     state: impact_blue
 
-# Pulse shot — light variant for the Pulse Pistol (Energy Cell / small battery).
 - type: hitscan
-  id: N14PulseShotLight
+  id: N14MFLaserViolet
   damage:
     types:
-      Heat: 12
-      Shock: 5
+      Heat: 30
   muzzleFlash:
     sprite: Objects/Weapons/Guns/Projectiles/projectiles.rsi
-    state: muzzle_blue
+    state: muzzle_u_laser
   travelFlash:
     sprite: Objects/Weapons/Guns/Projectiles/projectiles.rsi
-    state: beam_blue
+    state: u_laser
   impactFlash:
     sprite: Objects/Weapons/Guns/Projectiles/projectiles.rsi
-    state: impact_blue
+    state: impact_u_laser
 
-# Pulse shot — medium variant for the Pulse Carbine and Pulse Rifle (YK42B).
+#MARK: Electron Charge Pack Pulses — Red < Green < Blue < Violet
+# Used by N14ElectronChargePackRed/Green/Blue/Violet. All pulse weapons accept any of these.
+
 - type: hitscan
-  id: N14PulseShotMedium
+  id: N14PulseRed
+  damage:
+    types:
+      Heat: 14
+      Shock: 6
+  muzzleFlash:
+    sprite: Objects/Weapons/Guns/Projectiles/projectiles.rsi
+    state: muzzle_laser
+  travelFlash:
+    sprite: Objects/Weapons/Guns/Projectiles/projectiles.rsi
+    state: beam
+  impactFlash:
+    sprite: Objects/Weapons/Guns/Projectiles/projectiles.rsi
+    state: impact_laser
+
+- type: hitscan
+  id: N14PulseGreen
   damage:
     types:
       Heat: 18
       Shock: 8
   muzzleFlash:
+    sprite: _Misfits/Objects/Weapons/Guns/Projectiles/green_laser.rsi
+    state: muzzle_green_laser
+  travelFlash:
+    sprite: _Misfits/Objects/Weapons/Guns/Projectiles/green_laser.rsi
+    state: beam_green
+  impactFlash:
+    sprite: _Misfits/Objects/Weapons/Guns/Projectiles/green_laser.rsi
+    state: impact_green_laser
+
+- type: hitscan
+  id: N14PulseBlue
+  damage:
+    types:
+      Heat: 22
+      Shock: 10
+  muzzleFlash:
     sprite: Objects/Weapons/Guns/Projectiles/projectiles.rsi
     state: muzzle_blue
   travelFlash:
@@ -73,8 +116,25 @@
     sprite: Objects/Weapons/Guns/Projectiles/projectiles.rsi
     state: impact_blue
 
+- type: hitscan
+  id: N14PulseViolet
+  damage:
+    types:
+      Heat: 28
+      Shock: 12
+  muzzleFlash:
+    sprite: Objects/Weapons/Guns/Projectiles/projectiles.rsi
+    state: muzzle_u_laser
+  travelFlash:
+    sprite: Objects/Weapons/Guns/Projectiles/projectiles.rsi
+    state: u_laser
+  impactFlash:
+    sprite: Objects/Weapons/Guns/Projectiles/projectiles.rsi
+    state: impact_u_laser
+
+#MARK: Misc
+
 # Assaultron head laser — devastating focused heat beam.
-# Damage on par with the Wattz 3000 — high single-shot damage, slow fire rate.
 # Orange tint, wide beam, holds for ~3 seconds to simulate a sustained focused blast.
 - type: hitscan
   id: N14AssaultronHeadLaser

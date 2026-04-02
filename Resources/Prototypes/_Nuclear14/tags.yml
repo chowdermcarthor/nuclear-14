@@ -417,6 +417,13 @@
 - type: Tag
   id: N14PowerCellAdvanced
 
+#Misfits Add — shared whitelist tags for consolidated energy ammo tiers.
+- type: Tag
+  id: N14MicrofusionCell
+
+- type: Tag
+  id: N14ElectronChargePack
+
 #MARK: Ammo tags(explosives)
 
 - type: Tag

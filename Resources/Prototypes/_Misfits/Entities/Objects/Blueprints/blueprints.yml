@@ -425,6 +425,7 @@
     - N14BPBoSWeaponPlasmaRifleUrban
     - N14BPBoSWeaponLaserRifleWattz2000
     - N14BPBoSWeaponPlasmaMultiplas
+    - N14BPBoSWeaponLaserRCW
 
 - type: entity
   parent: N14BlueprintBase
@@ -491,22 +492,24 @@
   parent: N14BlueprintBase
   id: N14BlueprintBoSAmmoT1
   name: BoS Energy Cell Manual
-  description: Brotherhood guide to assembling basic energy weapon power cells. Tier 1 ammo.
+  description: Brotherhood guide to assembling basic energy weapon cells — microfusion and electron charge packs. Tier 1 ammo.
   components:
   - type: Blueprint
     recipes:
     - N14BPBoSAmmoPowerCellSmall
+    - N14BPBoSAmmoElectronChargePackRed
     - N14BPBoSAmmoBox10mm
 
 - type: entity
   parent: N14BlueprintBase
   id: N14BlueprintBoSAmmoT2
   name: BoS Power Cell Specs
-  description: Brotherhood specifications for standard-grade energy weapon cells. Tier 2 ammo.
+  description: Brotherhood specifications for improved green-wavelength energy weapon cells. Tier 2 ammo.
   components:
   - type: Blueprint
     recipes:
     - N14BPBoSAmmoPowerCellHigh
+    - N14BPBoSAmmoElectronChargePackGreen
     - N14BPBoSAmmoPlasmaCell
 
 - type: entity
@@ -518,19 +521,31 @@
   - type: Blueprint
     recipes:
     - N14BPBoSAmmoPowerCellAdvanced
+    - N14BPBoSAmmoElectronChargePackBlue
     - N14BPBoSAmmoPlasmaCartridge
 
 - type: entity
   parent: N14BlueprintBase
   id: N14BlueprintBoSAmmoT4
   name: BoS Fusion Core Schematic
-  description: Pre-war fusion core assembly plans. Brotherhood's most valuable ammunition technology. Tier 4 ammo.
+  description: Pre-war fusion core and high-capacity cell assembly plans. Brotherhood's most advanced standard ammunition technology. Tier 4 ammo.
   components:
   - type: Blueprint
     recipes:
     - N14BPBoSAmmoPowerCellFusion
-    - N14BPBoSAmmoPlasmaShell
     - N14BPBoSAmmoPowerCellFocused
+
+- type: entity
+  parent: N14BlueprintBase
+  id: N14BlueprintBoSAmmoT5
+  name: BoS Experimental Violet-Spectrum Cell Plans
+  description: Highly classified experimental schematics for violet ultraviolet-spectrum energy cells. The pinnacle of Brotherhood energy weapon technology. Tier 5 ammo.
+  components:
+  - type: Blueprint
+    recipes:
+    - N14BPBoSAmmoMicrofusionViolet
+    - N14BPBoSAmmoElectronChargePackViolet
+    - N14BPBoSAmmoMicrofusionHighCapViolet
 
 # =====================================================================
 # TOWNSFOLK BLUEPRINTS
@@ -761,6 +776,7 @@
     - N14BPVaultWeaponPlasmaRifle
     - N14BPVaultWeaponLaserRifleWattz2000
     - N14BPVaultWeaponLaserRifleAuto
+    - N14BPVaultWeaponLaserRCW
 
 # --- Vault Armor ---
 - type: entity

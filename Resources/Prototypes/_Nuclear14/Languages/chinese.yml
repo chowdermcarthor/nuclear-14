@@ -1,5 +1,5 @@
 - type: language
-  id: Chinese # Misfits Change: keep legacy ID for compatibility while exposing this selectable language as Spanish in-game.
+  id: Chinese #SolCommon
   isVisibleLanguage: false
   speech:
     color: "#df57aaee"
@@ -7,73 +7,135 @@
     !type:SyllableObfuscation
     minSyllables: 1
     maxSyllables: 4
-    replacement: # Misfits Change: Spanish-style syllables fit the setting better than the old Chinese phonemes.
-    - a
-    - al
+    replacement: # Corvax-Change
+    - ay
     - an
-    - ar
-    - as
-    - ca
-    - ce
-    - ci
-    - co
+    - ba
+    - bay
+    - ban
+    - bey
+    - bo
+    - bu
+    - vey
+    - ga
+    - gan
+    - go
+    - gu
+    - guy
+    - gun
     - da
-    - de
+    - dan
+    - dao
+    - den
     - di
+    - din
     - do
-    - el
-    - en
-    - er
-    - es
+    - du
+    - dun
+    - zhan
+    - zhe
+    - zhen
+    - zhi
+    - zho
+    - zhu
+    - zi
+    - zyan
+    - zyao
+    - kay
+    - kan
+    - kao
+    - ke
+    - ki
+    - ko
+    - ku
+    - kun
     - la
+    - lay
+    - lan
     - le
+    - li
+    - lin
     - lo
-    - los
+    - lu
+    - lun
     - ma
+    - may
+    - man
     - me
     - mi
+    - min
     - mo
+    - mu
     - na
+    - nay
+    - nan
     - ne
+    - ni
+    - nin
     - no
-    - nos
+    - nu
+    - nyu
     - pa
+    - pan
     - pe
+    - pi
     - po
-    - por
-    - que
-    - qui
-    - ra
-    - re
+    - pu
+    - ran
     - ro
-    - se
-    - si
+    - ru
+    - sa
+    - san
     - so
+    - su
+    - sun
     - ta
+    - tan
     - te
+    - ti
     - to
-    - tra
-    - una
-    - uno
-    - va
-    - ve
+    - tu
+    - tun
+    - fa
+    - fan
+    - fey
+    - fo
+    - fu
+    - khay
+    - khan
+    - khao
+    - khe
+    - khi
+    - kho
+    - khu
+    - khua
+    - khuan
+    - khun
+    - tsay
+    - tsan
+    - tse
+    - tsi
+    - tso
+    - tsu
+    - cha
+    - chan
+    - chao
+    - che
+    - chi
+    - cho
+    - chu
+    - shan
+    - shao
+    - she
+    - shi
+    - sho
+    - shu
+    - shchi
+    - shchu
+    - yuan
+    - yuy
     - ya
-    - lle
-    - lla
-    - llo
-    - rio
-    - ria
-    - con
-    - del
-    - esta
-    - esto
-    - para
-    - bueno
-    - vamos
-    - amigo
-    - amiga
-    - nada
-    - donde
-    - pero
-    - hasta
-    - luego
+    - yan
+    - yao
+    - e
+    - yo

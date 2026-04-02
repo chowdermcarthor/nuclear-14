@@ -3,13 +3,21 @@ using Content.Server._Misfits.GhoulReversal;
 using Content.Server.Chat.Managers;
 using Content.Server.Chat.Systems;
 using Content.Server.Humanoid;
+using Content.Server.Mind;
+using Content.Server.Preferences.Managers;
+using Content.Shared.CCVar;
 using Content.Shared.Chat;
 using Content.Shared.EntityEffects;
 using Content.Shared.Humanoid;
 using Content.Shared.Humanoid.Prototypes;
+using Content.Shared.Preferences;
 using JetBrains.Annotations;
+using Robust.Server.GameObjects;
 using Robust.Server.Player;
+using Robust.Shared.Configuration;
 using Robust.Shared.Enums;
+using Robust.Shared.Network;
+using Robust.Shared.Player;
 using Robust.Shared.Prototypes;
 using Content.Server.Ghoul;
 
@@ -34,6 +42,12 @@ public sealed partial class GhoulReversalEffect : EntityEffect
     /// </summary>
     [DataField]
     public string TargetSpecies = "Human";
+
+    /// <summary>
+    /// Whether to update the character's database profile so the reversal persists across rounds.
+    /// </summary>
+    [DataField]
+    public bool UpdateDatabaseProfile = true;
 
     protected override string? ReagentEffectGuidebookText(IPrototypeManager prototype, IEntitySystemManager entSys)
         => Loc.GetString("reagent-effect-guidebook-ghoul-reversal", ("chance", Probability));
@@ -105,5 +119,49 @@ public sealed partial class GhoulReversalEffect : EntityEffect
         chatSys.TrySendInGameICMessage(uid,
             Loc.GetString("ghoul-reversal-reagent-others"),
             InGameICChatType.Emote, ChatTransmitRange.Normal, ignoreActionBlocker: true);
+
+        // Update the database profile so the reversion persists across rounds.
+        if (UpdateDatabaseProfile)
+            UpdateProfileAsync(uid, entityManager);
+    }
+
+    private async void UpdateProfileAsync(EntityUid uid, IEntityManager entityManager)
+    {
+        try
+        {
+            var mindSys = entityManager.EntitySysManager.GetEntitySystem<MindSystem>();
+            if (!mindSys.TryGetMind(uid, out _, out var mind) || mind.Session == null)
+                return;
+
+            var session = mind.Session;
+            var prefs = IoCManager.Resolve<IServerPreferencesManager>();
+            var netManager = IoCManager.Resolve<IServerNetManager>();
+            var cfg = IoCManager.Resolve<IConfigurationManager>();
+
+            var preferences = prefs.GetPreferences(session.UserId);
+            if (!preferences.Characters.TryGetValue(preferences.SelectedCharacterIndex, out var profile))
+                return;
+
+            if (profile is not HumanoidCharacterProfile humanoidProfile)
+                return;
+
+            var newProfile = humanoidProfile.WithSpecies(TargetSpecies);
+            await prefs.SetProfile(session.UserId, preferences.SelectedCharacterIndex, newProfile);
+
+            var updatedPrefs = prefs.GetPreferences(session.UserId);
+            var msg = new MsgPreferencesAndSettings
+            {
+                Preferences = updatedPrefs,
+                Settings = new GameSettings
+                {
+                    MaxCharacterSlots = cfg.GetCVar(CCVars.GameMaxCharacterSlots)
+                }
+            };
+            netManager.ServerSendMessage(msg, session.Channel);
+        }
+        catch (Exception ex)
+        {
+            Logger.Error($"GhoulReversalEffect: Failed to update character profile: {ex}");
+        }
     }
 }

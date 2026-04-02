@@ -43,6 +43,7 @@ lathe-category-blueprint-bos-ammo-t1 = BoS Ammo - Tier 1
 lathe-category-blueprint-bos-ammo-t2 = BoS Ammo - Tier 2
 lathe-category-blueprint-bos-ammo-t3 = BoS Ammo - Tier 3
 lathe-category-blueprint-bos-ammo-t4 = BoS Ammo - Tier 4
+lathe-category-blueprint-bos-ammo-t5 = BoS Ammo - Tier 5
 lathe-category-blueprint-town-weapons-t1 = Town Weapons - Tier 1
 lathe-category-blueprint-town-weapons-t2 = Town Weapons - Tier 2
 lathe-category-blueprint-town-weapons-t3 = Town Weapons - Tier 3

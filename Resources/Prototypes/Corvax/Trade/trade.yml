@@ -538,9 +538,9 @@
   id: CaravanBuy2_Ammo
   name: "Ammunition"
   entries:
-  - proto: N14PowerCellSmall
+  - proto: N14MicrofusionCellRed
     price: 75
-  - proto: N14PowerCellHigh
+  - proto: N14MicrofusionCellRed
     price: 125
     count: 15
   - proto: N14PlasmaCartridge
@@ -1080,9 +1080,9 @@
   id: CaravanSell2_Ammo
   name: "Ammunition"
   entries:
-  - proto: N14PowerCellSmall
+  - proto: N14MicrofusionCellRed
     price: 45
-  - proto: N14PowerCellHigh
+  - proto: N14MicrofusionCellRed
     price: 70
   - proto: N14PlasmaCartridge
     price: 85

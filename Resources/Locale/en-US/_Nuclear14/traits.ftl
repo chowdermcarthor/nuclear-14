@@ -1,8 +1,11 @@
 ﻿trait-name-LanguageTribal = Tribal Language
 trait-description-LanguageTribal = You can understand and speak the local Tribal language. Whether through learning or backstory.
 
-trait-name-LanguageChinese = Spanish Language
-trait-description-LanguageChinese = You can understand and speak the Spanish language. Whether through learning or backstory.
+trait-name-LanguageChinese = Chinese Language
+trait-description-LanguageChinese = You can understand and speak the Chinese language. Whether through learning or backstory.
+
+trait-name-LanguageSpanish = Spanish Language
+trait-description-LanguageSpanish = You can understand and speak the Spanish language. Whether through learning or backstory.
 
 trait-name-N14SignLanguage = Sign Language
 trait-description-N14SignLanguage =

@@ -108107,7 +108107,7 @@ entities:
     - type: Transform
       pos: -132.5,-37.5
       parent: 2
-- proto: N14PowerCellHigh
+- proto: N14MicrofusionCellRed
   entities:
   - uid: 33931
     components:
@@ -108140,7 +108140,7 @@ entities:
     - type: Transform
       pos: -137.74739,-65.31321
       parent: 2
-- proto: N14PowerCellSmall
+- proto: N14MicrofusionCellRed
   entities:
   - uid: 33934
     components:

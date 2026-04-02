@@ -94,6 +94,9 @@
           N14ScrapElectronic1:
             min: 1
             max: 3
+          N14MaterialCircuitry1:
+            min: 1
+            max: 3
           N14Scrap1:
             min: 1
             max: 3
@@ -169,6 +172,9 @@
       - !type:SpawnEntitiesBehavior
         spawn:
           N14ScrapElectronic1:
+            min: 1
+            max: 3
+          N14MaterialCircuitry1:
             min: 1
             max: 3
           N14Scrap1:
@@ -444,6 +450,9 @@
       - !type:SpawnEntitiesBehavior
         spawn:
           N14ScrapElectronic1:
+            min: 1
+            max: 3
+          N14MaterialCircuitry1:
             min: 1
             max: 3
           N14Scrap1:
@@ -776,6 +785,9 @@
           N14ScrapElectronic1:
             min: 1
             max: 3
+          N14MaterialCircuitry1:
+            min: 1
+            max: 3
           N14Scrap1:
             min: 1
             max: 3
@@ -983,6 +995,9 @@
           N14ScrapElectronic1:
             min: 2
             max: 5
+          N14MaterialCircuitry1:
+            min: 2
+            max: 5
           N14Scrap1:
             min: 2
             max: 5
@@ -1157,6 +1172,9 @@
       - !type:SpawnEntitiesBehavior
         spawn:
           N14ScrapElectronic1:
+            min: 2
+            max: 5
+          N14MaterialCircuitry1:
             min: 2
             max: 5
           N14Scrap1:

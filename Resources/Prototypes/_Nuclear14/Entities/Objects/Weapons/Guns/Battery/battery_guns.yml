@@ -25,13 +25,12 @@
     slots:
       gun_magazine:
         name: Magazine
-        startingItem: N14PowerCellHigh
+        startingItem: N14MicrofusionCellRed
         insertSound: /Audio/Weapons/Guns/MagIn/batrifle_magin.ogg
         ejectSound: /Audio/Weapons/Guns/MagOut/batrifle_magout.ogg
         whitelist:
           tags:
-            - N14PowerCellHigh
-            - PowerCell
+            - N14MicrofusionCell
   - type: Appearance
   - type: StaticPrice
     price: 25
@@ -101,12 +100,12 @@
     slots:
       gun_magazine:
         name: Magazine
-        startingItem: N14PowerCellSmall
+        startingItem: N14MicrofusionCellRed
         insertSound: /Audio/Weapons/Guns/MagIn/batrifle_magin.ogg
         ejectSound: /Audio/Weapons/Guns/MagOut/batrifle_magout.ogg
         whitelist:
           tags:
-            - N14PowerCellSmall
+            - N14MicrofusionCell
   - type: Item
     size: Small
     shape:
@@ -147,12 +146,12 @@
     slots:
       gun_magazine:
         name: Magazine
-        startingItem: N14PowerCellHigh
+        startingItem: N14MicrofusionCellRed
         insertSound: /Audio/Weapons/Guns/MagIn/batrifle_magin.ogg
         ejectSound: /Audio/Weapons/Guns/MagOut/batrifle_magout.ogg
         whitelist:
           tags:
-            - N14PowerCellHigh
+            - N14MicrofusionCell
   - type: Item
     size: Small
     shape:
@@ -189,12 +188,12 @@
     slots:
       gun_magazine:
         name: Magazine
-        startingItem: N14PlasmaCell
+        startingItem: N14PlasmaCartridge
         insertSound: /Audio/Weapons/Guns/MagIn/batrifle_magin.ogg
         ejectSound: /Audio/Weapons/Guns/MagOut/batrifle_magout.ogg
         whitelist:
           tags:
-            - N14PlasmaCell
+            - N14PlasmaCartridge
   - type: MagazineVisuals
     magState: mag
     steps: 5
@@ -368,14 +367,14 @@
     slots:
       gun_magazine:
         name: Magazine
-        startingItem: N14PowerCellHigh
+        startingItem: N14MicrofusionCellRed
         insertSound: /Audio/Weapons/Guns/MagIn/batrifle_magin.ogg
         ejectSound: /Audio/Weapons/Guns/MagOut/batrifle_magout.ogg
         whitelist:
           tags:
-            - N14PowerCellHigh
+            - N14MicrofusionCell
   - type: Gun
-    fireRate: 4
+    fireRate: 5
     soundGunshot:
       collection: N14LaserAutoRifleGunshot
     selectedMode: FullAuto
@@ -471,12 +470,12 @@
     slots:
       gun_magazine:
         name: Magazine
-        startingItem: N14BlueElectronChargePack #Misfits Change — AER-14 prototype fires blue laser to distinguish it from standard red-laser ECP weapons
+        startingItem: N14MicrofusionCellBlue #Misfits Change — AER-14 defaults to blue MF cell for its distinctive blue beam
         insertSound: /Audio/Weapons/Guns/MagIn/batrifle_magin.ogg
         ejectSound: /Audio/Weapons/Guns/MagOut/batrifle_magout.ogg
         whitelist:
           tags:
-            - N14PowerCellAdvanced
+            - N14MicrofusionCell
   - type: Gun
     fireRate: 4
     soundGunshot:
@@ -523,14 +522,14 @@
     slots:
       gun_magazine:
         name: Magazine
-        startingItem: N14PowerCellHigh
+        startingItem: N14MicrofusionCellRed
         insertSound: /Audio/Weapons/Guns/MagIn/batrifle_magin.ogg
         ejectSound: /Audio/Weapons/Guns/MagOut/batrifle_magout.ogg
         whitelist:
           tags:
-            - N14PowerCellHigh
+            - N14MicrofusionCell
   - type: Gun
-    fireRate: 3
+    fireRate: 5
     soundGunshot:
       collection: N14LaserAutoRifleGunshot
     selectedMode: SemiAuto
@@ -569,12 +568,12 @@
     slots:
       gun_magazine:
         name: Magazine
-        startingItem: N14PowerCellHigh
+        startingItem: N14MicrofusionCellRed
         insertSound: /Audio/Weapons/Guns/MagIn/batrifle_magin.ogg
         ejectSound: /Audio/Weapons/Guns/MagOut/batrifle_magout.ogg
         whitelist:
           tags:
-            - N14PowerCellHigh
+            - N14MicrofusionCell
   - type: Gun
     fireRate: 2.5
     soundGunshot:
@@ -617,12 +616,12 @@
     slots:
       gun_magazine:
         name: Magazine
-        startingItem: N14PowerCellHigh
+        startingItem: N14MicrofusionCellRed
         insertSound: /Audio/Weapons/Guns/MagIn/batrifle_magin.ogg
         ejectSound: /Audio/Weapons/Guns/MagOut/batrifle_magout.ogg
         whitelist:
           tags:
-            - N14PowerCellHigh
+            - N14MicrofusionCell
   - type: Gun
     fireRate: 3
     soundGunshot:
@@ -876,12 +875,12 @@
     slots:
       gun_magazine:
         name: Magazine
-        startingItem: N14PowerCellFocused
+        startingItem: N14MicrofusionCellBlue
         insertSound: /Audio/Weapons/Guns/MagIn/batrifle_magin.ogg
         ejectSound: /Audio/Weapons/Guns/MagOut/batrifle_magout.ogg
         whitelist:
           tags:
-            - N14PowerCellFocused
+            - N14MicrofusionCell
   - type: Gun
     fireRate: 2
     soundGunshot:
@@ -926,12 +925,12 @@
     slots:
       gun_magazine:
         name: Magazine
-        startingItem: N14PowerCellFocused
+        startingItem: N14MicrofusionCellGreen
         insertSound: /Audio/Weapons/Guns/MagIn/batrifle_magin.ogg
         ejectSound: /Audio/Weapons/Guns/MagOut/batrifle_magout.ogg
         whitelist:
           tags:
-            - N14PowerCellFocused
+            - N14MicrofusionCell
   - type: Gun
     fireRate: 1.5
     soundGunshot:
@@ -976,12 +975,12 @@
     slots:
       gun_magazine:
         name: Magazine
-        startingItem: N14PlasmaShell
+        startingItem: N14PlasmaCartridge
         insertSound: /Audio/Weapons/Guns/MagIn/batrifle_magin.ogg
         ejectSound: /Audio/Weapons/Guns/MagOut/batrifle_magout.ogg
         whitelist:
           tags:
-            - N14PlasmaShell
+            - N14PlasmaCartridge
   - type: Gun
     minAngle: 2
     maxAngle: 12
@@ -1034,12 +1033,12 @@
     slots:
       gun_magazine:
         name: Magazine
-        startingItem: N14PowerCellFusion
+        startingItem: N14MicrofusionCellHighCapRed
         insertSound: /Audio/Weapons/Guns/MagIn/batrifle_magin.ogg
         ejectSound: /Audio/Weapons/Guns/MagOut/batrifle_magout.ogg
         whitelist:
           tags:
-            - N14PowerCellFusion
+            - N14MicrofusionCell
   - type: Gun
     minAngle: 2
     maxAngle: 12
@@ -1093,12 +1092,12 @@
     slots:
       gun_magazine:
         name: Power Cell
-        startingItem: N14GreenMicrofusionCell #Misfits Change — RCW fires green laser in Fallout, not red
+        startingItem: N14MicrofusionCellGreen #Misfits Change — RCW fires green laser in Fallout, not red
         insertSound: /Audio/Weapons/Guns/MagIn/batrifle_magin.ogg
         ejectSound: /Audio/Weapons/Guns/MagOut/batrifle_magout.ogg
         whitelist:
           tags:
-            - N14PowerCellHigh
+            - N14MicrofusionCell
   - type: Item
     size: Large
     shape:
@@ -1148,12 +1147,12 @@
     slots:
       gun_magazine:
         name: Power Cell
-        startingItem: N14PulseEnergyCell #Misfits Change — use pulse cell so gun fires correct blue beam effect
+        startingItem: N14ElectronChargePackRed #Misfits Change — pulse weapons use electron charge packs
         insertSound: /Audio/Weapons/Guns/MagIn/batrifle_magin.ogg
         ejectSound: /Audio/Weapons/Guns/MagOut/batrifle_magout.ogg
         whitelist:
           tags:
-            - N14PowerCellSmall
+            - N14ElectronChargePack
   - type: Item
     size: Small
     shape:
@@ -1200,12 +1199,12 @@
     slots:
       gun_magazine:
         name: Power Cell
-        startingItem: N14PulseMicrofusionCell #Misfits Change — use pulse cell so gun fires correct blue beam effect
+        startingItem: N14ElectronChargePackRed #Misfits Change — pulse weapons use electron charge packs
         insertSound: /Audio/Weapons/Guns/MagIn/batrifle_magin.ogg
         ejectSound: /Audio/Weapons/Guns/MagOut/batrifle_magout.ogg
         whitelist:
           tags:
-            - N14PowerCellHigh
+            - N14ElectronChargePack
   - type: Item
     size: Large
     shape:
@@ -1256,12 +1255,12 @@
     slots:
       gun_magazine:
         name: Power Cell
-        startingItem: N14PulseMicrofusionCell #Misfits Change — use pulse cell so gun fires correct blue beam effect
+        startingItem: N14ElectronChargePackRed #Misfits Change — pulse weapons use electron charge packs
         insertSound: /Audio/Weapons/Guns/MagIn/batrifle_magin.ogg
         ejectSound: /Audio/Weapons/Guns/MagOut/batrifle_magout.ogg
         whitelist:
           tags:
-            - N14PowerCellHigh
+            - N14ElectronChargePack
   - type: Item
     size: Large
     shape:

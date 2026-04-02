@@ -22,12 +22,12 @@
     slots:
       gun_magazine:
         name: Magazine
-        startingItem: N14PowerCellMagnetoSmall
+        startingItem: N14MicrofusionCellRed
         insertSound: /Audio/Weapons/Guns/MagIn/batrifle_magin.ogg
         ejectSound: /Audio/Weapons/Guns/MagOut/batrifle_magout.ogg
         whitelist:
           tags:
-            - N14PowerCellMagnetoSmall
+            - N14MicrofusionCell
   - type: Item
     size: Small
     shape:
@@ -73,12 +73,12 @@
     slots:
       gun_magazine:
         name: Magazine
-        startingItem: N14PowerCellFocusedYk42b
+        startingItem: N14MicrofusionCellRed
         insertSound: /Audio/Weapons/Guns/MagIn/batrifle_magin.ogg
         ejectSound: /Audio/Weapons/Guns/MagOut/batrifle_magout.ogg
         whitelist:
           tags:
-            - N14PowerCellFocusedYk42b
+            - N14MicrofusionCell
   - type: Gun
     fireRate: 1
     soundGunshot:

@@ -159,6 +159,21 @@
     ScrapElectronic: 175
     Plastic: 75
 
+- type: latheRecipe
+  id: N14BPVaultWeaponLaserRCW
+  result: N14WeaponLaserRCW
+  category: N14BlueprintVaultWeaponsT4
+  completetime: 20
+  requiresBlueprint: true
+  availableFaction:
+  - Vault
+  materials:
+    Steel: 55000
+    Glass: 350
+    Circuitry: 250
+    ScrapElectronic: 175
+    Plastic: 75
+
 # =====================================================================
 # VAULT ARMOR RECIPES
 # =====================================================================
@@ -303,16 +318,17 @@
 # --- Vault Tier 2 Ammo ---
 - type: latheRecipe
   id: N14BPVaultAmmoPowerCellSmall
-  result: N14PowerCellSmall
+  result: N14MicrofusionCellRed
   category: N14BlueprintVaultAmmoT2
-  completetime: 5
+  completetime: 4
   requiresBlueprint: true
   availableFaction:
   - Vault
   materials:
-    Glass: 75
-    Circuitry: 50
-    ScrapElectronic: 25
+    Glass: 100
+    Circuitry: 100
+    ScrapElectronic: 100
+    Lead: 100
 
 - type: latheRecipe
   id: N14BPVaultAmmoMag10mmSMG
@@ -330,59 +346,61 @@
 # --- Vault Tier 3 Ammo ---
 - type: latheRecipe
   id: N14BPVaultAmmoPowerCellHigh
-  result: N14PowerCellHigh
+  result: N14MicrofusionCellGreen
   category: N14BlueprintVaultAmmoT3
   completetime: 8
   requiresBlueprint: true
   availableFaction:
   - Vault
   materials:
-    Glass: 150
-    Circuitry: 1
-    ScrapElectronic: 75
-    Plastic: 25
+    Glass: 200
+    Circuitry: 100
+    ScrapElectronic: 100
+    Lead: 200
 
 - type: latheRecipe
   id: N14BPVaultAmmoPlasmaCell
   result: N14PlasmaCartridgeSmall
   category: N14BlueprintVaultAmmoT3
-  completetime: 9
+  completetime: 8
   requiresBlueprint: true
   availableFaction:
   - Vault
   materials:
-    Glass: 175
-    Circuitry: 125
-    ScrapElectronic: 75
+    Glass: 250
+    Circuitry: 100
+    ScrapElectronic: 100
+    Lead: 250
 
 # --- Vault Tier 4 Ammo ---
 - type: latheRecipe
   id: N14BPVaultAmmoPlasmaCartridge
   result: N14PlasmaCartridge
   category: N14BlueprintVaultAmmoT4
-  completetime: 12
+  completetime: 10
   requiresBlueprint: true
   availableFaction:
   - Vault
   materials:
-    Glass: 275
-    Circuitry: 2
-    ScrapElectronic: 150
-    Plastic: 50
+    Glass: 400
+    Circuitry: 100
+    ScrapElectronic: 100
+    Lead: 400
 
 - type: latheRecipe
   id: N14BPVaultAmmoPowerCellAdvanced
-  result: N14PowerCellAdvanced
+  result: N14MicrofusionCellBlue
   category: N14BlueprintVaultAmmoT4
   completetime: 12
   requiresBlueprint: true
   availableFaction:
   - Vault
   materials:
-    Glass: 250
-    Circuitry: 2
-    ScrapElectronic: 125
-    Plastic: 50
+    Glass: 350
+    Circuitry: 100
+    ScrapElectronic: 100
+    Lead: 350
+    N14Silver: 50
 
 # =====================================================================
 # TRIBE WEAPON RECIPES

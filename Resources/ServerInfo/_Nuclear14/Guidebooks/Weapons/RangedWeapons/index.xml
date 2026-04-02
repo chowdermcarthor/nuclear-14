@@ -25,8 +25,8 @@ Carry more ammunition than you think you need, and always know which weapon uses
 <Box>
 <GuideEntityEmbed Entity="Magazine762Rifle" Caption="7.62 Magazine"/>
 <GuideEntityEmbed Entity="Magazine308Rifle" Caption=".308 Magazine"/>
-<GuideEntityEmbed Entity="N14PowerCellSmall" Caption="Energy Cell"/>
-<GuideEntityEmbed Entity="N14PlasmaCell" Caption="Plasma Cell"/>
+<GuideEntityEmbed Entity="N14MicrofusionCellRed" Caption="Energy Cell"/>
+<GuideEntityEmbed Entity="N14PlasmaCartridge" Caption="Plasma Cell"/>
 </Box>
 
 ## Field Maintenance

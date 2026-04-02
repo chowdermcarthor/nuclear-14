@@ -496,7 +496,7 @@
   components:
   - type: StorageFill
     contents:
-      - id: N14PowerCellSmall
+      - id: N14MicrofusionCellRed
         amount: 4
 
 - type: entity
@@ -507,7 +507,7 @@
   components:
   - type: StorageFill
     contents:
-      - id: N14PowerCellHigh
+      - id: N14MicrofusionCellRed
         amount: 4
 
 - type: entity

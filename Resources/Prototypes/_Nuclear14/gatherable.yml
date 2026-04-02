@@ -6,6 +6,8 @@
 - type: ore
   id: WoodPlank
   oreEntity: MaterialWoodPlank1
+  minOreYield: 4
+  maxOreYield: 8
 
 # Rocks, Metal, Ores
 - type: ore

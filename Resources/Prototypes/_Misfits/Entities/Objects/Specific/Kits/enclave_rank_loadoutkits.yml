@@ -202,7 +202,7 @@
       - id: N14ClothingOuterEnclaverOfficerCoat
       - id: ClothingBeltMilitary
       - id: N14WeaponPlasmaDefender
-      - id: N14PlasmaCell
+      - id: N14PlasmaCartridge
         amount: 3
       - id: RadioHandheld
       - id: SmokeGrenade
@@ -257,7 +257,7 @@
       - id: N14PlasmaCartridge
         amount: 2
       - id: N14WeaponPlasmaPistol
-      - id: N14PlasmaCell
+      - id: N14PlasmaCartridge
         amount: 2
       - id: SmokeGrenade
       - id: N14Stimpak
@@ -328,7 +328,7 @@
   - type: SpawnItemsOnUse
     items:
       - id: N14WeaponPlasmaPistol
-      - id: N14PlasmaCell
+      - id: N14PlasmaCartridge
         amount: 2
       - id: N14MedkitCombatFilled
       - id: N14SuperStimpak

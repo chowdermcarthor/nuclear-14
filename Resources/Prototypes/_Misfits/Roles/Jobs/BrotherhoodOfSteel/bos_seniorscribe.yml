@@ -15,7 +15,10 @@
       - Human
     - !type:CharacterDepartmentTimeRequirement
       department: BrotherhoodOfSteel
-      min: 180000 # 50 hours
+      min: 72000 # 20 hours
+    - !type:CharacterPlaytimeRequirement
+      tracker: BoSScribe
+      min: 28800 # 8 hours as Scribe
   startingGear: BoSMidScribeGear
   alwaysUseSpawner: true
   icon: "JobIconBosMScriptor" # Corvax-Change

@@ -21491,7 +21491,7 @@ entities:
     - type: Transform
       pos: 134.5,191.5
       parent: 2
-- proto: N14PowerCellHigh
+- proto: N14MicrofusionCellRed
   entities:
   - uid: 3541
     components:
