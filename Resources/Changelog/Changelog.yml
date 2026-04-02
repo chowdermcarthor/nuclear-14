@@ -2615,3 +2615,14 @@ Entries:
   id: 5699
   time: '2026-04-01T19:59:14.0000000+00:00'
   url: https://github.com/Misfit-Sanctuary/nuclear-14/pull/226
+- author: Cythisiax
+  changes:
+    - type: Tweak
+      message: >-
+        Expeditions Board adjust to only load one exped. Rest commented out for
+        now.
+    - type: Add
+      message: Speech verbs, 'rasp, bellow, and mumbles' etc.
+  id: 5700
+  time: '2026-04-02T00:16:01.0000000+00:00'
+  url: https://github.com/Misfit-Sanctuary/nuclear-14/pull/229
