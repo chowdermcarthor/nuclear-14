@@ -48,8 +48,9 @@ job-name-ncr-sergeant = NCR Sergeant
 job-description-ncr-sergeant = Lead a fireteam, maintain order, and execute the plans of the senior NCOs and officers.
 job-name-ncr-sgt = NCR Sergeant
 job-description-ncr-sgt = Lead a fireteam, maintain order, and execute the plans of the senior NCOs and officers.
-job-name-ncr-major = NCR Major
-job-description-ncr-major = Serve as the senior Command officer of the NCR detachment, answerable only to high command. Set operational priorities, adjudicate disputes between officers, and ensure the mission succeeds.
+# #Misfits Removed - NCR Major locale moved to _Misfits/corvax-jobs.ftl (authoritative Misfits version)
+# job-name-ncr-major = NCR Major
+# job-description-ncr-major = Serve as the senior Command officer of the NCR detachment, answerable only to high command. Set operational priorities, adjudicate disputes between officers, and ensure the mission succeeds.
 job-name-ncr-captain = NCR Captain
 job-description-ncr-captain = Command the detachment, set priorities, and answer only to NCR high command and the mission.
 job-name-ncr-lt = NCR Lieutenant
