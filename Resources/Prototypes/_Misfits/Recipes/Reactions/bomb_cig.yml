@@ -1,0 +1,50 @@
+# #Misfits Change
+# Simple pyrotechnic synthesis for bomb-cig payload reagent.
+
+- type: reaction
+  id: Blastleaf
+  reactants:
+    Phosphorus:
+      amount: 1
+    Potassium:
+      amount: 1
+    WeldingFuel:
+      amount: 1
+  products:
+    Blastleaf: 3
+
+- type: reaction
+  id: BlastleafDetonation
+  source: true
+  minTemp: 370
+  priority: 30
+  reactants:
+    Blastleaf:
+      amount: 1
+  effects:
+  - !type:ExplosionReactionEffect
+    explosionType: Default
+    maxIntensity: 50
+    intensityPerUnit: 4
+    intensitySlope: 4
+    maxTotalIntensity: 50
+
+- type: reaction
+  id: ChlorineTrifluorideDetonation
+  source: true
+  minTemp: 370
+  priority: 30
+  reactants:
+    ChlorineTrifluoride:
+      amount: 1
+  effects:
+  - !type:ExplosionReactionEffect
+    explosionType: Default
+    maxIntensity: 200
+    intensityPerUnit: 5
+    intensitySlope: 5
+    maxTotalIntensity: 200
+  - !type:PopupMessage
+    messages: [ "clf3-explosion" ]
+    type: Pvs
+    visualType: LargeCaution
