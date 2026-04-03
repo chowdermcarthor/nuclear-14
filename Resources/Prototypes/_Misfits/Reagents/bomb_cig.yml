@@ -1,0 +1,11 @@
+# #Misfits Change
+# Bomb-cig reagent: detonates when ignited (e.g. in a lit smokable).
+
+- type: reagent
+  id: Blastleaf
+  name: reagent-name-blastleaf
+  group: Pyrotechnic
+  desc: reagent-desc-blastleaf
+  physicalDesc: reagent-physical-desc-volatile
+  flavor: bitter
+  color: "#d7832f"
