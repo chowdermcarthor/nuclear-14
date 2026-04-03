@@ -3,11 +3,11 @@
 # Job names
 # Misfits Change /Comment-out/: Inquisitor role removed.
 # job-name-bos-mid-inquisitor = Brotherhood Inquisitor
-job-name-bos-mid-serf = Serf
-job-name-ncr-mp-investigator = Military Police Investigator
-job-name-ncr-prisoner = Prisoner
+job-name-bos-mid-serf = Brotherhood Serf
+job-name-ncr-mp-investigator = NCR Military Police Investigator
+job-name-ncr-prisoner = NCR Prisoner
 job-name-raider = Raider
-job-name-townshopkeeperhelper = Shopkeeper Helper
+job-name-townshopkeeperhelper = Town Shopkeeper Helper
 job-name-khan = Khan
 job-name-jackal = Jackal
 job-name-viper = Viper

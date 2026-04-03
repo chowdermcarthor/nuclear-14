@@ -100,12 +100,12 @@
     slots:
       gun_magazine:
         name: Magazine
-        startingItem: N14MicrofusionCellRed
+        startingItem: N14PowerCellSmall
         insertSound: /Audio/Weapons/Guns/MagIn/batrifle_magin.ogg
         ejectSound: /Audio/Weapons/Guns/MagOut/batrifle_magout.ogg
         whitelist:
           tags:
-            - N14MicrofusionCell
+            - N14PowerCellSmall
   - type: Item
     size: Small
     shape:

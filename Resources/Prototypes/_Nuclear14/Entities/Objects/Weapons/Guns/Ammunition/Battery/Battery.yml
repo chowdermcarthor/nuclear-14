@@ -395,33 +395,33 @@
 #     proto: RedShuttleLaser
 #     fireCost: 75
 
-# - type: entity
-#   name: energy cell
-#   description: An energy cell, typically used as ammunition for small-arms energy weapons.
-#   id: N14PowerCellSmall
-#   suffix: Full
-#   parent: N14BasePowerCell
-#   components:
-#   - type: Sprite
-#     sprite: _Nuclear14/Objects/Weapons/Guns/Ammunition/Battery/EC.rsi
-#     layers:
-#       - map: [ "enum.PowerCellVisualLayers.Base" ]
-#         state: empty
-#         scale: 0.5, 0.5
-#       - map: [ "enum.PowerCellVisualLayers.Unshaded" ]
-#         state: o2
-#         shader: unshaded
-#         scale: 0.5, 0.5
-#   - type: Tag
-#     tags:
-#       - N14PowerCellSmall
-#       - N14AmmoCell
-#   - type: Battery
-#     maxCharge: 600
-#     startingCharge: 600
-#   - type: HitscanBatteryAmmoProvider
-#     proto: RedLaser
-#     fireCost: 50
+- type: entity
+  name: energy cell
+  description: An energy cell, typically used as ammunition for small-arms energy weapons.
+  id: N14PowerCellSmall
+  suffix: Full
+  parent: N14BasePowerCell
+  components:
+  - type: Sprite
+    sprite: _Nuclear14/Objects/Weapons/Guns/Ammunition/Battery/EC.rsi
+    layers:
+      - map: [ "enum.PowerCellVisualLayers.Base" ]
+        state: empty
+        scale: 0.5, 0.5
+      - map: [ "enum.PowerCellVisualLayers.Unshaded" ]
+        state: o2
+        shader: unshaded
+        scale: 0.5, 0.5
+  - type: Tag
+    tags:
+      - N14PowerCellSmall
+      - N14AmmoCell
+  - type: Battery
+    maxCharge: 600
+    startingCharge: 600
+  - type: HitscanBatteryAmmoProvider
+    proto: N14MFLaserRed
+    fireCost: 50
 
 # - type: entity
 #   name: electron charge pack

@@ -1041,7 +1041,7 @@
   - type: SpawnItemsOnUse
     items:
       - id: N14WeaponLaserPistol
-      - id: N14MicrofusionCellRed
+      - id: N14PowerCellSmall
         amount: 2
       - id: N14CleanGauze10
       - id: N14Stimpak
@@ -1063,7 +1063,7 @@
       - id: Magazine556Rifle
         amount: 3
       - id: N14WeaponLaserPistol
-      - id: N14MicrofusionCellRed
+      - id: N14PowerCellSmall
         amount: 2
       - id: N14CleanGauze10
       - id: N14BoxCardboardMREBoxKFilled
@@ -1109,7 +1109,7 @@
       - id: LongMagazine556Rifle
         amount: 3
       - id: N14WeaponLaserPistol
-      - id: N14MicrofusionCellRed
+      - id: N14PowerCellSmall
         amount: 2
       - id: N14CleanGauze10
       - id: N14Stimpak
@@ -1129,7 +1129,7 @@
   - type: SpawnItemsOnUse
     items:
       - id: N14WeaponLaserPistol
-      - id: N14MicrofusionCellRed
+      - id: N14PowerCellSmall
         amount: 2
       - id: N14HandheldHealthAnalyzer # #Misfits Add - BoS medics should spawn with health analyzer
       - id: N14CleanGauze10
@@ -1155,7 +1155,7 @@
   - type: SpawnItemsOnUse
     items:
       - id: N14WeaponLaserPistol
-      - id: N14MicrofusionCellRed
+      - id: N14PowerCellSmall
         amount: 2
       - id: N14CleanGauze10
       - id: N14Ointment10
@@ -1178,7 +1178,7 @@
   - type: SpawnItemsOnUse
     items:
       - id: N14WeaponLaserPistol
-      - id: N14MicrofusionCellRed
+      - id: N14PowerCellSmall
         amount: 2
       - id: N14CleanGauze10
       - id: N14Ointment10
@@ -1206,7 +1206,7 @@
       - id: N14MagazineShotgun12
         amount: 3
       - id: N14WeaponLaserPistol
-      - id: N14MicrofusionCellRed
+      - id: N14PowerCellSmall
         amount: 2
       - id: N14CleanGauze10
       - id: N14Stimpak
@@ -1228,7 +1228,7 @@
       - id: LongMagazine556Rifle
         amount: 3
       - id: N14WeaponLaserPistol
-      - id: N14MicrofusionCellRed
+      - id: N14PowerCellSmall
         amount: 2
       - id: N14CleanGauze10
       - id: N14Stimpak
