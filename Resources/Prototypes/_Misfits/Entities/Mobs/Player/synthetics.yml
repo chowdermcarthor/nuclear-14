@@ -139,6 +139,8 @@
         Heat: -0.5
         Shock: -0.5
   - type: RobotSelfRepairAnnouncer # #Misfits Change: hull integrity warnings + self-repair popups
+  
+  - type: Sanitized # #Misfits Change: makes mr handy not do damage in surgery
 
   - type: Gun # #Misfits Add: built-in flamer — right-click in combat mode to fire
     cameraRecoilScalar: 0
