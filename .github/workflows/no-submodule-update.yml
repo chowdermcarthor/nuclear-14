@@ -7,7 +7,8 @@ on:
 
 jobs:
   this_aint_right:
-    if: github.actor != 'sleepyyapril' && github.actor != 'VMSolidus' && github.actor != 'DEATHB4DEFEAT'
+    # #Misfits Add - Added Cythisiax to submodule update allowlist
+    if: github.actor != 'sleepyyapril' && github.actor != 'VMSolidus' && github.actor != 'DEATHB4DEFEAT' && github.actor != 'Cythisiax'
     name: Submodule update in pr found
     runs-on: ubuntu-latest
     steps:
