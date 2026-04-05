@@ -2781,3 +2781,10 @@ Entries:
   id: 5709
   time: '2026-04-04T21:27:17.0000000+00:00'
   url: https://github.com/Misfit-Sanctuary/nuclear-14/pull/249
+- author: Bill Clinton
+  changes:
+    - type: Fix
+      message: Hunting rifle accuracy is fixed, millions must hunt.
+  id: 5710
+  time: '2026-04-05T16:10:59.0000000+00:00'
+  url: https://github.com/Misfit-Sanctuary/nuclear-14/pull/251
