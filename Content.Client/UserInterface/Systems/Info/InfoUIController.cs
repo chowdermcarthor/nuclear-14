@@ -1,4 +1,5 @@
-using Content.Client._Misfits.WebView; // #Misfits Add - WebView rules panel
+// #Misfits Removed - WebView module deprecated upstream, all versions marked insecure
+// using Content.Client._Misfits.WebView;
 using Content.Client.Gameplay;
 using Content.Client.Guidebook;
 using Content.Client.Info;
@@ -20,9 +21,8 @@ public sealed class InfoUIController : UIController, IOnStateExited<GameplayStat
     [Dependency] private readonly INetManager _netManager = default!;
     [Dependency] private readonly IPrototypeManager _prototype = default!;
 
-    // #Misfits Removed - replaced by MisfitsRulesWebPanel
-    // private RulesPopup? _rulesPopup;
-    private MisfitsRulesWebPanel? _rulesWebPanel; // #Misfits Add - WebView rules panel
+    // #Misfits Change - Reverted to standard RulesPopup (WebView module deprecated upstream)
+    private RulesPopup? _rulesPopup;
     private RulesAndInfoWindow? _infoWindow;
 
     public override void Initialize()
@@ -56,21 +56,21 @@ public sealed class InfoUIController : UIController, IOnStateExited<GameplayStat
         _infoWindow = null;
     }
 
-    // #Misfits Change - ShowRules creates MisfitsRulesWebPanel (live wiki via CEF) instead of legacy RulesPopup
+    // #Misfits Change - Reverted to standard RulesPopup (WebView module deprecated upstream)
     private void ShowRules(float time)
     {
-        if (_rulesWebPanel != null)
+        if (_rulesPopup != null)
             return;
 
-        _rulesWebPanel = new MisfitsRulesWebPanel
+        _rulesPopup = new RulesPopup
         {
             Timer = time
         };
 
-        _rulesWebPanel.OnQuitPressed += OnQuitPressed;
-        _rulesWebPanel.OnAcceptPressed += OnAcceptPressed;
-        UIManager.WindowRoot.AddChild(_rulesWebPanel);
-        LayoutContainer.SetAnchorPreset(_rulesWebPanel, LayoutContainer.LayoutPreset.Wide);
+        _rulesPopup.OnQuitPressed += OnQuitPressed;
+        _rulesPopup.OnAcceptPressed += OnAcceptPressed;
+        UIManager.WindowRoot.AddChild(_rulesPopup);
+        LayoutContainer.SetAnchorPreset(_rulesPopup, LayoutContainer.LayoutPreset.Wide);
     }
 
     private void OnQuitPressed()
@@ -81,9 +81,9 @@ public sealed class InfoUIController : UIController, IOnStateExited<GameplayStat
     private void OnAcceptPressed()
     {
         _netManager.ClientSendMessage(new RulesAcceptedMessage());
-        // #Misfits Change - clean up WebView panel instead of legacy RulesPopup
-        _rulesWebPanel?.Orphan();
-        _rulesWebPanel = null;
+
+        _rulesPopup?.Orphan();
+        _rulesPopup = null;
     }
 
     public GuideEntryPrototype GetCoreRuleEntry()
