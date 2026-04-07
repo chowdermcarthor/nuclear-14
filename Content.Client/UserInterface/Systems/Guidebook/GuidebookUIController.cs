@@ -23,6 +23,10 @@ public sealed class GuidebookUIController : UIController, IOnStateEntered<LobbyS
     [UISystemDependency] private readonly GuidebookSystem _guidebookSystem = default!;
     [Dependency] private readonly IPrototypeManager _prototypeManager = default!;
     [Dependency] private readonly IConfigurationManager _cfgManager = default!;
+    // #Misfits Add - Open wiki in system browser instead of in-game guidebook window
+    [Dependency] private readonly IUriOpener _uriOpener = default!;
+
+    private const string WikiUrl = "https://ss14.misfitsystems.net/wiki/index.php/Main_Page";
 
     // #Misfits Change - Reverted to standard GuidebookWindow (WebView module deprecated upstream)
     private GuidebookWindow? _guideWindow;
@@ -49,9 +53,10 @@ public sealed class GuidebookUIController : UIController, IOnStateEntered<LobbyS
         _guideWindow.OnOpen += OnWindowOpen;
 
         // setup keybinding
+        // #Misfits Change - Open Misfits wiki in browser instead of in-game guidebook
         CommandBinds.Builder
             .Bind(ContentKeyFunctions.OpenGuidebook,
-                InputCmdHandler.FromDelegate(_ => ToggleGuidebook()))
+                InputCmdHandler.FromDelegate(_ => _uriOpener.OpenUri(WikiUrl)))
             .Register<GuidebookUIController>();
     }
 
@@ -106,7 +111,8 @@ public sealed class GuidebookUIController : UIController, IOnStateEntered<LobbyS
 
     private void GuidebookButtonOnPressed(ButtonEventArgs obj)
     {
-        ToggleGuidebook();
+        // #Misfits Change - Open Misfits wiki in browser instead of in-game guidebook
+        _uriOpener.OpenUri(WikiUrl);
     }
 
     private void OnWindowClosed()

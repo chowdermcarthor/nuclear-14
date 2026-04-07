@@ -47,7 +47,7 @@
     sprite: _Misfits/Clothing/CaesarLegion/legion_gauntlets.rsi
   - type: Clothing
     sprite: _Misfits/Clothing/CaesarLegion/legion_gauntlets.rsi
-    slots: gloves
+    slots: [gloves]
   - type: MeleeWeapon
     # Slashing damage applied when wearing and attacking — mirrors the Goliath Powerfist pattern
     soundHit:

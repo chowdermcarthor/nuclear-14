@@ -129,7 +129,7 @@
   - type: Sprite
     layers:
     - state: generic
-    - state: icon-stunbaton
+    - state: security
   - type: ItemBorgModule
     items:
     - Stunbaton

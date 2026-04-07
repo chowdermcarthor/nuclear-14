@@ -57,6 +57,14 @@ public static class FactionWarConfig
 
     public static string FactionDisplayName(string factionId) =>
         FactionDisplayNames.TryGetValue(factionId, out var name) ? name : factionId;
+
+    // #Misfits Add - Job prototype IDs exempt from the ally/enemy overlay.
+    // Entities with these jobs won't appear in the participant dict, so no tag is rendered above them.
+    // Used for spy roles like Frumentarii that should remain unidentifiable.
+    public static readonly HashSet<string> OverlayExemptJobs = new()
+    {
+        "CaesarLegionFrumentarii",
+    };
 }
 
 // ── Network message types ──────────────────────────────────────────────────

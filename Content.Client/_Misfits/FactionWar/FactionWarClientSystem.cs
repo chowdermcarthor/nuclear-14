@@ -15,6 +15,7 @@ using Robust.Client.Player;
 using Robust.Client.ResourceManagement;
 using Robust.Client.UserInterface;
 using Robust.Shared.Console;
+using Robust.Shared.Timing;
 
 namespace Content.Client._Misfits.FactionWar;
 
@@ -33,7 +34,7 @@ public sealed class FactionWarClientSystem : EntitySystem
     [Dependency] private readonly ExamineSystemShared _examine        = default!;
     [Dependency] private readonly SharedTransformSystem _transform   = default!;
     [Dependency] private readonly IClientConsoleHost  _conHost        = default!;
-    [Dependency] private readonly IUserInterfaceManager _uiManager    = default!;
+    [Dependency] private readonly IGameTiming         _timing         = default!;
 
     /// <summary>Current active wars. Read by <see cref="AllyTagOverlay"/> each frame.</summary>
     public IReadOnlyList<FactionWarEntry> ActiveWars => _activeWars;
@@ -324,9 +325,7 @@ public sealed class FactionWarClientSystem : EntitySystem
             return;
         }
 
-        // #Misfits Removed - Overlay disabled for immersion and spy gameplay.
-        // The overlay is no longer added during wars. Uncomment to restore.
-        // EnsureOverlay();
+        EnsureOverlay();
     }
 
     private void EnsureOverlay()
@@ -339,6 +338,7 @@ public sealed class FactionWarClientSystem : EntitySystem
             EntityManager,
             _playerManager,
             _eyeManager,
+            _timing,
             _resourceCache,
             _entityLookup,
             _examine,

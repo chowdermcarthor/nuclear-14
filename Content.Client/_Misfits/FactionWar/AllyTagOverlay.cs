@@ -13,6 +13,7 @@ using Robust.Client.ResourceManagement;
 using Robust.Shared.Enums;
 using Robust.Shared.Map;
 using Robust.Shared.Maths;
+using Robust.Shared.Timing;
 
 namespace Content.Client._Misfits.FactionWar;
 
@@ -27,10 +28,23 @@ internal sealed class AllyTagOverlay : Overlay
     private readonly IEntityManager         _entityManager;
     private readonly IPlayerManager         _playerManager;
     private readonly IEyeManager            _eyeManager;
+    private readonly IGameTiming            _timing;
     private readonly EntityLookupSystem     _entityLookup;
     private readonly ExamineSystemShared    _examine;
     private readonly SharedTransformSystem  _transform;
     private readonly Font                   _font;
+
+    // Cache LOS results briefly so the overlay still feels realtime without rechecking
+    // every participant on every draw call during large wars.
+    private readonly Dictionary<NetEntity, VisibilityCacheEntry> _visibilityCache = new();
+    private TimeSpan _nextCleanup;
+
+    private static readonly TimeSpan VisibilityCacheLifetime = TimeSpan.FromSeconds(0.15);
+    private static readonly TimeSpan CacheCleanupInterval = TimeSpan.FromSeconds(2);
+    private const float MaxTagDistance = 50f;
+    private const float MaxTagDistanceSquared = MaxTagDistance * MaxTagDistance;
+    private const float PositionRefreshThresholdSquared = 1f;
+    private const int MaxLosRefreshPerFrame = 12;
 
     public override OverlaySpace Space => OverlaySpace.ScreenSpace;
 
@@ -39,6 +53,7 @@ internal sealed class AllyTagOverlay : Overlay
         IEntityManager         entityManager,
         IPlayerManager         playerManager,
         IEyeManager            eyeManager,
+        IGameTiming            timing,
         IResourceCache         resourceCache,
         EntityLookupSystem     entityLookup,
         ExamineSystemShared    examine,
@@ -48,6 +63,7 @@ internal sealed class AllyTagOverlay : Overlay
         _entityManager = entityManager;
         _playerManager = playerManager;
         _eyeManager    = eyeManager;
+        _timing        = timing;
         _entityLookup  = entityLookup;
         _examine       = examine;
         _transform     = transform;
@@ -57,12 +73,43 @@ internal sealed class AllyTagOverlay : Overlay
             resourceCache.GetResource<FontResource>("/Fonts/NotoSans/NotoSans-Regular.ttf"), 10);
     }
 
+    private sealed class VisibilityCacheEntry
+    {
+        public bool Visible;
+        public MapId MapId;
+        public Vector2 Position;
+        public TimeSpan NextRefresh;
+    }
+
+    private bool NeedsVisibilityRefresh(VisibilityCacheEntry entry, MapCoordinates coords, TimeSpan now)
+    {
+        if (now >= entry.NextRefresh)
+            return true;
+
+        if (entry.MapId != coords.MapId)
+            return true;
+
+        return (coords.Position - entry.Position).LengthSquared() >= PositionRefreshThresholdSquared;
+    }
+
+    private void CleanupCache(IReadOnlyDictionary<NetEntity, string> participants, TimeSpan now)
+    {
+        if (now < _nextCleanup)
+            return;
+
+        _nextCleanup = now + CacheCleanupInterval;
+
+        var cachedEntities = new List<NetEntity>(_visibilityCache.Keys);
+
+        foreach (var netEntity in cachedEntities)
+        {
+            if (!participants.ContainsKey(netEntity))
+                _visibilityCache.Remove(netEntity);
+        }
+    }
+
     protected override void Draw(in OverlayDrawArgs args)
     {
-        // #Misfits Removed - Ally/enemy tag overlay disabled to preserve immersion and enable spy gameplay.
-        // All rendering logic is commented out below. To restore, uncomment the block.
-
-        /*
         var localEntity = _playerManager.LocalSession?.AttachedEntity;
         if (localEntity == null)
             return;
@@ -89,6 +136,10 @@ internal sealed class AllyTagOverlay : Overlay
 
         // Get local player's position for line-of-sight checks.
         var localPos = _transform.GetMapCoordinates(localEntity.Value);
+        var now = _timing.CurTime;
+        var losRefreshBudget = MaxLosRefreshPerFrame;
+
+        CleanupCache(participants, now);
 
         var viewport = args.WorldAABB;
 
@@ -104,17 +155,49 @@ internal sealed class AllyTagOverlay : Overlay
             if (!_entityManager.HasComponent<SpriteComponent>(uid))
                 continue;
 
-            if (_entityManager.GetComponent<TransformComponent>(uid).MapID != _eyeManager.CurrentMap)
+            var otherPos = _transform.GetMapCoordinates(uid);
+            if (otherPos.MapId != localPos.MapId)
+                continue;
+
+            // Cheap range rejection first. This preserves the existing 50-tile behavior
+            // while avoiding an occlusion trace for obviously distant targets.
+            if ((otherPos.Position - localPos.Position).LengthSquared() > MaxTagDistanceSquared)
                 continue;
 
             var aabb = _entityLookup.GetWorldAABB(uid);
             if (!aabb.Intersects(viewport))
                 continue;
 
-            // Line-of-sight check: skip entities occluded by walls (capped at 50 tiles).
-            var otherPos = _transform.GetMapCoordinates(uid);
-            if (!_examine.InRangeUnOccluded(localPos, otherPos, 50f,
-                    e => e == localEntity.Value || e == uid))
+            VisibilityCacheEntry? cacheEntry = null;
+            if (_visibilityCache.TryGetValue(netEntity, out var cached))
+                cacheEntry = cached;
+
+            if (cacheEntry == null || NeedsVisibilityRefresh(cacheEntry, otherPos, now))
+            {
+                if (losRefreshBudget > 0)
+                {
+                    losRefreshBudget--;
+
+                    var visible = _examine.InRangeUnOccluded(localPos, otherPos, MaxTagDistance,
+                        e => e == localEntity.Value || e == uid);
+
+                    cacheEntry = new VisibilityCacheEntry
+                    {
+                        Visible = visible,
+                        MapId = otherPos.MapId,
+                        Position = otherPos.Position,
+                        NextRefresh = now + VisibilityCacheLifetime,
+                    };
+
+                    _visibilityCache[netEntity] = cacheEntry;
+                }
+                else if (cacheEntry == null)
+                {
+                    continue;
+                }
+            }
+
+            if (!cacheEntry.Visible)
                 continue;
 
             // Determine ally or enemy relative to the local player's side.
@@ -139,6 +222,5 @@ internal sealed class AllyTagOverlay : Overlay
 
             args.ScreenHandle.DrawString(_font, screenCoords, tag, tagColor);
         }
-        */
     }
 }

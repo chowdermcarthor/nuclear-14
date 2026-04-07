@@ -1130,6 +1130,12 @@ public sealed class FactionWarSystem : EntitySystem
         var factionQuery = EntityQueryEnumerator<NpcFactionMemberComponent>();
         while (factionQuery.MoveNext(out var uid, out _))
         {
+            // #Misfits Add - Skip entities whose job is in the overlay-exempt list (e.g. Frumentarii spies).
+            if (_minds.TryGetMind(uid, out var exemptMind, out _)
+                && _jobs.MindTryGetJob(exemptMind, out _, out var exemptProto)
+                && FactionWarConfig.OverlayExemptJobs.Contains(exemptProto.ID))
+                continue;
+
             foreach (var fId in warFactions)
             {
                 if (!_npcFaction.IsMember(uid, fId))

@@ -15,6 +15,16 @@
             </PanelContainer>
         </controls:StripeBack>
 
+        <!-- #Misfits Add - Prominent raid-approval warning banner -->
+        <PanelContainer HorizontalExpand="True" Margin="10 6 10 2">
+            <BoxContainer Orientation="Vertical" HorizontalExpand="True">
+                <RichTextLabel HorizontalExpand="True" HorizontalAlignment="Center"
+                               Text="[bold][color=#FF2222][font size=16]WAR DOES NOT AUTO-APPROVE RAIDS[/font][/color][/bold]"/>
+                <RichTextLabel HorizontalExpand="True" HorizontalAlignment="Center"
+                               Text="[italic][color=#FFAAAA][font size=12]Ahelp is needed.[/font][/color][/italic]"/>
+            </BoxContainer>
+        </PanelContainer>
+
         <!-- ── Rules ──────────────────────────────────────────────── -->
         <RichTextLabel Name="RulesLabel" Margin="10 6 10 4" HorizontalExpand="True"/>
 

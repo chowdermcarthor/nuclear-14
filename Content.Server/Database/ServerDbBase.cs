@@ -408,6 +408,9 @@ namespace Content.Server.Database
         public abstract Task AddServerBanAsync(ServerBanDef serverBan);
         public abstract Task AddServerUnbanAsync(ServerUnbanDef serverUnban);
 
+        // #Misfits Add - banlistall: all server bans without player filter
+        public abstract Task<List<ServerBanDef>> GetAllServerBansAsync(bool includeUnbanned);
+
         public async Task EditServerBan(int id, string reason, NoteSeverity severity, DateTimeOffset? expiration, Guid editedBy, DateTimeOffset editedAt)
         {
             await using var db = await GetDb();
@@ -501,6 +504,9 @@ namespace Content.Server.Database
             ImmutableArray<byte>? hwId,
             ImmutableArray<ImmutableArray<byte>>? modernHWIds,
             bool includeUnbanned);
+
+        // #Misfits Add - banlistall: all role bans without player filter
+        public abstract Task<List<ServerRoleBanDef>> GetAllServerRoleBansAsync(bool includeUnbanned);
 
         public abstract Task<ServerRoleBanDef> AddServerRoleBanAsync(ServerRoleBanDef serverRoleBan);
         public abstract Task AddServerRoleUnbanAsync(ServerRoleUnbanDef serverRoleUnban);

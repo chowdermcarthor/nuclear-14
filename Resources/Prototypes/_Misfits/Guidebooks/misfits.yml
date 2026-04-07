@@ -76,6 +76,14 @@
 
 # Enclave and Followers entries live in factions.yml with updated paths
 
+# Species — hidden entry for character creation species guide button
+# Referenced by HumanoidProfileEditor.xaml.cs DefaultSpeciesGuidebook const
+- type: guideEntry
+  id: Species
+  name: guide-entry-species
+  text: "/ServerInfo/_Misfits/Guidebooks/Species.xml"
+  hideInMenu: true
+
 # Wiki — external link buttons for the Misfits wiki site
 - type: guideEntry
   id: MisfitsWiki

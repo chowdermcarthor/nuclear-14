@@ -28,6 +28,8 @@ public sealed class GrantMartialArtsSystem : EntitySystem
         // abstract base classes are not valid. Subscribe to each concrete grant component individually.
 
         // Training manuals (UseInHand path):
+        SubscribeLocalEvent<GrantLegionGladiatorialComponent, UseInHandEvent>(OnUseInHand); // #Misfits Fix - Was missing, manuals didn't work
+        SubscribeLocalEvent<GrantRangerCombatComponent, UseInHandEvent>(OnUseInHand); // #Misfits Fix - Was missing, manuals didn't work
         SubscribeLocalEvent<GrantDesertSurvivalComponent, UseInHandEvent>(OnUseInHand);
         SubscribeLocalEvent<GrantWastelandStreetFightingComponent, UseInHandEvent>(OnUseInHand);
         SubscribeLocalEvent<GrantTribalWarriorComponent, UseInHandEvent>(OnUseInHand);

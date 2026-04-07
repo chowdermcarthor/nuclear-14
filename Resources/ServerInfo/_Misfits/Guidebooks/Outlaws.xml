@@ -1,171 +1,147 @@
 <Document>
 # Outlaws
 
-[textlink="View Full Wiki Page" link="https://ss14.misfitsystems.net/wiki/index.php/Outlaws"]
+[textlink="View Full Wiki Page" link="https://ss14.misfitsystems.net/wiki/index.php/Outlaws"/]
 
-<p>Raiders, bandits, and gang fighters who haunt the I-80 corridor. Khans, Jackals, Vipers, Gunners, and Fiends — each with their own methods. The Eighties have been here longer than anyone.</p>
+<p>◈ Outlaws ◈ Gangs of the I-80 Corridor ◈ Wendover Region ◈</p>
 
-<p>All Outlaw roles require [bold][color=#cc3333]whitelist[/color][/bold] and use the spawner system.</p>
+<Table Columns="2">
+  <Box>[bold]Outlaws[/bold]</Box>
+  <Box></Box>
+  <Box>◈ FACTION DOSSIER ◈</Box>
+  <Box></Box>
+  <Box>[bold]Status[/bold]</Box>
+  <Box>Active - Fragmented</Box>
+  <Box>[bold]Location[/bold]</Box>
+  <Box>I-80 Corridor, Northern Utah
+Bonneville Salt Flats, Great Salt Lake</Box>
+  <Box>[bold]Commander[/bold]</Box>
+  <Box>Various Gang Leaders</Box>
+  <Box>[bold]Ideology[/bold]</Box>
+  <Box>Survival of the Strong
+Take What You Need</Box>
+  <Box>[bold]Motto[/bold]</Box>
+  <Box>[italic]The road belongs to those who hold it[/italic]</Box>
+  <Box>[bold]Affiliation[/bold]</Box>
+  <Box>Independent Gangs</Box>
+  <Box>⬜ RESTRICTED ACCESS ⬜</Box>
+  <Box></Box>
+</Table>
 
-<hr/>
+<p>The [bold]Outlaws[/bold] are the raiders, bandits, and gang fighters who haunt the I-80 corridor and the Bonneville Salt Flats. They are not a single organization - they are a collection of violent, loosely-affiliated gangs, each with their own methods, territory, and leadership. What unites them is a willingness to take what they need by force and a refusal to kneel to any flag.</p>
+<p>Wendover sits at the crossroads of their territory. Every faction that builds a wall here paints a target on it.</p>
+
+## The Eighties
+
+<p>The most feared name on the I-80 corridor. The Eighties take their name from the interstate itself - the old pre-war freeway that runs through northern Utah and out past the Great Salt Lake. They have been operating in this region longer than most factions care to remember.</p>
+<ColorBox Color="#1a1a1a" OutlineColor="#666666" OutlineThickness="1" Margin="5">
+  <Box Orientation="Vertical" Margin="8">
+[italic]"Raiders is raiders. Bunch of them swept into town and dragged off two working girls. Deputies gave pursuit, straight into Eighties territory. By the time we caught up, there wasn't much left of them. If the Eighties had wanted to kill us, we would've been dead. Guess they figured we weren't worth the trouble."[/italic]
+  </Box>
+</ColorBox>
+<p>The Eighties are rightly feared for their ability to cover vast amounts of territory with very few men. They raid frontier towns for supplies and are known for kidnapping - and worse. Engaging them in the open salt flats or along the freeway is a losing proposition for most organized patrols. They know the terrain. They know where to disappear. And they have been doing this longer than anyone currently stationed at Wendover has been alive.</p>
+<p>Their presence in the region means that no supply line is safe, no settlement is truly secure, and any faction that extends itself too far from its walls will find out what the Eighties think of trespassers.</p>
 
 ## The Gangs
 
-<ColorBox Color="#1a1a1a" OutlineColor="#cc3333" OutlineThickness="1" Margin="5">
+<p>Each Outlaw gang operates with its own style, methods, and reputation. All are dangerous. None are predictable.</p>
+
+<h3 Text="Khans"/>
+
+<p>The Khans are the most organized of the Outlaw gangs - a structured raider crew that values loyalty, territory, and controlled aggression. They maintain supply lines, defend their turf, and hit hard when provoked. They are not mindless - they are methodical.</p>
+<ColorBox Color="#1a1a1a" OutlineColor="#666666" OutlineThickness="1" Margin="5">
   <Box Orientation="Vertical" Margin="8">
-    [bold][color=#cc3333]The Eighties[/color][/bold]
-    The most feared gang on the I-80 corridor. Named after the interstate itself. Cover vast territory, raid frontier towns, kidnapping. Know the terrain. They have been operating longer than anyone stationed at Wendover.
+[italic]"Keep your crew supplied, fight smart, and hold your ground."[/italic]
   </Box>
 </ColorBox>
 
-<ColorBox Color="#1a1a1a" OutlineColor="#a4885c" OutlineThickness="1" Margin="5">
+<h3 Text="Jackals"/>
+
+<p>The Jackals are fast-strike raiders who prize speed and evasiveness above raw firepower. They hit supply convoys, loot what they can carry, and vanish before a response can be organized. If you are chasing Jackals, you have already lost.</p>
+<ColorBox Color="#1a1a1a" OutlineColor="#666666" OutlineThickness="1" Margin="5">
   <Box Orientation="Vertical" Margin="8">
-    [bold][color=#a4885c]Khans[/color][/bold]
-    The most organized. Structured crew valuing loyalty, territory, controlled aggression. Maintain supply lines, defend turf.
+[italic]"Strike quickly, loot efficiently, and disappear before the counterattack."[/italic]
   </Box>
 </ColorBox>
 
-<ColorBox Color="#1a1a1a" OutlineColor="#888888" OutlineThickness="1" Margin="5">
+<h3 Text="Vipers"/>
+
+<p>The Vipers use fear as a weapon. Intimidation, ambush tactics, and psychological warfare are their tools. They break resistance before the first shot is fired - and if they have to fire, they make it count.</p>
+<ColorBox Color="#1a1a1a" OutlineColor="#666666" OutlineThickness="1" Margin="5">
   <Box Orientation="Vertical" Margin="8">
-    [bold][color=#888888]Jackals[/color][/bold]
-    Fast-strike raiders. Prize speed and evasiveness. Hit supply convoys, loot, vanish.
+[italic]"Use intimidation and speed to break resistance and secure the haul."[/italic]
   </Box>
 </ColorBox>
 
-<ColorBox Color="#1a1a1a" OutlineColor="#336699" OutlineThickness="1" Margin="5">
+<h3 Text="Gunners"/>
+
+<p>The Gunners are the heavy-weapons specialists of the Outlaw gangs. Where other gangs hit and run, Gunners dig in and lay down overwhelming fire. They pin targets down and grind through defenses. What they lack in subtlety, they compensate for with sheer destructive output.</p>
+<ColorBox Color="#1a1a1a" OutlineColor="#666666" OutlineThickness="1" Margin="5">
   <Box Orientation="Vertical" Margin="8">
-    [bold][color=#336699]Vipers[/color][/bold]
-    Fear as weapon. Intimidation, ambush, psychological warfare.
+[italic]"Bring the heavy firepower and pin enemies down for your gang."[/italic]
   </Box>
 </ColorBox>
 
-<ColorBox Color="#1a1a1a" OutlineColor="#ffb000" OutlineThickness="1" Margin="5">
+<h3 Text="Fiends"/>
+
+<p>The Fiends are the most dangerous and least predictable of the Outlaw gangs. Chem-fueled, aggressive, and relentless - they attack without warning and do not stop until the target is destroyed or they are. Fighting Fiends is not a tactical problem. It is a survival problem.</p>
+<ColorBox Color="#1a1a1a" OutlineColor="#666666" OutlineThickness="1" Margin="5">
   <Box Orientation="Vertical" Margin="8">
-    [bold][color=#ffb000]Gunners[/color][/bold]
-    Heavy-weapons specialists. Dig in, lay overwhelming fire, grind defenses to dust.
+[italic]"Cause chaos, pressure the enemy line, and never let up."[/italic]
   </Box>
 </ColorBox>
 
-<ColorBox Color="#1a1a1a" OutlineColor="#993366" OutlineThickness="1" Margin="5">
-  <Box Orientation="Vertical" Margin="8">
-    [bold][color=#993366]Fiends[/color][/bold]
-    The most dangerous and unpredictable. Chem-fueled, aggressive, relentless. Attack without warning.
-  </Box>
-</ColorBox>
-
-<hr/>
-
-## Roles
-
-<Table Columns="2">
-  <Box>
-    [bold][color=#a4885c]Role[/color][/bold]
-  </Box>
-  <Box>
-    [bold][color=#a4885c]Description[/color][/bold]
-  </Box>
-  <Box>
-    [bold]Khan[/bold]
-  </Box>
-  <Box>
-    Organized raider. Keep your crew supplied, fight smart, hold your ground. Whitelist required.
-  </Box>
-  <Box>
-    [bold]Jackal[/bold]
-  </Box>
-  <Box>
-    Fast-strike raider. Hit convoys, take what you can carry, disappear. Whitelist required.
-  </Box>
-  <Box>
-    [bold]Viper[/bold]
-  </Box>
-  <Box>
-    Intimidation specialist. Break resistance before it forms. Whitelist required.
-  </Box>
-  <Box>
-    [bold]Gunner[/bold]
-  </Box>
-  <Box>
-    Heavy weapons. Pin targets, grind defenses, lay down fire. Whitelist required.
-  </Box>
-  <Box>
-    [bold]Fiend[/bold]
-  </Box>
-  <Box>
-    Chem-fueled chaos agent. Pressure, overwhelm, never stop. Whitelist required.
-  </Box>
-</Table>
-
-<hr/>
-
-## Faction Relations
+## Outlaw Roles
 
 <Table Columns="3">
-  <Box>
-    [bold][color=#a4885c]Faction[/color][/bold]
-  </Box>
-  <Box>
-    [bold][color=#a4885c]Standing[/color][/bold]
-  </Box>
-  <Box>
-    [bold][color=#a4885c]Notes[/color][/bold]
-  </Box>
-  <Box>
-    NCR
-  </Box>
-  <Box>
-    [color=#cc3333]Hostile[/color]
-  </Box>
-  <Box>
-    NCR is law and order
-  </Box>
-  <Box>
-    Brotherhood of Steel
-  </Box>
-  <Box>
-    [color=#cc3333]Hostile[/color]
-  </Box>
-  <Box>
-    Views raiders as vermin
-  </Box>
-  <Box>
-    Caesar's Legion
-  </Box>
-  <Box>
-    [color=#cc3333]Hostile[/color]
-  </Box>
-  <Box>
-    Legion conquers or destroys
-  </Box>
-  <Box>
-    Townsfolk
-  </Box>
-  <Box>
-    [color=#cc3333]Hostile[/color]
-  </Box>
-  <Box>
-    Towns are targets
-  </Box>
-  <Box>
-    Other Outlaws
-  </Box>
-  <Box>
-    [color=#ffb000]Uneasy[/color]
-  </Box>
-  <Box>
-    Cooperate when beneficial, betray when not
-  </Box>
-  <Box>
-    NPC Raiders
-  </Box>
-  <Box>
-    [color=#cc3333]Hostile[/color]
-  </Box>
-  <Box>
-    Player Outlaws hostile to NPC raider mobs
-  </Box>
+  <Box>[bold]Role[/bold]</Box>
+  <Box>[bold]Description[/bold]</Box>
+  <Box>[bold]Notes[/bold]</Box>
+  <Box>Khan</Box>
+  <Box>Organized raider. Keep your crew supplied, fight smart, hold your ground.</Box>
+  <Box>Whitelist required</Box>
+  <Box>[bold]Jackal[/bold]</Box>
+  <Box>Fast-strike raider. Hit convoys, take what you can carry, disappear.</Box>
+  <Box>Whitelist required</Box>
+  <Box>[bold]Viper[/bold]</Box>
+  <Box>Intimidation specialist. Break resistance before it forms.</Box>
+  <Box>Whitelist required</Box>
+  <Box>[bold]Gunner[/bold]</Box>
+  <Box>Heavy weapons. Pin targets, grind defenses, lay down fire.</Box>
+  <Box>Whitelist required</Box>
+  <Box>[bold]Fiend[/bold]</Box>
+  <Box>Chem-fueled chaos agent. Pressure, overwhelm, never stop.</Box>
+  <Box>Whitelist required</Box>
 </Table>
 
-<p>Outlaws are a [bold]war-capable[/bold] faction.</p>
+<p>All Outlaw roles require [bold]whitelist approval[/bold] and use a spawner system. All Outlaws are assigned to the [bold]PlayerRaider[/bold] faction.</p>
+
+## Relations
+
+<Table Columns="3">
+  <Box>[bold]Faction[/bold]</Box>
+  <Box>[bold]Standing[/bold]</Box>
+  <Box>[bold]Notes[/bold]</Box>
+  <Box>[textlink="NCR" link="https://ss14.misfitsystems.net/wiki/index.php/New_California_Republic"/]</Box>
+  <Box>Hostile</Box>
+  <Box>The NCR is law and order. Outlaws are neither.</Box>
+  <Box>[textlink="Brotherhood of Steel" link="https://ss14.misfitsystems.net/wiki/index.php/Brotherhood_of_Steel"/]</Box>
+  <Box>Hostile</Box>
+  <Box>The Brotherhood views raiders as vermin to be swept aside.</Box>
+  <Box>[textlink="Caesar's Legion" link="https://ss14.misfitsystems.net/wiki/index.php/Caesar%27s_Legion"/]</Box>
+  <Box>Hostile</Box>
+  <Box>The Legion conquers or destroys. Outlaws are on the wrong side of that equation.</Box>
+  <Box>[textlink="Townsfolk" link="https://ss14.misfitsystems.net/wiki/index.php/Townsfolk"/]</Box>
+  <Box>Hostile</Box>
+  <Box>Towns are targets. The relationship is straightforward.</Box>
+  <Box>Other Outlaws</Box>
+  <Box>Uneasy</Box>
+  <Box>Gangs cooperate when it benefits them and betray each other when it does not.</Box>
+  <Box>NPC Raiders</Box>
+  <Box>Hostile</Box>
+  <Box>Player Outlaws are hostile to NPC raider mobs - no free passes.</Box>
+</Table>
+
+<p>Outlaws are one of the [bold]war-capable factions[/bold] and may declare or receive faction war declarations during a round.</p>
 
 </Document>

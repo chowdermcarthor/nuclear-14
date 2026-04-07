@@ -879,12 +879,7 @@
   - type: HTN
     rootTask:
       task: RuminantCompound
-  - type: GuideHelp
-    guides:
-    - Chef
-  # - type: RandomBark
-    # barkType: cow
-    # barkMultiplier: 3
+  # #Misfits Removed - GuideHelp: guide entries not present in Nuclear-14 (Chef)
 
 
 - type: entity

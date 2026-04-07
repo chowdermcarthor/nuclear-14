@@ -123,6 +123,14 @@ namespace Content.Server.Database
         /// <returns><see cref="ServerBanExemptFlags.None"/> if the user is not exempt from any bans.</returns>
         Task<ServerBanExemptFlags> GetBanExemption(NetUserId userId, CancellationToken cancel = default);
 
+        // #Misfits Add - banlistall: retrieve all server bans without player filter
+        /// <summary>
+        ///     Gets all server bans globally, without filtering by player.
+        ///     Used by the banlistall admin command.
+        /// </summary>
+        /// <param name="includeUnbanned">If true, expired and pardoned bans are also included.</param>
+        Task<List<ServerBanDef>> GetAllServerBansAsync(bool includeUnbanned = false);
+
         #endregion
 
         #region Role Bans
@@ -151,6 +159,9 @@ namespace Content.Server.Database
             ImmutableArray<byte>? hwId,
             ImmutableArray<ImmutableArray<byte>>? modernHWIds,
             bool includeUnbanned = true);
+
+        // #Misfits Add - banlistall: retrieve all role bans without player filter
+        Task<List<ServerRoleBanDef>> GetAllServerRoleBansAsync(bool includeUnbanned = false);
 
         Task<ServerRoleBanDef> AddServerRoleBanAsync(ServerRoleBanDef serverBan);
         Task AddServerRoleUnbanAsync(ServerRoleUnbanDef serverBan);
@@ -589,6 +600,13 @@ namespace Content.Server.Database
             return RunDbCommand(() => _db.GetServerBansAsync(address, userId, hwId, modernHWIds, includeUnbanned));
         }
 
+        // #Misfits Add - banlistall: all server bans without player filter
+        public Task<List<ServerBanDef>> GetAllServerBansAsync(bool includeUnbanned = false)
+        {
+            DbReadOpsMetric.Inc();
+            return RunDbCommand(() => _db.GetAllServerBansAsync(includeUnbanned));
+        }
+
         public Task AddServerBanAsync(ServerBanDef serverBan)
         {
             DbWriteOpsMetric.Inc();
@@ -635,6 +653,13 @@ namespace Content.Server.Database
         {
             DbReadOpsMetric.Inc();
             return RunDbCommand(() => _db.GetServerRoleBansAsync(address, userId, hwId, modernHWIds, includeUnbanned));
+        }
+
+        // #Misfits Add - banlistall: all role bans without player filter
+        public Task<List<ServerRoleBanDef>> GetAllServerRoleBansAsync(bool includeUnbanned = false)
+        {
+            DbReadOpsMetric.Inc();
+            return RunDbCommand(() => _db.GetAllServerRoleBansAsync(includeUnbanned));
         }
 
         public Task<ServerRoleBanDef> AddServerRoleBanAsync(ServerRoleBanDef serverRoleBan)
