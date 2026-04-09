@@ -289,3 +289,12 @@
   spawn: N14MaterialBrick1
   maxCount: 30
   itemSize: 1
+
+# #Misfits Add: Legendary tribal hunt material stack.
+- type: stack
+  id: TribalLegendaryLeather
+  name: legendary tribal leather
+  icon: { sprite: /Textures/_Nuclear14/Objects/Misc/materials.rsi, state: leather_3 }
+  spawn: TribalLegendaryLeather
+  maxCount: 10
+  itemSize: 1

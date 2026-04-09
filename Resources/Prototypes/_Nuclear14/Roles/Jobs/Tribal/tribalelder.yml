@@ -41,6 +41,16 @@
         warcryMessage: warcry-message-tribal
         warcryMessageCount: 6
         buffPopup: warcry-popup-buffed-tribal
+      - type: TribalHuntParticipant
+        targetDepartment: Tribe
+      - type: TribalHuntLeader
+        startAction: ActionTribalStartHunt
+        targetDepartment: Tribe
+        requiredOfferings: 8
+        huntDuration: 900
+        rewardDuration: 180
+        rewardSpeedBonus: 0.20
+        activatorJobs: [ TribalElder ]
   - !type:AddTraitSpecial
     traits: [ LanguageTribal ]
 

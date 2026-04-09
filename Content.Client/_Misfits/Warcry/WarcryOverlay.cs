@@ -7,7 +7,7 @@ namespace Content.Client._Misfits.Warcry;
 /// <summary>
 /// Draws persistent world-space circles around active warcry sources.
 /// </summary>
-public sealed class WarcryOverlay(IEntityManager entityManager, EntityLookupSystem lookup) : Overlay
+public sealed class WarcryOverlay(IEntityManager entityManager) : Overlay
 {
     private const float FillAlpha = 0.05f;
     private const float OutlineAlpha = 0.85f;
@@ -17,19 +17,21 @@ public sealed class WarcryOverlay(IEntityManager entityManager, EntityLookupSyst
     protected override void Draw(in OverlayDrawArgs args)
     {
         var worldHandle = args.WorldHandle;
-        var activeQuery = entityManager.GetEntityQuery<ActiveWarcryComponent>();
-        var xformQuery = entityManager.GetEntityQuery<TransformComponent>();
         var xformSystem = entityManager.System<SharedTransformSystem>();
 
-        foreach (var ent in lookup.GetEntitiesIntersecting(args.MapId, args.WorldBounds))
+        foreach (var (active, xform) in entityManager.EntityQuery<ActiveWarcryComponent, TransformComponent>(true))
         {
-            if (!activeQuery.TryGetComponent(ent, out var active) ||
-                !xformQuery.TryGetComponent(ent, out var xform))
+            if (xform.MapID != args.MapId)
             {
                 continue;
             }
 
             var position = xformSystem.GetWorldPosition(xform);
+            if (!args.WorldAABB.Contains(position))
+            {
+                continue;
+            }
+
             worldHandle.DrawCircle(position, active.Radius, active.Color.WithAlpha(FillAlpha));
             worldHandle.DrawCircle(position, active.Radius, active.Color.WithAlpha(OutlineAlpha), filled: false);
         }

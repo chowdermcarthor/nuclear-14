@@ -92,7 +92,7 @@
   # - NCRRanger
   # - NCRRangerVeteran
 
-- type: department
+- type: department # #Misfits Add - Rangers department ladder moved into _Nuclear14 job definitions.
   id: Rangers
   description: department-Rangers-description
   color: "#3ab700"
@@ -174,33 +174,33 @@
 #  - Followers
 
 # #Misfits Add: Caesar's Legion is now a playable faction.
-- type: department
+- type: department # #Misfits Add - Caesar's Legion department block.
   id: CaesarLegion
   description: department-CaesarLegion-description
   color: "#8B0000"
   weight: -99 # #Misfits Add: sort Legion to the end of the department list
   roles:
   # Command (Whitelisted)
-  - CaesarLegionLegate          # Legate              | _Misfits/Roles/Jobs/CaesarLegion/legion_legate.yml
-  - CaesarLegionCenturion       # Centurion           | _Misfits/Roles/Jobs/CaesarLegion/legion_centurion.yml
+  - CaesarLegionLegate          # Legate              | _Misfits/Roles/Jobs/CaesarLegion/legion_legate.yml # #Misfits Add
+  - CaesarLegionCenturion       # Centurion           | _Misfits/Roles/Jobs/CaesarLegion/legion_centurion.yml # #Misfits Add
   # Support Officers #Misfits Add: Orator and Priestess sit in their own tier between Command and NCOs.
-  - CaesarLegionOrator          # Orator              | _Misfits/Roles/Jobs/CaesarLegion/legion_orator.yml
-  - CaesarLegionPriestessOfMars # Priestess of Mars   | _Misfits/Roles/Jobs/CaesarLegion/legion_priestess_of_mars.yml
+  - CaesarLegionOrator          # Orator              | _Misfits/Roles/Jobs/CaesarLegion/legion_orator.yml # #Misfits Add
+  - CaesarLegionPriestessOfMars # Priestess of Mars   | _Misfits/Roles/Jobs/CaesarLegion/legion_priestess_of_mars.yml # #Misfits Add
   # Senior NCOs
-  - CaesarLegionVeteranDecanus  # Veteran Decanus     | _Misfits/Roles/Jobs/CaesarLegion/legion_veteran_decanus.yml
-  - CaesarLegionPrimeDecanus    # Prime Decanus       | _Misfits/Roles/Jobs/CaesarLegion/legion_prime_decanus.yml
-  - CaesarLegionDean            # Decanus             | _Misfits/Roles/Jobs/CaesarLegion/legion_decanus.yml
+  - CaesarLegionVeteranDecanus  # Veteran Decanus     | _Misfits/Roles/Jobs/CaesarLegion/legion_veteran_decanus.yml # #Misfits Add
+  - CaesarLegionPrimeDecanus    # Prime Decanus       | _Misfits/Roles/Jobs/CaesarLegion/legion_prime_decanus.yml # #Misfits Add
+  - CaesarLegionDean            # Decanus             | _Misfits/Roles/Jobs/CaesarLegion/legion_decanus.yml # #Misfits Add
   # Warriors
-  - CaesarLegionLegionnaireVeteran  # Veteran Legionnaire | _Misfits/Roles/Jobs/CaesarLegion/legion_legionnaire_veteran.yml
-  - CaesarLegionLegionnaireWarrior  # Legionnaire Warrior | _Misfits/Roles/Jobs/CaesarLegion/legion_legionnaire_warrior.yml
-  - CaesarLegionLegionnaireRecruit  # Legionnaire Recruit | _Misfits/Roles/Jobs/CaesarLegion/legion_legionnaire_recruit.yml
+  - CaesarLegionLegionnaireVeteran  # Veteran Legionnaire | _Misfits/Roles/Jobs/CaesarLegion/legion_legionnaire_veteran.yml # #Misfits Add
+  - CaesarLegionLegionnaireWarrior  # Legionnaire Warrior | _Misfits/Roles/Jobs/CaesarLegion/legion_legionnaire_warrior.yml # #Misfits Add
+  - CaesarLegionLegionnaireRecruit  # Legionnaire Recruit | _Misfits/Roles/Jobs/CaesarLegion/legion_legionnaire_recruit.yml # #Misfits Add
   # Specialists # #Misfits Change /Fix/: Match Character Setup and Latejoin order to the requested Legion rank grouping.
-  - CaesarLegionHoundmaster     # Houndmaster         | _Misfits/Roles/Jobs/CaesarLegion/legion_houndmaster.yml
+  - CaesarLegionHoundmaster     # Houndmaster         | _Misfits/Roles/Jobs/CaesarLegion/legion_houndmaster.yml # #Misfits Add
   - CaesarLegionFrumentarii     # Frumentarii         | _Misfits/Roles/Jobs/CaesarLegion/legion_frumentarii.yml  # #Misfits Fix - renamed from legion_venator.yml to match in-game role name
-  - CaesarLegionVexillarius     # Vexillarius         | _Misfits/Roles/Jobs/CaesarLegion/legion_vexillarius.yml
-  - CaesarLegionExplorer        # Explorer            | _Misfits/Roles/Jobs/CaesarLegion/legion_explorer.yml
-  - CaesarLegionAuxilia         # Auxilia             | _Misfits/Roles/Jobs/CaesarLegion/legion_auxilia.yml
+  - CaesarLegionVexillarius     # Vexillarius         | _Misfits/Roles/Jobs/CaesarLegion/legion_vexillarius.yml # #Misfits Add
+  - CaesarLegionExplorer        # Explorer            | _Misfits/Roles/Jobs/CaesarLegion/legion_explorer.yml # #Misfits Add
+  - CaesarLegionAuxilia         # Auxilia             | _Misfits/Roles/Jobs/CaesarLegion/legion_auxilia.yml # #Misfits Add
   # Recruits
   # #Misfits Change: CaesarLegionRecruit removed — replaced by Legionnaire (CaesarLegionLegionnaireRecruit).
   # - CaesarLegionRecruit         # Recruit             | _Misfits/Roles/Jobs/CaesarLegion/legion_recruit.yml
-  - CaesarLegionSlave           # Slave               | _Misfits/Roles/Jobs/CaesarLegion/legion_slave.yml
+  - CaesarLegionSlave           # Slave               | _Misfits/Roles/Jobs/CaesarLegion/legion_slave.yml # #Misfits Add

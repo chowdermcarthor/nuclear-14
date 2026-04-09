@@ -40,6 +40,8 @@
         warcryMessage: warcry-message-tribal
         warcryMessageCount: 6
         buffPopup: warcry-popup-buffed-tribal
+      - type: TribalHuntParticipant
+        targetDepartment: Tribe
   - !type:AddTraitSpecial
     traits: [ LanguageTribal ]
 

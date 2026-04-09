@@ -1,0 +1,37 @@
+# Legendary creature entity for tribal hunts
+- type: entity
+  id: TribalLegendaryBeast
+  name: Legendary Beast
+  description: A fearsome legendary creature stalking the wastes. Prized for its legendary hide.
+  parent: BaseMobFlesh
+  components:
+    - type: LegendaryCreature
+      creatureName: "Legendary Beast"
+      leatherDropCount: 3
+      revealLocation: true
+    - type: Sprite
+      drawdepth: Mobs
+      sprite: Mobs/Aliens/flesh.rsi
+      layers:
+        - state: golem
+    - type: DamageStateVisuals
+      states:
+        Alive:
+          Base: golem
+        Critical:
+          Base: dead
+        Dead:
+          Base: dead
+    - type: MobThresholds
+      thresholds:
+        0: Alive
+        200: Dead
+    - type: MeleeWeapon
+      soundHit:
+        path: /Audio/Weapons/Xeno/alien_claw_flesh3.ogg
+      angle: 0
+      animation: WeaponArcClaw
+      damage:
+        types:
+          Slash: 12
+          Blunt: 15

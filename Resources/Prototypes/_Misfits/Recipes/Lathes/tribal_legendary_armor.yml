@@ -1,0 +1,39 @@
+# Legendary tribal armor crafting recipes
+- type: latheRecipe
+  id: TribalLegendaryArmorHeadRecipe
+  name: recipe-tribal-legendary-helm-name
+  description: recipe-tribal-legendary-helm-desc
+  completetime: 45
+  materials:
+    TribalLegendaryLeather: 2
+  result: MisfitsClothingHeadDeathclawHood
+
+- type: latheRecipe
+  id: TribalLegendaryArmorChestRecipe
+  name: recipe-tribal-legendary-chest-name
+  description: recipe-tribal-legendary-chest-desc
+  completetime: 60
+  materials:
+    TribalLegendaryLeather: 4
+  result: MisfitsClothingOuterDeathclawCloak
+
+# Blueprint entities for crafting terminal access
+- type: entity
+  id: TribalLegendaryArmorHeadBlueprint
+  name: Blueprint - Deathclaw Hood
+  description: A crafting blueprint for legendary tribal armor.
+  parent: N14BlueprintBase
+  components:
+    - type: Blueprint
+      recipes:
+        - TribalLegendaryArmorHeadRecipe
+
+- type: entity
+  id: TribalLegendaryArmorChestBlueprint
+  name: Blueprint - Deathclaw Cloak
+  parent: N14BlueprintBase
+  components:
+    - type: Blueprint
+      recipes:
+        - TribalLegendaryArmorChestRecipe
+

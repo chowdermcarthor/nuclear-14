@@ -1,0 +1,44 @@
+# Legendary Tribal Leather - crafting material
+- type: entity
+  id: TribalLegendaryLeather
+  name: Legendary Tribal Leather
+  description: Pristine leather from a legendary creature. Shimmers with an otherworldly sheen. Suitable for crafting legendary tribal armor.
+  parent: N14MaterialBase
+  components:
+    - type: Sprite
+      sprite: _Nuclear14/Objects/Misc/materials.rsi
+      state: leather_3
+      layers:
+        - state: leather_3
+          map: ["base"]
+      color: "#FFD700"
+    - type: Item
+      size: Small
+    - type: Stack
+      stackType: TribalLegendaryLeather
+      count: 1
+      baseLayer: base
+      layerStates:
+        - leather_1
+        - leather_2
+        - leather_3
+    - type: StackPrice
+      price: 50
+    - type: Flammable
+      fireSpread: true
+      canResistFire: false
+      damage:
+        types:
+          Heat: 1
+    - type: PhysicalComposition
+      materialComposition:
+        TribalLegendaryLeather: 100
+
+- type: material
+  id: TribalLegendaryLeather
+  name: materials-legendary-tribal-leather
+  unit: materials-unit-piece
+  stackEntity: TribalLegendaryLeather
+  icon: { sprite: /Textures/_Nuclear14/Objects/Misc/materials.rsi, state: leather_3 }
+  color: "#FFD700"
+  price: 0.5

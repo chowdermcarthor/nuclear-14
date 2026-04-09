@@ -27,6 +27,7 @@ materials-bones = bone
 materials-coal = coal
 materials-diamond = diamond
 materials-gunpowder = gunpowder
+materials-legendary-tribal-leather = legendary tribal leather
 materials-bluespace = bluespace
 materials-normality = normality
 

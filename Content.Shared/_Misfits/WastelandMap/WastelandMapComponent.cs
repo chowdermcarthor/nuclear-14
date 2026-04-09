@@ -32,6 +32,7 @@ public enum WastelandMapTrackedBlipKind : byte
     // #Misfits Add - PipBoy Hub contact/group blips for wasteland map integration
     PipBoyContact,    // PipBoy contact sharing location — cyan circle
     PipBoyGroupMember, // PipBoy group member with map tracking — teal triangle
+    TribalHuntTarget, // Active tribal hunt Deathclaw target
 }
 
 [Serializable, NetSerializable]

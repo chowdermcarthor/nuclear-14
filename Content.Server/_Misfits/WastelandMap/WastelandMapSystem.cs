@@ -5,6 +5,7 @@ using Content.Server.Access.Components;
 using Content.Shared.Access.Components;
 using Content.Shared.Tag;
 using Content.Shared._Misfits.WastelandMap;
+using Content.Shared._Misfits.TribalHunt;
 using Content.Shared.Nyanotrasen.NPC.Components.Faction;
 using Content.Shared.UserInterface;
 using Robust.Server.GameObjects;
@@ -225,7 +226,9 @@ public sealed class WastelandMapSystem : EntitySystem
 
     private WastelandMapTrackedBlip[] GetTrackedBlips(WastelandMapTacticalFeedKind feed, MapId mapId, Box2 bounds)
     {
-        return feed switch
+        var blips = new List<WastelandMapTrackedBlip>();
+
+        var factionBlips = feed switch
         {
             WastelandMapTacticalFeedKind.Brotherhood => GetIdCardBlips(mapId, bounds, "IdCardBrotherhood"),
             WastelandMapTacticalFeedKind.Vault => GetIdCardBlips(mapId, bounds, "IdCardVault"),
@@ -234,6 +237,42 @@ public sealed class WastelandMapSystem : EntitySystem
             WastelandMapTacticalFeedKind.Legion => GetIdCardBlips(mapId, bounds, "IdCardLegion"), // #Misfits Add - Legion tactical feed
             _ => [],
         };
+
+        blips.AddRange(factionBlips);
+        blips.AddRange(GetTribalHuntTargetBlips(mapId, bounds));
+        return blips.ToArray();
+    }
+
+    private WastelandMapTrackedBlip[] GetTribalHuntTargetBlips(MapId mapId, Box2 bounds)
+    {
+        var blips = new List<WastelandMapTrackedBlip>();
+        var query = EntityQueryEnumerator<LegendaryCreatureComponent, TransformComponent>();
+
+        while (query.MoveNext(out var uid, out var legendary, out var xform))
+        {
+            if (!legendary.RevealLocation)
+                continue;
+
+            var mapCoordinates = _transform.GetMapCoordinates(uid, xform);
+            if (mapCoordinates.MapId != mapId)
+                continue;
+
+            var pos = mapCoordinates.Position;
+            if (!bounds.Contains(pos))
+                continue;
+
+            var label = string.IsNullOrWhiteSpace(legendary.CreatureName)
+                ? "Legendary Target"
+                : $"Legendary {legendary.CreatureName}";
+
+            blips.Add(new WastelandMapTrackedBlip(
+                pos.X,
+                pos.Y,
+                label,
+                WastelandMapTrackedBlipKind.TribalHuntTarget));
+        }
+
+        return blips.ToArray();
     }
 
     private WastelandMapTrackedBlip[] GetIdCardBlips(MapId mapId, Box2 bounds, string requiredTag)

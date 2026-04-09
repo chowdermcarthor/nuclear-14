@@ -1,0 +1,73 @@
+<controls:FancyWindow xmlns="https://spacestation14.io"
+                      xmlns:controls="clr-namespace:Content.Client.UserInterface.Controls"
+                      Title="{Loc tribal-hunt-gui-title}"
+                      Resizable="True"
+                      SetSize="540 560"
+                      MinSize="440 360">
+
+    <ScrollContainer HorizontalExpand="True" VerticalExpand="True" HScrollEnabled="False">
+    <BoxContainer Orientation="Vertical" HorizontalExpand="True" SeparationOverride="0">
+        <controls:StripeBack>
+            <PanelContainer>
+                <Label Text="{Loc tribal-hunt-gui-header}" StyleClasses="LabelBig" Align="Center" Margin="0 4" Modulate="#FFFF40"/>
+            </PanelContainer>
+        </controls:StripeBack>
+
+        <PanelContainer HorizontalExpand="True" Margin="10 6 10 2">
+            <BoxContainer Orientation="Vertical" HorizontalExpand="True">
+                <RichTextLabel HorizontalExpand="True" HorizontalAlignment="Center"
+                               Text="[bold][color=#FF2222][font size=16]TRIBAL HUNT JOIN-UP ACTIVE[/font][/color][/bold]" />
+                <RichTextLabel HorizontalExpand="True" HorizontalAlignment="Center"
+                               Text="[italic][color=#FFAAAA][font size=12]Use the tracker button to open or close this window.[/font][/color][/italic]" />
+            </BoxContainer>
+        </PanelContainer>
+
+        <RichTextLabel Name="ResultLabel" Margin="10 6 10 4" HorizontalExpand="True" />
+
+        <PanelContainer MinHeight="1" Modulate="#404040" Margin="10 0" />
+
+        <BoxContainer Orientation="Horizontal" Margin="10 8 10 4">
+            <Label Text="{Loc tribal-hunt-gui-status}" VerticalAlignment="Center" Margin="0 0 6 0" Modulate="#FFFF40"/>
+            <Label Name="StatusValue" VerticalAlignment="Center" HorizontalExpand="True"
+                   StyleClasses="LabelSubText" Modulate="#FFFF40"/>
+        </BoxContainer>
+
+        <PanelContainer MinHeight="1" Modulate="#404040" Margin="10 0" />
+
+        <Label Text="{Loc tribal-hunt-gui-party-size}" Margin="10 6 10 2" Modulate="#FFFF40"/>
+        <PanelContainer Margin="10 0" HorizontalExpand="True">
+            <BoxContainer Orientation="Vertical" Margin="8 6" SeparationOverride="4" HorizontalExpand="True">
+                <Label Name="JoinedValue" HorizontalExpand="True" Modulate="#FFFF40" />
+                <Label Name="RemainingValue" HorizontalExpand="True" Modulate="#FFFF40" />
+            </BoxContainer>
+        </PanelContainer>
+
+        <PanelContainer MinHeight="1" Modulate="#404040" Margin="10 6" />
+
+        <Label Text="{Loc tribal-hunt-gui-coordinates}" Margin="10 0 10 4" Modulate="#FFFF40"
+               StyleClasses="LabelBig"/>
+
+        <BoxContainer Orientation="Vertical" Margin="10 0 10 4" SeparationOverride="2" HorizontalExpand="True">
+            <Label Text="{Loc tribal-hunt-gui-subheader}" Modulate="#FFFF40" />
+            <Label Text="{Loc tribal-hunt-gui-coordinates-hint}" Modulate="#FFFF40" />
+        </BoxContainer>
+
+        <PanelContainer Margin="10 0" HorizontalExpand="True" VerticalExpand="True">
+            <BoxContainer Orientation="Vertical" Margin="8 6" SeparationOverride="4" HorizontalExpand="True" VerticalExpand="True">
+                <Label Name="CoordinatesValue"
+                       StyleClasses="LabelSubText"
+                       HorizontalExpand="True"
+                       VerticalExpand="True"
+                       Modulate="#FFFF40" />
+            </BoxContainer>
+        </PanelContainer>
+
+        <Button Name="JoinHuntButton"
+                Text="{Loc tribal-hunt-gui-join-button}"
+                Margin="10 2 10 6"
+                HorizontalExpand="True" />
+
+        <PanelContainer MinHeight="1" Modulate="#404040" Margin="10 0" />
+    </BoxContainer>
+    </ScrollContainer>
+</controls:FancyWindow>

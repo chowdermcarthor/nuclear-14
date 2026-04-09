@@ -8,12 +8,11 @@ namespace Content.Client._Misfits.Warcry;
 public sealed class WarcryOverlaySystem : EntitySystem
 {
     [Dependency] private readonly IOverlayManager _overlay = default!;
-    [Dependency] private readonly EntityLookupSystem _lookup = default!;
 
     public override void Initialize()
     {
         base.Initialize();
-        _overlay.AddOverlay(new WarcryOverlay(EntityManager, _lookup));
+        _overlay.AddOverlay(new WarcryOverlay(EntityManager));
     }
 
     public override void Shutdown()

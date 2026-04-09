@@ -1,0 +1,32 @@
+- type: entity
+  id: ActionTribalStartHunt
+  name: action-name-tribal-start-hunt
+  description: action-desc-tribal-start-hunt
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: InstantAction
+    useDelay: 180
+    icon: Interface/Actions/scream.png
+    event: !type:PerformTribalStartHuntActionEvent
+
+- type: entity
+  id: ActionTribalOfferTrophy
+  name: action-name-tribal-offer-trophy
+  description: action-desc-tribal-offer-trophy
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: InstantAction
+    useDelay: 2
+    icon: Interface/Actions/scream.png
+    event: !type:PerformTribalOfferTrophyActionEvent
+
+- type: entity
+  id: ActionTribalToggleHuntGui
+  name: action-name-tribal-toggle-hunt-gui
+  description: action-desc-tribal-toggle-hunt-gui
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: InstantAction
+    useDelay: 0.5
+    icon: Interface/Actions/scream.png
+    event: !type:PerformTribalToggleHuntGuiActionEvent

@@ -342,10 +342,14 @@ public sealed class MapViewerControl : Control
                 handle.DrawCircle(markerPos, 11f, color);
                 handle.DrawCircle(markerPos, 5f, Color.Black);
                 break;
-            // End Misfits Add
+
+            case WastelandMapTrackedBlipKind.TribalHuntTarget:
+                // Hunt target: bright crimson ring + white center for fast recognition.
                 handle.DrawCircle(markerPos, 11f, color);
-                handle.DrawCircle(markerPos, 5f, Color.Black);
+                handle.DrawCircle(markerPos, 7f, Color.Black);
+                handle.DrawCircle(markerPos, 3f, Color.White);
                 break;
+            // End Misfits Add
         }
     }
 
@@ -532,6 +536,7 @@ public sealed class MapViewerControl : Control
             WastelandMapTrackedBlipKind.LegionDecanus => new Color(0.92f, 0.18f, 0.12f, 1f),   // bright red
             WastelandMapTrackedBlipKind.LegionWarrior => new Color(0.70f, 0.16f, 0.12f, 1f),   // dark red
             WastelandMapTrackedBlipKind.LegionRecruit => new Color(0.62f, 0.32f, 0.12f, 1f),   // brown
+            WastelandMapTrackedBlipKind.TribalHuntTarget => new Color(1f, 0.20f, 0.18f, 1f),
             // End Misfits Add
             _ => new Color(0.98f, 0.84f, 0.15f, 0.95f),
         };
