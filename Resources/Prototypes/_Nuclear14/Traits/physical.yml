@@ -540,16 +540,16 @@
 #        - N14BrotherBeep
 #      languagesUnderstood:
 #        - N14BrotherBeep
-# #Misfits Add: Power Armor Training perk — required to equip any N14PowerArmor item.
-# Available to all characters so power armor access is controlled by trait choice rather than faction lock.
-- type: trait
-  id: N14PowerArmorTraining
-  category: Physical
-  points: -3
-  functions:
-    - !type:TraitAddComponent
-      components:
-        - type: PowerArmorProficiency
+#Misfits Removed — converted to a physical item (TrainingManualPowerArmor). Paladin/Senior Paladin/Head Paladin
+# get PowerArmorProficiency innately via AddComponentSpecial in their job specials.
+#- type: trait
+#  id: N14PowerArmorTraining
+#  category: Physical
+#  points: -3
+#  functions:
+#    - !type:TraitAddComponent
+#      components:
+#        - type: PowerArmorProficiency
 #- type: trait
 #  id: N14ExtremeAugScribe
 #  category: Physical

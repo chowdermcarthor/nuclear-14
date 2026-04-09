@@ -1,6 +1,35 @@
-# #Misfits Add - Training Manual items that grant martial arts styles when used in hand
-# These are single-use consumables; using them destroys the item and grants the bearer a fighting style.
+# #Misfits Add - Training Manual items that grant knowledge/abilities when used in hand.
+# These are single-use consumables; using them destroys the item and grants the bearer a skill.
 # None are currently placed in maps or spawn tables — admin-spawn only for testing.
+
+# Power armor training — grants PowerArmorProficiency to the reader.
+- type: entity
+  name: "Brotherhood field manual: power armor operation"
+  id: TrainingManualPowerArmorOperation
+  parent: BaseItem
+  description: "A hefty Brotherhood of Steel field manual covering the operation and safety procedures for T-series power armor. Mastering this will let you equip and operate any power armor frame."
+  components:
+  - type: Sprite
+    sprite: Objects/Misc/books.rsi
+    layers:
+    - state: paper
+    - state: cover_base
+      color: "#1C3A5E"
+    - state: decor_wingette
+      color: "#0E2440"
+    - state: icon_text
+  - type: Item
+    size: Small
+  - type: Tag
+    tags:
+      - Book
+  - type: EmitSoundOnPickup
+    sound: /Audio/SimpleStation14/Items/Handling/book_pickup.ogg
+  - type: EmitSoundOnDrop
+    sound: /Audio/SimpleStation14/Items/Handling/book_drop.ogg
+  - type: GrantPowerArmorTraining
+    soundOnUse:
+      path: /Audio/Items/Handling/book_pickup.ogg
 
 - type: entity
   name: "legion gladiatorial combat manual"
