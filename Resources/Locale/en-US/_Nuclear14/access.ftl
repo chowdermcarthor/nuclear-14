@@ -5,6 +5,7 @@ id-card-access-level-townie-doctor = Town Clinic
 id-card-access-level-townie-mechanic = Town Works.
 id-card-access-level-townie-bartender = Town Inn
 id-card-access-level-townie-reporter = Town Studio
+id-card-access-level-townie-person = Town Gate
 id-card-access-level-townie-inn1 = Inn Room #1
 id-card-access-level-townie-inn2 = Inn Room #2
 id-card-access-level-townie-inn3 = Inn Room #3
