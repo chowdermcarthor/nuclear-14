@@ -513,9 +513,15 @@ public abstract partial class SharedGunSystem : EntitySystem
         if (TryComp<CartridgeAmmoComponent>(entity, out var cartridge2) && cartridge2.Spent)
         {
             var despawn = EnsureComp<TimedDespawnComponent>(entity);
-            despawn.Lifetime = 90f; // #Misfits Tweak - Reduce casing despawn from 5min to 90s to prevent 1000+ entity buildup during war
+            despawn.Lifetime = 30f; // #Misfits Tweak - Reduce casing despawn from 5min to 30s to prevent entity buildup during war
 
             _entManager.RemoveComponent<ItemComponent>(entity);
+
+            // #Misfits Fix - Casings ejected without a throw angle (revolver/manual cycling)
+            // never get ThrownItemComponent, so LandEvent never fires and
+            // CasingPhysicsOptSystem can't strip their physics. Remove it here.
+            if (angle == null)
+                RemCompDeferred<PhysicsComponent>(entity);
         }
     }
 

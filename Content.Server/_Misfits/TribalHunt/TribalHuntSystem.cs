@@ -105,8 +105,21 @@ public sealed class TribalHuntSystem : EntitySystem
         if (_timing.CurTime >= _lastUiHeartbeat + TimeSpan.FromSeconds(1))
         {
             _lastUiHeartbeat = _timing.CurTime;
+
+            // Prune hunters that no longer exist or are dead — prevents stale UID accumulation.
+            PruneStaleHunters();
+
             BroadcastUiToDepartment(_targetDepartment, BuildStatusText());
         }
+    }
+
+    /// <summary>
+    /// Remove deleted or dead entities from the joined hunters set so we don't
+    /// waste time sending UI updates or awarding buffs to garbage UIDs.
+    /// </summary>
+    private void PruneStaleHunters()
+    {
+        _joinedHunters.RemoveWhere(uid => !Exists(uid) || _mobState.IsDead(uid));
     }
 
     private void OnLeaderStartup(EntityUid uid, TribalHuntLeaderComponent component, ComponentStartup args)
@@ -299,7 +312,7 @@ public sealed class TribalHuntSystem : EntitySystem
         _joinedHunters.Clear();
 
         if (cleanupLegendary && legendary != null && Exists(legendary.Value))
-            Del(legendary.Value);
+            QueueDel(legendary.Value); // Deferred delete — prevents broadphase corruption if physics is mid-iteration.
 
         BroadcastUiToDepartment(department, statusText);
     }
@@ -344,6 +357,19 @@ public sealed class TribalHuntSystem : EntitySystem
 
     private void BroadcastUiToDepartment(string departmentId, string statusText)
     {
+        if (_stage == TribalHuntStage.Active)
+        {
+            // During Active hunt, only joined hunters need updates — skip the expensive
+            // full participant query + IsInDepartment call (3 component lookups each).
+            foreach (var uid in _joinedHunters)
+            {
+                SendUiUpdate(uid, statusText);
+            }
+            return;
+        }
+
+        // During Gathering (or other stages), broadcast to all tribe participants
+        // so they can see the join window.
         var query = EntityQueryEnumerator<TribalHuntParticipantComponent>();
         while (query.MoveNext(out var uid, out _))
         {
@@ -371,6 +397,12 @@ public sealed class TribalHuntSystem : EntitySystem
 
         var isJoined = _joinedHunters.Contains(uid);
 
+        // Only call IsInDepartment for the CanJoin flag during Gathering — during Active,
+        // all recipients are already validated joined hunters so skip the 3x component lookup.
+        var canJoin = _stage == TribalHuntStage.Gathering
+                      && !isJoined
+                      && IsInDepartment(uid, _targetDepartment);
+
         var state = new TribalHuntUiState
         {
             Active = _stage == TribalHuntStage.Active,
@@ -381,7 +413,7 @@ public sealed class TribalHuntSystem : EntitySystem
             CoordinatesKnown = _stage == TribalHuntStage.Active && _hasKnownCoordinates,
             CoordinatesText = _lastKnownCoordinates,
             JoinWindowOpen = _stage == TribalHuntStage.Gathering,
-            CanJoin = _stage == TribalHuntStage.Gathering && !isJoined && IsInDepartment(uid, _targetDepartment),
+            CanJoin = canJoin,
             IsJoined = isJoined,
             JoinedHunters = _joinedHunters.Count,
         };

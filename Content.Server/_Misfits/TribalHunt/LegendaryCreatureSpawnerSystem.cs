@@ -1,5 +1,4 @@
 using Content.Shared._Misfits.TribalHunt;
-using Content.Shared.Destructible;
 using Content.Shared.Maps;
 using Content.Shared.Mobs;
 using Content.Shared.Mobs.Components;
@@ -27,10 +26,14 @@ public sealed partial class LegendaryCreatureSpawnerSystem : EntitySystem
     [Dependency] private readonly IRobustRandom _random = default!;
     [Dependency] private readonly TurfSystem _turf = default!;
 
+    [Dependency] private readonly SharedTransformSystem _transformSystem = default!;
+
     public override void Initialize()
     {
         base.Initialize();
-        SubscribeLocalEvent<LegendaryCreatureComponent, DestructionEventArgs>(OnCreatureDestroyed);
+        // Subscribe to MobStateChanged instead of DestructionEventArgs so the entity
+        // still has a valid TransformComponent when we spawn loot and raise events.
+        SubscribeLocalEvent<LegendaryCreatureComponent, MobStateChangedEvent>(OnCreatureMobStateChanged);
     }
 
     /// <summary>
@@ -106,13 +109,24 @@ public sealed partial class LegendaryCreatureSpawnerSystem : EntitySystem
         return true;
     }
 
-    private void OnCreatureDestroyed(EntityUid uid, LegendaryCreatureComponent comp, DestructionEventArgs args)
+    /// <summary>
+    /// Fires when the creature transitions to Dead. The entity still has a valid
+    /// TransformComponent here, so physics queries and loot spawns are safe.
+    /// </summary>
+    private void OnCreatureMobStateChanged(EntityUid uid, LegendaryCreatureComponent comp, MobStateChangedEvent args)
     {
+        if (args.NewMobState != MobState.Dead)
+            return;
+
+        // Cache coordinates while the entity is still fully intact.
+        var coords = _transformSystem.GetMoverCoordinates(uid);
+
         RaiseLocalEvent(uid, new LegendaryCreatureKilledEvent());
 
-        for (int i = 0; i < comp.LeatherDropCount; i++)
+        // Spawn loot at the cached position instead of querying the dying entity's physics.
+        for (var i = 0; i < comp.LeatherDropCount; i++)
         {
-            SpawnNextToOrDrop("TribalLegendaryLeather", uid);
+            Spawn("TribalLegendaryLeather", coords);
         }
     }
 }

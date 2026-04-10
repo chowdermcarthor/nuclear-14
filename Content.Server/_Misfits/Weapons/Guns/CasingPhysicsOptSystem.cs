@@ -1,70 +1,96 @@
 using Content.Shared.Throwing;
 using Content.Shared.Weapons.Ranged.Components;
 using Robust.Shared.Physics.Components;
+using Robust.Shared.Spawners;
 
-// #Misfits Add - Remove physics from spent casings on landing to avoid accumulating 1000+ dynamic physics bodies during war
+// #Misfits Add - Remove physics from spent casings on landing + enforce a global casing entity cap
 
 namespace Content.Server._Misfits.Weapons.Guns;
 
 /// <summary>
-/// Server-side optimisation system that drops spent bullet casings out of the
-/// physics simulation the moment they land.
+/// Server-side optimisation system for spent bullet casings:
+///
+/// <list type="number">
+///   <item>Strips <see cref="PhysicsComponent"/> on landing so casings leave
+///         the broadphase immediately (the original behaviour).</item>
+///   <item>Enforces a global cap on concurrent casing entities. When the cap
+///         is exceeded the oldest casings are deleted, preventing runaway
+///         accumulation during sustained 20v20 firefights even with the
+///         30-second <see cref="TimedDespawnComponent"/> timer.</item>
+/// </list>
 ///
 /// <para>
-/// During large war scenarios casings accumulate rapidly (easily 1000+ entities).
-/// Each casing carries a <see cref="PhysicsComponent"/> with a dynamic body that
-/// remains "awake" in the physics engine until it fully comes to rest.  With many
-/// casings this creates expensive constraint islands and broadphase queries every
-/// tick.  Removing <see cref="PhysicsComponent"/> via
-/// <c>RemCompDeferred</c> takes the entity out of the simulation entirely;
-/// RobustToolbox's <c>SharedPhysicsSystem.OnPhysicsRemoved</c> cascades the
-/// fixture / broadphase cleanup automatically so we do not need to touch
-/// <c>FixturesComponent</c> directly.
-/// </para>
-///
-/// <para>
-/// <b>Known limitation:</b> casings ejected without a throw angle (e.g. manual
-/// chamber cycling, revolver ejection — the <c>angle == null</c> branch in
-/// <c>SharedGunSystem.EjectCartridge</c>) never receive a
-/// <c>ThrownItemComponent</c>, so <c>LandEvent</c> is never raised for them.
-/// Those casings retain their physics body for the full
-/// <see cref="TimedDespawnComponent"/> lifetime (90 s after the Misfits tweak).
-/// This edge case affects a small minority of weapons and is considered
-/// acceptable.
+/// The no-throw-angle edge case (revolver eject, manual cycling) is now handled
+/// in <c>SharedGunSystem.EjectCartridge</c> which strips physics immediately
+/// when <c>angle == null</c>.
 /// </para>
 /// </summary>
 public sealed class CasingPhysicsOptSystem : EntitySystem
 {
+    /// <summary>
+    /// Maximum number of spent casing entities allowed to exist at once.
+    /// Beyond this, the oldest are deleted. 500 is generous — a 20-player
+    /// war with automatic weapons peaks around 300-600 concurrent casings
+    /// at 30 s lifetime.
+    /// </summary>
+    private const int MaxCasings = 500;
+
+    // FIFO queue of tracked casing UIDs for cap enforcement.
+    private readonly Queue<EntityUid> _casingQueue = new();
+
     public override void Initialize()
     {
         base.Initialize();
 
-        // Filter to entities that carry CartridgeAmmoComponent so the handler
-        // is never invoked for unrelated thrown items (tools, grenades, etc.).
+        // Strip physics on landing (existing behaviour).
         SubscribeLocalEvent<CartridgeAmmoComponent, LandEvent>(OnCasingLand);
+
+        // Track casings for the global cap when their despawn timer is attached.
+        // This fires for ALL spent casings — both thrown and no-throw variants.
+        SubscribeLocalEvent<CartridgeAmmoComponent, ComponentStartup>(OnCartridgeStartup);
     }
 
     /// <summary>
     /// Raised by <c>ThrownItemSystem</c> when a thrown entity comes to rest.
-    /// If the cartridge is already spent we remove its physics body so the
-    /// entity becomes a pure visual/timer entity and exits the physics
-    /// simulation immediately.
+    /// Strips the physics body so the entity becomes a pure visual/timer entity.
     /// </summary>
     private void OnCasingLand(EntityUid uid, CartridgeAmmoComponent cartridge, ref LandEvent args)
     {
-        // Only optimise spent casings. Live cartridges that are thrown
-        // (e.g. thrown by hand) must keep physics so they can still be
-        // picked up and used.
         if (!cartridge.Spent)
             return;
 
-        // Deferred removal keeps us safely outside the physics engine's own
-        // event stack.  RobustToolbox's SharedPhysicsSystem.OnPhysicsRemoved
-        // handler fires when the component is actually removed and takes care
-        // of unregistering all fixtures from the broadphase automatically —
-        // we must NOT call RemCompDeferred<FixturesComponent> separately as
-        // that would cause a double-teardown when PhysicsComponent removal
-        // then tries to access already-gone fixtures.
+        // Deferred removal keeps us safely outside the physics engine's event stack.
+        // RobustToolbox's SharedPhysicsSystem.OnPhysicsRemoved cascades fixture/broadphase
+        // cleanup automatically.
         RemCompDeferred<PhysicsComponent>(uid);
+    }
+
+    /// <summary>
+    /// Track spent casings for cap enforcement. We piggyback on ComponentStartup
+    /// rather than adding a dedicated marker component.
+    /// </summary>
+    private void OnCartridgeStartup(EntityUid uid, CartridgeAmmoComponent cartridge, ComponentStartup args)
+    {
+        // Only track spent casings that have a despawn timer (i.e. ejected casings,
+        // not cartridges sitting in a magazine).
+        if (!cartridge.Spent || !HasComp<TimedDespawnComponent>(uid))
+            return;
+
+        _casingQueue.Enqueue(uid);
+        TrimCasings();
+    }
+
+    /// <summary>
+    /// Delete the oldest casings when the cap is exceeded.
+    /// Skips already-deleted entities (natural despawn or manual cleanup).
+    /// </summary>
+    private void TrimCasings()
+    {
+        while (_casingQueue.Count > MaxCasings)
+        {
+            var oldest = _casingQueue.Dequeue();
+            if (Exists(oldest) && !TerminatingOrDeleted(oldest))
+                QueueDel(oldest);
+        }
     }
 }

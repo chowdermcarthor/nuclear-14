@@ -38,6 +38,10 @@ public sealed class MisfitsOreBoxMagnetSystem : EntitySystem
             if (!xform.Anchored)
                 continue;
 
+            // Skip ore boxes on deleted/unloading maps to avoid broadphase queries on stale trees.
+            if (xform.MapID == MapId.Nullspace)
+                continue;
+
             magnet.Accumulator += frameTime;
             if (magnet.Accumulator < magnet.ScanInterval)
                 continue;

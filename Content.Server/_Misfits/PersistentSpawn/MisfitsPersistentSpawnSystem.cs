@@ -479,7 +479,7 @@ public sealed class MisfitsPersistentSpawnSystem : EntitySystem
             return;
 
         RemovePersistentRecord(uid);
-        EntityManager.DeleteEntity(uid);
+        QueueDel(uid); // #Misfits Fix - Deferred delete prevents broadphase corruption if physics system is mid-iteration.
     }
 
     // ── Standard erase from the engine's PlacementManager ──────────────────────
