@@ -16,7 +16,7 @@
   - type: MeleeWeapon
     autoAttack: true
     wideAnimationRotation: -135
-    attackRate: .25
+    attackRate: 4
     damage:
       types:
         Slash: 20

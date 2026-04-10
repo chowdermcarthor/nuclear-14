@@ -13,15 +13,15 @@ undecided-loadout-button-deselect = Select [X]
 
 undecided-loadout-category-cadet-rifleman-name = Cadet Rifleman Kit
 undecided-loadout-category-cadet-rifleman-description =
-    Includes 1 NCR leather vest, 1 NCR pouches bandolier, 1 service rifle,
-    3 service rifle magazines, 1 9mm pistol, 2 9mm pistol magazines,
+    Includes 1 NCR leather vest, 1 NCR pouches bandolier, 1 Varmit rifle,
+    1 5.56 box, 1 9mm pistol, 2 9mm pistol magazines,
     1 C ration MRE, 1 stimpak, 1 Rad-X pill, 1 gauze pack, and 1 flare.
 
 undecided-loadout-category-cadet-storm-name = Cadet Stormtrooper Kit
 undecided-loadout-category-cadet-storm-description =
-    Includes 1 NCR leather vest, 1 NCR pouches bandolier, 1 butchered service rifle,
-    3 service rifle magazines, 1 9mm pistol, 2 9mm pistol magazines,
-    1 C ration MRE, 1 stimpak, 1 Rad-X pill, 1 gauze pack, and 1 flare.
+    Includes 1 NCR leather vest, 1 NCR pouches bandolier, 1 varmit rifle,
+    1 5.56 box, 1 smoke grenade, 1 9mm pistol, 2 9mm pistol magazines,
+    1 C ration MRE, 1 stimpak, 1 gauze pack, and 1 flare.
 
 undecided-loadout-category-cadet-scout-name = Cadet Scout Kit
 undecided-loadout-category-cadet-scout-description =
@@ -33,15 +33,15 @@ undecided-loadout-category-cadet-scout-description =
 
 undecided-loadout-category-soldier-rifleman-name = Soldier Rifleman Kit
 undecided-loadout-category-soldier-rifleman-description =
-    Includes 1 NCR belt, 1 service rifle, 3 service rifle magazines,
+    Includes 1 NCR belt, 1 varmit rifle, 1 5.56 box,
     1 9mm pistol, 2 9mm pistol magazines, 1 C ration MRE,
     1 stimpak, 1 Rad-X pill, 1 gauze pack, and 1 flare.
 
 undecided-loadout-category-soldier-storm-name = Soldier Stormtrooper Kit
 undecided-loadout-category-soldier-storm-description =
-    Includes 1 NCR belt, 1 butchered service rifle, 3 service rifle magazines,
+    Includes 1 NCR belt, 1 varmit rifle, 1 5.56 box, 1 Smoke Grenade
     1 9mm pistol, 2 9mm pistol magazines, 1 C ration MRE,
-    1 stimpak, 1 Rad-X pill, 1 gauze pack, and 1 flare.
+    1 stimpak, 1 gauze pack, and 1 flare.
 
 undecided-loadout-category-soldier-scout-name = Soldier Scout Kit
 undecided-loadout-category-soldier-scout-description =
