@@ -44,7 +44,7 @@
   id: FollowersGear
   equipment:
     jumpsuit: N14ClothingUniformJumpsuitFollowers
-    back: N14ClothingBackpackWastelanderFilled # N14TODO: Doctors Bag
+    back: ClothingBackpackDuffelSurgeryFilled # Bag meant for sugeries, belt already has med supplies so this is a good addition
     shoes: N14ClothingBootsLeather # Forge-Change
     neck: ClothingNeckStethoscope # Forge-Change
     id: N14IDDoctorFollower
