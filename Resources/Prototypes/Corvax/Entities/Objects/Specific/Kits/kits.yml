@@ -547,7 +547,7 @@
   - type: SpawnItemsOnUse
     items:
       - id: N14LegionnaireShield
-      - id: N14WeaponLMGchinese # #Misfits Change by BILL CLINTON!: Parity with NCR specialist kits. they get lmgs why doesn't legion?
+      - id: N14WeaponUSHMG # #Misfits Change by BILL CLINTON!: Parity with NCR specialist kits. they get lmgs why doesn't legion?
       - id: Magazine762AmmoBelt # #Misfits Change by bill - one belt of LMG is more than enough
         amount: 1
       - id: ClothingBeltRope
@@ -581,7 +581,7 @@
   - type: SpawnItemsOnUse
     items:
       - id: N14LegionnaireBuckler
-      - id: N14WeaponLMGchinese # #Misfits Change by BILL CLINTON!: Parity with NCR specialist kits. they get lmgs why doesn't legion?
+      - id: N14WeaponUSHMG # #Misfits Change by BILL CLINTON!: Parity with NCR specialist kits. they get lmgs why doesn't legion?
       - id: Magazine762AmmoBelt # #Misfits Change by bill - one belt of LMG is more than enough.
         amount: 1
       - id: ClothingBeltRope

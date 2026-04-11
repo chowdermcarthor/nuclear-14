@@ -396,14 +396,14 @@ undecided-loadout-category-corvax-auxilia-medic-description =
 
 undecided-loadout-category-corvax-veteran-decanus-command-name = Veteran Decanus Command
 undecided-loadout-category-corvax-veteran-decanus-command-description =
-    Includes a Legion shield, a Chinese LMG with spare LMG belt,
+    Includes a Legion shield, a M240B HMG with spare HMG belt,
     a rope belt, a .45 Colt pistol, 2 .45 magazines,
     a box of .45 ammo, a handcuff box, a bola,
     2 healing poultice, 2 K rations, and a ceramic flask.
 
 undecided-loadout-category-corvax-veteran-decanus-hunter-name = Veteran Decanus Hunter
 undecided-loadout-category-corvax-veteran-decanus-hunter-description =
-    Includes a Legion buckler, a chinese LMG with a spare LMG belt,
+    Includes a Legion buckler, a M240B HMG with spare HMG belt,
     a .45 Colt pistol, 2 .45 magazines, a rope belt,
     a short shotgun, a box of 12 gauge shells,
     2 healing poultices, a healing powder,
