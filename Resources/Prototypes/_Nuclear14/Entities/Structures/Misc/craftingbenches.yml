@@ -107,7 +107,9 @@
     - LandMineExplosive  # Explosive Mine (~4 tile radius)
     - LandMineModular    # Modular Mine (empty casing, add payload)
     # #Misfits Add: Expose vanilla centrifuge machine board so players can rebuild MachineCentrifuge via machine frame.
-    - CentrifugeMachineCircuitboard
+    - CentrifugeMachineCircuitboard 
+    # #Misfits Add: Electrolyzer machine board so players can make electrolyzers via machine frame.
+    - ElectrolysisUnitMachineCircuitboard
 
 - type: entity
   parent: N14WorkbenchBase
@@ -345,6 +347,9 @@
     - N14GlowstickRed
     - N14CleanGauze1
     - DoorElectronics
+    - CapacitorStockPart
+    - MicroManipulatorStockPart
+    - MatterBinStockPart
 
 - type: entity
   parent: BaseStructure
