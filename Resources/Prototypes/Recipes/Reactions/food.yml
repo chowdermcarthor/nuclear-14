@@ -47,6 +47,7 @@
   impact: Low
   quantized: true
   conserveEnergy: false
+  priority: 1 # #Misfits Fix - higher priority so 3-reactant cornmeal dough is checked before 2-reactant tortilla dough
   reactants:
     Cornmeal:
       amount: 15

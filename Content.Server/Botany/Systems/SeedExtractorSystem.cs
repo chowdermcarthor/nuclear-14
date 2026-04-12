@@ -4,6 +4,7 @@ using Content.Server.Popups;
 using Content.Server.Power.EntitySystems;
 using Content.Shared.Interaction;
 using Content.Shared.Popups;
+using Content.Shared.Stacks;
 using Robust.Shared.Player;
 using Robust.Shared.Random;
 
@@ -40,9 +41,15 @@ public sealed class SeedExtractorSystem : EntitySystem
         _popupSystem.PopupCursor(Loc.GetString("seed-extractor-component-interact-message",("name", args.Used)),
             args.User, PopupType.Medium);
 
+        // #Misfits Fix - seed extractor now respects stack count; stacking 5 produce
+        // yields 5x the seeds instead of treating the whole stack as a single item
+        var stackMultiplier = 1;
+        if (TryComp<StackComponent>(args.Used, out var stack))
+            stackMultiplier = stack.Count;
+
         QueueDel(args.Used);
 
-        var amount = (int) _random.NextFloat(seedExtractor.BaseMinSeeds, seedExtractor.BaseMaxSeeds + 1) * seedExtractor.SeedAmountMultiplier;
+        var amount = (int) (_random.NextFloat(seedExtractor.BaseMinSeeds, seedExtractor.BaseMaxSeeds + 1) * seedExtractor.SeedAmountMultiplier) * stackMultiplier;
         var coords = Transform(uid).Coordinates;
 
         if (amount > 1)

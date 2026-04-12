@@ -41,7 +41,7 @@
     firestackFade: 0 # #Misfits Tweak - No passive decay; bonfire stays lit until manually extinguished
     damage:
       types:
-        Heat: 0.1
+        Heat: 0 # #Misfits Fix - was 0.1; escalating firestacks (3→10+) destroyed the 50 HP bonfire in ~1 min
   - type: FireVisuals
     sprite: Structures/Decoration/bonfire.rsi
     normalState: burning

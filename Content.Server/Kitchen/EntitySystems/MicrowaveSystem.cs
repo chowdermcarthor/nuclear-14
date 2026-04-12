@@ -520,6 +520,22 @@ namespace Content.Server.Kitchen.EntitySystems
                     solidsDict.Add(metaData.EntityPrototype.ID, 1);
                 }
 
+                // #Misfits Fix - also count this entity toward each ancestor prototype ID so
+                // child entities (e.g. N14FoodMeatBrahminCutlet) satisfy recipes that require
+                // their parent (e.g. N14FoodMeatRadCutlet).
+                var proto = metaData.EntityPrototype;
+                while (proto.Parents is { Length: > 0 })
+                {
+                    var parentId = proto.Parents[0];
+                    if (solidsDict.ContainsKey(parentId))
+                        solidsDict[parentId]++;
+                    else
+                        solidsDict.Add(parentId, 1);
+
+                    if (!_prototype.TryIndex<EntityPrototype>(parentId, out proto))
+                        break;
+                }
+
                 if (!TryComp<SolutionContainerManagerComponent>(item, out var solMan))
                     continue;
 
