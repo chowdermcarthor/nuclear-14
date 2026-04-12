@@ -10,5 +10,5 @@ namespace Content.Shared._Misfits.Disease.Components;
 /// Removed when all diseases are cured. Used for efficient event queries
 /// (contact spread, emote triggers, etc.).
 /// </summary>
-[RegisterComponent, NetworkedComponent]
+[RegisterComponent]
 public sealed partial class DiseasedComponent : Component;

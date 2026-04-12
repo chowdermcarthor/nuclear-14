@@ -12,7 +12,7 @@ namespace Content.Shared._Misfits.Augments;
 /// Subdermal implant that grants a temporary movement speed boost on activation.
 /// Penalizes with brief knockdown when the effect expires.
 /// </summary>
-[RegisterComponent, NetworkedComponent]
+[RegisterComponent]
 public sealed partial class AugmentReflexBoosterComponent : Component
 {
     /// <summary>Movement speed multiplier during boost (1.0 = normal).</summary>

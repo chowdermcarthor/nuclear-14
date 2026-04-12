@@ -9,7 +9,7 @@ namespace Content.Shared._Misfits.Disease.Components;
 /// When equipped, adds its Protection value to the wearer's DiseaseCarrier.DiseaseResist.
 /// Used on gas masks, hazmat suits, and other protective gear.
 /// </summary>
-[RegisterComponent, NetworkedComponent]
+[RegisterComponent]
 public sealed partial class DiseaseProtectionComponent : Component
 {
     /// <summary>Flat resistance added to the wearer (0.0-1.0 scale).</summary>

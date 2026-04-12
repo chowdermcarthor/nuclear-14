@@ -15,7 +15,7 @@ namespace Content.Shared._Misfits.Augments;
 /// Subdermal implant that activates a temporary combat buff:
 /// increased melee damage and damage resistance, followed by toxin poisoning on expiry.
 /// </summary>
-[RegisterComponent, NetworkedComponent]
+[RegisterComponent]
 public sealed partial class AugmentCombatStimComponent : Component
 {
     /// <summary>Melee damage multiplier during buff.</summary>

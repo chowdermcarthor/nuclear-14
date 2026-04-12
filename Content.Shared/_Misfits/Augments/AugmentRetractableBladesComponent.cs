@@ -13,7 +13,7 @@ namespace Content.Shared._Misfits.Augments;
 /// Subdermal implant component that enables retractable arm blades.
 /// When toggled, spawns a melee weapon entity in the user's hand.
 /// </summary>
-[RegisterComponent, NetworkedComponent]
+[RegisterComponent]
 public sealed partial class AugmentRetractableBladesComponent : Component
 {
     /// <summary>Prototype ID of the blade weapon entity to spawn on deploy.</summary>

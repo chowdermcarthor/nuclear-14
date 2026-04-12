@@ -10,7 +10,7 @@ namespace Content.Shared._Misfits.Disease.Components;
 /// Machine that accepts a used DiseaseSwab and produces a paper report
 /// identifying the disease. Output can then be fed to the Vaccinator.
 /// </summary>
-[RegisterComponent, NetworkedComponent]
+[RegisterComponent]
 public sealed partial class DiseaseDiagnoserComponent : Component
 {
     /// <summary>Seconds to process a swab sample.</summary>

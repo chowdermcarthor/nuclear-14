@@ -11,7 +11,7 @@ namespace Content.Shared._Misfits.Disease.Components;
 /// Machine that reads a disease diagnosis from a paper report
 /// and produces a vaccine syringe immunizing against that disease.
 /// </summary>
-[RegisterComponent, NetworkedComponent]
+[RegisterComponent]
 public sealed partial class DiseaseVaccinatorComponent : Component
 {
     /// <summary>Seconds to create a vaccine.</summary>

@@ -10,7 +10,7 @@ namespace Content.Shared._Misfits.Augments;
 /// Passive subdermal implant that reduces gun spread.
 /// Effect is always active while implanted — no toggle action needed.
 /// </summary>
-[RegisterComponent, NetworkedComponent]
+[RegisterComponent]
 public sealed partial class AugmentTargetingHudComponent : Component
 {
     /// <summary>Fractional reduction to gun spread (0.3 = 30% tighter).</summary>
