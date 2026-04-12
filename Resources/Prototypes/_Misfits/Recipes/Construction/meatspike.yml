@@ -1,0 +1,32 @@
+- type: construction
+  name: Meatspike
+  id: MeatSpikeConstruction
+  graph: MeatSpike
+  startNode: start
+  targetNode: MeatSpikeEnd
+  category: construction-category-structures
+  description: A meatspike for culinary purposes. Requires steel.
+  icon:
+    sprite: Structures/meat_spike.rsi
+    state: spike
+  objectType: Structure
+  placementMode: SnapgridCenter
+  canBuildInImpassable: false
+  canRotate: false
+  hide: false
+  conditions:
+    - !type:TileNotBlocked
+    
+- type: constructionGraph
+  id: MeatSpike
+  start: start
+  graph:
+    - node: start
+      edges:
+        - to: MeatSpikeEnd
+          steps:
+            - material: Steel
+              amount: 5
+              doAfter: 2
+    - node: MeatSpikeEnd
+      entity: KitchenSpike
