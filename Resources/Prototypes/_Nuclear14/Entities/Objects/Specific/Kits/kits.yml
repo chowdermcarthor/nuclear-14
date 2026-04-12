@@ -31,9 +31,8 @@
     items:
       - id: N14ClothingOuterNCRVestDesert # Forge-Change
       - id: ClothingBeltNCRPouches
-      - id: N14WeaponRifle556Service
-      - id: Magazine556Rifle
-        amount: 3
+      - id: N14WeaponSniper556VarmintRifle
+      - id: BaseMagazineBox556Rifle
       - id: N14WeaponPistol9mm
       - id: N14MagazinePistol9mm
         amount: 2
@@ -59,15 +58,14 @@
     items:
       - id: N14ClothingOuterNCRVestDesert # Forge-Change
       - id: ClothingBeltNCRPouches
-      - id: N14WeaponRifle556Butchered
-      - id: Magazine556Rifle
-        amount: 3
+      - id: N14WeaponSniper556VarmintRifle
+      - id: BaseMagazineBox556Rifle
       - id: N14WeaponPistol9mm
       - id: N14MagazinePistol9mm
         amount: 2
       - id: N14BoxCardboardMREBoxCFilled
+      - id: SmokeGrenade
       - id: N14Stimpak
-      - id: N14RadXPill
       - id: N14CleanGauze10
       - id: N14Flare
     sound:
@@ -115,9 +113,8 @@
   - type: SpawnItemsOnUse
     items:
       - id: ClothingBeltNCR
-      - id: N14WeaponRifle556Service
-      - id: Magazine556Rifle
-        amount: 3
+      - id: N14WeaponSniper556VarmintRifle
+      - id: BaseMagazineBox556Rifle
       - id: N14WeaponPistol9mm
       - id: N14MagazinePistol9mm
         amount: 2
@@ -142,15 +139,14 @@
   - type: SpawnItemsOnUse
     items:
       - id: ClothingBeltNCR
-      - id: N14WeaponRifle556Butchered
-      - id: Magazine556Rifle
-        amount: 3
+      - id: N14WeaponSniper556VarmintRifle
+      - id: BaseMagazineBox556Rifle
       - id: N14WeaponPistol9mm
       - id: N14MagazinePistol9mm
         amount: 2
       - id: N14BoxCardboardMREBoxCFilled
+      - id: SmokeGrenade
       - id: N14Stimpak
-      - id: N14RadXPill
       - id: N14CleanGauze10
       - id: N14Flare
     sound:
@@ -694,7 +690,7 @@
     size: Huge
   - type: SpawnItemsOnUse
     items:
-      - id: N14ClothingOuterNCRTrenchCoat
+      - id: MisfitsClothingOuterNCRTrenchCoat
       - id: ClothingBeltRevolverCaptainfilled
       - id: N14WeaponSniper44LeverCarbine
       - id: MagazineBox44
@@ -721,7 +717,7 @@
     size: Huge
   - type: SpawnItemsOnUse
     items:
-      - id: N14ClothingOuterNCRTrenchCoat
+      - id: MisfitsClothingOuterNCRTrenchCoat
       - id: ClothingBeltRevolverfilled
       - id: N14WeaponRifle308Battle
       - id: ClipMagazine308Rifle
@@ -748,7 +744,7 @@
     size: Huge
   - type: SpawnItemsOnUse
     items:
-      - id: N14ClothingOuterNCRCombatArmor
+      - id: MisfitsNCROfficerArmor
       - id: ClothingBeltRevolverfilled
       - id: N14WeaponRifle556Carbine
       - id: LongMagazine556Rifle

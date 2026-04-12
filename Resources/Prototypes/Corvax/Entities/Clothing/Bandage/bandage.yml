@@ -47,6 +47,9 @@
   name: Prisoner braslet NCR
   description: A braslet use to track prisoners
   components:
+  - type: Construction # #Misfits Fix: Required for item-construction targets; without this the recipe refunds materials and spawns nothing.
+    graph: NCRPrisonerBracelet
+    node: bracelet
   - type: ClothingFactionAndRoleAdd
     faction: NCR
     role: NCRPisoner
@@ -148,6 +151,9 @@
   name: legion slave collar
   description: A collar used by the Legion slave.
   components:
+  - type: Construction # #Misfits Fix: Required for item-construction targets; without this the recipe refunds materials and spawns nothing.
+    graph: LegionSlaveCollar
+    node: collar
   - type: ClothingFactionAndRoleAdd
     faction: CaesarLegion
     role: CaesarLegionSlave

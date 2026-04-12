@@ -136,7 +136,7 @@
         damage:
           groups:
             Burn: -1.5
-            Brute: -1.5
+            Brute: -2.5
       - !type:ModifyBleedAmount
         amount: -0.5
       - !type:ChemVomit

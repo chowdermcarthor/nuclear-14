@@ -107,7 +107,7 @@
       - id: Bola
         amount: 2
       - id: BoxHandcuff
-      - id: N14HealingPowder #Misfits Change /Tweak/: replaces dirty stimpak, Legion uses tribal medicine
+      - id: N14HealingPoultice #Misfits Change /Tweak/: replaces dirty stimpak, Legion uses tribal medicine
         amount: 2
       #- id: N14MedkitFilled #Misfits Change /Remove/: Legion does not use stimpak medkits
       - id: N14FoodTinK
@@ -134,7 +134,7 @@
         amount: 4
       - id: ClothingBeltRope
       - id: SmokeGrenade
-      - id: N14HealingPowder #Misfits Change /Tweak/: replaces dirty stimpak, Legion uses tribal medicine
+      - id: N14HealingPoultice #Misfits Change /Tweak/: replaces dirty stimpak, Legion uses tribal medicine
         amount: 2
       - id: N14FoodTinK
         amount: 2
@@ -159,7 +159,7 @@
       - id: ClothingBeltRope
       - id: ThrowingKnife
         amount: 3
-      - id: N14HealingPowder #Misfits Change /Tweak/: Legion uses tribal medicine, not stimpaks
+      - id: N14HealingPoultice #Misfits Change /Tweak/: Legion uses tribal medicine, not stimpaks
         amount: 2
       #- id: N14MedkitFilled #Misfits Change /Remove/: Legion does not use stimpak medkits
       - id: N14FoodTinK
@@ -187,7 +187,7 @@
       - id: MagazineBox50
         amount: 3
       - id: ClothingEyesNightVisionGoggles
-      - id: N14HealingPowder #Misfits Change /Tweak/: replaces dirty stimpak, Legion uses tribal medicine
+      - id: N14HealingPoultice #Misfits Change /Tweak/: replaces dirty stimpak, Legion uses tribal medicine
         amount: 2
       - id: N14FoodTinK
         amount: 2
@@ -244,7 +244,7 @@
         amount: 2
       - id: N14CeremonialSword
       - id: ClothingEyesNightVisionGoggles
-      - id: N14HealingPowder #Misfits Change /Tweak/: replaces dirty stimpak, Legion uses tribal medicine
+      - id: N14HealingPoultice #Misfits Change /Tweak/: replaces dirty stimpak, Legion uses tribal medicine
         amount: 2
       - id: N14FoodTinK
         amount: 2
@@ -340,7 +340,7 @@
         amount: 2
       - id: N14LegionnaireBuckler
       - id: N14PilumSpear
-      - id: N14HealingPowder #Misfits Change /Tweak/: replaces dirty stimpak, Legion uses tribal medicine
+      - id: N14HealingPoultice #Misfits Change /Tweak/: replaces dirty stimpak, Legion uses tribal medicine
       - id: N14FoodTinK
         amount: 2
       - id: N14JunkCeramicFlask
@@ -370,7 +370,7 @@
       - id: N14Whip
       - id: Bola
         amount: 2
-      - id: N14HealingPowder
+      - id: N14HealingPoultice
       - id: N14FoodTinK
         amount: 2
       - id: N14JunkCeramicFlask
@@ -402,7 +402,7 @@
       - id: N14Whip
       - id: Zipties
         amount: 2
-      - id: N14HealingPowder #Misfits Change /Tweak/: replaces dirty stimpak, Legion uses tribal medicine
+      - id: N14HealingPoultice #Misfits Change /Tweak/: replaces dirty stimpak, Legion uses tribal medicine
       - id: N14FoodTinK
         amount: 2
       - id: N14JunkCeramicFlask
@@ -491,7 +491,7 @@
       - id: N14PilumSpear
         amount: 3
       - id: N14LegionnaireBuckler
-      - id: N14HealingPowder
+      - id: N14HealingPoultice
       - id: N14FoodTinK
         amount: 2
       - id: N14JunkCeramicFlask
@@ -547,17 +547,18 @@
   - type: SpawnItemsOnUse
     items:
       - id: N14LegionnaireShield
-      - id: N14WeaponRifleM1Garand # #Misfits Change: M1 Garand replaces hunting rifle for decanus tier
-      - id: ClipMagazine308Rifle # #Misfits Change - replaced GarandEnbloc308
-        amount: 4
+      - id: N14WeaponUSHMG # #Misfits Change by BILL CLINTON!: Parity with NCR specialist kits. they get lmgs why doesn't legion?
+      - id: Magazine762AmmoBelt # #Misfits Change by bill - one belt of LMG is more than enough
+        amount: 1
       - id: ClothingBeltRope
       - id: N14WeaponPistol45Colt # #Misfits Change: .45 revolver Legion sidearm
       - id: N14MagazinePistol45
         amount: 2
       - id: MagazineBox45
       - id: BoxHandcuff
+      - id: N14ClothingHandsPowerFistGoliath
       - id: Bola
-      - id: N14HealingPowder #Misfits Change /Tweak/: replaces dirty stimpak, Legion uses tribal medicine
+      - id: N14HealingPoultice #Misfits Change /Tweak/: replaces dirty stimpak, Legion uses tribal medicine
         amount: 2
       #- id: N14MedkitFilled #Misfits Change /Remove/: Legion does not use stimpak medkits
       - id: N14FoodTinK
@@ -580,9 +581,9 @@
   - type: SpawnItemsOnUse
     items:
       - id: N14LegionnaireBuckler
-      - id: N14WeaponRifleM1Garand # #Misfits Change: M1 Garand replaces hunting rifle for decanus tier
-      - id: ClipMagazine308Rifle # #Misfits Change - replaced GarandEnbloc308
-        amount: 4
+      - id: N14WeaponUSHMG # #Misfits Change by BILL CLINTON!: Parity with NCR specialist kits. they get lmgs why doesn't legion?
+      - id: Magazine762AmmoBelt # #Misfits Change by bill - one belt of LMG is more than enough.
+        amount: 1
       - id: ClothingBeltRope
       - id: N14WeaponPistol45Colt # #Misfits Change: .45 revolver Legion sidearm
       - id: N14MagazinePistol45
@@ -611,15 +612,15 @@
     size: Huge
   - type: SpawnItemsOnUse
     items:
-      - id: N14TrenchClub
-      - id: N14WeaponRifleM1Garand # #Misfits Change: M1 Garand replaces hunting rifle for decanus tier
-      - id: ClipMagazine308Rifle # #Misfits Change - replaced GarandEnbloc308
+      - id: N14TribalBigClub
+      - id: N14WeaponRifleSKS # #Misfits Change by BILL CLINTON!: Small number role made to be paired with the NCR sarge or basic ranger kits.
+      - id: SKSEnbloc308 # #Misfits Change - replaced GarandEnbloc308
         amount: 4
       - id: N14WeaponPistol45Colt # #Misfits Change: .45 revolver Legion sidearm (replaces tribal .44)
       - id: N14MagazinePistol45
         amount: 2
       - id: SmokeGrenade
-      - id: N14HealingPowder #Misfits Change /Tweak/: replaces dirty stimpak, Legion uses tribal medicine
+      - id: N14HealingPoultice #Misfits Change /Tweak/: replaces dirty stimpak, Legion uses tribal medicine
         amount: 2
       - id: N14FoodTinK
         amount: 2
@@ -641,8 +642,8 @@
   - type: SpawnItemsOnUse
     items:
       - id: N14LegionnaireShield
-      - id: N14WeaponRifleM1Garand # #Misfits Change: M1 Garand replaces hunting rifle for decanus tier
-      - id: ClipMagazine308Rifle # #Misfits Change - replaced GarandEnbloc308
+      - id: N14WeaponRifleSKS # #Misfits Change by BILL CLINTON!: Small number role made to be paired with the NCR sarge or basic ranger kits.
+      - id: SKSEnbloc308 # #Misfits Change - replaced GarandEnbloc308
         amount: 4
       - id: ClothingBeltRope
       - id: N14WeaponPistol45Colt # #Misfits Change: .45 revolver Legion sidearm
@@ -652,7 +653,7 @@
       - id: Bola
         amount: 2
       - id: BoxHandcuff
-      - id: N14HealingPowder #Misfits Change /Tweak/: replaces dirty stimpak, Legion uses tribal medicine
+      - id: N14HealingPoultice #Misfits Change /Tweak/: replaces dirty stimpak, Legion uses tribal medicine
         amount: 2
       #- id: N14MedkitCombatFilled #Misfits Change /Remove/: Legion does not use stimpak medkits
       - id: N14FoodTinK
@@ -675,15 +676,15 @@
     size: Huge
   - type: SpawnItemsOnUse
     items:
-      - id: N14WeaponRifleM1Garand # #Misfits Change: M1 Garand replaces hunting rifle for decanus tier
-      - id: ClipMagazine308Rifle # #Misfits Change - replaced GarandEnbloc308
+      - id: N14WeaponRifleSKS # #Misfits Change by BILL CLINTON!: Small number role made to be paired with the NCR sarge or basic ranger kits.
+      - id: SKSEnbloc308 # #Misfits Change - replaced GarandEnbloc308
         amount: 4
       - id: ClothingBeltRope
       - id: N14WeaponPistol45Colt # #Misfits Change: .45 revolver Legion sidearm
       - id: N14MagazinePistol45
         amount: 2
       - id: SmokeGrenade
-      - id: N14HealingPowder #Misfits Change /Tweak/: replaces dirty stimpak, Legion uses tribal medicine
+      - id: N14HealingPoultice #Misfits Change /Tweak/: replaces dirty stimpak, Legion uses tribal medicine
         amount: 2
       - id: N14FoodTinK
         amount: 2
@@ -705,9 +706,9 @@
     size: Huge
   - type: SpawnItemsOnUse
     items:
-      - id: N14SledgeHammer
-      - id: N14WeaponRifleM1Garand # #Misfits Change: M1 Garand replaces hunting rifle for decanus tier
-      - id: ClipMagazine308Rifle # #Misfits Change - replaced GarandEnbloc308
+      - id: N14ClothingHandsPowerFistGoliath
+      - id: N14WeaponRifleSKS # #Misfits Change by BILL CLINTON!: Small number role made to be paired with the NCR sarge or basic ranger kits.
+      - id: SKSEnbloc308 # #Misfits Change - replaced GarandEnbloc308
         amount: 4
       - id: N14WeaponPistol45Colt # #Misfits Change: .45 revolver Legion sidearm
       - id: N14MagazinePistol45
@@ -715,7 +716,7 @@
       - id: ClothingBeltRope
       - id: ThrowingKnife
         amount: 3
-      - id: N14HealingPowder #Misfits Change /Tweak/: Legion uses tribal medicine, not stimpaks
+      - id: N14HealingPoultice #Misfits Change /Tweak/: Legion uses tribal medicine, not stimpaks
         amount: 2
       #- id: N14MedkitFilled #Misfits Change /Remove/: Legion does not use stimpak medkits
       - id: N14FoodTinK
@@ -739,15 +740,16 @@
   - type: SpawnItemsOnUse
     items:
       - id: N14ClothingOuterLegionnaireVeteranArmor
-      - id: N14WeaponSniperHunting # #Misfits Change: hunting rifle as Legion baseline primary (replaces Chinese rifle)
-      - id: N14AmmoBox308
+      - id: N14WeaponRifleSKS # #Misfits Change by BILL CLINTON!: Small number role made to be paired with the NCR sarge or basic ranger kits.
+      - id: SKSEnbloc308
+        amount: 4
       - id: ClothingBeltRope
       - id: N14WeaponPistol45Colt # #Misfits Change: .45 revolver Legion sidearm
       - id: N14MagazinePistol45
         amount: 2
       - id: N14Gladius
       - id: SmokeGrenade
-      - id: N14HealingPowder #Misfits Change /Tweak/: replaces dirty stimpak, Legion uses tribal medicine
+      - id: N14HealingPoultice #Misfits Change /Tweak/: replaces dirty stimpak, Legion uses tribal medicine
         amount: 2
       - id: N14FoodTinK
         amount: 2
@@ -770,8 +772,9 @@
   - type: SpawnItemsOnUse
     items:
       - id: N14ClothingOuterLegionnaireVeteranArmor
-      - id: N14WeaponSniperHunting # #Misfits Change: hunting rifle as Legion baseline primary
-      - id: N14AmmoBox308
+      - id: N14WeaponRifleSKS # #Misfits Change by BILL CLINTON!: Small number role made to be paired with the NCR sarge or basic ranger kits.
+      - id: SKSEnbloc308
+        amount: 4
       - id: ClothingBeltRope
       - id: N14WeaponPistol45Colt # #Misfits Change: .45 revolver Legion sidearm
       - id: N14MagazinePistol45
@@ -780,7 +783,7 @@
       - id: N14FireAxe
       - id: ThrowingKnife
         amount: 3
-      - id: N14HealingPowder #Misfits Change /Tweak/: Legion uses tribal medicine, not stimpaks
+      - id: N14HealingPoultice #Misfits Change /Tweak/: Legion uses tribal medicine, not stimpaks
         amount: 2
       - id: N14FoodTinK
         amount: 2
@@ -803,8 +806,9 @@
   - type: SpawnItemsOnUse
     items:
       - id: N14ClothingOuterLegionnaireVeteranArmor
-      - id: N14WeaponSniperHunting # #Misfits Change: hunting rifle baseline — even the Goliath needs a fallback at range
-      - id: N14AmmoBox308
+      - id: N14WeaponRifleSKS # #Misfits Change by BILL CLINTON!: Small number role made to be paired with the NCR sarge or basic ranger kits.
+      - id: SKSEnbloc308
+        amount: 4
       - id: ClothingBeltRope
       - id: N14WeaponPistol45Colt # #Misfits Change: .45 revolver Legion sidearm
       - id: N14MagazinePistol45
@@ -812,7 +816,7 @@
       - id: N14ClothingHandsPowerFistGoliath
       - id: ThrowingKnife
         amount: 3
-      - id: N14HealingPowder
+      - id: N14HealingPoultice
         amount: 2
       - id: N14FoodTinK
         amount: 2
@@ -835,14 +839,15 @@
   - type: SpawnItemsOnUse
     items:
       - id: N14ClothingOuterLegionnaireVeteranArmor
-      - id: N14WeaponSniperHunting # #Misfits Change: hunting rifle as Legion baseline primary
-      - id: N14AmmoBox308
+      - id: N14WeaponRifleSKS # #Misfits Change by BILL CLINTON!: Small number role made to be paired with the NCR sarge or basic ranger kits.
+      - id: SKSEnbloc308
+        amount: 4
       - id: ClothingBeltRope
       - id: N14WeaponPistol45Colt # #Misfits Change: .45 revolver Legion sidearm
       - id: N14MagazinePistol45
         amount: 2
       - id: N14LegionnaireShield
-      - id: N14HealingPowder #Misfits Change /Tweak/: replaces dirty stimpak, Legion uses tribal medicine
+      - id: N14HealingPoultice #Misfits Change /Tweak/: replaces dirty stimpak, Legion uses tribal medicine
         amount: 2
       - id: N14FoodTinK
         amount: 2

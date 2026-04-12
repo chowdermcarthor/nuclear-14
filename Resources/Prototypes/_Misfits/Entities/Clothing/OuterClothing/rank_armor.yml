@@ -19,6 +19,18 @@
 # NCR
 # ---------------------------------------------------------------------------
 
+# T2 — NCR Officer Coat
+- type: entity
+  parent: N14ClothingOuterNCRTrenchCoat
+  id: MisfitsClothingOuterNCRTrenchCoat
+  name: NCR officer trench coat
+  description: Rugged and dependable, this well worn leather coat is used by officers of the Salt Dogs to brave the frontier.
+  components:
+  - type: Sprite
+    sprite: _Misfits/Clothing/OuterClothing/Armor/ncr_officer_coat.rsi
+  - type: Clothing
+    sprite: _Misfits/Clothing/OuterClothing/Armor/ncr_officer_coat.rsi
+
 # T3 — NCR Private First Class
 - type: entity
   parent: N14ClothingOuterNCRVestDesert
@@ -55,13 +67,29 @@
   - type: ExplosionResistance
     damageCoefficient: 0.80
 
+# T4 — NCR Officer Mantle (exact same stats as combat armor)
+- type: entity
+  parent: N14ClothingOuterNCRCombatArmor
+  id: MisfitsNCROfficerArmor
+  name: NCR officer mantle
+  description: Standard combat plating issued to NCR Officers; the mantle serves no tactical function.
+  components:
+  - type: Sprite
+    sprite: _Misfits/Clothing/OuterClothing/Armor/ncr_standard_mantle.rsi
+  - type: Clothing
+    sprite: _Misfits/Clothing/OuterClothing/Armor/ncr_standard_mantle.rsi
+
 # T5 — NCR Sergeant
 - type: entity
   parent: N14ClothingOuterNCRCombatArmor
   id: MisfitsNCRHeavyCombatArmor
-  name: NCR heavy combat armor
+  name: NCR combat mantle
   description: Upgraded combat plating issued to NCR Sergeants; noticeably heavier than standard line armor.
   components:
+  - type: Sprite
+    sprite: _Misfits/Clothing/OuterClothing/Armor/ncr_reinforced_mantle.rsi
+  - type: Clothing
+    sprite: _Misfits/Clothing/OuterClothing/Armor/ncr_reinforced_mantle.rsi
   - type: Armor
     modifiers:
       coefficients:
@@ -77,9 +105,13 @@
 - type: entity
   parent: N14ClothingOuterNCRCombatArmor
   id: MisfitsNCREliteCombatArmor
-  name: NCR elite combat armor
+  name: NCR elite combat mantle
   description: Elite-grade combat armor worn by NCR Staff Sergeants; the best widely-issued plating in the Republic's arsenal.
   components:
+  - type: Sprite
+    sprite: _Misfits/Clothing/OuterClothing/Armor/ncr_lt_mantle.rsi
+  - type: Clothing
+    sprite: _Misfits/Clothing/OuterClothing/Armor/ncr_lt_mantle.rsi
   - type: Armor
     modifiers:
       coefficients:
@@ -95,9 +127,13 @@
 - type: entity
   parent: N14ClothingOuterNCRCombatArmor
   id: MisfitsNCRCommandArmor
-  name: NCR command armor
+  name: NCR command mantle
   description: Command-grade armor reserved for NCR First Sergeants; the pinnacle of standard Republic military equipment.
   components:
+  - type: Sprite
+    sprite: _Misfits/Clothing/OuterClothing/Armor/ncr_captain_mantle.rsi
+  - type: Clothing
+    sprite: _Misfits/Clothing/OuterClothing/Armor/ncr_captain_mantle.rsi
   - type: Armor
     modifiers:
       coefficients:

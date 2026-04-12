@@ -2973,3 +2973,138 @@ Entries:
   id: 5715
   time: '2026-04-10T01:26:15.0000000+00:00'
   url: https://github.com/Misfit-Sanctuary/nuclear-14/pull/265
+- author: cythisiax
+  changes:
+    - type: Fix
+      message: >-
+        Legendary creature loot now spawns at correct coordinates by switching
+        from DestructionEventArgs to MobStateChangedEvent
+    - type: Fix
+      message: >-
+        Casings ejected without a throw angle (revolvers, manual cycling) now
+        have physics stripped immediately instead of persisting
+    - type: Fix
+      message: Ore box magnet no longer queries broadphase on nullspace/unloading maps
+    - type: Fix
+      message: >-
+        Persistent spawn erase now uses QueueDel to prevent broadphase
+        corruption during physics iteration
+    - type: Fix
+      message: >-
+        Tribal hunt legendary cleanup now uses QueueDel to prevent broadphase
+        corruption
+    - type: Fix
+      message: >-
+        Stale/dead hunters are now pruned from the joined hunters set each UI
+        tick
+    - type: Tweak
+      message: >-
+        Spent casing despawn reduced from 90s to 30s to further reduce entity
+        count during war
+    - type: Tweak
+      message: >-
+        Tribal hunt UI broadcasts during Active stage now only update joined
+        hunters instead of querying all participants
+    - type: Tweak
+      message: >-
+        Casing IsInDepartment check skipped during Active hunt stage (only
+        computed during Gathering)
+    - type: Add
+      message: >-
+        Global spent casing cap of 500 — oldest casings are deleted when
+        exceeded to prevent runaway accumulation during sustained firefights
+    - type: Add
+      message: >-
+        World cleanup system that auto-despawns blood puddles, footprints, and
+        giblets after 10 minutes
+  id: 5716
+  time: '2026-04-10T02:24:13.0000000+00:00'
+  url: https://github.com/Misfit-Sanctuary/nuclear-14/pull/266
+- author: Dpellowski
+  changes:
+    - type: Fix
+      message: Made slave collar and NCR prisoner collar craftable.
+  id: 5717
+  time: '2026-04-10T19:59:17.0000000+00:00'
+  url: https://github.com/Misfit-Sanctuary/nuclear-14/pull/269
+- author: Dpellowski
+  changes:
+    - type: Fix
+      message: >-
+        Characters without an ID now show only descriptive identity text instead
+        of their true name, including in speech/chat.
+    - type: Tweak
+      message: >-
+        All mask-slot face coverings now block identification by default
+        (repo-wide, including N14 masks/bandanas/hazmat masks).
+  id: 5718
+  time: '2026-04-10T20:18:40.0000000+00:00'
+  url: https://github.com/Misfit-Sanctuary/nuclear-14/pull/270
+- author: Oslo
+  changes:
+    - type: Tweak
+      message: Changed NCR NCO and Officer armor sprites.
+  id: 5719
+  time: '2026-04-11T00:46:56.0000000+00:00'
+  url: https://github.com/Misfit-Sanctuary/nuclear-14/pull/267
+- author: Bill Clinton
+  changes:
+    - type: Tweak
+      message: I have made the grunt NCR kits follow parity with the grunt legion kits.
+    - type: Tweak
+      message: >-
+        meds in the cent, deca, and vet legio got buffed to be poultice instead
+        of powder.
+    - type: Tweak
+      message: No more carbine for NCRA PFC. Take your scoped service rifle like a man.
+    - type: Tweak
+      message: >-
+        Legion command and elite infantry [decanus and vet decanus + vet legio]
+        given the Legion SKS + 4 clips.
+    - type: Tweak
+      message: >-
+        2 veteran Decanus kits given 1 chinese LMG and 1 spare belt for it. This
+        is for parity with NCR specialist LMG kits.
+    - type: Tweak
+      message: >-
+        increased meds per poultice and powder from 20u to 25u. This makes them
+        provide the same amount of medicine as a stim.
+    - type: Fix
+      message: Chainsaw attacks fast now.
+    - type: Tweak
+      message: added powerfists to some decanus loadouts.
+    - type: Tweak
+      message: buffed healing powder for real this time.
+  id: 5720
+  time: '2026-04-11T15:28:52.0000000+00:00'
+  url: https://github.com/Misfit-Sanctuary/nuclear-14/pull/268
+- author: qevie
+  changes:
+    - type: Tweak
+      message: Made electrolyzers and basic machine parts craftable!
+  id: 5721
+  time: '2026-04-11T15:29:22.0000000+00:00'
+  url: https://github.com/Misfit-Sanctuary/nuclear-14/pull/272
+- author: Bill Clinton
+  changes:
+    - type: Tweak
+      message: >-
+        gave decanus the legion HMG instead of chinese HMG and buffed priestess
+        gauntlets to be on par with the other melees.
+  id: 5722
+  time: '2026-04-11T22:41:50.0000000+00:00'
+  url: https://github.com/Misfit-Sanctuary/nuclear-14/pull/274
+- author: Bradysgaming
+  changes:
+    - type: Tweak
+      message: Gave frumen back latin
+  id: 5723
+  time: '2026-04-11T22:42:12.0000000+00:00'
+  url: https://github.com/Misfit-Sanctuary/nuclear-14/pull/273
+- author: Oli
+  changes:
+    - type: Add
+      message: FOUR tribal clothes to the loadout menu
+  id: 5724
+  time: '2026-04-12T02:02:11.0000000+00:00'
+  url: https://github.com/Misfit-Sanctuary/nuclear-14/pull/276

@@ -33,8 +33,8 @@
           - CaesarLegion
 #      - type: ReplacementAccent  # #Misfits Removed - forced latin speech replacement removed per request; Frumentarii should be able to speak normally
 #        accent: latin
-#  - !type:AddTraitSpecial  # #Misfits Removed - LanguageLatin tied to forced accent, removed alongside it
-#    traits: [ LanguageLatin ]
+  - !type:AddTraitSpecial
+    traits: [ LanguageLatin ]
 
 - type: startingGear
   id: CaesarLegionFrumentariiGear

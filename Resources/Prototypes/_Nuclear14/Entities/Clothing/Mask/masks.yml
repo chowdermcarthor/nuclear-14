@@ -10,6 +10,8 @@
     sprite: _Nuclear14/Clothing/Mask/hockeymask.rsi
   - type: Mask
   - type: IngestionBlocker
+  # #Misfits Fix - Face-covering masks should block identification.
+  - type: IdentityBlocker
   - type: Armor
     modifiers:
       coefficients:
@@ -33,6 +35,8 @@
     sprite: _Nuclear14/Clothing/Mask/platemask.rsi
   - type: Mask
   - type: IngestionBlocker
+  # #Misfits Fix - Face-covering masks should block identification.
+  - type: IdentityBlocker
   - type: Armor
     modifiers:
       coefficients:
@@ -56,6 +60,8 @@
     sprite: _Nuclear14/Clothing/Mask/grillmask.rsi
   - type: Mask
   - type: IngestionBlocker
+  # #Misfits Fix - Face-covering masks should block identification.
+  - type: IdentityBlocker
   - type: Armor
     modifiers:
       coefficients:
@@ -83,6 +89,8 @@
     slots:
     - Hair
     - Snout
+  # #Misfits Fix - Brown balaclava should hide identity like other balaclavas.
+  - type: IdentityBlocker
 
 - type: entity
   parent: ClothingMaskBase
@@ -132,6 +140,8 @@
     sprite: _Nuclear14/Clothing/Mask/mountiemask.rsi
   - type: Mask
   - type: IngestionBlocker
+  # #Misfits Fix - Face-covering masks should block identification.
+  - type: IdentityBlocker
   - type: Armor
     modifiers:
       coefficients:

@@ -6,8 +6,8 @@
   showBorder: true
   overrideConsoleVisibility: false
   canBeAntag: false
-  name: job-name-tribal-healer
-  description: job-description-tribal-healer
+  name: job-name-tribal-shaman
+  description: job-description-tribal-shaman
   playTimeTracker: TribalHealer
   requirements:
     - !type:CharacterSpeciesRequirement

@@ -45,6 +45,7 @@ public sealed class IdentitySystem : SharedIdentitySystem
         SubscribeLocalEvent<IdentityComponent, WearerMaskToggledEvent>((uid, _, _) => QueueIdentityUpdate(uid));
         SubscribeLocalEvent<IdentityComponent, EntityRenamedEvent>((uid, _, _) => QueueIdentityUpdate(uid));
         SubscribeLocalEvent<IdentityComponent, MapInitEvent>(OnMapInit);
+        SubscribeLocalEvent<IdentityComponent, TransformSpeakerNameEvent>(OnTransformSpeakerName);
 
         SubscribeLocalEvent<IdentityBlockerComponent, ComponentInit>(BlockerUpdateIdentity); // Goobstation - Update component state on component toggle
         SubscribeLocalEvent<IdentityBlockerComponent, ComponentRemove>(BlockerUpdateIdentity); // Goobstation - Update component state on component toggle
@@ -131,7 +132,9 @@ public sealed class IdentitySystem : SharedIdentitySystem
         var ev = new SeeIdentityAttemptEvent();
 
         RaiseLocalEvent(target, ev);
-        return representation.ToStringKnown(!ev.Cancelled);
+        // #Misfits Change - No-ID policy: without an ID name, identity is always descriptive and never a personal name.
+        var canRevealPersonalName = !ev.Cancelled && representation.PresumedName != null;
+        return representation.ToStringKnown(canRevealPersonalName);
     }
 
     /// <summary>
@@ -193,6 +196,13 @@ public sealed class IdentitySystem : SharedIdentitySystem
             target = containing.Value;
 
         QueueIdentityUpdate(target);
+    }
+
+    // #Misfits Change /Fix/: identity-blocking masks should obfuscate spoken names the same way they already obfuscate emotes.
+    private void OnTransformSpeakerName(EntityUid uid, IdentityComponent component, ref TransformSpeakerNameEvent args)
+    {
+        // #Misfits Fix - Speech should use identity representation so no-ID speakers show description instead of true name.
+        args.VoiceName = Identity.Name(uid, EntityManager);
     }
 
     // #Misfits Change /Fix/: identity-blocking masks should obfuscate spoken names the same way they already obfuscate emotes.

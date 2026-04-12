@@ -9,6 +9,8 @@
     size: Small
   - type: Clothing
     slots: [mask]
+  # #Misfits Change - Enforce repo-wide policy: all mask face coverings block identification.
+  - type: IdentityBlocker
   - type: HideLayerClothing # Corvax-Change
     force: true
     slots:

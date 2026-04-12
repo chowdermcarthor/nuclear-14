@@ -11,6 +11,8 @@
     sprite: _Nuclear14/Clothing/Mask/Bandanas/redscarf.rsi
   - type: Mask
   - type: IngestionBlocker
+  # #Misfits Fix - Face coverings should block identification.
+  - type: IdentityBlocker
   - type: Tag
     tags:
     - WhitelistChameleon
@@ -28,6 +30,8 @@
     sprite: _Nuclear14/Clothing/Mask/Bandanas/desertmask.rsi
   - type: BreathMask
   - type: IngestionBlocker
+  # #Misfits Fix - Face coverings should block identification.
+  - type: IdentityBlocker
   - type: Tag
     tags:
     - WhitelistChameleon
@@ -45,6 +49,8 @@
     sprite: _Nuclear14/Clothing/Mask/Bandanas/bluescarf.rsi
   - type: Mask
   - type: IngestionBlocker
+  # #Misfits Fix - Face coverings should block identification.
+  - type: IdentityBlocker
   - type: Tag
     tags:
     - WhitelistChameleon
@@ -62,6 +68,8 @@
     sprite: _Nuclear14/Clothing/Mask/Bandanas/greenscarf.rsi
   - type: Mask
   - type: IngestionBlocker
+  # #Misfits Fix - Face coverings should block identification.
+  - type: IdentityBlocker
   - type: Tag
     tags:
     - WhitelistChameleon
@@ -79,6 +87,8 @@
     sprite: _Nuclear14/Clothing/Mask/Bandanas/orangescarf.rsi
   - type: Mask
   - type: IngestionBlocker
+  # #Misfits Fix - Face coverings should block identification.
+  - type: IdentityBlocker
   - type: Tag
     tags:
     - WhitelistChameleon
@@ -96,6 +106,8 @@
     sprite: _Nuclear14/Clothing/Mask/Bandanas/brownscarf.rsi
   - type: Mask
   - type: IngestionBlocker
+  # #Misfits Fix - Face coverings should block identification.
+  - type: IdentityBlocker
   - type: Tag
     tags:
     - WhitelistChameleon
@@ -113,6 +125,8 @@
     sprite: _Nuclear14/Clothing/Mask/Bandanas/patriotscarf.rsi
   - type: Mask
   - type: IngestionBlocker
+  # #Misfits Fix - Face coverings should block identification.
+  - type: IdentityBlocker
   - type: Tag
     tags:
     - WhitelistChameleon

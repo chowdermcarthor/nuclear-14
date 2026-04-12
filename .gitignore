@@ -392,6 +392,5 @@ Scripts/wiki_sync/export/Weapons/RangedWeapons/Laser/index.wiki
 Scripts/wiki_sync/export/Weapons/RangedWeapons/Plasma/index.wiki
 Scripts/wiki_sync/export/Weapons/RangedWeapons/SmallGuns/index.wiki
 Scripts/wiki_sync/export/Weapons/WeaponsOther/index.wiki
-.github/prompts/add-misfits-item.prompt.md
-.github/instructions/ecs-misfits.instructions.md
-.github/instructions/prototypes-misfits.instructions.md
+.github/instructions/
+.gitignore

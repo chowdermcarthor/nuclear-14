@@ -57,7 +57,7 @@
 - type: entity
   parent: N14MobHumanTribal
   id: N14MobHumanTribalHealer
-  name: TribalHealer
+  name: TribalShaman
   components:
     - type: Icon
       state: healer

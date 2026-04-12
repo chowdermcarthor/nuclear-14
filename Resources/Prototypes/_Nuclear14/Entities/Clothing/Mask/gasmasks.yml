@@ -34,6 +34,7 @@
     sprite: _Nuclear14/Clothing/Mask/fallouthazmatsuit.rsi
   - type: Clothing
     sprite: _Nuclear14/Clothing/Mask/fallouthazmatsuit.rsi
+  # #Misfits Fix - Any face covering should block identification.
   - type: IdentityBlocker
   - type: BreathMask
   - type: GasFilterMask # Misfits Change

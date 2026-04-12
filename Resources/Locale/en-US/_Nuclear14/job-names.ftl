@@ -98,8 +98,8 @@ job-name-tribal-elder = Tribal Chieftain
 job-description-tribal-elder = Lead your tribe through good times and bad times and maintain your beliefs.
 job-name-tribal-farmer = Tribal Farmer
 job-description-tribal-farmer = Produce food and goods for the tribe to sustain your living.
-job-name-tribal-healer = Tribal Healer
-job-description-tribal-healer = Produce medicines and compounds for the tribe, as is tradition.
+job-name-tribal-shaman = Tribal Shaman
+job-description-tribal-shaman = Produce medicines and compounds for the tribe, as is tradition.
 
 # Vault
 job-name-overseer = Vault Overseer
