@@ -21,10 +21,10 @@
   functions:
     - !type:TraitModifyLanguages
       languagesSpoken:
-        - Chinese
+        - Spanish # #Misfits Fix - was Chinese, should be Spanish per trait description
         - Tribal
         - Latin
       languagesUnderstood:
-        - Chinese
+        - Spanish # #Misfits Fix - was Chinese, should be Spanish per trait description
         - Tribal
         - Latin

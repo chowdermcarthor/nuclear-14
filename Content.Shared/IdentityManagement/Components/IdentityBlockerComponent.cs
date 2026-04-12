@@ -1,12 +1,14 @@
 using Content.Shared.Inventory;
 using Robust.Shared.GameStates;
+using Robust.Shared.Serialization; // #Misfits Fix - Required for enum serialization attributes
 
 namespace Content.Shared.IdentityManagement.Components;
 
-[RegisterComponent, NetworkedComponent]
+// #Misfits Fix - Add AutoGenerateComponentState so Enabled field syncs to clients after mask toggle
+[RegisterComponent, NetworkedComponent, AutoGenerateComponentState]
 public sealed partial class IdentityBlockerComponent : Component
 {
-    [DataField]
+    [DataField, AutoNetworkedField] // #Misfits Fix - AutoNetworkedField ensures Enabled changes propagate to clients
     public bool Enabled = true;
 
     /// <summary>
@@ -16,6 +18,9 @@ public sealed partial class IdentityBlockerComponent : Component
     public IdentityBlockerCoverage Coverage = IdentityBlockerCoverage.FULL;
 }
 
+// #Misfits Fix - Add Flags and NetSerializable for proper bitwise operations and network serialization
+[Flags]
+[Serializable, NetSerializable]
 public enum IdentityBlockerCoverage
 {
     NONE  = 0,

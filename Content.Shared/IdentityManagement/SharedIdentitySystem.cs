@@ -35,9 +35,11 @@ public abstract class SharedIdentitySystem : EntitySystem
         component.IdentityEntitySlot = _container.EnsureContainer<ContainerSlot>(uid, SlotName);
     }
 
+    // #Misfits Fix - Dirty the component so the Enabled change syncs to clients via AutoNetworkedField
     private void OnMaskToggled(Entity<IdentityBlockerComponent> ent, ref ItemMaskToggledEvent args)
     {
         ent.Comp.Enabled = !args.IsToggled;
+        Dirty(ent);
     }
 }
 /// <summary>

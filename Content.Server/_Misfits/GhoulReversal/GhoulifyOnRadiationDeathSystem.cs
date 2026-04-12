@@ -65,16 +65,32 @@ public sealed class GhoulifyOnRadiationDeathSystem : EntitySystem
         // --- Transform into Ghoul player species ---
         _humanoid.SetSpecies(uid, component.GhoulSpecies);
 
-        // Revive the player: temporarily allow revives, heal all damage, then re-lock.
+        // #Misfits Fix - Revive into soft crit instead of full heal.
+        // Heal all damage first to leave Dead state, then re-apply enough damage
+        // to land exactly at the Critical threshold (soft crit).
         if (TryComp<MobThresholdsComponent>(uid, out var thresholds))
         {
             _mobThreshold.SetAllowRevives(uid, true, thresholds);
             _damageable.SetAllDamage(uid, damageable, FixedPoint2.Zero);
+
+            // Read the crit threshold; fall back to 100 if not defined
+            if (!_mobThreshold.TryGetThresholdForState(uid, MobState.Critical, out var critThreshold, thresholds))
+                critThreshold = FixedPoint2.New(100);
+
+            // Apply blunt damage equal to crit threshold so the player wakes in soft crit
+            var critDamage = new DamageSpecifier();
+            critDamage.DamageDict["Blunt"] = critThreshold.Value;
+            _damageable.TryChangeDamage(uid, critDamage, ignoreResistances: true);
+
             _mobThreshold.SetAllowRevives(uid, false, thresholds);
         }
         else
         {
+            // No thresholds component — heal and apply a default crit amount
             _damageable.SetAllDamage(uid, damageable, FixedPoint2.Zero);
+            var critDamage = new DamageSpecifier();
+            critDamage.DamageDict["Blunt"] = FixedPoint2.New(100);
+            _damageable.TryChangeDamage(uid, critDamage, ignoreResistances: true);
         }
 
         // Stamp the time component so Promethine chemistry can gatekeep reversal

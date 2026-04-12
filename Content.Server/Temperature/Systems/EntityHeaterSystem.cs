@@ -50,6 +50,11 @@ public sealed class EntityHeaterSystem : EntitySystem
             {
                 // Mitigates error for missing component
                 if (HasComp<TemperatureComponent>(ent)){
+                        // #Misfits Fix - propagate external heat into InternalTemperatureComponent
+                        // before ChangeHeat fires OnTemperatureChangeEvent; cooking construction
+                        // graphs check internal temperature, which must be up-to-date at event time.
+                        // Matches the existing fix in BonfireHeaterSystem.
+                        _temperature.ConductToInternalTemperature(ent, deltaTime);
                         _temperature.ChangeHeat(ent, energy);
                 }
             }

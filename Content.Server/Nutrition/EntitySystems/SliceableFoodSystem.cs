@@ -127,7 +127,9 @@ public sealed class SliceableFoodSystem : EntitySystem
 
         if (!_container.IsEntityOrParentInContainer(sliceUid))
         {
-            var randVect = _random.NextVector2(2.0f, 2.5f);
+            // #Misfits Tweak - reduced scatter from 2.0-2.5 to 0.3-0.5 so sliced items
+            // stay near the cutting location instead of launching across the room
+            var randVect = _random.NextVector2(0.3f, 0.5f);
             if (TryComp<PhysicsComponent>(sliceUid, out var physics))
                 _physics.SetLinearVelocity(sliceUid, randVect, body: physics);
         }

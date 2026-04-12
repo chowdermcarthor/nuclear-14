@@ -28,6 +28,7 @@
         factions:
           - BrotherhoodOfSteel
       - type: CPRTraining
+      - type: Pacified # #Misfits Add - Scribes are Pacifist by role
       - type: LanguageKnowledge # #Misfits Add: Scribes speak and understand Brotherhood binary code by default.
         speaks:
           - English
@@ -40,7 +41,7 @@
   id: BoSWestScribeGear
   equipment:
     jumpsuit: N14ClothingUniformJumpskirtBOSBlack  #Misfits Change /Tweak/: New consolidated BoS gear
-    outerClothing: N14ClothingOuterBrotherhoodMidwestFieldScribeCoat
+    # outerClothing: N14ClothingOuterBrotherhoodMidwestFieldScribeCoat # #Misfits Removed - Coat now comes from loadout kit selection
     back: N14ClothingBackpackSatchelMilitary
     shoes: N14ClothingBootsLeatherFilled
     head: N14ClothingHeadHatBeretknighBoS

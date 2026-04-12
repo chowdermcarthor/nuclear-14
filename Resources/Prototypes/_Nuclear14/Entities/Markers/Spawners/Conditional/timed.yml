@@ -17,6 +17,8 @@
       intervalSeconds: 2400
       minimumEntitiesSpawned: 1
       maximumEntitiesSpawned: 3
+      activationRange: 60 # #Misfits Add - Only spawn when a living player is within 60 tiles
+      maxAlivePerPrototype: 12 # #Misfits Add - Cap alive mobs of this type per map to prevent accumulation
 
 - type: entity
   name: Pigrat Timed Spawner
@@ -36,6 +38,8 @@
       intervalSeconds: 2400
       minimumEntitiesSpawned: 1
       maximumEntitiesSpawned: 3
+      activationRange: 60 # #Misfits Add - Only spawn when a living player is within 60 tiles
+      maxAlivePerPrototype: 12 # #Misfits Add - Cap alive mobs of this type per map
 
 - type: entity
   name: Radhog Timed Spawner
@@ -55,6 +59,8 @@
       intervalSeconds: 2400
       minimumEntitiesSpawned: 1
       maximumEntitiesSpawned: 3
+      activationRange: 60 # #Misfits Add - Only spawn when a living player is within 60 tiles
+      maxAlivePerPrototype: 12 # #Misfits Add - Cap alive mobs of this type per map
 
 - type: entity
   parent: N14TimedSpawnerMolerat

@@ -6,6 +6,7 @@ using Robust.Shared.Console;
 namespace Content.Server.Chat.Commands
 {
     [AdminCommand(AdminFlags.Adminchat)]
+    [AdminCommand(AdminFlags.ViewNotes)] // #Misfits Add - Grant mentors (ViewNotes) access to admin chat
     internal sealed class AdminChatCommand : IConsoleCommand
     {
         public string Command => "asay";

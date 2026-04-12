@@ -1,0 +1,10 @@
+# Misfits Augments — Damage Modifier Sets
+
+- type: damageModifierSet
+  id: MisfitsCombatStimResistance
+  coefficients:
+    Blunt: 0.7
+    Slash: 0.7
+    Piercing: 0.7
+    Heat: 0.8
+    Shock: 0.8

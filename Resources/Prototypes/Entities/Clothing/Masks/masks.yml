@@ -20,6 +20,9 @@
     slots:
     - Snout
     hideOnToggle: true
+  # #Misfits Add - Gas masks provide disease protection when worn
+  - type: DiseaseProtection
+    protection: 0.7
 
 - type: entity
   parent: ClothingMaskPullableBase

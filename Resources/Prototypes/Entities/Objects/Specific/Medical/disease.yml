@@ -14,6 +14,8 @@
     - Recyclable
     - Trash
   - type: BotanySwab
+  # #Misfits Add - Disease swab sample collection component
+  - type: DiseaseSwab
   # - type: GuideHelp
     # guides:
   # # - Virology (when it's back)
@@ -51,3 +53,5 @@
   - type: Sprite
     sprite: Objects/Specific/Medical/medipen.rsi
     state: salpen
+  # #Misfits Add - Disease vaccine injection component
+  - type: DiseaseVaccine

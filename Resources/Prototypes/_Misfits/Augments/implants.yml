@@ -1,0 +1,45 @@
+# Misfits Augments — Vault-Tec Cybernetic Implants
+# Admin-spawn only. No lathe recipes or vendor listings.
+
+- type: entity
+  id: MisfitsRetractableBladesImplant
+  name: augment-retractable-blades-name
+  description: augment-retractable-blades-desc
+  parent: BaseSubdermalImplant
+  components:
+  - type: SubdermalImplant
+    implantAction: ActionToggleRetractableBlades
+    permanent: false
+  - type: AugmentRetractableBlades
+
+- type: entity
+  id: MisfitsReflexBoosterImplant
+  name: augment-reflex-booster-name
+  description: augment-reflex-booster-desc
+  parent: BaseSubdermalImplant
+  components:
+  - type: SubdermalImplant
+    implantAction: ActionActivateReflexBooster
+    permanent: false
+  - type: AugmentReflexBooster
+
+- type: entity
+  id: MisfitsTargetingHudImplant
+  name: augment-targeting-hud-name
+  description: augment-targeting-hud-desc
+  parent: BaseSubdermalImplant
+  components:
+  - type: SubdermalImplant
+    permanent: false
+  - type: AugmentTargetingHud
+
+- type: entity
+  id: MisfitsCombatStimImplant
+  name: augment-combat-stim-name
+  description: augment-combat-stim-desc
+  parent: BaseSubdermalImplant
+  components:
+  - type: SubdermalImplant
+    implantAction: ActionActivateCombatStim
+    permanent: false
+  - type: AugmentCombatStim

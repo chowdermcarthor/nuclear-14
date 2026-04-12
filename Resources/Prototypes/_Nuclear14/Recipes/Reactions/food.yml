@@ -87,21 +87,22 @@
     - !type:CreateEntityReactionEffect
       entity: N14FoodDoughPie
 
-# -- N14TODO: Replace --
-#- type: reaction
-#  id: N14CreateMeatball
-#  impact: Low
-#  quantized: true
-#  conserveEnergy: false
-#  reactants:
-#    N14UncookedAnimalProteinsRad:
-#      amount: 5
-#    Egg:
-#      amount: 6
-#  effects:
-#    - !type:CreateEntityReactionEffect
-#      entity: N14FoodMeatMeatball
-#meatballs are causing a ton of errors for some reason, commented out for now -hazel
+# #Misfits Fix - N14 meats use N14UncookedAnimalProteinsRad, not upstream UncookedAnimalProteins;
+# upstream CreateMeatball never fires. This reaction uses the correct N14 reagent and targets
+# the upstream FoodMeatMeatball entity which already exists.
+- type: reaction
+  id: N14CreateMeatball
+  impact: Low
+  quantized: true
+  conserveEnergy: false
+  reactants:
+    N14UncookedAnimalProteinsRad:
+      amount: 5
+    Egg:
+      amount: 6
+  effects:
+    - !type:CreateEntityReactionEffect
+      entity: FoodMeatMeatball
 
 - type: reaction
   id: N14CreateAgaveJam

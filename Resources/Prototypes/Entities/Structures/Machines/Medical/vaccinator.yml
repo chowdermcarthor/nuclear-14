@@ -24,4 +24,6 @@
     containers:
       machine_board: !type:Container
       machine_parts: !type:Container
+  # #Misfits Add - Disease vaccinator backend component
+  - type: DiseaseVaccinator
   - type: RequireProjectileTarget

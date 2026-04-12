@@ -74,10 +74,11 @@ public sealed class ThermalRegulatorSystem : EntitySystem
         tempDiff = Math.Abs(ent.Comp2.CurrentTemperature - ent.Comp1.NormalBodyTemperature);
         targetHeat = tempDiff * heatCapacity;
 
-        // if body temperature is not within comfortable, thermal regulation
-        // processes starts
-        if (tempDiff > ent.Comp1.ThermalRegulationTemperatureThreshold)
-            return;
+        // #Misfits Fix - Upstream returns early when tempDiff exceeds threshold, preventing
+        // sweating/shivering at extreme temperatures. Since temperature damage is disabled in
+        // this fork (see TemperatureSystem), that early return causes body temp to climb forever
+        // after fire exposure with no way to cool down. Removed so the body always regulates.
+        // Original: if (tempDiff > ent.Comp1.ThermalRegulationTemperatureThreshold) return;
 
         if (ent.Comp2.CurrentTemperature > ent.Comp1.NormalBodyTemperature)
         {

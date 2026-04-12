@@ -17,6 +17,8 @@
   - type: Appearance
   - type: Machine
     board: DiagnoserMachineCircuitboard
+  # #Misfits Add - Disease diagnoser backend component
+  - type: DiseaseDiagnoser
 
 - type: entity
   name: disease diagnoser report

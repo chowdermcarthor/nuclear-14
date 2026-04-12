@@ -16,8 +16,8 @@
     layers:
     - state: skewer
     - state: skewer-meat
-    - state: skewer-meat-alpha
-    - map: ["foodSequenceLayers"]
+    # #Misfits Fix - removed greyscale alpha overlay and empty foodSequenceLayers map;
+    # those are for dynamically assembled food sequences, not pre-made static kebabs
   - type: SolutionContainerManager
     solutions:
       food:

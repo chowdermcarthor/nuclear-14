@@ -1,0 +1,38 @@
+# Misfits Augments — Implanter Syringes
+# Admin-spawn only. Each contains a pre-loaded augment implant.
+
+- type: entity
+  id: MisfitsRetractableBladesImplanter
+  name: augment-retractable-blades-implanter-name
+  description: augment-retractable-blades-implanter-desc
+  parent: BaseImplantOnlyImplanter
+  components:
+  - type: Implanter
+    implant: MisfitsRetractableBladesImplant
+
+- type: entity
+  id: MisfitsReflexBoosterImplanter
+  name: augment-reflex-booster-implanter-name
+  description: augment-reflex-booster-implanter-desc
+  parent: BaseImplantOnlyImplanter
+  components:
+  - type: Implanter
+    implant: MisfitsReflexBoosterImplant
+
+- type: entity
+  id: MisfitsTargetingHudImplanter
+  name: augment-targeting-hud-implanter-name
+  description: augment-targeting-hud-implanter-desc
+  parent: BaseImplantOnlyImplanter
+  components:
+  - type: Implanter
+    implant: MisfitsTargetingHudImplant
+
+- type: entity
+  id: MisfitsCombatStimImplanter
+  name: augment-combat-stim-implanter-name
+  description: augment-combat-stim-implanter-desc
+  parent: BaseImplantOnlyImplanter
+  components:
+  - type: Implanter
+    implant: MisfitsCombatStimImplant

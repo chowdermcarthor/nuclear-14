@@ -1,0 +1,24 @@
+# Misfits Augments — Retractable Blade Weapon Entity
+# Spawned in-hand by the retractable blades augment when deployed.
+
+- type: entity
+  id: MisfitsAugmentBlade
+  name: augment-retractable-blade-weapon-name
+  description: augment-retractable-blade-weapon-desc
+  parent: BaseItem
+  components:
+  - type: MeleeWeapon
+    damage:
+      types:
+        Slash: 18
+        Piercing: 7
+    angle: 30
+    attackRate: 1.5
+    soundHit:
+      path: /Audio/Weapons/bladeslice.ogg
+  - type: Sprite
+    sprite: Objects/Weapons/Melee/armblade.rsi
+    state: icon
+  - type: Item
+    size: Small
+  - type: Unremoveable

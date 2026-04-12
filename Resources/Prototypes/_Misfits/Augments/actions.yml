@@ -1,0 +1,34 @@
+# Misfits Augments — Action Prototypes
+# Granted automatically by the SubdermalImplant system when each implant is injected.
+
+- type: entity
+  id: ActionToggleRetractableBlades
+  name: augment-retractable-blades-action-name
+  description: augment-retractable-blades-action-desc
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: InstantAction
+    icon: { sprite: Objects/Weapons/Melee/armblade.rsi, state: icon }
+    event: !type:ToggleRetractableBladesEvent
+
+- type: entity
+  id: ActionActivateReflexBooster
+  name: augment-reflex-booster-action-name
+  description: augment-reflex-booster-action-desc
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: InstantAction
+    icon: { sprite: Objects/Specific/Medical/implanter.rsi, state: implanter0 }
+    useDelay: 30
+    event: !type:ActivateReflexBoosterEvent
+
+- type: entity
+  id: ActionActivateCombatStim
+  name: augment-combat-stim-action-name
+  description: augment-combat-stim-action-desc
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: InstantAction
+    icon: { sprite: Objects/Specific/Medical/implanter.rsi, state: implanter0 }
+    useDelay: 60
+    event: !type:ActivateCombatStimEvent

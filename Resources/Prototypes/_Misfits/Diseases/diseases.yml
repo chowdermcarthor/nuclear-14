@@ -1,0 +1,346 @@
+# #Misfits Add - Fallout wasteland disease prototypes.
+# Eight diseases themed for the Nuclear-14 setting.
+# Admin-spawn only; no natural spawning or vendor access.
+
+# --- RAD FLU ---
+# Common radiation sickness contracted near irradiated zones.
+# Early stages: nausea, sneezing. Late stages: vomiting, damage.
+- type: disease
+  id: RadFlu
+  name: disease-rad-flu-name
+  infectious: true
+  airborne: true
+  contactSpread: 0.3
+  cureResist: 0.1
+  tickTime: 3.0
+  stages:
+    - 30.0   # Stage 1 after 30s
+    - 90.0   # Stage 2 after 90s
+    - 180.0  # Stage 3 after 180s
+  effects:
+    - !type:DiseaseSnough
+      probability: 0.15
+      stages: [0, 1]
+      emoteId: Sneeze
+      airTransmit: true
+    - !type:DiseasePopUp
+      probability: 0.2
+      stages: [0, 1]
+      message: disease-rad-flu-popup-nausea
+    - !type:DiseaseGenericStatusEffect
+      probability: 0.1
+      stages: [1, 2]
+      key: Jitter
+      duration: 4.0
+    - !type:DiseaseVomit
+      probability: 0.15
+      stages: [2, 3]
+      thirstAmount: -30.0
+      hungerAmount: -30.0
+    - !type:DiseaseHealthChange
+      probability: 0.1
+      stages: [3]
+      damage:
+        Radiation: 3
+  cures:
+    - !type:DiseaseReagentCure
+      reagent: Dylovene
+      minAmount: 10.0
+    - !type:DiseaseJustWaitCure
+      maxDuration: 360.0
+
+# --- GHOUL ROT ---
+# Necrotic infection spread by feral ghouls. Contact only.
+# Causes tissue damage and slurred speech.
+- type: disease
+  id: GhoulRot
+  name: disease-ghoul-rot-name
+  infectious: true
+  airborne: false
+  contactSpread: 0.4
+  cureResist: 0.3
+  tickTime: 4.0
+  stages:
+    - 40.0
+    - 120.0
+    - 240.0
+  effects:
+    - !type:DiseasePopUp
+      probability: 0.2
+      stages: [0, 1]
+      message: disease-ghoul-rot-popup-itch
+    - !type:DiseaseGenericStatusEffect
+      probability: 0.15
+      stages: [1, 2]
+      key: SlurredSpeech
+      duration: 8.0
+    - !type:DiseaseHealthChange
+      probability: 0.15
+      stages: [2, 3]
+      damage:
+        Blunt: 2
+        Cellular: 1
+    - !type:DiseaseSnough
+      probability: 0.1
+      stages: [1, 2, 3]
+      emoteId: Cough
+      airTransmit: false
+  cures:
+    - !type:DiseaseReagentCure
+      reagent: Dermaline
+      minAmount: 15.0
+
+# --- MOLE RAT DISEASE ---
+# Contracted from mole rat bites. Causes fever and weakness.
+- type: disease
+  id: MoleRatDisease
+  name: disease-mole-rat-name
+  infectious: false
+  airborne: false
+  contactSpread: 0.0
+  cureResist: 0.15
+  tickTime: 3.5
+  stages:
+    - 25.0
+    - 80.0
+    - 160.0
+  effects:
+    - !type:DiseasePopUp
+      probability: 0.2
+      stages: [0, 1]
+      message: disease-mole-rat-popup-fever
+    - !type:DiseaseGenericStatusEffect
+      probability: 0.12
+      stages: [1, 2]
+      key: Jitter
+      duration: 3.0
+    - !type:DiseaseVomit
+      probability: 0.1
+      stages: [2]
+      thirstAmount: -20.0
+      hungerAmount: -25.0
+    - !type:DiseaseHealthChange
+      probability: 0.08
+      stages: [2, 3]
+      damage:
+        Poison: 2
+  cures:
+    - !type:DiseaseReagentCure
+      reagent: Tricordrazine
+      minAmount: 10.0
+    - !type:DiseaseJustWaitCure
+      maxDuration: 300.0
+
+# --- BRAHMIN POX ---
+# Mild disease from brahmin contact. Mostly cosmetic early on.
+# Causes sneezing, blurred vision at later stages.
+- type: disease
+  id: BrahminPox
+  name: disease-brahmin-pox-name
+  infectious: true
+  airborne: true
+  contactSpread: 0.5
+  cureResist: 0.05
+  tickTime: 2.5
+  stages:
+    - 20.0
+    - 60.0
+  effects:
+    - !type:DiseaseSnough
+      probability: 0.2
+      stages: [0, 1]
+      emoteId: Sneeze
+      airTransmit: true
+    - !type:DiseasePopUp
+      probability: 0.15
+      stages: [0]
+      message: disease-brahmin-pox-popup-spots
+    - !type:DiseaseGenericStatusEffect
+      probability: 0.1
+      stages: [1, 2]
+      key: TemporaryBlindness
+      duration: 3.0
+  cures:
+    - !type:DiseaseBedrestCure
+      stages: []
+    - !type:DiseaseJustWaitCure
+      maxDuration: 200.0
+
+# --- WASTELAND FEVER ---
+# Dangerous fever contracted in the deep wasteland. High damage.
+- type: disease
+  id: WastelandFever
+  name: disease-wasteland-fever-name
+  infectious: true
+  airborne: false
+  contactSpread: 0.2
+  cureResist: 0.25
+  tickTime: 4.0
+  stages:
+    - 30.0
+    - 100.0
+    - 200.0
+  effects:
+    - !type:DiseasePopUp
+      probability: 0.25
+      stages: [0, 1]
+      message: disease-wasteland-fever-popup-hot
+    - !type:DiseaseGenericStatusEffect
+      probability: 0.15
+      stages: [1, 2]
+      key: Stutter
+      duration: 5.0
+    - !type:DiseaseSnough
+      probability: 0.12
+      stages: [1, 2, 3]
+      emoteId: Cough
+      airTransmit: false
+    - !type:DiseaseVomit
+      probability: 0.12
+      stages: [2, 3]
+      thirstAmount: -40.0
+      hungerAmount: -40.0
+    - !type:DiseaseHealthChange
+      probability: 0.1
+      stages: [3]
+      damage:
+        Heat: 3
+        Poison: 2
+  cures:
+    - !type:DiseaseReagentCure
+      reagent: Cryoxadone
+      minAmount: 15.0
+
+# --- SPORE SICKNESS ---
+# Fungal disease from irradiated spore clouds.
+# Causes coughing, breathing difficulty, lung damage.
+- type: disease
+  id: SporeSickness
+  name: disease-spore-sickness-name
+  infectious: true
+  airborne: true
+  contactSpread: 0.35
+  cureResist: 0.2
+  tickTime: 3.0
+  stages:
+    - 25.0
+    - 75.0
+    - 150.0
+  effects:
+    - !type:DiseaseSnough
+      probability: 0.25
+      stages: [0, 1, 2]
+      emoteId: Cough
+      airTransmit: true
+    - !type:DiseasePopUp
+      probability: 0.15
+      stages: [0, 1]
+      message: disease-spore-sickness-popup-cough
+    - !type:DiseaseGenericStatusEffect
+      probability: 0.1
+      stages: [1, 2]
+      key: Jitter
+      duration: 4.0
+    - !type:DiseaseAdjustReagent
+      probability: 0.08
+      stages: [2, 3]
+      reagent: Lexorin
+      amount: 2.0
+    - !type:DiseaseHealthChange
+      probability: 0.1
+      stages: [3]
+      damage:
+        Asphyxiation: 3
+  cures:
+    - !type:DiseaseReagentCure
+      reagent: Spaceacillin
+      minAmount: 10.0
+    - !type:DiseaseBodyTemperatureCure
+      threshold: 320.0
+      mustBeAbove: true
+
+# --- NEW PLAGUE ---
+# Extremely dangerous pre-war bioweapon. Hard to cure.
+# High damage, high spread, high cure resistance.
+- type: disease
+  id: NewPlague
+  name: disease-new-plague-name
+  infectious: true
+  airborne: true
+  contactSpread: 0.6
+  cureResist: 0.5
+  tickTime: 2.5
+  stages:
+    - 20.0
+    - 60.0
+    - 120.0
+    - 200.0
+  effects:
+    - !type:DiseaseSnough
+      probability: 0.3
+      stages: [0, 1, 2]
+      emoteId: Cough
+      airTransmit: true
+    - !type:DiseasePopUp
+      probability: 0.2
+      stages: [0]
+      message: disease-new-plague-popup-chills
+    - !type:DiseaseGenericStatusEffect
+      probability: 0.2
+      stages: [1, 2]
+      key: Jitter
+      duration: 5.0
+    - !type:DiseaseVomit
+      probability: 0.15
+      stages: [2, 3]
+      thirstAmount: -50.0
+      hungerAmount: -50.0
+    - !type:DiseaseGenericStatusEffect
+      probability: 0.12
+      stages: [3, 4]
+      key: TemporaryBlindness
+      duration: 6.0
+    - !type:DiseaseHealthChange
+      probability: 0.15
+      stages: [3, 4]
+      damage:
+        Poison: 4
+        Cellular: 2
+  cures:
+    - !type:DiseaseReagentCure
+      reagent: Arithrazine
+      minAmount: 20.0
+
+# --- SWAMP ITCH ---
+# Mild parasitic infection from standing water. Annoying but not lethal.
+- type: disease
+  id: SwampItch
+  name: disease-swamp-itch-name
+  infectious: false
+  airborne: false
+  contactSpread: 0.0
+  cureResist: 0.0
+  tickTime: 2.0
+  stages:
+    - 15.0
+    - 50.0
+  effects:
+    - !type:DiseasePopUp
+      probability: 0.3
+      stages: [0, 1, 2]
+      message: disease-swamp-itch-popup-scratch
+    - !type:DiseaseGenericStatusEffect
+      probability: 0.1
+      stages: [1, 2]
+      key: Jitter
+      duration: 2.0
+    - !type:DiseaseSnough
+      probability: 0.1
+      stages: [1]
+      emoteId: Sneeze
+      airTransmit: false
+  cures:
+    - !type:DiseaseBedrestCure
+      stages: []
+    - !type:DiseaseJustWaitCure
+      maxDuration: 150.0

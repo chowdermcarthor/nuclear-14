@@ -112,6 +112,8 @@ public sealed class IdentitySystem : SharedIdentitySystem
             // If presumed name is null and we're using that, we set proper noun to be false ("the old woman")
             if (name != representation.TrueName && representation.PresumedName == null)
                 identityGrammar.ProperNoun = false;
+            else
+                identityGrammar.ProperNoun = true; // #Misfits Fix - Reset ProperNoun when identity is known to prevent grammar artifacts
         }
 
         if (name == Name(ident))
