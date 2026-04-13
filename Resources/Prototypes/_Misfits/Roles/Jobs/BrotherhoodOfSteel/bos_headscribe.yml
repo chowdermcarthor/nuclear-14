@@ -28,7 +28,6 @@
         factions:
           - BrotherhoodOfSteel
       - type: CPRTraining
-      - type: Pacified # #Misfits Add - Scribes are Pacifist by role
       - type: LanguageKnowledge # #Misfits Add: Scribes speak and understand Brotherhood binary code by default.
         speaks:
           - English
@@ -36,6 +35,10 @@
         understands:
           - English
           - N14BrotherBeep
+      - type: RobotWeaponPickupBlacklist # #Misfits Add: Scribes use robot's no weapon pickup component as an alternative to pacifism.
+        blacklist:
+          components:
+          - Gun
 
 - type: startingGear
   id: BoSWestScribeGear
