@@ -3140,3 +3140,10 @@ Entries:
   id: 5728
   time: '2026-04-13T18:54:57.0000000+00:00'
   url: https://github.com/Misfit-Sanctuary/nuclear-14/pull/283
+- author: qevie
+  changes:
+    - type: Add
+      message: New brotherhood berets! (courtesy of amildlysleepyguy)
+  id: 5729
+  time: '2026-04-13T19:38:32.0000000+00:00'
+  url: https://github.com/Misfit-Sanctuary/nuclear-14/pull/284
