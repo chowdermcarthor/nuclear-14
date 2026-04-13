@@ -1,0 +1,21 @@
+- type: entity
+  parent: ClothingHeadBase
+  id: N14ClothingScribeBeret
+  name: Scribe Beret
+  description: A beret worn by scribes within the brotherhood of steel.
+  components:
+  - type: Sprite
+    sprite: _Misfits/Clothing/Head/hsberet.rsi
+  - type: Clothing
+    sprite: _Misfits/Clothing/Head/hsberet.rsi
+
+- type: entity
+  parent: ClothingHeadBase
+  id: N14ClothingPaladinBeret
+  name: Head Paladin Beret
+  description: A beret worn by paladins within the brotherhood of steel.
+  components:
+  - type: Sprite
+    sprite: _Misfits/Clothing/Head/headpaladinberet.rsi
+  - type: Clothing
+    sprite: _Misfits/Clothing/Head/headpaladinberet.rsi
