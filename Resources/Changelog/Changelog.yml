@@ -3129,3 +3129,14 @@ Entries:
   id: 5727
   time: '2026-04-13T15:21:13.0000000+00:00'
   url: https://github.com/Misfit-Sanctuary/nuclear-14/pull/282
+- author: qevie
+  changes:
+    - type: Tweak
+      message: >-
+        Scribe pacifism reworked! Now, scribes can't pick up firearms, but can
+        still use melee!
+    - type: Tweak
+      message: AEP-7s removed from scribe kit.
+  id: 5728
+  time: '2026-04-13T18:54:57.0000000+00:00'
+  url: https://github.com/Misfit-Sanctuary/nuclear-14/pull/283
