@@ -34,6 +34,7 @@
 - type: startingGear
   id: TownShopkeeperHelperGear
   equipment:
+    ears: MisfitsClothingHeadsetWastelandScrap
     jumpsuit: N14ClothingUniformJumpsuitMerchant
     back: N14ClothingBackpackHiking
     shoes: N14ClothingShoesBlack
