@@ -3193,3 +3193,10 @@ Entries:
   id: 5733
   time: '2026-04-14T17:17:08.0000000+00:00'
   url: https://github.com/Misfit-Sanctuary/nuclear-14/pull/288
+- author: qevie
+  changes:
+    - type: Fix
+      message: Promethine recipe fixed!
+  id: 5734
+  time: '2026-04-14T21:18:26.0000000+00:00'
+  url: https://github.com/Misfit-Sanctuary/nuclear-14/pull/289
