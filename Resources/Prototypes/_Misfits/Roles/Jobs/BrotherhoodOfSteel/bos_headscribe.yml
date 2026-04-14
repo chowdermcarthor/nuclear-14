@@ -47,14 +47,13 @@
     # outerClothing: N14ClothingOuterBrotherhoodMidwestFieldScribeCoat # #Misfits Removed - Coat now comes from loadout kit selection
     back: N14ClothingBackpackSatchelMilitary
     shoes: N14ClothingBootsLeatherFilled
-    head: N14ClothingHeadHatBeretknighBoS
+    head: N14ClothingScribeBeret
     pocket1: BoSBrotherhoodHeadScribeKits
     id: N14HeadScribe_PipBoy
     ears: N14ClothingHeadsetBrotherhoodOfSteelScribe
     belt: ClothingBeltMilitary
   storage:
     back:
-    - NCClothingOuterBosReconArmor
     - N14BoxPlasticFilledMilitary
 
 - type: playTimeTracker
