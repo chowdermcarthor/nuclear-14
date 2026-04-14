@@ -49,7 +49,7 @@
     shoes: N14ClothingBootsLeatherFilled
     head: N14ClothingHeadHatBeretknighBoS
     pocket1: BoSBrotherhoodHeadScribeKits
-    id: N14IDBrotherhoodOfSteelHolotagHeadScribe
+    id: N14HeadScribe_PipBoy
     ears: N14ClothingHeadsetBrotherhoodOfSteelScribe
     belt: ClothingBeltMilitary
   storage:
