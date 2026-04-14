@@ -3174,3 +3174,22 @@ Entries:
   id: 5732
   time: '2026-04-14T17:04:11.0000000+00:00'
   url: https://github.com/Misfit-Sanctuary/nuclear-14/pull/286
+- author: cythisiax
+  changes:
+    - type: Fix
+      message: >-
+        Robot jobs now correctly receive vault and job access on their
+        navigation cards at spawn via a new SyntheticGear starting gear
+        prototype. Vault-assigned robots now spawn with proper encryp[tion keys.
+        Can now hear vault radio.
+    - type: Fix
+      message: >-
+        Contract UI no longer floods with infinite rebuilds by using
+        field-by-field state comparison instead of reference.
+    - type: Tweak
+      message: >-
+        Disease cures updated to use Fallout-canon reagents like RadAway,
+        Antidote, Hydra, Bitterdrink, and HealingMixture.
+  id: 5733
+  time: '2026-04-14T17:17:08.0000000+00:00'
+  url: https://github.com/Misfit-Sanctuary/nuclear-14/pull/288
