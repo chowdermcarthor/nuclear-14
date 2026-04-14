@@ -76,6 +76,7 @@
     - Torch
     - N14Bandage
     - Ointment
+    - N14ClothingDeathclawHelm #Misfits Add - New deathclaw helmet for chieftain
 
 - type: playTimeTracker
   id: TribalElder

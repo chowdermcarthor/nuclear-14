@@ -1,0 +1,19 @@
+- type: entity
+  parent: ClothingHeadBase
+  id: N14ClothingDeathclawHelm
+  name: Deathclaw helmet
+  description: A helmet fashioned out of a well-butchered deathclaw skull.
+  components:
+  - type: Sprite
+    sprite: _Misfits/Clothing/Head/deathclawhelm.rsi
+  - type: Clothing
+    sprite: _Misfits/Clothing/Head/deathclawhelm.rsi
+  - type: HideLayerClothing
+    slots:
+    - Hair
+  - type: Armor
+    modifiers:
+      coefficients:
+        Blunt: 0.80
+        Slash: 0.85
+        Piercing: 0.85
