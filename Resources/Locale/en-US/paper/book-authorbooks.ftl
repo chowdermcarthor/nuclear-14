@@ -1,3 +1,65 @@
+book-text-vault-guide =
+    █  █ ▄▀▄ █   █ █   ▀█▀
+    ▀▄▀ █▀█ █▄█ █▄▄ █
+    ▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀
+
+    So, You’ve Avoided the Nuclear Holocaust! ...What now?
+    A good question, and if you stick to this Vault-Tec Issue Pamphlet, an easily answered one!
+
+    Chapter One: Getting Used to Your New Home!
+    First, let’s get you acquainted with the basics. Notice your Vault-Suit? This suit of yours is tailored specifically to be slim fitting AND functional, keeping out as many rads as possible and keeping YOU safe. Keep this suit well maintained, and never lose it! It could be the difference between life and death.
+
+    As you get settled into our state-of-the-art Vault, you may notice a feeling of loneliness or of boredom. It’s true, the Vault may be bland at times, but that’s no reason to give up on it. Fill some time with some of the following suggestions!
+    ▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬
+    - Redecorating! Sometimes a potted plant in the right place can make all the difference.
+    - Amateur Radio! Experimentation with Electronics could help you net good favor among our top Engineers!
+      (Vault-Tec highly advises against making earnest attempts to contact the Outside.)
+    - Host yourself a get-together! Our Library comes equipped with a game room.
+    - Journaling! A Happy Resident is a Safe Resident!
+    - Gardening! With our Hydroponics Wing and patented Vault-Tec brand tools, whether you’re providing for fun or family, you can keep the Vault thriving AND have relax the soothing glow of our patented UV-Simulation emitters!
+    ▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬
+    If you stick to your guns, you will find yourself more than at home here. Speaking of Guns…
+
+    Chapter Two: The Ins and Outs, the Dos and Don’ts!
+    Your local Vault-Tec Security Force, small as it may be, works tirelessly to keep you safe. When they say jump, you say how high, no matter what it is. These are some things you are NOT allowed to do.
+
+    - DO NOT Touch or otherwise tamper with the Vault-Door. It’s there to protect you.
+    - DO NOT Touch or otherwise tamper with the Vault-Door Controls. Should you attempt to open the door, the full force of the law will be executed.
+    - DO Make sure to register any firearms or heirlooms with your Vault-Tec Security Personnel, any Residents found with unregistered firearms may have them confiscated until further action is taken to retrieve them.
+
+    Remember, don’t argue with your Vault-Tec Security Force, they’re here to help you!
+
+    Chapter Three: Climbing the Ranks!
+
+    ### Medical Staff
+    Welcome to the family, Doctor! Your job is straightforward enough, keep your fellow Residents happy and healthy! It is recommended to perform a standardized test (see the document included in your gift bag during the Introductory Seminar.) and regular check-ups on your patients. Everything else should have been covered during your rigorous medical training, good luck!
+
+    ### Maintenance Staff
+    Congratulations on the Promotion! As an Engineer, your job is to keep the Electrical Systems in order and keep air pumping. As the backbone of the Vault, you are privy to more private information than Residents or the Doctors. Use this information wisely, as distribution of classified documents may be handled by the…
+
+    ### Security Staff
+    Congratulations, recruit, and welcome to the Vault-Tec Security Force. Bravo on proving yourself to be the most loyal of your flock. Your job, whether or not you choose to accept it, is to protect the Overseer at all costs and to secure the peace within the vault. Know your limits, however, as the higher ups despise the paperwork they receive when Security goes overkill.
+
+    ### Advanced Emergency Protocols
+    Welcome to the big leagues, if you’re referring to this section, this means that something catastrophic has happened to the vault in any of these categories:
+    ▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬
+    - Chemical
+    - Biological
+    - Radiological
+    - Nuclear
+    - Atmospheric
+    ▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬
+    If you follow these step-by-step instructions, you can keep yourself and your fellow residents alive.
+
+    If you’ve identified a threat, head directly to your dorm room, this will provide solace to your Security Team by having one less thing to worry about. Once you’ve done this, wait for a broadcast by either Security or the Overseer to confirm it’s safe. Unless you hear from them, do not open your doors.
+
+    This should usually be enough, but in case of radio silence, draw up an emergency evacuation plan to direct yourself to either the Security Wing OR the Engineering Wing. Then, start regularly sending Emergency Broadcasts using a Radio set to the default setting. The phrasing should go as follows;
+
+    ## “MAYDAY, MAYDAY, MAYDAY, VAULT-XXXX IS UNDER CBRNA RISKS AND REQUIRES ASSISTANCE.”
+
+    After saying this, wait some time and repeat it for as long as it takes for someone from Vault-Tec HQ to respond.
+
+    Remember, only open the door unless absolutely, unequivocally, unwaveringly required. Something bad may occur otherwise.
 book-text-narsielegend = In the beginning, the world was young and full of chaos. The people of the world struggled to survive against the harsh elements and savage beasts that roamed the land. They cried out for a savior to deliver them from their suffering.
       And it was then that Nar'Sie emerged from the depths of the earth, a hivemind god born from the collective consciousness of all living things. Its body was made of molten rock and its eyes blazed with a fiery intensity that could melt steel.
       Nar'Sie surveyed the world and saw the pain and suffering of its people. It took pity on them and offered them a way to escape the cycle of life and death. All who joined the hivemind would become eternal, their consciousness melding with Nar'Sie's to form a single, unified being.
