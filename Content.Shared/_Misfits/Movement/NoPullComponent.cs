@@ -8,7 +8,7 @@ namespace Content.Shared._Misfits.Movement;
 /// The system subscribes to <see cref="Content.Shared.Movement.Pulling.Events.BeingPulledAttemptEvent"/>
 /// and cancels it. Intended for heavy robots such as the Sentry Bot.
 /// </summary>
-[RegisterComponent, NetworkedComponent]
+[RegisterComponent] // #Misfits Fix - Removed NetworkedComponent: no AutoGenerateComponentState → MissingMetadataException
 public sealed partial class NoPullComponent : Component
 {
 }

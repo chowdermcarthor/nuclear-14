@@ -7,7 +7,7 @@ namespace Content.Shared._Misfits.Silicon;
 /// Configures the base sprite states to use while a robot is standing versus lying down.
 /// This is client-driven off networked standing and mob state data.
 /// </summary>
-[RegisterComponent, NetworkedComponent]
+[RegisterComponent] // #Misfits Fix - Removed NetworkedComponent: no AutoGenerateComponentState → MissingMetadataException
 public sealed partial class RobotDownedVisualsComponent : Component
 {
     [DataField]

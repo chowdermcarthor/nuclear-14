@@ -12,14 +12,14 @@ namespace Content.Shared._Misfits.Augments;
 /// Marks an organ entity as a cybernetic augment.
 /// The body containing this organ can be found via <see cref="AugmentSystem.GetBody"/>.
 /// </summary>
-[RegisterComponent, NetworkedComponent]
+[RegisterComponent] // #Misfits Fix - Removed NetworkedComponent: no AutoGenerateComponentState → MissingMetadataException
 public sealed partial class AugmentComponent : Component;
 
 /// <summary>
 /// Tracks all augments currently installed in this body.
 /// Added/removed automatically by AugmentSystem when organs are added/removed.
 /// </summary>
-[RegisterComponent, NetworkedComponent]
+[RegisterComponent] // #Misfits Fix - Removed NetworkedComponent: no AutoGenerateComponentState → MissingMetadataException
 public sealed partial class InstalledAugmentsComponent : Component
 {
     /// <summary>

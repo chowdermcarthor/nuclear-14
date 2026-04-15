@@ -10,5 +10,5 @@ namespace Content.Shared._Misfits.Augments;
 /// Indicates this organ is a cybernetic arm augment.
 /// Companion to AugmentComponent; used to identify arm-slot augments in surgery.
 /// </summary>
-[RegisterComponent, NetworkedComponent]
+[RegisterComponent] // #Misfits Fix - Removed NetworkedComponent: no AutoGenerateComponentState → MissingMetadataException
 public sealed partial class AugmentArmComponent : Component;

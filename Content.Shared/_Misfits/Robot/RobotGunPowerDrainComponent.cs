@@ -8,7 +8,7 @@ using Robust.Shared.Serialization.Manager.Attributes;
 
 namespace Content.Shared._Misfits.Robot;
 
-[RegisterComponent, NetworkedComponent]
+[RegisterComponent] // #Misfits Fix - Removed NetworkedComponent: no AutoGenerateComponentState → MissingMetadataException
 public sealed partial class RobotGunPowerDrainComponent : Component
 {
     /// <summary>Charge drained from the cell_slot battery per shot fired.</summary>

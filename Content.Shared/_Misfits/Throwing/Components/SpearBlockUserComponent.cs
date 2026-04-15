@@ -4,7 +4,7 @@ using Robust.Shared.GameStates;
 
 namespace Content.Shared._Misfits.Throwing.Components;
 
-[RegisterComponent, NetworkedComponent]
+[RegisterComponent] // #Misfits Fix - Removed NetworkedComponent: no AutoGenerateComponentState → MissingMetadataException
 public sealed partial class SpearBlockUserComponent : Component
 {
 }

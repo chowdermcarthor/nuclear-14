@@ -11,7 +11,7 @@ namespace Content.Shared._Misfits.Clothing;
 /// with wire cutters after a 20-second DoAfter.
 /// Crafted bracelets produce a unique paired key that also unlocks them if re-applied.
 /// </summary>
-[RegisterComponent, NetworkedComponent]
+[RegisterComponent] // #Misfits Fix - Removed NetworkedComponent: no AutoGenerateComponentState → MissingMetadataException
 public sealed partial class NCRPrisonerBraceletComponent : Component
 {
     /// <summary>

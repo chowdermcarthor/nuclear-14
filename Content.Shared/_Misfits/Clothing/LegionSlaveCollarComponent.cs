@@ -8,7 +8,7 @@ namespace Content.Shared._Misfits.Clothing;
 /// <summary>
 /// Marks a slave collar as lock-restricted equipment with rescue-cut and crafted-key behavior.
 /// </summary>
-[RegisterComponent, NetworkedComponent]
+[RegisterComponent] // #Misfits Fix - Removed NetworkedComponent: no AutoGenerateComponentState → MissingMetadataException
 public sealed partial class LegionSlaveCollarComponent : Component
 {
     /// <summary>

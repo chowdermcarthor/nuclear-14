@@ -8,7 +8,7 @@ namespace Content.Shared._Misfits.DrugEffects;
 /// <summary>
 ///     Applies a temporary damage modifier set while the status effect is active.
 /// </summary>
-[RegisterComponent, NetworkedComponent]
+[RegisterComponent] // #Misfits Fix - Removed NetworkedComponent: no AutoGenerateComponentState → MissingMetadataException
 public sealed partial class MedXProtectionComponent : Component
 {
     [DataField("modifier")]

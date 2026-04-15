@@ -25,7 +25,7 @@ public enum BankFaction : byte
 /// Attached to every faction bank terminal entity.
 /// Opening the terminal wallet UI is handled entirely by <c>FactionBankTerminalSystem</c>.
 /// </summary>
-[RegisterComponent, NetworkedComponent]
+[RegisterComponent] // #Misfits Fix - Removed NetworkedComponent: no AutoGenerateComponentState → MissingMetadataException
 public sealed partial class FactionBankTerminalComponent : Component
 {
     /// <summary>Which faction owns/maintains this terminal.</summary>

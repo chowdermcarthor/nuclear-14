@@ -7,7 +7,7 @@ namespace Content.Shared._Misfits.Surgery.Anesthesia;
 ///     Exists for strap entities (operating tables) to apply surgical anesthesia to a patient upon being buckled.
 ///     Removes the anesthesia when the patient unbuckles unless they already had it.
 /// </summary>
-[RegisterComponent, NetworkedComponent]
+[RegisterComponent] // #Misfits Fix - Removed NetworkedComponent: no AutoGenerateComponentState → MissingMetadataException
 public sealed partial class AnesthesiaOnBuckleComponent : Component
 {
     /// <summary>

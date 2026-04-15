@@ -10,5 +10,5 @@ namespace Content.Shared._Misfits.Execution;
 /// <summary>
 /// Prevents this gun from being used to perform a point-blank execution.
 /// </summary>
-[RegisterComponent, NetworkedComponent]
+[RegisterComponent] // #Misfits Fix - Removed NetworkedComponent: no AutoGenerateComponentState → MissingMetadataException
 public sealed partial class GunExecutionBlacklistComponent : Component;

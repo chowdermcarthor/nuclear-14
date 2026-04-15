@@ -6,7 +6,7 @@ namespace Content.Shared._Misfits.Campfire;
 /// <summary>
 /// Marks an item as valid fuel for campfires. Add it to wood planks, scrap, etc.
 /// </summary>
-[RegisterComponent, NetworkedComponent]
+[RegisterComponent] // #Misfits Fix - Removed NetworkedComponent: no AutoGenerateComponentState → MissingMetadataException
 public sealed partial class CampfireFuelComponent : Component
 {
     /// <summary>

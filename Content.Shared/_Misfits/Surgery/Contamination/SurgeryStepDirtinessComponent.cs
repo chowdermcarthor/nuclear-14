@@ -7,7 +7,7 @@ namespace Content.Shared._Misfits.Surgery.Contamination;
 /// <summary>
 ///     Component that allows a surgery step to increase tools and gloves' dirtiness.
 /// </summary>
-[RegisterComponent, NetworkedComponent]
+[RegisterComponent] // #Misfits Fix - Removed NetworkedComponent: no AutoGenerateComponentState → MissingMetadataException
 public sealed partial class SurgeryStepDirtinessComponent : Component
 {
     /// <summary>

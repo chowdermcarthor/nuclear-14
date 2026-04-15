@@ -10,7 +10,7 @@ namespace Content.Shared._Misfits.Robot;
 /// After the charge completes the next shot attempt succeeds. A cooldown then
 /// prevents further shots for a configured duration.
 /// </summary>
-[RegisterComponent, NetworkedComponent]
+[RegisterComponent] // #Misfits Fix - Removed NetworkedComponent: no AutoGenerateComponentState → MissingMetadataException
 public sealed partial class AssaultronBeamChargeComponent : Component
 {
     /// <summary>How long the charge-up phase lasts before the weapon can fire.</summary>

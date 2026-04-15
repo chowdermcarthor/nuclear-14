@@ -6,7 +6,7 @@ namespace Content.Shared._Misfits.DrugEffects;
 /// <summary>
 ///     Status effect marker for a mild healing powder haze overlay.
 /// </summary>
-[RegisterComponent, NetworkedComponent]
+[RegisterComponent] // #Misfits Fix - Removed NetworkedComponent: no AutoGenerateComponentState → MissingMetadataException
 public sealed partial class HealingPowderHazeComponent : Component
 {
 }

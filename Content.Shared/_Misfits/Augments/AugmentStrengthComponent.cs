@@ -11,7 +11,7 @@ namespace Content.Shared._Misfits.Augments;
 /// Multiplies all melee damage dealt by the body this augment is installed in
 /// while the augment is active (or always, if it has no ItemToggleComponent).
 /// </summary>
-[RegisterComponent, NetworkedComponent]
+[RegisterComponent] // #Misfits Fix - Removed NetworkedComponent: no AutoGenerateComponentState → MissingMetadataException
 [Access(typeof(AugmentStrengthSystem))]
 public sealed partial class AugmentStrengthComponent : Component
 {

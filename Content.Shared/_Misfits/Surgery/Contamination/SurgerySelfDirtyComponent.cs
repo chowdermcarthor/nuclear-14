@@ -7,5 +7,5 @@ namespace Content.Shared._Misfits.Surgery.Contamination;
 ///     Marker component that indicates the entity should become dirtied instead of its tools during surgery.
 ///     Used for patients with cybernetic or synthetic parts that self-contaminate.
 /// </summary>
-[RegisterComponent, NetworkedComponent]
+[RegisterComponent] // #Misfits Fix - Removed NetworkedComponent: no AutoGenerateComponentState → MissingMetadataException
 public sealed partial class SurgerySelfDirtyComponent : Component;

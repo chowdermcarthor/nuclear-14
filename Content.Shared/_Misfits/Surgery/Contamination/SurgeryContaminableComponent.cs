@@ -11,7 +11,7 @@ namespace Content.Shared._Misfits.Surgery.Contamination;
 ///     Component that indicates how an entity should respond to unsanitary surgery conditions.
 ///     It also causes surgery tools to become dirty/cross contaminated when operated on.
 /// </summary>
-[RegisterComponent, NetworkedComponent, Access(typeof(SharedSurgerySystem))]
+[RegisterComponent, Access(typeof(SharedSurgerySystem))] // #Misfits Fix - Removed NetworkedComponent: no AutoGenerateComponentState → MissingMetadataException
 public sealed partial class SurgeryContaminableComponent : Component
 {
     /// <summary>

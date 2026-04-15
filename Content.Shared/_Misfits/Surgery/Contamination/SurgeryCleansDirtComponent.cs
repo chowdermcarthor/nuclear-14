@@ -7,7 +7,7 @@ namespace Content.Shared._Misfits.Surgery.Contamination;
 /// <summary>
 ///     For items that can clean up surgical dirtiness.
 /// </summary>
-[RegisterComponent, NetworkedComponent]
+[RegisterComponent] // #Misfits Fix - Removed NetworkedComponent: no AutoGenerateComponentState → MissingMetadataException
 public sealed partial class SurgeryCleansDirtComponent : Component
 {
     /// <summary>

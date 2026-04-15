@@ -7,5 +7,5 @@ namespace Content.Shared._Misfits.Surgery.Anesthesia;
 ///     Exists as a status effect. When present, surgical operations cause reduced pain and screaming.
 ///     Can be applied by anesthetic reagents or specialized operating tables.
 /// </summary>
-[RegisterComponent, NetworkedComponent]
+[RegisterComponent] // #Misfits Fix - Removed NetworkedComponent: no AutoGenerateComponentState → MissingMetadataException
 public sealed partial class AnesthesiaComponent : Component;
