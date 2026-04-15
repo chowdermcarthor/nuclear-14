@@ -3218,3 +3218,12 @@ Entries:
   id: 5736
   time: '2026-04-15T01:19:18.0000000+00:00'
   url: https://github.com/Misfit-Sanctuary/nuclear-14/pull/292
+- author: cythisiax
+  changes:
+    - type: Fix
+      message: >-
+        Server state is missing the metadata component for a new entity,
+        spamming client console every tick on live server, and crashing.
+  id: 5737
+  time: '2026-04-15T01:30:56.0000000+00:00'
+  url: https://github.com/Misfit-Sanctuary/nuclear-14/pull/293
