@@ -36,7 +36,6 @@
         factions:
           - Wastelander
           - NCR
-      - type: PowerArmorProficiency # Bill clinton misfits change: For sierra armor use within NCR.
 
 - type: startingGear
   id: NCRCaptainGear
@@ -51,7 +50,7 @@
     eyes: ClothingEyesGlassesSunglasses
     ears: N14ClothingHeadsetNCR
     pocket1: NCRcaptainloadoutkits
-    pocket2: RadioHandheld
+    pocket2: TrainingManualPowerArmorOperation
     id: N14IDNCRDogtagCaptain
   innerClothingSkirt: N14ClothingOfficerUniformNCRDesert # Corvax-Change
   satchel: N14ClothingBackpackSatchelNCRFilled
