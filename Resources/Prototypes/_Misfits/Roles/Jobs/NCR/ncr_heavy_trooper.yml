@@ -47,14 +47,14 @@
     ears: N14ClothingHeadsetNCR               # NCR radio earpiece
     neck: ClothingNeckPinNCRSpecialist        # enlisted heavy weapons rank
     belt: ClothingBeltNCR
-    pocket1: N14WeaponMinigun                  # #Misfits Tweak - downgraded to standard minigun (Avenger was too strong for this tier)
+    pocket1: N14WeaponLMG                  # #Misfits Tweak - Upgraded to LMG -bill
     pocket2: RadioHandheld
     id: N14IDNCRDogtagWS                      # Specialist-tier dogtag
   innerClothingSkirt: N14ClothingOfficerUniformNCRDesert
   satchel: N14ClothingBackpackSatchelNCRFilled
   storage:
     back:
-    - N14MagazineMinigun5mm                   # extra 5mm belt box
+    - LMGMagazine556Rifle                   # extra 5.56 box -bill 
 
 - type: playTimeTracker
   id: NCRHeavyTrooper

@@ -50,7 +50,7 @@
     eyes: ClothingEyesGlassesSunglasses
     ears: N14ClothingHeadsetNCR
     pocket1: NCRcaptainloadoutkits
-    pocket2: RadioHandheld
+    pocket2: TrainingManualPowerArmorOperation
     id: N14IDNCRDogtagCaptain
   innerClothingSkirt: N14ClothingOfficerUniformNCRDesert # Corvax-Change
   satchel: N14ClothingBackpackSatchelNCRFilled

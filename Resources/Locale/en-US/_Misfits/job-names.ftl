@@ -1,6 +1,6 @@
 # #Misfits Add - NCR Heavy Trooper job locale.
 job-name-ncr-heavy-trooper = NCR Heavy Trooper
-job-description-ncr-heavy-trooper = You are the NCR's walking artillery. Strapped into a salvaged T-45 suit and armed with an Avenger minigun, your job is simple: hold the line and lay down fire until there is nothing left standing.
+job-description-ncr-heavy-trooper = You are the NCR's walking artillery. Strapped into a salvaged T-45 suit and armed with an LMG, your job is simple: hold the line and lay down fire until there is nothing left standing.
 
 # #Misfits Add - Enclave job locale (expanded 8-role hierarchy). Reformer is admin-only apex role.
 job-name-enclave-reformer = The Reformer
