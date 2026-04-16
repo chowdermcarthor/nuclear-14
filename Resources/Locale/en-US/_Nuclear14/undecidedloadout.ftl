@@ -111,15 +111,15 @@ undecided-loadout-category-med-combat-description =
 
 undecided-loadout-category-ws-gunner-name = Specialist Gunner Kit
 undecided-loadout-category-ws-gunner-description =
-    Includes 1 NCR belt, 1 metal helmet, 1 NCR cloak, 1 LMG,
-    3 LMG magazines, 1 9mm pistol, 2 9mm pistol magazines,
+    Includes 1 NCR belt, 1 metal helmet, 1 NCR cloak, 1 Automatic rifle,
+    2 .308 magazines, 1 9mm pistol, 2 9mm pistol magazines,
     1 C ration MRE, 1 stimpak, 1 RadAway blood bag, 1 gauze pack, and 1 flare.
 
 undecided-loadout-category-ws-grenadier-name = Specialist Grenadier Kit
 # #Misfits Fix - Updated description: grenade rifle + 40mm rounds added to replace the orphaned frag grenades
 undecided-loadout-category-ws-grenadier-description =
-    Includes 1 NCR belt, 1 metal helmet, 1 NCR cloak, 1 grenade rifle, 4 40mm frag grenades,
-    1 smoke grenade, 1 .45 pistol, 2 .45 pistol magazines, 1 C ration MRE,
+    Includes 1 NCR belt, 1 metal helmet, 1 NCR cloak, 1 grenade rifle, 5 40mm frag grenades,
+    1 smoke grenade, 1 12.7 SMG, 2 12.7 SMG magazines, 1 C ration MRE,
     1 stimpak, 1 RadAway blood bag, 1 gauze pack, and 1 flare.
 
 undecided-loadout-category-ws-sniper-name = Specialist Sniper Kit
