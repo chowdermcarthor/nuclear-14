@@ -1752,7 +1752,7 @@
   blendGroup: terrain
   blendPriority: 0
   blendMaskSet: soft-terrain
-  baseTurf: space
+  baseTurf: Space
   isSubfloor: true
   footstepSounds:
     collection: N14FootstepDirt
@@ -1922,7 +1922,7 @@
   sprite: /Textures/_Nuclear14/Tiles/swampland.png
   variants: 11
   placementVariants: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
-  baseTurf: space
+  baseTurf: Space
   isSubfloor: true
   footstepSounds:
     collection: N14FootstepWater
@@ -1936,7 +1936,7 @@
   id: FloorSwamplandBottom
   name: tiles-wasteland-swamp-bottom
   sprite: /Textures/_Nuclear14/Tiles/wasteswampbottom.png
-  baseTurf: space
+  baseTurf: Space
   isSubfloor: true
   footstepSounds:
     collection: N14FootstepDirt
@@ -1950,7 +1950,7 @@
   id: FloorSwamplandTop
   name: tiles-wasteland-swamp-top
   sprite: /Textures/_Nuclear14/Tiles/wasteswamptop.png
-  baseTurf: space
+  baseTurf: Space
   isSubfloor: true
   footstepSounds:
     collection: N14FootstepDirt
@@ -1964,7 +1964,7 @@
   id: FloorSwamplandRight
   name: tiles-wasteland-swamp-right
   sprite: /Textures/_Nuclear14/Tiles/wasteswampright.png
-  baseTurf: space
+  baseTurf: Space
   isSubfloor: true
   footstepSounds:
     collection: N14FootstepDirt
@@ -1978,7 +1978,7 @@
   id: FloorSwamplandLeft
   name: tiles-wasteland-swamp-left
   sprite: /Textures/_Nuclear14/Tiles/wasteswampleft.png
-  baseTurf: space
+  baseTurf: Space
   isSubfloor: true
   footstepSounds:
     collection: N14FootstepDirt
@@ -1992,7 +1992,7 @@
   id: FloorSwamplandTopRight
   name: tiles-wasteland-swamp-top-right
   sprite: /Textures/_Nuclear14/Tiles/wasteswamptopright.png
-  baseTurf: space
+  baseTurf: Space
   isSubfloor: true
   footstepSounds:
     collection: N14FootstepDirt
@@ -2006,7 +2006,7 @@
   id: FloorSwamplandTopLeft
   name: tiles-wasteland-swamp-top-left
   sprite: /Textures/_Nuclear14/Tiles/wasteswamptopleft.png
-  baseTurf: space
+  baseTurf: Space
   isSubfloor: true
   footstepSounds:
     collection: N14FootstepDirt
@@ -2020,7 +2020,7 @@
   id: FloorSwamplandTopRightCorner
   name: tiles-wasteland-swamp-top-right-corner
   sprite: /Textures/_Nuclear14/Tiles/wasteswamptoprightcorner.png
-  baseTurf: space
+  baseTurf: Space
   isSubfloor: true
   footstepSounds:
     collection: N14FootstepDirt
@@ -2034,7 +2034,7 @@
   id: FloorSwamplandTopLeftCorner
   name: tiles-wasteland-swamp-top-left-corner
   sprite: /Textures/_Nuclear14/Tiles/wasteswamptopleftcorner.png
-  baseTurf: space
+  baseTurf: Space
   isSubfloor: true
   footstepSounds:
     collection: N14FootstepDirt
@@ -2048,7 +2048,7 @@
   id: FloorSwamplandBottomRight
   name: tiles-wasteland-swamp-bottom-right
   sprite: /Textures/_Nuclear14/Tiles/wasteswampbottomright.png
-  baseTurf: space
+  baseTurf: Space
   isSubfloor: true
   footstepSounds:
     collection: N14FootstepDirt
@@ -2062,7 +2062,7 @@
   id: FloorSwamplandBottomLeft
   name: tiles-wasteland-swamp-bottom-left
   sprite: /Textures/_Nuclear14/Tiles/wasteswampbottomleft.png
-  baseTurf: space
+  baseTurf: Space
   isSubfloor: true
   footstepSounds:
     collection: N14FootstepDirt
@@ -2076,7 +2076,7 @@
   id: FloorSwamplandBottomRightCorner
   name: tiles-wasteland-swamp-bottom-right-corner
   sprite: /Textures/_Nuclear14/Tiles/wasteswampbottomrightcorner.png
-  baseTurf: space
+  baseTurf: Space
   isSubfloor: true
   footstepSounds:
     collection: N14FootstepDirt
@@ -2090,7 +2090,7 @@
   id: FloorSwamplandBottomLeftCorner
   name: tiles-wasteland-swamp-bottom-left-corner
   sprite: /Textures/_Nuclear14/Tiles/wasteswampbottomleftcorner.png
-  baseTurf: space
+  baseTurf: Space
   isSubfloor: true
   footstepSounds:
     collection: N14FootstepDirt
