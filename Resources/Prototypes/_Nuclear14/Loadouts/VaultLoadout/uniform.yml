@@ -1,5 +1,5 @@
 - type: loadout # This is for Vault Security players that want to act like an detective of sort.
-  id: N14LoadoutUniformJumpsuitDetectiveAlt
+  id: N14LoadoutUniformJumpsuitDetectiveAltVault
   category: Uniform
   cost: 2
   exclusive: true
@@ -16,7 +16,7 @@
       - VaultSecurity
   
 - type: loadout
-  id: N14LoadoutUniformJumpsuitCheckered
+  id: N14LoadoutUniformJumpsuitCheckeredVault
   category: Uniform
   cost: 2
   exclusive: true
@@ -33,7 +33,7 @@
         - VaultDweller
  
 - type: loadout
-  id: N14LoadoutUniformJumpsuitPreWarRelaxed
+  id: N14LoadoutUniformJumpsuitPreWarRelaxedVault
   category: Uniform
   cost: 2
   exclusive: true
@@ -50,7 +50,7 @@
        - VaultDweller
     
 - type: loadout
-  id: N14LoadoutUniformJumpsuitPreWarCasual
+  id: N14LoadoutUniformJumpsuitPreWarCasualVault
   category: Uniform
   cost: 2
   exclusive: true
@@ -67,7 +67,7 @@
         - VaultDweller
 
 - type: loadout
-  id: N14LoadoutUniformJumpsuitPreWarManager
+  id: N14LoadoutUniformJumpsuitPreWarManagerVault
   category: Uniform
   cost: 2
   exclusive: true
@@ -85,7 +85,7 @@
         - Overseer
 
 - type: loadout # This is for dedicated Overseer players who want to show off their time in the vault, but don't want to wear the jumpsuit with the vault logo on the back.
-  id: N14LoadoutUniformJumpsuitBlueSuit 
+  id: N14LoadoutUniformJumpsuitBlueSuitVault
   category: Uniform
   cost: 2
   exclusive: true
@@ -102,11 +102,11 @@
         - Overseer
 
 - type: loadout
-  id: N14LoadoutUniformJumpsuitPreWarLumberjack
+  id: N14LoadoutUniformJumpsuitPreWarLumberjackVault
   category: Uniform
   cost: 2
   exclusive: true
-  items:
+  requirements:
     - !type:CharacterDepartmentTimeRequirement
       department: Vault 
       min: 1500  # 25 hours
@@ -115,3 +115,5 @@
     - !type:CharacterJobRequirement
       jobs:
         - VaultDweller
+  items:
+  - N14ClothingUniformJumpsuitPreWarLumberjack

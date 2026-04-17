@@ -39,7 +39,7 @@
   requirements:
    - !type:CharacterItemGroupRequirement
       group: N14LoadoutUniform
-    - !type:CharacterJobRequirement # Forge-Change
+   - !type:CharacterJobRequirement # Forge-Change
       inverted: true
       jobs:
       - BoSMidSerf

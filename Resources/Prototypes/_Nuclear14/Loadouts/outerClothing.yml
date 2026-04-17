@@ -235,7 +235,7 @@
     - N14ClothingOuterCoatLeatherDuster
 
 - type: loadout
-  id: N14ClothingOuterCoatLeatherJacket
+  id: N14LoadoutOuterCoatLeatherJacket
   category: Outer
   cost: 1
   requirements:
@@ -255,7 +255,7 @@
     - N14ClothingOuterCoatLeatherJacket
 
 - type: loadout
-  id: N14ClothingOuterCoatLeatherCoat
+  id: N14LoadoutOuterCoatLeatherCoat
   category: Outer
   cost: 1
   requirements:

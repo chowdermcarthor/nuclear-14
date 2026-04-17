@@ -1,5 +1,5 @@
 - type: loadout # I'd like to see a biker gang or something in the Vault, so this is for that.
-  id: N14LoadoutOuterCoatLeatherJacket
+  id: N14LoadoutOuterCoatLeatherJacketVault
   category: Outer
   cost: 2
   requirements:
@@ -15,7 +15,7 @@
     - N14ClothingOuterCoatLeatherJacket
 
 - type: loadout 
-  id: N14LoadoutOuterJacketBomber
+  id: N14ClothingOuterJacketBomberVault
   category: Outer
   cost: 2
   requirements:
@@ -31,7 +31,7 @@
     - N14ClothingOuterJacketBomber
 
 - type: loadout 
-  id: LoadoutOuterCoatDetective
+  id: ClothingOuterCoatDetectiveVault
   category: Outer
   cost: 2
   requirements:
@@ -47,7 +47,7 @@
     - ClothingOuterCoatDetective
 
 - type: loadout 
-  id: LoadoutOuterCoatGentle
+  id: ClothingOuterCoatGentleVault
   category: Outer
   cost: 2
   requirements:
@@ -63,7 +63,7 @@
     - ClothingOuterCoatGentle
 
 - type: loadout 
-  id: LoadoutOuterDenimJacket
+  id: ClothingOuterDenimJacketVault
   category: Outer
   cost: 2
   requirements:

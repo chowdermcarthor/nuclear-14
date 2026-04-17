@@ -51,3 +51,11 @@
       id: LoadoutClothingHeadHatBoSInquisitorBattleHelmet 
     - type: loadout # Forge-Add
       id: LoadoutClothingHeadHatBoSInquisitorBattleHelmetHood
+    - type: loadout # Forge-Add
+      id: ClothingHeadHatFlatBlack
+    - type: loadout # Forge-Add
+      id: ClothingHeadHatFlatBrown
+    - type: loadout # Forge-Add
+      id: ClothingHeadHatFedoraBlack 
+    - type: loadout # Forge-Add
+      id: ClothingHeadHatFedoraChoc

@@ -1,5 +1,5 @@
 - type: loadout
-  id: LoadoutHeadFlatBlack
+  id: ClothingHeadHatFlatBlack
   category: Head
   cost: 2
   exclusive: true
@@ -9,12 +9,12 @@
     - !type:CharacterJobRequirement
       jobs:
       - VaultDweller
-      - VaultOverseer
+      - Overseer
   items:
     - ClothingHeadHatFlatBlack
 
 - type: loadout
-  id: LoadoutHeadFlatBrown
+  id: ClothingHeadHatFlatBrown
   category: Head
   cost: 2
   exclusive: true
@@ -24,12 +24,12 @@
     - !type:CharacterJobRequirement
       jobs:
       - VaultDweller
-      - VaultOverseer
+      - Overseer
   items:
     - ClothingHeadHatFlatBrown
 
 - type: loadout
-  id: LoadoutHeadHatFedoraBlack
+  id: ClothingHeadHatFedoraBlack
   category: Head
   cost: 2
   exclusive: true
@@ -39,12 +39,12 @@
     - !type:CharacterJobRequirement
       jobs:
       - VaultDweller
-      - VaultOverseer
+      - Overseer
   items:
     - ClothingHeadHatFedoraBlack
 
 - type: loadout
-  id: LoadoutHeadHatFedoraChoc
+  id: ClothingHeadHatFedoraChoc
   category: Head
   cost: 2
   exclusive: true
@@ -54,6 +54,6 @@
     - !type:CharacterJobRequirement
       jobs:
       - VaultDweller
-      - VaultOverseer
+      - Overseer
   items:
     - ClothingHeadHatFedoraChoc

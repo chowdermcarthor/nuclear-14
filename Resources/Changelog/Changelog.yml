@@ -3273,3 +3273,14 @@ Entries:
   id: 5740
   time: '2026-04-16T16:09:48.0000000+00:00'
   url: https://github.com/Misfit-Sanctuary/nuclear-14/pull/297
+- author: Fox
+  changes:
+    - type: Fix
+      message: Fixed a capitalization error in the tiles to let explosives have effect
+    - type: Fix
+      message: >-
+        Removed tile break chance to not leave a void after an explosive
+        detonates
+  id: 5741
+  time: '2026-04-17T15:16:17.0000000+00:00'
+  url: https://github.com/Misfit-Sanctuary/nuclear-14/pull/298

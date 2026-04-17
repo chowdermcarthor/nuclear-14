@@ -79,3 +79,19 @@
       id: N14ClothingUniformJumpsuittribalpantsf
     - type: loadout
       id: N14ClothingUniformJumpsuittribalpantsnecklace
+    - type: loadout
+      id: N14LoadoutUniformJumpsuitDetectiveAltVault
+    - type: loadout
+      id: N14LoadoutUniformJumpsuitCheckeredVault
+    - type: loadout
+      id: N14LoadoutUniformJumpsuitPreWarRelaxedVault
+    - type: loadout
+      id: N14LoadoutUniformJumpsuitPreWarCasualVault
+    - type: loadout
+      id: N14LoadoutUniformJumpsuitPreWarManagerVault
+    - type: loadout
+      id: N14LoadoutUniformJumpsuitBlueSuitVault 
+    - type: loadout
+      id: N14LoadoutUniformJumpsuitPreWarLumberjackVault
+    - type: loadout
+      id: N14LoadoutUniformJumpsuitAsylumDress

@@ -5,6 +5,10 @@
    exclusive: true
    customColorTint: true
    requirements:
+     - !type:CharacterDepartmentRequirement
+       inverted: true
+       departments:
+       - Vault
      - !type:CharacterItemGroupRequirement
        group: N14LoadoutNeck
      - !type:CharacterJobRequirement # Forge-Change
@@ -13,10 +17,6 @@
       - BoSMidSerf
       - CaesarLegionSlave
       - NCRPisoner
-     - !type:CharacterDepartmentRequirement
-       inverted: true
-       departments:
-       - Vault
    items:
      - N14ClothingNeckCloakLeather
 
@@ -27,6 +27,10 @@
    exclusive: true
    customColorTint: true
    requirements:
+     - !type:CharacterDepartmentRequirement
+        inverted: true
+        departments:
+        - Vault
      - !type:CharacterItemGroupRequirement
        group: N14LoadoutNeck
      - !type:CharacterJobRequirement # Forge-Change
@@ -35,10 +39,6 @@
       - BoSMidSerf
       - CaesarLegionSlave
       - NCRPisoner
-      - !type:CharacterDepartmentRequirement
-        inverted: true
-        departments:
-        - Vault
    items:
      - N14ClothingNeckMantleLeather
 
@@ -85,6 +85,10 @@
    exclusive: true
    customColorTint: true
    requirements:
+     - !type:CharacterDepartmentRequirement
+        inverted: true
+        departments:
+        - Vault
      - !type:CharacterItemGroupRequirement
        group: N14LoadoutNeck
      - !type:CharacterJobRequirement # Forge-Change
@@ -93,10 +97,6 @@
       - BoSMidSerf
       - CaesarLegionSlave
       - NCRPisoner
-      - !type:CharacterDepartmentRequirement
-        inverted: true
-        departments:
-        - Vault
    items:
      - N14ClothingNeckTribalCloak
 
@@ -107,6 +107,10 @@
    exclusive: true
    customColorTint: true
    requirements:
+     - !type:CharacterDepartmentRequirement
+        inverted: true
+        departments:
+        - Vault
      - !type:CharacterItemGroupRequirement
        group: N14LoadoutNeck
      - !type:CharacterJobRequirement # Forge-Change
@@ -115,10 +119,6 @@
       - BoSMidSerf
       - CaesarLegionSlave
       - NCRPisoner
-      - !type:CharacterDepartmentRequirement
-        inverted: true
-        departments:
-        - Vault
    items:
      - N14ClothingNeckTribalCloakBr
 
@@ -129,6 +129,10 @@
    exclusive: true
    customColorTint: true
    requirements:
+     - !type:CharacterDepartmentRequirement
+        inverted: true
+        departments:
+        - Vault
      - !type:CharacterItemGroupRequirement
        group: N14LoadoutNeck
      - !type:CharacterJobRequirement # Forge-Change
@@ -137,9 +141,5 @@
       - BoSMidSerf
       - CaesarLegionSlave
       - NCRPisoner
-      - !type:CharacterDepartmentRequirement
-        inverted: true
-        departments:
-        - Vault
    items:
      - N14ClothingNeckShawl
