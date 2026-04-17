@@ -9,7 +9,7 @@
     - !type:CharacterJobRequirement
       jobs:
       - VaultDweller
-      - VaultOverseer
+      - Overseer
   items:
     - ClothingHeadHatFlatBlack
 
@@ -24,7 +24,7 @@
     - !type:CharacterJobRequirement
       jobs:
       - VaultDweller
-      - VaultOverseer
+      - Overseer
   items:
     - ClothingHeadHatFlatBrown
 
@@ -39,7 +39,7 @@
     - !type:CharacterJobRequirement
       jobs:
       - VaultDweller
-      - VaultOverseer
+      - Overseer
   items:
     - ClothingHeadHatFedoraBlack
 
@@ -54,6 +54,6 @@
     - !type:CharacterJobRequirement
       jobs:
       - VaultDweller
-      - VaultOverseer
+      - Overseer
   items:
     - ClothingHeadHatFedoraChoc
