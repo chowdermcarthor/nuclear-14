@@ -277,7 +277,7 @@ undecided-loadout-category-mbos-kni-bal-description =
 undecided-loadout-category-mbos-scribe-medic-name = Medical Kit
 undecided-loadout-category-mbos-scribe-medic-description =
     A cache containing belongings of a Brotherhood chapter member.
-    Includes 1 AEP-7, 2 energy cells, 1 pair of nitrile gloves,
+    Includes 1 pair of nitrile gloves,
     1 medical robe, 1 filled medical belt, 1 stack of ointment, 1
     super stimpak, 1 sterile mask, 1 roll of gauze, and 1 K ration MRE.
 
@@ -285,7 +285,7 @@ undecided-loadout-category-mbos-scribe-medic-description =
 undecided-loadout-category-mbos-scribe-field-name = Field Kit
 undecided-loadout-category-mbos-scribe-field-description =
     A cache containing belongings of a Brotherhood chapter member.
-    Includes 1 AEP-7, 2 energy cells, 1 pair of combat gloves,
+    Includes 1 pair of combat gloves,
     1 field coat, 1 Brotherhood webbing, 1 stack of ointment,
     1 roll of gauze, and 1 K ration MRE.
 
@@ -293,7 +293,7 @@ undecided-loadout-category-mbos-scribe-field-description =
 undecided-loadout-category-mbos-scribe-engineer-name = Engineer Kit
 undecided-loadout-category-mbos-scribe-engineer-description =
     A cache containing belongings of a Brotherhood chapter member.
-    Includes 1 AEP-7, 2 energy cells, 1 pair of insulated gloves,
+    Includes 1 pair of insulated gloves,
     1 quilted armor, 1 filled utility belt, 1 stack of ointment,
     1 welding goggles, 1 roll of gauze, and 1 K ration MRE.
 
