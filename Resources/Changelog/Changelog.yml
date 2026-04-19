@@ -3334,3 +3334,10 @@ Entries:
   id: 5744
   time: '2026-04-18T20:02:17.0000000+00:00'
   url: https://github.com/Misfit-Sanctuary/nuclear-14/pull/299
+- author: qevie
+  changes:
+    - type: Tweak
+      message: Fixed scribe descriptions!
+  id: 5745
+  time: '2026-04-19T15:42:23.0000000+00:00'
+  url: https://github.com/Misfit-Sanctuary/nuclear-14/pull/303
