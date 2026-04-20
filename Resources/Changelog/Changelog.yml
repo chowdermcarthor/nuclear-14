@@ -3433,3 +3433,10 @@ Entries:
   id: 5750
   time: '2026-04-20T22:00:30.0000000+00:00'
   url: https://github.com/Misfit-Sanctuary/nuclear-14/pull/308
+- author: qevie
+  changes:
+    - type: Fix
+      message: Fixed Chrome-Huffin's name
+  id: 5751
+  time: '2026-04-20T22:43:38.0000000+00:00'
+  url: https://github.com/Misfit-Sanctuary/nuclear-14/pull/309
