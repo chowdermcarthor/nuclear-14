@@ -3348,3 +3348,19 @@ Entries:
   id: 5746
   time: '2026-04-19T15:56:13.0000000+00:00'
   url: https://github.com/Misfit-Sanctuary/nuclear-14/pull/304
+- author: cythisiax
+  changes:
+    - type: Add
+      message: >-
+        Added the C-27 Humanoid Robot. Whitelist-only synthetic humanoid species
+        with its own department, job, body sprites, chassis jumpsuit, and three
+        factory paint variants (Generic, NCR, Brotherhood) selected as a
+        required cosmetic Model marking at character creation. Courtesy of
+        Glennzer/Saintlysoutherner.
+    - type: Fix
+      message: Perk pet spawn for players not registering current coordinates.
+    - type: Tweak
+      message: Added SERVER perm in "Server" F7 tab for live pop adjustments.
+  id: 5747
+  time: '2026-04-20T04:44:46.0000000+00:00'
+  url: https://github.com/Misfit-Sanctuary/nuclear-14/pull/306
