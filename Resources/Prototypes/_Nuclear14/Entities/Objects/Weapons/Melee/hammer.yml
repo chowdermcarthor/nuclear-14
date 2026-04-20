@@ -52,7 +52,7 @@
   - type: IncreaseDamageOnWield
     damage:
       types:
-        Blunt: 55
+        Blunt: 75
         Structural: 35
   - type: MeleeThrowOnHit
     speed: 10

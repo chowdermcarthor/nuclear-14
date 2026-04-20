@@ -439,7 +439,7 @@
 # NCRA Weapon Specialist Kits
 
 - type: entity
-  name: specialist's gunner kit
+  name: specialist's heavy sniper kit
   parent: KitBase
   id: KitNCR_WSGunner
   description: A crate containing all an NCR weapon specialist needs to perform their job.
@@ -453,9 +453,8 @@
       - id: ClothingBeltNCR
       - id: N14ClothingHeadHatNCRHelmetMetalDesert # Forge-Change
       - id: N14ClothingNeckCloakNCR # Forge-Change
-      - id: N14WeaponLMGAutoRifle
-      - id: Magazine308Rifle
-        amount: 2
+      - id: N14WeaponSniper50NCRRifle # Bill- the autorifle was too much. Kill tankies with skillful shots
+      - id: MagazineBox50
       - id: N14WeaponPistol9mm
       - id: N14MagazinePistol9mm
         amount: 2

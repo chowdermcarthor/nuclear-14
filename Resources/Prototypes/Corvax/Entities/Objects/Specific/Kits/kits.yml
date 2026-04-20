@@ -547,9 +547,9 @@
   - type: SpawnItemsOnUse
     items:
       - id: N14LegionnaireShield
-      - id: N14WeaponUSHMG # #Misfits Change by BILL CLINTON!: Parity with NCR specialist kits. they get lmgs why doesn't legion?
-      - id: Magazine762AmmoBelt # #Misfits Change by bill - one belt of LMG is more than enough
-        amount: 1
+      - id: N14WeaponShotgunNeostead # #Misfits Change by BILL CLINTON!: Specializing the vet decanus instead of making him a vital 1 slot char for legion
+      - id: MagazineBox12gauge # #Misfits Change by bill - two boxes should suffice.
+        amount: 2
       - id: ClothingBeltRope
       - id: N14WeaponPistol45Colt # #Misfits Change: .45 revolver Legion sidearm
       - id: N14MagazinePistol45
@@ -581,12 +581,12 @@
   - type: SpawnItemsOnUse
     items:
       - id: N14LegionnaireBuckler
-      - id: N14WeaponUSHMG # #Misfits Change by BILL CLINTON!: Parity with NCR specialist kits. they get lmgs why doesn't legion?
-      - id: Magazine762AmmoBelt # #Misfits Change by bill - one belt of LMG is more than enough.
-        amount: 1
+      - id: N14WeaponSniper50Pipe # #Misfits Change by BILL CLINTON!: Armor hunter. hunt and kill their tankies while the other decani hold the line down.
+      - id: MagazineBox50 # #Misfits Change by bill - one box? ...two box.
+        amount: 2
       - id: ClothingBeltRope
-      - id: N14WeaponPistol45Colt # #Misfits Change: .45 revolver Legion sidearm
-      - id: N14MagazinePistol45
+      - id: N14WeaponSMGGreaseGun # #Misfits Change: legion smg for hunting armor. 
+      - id: Magazine45SubMachineGun
         amount: 2
       - id: N14WeaponShotgunShort
       - id: MagazineBox12gauge
@@ -612,7 +612,7 @@
     size: Huge
   - type: SpawnItemsOnUse
     items:
-      - id: N14TribalBigClub
+      - id: N14TribalBigClubDecorated
       - id: N14WeaponRifleSKS # #Misfits Change by BILL CLINTON!: Small number role made to be paired with the NCR sarge or basic ranger kits.
       - id: SKSEnbloc308 # #Misfits Change - replaced GarandEnbloc308
         amount: 4
@@ -676,9 +676,9 @@
     size: Huge
   - type: SpawnItemsOnUse
     items:
-      - id: N14WeaponRifleSKS # #Misfits Change by BILL CLINTON!: Small number role made to be paired with the NCR sarge or basic ranger kits.
-      - id: SKSEnbloc308 # #Misfits Change - replaced GarandEnbloc308
-        amount: 4
+      - id: N14WeaponM60GPMG # #Misfits Change by BILL CLINTON!: HMG gunner swap from vet decanus down to the lesser decani.
+      - id: Magazine308M60Box # #Misfits Change - replaced GarandEnbloc308
+        amount: 1
       - id: ClothingBeltRope
       - id: N14WeaponPistol45Colt # #Misfits Change: .45 revolver Legion sidearm
       - id: N14MagazinePistol45

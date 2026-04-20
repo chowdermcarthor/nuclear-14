@@ -89,7 +89,7 @@
     - 0,1,0,1
   - type: BallisticAmmoProvider
     proto: N14Cartridge308Rifle
-    capacity: 100
+    capacity: 50
   - type: Sprite
     netsync: false
     sprite: _Nuclear14/Objects/Weapons/Guns/Ammunition/Magazines/308/mag4.rsi

@@ -396,22 +396,22 @@ undecided-loadout-category-corvax-auxilia-medic-description =
 
 undecided-loadout-category-corvax-veteran-decanus-command-name = Veteran Decanus Command
 undecided-loadout-category-corvax-veteran-decanus-command-description =
-    Includes a Legion shield, a M240B HMG with spare HMG belt,
+    Includes a Legion shield, a neostead with two boxes of 12g,
     a rope belt, a .45 Colt pistol, 2 .45 magazines,
     a box of .45 ammo, a handcuff box, a bola,
     2 healing poultice, 2 K rations, and a ceramic flask.
 
 undecided-loadout-category-corvax-veteran-decanus-hunter-name = Veteran Decanus Hunter
 undecided-loadout-category-corvax-veteran-decanus-hunter-description =
-    Includes a Legion buckler, a M240B HMG with spare HMG belt,
-    a .45 Colt pistol, 2 .45 magazines, a rope belt,
+    Includes a Legion buckler, a .50 pipe rifle with 2 spare boxes,
+    a .45 M3A1, 2 .45 SMG magazines, a rope belt,
     a short shotgun, a box of 12 gauge shells,
     2 healing poultices, a healing powder,
     2 K rations, and a ceramic flask.
 
 undecided-loadout-category-corvax-veteran-decanus-crusher-name = Veteran Decanus Crusher
 undecided-loadout-category-corvax-veteran-decanus-crusher-description =
-    Includes a big tribal club, a Legion SKS with 4 clips,
+    Includes a decorated tribal club, a Legion SKS with 4 clips,
     a .45 Colt pistol, 2 .45 magazines, a smoke grenade,
     2 healing poultice, 2 K rations, and a ceramic flask.
 
@@ -425,7 +425,7 @@ undecided-loadout-category-corvax-decanus-gladiator-description =
 
 undecided-loadout-category-corvax-decanus-sagitaria-name = Decanus Sagitaria
 undecided-loadout-category-corvax-decanus-sagitaria-description =
-    Includes a Legion SKS with 4 clips,
+    Includes a salvaged M60 with a single extra box,
     a .45 revolver with 2 spare magazines, a rope belt,
     a smoke grenade, 2 healing poultice, 2 K rations,
     a ceramic flask, and mustard.
