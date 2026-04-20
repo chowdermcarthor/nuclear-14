@@ -403,6 +403,9 @@
   id: N14PlasmaCartridge
 
 - type: Tag
+  id: N14PlasmaCartridgeMultiplas # #Misfits Add - dedicated tag for Multiplas spread ammo
+
+- type: Tag
   id: N14PlasmaCell
 
 - type: Tag

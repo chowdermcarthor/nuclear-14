@@ -427,10 +427,10 @@
 - type: entity
   id: N14SpawnPointTribalHealer
   parent: N14SpawnPointTribal
-  name: tribal healer
+  name: tribal shaman # #Misfits Change - renamed from tribal healer
   components:
   - type: SpawnPoint
-    job_id: TribalHealer
+    job_id: TribalShaman # #Misfits Change - renamed from TribalHealer
   - type: Sprite
     layers:
       - state: green

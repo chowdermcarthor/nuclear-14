@@ -110,7 +110,7 @@
   color: "#d69b3d"
   roles:
   - TribalElder
-  - TribalHealer
+  - TribalShaman # #Misfits Change - renamed from TribalHealer
   - TribalFarmer
   - Tribal
 

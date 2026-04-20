@@ -20,6 +20,17 @@ public static class FactionWarConfig
         "Townsfolk", "PlayerRaider",
     };
 
+    // #Misfits Add - Major factions that cannot enlist (individually or faction-wide) into
+    // wars where another major faction is already a participant. Minor factions may still
+    // request major-faction support via /warjoin.
+    public static readonly HashSet<string> MajorFactions = new()
+    {
+        "NCR", "BrotherhoodOfSteel", "CaesarLegion",
+    };
+
+    /// <summary>Returns true if the given canonical faction ID is a major faction.</summary>
+    public static bool IsMajorFaction(string factionId) => MajorFactions.Contains(factionId);
+
     /// <summary>
     /// Maps NPC faction IDs that should be treated as another war faction.
     /// e.g. "Rangers" members are treated as "NCR" for war purposes.

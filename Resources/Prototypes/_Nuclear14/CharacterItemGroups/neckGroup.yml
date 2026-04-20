@@ -14,4 +14,30 @@
     - type: loadout
       id: ClothingNeckTribalCloakBr
     - type: loadout
+      id: MisfitsLoadoutNeckDesertScarf # #Misfits Add - cosmetic desert scarf
+    - type: loadout
+      id: MisfitsLoadoutNeckRedScarf # #Misfits Add - cosmetic red scarf
+    - type: loadout
+      id: MisfitsLoadoutNeckBlueScarf # #Misfits Add - cosmetic blue scarf
+    - type: loadout
+      id: MisfitsLoadoutNeckGreenScarf # #Misfits Add - cosmetic green scarf
+    - type: loadout
+      id: MisfitsLoadoutNeckOrangeScarf # #Misfits Add - cosmetic orange scarf
+    - type: loadout
+      id: MisfitsLoadoutNeckBrownScarf # #Misfits Add - cosmetic brown scarf
+    - type: loadout
+      id: MisfitsLoadoutNeckPatriotScarf # #Misfits Add - cosmetic patriot scarf
+    - type: loadout
+      id: MisfitsLoadoutNeckTownGuardMantle # #Misfits Add - cosmetic army rain mantle
+    - type: loadout
       id: ClothingNeckShawl
+    - type: loadout # #Misfits Add - NCR faction cloaks and mantles
+      id: MisfitsLoadoutNeckCloakNCR
+    - type: loadout
+      id: MisfitsLoadoutNeckCloakNCRSnow
+    - type: loadout
+      id: MisfitsLoadoutNeckMantleNCR
+    - type: loadout # #Misfits Add - NCR Rangers woods cloak
+      id: MisfitsLoadoutNeckCloakNCRWoods
+    - type: loadout # #Misfits Add - Tribal cloak
+      id: MisfitsLoadoutNeckCloakTribal

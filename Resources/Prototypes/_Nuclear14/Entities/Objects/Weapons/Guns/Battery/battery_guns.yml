@@ -940,24 +940,23 @@
     slots:
       gun_magazine:
         name: Magazine
-        startingItem: N14PlasmaCartridge
+        startingItem: N14PlasmaCartridgeMultiplas # #Misfits Change - use dedicated multi-shot cartridge
         insertSound: /Audio/Weapons/Guns/MagIn/batrifle_magin.ogg
         ejectSound: /Audio/Weapons/Guns/MagOut/batrifle_magout.ogg
         whitelist:
           tags:
-            - N14PlasmaCartridge
+            - N14PlasmaCartridgeMultiplas # #Misfits Change - accept only spread cartridge
   - type: MagazineVisuals
     magState: mag
     steps: 5
     zeroVisible: true
   - type: Gun
-    fireRate: 6
+    fireRate: 2 # #Misfits Tweak - reduced from 6; shotgun pacing (1 spread burst per 0.5s)
     soundGunshot:
       collection: N14MultiplasGunshot
-    selectedMode: Burst
+    selectedMode: SemiAuto # #Misfits Fix - was Burst; Multiplas fires multiple bolts simultaneously like a shotgun
     availableModes:
      - SemiAuto
-     - Burst
   - type: FollowDistance
     backStrength: 6
   - type: StaticPrice

@@ -236,7 +236,7 @@
       amount: 1
 
 - type: entity
-  parent: ClothingOuterBase
+  parent: N14ClothingOuterBase # #Misfits Fix - was ClothingOuterBase; lacked AllowSuitStorage so rifles couldn't be stored in armour slot
   id: N14ClothingOuterCoatLeatherJacket
   name: leather jacket
   description: A slick and smooth leather jacket. Perfect for any greaser.

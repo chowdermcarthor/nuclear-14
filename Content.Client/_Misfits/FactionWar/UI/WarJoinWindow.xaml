@@ -35,6 +35,11 @@
         <CheckBox Name="FactionWideCheck" Text="{Loc faction-war-join-faction-wide}"
                   Margin="10 4 10 0" Visible="False" Access="Public"/>
         <RichTextLabel Name="FactionWideHint" Margin="10 0 10 4" Visible="False" Access="Public"/>
+
+        <!-- #Misfits Add - Persistent block reason for major-faction restriction.
+             Kept separate from JoinResultLabel so action results don't overwrite it. -->
+        <RichTextLabel Name="BlockReasonLabel" Margin="10 4 10 4" Visible="False" Access="Public"/>
+
         <PanelContainer MinHeight="1" Modulate="#404040" Margin="10 6"/>
 
         <!-- ── Join Button ────────────────────────────────────────── -->

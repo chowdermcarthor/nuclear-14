@@ -1,0 +1,53 @@
+# #Misfits Add — Tribal Signal Fire entity.
+# A permanent signal fire structure placed in villages. Any Tribe-dept player can right-click
+# it to compose and broadcast a short smoke signal message to all online tribe members.
+# Cooldown: 5 minutes between uses.
+# Note: N14Bonfire (crafted/map-placed) also carries SmokeSignal — this is a dedicated decorative prop.
+
+- type: entity
+  id: MisfitsTribalSignalFire
+  parent: BaseStructure
+  name: signal fire
+  description: >-
+    A carefully arranged bonfire with damp leaves and green wood piled beside it.
+    Tribal shamans and elders use it to send coded smoke signals to distant kin.
+  components:
+  # Smoke signal functionality — enables the BUI text-input broadcast verb
+  - type: SmokeSignal
+    cooldown: 300 # 5 minutes
+    maxMessageLength: 128
+    targetDepartment: Tribe
+    announcementColor: "#d69b3d"
+  # BUI registration — links to the SmokeSignalBoundUserInterface client class
+  - type: ActivatableUI
+    inHandsOnly: false
+    singleUser: true
+    key: enum.SmokeSignalUiKey.Key
+  - type: UserInterface
+    interfaces:
+      enum.SmokeSignalUiKey.Key:
+        type: SmokeSignalBoundUserInterface
+  # Visual — use the campfire states from cooking.rsi
+  - type: Sprite
+    sprite: _Nuclear14/Structures/Furniture/cooking.rsi
+    layers:
+    - state: campfire
+    - state: campfire_fire
+      shader: unshaded
+  - type: Transform
+    anchored: true
+    noRot: true
+  - type: InteractionOutline
+  - type: Physics
+    bodyType: Static
+  - type: Fixtures
+    fixtures:
+      fix1:
+        shape:
+          !type:PhysShapeCircle
+          radius: 0.3
+        density: 500
+        mask:
+        - MachineMask
+        layer:
+        - MachineLayer

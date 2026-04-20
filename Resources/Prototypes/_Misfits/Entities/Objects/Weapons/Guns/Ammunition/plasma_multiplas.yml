@@ -1,0 +1,30 @@
+# #Misfits Add - Dedicated plasma cartridge for the Multiplas shotgun-style energy weapon.
+# Fires BulletPlasmaSpread (3 pellets at once) at fireCost 300 = 6 shots per cartridge.
+# Uses same sprite and battery capacity as N14PlasmaCartridge but is NOT interchangeable
+# with single-shot plasma weapons (separate whitelist tag).
+- type: entity
+  name: multiplas cartridge
+  description: A high-capacity plasma cartridge engineered for the multiplas. It discharges three plasma bolts simultaneously, producing a concentrated spread rather than a single beam.
+  id: N14PlasmaCartridgeMultiplas
+  suffix: Full
+  parent: N14BasePlasmaCell
+  components:
+  - type: Sprite
+    sprite: _Nuclear14/Objects/Weapons/Guns/Ammunition/Battery/plasma.rsi
+    layers:
+      - map: [ "enum.PowerCellVisualLayers.Base" ]
+        state: empty
+      - map: [ "enum.PowerCellVisualLayers.Unshaded" ]
+        state: o2
+        shader: unshaded
+  - type: Tag
+    tags:
+      - N14PlasmaCartridgeMultiplas  # dedicated tag — keeps it out of single-shot plasma weapons
+      - N14AmmoCell
+  - type: Battery
+    maxCharge: 1800
+    startingCharge: 1800
+  # Override parent's ammo provider: fire BulletPlasmaSpread (3-pellet) at 300 cost/shot
+  - type: ProjectileBatteryAmmoProvider
+    proto: BulletPlasmaSpread
+    fireCost: 300  # 3 pellets × 100 each = 6 shots per full cartridge

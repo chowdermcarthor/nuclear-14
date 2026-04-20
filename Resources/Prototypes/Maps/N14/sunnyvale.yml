@@ -28,7 +28,7 @@
             TribalElder: [ 1, 1 ]
             Tribal: [ 2, 4 ]
             TribalFarmer: [ 1, 2 ]
-            TribalHealer: [ 1, 2 ]
+            TribalShaman: [ 1, 2 ] # #Misfits Change - renamed from TribalHealer
             TownMayor: [ 1, 1 ]
             TownSheriff: [ 1, 1 ]
             TownDeputy: [ 2, 4 ]

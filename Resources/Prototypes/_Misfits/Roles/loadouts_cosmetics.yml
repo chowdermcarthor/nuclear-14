@@ -1,0 +1,889 @@
+# #Misfits Add - Cosmetic-only wearable items for the loadout pool.
+# These items provide no stat benefits — purely for visual customization/drip.
+
+# === Neck: Colored Scarves ===
+
+- type: loadout
+  id: MisfitsLoadoutNeckDesertScarf
+  category: Accessories
+  cost: 2
+  exclusive: true
+  requirements:
+    - !type:CharacterItemGroupRequirement
+      group: N14LoadoutNeck
+    - !type:CharacterJobRequirement
+      inverted: true
+      jobs:
+        - BoSMidSerf
+        - CaesarLegionSlave
+        - NCRPisoner
+  items:
+    - ClothingNeckDesertMask
+
+- type: loadout
+  id: MisfitsLoadoutNeckRedScarf
+  category: Accessories
+  cost: 2
+  exclusive: true
+  requirements:
+    - !type:CharacterItemGroupRequirement
+      group: N14LoadoutNeck
+    - !type:CharacterJobRequirement
+      inverted: true
+      jobs:
+        - BoSMidSerf
+        - CaesarLegionSlave
+        - NCRPisoner
+  items:
+    - ClothingNeckRedScarf
+
+- type: loadout
+  id: MisfitsLoadoutNeckBlueScarf
+  category: Accessories
+  cost: 2
+  exclusive: true
+  requirements:
+    - !type:CharacterItemGroupRequirement
+      group: N14LoadoutNeck
+    - !type:CharacterJobRequirement
+      inverted: true
+      jobs:
+        - BoSMidSerf
+        - CaesarLegionSlave
+        - NCRPisoner
+  items:
+    - ClothingNeckBlueScarf
+
+- type: loadout
+  id: MisfitsLoadoutNeckGreenScarf
+  category: Accessories
+  cost: 2
+  exclusive: true
+  requirements:
+    - !type:CharacterItemGroupRequirement
+      group: N14LoadoutNeck
+    - !type:CharacterJobRequirement
+      inverted: true
+      jobs:
+        - BoSMidSerf
+        - CaesarLegionSlave
+        - NCRPisoner
+  items:
+    - ClothingNeckGreenScarf
+
+- type: loadout
+  id: MisfitsLoadoutNeckOrangeScarf
+  category: Accessories
+  cost: 2
+  exclusive: true
+  requirements:
+    - !type:CharacterItemGroupRequirement
+      group: N14LoadoutNeck
+    - !type:CharacterJobRequirement
+      inverted: true
+      jobs:
+        - BoSMidSerf
+        - CaesarLegionSlave
+        - NCRPisoner
+  items:
+    - ClothingNeckOrangeScarf
+
+- type: loadout
+  id: MisfitsLoadoutNeckBrownScarf
+  category: Accessories
+  cost: 2
+  exclusive: true
+  requirements:
+    - !type:CharacterItemGroupRequirement
+      group: N14LoadoutNeck
+    - !type:CharacterJobRequirement
+      inverted: true
+      jobs:
+        - BoSMidSerf
+        - CaesarLegionSlave
+        - NCRPisoner
+  items:
+    - ClothingNeckBrownScarf
+
+- type: loadout
+  id: MisfitsLoadoutNeckPatriotScarf
+  category: Accessories
+  cost: 2
+  exclusive: true
+  requirements:
+    - !type:CharacterItemGroupRequirement
+      group: N14LoadoutNeck
+    - !type:CharacterJobRequirement
+      inverted: true
+      jobs:
+        - BoSMidSerf
+        - CaesarLegionSlave
+        - NCRPisoner
+  items:
+    - ClothingNeckPatriotScarf
+
+# === Neck: Army Rain Mantle ===
+
+- type: loadout
+  id: MisfitsLoadoutNeckTownGuardMantle
+  category: Accessories
+  cost: 2
+  exclusive: true
+  requirements:
+    - !type:CharacterItemGroupRequirement
+      group: N14LoadoutNeck
+    - !type:CharacterJobRequirement
+      inverted: true
+      jobs:
+        - BoSMidSerf
+        - CaesarLegionSlave
+        - NCRPisoner
+  items:
+    - N14ClothingNeckTownGuardMantle
+
+# === Eyes: Pilot Goggles ===
+
+- type: loadout
+  id: MisfitsLoadoutEyesPilotGoggles
+  category: Accessories
+  cost: 2
+  requirements:
+    - !type:CharacterItemGroupRequirement
+      group: N14LoadoutEyes
+    - !type:CharacterJobRequirement
+      inverted: true
+      jobs:
+        - BoSMidSerf
+        - CaesarLegionSlave
+        - NCRPisoner
+  items:
+    - N14ClothingEyesGlassesPilot
+
+# === Hands: Driver Gloves (general, no time gate) ===
+
+- type: loadout
+  id: MisfitsLoadoutHandsGlovesDriver
+  category: Hands
+  cost: 2
+  requirements:
+    - !type:CharacterItemGroupRequirement
+      group: N14LoadoutHands
+    - !type:CharacterJobRequirement
+      inverted: true
+      jobs:
+        - BoSMidSerf
+        - CaesarLegionSlave
+        - NCRPisoner
+        - VaultDweller   # Vault gets their own gated version (N14LoadoutHandsGlovesDriver)
+        - VaultSecurity
+        - VaultEngineer
+        - Overseer
+  items:
+    - N14ClothingHandsGlovesDriver
+
+# === Hands: Additional general cosmetic gloves ===
+# No armor coefficients — purely visual variety.
+
+- type: loadout
+  id: MisfitsLoadoutHandsBlackBiker
+  category: Accessories
+  cost: 1
+  requirements:
+    - !type:CharacterItemGroupRequirement
+      group: N14LoadoutHands
+    - !type:CharacterJobRequirement
+      inverted: true
+      jobs:
+        - BoSMidSerf
+        - CaesarLegionSlave
+        - NCRPisoner
+  items:
+    - N14ClothingHandsGlovesBlackBiker
+
+- type: loadout
+  id: MisfitsLoadoutHandsBrownBiker
+  category: Accessories
+  cost: 1
+  requirements:
+    - !type:CharacterItemGroupRequirement
+      group: N14LoadoutHands
+    - !type:CharacterJobRequirement
+      inverted: true
+      jobs:
+        - BoSMidSerf
+        - CaesarLegionSlave
+        - NCRPisoner
+  items:
+    - N14ClothingHandsGlovesBrownBiker
+
+- type: loadout
+  id: MisfitsLoadoutHandsMountie
+  category: Accessories
+  cost: 1
+  requirements:
+    - !type:CharacterItemGroupRequirement
+      group: N14LoadoutHands
+    - !type:CharacterJobRequirement
+      inverted: true
+      jobs:
+        - BoSMidSerf
+        - CaesarLegionSlave
+        - NCRPisoner
+  items:
+    - N14ClothingHandsGlovesMountie
+
+- type: loadout
+  id: MisfitsLoadoutHandsCombat
+  category: Accessories
+  cost: 1
+  requirements:
+    - !type:CharacterItemGroupRequirement
+      group: N14LoadoutHands
+    - !type:CharacterJobRequirement
+      inverted: true
+      jobs:
+        - BoSMidSerf
+        - CaesarLegionSlave
+        - NCRPisoner
+  items:
+    - N14ClothingHandsGlovesCombat
+
+- type: loadout
+  id: MisfitsLoadoutHandsNitrile
+  category: Accessories
+  cost: 1
+  requirements:
+    - !type:CharacterItemGroupRequirement
+      group: N14LoadoutHands
+    - !type:CharacterJobRequirement
+      inverted: true
+      jobs:
+        - BoSMidSerf
+        - CaesarLegionSlave
+        - NCRPisoner
+  items:
+    - N14ClothingHandsGlovesNitrile
+
+- type: loadout
+  id: MisfitsLoadoutHandsNitrilePurple
+  category: Accessories
+  cost: 1
+  requirements:
+    - !type:CharacterItemGroupRequirement
+      group: N14LoadoutHands
+    - !type:CharacterJobRequirement
+      inverted: true
+      jobs:
+        - BoSMidSerf
+        - CaesarLegionSlave
+        - NCRPisoner
+  items:
+    - N14ClothingHandsGlovesNitrilePurple
+
+- type: loadout
+  id: MisfitsLoadoutHandsPatrol
+  category: Accessories
+  cost: 1
+  requirements:
+    - !type:CharacterItemGroupRequirement
+      group: N14LoadoutHands
+    - !type:CharacterJobRequirement
+      inverted: true
+      jobs:
+        - BoSMidSerf
+        - CaesarLegionSlave
+        - NCRPisoner
+  items:
+    - N14ClothingHandsGlovesPatrol
+
+# === Hands: Faction-restricted gloves ===
+
+- type: loadout
+  id: MisfitsLoadoutHandsNCR
+  category: Accessories
+  cost: 1
+  requirements:
+    - !type:CharacterItemGroupRequirement
+      group: N14LoadoutHands
+    - !type:CharacterJobRequirement
+      jobs:
+        - NCRCadet
+        - NCRSoldier
+        - NCRPrivateFirstClass
+        - NCRWS
+        - NCRSGT
+        - NCRFirstSergeant
+        - NCRHeavyTrooper
+        - NCRLT
+        - NCRCaptain
+        - NCRMajor
+        - NCRDoctor
+  items:
+    - N14ClothingHandsGlovesNCR
+
+- type: loadout
+  id: MisfitsLoadoutHandsTribal
+  category: Accessories
+  cost: 1
+  requirements:
+    - !type:CharacterItemGroupRequirement
+      group: N14LoadoutHands
+    - !type:CharacterJobRequirement
+      jobs:
+        - Tribal
+        - TribalFarmer
+        - TribalShaman
+        - TribalElder
+  items:
+    - N14ClothingHandsGlovesTribal
+
+# === Eyes: General cosmetic eyewear ===
+
+- type: loadout
+  id: MisfitsLoadoutEyesGoggles
+  category: Accessories
+  cost: 1
+  requirements:
+    - !type:CharacterItemGroupRequirement
+      group: N14LoadoutEyes
+    - !type:CharacterJobRequirement
+      inverted: true
+      jobs:
+        - BoSMidSerf
+        - CaesarLegionSlave
+        - NCRPisoner
+  items:
+    - N14ClothingEyesGlassesGoggles
+
+# === Head: General hats — no armor, open to all non-prisoner/serf/slave ===
+
+- type: loadout
+  id: MisfitsLoadoutHeadWoodBoonie
+  category: Accessories
+  cost: 1
+  requirements:
+    - !type:CharacterJobRequirement
+      inverted: true
+      jobs:
+        - BoSMidSerf
+        - CaesarLegionSlave
+        - NCRPisoner
+  items:
+    - N14ClothingHeadHatWoodBoonie
+
+- type: loadout
+  id: MisfitsLoadoutHeadWinterBoonie
+  category: Accessories
+  cost: 1
+  requirements:
+    - !type:CharacterJobRequirement
+      inverted: true
+      jobs:
+        - BoSMidSerf
+        - CaesarLegionSlave
+        - NCRPisoner
+  items:
+    - N14ClothingHeadHatWinterBoonie
+
+- type: loadout
+  id: MisfitsLoadoutHeadDesertBoonie
+  category: Accessories
+  cost: 1
+  requirements:
+    - !type:CharacterJobRequirement
+      inverted: true
+      jobs:
+        - BoSMidSerf
+        - CaesarLegionSlave
+        - NCRPisoner
+  items:
+    - N14ClothingHeadHatDesertBoonie
+
+- type: loadout
+  id: MisfitsLoadoutHeadArmyBeret
+  category: Accessories
+  cost: 1
+  requirements:
+    - !type:CharacterJobRequirement
+      inverted: true
+      jobs:
+        - BoSMidSerf
+        - CaesarLegionSlave
+        - NCRPisoner
+  items:
+    - N14ClothingHeadHatArmyBeret
+
+- type: loadout
+  id: MisfitsLoadoutHeadArmyBeretAirborne
+  category: Accessories
+  cost: 1
+  requirements:
+    - !type:CharacterJobRequirement
+      inverted: true
+      jobs:
+        - BoSMidSerf
+        - CaesarLegionSlave
+        - NCRPisoner
+  items:
+    - N14ClothingHeadHatArmyBeretAirborne
+
+- type: loadout
+  id: MisfitsLoadoutHeadArmyBeretSpecial
+  category: Accessories
+  cost: 1
+  requirements:
+    - !type:CharacterJobRequirement
+      inverted: true
+      jobs:
+        - BoSMidSerf
+        - CaesarLegionSlave
+        - NCRPisoner
+  items:
+    - N14ClothingHeadHatArmyBeretSpecial
+
+# === Head: NCR soldiers ===
+
+- type: loadout
+  id: MisfitsLoadoutHeadNCRSidecap
+  category: Accessories
+  cost: 1
+  requirements:
+    - !type:CharacterJobRequirement
+      jobs:
+        - NCRCadet
+        - NCRSoldier
+        - NCRPrivateFirstClass
+        - NCRWS
+        - NCRSGT
+        - NCRFirstSergeant
+        - NCRHeavyTrooper
+        - NCRLT
+        - NCRCaptain
+        - NCRMajor
+        - NCRDoctor
+  items:
+    - N14ClothingHeadHatNCRSidecap
+
+- type: loadout
+  id: MisfitsLoadoutHeadNCRBeretOfficer
+  category: Accessories
+  cost: 1
+  requirements:
+    - !type:CharacterJobRequirement
+      jobs:
+        - NCRLT
+        - NCRCaptain
+        - NCRMajor
+  items:
+    - N14ClothingHeadHatNCRBeretOfficer
+
+- type: loadout
+  id: MisfitsLoadoutHeadNCRBeretMedic
+  category: Accessories
+  cost: 1
+  requirements:
+    - !type:CharacterJobRequirement
+      jobs:
+        - NCRDoctor
+  items:
+    - N14ClothingHeadHatNCRBeretMedic
+
+- type: loadout
+  id: MisfitsLoadoutHeadNCRBeretQM
+  category: Accessories
+  cost: 1
+  requirements:
+    - !type:CharacterJobRequirement
+      jobs:
+        - NCRWS
+        - NCRSGT
+        - NCRFirstSergeant
+        - NCRHeavyTrooper
+  items:
+    - N14ClothingHeadHatNCRBeretQM
+
+# === Head: NCR Rangers ===
+
+- type: loadout
+  id: MisfitsLoadoutHeadArmyBeretRanger
+  category: Accessories
+  cost: 1
+  requirements:
+    - !type:CharacterJobRequirement
+      jobs:
+        - NCRPatrolRanger
+        - NCRRangerRecruit
+        - NCRFieldRanger
+        - NCRVeteranRanger
+        - NCRChiefRanger
+  items:
+    - N14ClothingHeadHatArmyBeretRanger
+
+- type: loadout
+  id: MisfitsLoadoutHeadNCRBeretRecon
+  category: Accessories
+  cost: 1
+  requirements:
+    - !type:CharacterJobRequirement
+      jobs:
+        - NCRPatrolRanger
+        - NCRRangerRecruit
+        - NCRFieldRanger
+        - NCRVeteranRanger
+        - NCRChiefRanger
+  items:
+    - N14ClothingHeadHatNCRBeretRecon
+
+- type: loadout
+  id: MisfitsLoadoutHeadRanger
+  category: Accessories
+  cost: 1
+  requirements:
+    - !type:CharacterJobRequirement
+      jobs:
+        - NCRPatrolRanger
+        - NCRRangerRecruit
+        - NCRFieldRanger
+        - NCRVeteranRanger
+        - NCRChiefRanger
+  items:
+    - N14ClothingHeadHatRanger
+
+- type: loadout
+  id: MisfitsLoadoutHeadRangerB
+  category: Accessories
+  cost: 1
+  requirements:
+    - !type:CharacterJobRequirement
+      jobs:
+        - NCRPatrolRanger
+        - NCRRangerRecruit
+        - NCRFieldRanger
+        - NCRVeteranRanger
+        - NCRChiefRanger
+  items:
+    - N14ClothingHeadHatRangerB
+
+# === Head: Brotherhood of Steel ===
+
+- type: loadout
+  id: MisfitsLoadoutHeadBrotherhoodCap
+  category: Accessories
+  cost: 1
+  requirements:
+    - !type:CharacterJobRequirement
+      jobs:
+        - BoSInitiate
+        - BoSMidSquire
+        - BoSKnight
+        - BoSScribe
+        - BoSPaladin
+        - BoSMidKnight
+        - BoSMidPaladin
+        - BoSWestScribe
+        - BoSMidScribe
+        - BoSHeadKnight
+        - BoSMidPaladinCommander
+        - BoSWestElderCommander
+  items:
+    - N14ClothingHeadHatBrotherhoodCap
+
+- type: loadout
+  id: MisfitsLoadoutHeadBrotherhoodBeret
+  category: Accessories
+  cost: 1
+  requirements:
+    - !type:CharacterJobRequirement
+      jobs:
+        - BoSInitiate
+        - BoSMidSquire
+        - BoSKnight
+        - BoSScribe
+        - BoSPaladin
+        - BoSMidKnight
+        - BoSMidPaladin
+        - BoSWestScribe
+        - BoSMidScribe
+        - BoSHeadKnight
+        - BoSMidPaladinCommander
+        - BoSWestElderCommander
+  items:
+    - N14ClothingHeadHatBrotherhoodBeret
+
+- type: loadout
+  id: MisfitsLoadoutHeadBrotherhoodFieldCap
+  category: Accessories
+  cost: 1
+  requirements:
+    - !type:CharacterJobRequirement
+      jobs:
+        - BoSInitiate
+        - BoSMidSquire
+        - BoSKnight
+        - BoSScribe
+        - BoSPaladin
+        - BoSMidKnight
+        - BoSMidPaladin
+        - BoSWestScribe
+        - BoSMidScribe
+        - BoSHeadKnight
+        - BoSMidPaladinCommander
+        - BoSWestElderCommander
+  items:
+    - N14ClothingHeadHatBrotherhoodFieldCap
+
+# === Head: Enclave ===
+
+- type: loadout
+  id: MisfitsLoadoutHeadEnclaveIntel
+  category: Accessories
+  cost: 1
+  requirements:
+    - !type:CharacterJobRequirement
+      jobs:
+        - EnclaveEnlisted
+        - EnclaveNCO
+        - EnclaveJuniorOfficer
+        - EnclaveSeniorOfficer
+        - EnclaveCommander
+        - EnclaveReformer
+        - EnclaveScientist
+        - EnclaveJuniorScientist
+        - EnclaveHeadScientist
+  items:
+    - N14ClothingHeadHatEnclaveIntel
+
+- type: loadout
+  id: MisfitsLoadoutHeadEnclavePeacekeeperCap
+  category: Accessories
+  cost: 1
+  requirements:
+    - !type:CharacterJobRequirement
+      jobs:
+        - EnclaveEnlisted
+        - EnclaveNCO
+        - EnclaveJuniorOfficer
+        - EnclaveSeniorOfficer
+        - EnclaveCommander
+        - EnclaveReformer
+  items:
+    - N14ClothingHeadHatEnclavePeacekeeperCap
+
+- type: loadout
+  id: MisfitsLoadoutHeadEnclaveOfficer
+  category: Accessories
+  cost: 1
+  requirements:
+    - !type:CharacterJobRequirement
+      jobs:
+        - EnclaveJuniorOfficer
+        - EnclaveSeniorOfficer
+        - EnclaveCommander
+        - EnclaveReformer
+  items:
+    - N14ClothingHeadHatEnclaveOfficer
+
+- type: loadout
+  id: MisfitsLoadoutHeadEnclaveScientist
+  category: Accessories
+  cost: 1
+  requirements:
+    - !type:CharacterJobRequirement
+      jobs:
+        - EnclaveScientist
+        - EnclaveJuniorScientist
+        - EnclaveHeadScientist
+  items:
+    - N14ClothingHeadHatEnclaveScientist
+
+# === Head: Townsfolk ===
+
+- type: loadout
+  id: MisfitsLoadoutHeadDeputy
+  category: Accessories
+  cost: 1
+  requirements:
+    - !type:CharacterJobRequirement
+      jobs:
+        - TownDeputy
+  items:
+    - N14ClothingHeadHatDeputy
+
+- type: loadout
+  id: MisfitsLoadoutHeadSheriff
+  category: Accessories
+  cost: 1
+  requirements:
+    - !type:CharacterJobRequirement
+      jobs:
+        - TownSheriff
+        - TownMayor
+  items:
+    - N14ClothingHeadHatSheriff
+
+# === Shoes: General wasteland footwear ===
+
+- type: loadout
+  id: MisfitsLoadoutShoesJamrock
+  category: Accessories
+  cost: 1
+  requirements:
+    - !type:CharacterJobRequirement
+      inverted: true
+      jobs:
+        - BoSMidSerf
+        - CaesarLegionSlave
+        - NCRPisoner
+  items:
+    - N14ClothingShoesJamrock
+
+- type: loadout
+  id: MisfitsLoadoutShoesLeatherBoots
+  category: Accessories
+  cost: 1
+  requirements:
+    - !type:CharacterJobRequirement
+      inverted: true
+      jobs:
+        - BoSMidSerf
+        - CaesarLegionSlave
+        - NCRPisoner
+  items:
+    - N14ClothingBootsLeather
+
+# === Shoes: Faction-restricted footwear ===
+
+- type: loadout
+  id: MisfitsLoadoutShoesTribal
+  category: Accessories
+  cost: 1
+  requirements:
+    - !type:CharacterJobRequirement
+      jobs:
+        - Tribal
+        - TribalFarmer
+        - TribalShaman
+        - TribalElder
+  items:
+    - N14ClothingShoesTribal
+
+- type: loadout
+  id: MisfitsLoadoutShoesRaider
+  category: Accessories
+  cost: 1
+  requirements:
+    - !type:CharacterJobRequirement
+      jobs:
+        - Khan
+        - Eighties
+        - WhiteLegs
+  items:
+    - N14ClothingShoesRaider
+
+# === Neck: NCR faction cloaks and mantles ===
+
+- type: loadout
+  id: MisfitsLoadoutNeckCloakNCR
+  category: Accessories
+  cost: 2
+  exclusive: true
+  requirements:
+    - !type:CharacterItemGroupRequirement
+      group: N14LoadoutNeck
+    - !type:CharacterJobRequirement
+      jobs:
+        - NCRCadet
+        - NCRSoldier
+        - NCRPrivateFirstClass
+        - NCRWS
+        - NCRSGT
+        - NCRFirstSergeant
+        - NCRHeavyTrooper
+        - NCRLT
+        - NCRCaptain
+        - NCRMajor
+        - NCRDoctor
+  items:
+    - N14ClothingNeckCloakNCR
+
+- type: loadout
+  id: MisfitsLoadoutNeckCloakNCRSnow
+  category: Accessories
+  cost: 2
+  exclusive: true
+  requirements:
+    - !type:CharacterItemGroupRequirement
+      group: N14LoadoutNeck
+    - !type:CharacterJobRequirement
+      jobs:
+        - NCRCadet
+        - NCRSoldier
+        - NCRPrivateFirstClass
+        - NCRWS
+        - NCRSGT
+        - NCRFirstSergeant
+        - NCRHeavyTrooper
+        - NCRLT
+        - NCRCaptain
+        - NCRMajor
+        - NCRDoctor
+  items:
+    - N14ClothingNeckCloakNCRSnow
+
+- type: loadout
+  id: MisfitsLoadoutNeckMantleNCR
+  category: Accessories
+  cost: 2
+  exclusive: true
+  requirements:
+    - !type:CharacterItemGroupRequirement
+      group: N14LoadoutNeck
+    - !type:CharacterJobRequirement
+      jobs:
+        - NCRSGT
+        - NCRFirstSergeant
+        - NCRHeavyTrooper
+        - NCRLT
+        - NCRCaptain
+        - NCRMajor
+  items:
+    - N14ClothingNeckMantleNCR
+
+# === Neck: NCR Rangers ===
+
+- type: loadout
+  id: MisfitsLoadoutNeckCloakNCRWoods
+  category: Accessories
+  cost: 2
+  exclusive: true
+  requirements:
+    - !type:CharacterItemGroupRequirement
+      group: N14LoadoutNeck
+    - !type:CharacterJobRequirement
+      jobs:
+        - NCRPatrolRanger
+        - NCRRangerRecruit
+        - NCRFieldRanger
+        - NCRVeteranRanger
+        - NCRChiefRanger
+  items:
+    - N14ClothingNeckCloakNCRWoods
+
+# === Neck: Tribal cloak ===
+
+- type: loadout
+  id: MisfitsLoadoutNeckCloakTribal
+  category: Accessories
+  cost: 2
+  exclusive: true
+  requirements:
+    - !type:CharacterItemGroupRequirement
+      group: N14LoadoutNeck
+    - !type:CharacterJobRequirement
+      jobs:
+        - Tribal
+        - TribalFarmer
+        - TribalShaman
+        - TribalElder
+  items:
+    - N14ClothingNeckCloakTribal

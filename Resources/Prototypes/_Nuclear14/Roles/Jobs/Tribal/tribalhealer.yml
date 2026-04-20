@@ -1,5 +1,5 @@
 - type: job
-  id: TribalHealer
+  id: TribalShaman # #Misfits Change - renamed from TribalHealer for thematic accuracy
   setPreference: true
   jobWhitelistBypassesRoleTimers: true
   weight: 40
@@ -8,7 +8,7 @@
   canBeAntag: false
   name: job-name-tribal-shaman
   description: job-description-tribal-shaman
-  playTimeTracker: TribalHealer
+  playTimeTracker: TribalShaman # #Misfits Change - renamed from TribalHealer
   requirements:
     - !type:CharacterSpeciesRequirement
       species:
@@ -17,7 +17,7 @@
     #- !type:CharacterPlaytimeRequirement # TEMP REMOVED
     #  tracker: Wastelander
     #  min: 18000 # 5 hours
-  startingGear: TribalHealerGear
+  startingGear: TribalShamanGear # #Misfits Change - renamed from TribalHealerGear
   alwaysUseSpawner: true
   icon: "JobIconTribalMedic" # Corvax-Change
   supervisors: job-supervisors-tribal
@@ -48,7 +48,7 @@
     traits: [ LanguageTribal ]
 
 - type: startingGear
-  id: TribalHealerGear
+  id: TribalShamanGear # #Misfits Change - renamed from TribalHealerGear
   equipment:
     jumpsuit: N14ClothingUniformJumpsuitTribal
     outerClothing: N14ClothingOuterTribalArmor
@@ -72,6 +72,7 @@
     - N14HealingPowder
     - N14HealingPoultice
     - N14HealingPoultice
+    - MisfitsTribalSpiritBoard # #Misfits Add - Shaman starts with spirit board in backpack
 
 - type: playTimeTracker
-  id: TribalHealer
+  id: TribalShaman # #Misfits Change - renamed from TribalHealer

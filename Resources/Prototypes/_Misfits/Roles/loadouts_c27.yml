@@ -1,4 +1,9 @@
 # C-27 Humanoid Robot loadout entries. #Misfits Add (Phase H)
+# #Misfits Removed - Phase H revised: C-27 species uses restrictedCustomization which hides the
+# lobby Loadouts tab, so these type:loadout entries never appear to the player. Armor delivery is
+# now handled via UndecidedLoadoutBackpack kit items in startingGear (see c27_loadout_kits.yml).
+# Entries kept below for reference — do not delete per project policy.
+#
 # Job-restricted character-creation loadout choices for the C27 job. Players who selected
 # the C27 species + C27 job in the lobby see these entries and can pick which factory paint
 # (Generic / NCR / BoS) and which weight class (Light / Medium / Heavy) of outer armor and
@@ -12,220 +17,202 @@
 
 # === Outer Armor (9 variants) =================================================
 
-- type: loadout
-  id: LoadoutC27ArmorLightGeneric
-  category: Roles
-  cost: 1
-  exclusive: true
-  requirements:
-    - !type:CharacterJobRequirement
-      jobs:
-        - C27
-  items:
-    - ClothingC27ArmorLightGeneric
+#- type: loadout
+#  id: LoadoutC27ArmorLightGeneric
+#  category: Roles
+#  cost: 1
+#  requirements:
+#    - !type:CharacterJobRequirement
+#      jobs:
+#        - C27
+#  items:
+#    - ClothingC27ArmorLightGeneric
 
-- type: loadout
-  id: LoadoutC27ArmorLightNCR
-  category: Roles
-  cost: 1
-  exclusive: true
-  requirements:
-    - !type:CharacterJobRequirement
-      jobs:
-        - C27
-  items:
-    - ClothingC27ArmorLightNCR
+#- type: loadout
+#  id: LoadoutC27ArmorLightNCR
+#  category: Roles
+#  cost: 1
+#  requirements:
+#    - !type:CharacterJobRequirement
+#      jobs:
+#        - C27
+#  items:
+#    - ClothingC27ArmorLightNCR
 
-- type: loadout
-  id: LoadoutC27ArmorLightBoS
-  category: Roles
-  cost: 1
-  exclusive: true
-  requirements:
-    - !type:CharacterJobRequirement
-      jobs:
-        - C27
-  items:
-    - ClothingC27ArmorLightBoS
+#- type: loadout
+#  id: LoadoutC27ArmorLightBoS
+#  category: Roles
+#  cost: 1
+#  requirements:
+#    - !type:CharacterJobRequirement
+#      jobs:
+#        - C27
+#  items:
+#    - ClothingC27ArmorLightBoS
 
-- type: loadout
-  id: LoadoutC27ArmorMediumGeneric
-  category: Roles
-  cost: 1
-  exclusive: true
-  requirements:
-    - !type:CharacterJobRequirement
-      jobs:
-        - C27
-  items:
-    - ClothingC27ArmorMediumGeneric
+#- type: loadout
+#  id: LoadoutC27ArmorMediumGeneric
+#  category: Roles
+#  cost: 1
+#  requirements:
+#    - !type:CharacterJobRequirement
+#      jobs:
+#        - C27
+#  items:
+#    - ClothingC27ArmorMediumGeneric
 
-- type: loadout
-  id: LoadoutC27ArmorMediumNCR
-  category: Roles
-  cost: 1
-  exclusive: true
-  requirements:
-    - !type:CharacterJobRequirement
-      jobs:
-        - C27
-  items:
-    - ClothingC27ArmorMediumNCR
+#- type: loadout
+#  id: LoadoutC27ArmorMediumNCR
+#  category: Roles
+#  cost: 1
+#  requirements:
+#    - !type:CharacterJobRequirement
+#      jobs:
+#        - C27
+#  items:
+#    - ClothingC27ArmorMediumNCR
 
-- type: loadout
-  id: LoadoutC27ArmorMediumBoS
-  category: Roles
-  cost: 1
-  exclusive: true
-  requirements:
-    - !type:CharacterJobRequirement
-      jobs:
-        - C27
-  items:
-    - ClothingC27ArmorMediumBoS
+#- type: loadout
+#  id: LoadoutC27ArmorMediumBoS
+#  category: Roles
+#  cost: 1
+#  requirements:
+#    - !type:CharacterJobRequirement
+#      jobs:
+#        - C27
+#  items:
+#    - ClothingC27ArmorMediumBoS
 
-- type: loadout
-  id: LoadoutC27ArmorHeavyGeneric
-  category: Roles
-  cost: 1
-  exclusive: true
-  requirements:
-    - !type:CharacterJobRequirement
-      jobs:
-        - C27
-  items:
-    - ClothingC27ArmorHeavyGeneric
+#- type: loadout
+#  id: LoadoutC27ArmorHeavyGeneric
+#  category: Roles
+#  cost: 1
+#  requirements:
+#    - !type:CharacterJobRequirement
+#      jobs:
+#        - C27
+#  items:
+#    - ClothingC27ArmorHeavyGeneric
 
-- type: loadout
-  id: LoadoutC27ArmorHeavyNCR
-  category: Roles
-  cost: 1
-  exclusive: true
-  requirements:
-    - !type:CharacterJobRequirement
-      jobs:
-        - C27
-  items:
-    - ClothingC27ArmorHeavyNCR
+#- type: loadout
+#  id: LoadoutC27ArmorHeavyNCR
+#  category: Roles
+#  cost: 1
+#  requirements:
+#    - !type:CharacterJobRequirement
+#      jobs:
+#        - C27
+#  items:
+#    - ClothingC27ArmorHeavyNCR
 
-- type: loadout
-  id: LoadoutC27ArmorHeavyBoS
-  category: Roles
-  cost: 1
-  exclusive: true
-  requirements:
-    - !type:CharacterJobRequirement
-      jobs:
-        - C27
-  items:
-    - ClothingC27ArmorHeavyBoS
+#- type: loadout
+#  id: LoadoutC27ArmorHeavyBoS
+#  category: Roles
+#  cost: 1
+#  requirements:
+#    - !type:CharacterJobRequirement
+#      jobs:
+#        - C27
+#  items:
+#    - ClothingC27ArmorHeavyBoS
 
 # === Helmets (9 variants) =====================================================
 
-- type: loadout
-  id: LoadoutC27HelmetLightGeneric
-  category: Roles
-  cost: 1
-  exclusive: true
-  requirements:
-    - !type:CharacterJobRequirement
-      jobs:
-        - C27
-  items:
-    - ClothingC27HelmetLightGeneric
+#- type: loadout
+#  id: LoadoutC27HelmetLightGeneric
+#  category: Roles
+#  cost: 1
+#  requirements:
+#    - !type:CharacterJobRequirement
+#      jobs:
+#        - C27
+#  items:
+#    - ClothingC27HelmetLightGeneric
 
-- type: loadout
-  id: LoadoutC27HelmetLightNCR
-  category: Roles
-  cost: 1
-  exclusive: true
-  requirements:
-    - !type:CharacterJobRequirement
-      jobs:
-        - C27
-  items:
-    - ClothingC27HelmetLightNCR
+#- type: loadout
+#  id: LoadoutC27HelmetLightNCR
+#  category: Roles
+#  cost: 1
+#  requirements:
+#    - !type:CharacterJobRequirement
+#      jobs:
+#        - C27
+#  items:
+#    - ClothingC27HelmetLightNCR
 
-- type: loadout
-  id: LoadoutC27HelmetLightBoS
-  category: Roles
-  cost: 1
-  exclusive: true
-  requirements:
-    - !type:CharacterJobRequirement
-      jobs:
-        - C27
-  items:
-    - ClothingC27HelmetLightBoS
+#- type: loadout
+#  id: LoadoutC27HelmetLightBoS
+#  category: Roles
+#  cost: 1
+#  requirements:
+#    - !type:CharacterJobRequirement
+#      jobs:
+#        - C27
+#  items:
+#    - ClothingC27HelmetLightBoS
 
-- type: loadout
-  id: LoadoutC27HelmetMediumGeneric
-  category: Roles
-  cost: 1
-  exclusive: true
-  requirements:
-    - !type:CharacterJobRequirement
-      jobs:
-        - C27
-  items:
-    - ClothingC27HelmetMediumGeneric
+#- type: loadout
+#  id: LoadoutC27HelmetMediumGeneric
+#  category: Roles
+#  cost: 1
+#  requirements:
+#    - !type:CharacterJobRequirement
+#      jobs:
+#        - C27
+#  items:
+#    - ClothingC27HelmetMediumGeneric
 
-- type: loadout
-  id: LoadoutC27HelmetMediumNCR
-  category: Roles
-  cost: 1
-  exclusive: true
-  requirements:
-    - !type:CharacterJobRequirement
-      jobs:
-        - C27
-  items:
-    - ClothingC27HelmetMediumNCR
+#- type: loadout
+#  id: LoadoutC27HelmetMediumNCR
+#  category: Roles
+#  cost: 1
+#  requirements:
+#    - !type:CharacterJobRequirement
+#      jobs:
+#        - C27
+#  items:
+#    - ClothingC27HelmetMediumNCR
 
-- type: loadout
-  id: LoadoutC27HelmetMediumBoS
-  category: Roles
-  cost: 1
-  exclusive: true
-  requirements:
-    - !type:CharacterJobRequirement
-      jobs:
-        - C27
-  items:
-    - ClothingC27HelmetMediumBoS
+#- type: loadout
+#  id: LoadoutC27HelmetMediumBoS
+#  category: Roles
+#  cost: 1
+#  requirements:
+#    - !type:CharacterJobRequirement
+#      jobs:
+#        - C27
+#  items:
+#    - ClothingC27HelmetMediumBoS
 
-- type: loadout
-  id: LoadoutC27HelmetHeavyGeneric
-  category: Roles
-  cost: 1
-  exclusive: true
-  requirements:
-    - !type:CharacterJobRequirement
-      jobs:
-        - C27
-  items:
-    - ClothingC27HelmetHeavyGeneric
+#- type: loadout
+#  id: LoadoutC27HelmetHeavyGeneric
+#  category: Roles
+#  cost: 1
+#  requirements:
+#    - !type:CharacterJobRequirement
+#      jobs:
+#        - C27
+#  items:
+#    - ClothingC27HelmetHeavyGeneric
 
-- type: loadout
-  id: LoadoutC27HelmetHeavyNCR
-  category: Roles
-  cost: 1
-  exclusive: true
-  requirements:
-    - !type:CharacterJobRequirement
-      jobs:
-        - C27
-  items:
-    - ClothingC27HelmetHeavyNCR
+#- type: loadout
+#  id: LoadoutC27HelmetHeavyNCR
+#  category: Roles
+#  cost: 1
+#  requirements:
+#    - !type:CharacterJobRequirement
+#      jobs:
+#        - C27
+#  items:
+#    - ClothingC27HelmetHeavyNCR
 
-- type: loadout
-  id: LoadoutC27HelmetHeavyBoS
-  category: Roles
-  cost: 1
-  exclusive: true
-  requirements:
-    - !type:CharacterJobRequirement
-      jobs:
-        - C27
-  items:
-    - ClothingC27HelmetHeavyBoS
+#- type: loadout
+#  id: LoadoutC27HelmetHeavyBoS
+#  category: Roles
+#  cost: 1
+#  requirements:
+#    - !type:CharacterJobRequirement
+#      jobs:
+#        - C27
+#  items:
+#    - ClothingC27HelmetHeavyBoS

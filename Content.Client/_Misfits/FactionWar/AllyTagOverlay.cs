@@ -5,6 +5,7 @@
 // Pattern mirrors AdminNameOverlay (Content.Client/Administration/AdminNameOverlay.cs).
 
 using System.Numerics;
+using Content.Client._Misfits.RaidRequest; // #Misfits Add - merge raid participants into overlay
 using Content.Shared.Examine;
 using Robust.Client.GameObjects;
 using Robust.Client.Graphics;
@@ -25,6 +26,7 @@ namespace Content.Client._Misfits.FactionWar;
 internal sealed class AllyTagOverlay : Overlay
 {
     private readonly FactionWarClientSystem _warSystem;
+    private readonly RaidRequestClientSystem _raidSystem; // #Misfits Add - secondary participant source
     private readonly IEntityManager         _entityManager;
     private readonly IPlayerManager         _playerManager;
     private readonly IEyeManager            _eyeManager;
@@ -50,6 +52,7 @@ internal sealed class AllyTagOverlay : Overlay
 
     public AllyTagOverlay(
         FactionWarClientSystem warSystem,
+        RaidRequestClientSystem raidSystem, // #Misfits Add
         IEntityManager         entityManager,
         IPlayerManager         playerManager,
         IEyeManager            eyeManager,
@@ -60,6 +63,7 @@ internal sealed class AllyTagOverlay : Overlay
         SharedTransformSystem  transform)
     {
         _warSystem     = warSystem;
+        _raidSystem    = raidSystem; // #Misfits Add
         _entityManager = entityManager;
         _playerManager = playerManager;
         _eyeManager    = eyeManager;
@@ -114,15 +118,39 @@ internal sealed class AllyTagOverlay : Overlay
         if (localEntity == null)
             return;
 
-        var activeWars = _warSystem.ActiveWars;
-        if (activeWars.Count == 0)
+        // #Misfits Tweak - Merge war + raid participants. War wins on key collision so an entity
+        // is never tagged twice when both systems flag the same player. Either source alone
+        // is enough to activate the overlay.
+        var warParticipants  = _warSystem.WarParticipants;
+        var raidParticipants = _raidSystem.RaidParticipants;
+        var activeWars       = _warSystem.ActiveWars;
+
+        if (activeWars.Count == 0 && raidParticipants.Count == 0)
+            return;
+        if (warParticipants.Count == 0 && raidParticipants.Count == 0)
             return;
 
-        var participants = _warSystem.WarParticipants;
-        if (participants.Count == 0)
-            return;
+        // Build a merged view: start from the (smaller, often empty) raid dict, then overlay
+        // the war dict so its assignments take precedence on collisions. Avoids allocating
+        // when only one source is active.
+        IReadOnlyDictionary<NetEntity, string> participants;
+        if (raidParticipants.Count == 0)
+        {
+            participants = warParticipants;
+        }
+        else if (warParticipants.Count == 0)
+        {
+            participants = raidParticipants;
+        }
+        else
+        {
+            var merged = new Dictionary<NetEntity, string>(raidParticipants);
+            foreach (var (k, v) in warParticipants)
+                merged[k] = v; // war wins on collision
+            participants = merged;
+        }
 
-        // Determine the local player's side from the participant dict itself.
+        // Determine the local player's side from the merged participant dict.
         // This stays accurate across respawns/faction-swaps since the server rebuilds it every 2s.
         var localNet = _entityManager.GetNetEntity(localEntity.Value);
         if (!participants.TryGetValue(localNet, out var effectiveFaction))

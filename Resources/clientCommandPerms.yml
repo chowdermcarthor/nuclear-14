@@ -42,6 +42,7 @@
     - saveconfig
     - war
     - warjoin
+    - group # #Misfits Add - player group party system
 
 - Flags: DEBUG
   Commands:

@@ -432,7 +432,7 @@
         - TribalElder
         - Tribal
         - TribalFarmer
-        - TribalHealer
+        - TribalShaman # #Misfits Change - renamed from TribalHealer
         # Forge-Change-Start
         - BoSWestElderCommander
         - Followers

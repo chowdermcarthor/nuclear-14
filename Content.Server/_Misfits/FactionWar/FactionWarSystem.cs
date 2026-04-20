@@ -602,6 +602,25 @@ public sealed class FactionWarSystem : EntitySystem
             return;
         }
 
+        // #Misfits Add - Block major faction members from joining wars that involve another major faction.
+        // Major factions (NCR, BoS, Legion) handle their own wars and cannot enlist as third parties
+        // in each other's conflicts. They may still join wars declared by minor factions.
+        if (player.AttachedEntity is { } joinEntity &&
+            TryGetWarFaction(joinEntity, out var joinFaction) &&
+            FactionWarConfig.IsMajorFaction(joinFaction))
+        {
+            var aggressorIsMajor = FactionWarConfig.IsMajorFaction(war.AggressorFaction);
+            var targetIsMajor    = FactionWarConfig.IsMajorFaction(war.TargetFaction);
+            // War involves a different major faction — block enlistment.
+            if ((aggressorIsMajor && war.AggressorFaction != joinFaction) ||
+                (targetIsMajor    && war.TargetFaction    != joinFaction))
+            {
+                SendJoinResult(player, false,
+                    "Major factions cannot enlist in a war between other major factions.");
+                return;
+            }
+        }
+
         // #Misfits Add - Faction-wide enlistment: top-ranking member enlists all online faction members.
         if (msg.FactionWide)
         {
@@ -658,6 +677,21 @@ public sealed class FactionWarSystem : EntitySystem
             SendJoinResult(player, false,
                 "Only the highest-ranking online member can enlist the entire faction.");
             return;
+        }
+
+        // #Misfits Add - Block major factions from faction-wide enlisting into another major faction's war.
+        // Same rule as individual join: NCR/BoS/Legion cannot enlist as a bloc in each other's wars.
+        if (FactionWarConfig.IsMajorFaction(myFaction))
+        {
+            var aggressorIsMajor = FactionWarConfig.IsMajorFaction(war.AggressorFaction);
+            var targetIsMajor    = FactionWarConfig.IsMajorFaction(war.TargetFaction);
+            if ((aggressorIsMajor && war.AggressorFaction != myFaction) ||
+                (targetIsMajor    && war.TargetFaction    != myFaction))
+            {
+                SendJoinResult(player, false,
+                    "Major factions cannot enlist in a war between other major factions.");
+                return;
+            }
         }
 
         // Build the set of NPC faction IDs to iterate (canonical + aliases).

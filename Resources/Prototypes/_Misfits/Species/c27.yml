@@ -15,16 +15,23 @@
   - C27
   prototype: N14MobC27
   sprites: MobC27Sprites
-  markingLimits: MobC27MarkingLimits
+  markingLimits: MobC27MarkingLimitsGeneric # #Misfits Tweak - per-variant marking defaults so each species locks its own faction torso paint
   dollPrototype: N14MobC27Dummy
   skinColoration: Hues
   defaultSkinTone: "#9a8a72"
-  minHeight: 1.0
-  defaultHeight: 1.0
-  maxHeight: 1.0
-  minWidth: 1.0
-  defaultWidth: 1.0
-  maxWidth: 1.0
+  # #Misfits Tweak - Scale C-27 to 1.5x (matches SuperMutant) so the chassis reads as the tall,
+  # heavy industrial humanoid robot it is (per Fallout "Humanoid robot" lore — General Atomics
+  # full-size frame). SharedHumanoidAppearanceSystem.LoadProfile -> SetScale applies this to
+  # SpriteComponent.Scale, which uniformly scales the body AND every clothing/equipment layer
+  # (jumpsuit, outerClothing, head, gloves, etc.) — same mechanism that makes SuperMutant
+  # equipment fit without per-item displacement maps. Locked min=default=max so the chassis
+  # silhouette stays consistent across all C-27 units (faction whitelist preserves uniformity).
+  minHeight: 1.5
+  defaultHeight: 1.5
+  maxHeight: 1.5
+  minWidth: 1.5
+  defaultWidth: 1.5
+  maxWidth: 1.5
   sexes:
   - Unsexed
 
@@ -44,8 +51,11 @@
 
 # Marking allotments. Chest is required so every C-27 picks a faction "Model" paint
 # (Generic / NCR / Brotherhood) — see _Misfits/Entities/Mobs/Customization/Markings/c27_model.yml.
+# #Misfits Tweak - Split into three per-variant markingPoints so each model species locks
+# in the matching faction torso paint as its forced default. Players pick the variant via
+# the "Robot Model" dropdown in the lobby (mirrors RobotProtectron family pattern).
 - type: markingPoints
-  id: MobC27MarkingLimits
+  id: MobC27MarkingLimitsGeneric
   onlyWhitelisted: true
   points:
     Chest:
@@ -56,7 +66,89 @@
       points: 1
       required: false
 
+- type: markingPoints
+  id: MobC27MarkingLimitsNCR
+  onlyWhitelisted: true
+  points:
+    Chest:
+      points: 1
+      required: true
+      defaultMarkings: [C27ModelNCR]
+    Head:
+      points: 1
+      required: false
+
+- type: markingPoints
+  id: MobC27MarkingLimitsBoS
+  onlyWhitelisted: true
+  points:
+    Chest:
+      points: 1
+      required: true
+      defaultMarkings: [C27ModelBoS]
+    Head:
+      points: 1
+      required: false
+
+# #Misfits Add - Hidden NCR variant. Selected via the Robot Model picker in the lobby; not
+# shown directly in the species dropdown (UI hides it via IsHiddenProtectronVariantSpecies).
+- type: species
+  id: C27NCR
+  name: species-name-c27-ncr
+  roundStart: true
+  order: 5
+  whitelistRequired: true
+  restrictedCustomization: true
+  jobWhitelistUnlock: C27
+  restrictedJobs:
+  - C27
+  prototype: N14MobC27NCR
+  sprites: MobC27Sprites
+  markingLimits: MobC27MarkingLimitsNCR
+  dollPrototype: N14MobC27NCRDummy
+  skinColoration: Hues
+  defaultSkinTone: "#b59548"
+  minHeight: 1.5
+  defaultHeight: 1.5
+  maxHeight: 1.5
+  minWidth: 1.5
+  defaultWidth: 1.5
+  maxWidth: 1.5
+  sexes:
+  - Unsexed
+
+# #Misfits Add - Hidden Brotherhood of Steel variant. Same access rules as the Generic chassis.
+- type: species
+  id: C27BoS
+  name: species-name-c27-bos
+  roundStart: true
+  order: 6
+  whitelistRequired: true
+  restrictedCustomization: true
+  jobWhitelistUnlock: C27
+  restrictedJobs:
+  - C27
+  prototype: N14MobC27BoS
+  sprites: MobC27Sprites
+  markingLimits: MobC27MarkingLimitsBoS
+  dollPrototype: N14MobC27BoSDummy
+  skinColoration: Hues
+  defaultSkinTone: "#2c4a6e"
+  minHeight: 1.5
+  defaultHeight: 1.5
+  maxHeight: 1.5
+  minWidth: 1.5
+  defaultWidth: 1.5
+  maxWidth: 1.5
+  sexes:
+  - Unsexed
+
 # --- Per-bodypart sprite definitions ---
+# #Misfits Fix - Head + Chest are sex-morphed by HumanoidAppearanceSystem (UpdateLayers passes
+# sexMorph: true), and a profile carried over from another species can still hold Sex=Male or
+# Sex=Female even though C27 only declares Unsexed. Without these aliases the system throws
+# UnknownPrototypeException: MobC27HeadMale / MobC27TorsoFemale on lobby preview reload.
+# Aliasing all three sex variants to the same sprite is the standard SS14 pattern.
 - type: humanoidBaseSprite
   id: MobC27Head
   baseSprite:
@@ -64,7 +156,31 @@
     state: head_m
 
 - type: humanoidBaseSprite
+  id: MobC27HeadMale
+  baseSprite:
+    sprite: _Misfits/Mobs/Species/C27/parts.rsi
+    state: head_m
+
+- type: humanoidBaseSprite
+  id: MobC27HeadFemale
+  baseSprite:
+    sprite: _Misfits/Mobs/Species/C27/parts.rsi
+    state: head_m
+
+- type: humanoidBaseSprite
   id: MobC27Torso
+  baseSprite:
+    sprite: _Misfits/Mobs/Species/C27/parts.rsi
+    state: torso_m
+
+- type: humanoidBaseSprite
+  id: MobC27TorsoMale
+  baseSprite:
+    sprite: _Misfits/Mobs/Species/C27/parts.rsi
+    state: torso_m
+
+- type: humanoidBaseSprite
+  id: MobC27TorsoFemale
   baseSprite:
     sprite: _Misfits/Mobs/Species/C27/parts.rsi
     state: torso_m

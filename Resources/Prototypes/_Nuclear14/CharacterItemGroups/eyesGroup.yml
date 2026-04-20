@@ -9,3 +9,7 @@
       id: N14ClothingEyesGlasses
     - type: loadout
       id: N14LoadoutEyesEyepatch
+    - type: loadout
+      id: MisfitsLoadoutEyesPilotGoggles # #Misfits Add - cosmetic pilot goggles
+    - type: loadout
+      id: MisfitsLoadoutEyesGoggles # #Misfits Add - cosmetic goggles

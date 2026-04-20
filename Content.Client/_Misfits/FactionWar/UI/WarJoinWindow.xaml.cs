@@ -106,6 +106,8 @@ public sealed partial class WarJoinWindow : FancyWindow
 
         // Show or hide faction-wide enlist option based on server-provided rank info.
         UpdateFactionWideVisibility();
+        // #Misfits Add - Apply major-faction restriction (disables join button if needed).
+        ApplyMajorFactionRestriction();
 
         ClearResult();
     }
@@ -124,6 +126,8 @@ public sealed partial class WarJoinWindow : FancyWindow
         PopulateSides(args.Id);
         ResetConfirm();
         UpdateFactionWideVisibility();
+        // #Misfits Add - Disable join button for major-faction members in major-vs-major wars.
+        ApplyMajorFactionRestriction();
 
         // Reset faction-wide state on war switch.
         FactionWideCheck.Pressed = false;
@@ -227,6 +231,13 @@ public sealed partial class WarJoinWindow : FancyWindow
             return;
         }
 
+        // #Misfits Add - Hide faction-wide option if major-faction restriction applies.
+        if (IsMajorFactionWarConflict(war))
+        {
+            HideFactionWide();
+            return;
+        }
+
         FactionWideCheck.Visible = true;
         FactionWideHint.Visible = true;
         FactionWideHint.SetMarkup(
@@ -252,5 +263,49 @@ public sealed partial class WarJoinWindow : FancyWindow
     private void ClearResult()
     {
         JoinResultLabel.SetMarkup(string.Empty);
+    }
+
+    // #Misfits Add - Returns true when this player belongs to a major faction AND the given
+    // war involves a different major faction. In that case neither individual nor faction-wide
+    // enlistment is permitted.
+    private bool IsMajorFactionWarConflict(FactionWarEntry war)
+    {
+        if (_myWarFactionId == null || !FactionWarConfig.IsMajorFaction(_myWarFactionId))
+            return false;
+
+        var aggressorIsMajor = FactionWarConfig.IsMajorFaction(war.AggressorFaction);
+        var targetIsMajor    = FactionWarConfig.IsMajorFaction(war.TargetFaction);
+
+        // Blocked if any participant is a different major faction.
+        return (aggressorIsMajor && war.AggressorFaction != _myWarFactionId) ||
+               (targetIsMajor    && war.TargetFaction    != _myWarFactionId);
+    }
+
+    // #Misfits Add - Applies or removes the major-faction join restriction for the currently
+    // selected war. Disables the join button, swaps its text to a self-explanatory label,
+    // and shows a persistent block-reason message in a dedicated label (separate from
+    // JoinResultLabel so action results don't overwrite the restriction notice).
+    private void ApplyMajorFactionRestriction()
+    {
+        var warIdx = WarSelector.SelectedId;
+        if (warIdx < 0 || warIdx >= _pendingWars.Count)
+            return;
+
+        if (IsMajorFactionWarConflict(_pendingWars[warIdx]))
+        {
+            JoinButton.Disabled = true;
+            JoinButton.Text = "Restricted - Major Faction Conflict";
+            BlockReasonLabel.Visible = true;
+            BlockReasonLabel.SetMarkup(
+                "[color=#FF6347]Your faction cannot enlist in a war between other major factions. " +
+                "Major factions (NCR, Brotherhood, Legion) settle their own conflicts.[/color]");
+        }
+        else
+        {
+            JoinButton.Disabled = false;
+            JoinButton.Text = Loc.GetString("faction-war-join-button");
+            BlockReasonLabel.Visible = false;
+            BlockReasonLabel.SetMarkup(string.Empty);
+        }
     }
 }

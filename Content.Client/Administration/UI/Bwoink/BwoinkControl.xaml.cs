@@ -6,6 +6,7 @@ using Content.Client.Administration.UI.CustomControls;
 using Content.Client._Misfits.Administration.UI.CustomControls; // #Misfits Add — TicketCardEntry rich player cards
 using Content.Client._Misfits.Administration.UI.MentorHelp; // #Misfits Add — embedded MentorHelpControl for consolidated panel
 using Content.Client._Misfits.UserInterface.Systems.MentorHelp; // #Misfits Add — MentorHelpUIController for mode tab embedding
+using Content.Client._Misfits.RaidRequest.UI; // #Misfits Add — embedded RaidRequestAdminControl for the Raid tab
 using Content.Client.UserInterface.Controls; // #Misfits Add — ListContainerButton for GenerateItem override
 using Content.Client.UserInterface.Systems.Bwoink;
 using Content.Shared._Misfits.Administration; // #Misfits Add — ticket system types
@@ -65,9 +66,11 @@ namespace Content.Client.Administration.UI.Bwoink
         // #Misfits Add — current filter tab state for ticket status filtering
         private string _currentFilter = "open"; // "open" | "claimed" | "resolved" | "all"
 
-        // #Misfits Add — mode tab state for consolidated Admin/Mentor panel
-        private string _currentMode = "admin"; // "admin" | "mentor"
+        // #Misfits Add — mode tab state for consolidated Admin/Mentor/Raid panel
+        private string _currentMode = "admin"; // "admin" | "mentor" | "raid"
         private MentorHelpControl? _embeddedMentorControl;
+        // #Misfits Add — lazily-instantiated RaidRequestAdminControl for the Raid tab.
+        private RaidRequestAdminControl? _embeddedRaidControl;
 
         public BwoinkControl()
         {
@@ -362,6 +365,8 @@ namespace Content.Client.Administration.UI.Bwoink
             // Mentor tab is only visible if the user has mentor permissions (ViewNotes flag).
             TabAdmin.OnPressed += _ => SetMode("admin");
             TabMentor.OnPressed += _ => SetMode("mentor");
+            // #Misfits Add — Raid Requests tab routes to the embedded /raid admin control.
+            TabRaid.OnPressed += _ => SetMode("raid");
 
             // #Misfits Add — override tab button styles with flat rectangles to prevent jagged
             // texture-atlas edges from ButtonSmall. Active tab gets a distinct color, inactive
@@ -428,10 +433,9 @@ namespace Content.Client.Administration.UI.Bwoink
         // Both tabs use the same neutral slate colors; active = brighter, inactive = darker.
         private void ApplyTabStyles()
         {
-            var adminActive = _currentMode == "admin";
             TabAdmin.StyleBoxOverride = new StyleBoxFlat
             {
-                BackgroundColor = adminActive ? Color.FromHex("#383855") : Color.FromHex("#252538"),
+                BackgroundColor = _currentMode == "admin" ? Color.FromHex("#383855") : Color.FromHex("#252538"),
                 ContentMarginLeftOverride = 8,
                 ContentMarginRightOverride = 8,
                 ContentMarginTopOverride = 4,
@@ -439,7 +443,16 @@ namespace Content.Client.Administration.UI.Bwoink
             };
             TabMentor.StyleBoxOverride = new StyleBoxFlat
             {
-                BackgroundColor = adminActive ? Color.FromHex("#252538") : Color.FromHex("#383855"),
+                BackgroundColor = _currentMode == "mentor" ? Color.FromHex("#383855") : Color.FromHex("#252538"),
+                ContentMarginLeftOverride = 8,
+                ContentMarginRightOverride = 8,
+                ContentMarginTopOverride = 4,
+                ContentMarginBottomOverride = 4,
+            };
+            // #Misfits Add — mirror the same active/inactive treatment for the Raid tab.
+            TabRaid.StyleBoxOverride = new StyleBoxFlat
+            {
+                BackgroundColor = _currentMode == "raid" ? Color.FromHex("#383855") : Color.FromHex("#252538"),
                 ContentMarginLeftOverride = 8,
                 ContentMarginRightOverride = 8,
                 ContentMarginTopOverride = 4,
@@ -513,19 +526,34 @@ namespace Content.Client.Administration.UI.Bwoink
             // Radio-button behavior for mode tabs
             TabAdmin.Pressed = mode == "admin";
             TabMentor.Pressed = mode == "mentor";
+            TabRaid.Pressed = mode == "raid"; // #Misfits Add
 
             // Toggle body visibility
             AdminBody.Visible = mode == "admin";
             MentorBody.Visible = mode == "mentor";
+            RaidBody.Visible = mode == "raid"; // #Misfits Add
 
-            // #Misfits Add - Swap header bar color: dark red for admin, dark green for mentor
-            var headerStyle = new StyleBoxFlat
+            // #Misfits Add - Swap header bar color: dark red admin, slate-purple mentor, dark amber raid.
+            var headerBg = mode switch
             {
-                BackgroundColor = mode == "admin" ? Color.FromHex("#5a0f0f") : Color.FromHex("#2a1f3d"),
-                BorderThickness = new Thickness(0, 0, 0, 1),
-                BorderColor = mode == "admin" ? Color.FromHex("#2a0505") : Color.FromHex("#1a1530"),
+                "admin" => Color.FromHex("#5a0f0f"),
+                "mentor" => Color.FromHex("#2a1f3d"),
+                "raid" => Color.FromHex("#5a3a0f"),
+                _ => Color.FromHex("#2a1f3d"),
             };
-            HeaderBar.PanelOverride = headerStyle;
+            var headerBorder = mode switch
+            {
+                "admin" => Color.FromHex("#2a0505"),
+                "mentor" => Color.FromHex("#1a1530"),
+                "raid" => Color.FromHex("#2a1c05"),
+                _ => Color.FromHex("#1a1530"),
+            };
+            HeaderBar.PanelOverride = new StyleBoxFlat
+            {
+                BackgroundColor = headerBg,
+                BorderThickness = new Thickness(0, 0, 0, 1),
+                BorderColor = headerBorder,
+            };
 
             // #Misfits Add — update tab button colors when mode changes
             ApplyTabStyles();
@@ -559,8 +587,26 @@ namespace Content.Client.Administration.UI.Bwoink
                 MentorBody.AddChild(_embeddedMentorControl);
             }
 
+            // #Misfits Add — lazy-create the Raid admin control on first Raid tab click.
+            // Construction subscribes the local session as an admin listener server-side.
+            if (mode == "raid" && _embeddedRaidControl == null)
+            {
+                _embeddedRaidControl = new RaidRequestAdminControl
+                {
+                    HorizontalExpand = true,
+                    VerticalExpand = true,
+                };
+                RaidBody.AddChild(_embeddedRaidControl);
+            }
+
             // Update the shared header with the active mode's context
-            HeaderTitle.Text = mode == "admin" ? "Admin message" : "Mentor message";
+            HeaderTitle.Text = mode switch
+            {
+                "admin" => "Admin message",
+                "mentor" => "Mentor message",
+                "raid" => "Raid requests", // #Misfits Add
+                _ => "Admin message",
+            };
             UpdateHeaderBadge();
         }
 
@@ -998,6 +1044,10 @@ namespace Content.Client.Administration.UI.Bwoink
             // #Misfits Add — dispose embedded MentorHelpControl to prevent event leaks
             _embeddedMentorControl?.Dispose();
             _embeddedMentorControl = null;
+
+            // #Misfits Add — dispose embedded RaidRequestAdminControl (also unhooks its system pointer).
+            _embeddedRaidControl?.Dispose();
+            _embeddedRaidControl = null;
         }
     }
 }

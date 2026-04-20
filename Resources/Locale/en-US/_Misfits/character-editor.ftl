@@ -52,3 +52,8 @@ humanoid-profile-editor-robot-model-sentrybot-laser = Laser Gatling
 # Robot model selector labels for Robobrain variants.
 humanoid-profile-editor-robot-model-robobrain-standard = Standard
 humanoid-profile-editor-robot-model-robobrain-laser = Laser
+
+# Robot model selector labels for C-27 Humanoid Robot variants.
+humanoid-profile-editor-robot-model-c27-generic = Generic Chassis
+humanoid-profile-editor-robot-model-c27-ncr = NCR Issue
+humanoid-profile-editor-robot-model-c27-bos = Brotherhood Issue

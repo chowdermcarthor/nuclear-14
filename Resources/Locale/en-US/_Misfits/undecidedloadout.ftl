@@ -677,4 +677,65 @@ undecided-loadout-category-misfits-ncra-captain-service-rifle-description =
     a 9mm pistol with 3 magazines, a handheld radio,
     2 smoke grenades, a stick of dynamite, a C ration MRE,
     a stimpak, 2 super stimpaks, a RadAway blood bag,
+
+# C-27 Humanoid Robot armor selection kit sets. #Misfits Add
+# Names and descriptions for the UndecidedLoadoutBackpackSet prototypes in c27_loadout_kits.yml.
+# Displayed in the loadout selection UI when a C-27 player activates their armor kit in pocket1.
+
+# Generic chassis sets
+c27-armor-set-generic-light-name = Light Chassis Plating
+c27-armor-set-generic-light-description =
+    Lightweight C-27 modular armor plating.
+    Maximizes mobility — ideal for scouts and flankers.
+    Includes light outer armor and matching helm sensor unit.
+
+c27-armor-set-generic-medium-name = Standard Chassis Plating
+c27-armor-set-generic-medium-description =
+    Balanced C-27 chassis armor — general-purpose protection
+    for field operations without excessive weight penalty.
+    Includes medium outer armor and matching helm sensor unit.
+
+c27-armor-set-generic-heavy-name = Heavy Chassis Plating
+c27-armor-set-generic-heavy-description =
+    Maximum-density C-27 chassis plating.
+    Heavy protection at the cost of mobility. Front-line configuration.
+    Includes heavy outer armor and matching helm sensor unit.
+
+# NCR faction chassis sets
+c27-armor-set-ncr-light-name = NCR Light Chassis Plating
+c27-armor-set-ncr-light-description =
+    Lightweight C-27 modular armor in New California Republic desert livery.
+    Fast and mobile — standard kit for NCR scout units.
+    Includes light NCR outer armor and matching helm sensor unit.
+
+c27-armor-set-ncr-medium-name = NCR Standard Chassis Plating
+c27-armor-set-ncr-medium-description =
+    Balanced C-27 chassis armor bearing NCR markings.
+    Official field configuration for New California Republic combat operations.
+    Includes medium NCR outer armor and matching helm sensor unit.
+
+c27-armor-set-ncr-heavy-name = NCR Heavy Chassis Plating
+c27-armor-set-ncr-heavy-description =
+    Maximum-density NCR-variant C-27 plating.
+    Heavy protection bearing New California Republic colors.
+    Includes heavy NCR outer armor and matching helm sensor unit.
+
+# Brotherhood of Steel faction chassis sets
+c27-armor-set-bos-light-name = Brotherhood Light Chassis Plating
+c27-armor-set-bos-light-description =
+    Lightweight Brotherhood-variant C-27 armor plating.
+    Mobile support configuration for field Scribes and Initiates.
+    Includes light Brotherhood outer armor and matching helm sensor unit.
+
+c27-armor-set-bos-medium-name = Brotherhood Standard Chassis Plating
+c27-armor-set-bos-medium-description =
+    Balanced Brotherhood-variant C-27 chassis armor.
+    Standard assignment for Brotherhood of Steel robotic units.
+    Includes medium Brotherhood outer armor and matching helm sensor unit.
+
+c27-armor-set-bos-heavy-name = Brotherhood Heavy Chassis Plating
+c27-armor-set-bos-heavy-description =
+    Maximum-density Brotherhood-variant C-27 plating.
+    Power-heavy protection in the service of the Brotherhood.
+    Includes heavy Brotherhood outer armor and matching helm sensor unit.
     2 gauze packs, and a flare.

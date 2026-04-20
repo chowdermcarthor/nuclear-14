@@ -13,3 +13,11 @@
       id: N14LoadoutBootsBlack
     - type: loadout
       id: N14ClothingBootsCombat
+    - type: loadout # #Misfits Add - general wasteland footwear
+      id: MisfitsLoadoutShoesJamrock
+    - type: loadout
+      id: MisfitsLoadoutShoesLeatherBoots
+    - type: loadout # #Misfits Add - faction footwear
+      id: MisfitsLoadoutShoesTribal
+    - type: loadout
+      id: MisfitsLoadoutShoesRaider

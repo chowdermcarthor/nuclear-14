@@ -1,0 +1,72 @@
+<!-- #Misfits Add - Requester window for the /raid command. Mirrors FactionWarWindow's
+     layout: own faction header, target dropdown, optional location notes, required reason
+     (5+ words), confirm-press Submit, and a list of the player's own requests this round. -->
+<controls:FancyWindow xmlns="https://spacestation14.io"
+                      xmlns:controls="clr-namespace:Content.Client.UserInterface.Controls"
+                      Title="{Loc raid-request-window-title}"
+                      Resizable="False"
+                      SetSize="540 660"
+                      MinSize="500 600">
+
+    <ScrollContainer HorizontalExpand="True" VerticalExpand="True" HScrollEnabled="False">
+    <BoxContainer Orientation="Vertical" HorizontalExpand="True" SeparationOverride="0">
+
+        <controls:StripeBack>
+            <PanelContainer>
+                <Label Text="{Loc raid-request-window-title}" StyleClasses="LabelBig" Align="Center" Margin="0 4"/>
+            </PanelContainer>
+        </controls:StripeBack>
+
+        <!-- Caller faction -->
+        <BoxContainer Orientation="Horizontal" Margin="10 8 10 4">
+            <Label Text="{Loc raid-request-your-faction}" VerticalAlignment="Center" Margin="0 0 6 0"/>
+            <Label Name="MyFactionLabel" VerticalAlignment="Center" HorizontalExpand="True"
+                   StyleClasses="LabelSubText" Modulate="#F0C040"/>
+        </BoxContainer>
+
+        <!-- Eligibility / status banner -->
+        <RichTextLabel Name="EligibilityLabel" Margin="10 2 10 4" HorizontalExpand="True"/>
+
+        <PanelContainer MinHeight="1" Modulate="#404040" Margin="10 0"/>
+
+        <!-- Submit form -->
+        <Label Text="{Loc raid-request-submit-header}" Margin="10 6 10 4" Modulate="#FFA040"
+               StyleClasses="LabelBig"/>
+
+        <BoxContainer Orientation="Horizontal" Margin="10 0 10 4" SeparationOverride="8">
+            <Label Text="{Loc raid-request-target-label}" VerticalAlignment="Center" MinWidth="100"/>
+            <OptionButton Name="TargetSelector" HorizontalExpand="True" Access="Public"/>
+        </BoxContainer>
+
+        <BoxContainer Orientation="Vertical" Margin="10 0 10 4" SeparationOverride="2">
+            <Label Text="{Loc raid-request-location-label}"/>
+            <LineEdit Name="LocationEdit" PlaceHolder="{Loc raid-request-location-placeholder}"
+                      HorizontalExpand="True"/>
+        </BoxContainer>
+
+        <BoxContainer Orientation="Vertical" Margin="10 0 10 4" SeparationOverride="2">
+            <Label Text="{Loc raid-request-reason-label}"/>
+            <LineEdit Name="ReasonEdit" PlaceHolder="{Loc raid-request-reason-placeholder}"
+                      HorizontalExpand="True"/>
+        </BoxContainer>
+
+        <Button Name="SubmitButton" Text="{Loc raid-request-submit-button}"
+                Margin="10 4 10 6" HorizontalExpand="True"/>
+
+        <PanelContainer MinHeight="1" Modulate="#404040" Margin="10 0"/>
+
+        <!-- My requests -->
+        <Label Text="{Loc raid-request-my-requests-header}" Margin="10 6 10 2" Modulate="#80CCFF"/>
+        <ScrollContainer MaxHeight="180" Margin="10 0" HorizontalExpand="True">
+            <BoxContainer Name="MyRequestsContainer" Orientation="Vertical" SeparationOverride="4"
+                          HorizontalExpand="True"/>
+        </ScrollContainer>
+
+        <PanelContainer MinHeight="1" Modulate="#404040" Margin="10 6"/>
+
+        <!-- Status / Result -->
+        <RichTextLabel Name="ResultLabel" Margin="10 6 10 8" HorizontalExpand="True"/>
+
+    </BoxContainer>
+    </ScrollContainer>
+</controls:FancyWindow>
