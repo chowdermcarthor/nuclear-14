@@ -1,0 +1,41 @@
+# #Misfits Add - Inventory template for brahmin pack animals; gives brahmin 4 backpack slots
+# Players can open the brahmin strip UI (E) and place regular backpacks into these slots.
+- type: inventoryTemplate
+  id: brahmin
+  slots:
+    - name: back
+      slotTexture: back
+      fullTextureName: template_small
+      slotFlags: BACK
+      slotGroup: SecondHotbar
+      stripTime: 6
+      uiWindowPos: 0,0
+      strippingWindowPos: 0,0
+      displayName: Back Pack 1
+    - name: back2
+      slotTexture: back
+      fullTextureName: template_small
+      slotFlags: BACK
+      slotGroup: SecondHotbar
+      stripTime: 6
+      uiWindowPos: 1,0
+      strippingWindowPos: 1,0
+      displayName: Back Pack 2
+    - name: back3
+      slotTexture: back
+      fullTextureName: template_small
+      slotFlags: BACK
+      slotGroup: SecondHotbar
+      stripTime: 6
+      uiWindowPos: 2,0
+      strippingWindowPos: 2,0
+      displayName: Back Pack 3
+    - name: back4
+      slotTexture: back
+      fullTextureName: template_small
+      slotFlags: BACK
+      slotGroup: SecondHotbar
+      stripTime: 6
+      uiWindowPos: 3,0
+      strippingWindowPos: 3,0
+      displayName: Back Pack 4

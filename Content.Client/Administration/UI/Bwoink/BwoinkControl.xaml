@@ -71,6 +71,10 @@
                     <Button Name="TabMentor" Access="Public" Text="MENTOR MESSAGE"
                             HorizontalExpand="True" StyleClasses="ButtonSmall"
                             MinHeight="28" ToggleMode="True" />
+                    <!-- #Misfits Add - Third tab for the /raid request admin queue. -->
+                    <Button Name="TabRaid" Access="Public" Text="RAID REQUESTS"
+                            HorizontalExpand="True" StyleClasses="ButtonSmall"
+                            MinHeight="28" ToggleMode="True" />
                 </BoxContainer>
             </PanelContainer>
 
@@ -245,6 +249,12 @@
             <!-- #Misfits Add - Container for the embedded MentorHelpControl instance.
                  Populated programmatically on first mentor tab click. -->
             <BoxContainer Name="MentorBody" Access="Public"
+                          HorizontalExpand="True" VerticalExpand="True" Visible="False" />
+
+            <!-- ═══ RAID BODY — holds embedded RaidRequestAdminControl ═══ -->
+            <!-- #Misfits Add - Container for the embedded /raid admin control. Populated
+                 programmatically on first Raid tab click (lazy, mirrors MentorBody pattern). -->
+            <BoxContainer Name="RaidBody" Access="Public"
                           HorizontalExpand="True" VerticalExpand="True" Visible="False" />
 
         </BoxContainer>

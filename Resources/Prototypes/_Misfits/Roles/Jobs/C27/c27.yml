@@ -28,13 +28,16 @@
   whitelisted: true # admin job whitelist required (jobwhitelistadd <player> C27)
   hideWithoutWhitelist: true
   jobWhitelistBypassesRoleTimers: true
-  spawnLoadout: false # loadouts come in Phase H
+  spawnLoadout: false # #Misfits Tweak (Phase H revised) - lobby loadout tab is hidden for C27 (restrictedCustomization);
+  # armor is delivered via UndecidedLoadoutBackpack kit items in startingGear (see subGear entries below)
   applyTraits: true # allow trait/perk picks like SuperMutant
   startingGear: C27Gear
   requirements:
   - !type:CharacterSpeciesRequirement
     species:
-    - C27
+    - C27     # Generic model
+    - C27NCR  # #Misfits Add - NCR model variant shares this job
+    - C27BoS  # #Misfits Add - Brotherhood model variant shares this job
   special:
   - !type:AddComponentSpecial
     components:
@@ -42,13 +45,50 @@
         factions:
           - PlayerRobot
 
-# Minimal starting gear: chassis jumpsuit (the visible "metal body" cosmetic) so the
-# C-27 doesn't spawn naked. Outer armor and helmet selection happen via the loadout
-# system in Phase H. The empty-id case still triggers EquipIdCard in StationSpawningSystem.
+# Starting gear: chassis jumpsuit always applied; faction armor kit selected via subGear.
+# subGear entries are matched by the player's chosen C-27 species variant at spawn time:
+#   C27 (Generic)  → pocket1: C27GenericLoadoutKit
+#   C27NCR         → pocket1: C27NCRLoadoutKit
+#   C27BoS         → pocket1: C27BoSLoadoutKit
+# The kit opens an UndecidedLoadoutBackpack UI so the player picks Light / Medium / Heavy plating.
 - type: startingGear
   id: C27Gear
   equipment:
     jumpsuit: ClothingC27Chassis
+  subGear: # #Misfits Add - per-faction kit delivery via species-conditional sub-gears
+  - C27GearGenericKit
+  - C27GearNCRKit
+  - C27GearBoSKit
+
+# Sub-gear: gives the Generic-model kit in pocket1 when species is C27
+- type: startingGear
+  id: C27GearGenericKit
+  requirements:
+  - !type:CharacterSpeciesRequirement
+    species:
+    - C27
+  equipment:
+    pocket1: C27GenericLoadoutKit
+
+# Sub-gear: gives the NCR-model kit in pocket1 when species is C27NCR
+- type: startingGear
+  id: C27GearNCRKit
+  requirements:
+  - !type:CharacterSpeciesRequirement
+    species:
+    - C27NCR
+  equipment:
+    pocket1: C27NCRLoadoutKit
+
+# Sub-gear: gives the BoS-model kit in pocket1 when species is C27BoS
+- type: startingGear
+  id: C27GearBoSKit
+  requirements:
+  - !type:CharacterSpeciesRequirement
+    species:
+    - C27BoS
+  equipment:
+    pocket1: C27BoSLoadoutKit
 
 - type: playTimeTracker
   id: C27

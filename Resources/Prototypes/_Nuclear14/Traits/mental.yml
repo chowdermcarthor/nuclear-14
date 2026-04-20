@@ -104,7 +104,7 @@
     - !type:CharacterJobRequirement
       inverted: true
       jobs:
-        - TribalHealer
+        - TribalShaman # #Misfits Change - renamed from TribalHealer
         - TownDoctor
         - NCRDoctor
         #- NCRMedic #Misfits Change /Comment-out/: consolidated into Specialist

@@ -119,6 +119,16 @@ namespace Content.Client.Lobby.UI
                 ("RobotRobobrain", "humanoid-profile-editor-robot-model-robobrain-standard"),
                 ("RobotRobobrainLaser", "humanoid-profile-editor-robot-model-robobrain-laser"),
             },
+            // #Misfits Add - C-27 Humanoid Robot family. Generic chassis is the visible base species;
+            // NCR and Brotherhood variants are hidden in the main species dropdown and selected via
+            // the Robot Model picker. Each variant species locks in a different Chest "Model" marking
+            // for the matching faction torso paint.
+            ["C27"] = new[]
+            {
+                ("C27", "humanoid-profile-editor-robot-model-c27-generic"),
+                ("C27NCR", "humanoid-profile-editor-robot-model-c27-ncr"),
+                ("C27BoS", "humanoid-profile-editor-robot-model-c27-bos"),
+            },
         };
 
         private readonly Dictionary<string, BoxContainer> _jobCategories;
@@ -1660,7 +1670,9 @@ namespace Content.Client.Lobby.UI
                 || speciesId == "RobotProtectronFire"
                 || speciesId == "RobotAssaultronTesla"
                 || speciesId == "RobotSentryBotLaser"
-                || speciesId == "RobotRobobrainLaser";
+                || speciesId == "RobotRobobrainLaser"
+                || speciesId == "C27NCR" // #Misfits Add - C-27 NCR variant picked via Robot Model dropdown
+                || speciesId == "C27BoS"; // #Misfits Add - C-27 Brotherhood variant picked via Robot Model dropdown
         }
 
         // #Misfits Add: normalize hidden variants to base Protectron in main species selector.

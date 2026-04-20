@@ -204,3 +204,48 @@
   - type: Inventory
     templateId: c27
     speciesId: c27
+
+# #Misfits Add - NCR variant. Inherits the full Phase F stat package + sprite layers from
+# N14BaseMobC27; only HumanoidAppearance.species changes so the character editor can route
+# the lobby Robot Model picker between Generic / NCR / BoS chassis paint jobs.
+- type: entity
+  save: true
+  name: c-27 humanoid robot (ncr)
+  id: N14MobC27NCR
+  parent: N14BaseMobC27
+  description: A C-27 humanoid robot in NCR Republic livery - khaki and tan paint, two-bear shoulder stencil.
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: HumanoidAppearance
+    species: C27NCR
+
+- type: entity
+  save: true
+  name: c-27 humanoid robot (brotherhood)
+  id: N14MobC27BoS
+  parent: N14BaseMobC27
+  description: A C-27 humanoid robot in Brotherhood of Steel livery - deep blue plating, gear-and-sword decals.
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: HumanoidAppearance
+    species: C27BoS
+
+# #Misfits Add - Dummies for the character editor preview. Same sprite layout as the base
+# C-27 dummy; only the species reference changes so the preview picks up the matching Model paint.
+- type: entity
+  save: false
+  parent: N14MobC27Dummy
+  id: N14MobC27NCRDummy
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: HumanoidAppearance
+    species: C27NCR
+
+- type: entity
+  save: false
+  parent: N14MobC27Dummy
+  id: N14MobC27BoSDummy
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: HumanoidAppearance
+    species: C27BoS

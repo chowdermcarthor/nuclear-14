@@ -1,0 +1,306 @@
+# C-27 Humanoid Robot armor selection kits. #Misfits Add
+# Three faction-specific loadout-kit boxes (Generic / NCR / Brotherhood) are given at spawn
+# via StartingGear subGear entries in C27Gear, keyed by CharacterSpeciesRequirement so each
+# model variant (C27, C27NCR, C27BoS) receives their matching kit in pocket1.
+#
+# Structure:
+#   C27Gear (base: chassis jumpsuit + subGear list)
+#     └─ subGear per species → pocket1 = [C27GenericLoadoutKit | C27NCRLoadoutKit | C27BoSLoadoutKit]
+#          └─ possibleSets → [Light | Medium | Heavy] UndecidedLoadoutBackpackSet
+#               └─ content → KitC27_**** entity (SpawnItemsOnUse: armor + helmet pair)
+
+# --- ABSTRACT BASE: shared sprite / UI bindings for all C-27 kit boxes --------
+- type: entity
+  id: BaseC27LoadoutKit
+  name: C-27 Armor Selection Kit
+  description: A factory-sealed loadout crate for your chassis armor. Choose your weight class.
+  parent: BaseLoadoutKit
+  abstract: true
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Sprite
+    sprite: _Nuclear14/Objects/Misc/kits.rsi
+    state: rifleman # placeholder — no C27-specific kit sprite yet
+
+# --- LOADOUT KIT BOX ENTITIES (one per faction model, given via startingGear) -
+
+- type: entity
+  id: C27GenericLoadoutKit
+  name: C-27 Armor Selection Kit
+  description: Select your chassis armor weight class. Generic faction markings.
+  parent: BaseC27LoadoutKit
+  components:
+  - type: UndecidedLoadoutBackpack
+    possibleSets:
+    - C27_GenericLightSet
+    - C27_GenericMediumSet
+    - C27_GenericHeavySet
+
+- type: entity
+  id: C27NCRLoadoutKit
+  name: C-27 NCR Armor Selection Kit
+  description: Select your chassis armor weight class. New California Republic faction markings.
+  parent: BaseC27LoadoutKit
+  components:
+  - type: UndecidedLoadoutBackpack
+    possibleSets:
+    - C27_NCRLightSet
+    - C27_NCRMediumSet
+    - C27_NCRHeavySet
+
+- type: entity
+  id: C27BoSLoadoutKit
+  name: C-27 Brotherhood Armor Selection Kit
+  description: Select your chassis armor weight class. Brotherhood of Steel faction markings.
+  parent: BaseC27LoadoutKit
+  components:
+  - type: UndecidedLoadoutBackpack
+    possibleSets:
+    - C27_BoSLightSet
+    - C27_BoSMediumSet
+    - C27_BoSHeavySet
+
+# --- CONCRETE TIER KIT ENTITIES (spawned when a set is selected from the UI) --
+# Each spawns one outer-armor + one matching helmet for the chosen tier/faction.
+
+# Generic tier kits
+- type: entity
+  id: KitC27_GenericLight
+  name: generic light chassis kit
+  description: Light C-27 chassis plating — maximizes mobility for scouts and flankers.
+  parent: KitBase
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Sprite
+    state: rifleman
+  - type: SpawnItemsOnUse
+    items:
+    - id: ClothingC27ArmorLightGeneric
+    - id: ClothingC27HelmetLightGeneric
+    sound:
+      path: /Audio/Effects/unwrap.ogg
+
+- type: entity
+  id: KitC27_GenericMedium
+  name: generic medium chassis kit
+  description: Balanced C-27 chassis plating — general-purpose protection for field operations.
+  parent: KitBase
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Sprite
+    state: rifleman
+  - type: SpawnItemsOnUse
+    items:
+    - id: ClothingC27ArmorMediumGeneric
+    - id: ClothingC27HelmetMediumGeneric
+    sound:
+      path: /Audio/Effects/unwrap.ogg
+
+- type: entity
+  id: KitC27_GenericHeavy
+  name: generic heavy chassis kit
+  description: Maximum-density C-27 plating — heavy protection at the cost of mobility.
+  parent: KitBase
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Sprite
+    state: rifleman
+  - type: SpawnItemsOnUse
+    items:
+    - id: ClothingC27ArmorHeavyGeneric
+    - id: ClothingC27HelmetHeavyGeneric
+    sound:
+      path: /Audio/Effects/unwrap.ogg
+
+# NCR tier kits
+- type: entity
+  id: KitC27_NCRLight
+  name: NCR light chassis kit
+  description: Lightweight NCR-variant C-27 chassis plating — fast and mobile in NCR desert colors.
+  parent: KitBase
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Sprite
+    state: rifleman
+  - type: SpawnItemsOnUse
+    items:
+    - id: ClothingC27ArmorLightNCR
+    - id: ClothingC27HelmetLightNCR
+    sound:
+      path: /Audio/Effects/unwrap.ogg
+
+- type: entity
+  id: KitC27_NCRMedium
+  name: NCR medium chassis kit
+  description: Balanced NCR-variant C-27 chassis plating — official field kit in New California Republic livery.
+  parent: KitBase
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Sprite
+    state: rifleman
+  - type: SpawnItemsOnUse
+    items:
+    - id: ClothingC27ArmorMediumNCR
+    - id: ClothingC27HelmetMediumNCR
+    sound:
+      path: /Audio/Effects/unwrap.ogg
+
+- type: entity
+  id: KitC27_NCRHeavy
+  name: NCR heavy chassis kit
+  description: Maximum-density NCR-variant C-27 plating — heavy protection bearing New California Republic colors.
+  parent: KitBase
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Sprite
+    state: rifleman
+  - type: SpawnItemsOnUse
+    items:
+    - id: ClothingC27ArmorHeavyNCR
+    - id: ClothingC27HelmetHeavyNCR
+    sound:
+      path: /Audio/Effects/unwrap.ogg
+
+# Brotherhood of Steel tier kits
+- type: entity
+  id: KitC27_BoSLight
+  name: Brotherhood light chassis kit
+  description: Lightweight Brotherhood-variant C-27 chassis plating — mobile support for field Scribes and Initiates.
+  parent: KitBase
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Sprite
+    state: rifleman
+  - type: SpawnItemsOnUse
+    items:
+    - id: ClothingC27ArmorLightBoS
+    - id: ClothingC27HelmetLightBoS
+    sound:
+      path: /Audio/Effects/unwrap.ogg
+
+- type: entity
+  id: KitC27_BoSMedium
+  name: Brotherhood medium chassis kit
+  description: Balanced Brotherhood-variant C-27 chassis plating — standard kit for Brotherhood-assigned robotic units.
+  parent: KitBase
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Sprite
+    state: rifleman
+  - type: SpawnItemsOnUse
+    items:
+    - id: ClothingC27ArmorMediumBoS
+    - id: ClothingC27HelmetMediumBoS
+    sound:
+      path: /Audio/Effects/unwrap.ogg
+
+- type: entity
+  id: KitC27_BoSHeavy
+  name: Brotherhood heavy chassis kit
+  description: Maximum-density Brotherhood-variant C-27 plating — power-heavy protection in the service of the Brotherhood.
+  parent: KitBase
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Sprite
+    state: rifleman
+  - type: SpawnItemsOnUse
+    items:
+    - id: ClothingC27ArmorHeavyBoS
+    - id: ClothingC27HelmetHeavyBoS
+    sound:
+      path: /Audio/Effects/unwrap.ogg
+
+# --- UNDECIDED LOADOUT BACKPACK SETS (the player-visible options in the selection UI) ---
+
+# Generic sets
+- type: UndecidedLoadoutBackpackSet
+  id: C27_GenericLightSet
+  name: c27-armor-set-generic-light-name
+  description: c27-armor-set-generic-light-description
+  sprite:
+    sprite: _Nuclear14/Objects/Misc/kits.rsi
+    state: rifleman
+  content:
+  - KitC27_GenericLight
+
+- type: UndecidedLoadoutBackpackSet
+  id: C27_GenericMediumSet
+  name: c27-armor-set-generic-medium-name
+  description: c27-armor-set-generic-medium-description
+  sprite:
+    sprite: _Nuclear14/Objects/Misc/kits.rsi
+    state: rifleman
+  content:
+  - KitC27_GenericMedium
+
+- type: UndecidedLoadoutBackpackSet
+  id: C27_GenericHeavySet
+  name: c27-armor-set-generic-heavy-name
+  description: c27-armor-set-generic-heavy-description
+  sprite:
+    sprite: _Nuclear14/Objects/Misc/kits.rsi
+    state: rifleman
+  content:
+  - KitC27_GenericHeavy
+
+# NCR sets
+- type: UndecidedLoadoutBackpackSet
+  id: C27_NCRLightSet
+  name: c27-armor-set-ncr-light-name
+  description: c27-armor-set-ncr-light-description
+  sprite:
+    sprite: _Nuclear14/Objects/Misc/kits.rsi
+    state: rifleman
+  content:
+  - KitC27_NCRLight
+
+- type: UndecidedLoadoutBackpackSet
+  id: C27_NCRMediumSet
+  name: c27-armor-set-ncr-medium-name
+  description: c27-armor-set-ncr-medium-description
+  sprite:
+    sprite: _Nuclear14/Objects/Misc/kits.rsi
+    state: rifleman
+  content:
+  - KitC27_NCRMedium
+
+- type: UndecidedLoadoutBackpackSet
+  id: C27_NCRHeavySet
+  name: c27-armor-set-ncr-heavy-name
+  description: c27-armor-set-ncr-heavy-description
+  sprite:
+    sprite: _Nuclear14/Objects/Misc/kits.rsi
+    state: rifleman
+  content:
+  - KitC27_NCRHeavy
+
+# Brotherhood of Steel sets
+- type: UndecidedLoadoutBackpackSet
+  id: C27_BoSLightSet
+  name: c27-armor-set-bos-light-name
+  description: c27-armor-set-bos-light-description
+  sprite:
+    sprite: _Nuclear14/Objects/Misc/kits.rsi
+    state: rifleman
+  content:
+  - KitC27_BoSLight
+
+- type: UndecidedLoadoutBackpackSet
+  id: C27_BoSMediumSet
+  name: c27-armor-set-bos-medium-name
+  description: c27-armor-set-bos-medium-description
+  sprite:
+    sprite: _Nuclear14/Objects/Misc/kits.rsi
+    state: rifleman
+  content:
+  - KitC27_BoSMedium
+
+- type: UndecidedLoadoutBackpackSet
+  id: C27_BoSHeavySet
+  name: c27-armor-set-bos-heavy-name
+  description: c27-armor-set-bos-heavy-description
+  sprite:
+    sprite: _Nuclear14/Objects/Misc/kits.rsi
+    state: rifleman
+  content:
+  - KitC27_BoSHeavy

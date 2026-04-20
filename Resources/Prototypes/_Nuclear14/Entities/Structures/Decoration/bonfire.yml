@@ -102,3 +102,16 @@
       multiplier: 1.5
       multiplierOnExisting: 0.5
     - !type:Ignite
+  # #Misfits Add - All bonfires (placed and crafted) double as tribal signal fires
+  - type: SmokeSignal
+    cooldown: 300
+    maxMessageLength: 128
+    targetDepartment: Tribe
+  - type: ActivatableUI
+    inHandsOnly: false
+    singleUser: true
+    key: enum.SmokeSignalUiKey.Key
+  - type: UserInterface
+    interfaces:
+      enum.SmokeSignalUiKey.Key:
+        type: SmokeSignalBoundUserInterface

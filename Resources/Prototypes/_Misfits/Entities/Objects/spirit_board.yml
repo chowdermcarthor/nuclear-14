@@ -1,0 +1,39 @@
+# #Misfits Add — Spirit Board entity.
+# A ritual object used by TribalShamans to commune with the dead.
+# Any active séance session allows nearby ghosts to send messages to the living.
+
+- type: entity
+  id: MisfitsTribalSpiritBoard
+  parent: BaseItem
+  name: spirit board
+  description: >-
+    A flat wooden board engraved with tribal symbols, letters, and the words YES and NO.
+    A carved stone planchette rests atop it. The surface is worn smooth by many hands.
+  components:
+  # Spirit Board functionality — séance sessions, ghost response broadcast
+  - type: SpiritBoard
+    sessionDuration: 120    # 2 minutes
+    cooldown: 180           # 3 minutes
+    targetDepartment: Tribe
+    activatorJobs:
+    - TribalShaman
+    - TribalElder
+    ghostRange: 6.0
+    broadcastRange: 9.0
+  # BUI registration — links to the SpiritBoardBoundUserInterface client class
+  - type: ActivatableUI
+    inHandsOnly: false
+    singleUser: false     # multiple ghostscan commune at once
+    key: enum.SpiritBoardUiKey.Key
+  - type: UserInterface
+    interfaces:
+      enum.SpiritBoardUiKey.Key:
+        type: SpiritBoardBoundUserInterface
+  # Visual — uses board_1 state from crafting_junk as a placeholder until a custom spirit board RSI is made
+  # N14 TODO: commission a proper spirit board RSI sprite
+  - type: Sprite
+    sprite: _Nuclear14/Objects/Misc/crafting_junk.rsi
+    state: board_1
+  - type: Item
+    size: Normal
+  - type: InteractionOutline

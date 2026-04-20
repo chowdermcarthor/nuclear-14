@@ -1,0 +1,59 @@
+<!-- // #Misfits Add — Spirit Board ghost response window.
+     Grid of YES/NO/MAYBE/GOODBYE buttons plus full alphabet. -->
+<DefaultWindow xmlns="https://spacestation14.io"
+               Title="{Loc spirit-board-window-title}"
+               MinWidth="280"
+               MinHeight="320"
+               SetSize="280 360">
+    <BoxContainer Orientation="Vertical" Margin="8" VerticalExpand="True">
+        <!-- Flavour prompt -->
+        <Label Text="{Loc spirit-board-window-prompt}"
+               Margin="0 0 0 8"
+               HorizontalAlignment="Center" />
+
+        <!-- Primary choices -->
+        <BoxContainer Orientation="Horizontal" Margin="0 0 0 4">
+            <Button Name="YesButton"    Text="YES"     HorizontalExpand="True" Margin="0 0 2 0" />
+            <Button Name="NoButton"     Text="NO"      HorizontalExpand="True" Margin="2 0 2 0" />
+            <Button Name="MaybeButton"  Text="MAYBE"   HorizontalExpand="True" Margin="2 0 0 0" />
+        </BoxContainer>
+        <Button Name="GoodbyeButton" Text="GOODBYE — End Séance"
+                HorizontalExpand="True" Margin="0 0 0 8"
+                StyleClasses="Caution" />
+
+        <!-- Separator label -->
+        <Label Text="{Loc spirit-board-window-letters}"
+               Margin="0 0 0 4"
+               HorizontalAlignment="Center" />
+
+        <!-- Letter grid: 6 columns, 5 rows (A-Z + space) -->
+        <GridContainer Columns="6" Margin="0 0 0 4">
+            <Button Name="BtnA" Text="A" MinWidth="38" />
+            <Button Name="BtnB" Text="B" MinWidth="38" />
+            <Button Name="BtnC" Text="C" MinWidth="38" />
+            <Button Name="BtnD" Text="D" MinWidth="38" />
+            <Button Name="BtnE" Text="E" MinWidth="38" />
+            <Button Name="BtnF" Text="F" MinWidth="38" />
+            <Button Name="BtnG" Text="G" MinWidth="38" />
+            <Button Name="BtnH" Text="H" MinWidth="38" />
+            <Button Name="BtnI" Text="I" MinWidth="38" />
+            <Button Name="BtnJ" Text="J" MinWidth="38" />
+            <Button Name="BtnK" Text="K" MinWidth="38" />
+            <Button Name="BtnL" Text="L" MinWidth="38" />
+            <Button Name="BtnM" Text="M" MinWidth="38" />
+            <Button Name="BtnN" Text="N" MinWidth="38" />
+            <Button Name="BtnO" Text="O" MinWidth="38" />
+            <Button Name="BtnP" Text="P" MinWidth="38" />
+            <Button Name="BtnQ" Text="Q" MinWidth="38" />
+            <Button Name="BtnR" Text="R" MinWidth="38" />
+            <Button Name="BtnS" Text="S" MinWidth="38" />
+            <Button Name="BtnT" Text="T" MinWidth="38" />
+            <Button Name="BtnU" Text="U" MinWidth="38" />
+            <Button Name="BtnV" Text="V" MinWidth="38" />
+            <Button Name="BtnW" Text="W" MinWidth="38" />
+            <Button Name="BtnX" Text="X" MinWidth="38" />
+            <Button Name="BtnY" Text="Y" MinWidth="38" />
+            <Button Name="BtnZ" Text="Z" MinWidth="38" />
+        </GridContainer>
+    </BoxContainer>
+</DefaultWindow>

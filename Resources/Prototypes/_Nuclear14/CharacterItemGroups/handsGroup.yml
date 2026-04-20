@@ -11,3 +11,23 @@
       id: N14LoadoutHandsGlovesBlackLeather
     - type: loadout
       id: N14LoadoutHandsGlovesDriver
+    - type: loadout
+      id: MisfitsLoadoutHandsGlovesDriver # #Misfits Add - general driver gloves (vault-only version gated at 25h)
+    - type: loadout
+      id: MisfitsLoadoutHandsBlackBiker # #Misfits Add - cosmetic black biker gloves
+    - type: loadout
+      id: MisfitsLoadoutHandsBrownBiker # #Misfits Add - cosmetic brown biker gloves
+    - type: loadout
+      id: MisfitsLoadoutHandsMountie # #Misfits Add - cosmetic mountie gloves
+    - type: loadout
+      id: MisfitsLoadoutHandsCombat # #Misfits Add - cosmetic combat gloves
+    - type: loadout
+      id: MisfitsLoadoutHandsNitrile # #Misfits Add - cosmetic nitrile gloves
+    - type: loadout
+      id: MisfitsLoadoutHandsNitrilePurple # #Misfits Add - cosmetic purple nitrile gloves
+    - type: loadout
+      id: MisfitsLoadoutHandsPatrol # #Misfits Add - cosmetic patrol gloves
+    - type: loadout
+      id: MisfitsLoadoutHandsNCR # #Misfits Add - NCR faction fingerless gloves
+    - type: loadout
+      id: MisfitsLoadoutHandsTribal # #Misfits Add - Tribal faction gloves

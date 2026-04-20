@@ -1,0 +1,16 @@
+# #Misfits Removed - duplicate ID N14MobBrahmin caused PrototypeLoadException.
+# RobustToolbox has no prototype-override system; inventory components moved directly
+# into animals.yml under N14MobBrahmin with #Misfits Add annotations.
+#
+# - type: entity
+#   id: N14MobBrahmin
+#   save: false  # overlay — only adds components, does not replace the upstream prototype
+#   components:
+#   - type: Inventory
+#     templateId: brahmin  # uses the Misfits brahmin_inventory_template (4 × BACK slots)
+#   - type: InventorySlots
+#   - type: Strippable  # allows opening the strip/equip UI on the brahmin
+#   - type: UserInterface
+#     interfaces:
+#       enum.StrippingUiKey.Key:
+#         type: StrippableBoundUserInterface

@@ -21,7 +21,7 @@
                 <RichTextLabel HorizontalExpand="True" HorizontalAlignment="Center"
                                Text="[bold][color=#FF2222][font size=16]WAR DOES NOT AUTO-APPROVE RAIDS[/font][/color][/bold]"/>
                 <RichTextLabel HorizontalExpand="True" HorizontalAlignment="Center"
-                               Text="[italic][color=#FFAAAA][font size=12]Ahelp is needed.[/font][/color][/italic]"/>
+                               Text="[italic][color=#FFAAAA][font size=12]/Raid command use is necessary.[/font][/color][/italic]"/>
             </BoxContainer>
         </PanelContainer>
 

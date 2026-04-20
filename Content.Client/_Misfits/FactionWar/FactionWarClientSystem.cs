@@ -319,7 +319,14 @@ public sealed class FactionWarClientSystem : EntitySystem
 
     private void UpdateOverlayVisibility()
     {
-        if (_activeWars.Count == 0)
+        // #Misfits Tweak - Either an active war OR an approved raid (server pushed any
+        // participants) is enough to keep the overlay live. Raid system is resolved
+        // lazily so /raid clients without a war system load order issue still work.
+        var raidActive = false;
+        if (EntityManager.TrySystem<Content.Client._Misfits.RaidRequest.RaidRequestClientSystem>(out var raid))
+            raidActive = raid.RaidParticipants.Count > 0;
+
+        if (_activeWars.Count == 0 && !raidActive)
         {
             RemoveOverlay();
             return;
@@ -328,6 +335,13 @@ public sealed class FactionWarClientSystem : EntitySystem
         EnsureOverlay();
     }
 
+    /// <summary>
+    /// #Misfits Add - Public hook so <c>RaidRequestClientSystem</c> can drive overlay
+    /// add/remove without owning the overlay itself. Call after the raid participants
+    /// dict is replaced.
+    /// </summary>
+    public void RefreshOverlay() => UpdateOverlayVisibility();
+
     private void EnsureOverlay()
     {
         if (_overlay != null)
@@ -335,6 +349,7 @@ public sealed class FactionWarClientSystem : EntitySystem
 
         _overlay = new AllyTagOverlay(
             this,
+            EntityManager.System<Content.Client._Misfits.RaidRequest.RaidRequestClientSystem>(), // #Misfits Add
             EntityManager,
             _playerManager,
             _eyeManager,

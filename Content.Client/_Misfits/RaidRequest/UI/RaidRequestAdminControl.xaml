@@ -1,0 +1,115 @@
+<!-- #Misfits Add - Embedded Raid Requests admin control. Lives inside BwoinkControl's RaidBody.
+     Two-pane layout: left = round history list (color-coded by status),
+     right = details + admin comment box + Approve/Deny buttons. -->
+<Control xmlns="https://spacestation14.io"
+         xmlns:gfx="clr-namespace:Robust.Client.Graphics;assembly=Robust.Client">
+
+    <PanelContainer>
+        <PanelContainer.PanelOverride>
+            <gfx:StyleBoxFlat BackgroundColor="#0e0e1a" />
+        </PanelContainer.PanelOverride>
+
+        <BoxContainer Orientation="Vertical" HorizontalExpand="True" VerticalExpand="True">
+
+            <!-- Body: list + details -->
+            <BoxContainer Orientation="Horizontal" HorizontalExpand="True" VerticalExpand="True">
+
+                <!-- LEFT: requests list -->
+                <PanelContainer MinWidth="290" MaxWidth="290" VerticalExpand="True">
+                    <PanelContainer.PanelOverride>
+                        <gfx:StyleBoxFlat BackgroundColor="#181830"
+                                          BorderThickness="0 0 1 0"
+                                          BorderColor="#252540" />
+                    </PanelContainer.PanelOverride>
+
+                    <BoxContainer Orientation="Vertical" HorizontalExpand="True" VerticalExpand="True">
+                        <!-- Filter tabs (status-based) -->
+                        <PanelContainer MinHeight="34">
+                            <PanelContainer.PanelOverride>
+                                <gfx:StyleBoxFlat BackgroundColor="#141422"
+                                                  BorderThickness="0 0 0 1"
+                                                  BorderColor="#252540" />
+                            </PanelContainer.PanelOverride>
+                            <BoxContainer Orientation="Horizontal" HorizontalExpand="True"
+                                          Margin="4 2 4 2" SeparationOverride="2">
+                                <Button Name="FilterPending" Text="{Loc raid-request-filter-pending}"
+                                        HorizontalExpand="True" StyleClasses="ButtonSmall"
+                                        ToggleMode="True" Pressed="True" />
+                                <Button Name="FilterDecided" Text="{Loc raid-request-filter-decided}"
+                                        HorizontalExpand="True" StyleClasses="ButtonSmall"
+                                        ToggleMode="True" />
+                                <Button Name="FilterAll" Text="{Loc raid-request-filter-all}"
+                                        HorizontalExpand="True" StyleClasses="ButtonSmall"
+                                        ToggleMode="True" />
+                            </BoxContainer>
+                        </PanelContainer>
+
+                        <ScrollContainer HorizontalExpand="True" VerticalExpand="True" HScrollEnabled="False">
+                            <BoxContainer Name="RequestList" Orientation="Vertical"
+                                          HorizontalExpand="True" SeparationOverride="2"
+                                          Margin="2 4 2 4" />
+                        </ScrollContainer>
+                    </BoxContainer>
+                </PanelContainer>
+
+                <!-- RIGHT: details + decision form -->
+                <BoxContainer Orientation="Vertical" HorizontalExpand="True" VerticalExpand="True">
+
+                    <!-- Header bar (which request is selected) -->
+                    <PanelContainer MinHeight="36">
+                        <PanelContainer.PanelOverride>
+                            <gfx:StyleBoxFlat BackgroundColor="#0f162a"
+                                              BorderThickness="0 0 0 1"
+                                              BorderColor="#252540" />
+                        </PanelContainer.PanelOverride>
+                        <BoxContainer Orientation="Horizontal" HorizontalExpand="True"
+                                      Margin="12 0 12 0" VerticalAlignment="Center">
+                            <Label Name="DetailsTitle" Text="{Loc raid-request-no-selection}"
+                                   FontColorOverride="#ffffff" StyleClasses="LabelHeading" />
+                        </BoxContainer>
+                    </PanelContainer>
+
+                    <ScrollContainer HorizontalExpand="True" VerticalExpand="True" HScrollEnabled="False">
+                        <BoxContainer Orientation="Vertical" HorizontalExpand="True"
+                                      Margin="12 8 12 8" SeparationOverride="6">
+
+                            <RichTextLabel Name="DetailsBody" HorizontalExpand="True" />
+
+                            <PanelContainer MinHeight="1" Modulate="#404040" Margin="0 4" />
+
+                            <Label Name="CommentLabel" Text="{Loc raid-request-admin-comment-label}"
+                                   Visible="False" />
+                            <LineEdit Name="CommentEdit" PlaceHolder="{Loc raid-request-admin-comment-placeholder}"
+                                      HorizontalExpand="True" Visible="False" />
+
+                            <BoxContainer Name="DecisionButtonRow" Orientation="Horizontal"
+                                          HorizontalExpand="True" SeparationOverride="6"
+                                          Visible="False">
+                                <Button Name="ApproveButton" Text="{Loc raid-request-approve-button}"
+                                        HorizontalExpand="True" />
+                                <Button Name="DenyButton" Text="{Loc raid-request-deny-button}"
+                                        HorizontalExpand="True" />
+                            </BoxContainer>
+
+                            <RichTextLabel Name="DecisionResultLabel" HorizontalExpand="True" />
+                        </BoxContainer>
+                    </ScrollContainer>
+                </BoxContainer>
+            </BoxContainer>
+
+            <!-- Footer: pending count -->
+            <PanelContainer MinHeight="32">
+                <PanelContainer.PanelOverride>
+                    <gfx:StyleBoxFlat BackgroundColor="#0f162a"
+                                      BorderThickness="0 1 0 0"
+                                      BorderColor="#252540" />
+                </PanelContainer.PanelOverride>
+                <BoxContainer Orientation="Horizontal" HorizontalExpand="True"
+                              Margin="12 0 12 0" VerticalAlignment="Center">
+                    <Label Name="PendingCountLabel" Text="" FontColorOverride="#ffaa00" />
+                </BoxContainer>
+            </PanelContainer>
+
+        </BoxContainer>
+    </PanelContainer>
+</Control>

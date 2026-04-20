@@ -64,7 +64,7 @@
     - type: RandomHumanoidAppearance
       randomizeName: true
     - type: Loadout
-      prototypes: [TribalHealerGear]
+      prototypes: [TribalShamanGear] # #Misfits Change - renamed from TribalHealerGear
     - type: NpcFactionMember
       factions:
       - Wastelander

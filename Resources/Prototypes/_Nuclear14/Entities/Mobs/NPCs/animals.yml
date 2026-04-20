@@ -437,6 +437,15 @@
     - Latin
     - N14Robot
     - N14BrotherBeep
+  # #Misfits Add - pack animal inventory: 4 backpack slots via brahmin template; Strippable lets players equip/remove packs
+  - type: Inventory
+    templateId: brahmin
+  - type: InventorySlots
+  - type: Strippable
+  - type: UserInterface
+    interfaces:
+      enum.StrippingUiKey.Key:
+        type: StrippableBoundUserInterface
 
 #MARK: Bighorner
 - type: entity

@@ -645,7 +645,7 @@
     sprite: _Nuclear14/Objects/Misc/identification.rsi
     state: sawbone
   - type: PresetIdCard
-    job: TribalHealer
+    job: TribalShaman # #Misfits Fix - updated job ID after TribalHealer was renamed to TribalShaman
   - type: ClothingAddFaction
     faction: Tribal
 

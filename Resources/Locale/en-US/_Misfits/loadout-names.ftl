@@ -218,6 +218,18 @@ loadout-name-N14InstrumentFlute = flute
 loadout-name-N14InstrumentClarinet = clarinet
 loadout-name-N14InstrumentTrumpet = trumpet
 loadout-name-N14InstrumentTrombone = trombone
+
+# Cosmetic loadouts (Misfits Add - drip expansion)
+loadout-name-MisfitsLoadoutNeckDesertScarf = desert scarf
+loadout-name-MisfitsLoadoutNeckRedScarf = red scarf
+loadout-name-MisfitsLoadoutNeckBlueScarf = blue scarf
+loadout-name-MisfitsLoadoutNeckGreenScarf = green scarf
+loadout-name-MisfitsLoadoutNeckOrangeScarf = orange scarf
+loadout-name-MisfitsLoadoutNeckBrownScarf = brown scarf
+loadout-name-MisfitsLoadoutNeckPatriotScarf = patriot scarf
+loadout-name-MisfitsLoadoutNeckTownGuardMantle = army rain mantle
+loadout-name-MisfitsLoadoutEyesPilotGoggles = pilot goggles
+loadout-name-MisfitsLoadoutHandsGlovesDriver = driver gloves
 loadout-name-N14InstrumentSaxaphone = saxophone
 loadout-name-N14InstrumentPanflute = pan flute
 
@@ -422,3 +434,57 @@ loadout-name-LoadoutEnclavePinHeadScientist = Enclave head scientist pin
 # NCR rank pin additions
 loadout-name-LoadoutNCRPinChiefPhysicianMedic = NCR chief physician pin (Medic)
 loadout-name-LoadoutNCRPinMajorMisfits = NCR major pin
+
+# Cosmetic loadout expansion wave 2 — #Misfits Add
+# Hands
+loadout-name-MisfitsLoadoutHandsBlackBiker = black biker gloves
+loadout-name-MisfitsLoadoutHandsBrownBiker = brown biker gloves
+loadout-name-MisfitsLoadoutHandsMountie = mountie leather gloves
+loadout-name-MisfitsLoadoutHandsCombat = combat gloves
+loadout-name-MisfitsLoadoutHandsNitrile = nitrile gloves
+loadout-name-MisfitsLoadoutHandsNitrilePurple = nitrile gloves (purple)
+loadout-name-MisfitsLoadoutHandsPatrol = leather patrol gloves
+loadout-name-MisfitsLoadoutHandsNCR = NCR fingerless gloves
+loadout-name-MisfitsLoadoutHandsTribal = tribal gloves
+# Eyes
+loadout-name-MisfitsLoadoutEyesGoggles = goggles
+# Head — general
+loadout-name-MisfitsLoadoutHeadWoodBoonie = woods boonie hat
+loadout-name-MisfitsLoadoutHeadWinterBoonie = winter boonie hat
+loadout-name-MisfitsLoadoutHeadDesertBoonie = desert boonie hat
+loadout-name-MisfitsLoadoutHeadArmyBeret = army beret
+loadout-name-MisfitsLoadoutHeadArmyBeretAirborne = airborne beret
+loadout-name-MisfitsLoadoutHeadArmyBeretSpecial = special forces beret
+# Head — NCR soldiers
+loadout-name-MisfitsLoadoutHeadNCRSidecap = NCR sidecap
+loadout-name-MisfitsLoadoutHeadNCRBeretOfficer = NCR officer beret
+loadout-name-MisfitsLoadoutHeadNCRBeretMedic = NCR medic beret
+loadout-name-MisfitsLoadoutHeadNCRBeretQM = NCR quartermaster beret
+# Head — NCR Rangers
+loadout-name-MisfitsLoadoutHeadArmyBeretRanger = ranger beret
+loadout-name-MisfitsLoadoutHeadNCRBeretRecon = NCR recon beret
+loadout-name-MisfitsLoadoutHeadRanger = ranger hat
+loadout-name-MisfitsLoadoutHeadRangerB = ranger hat (alt)
+# Head — Brotherhood of Steel
+loadout-name-MisfitsLoadoutHeadBrotherhoodCap = Brotherhood cap
+loadout-name-MisfitsLoadoutHeadBrotherhoodBeret = Brotherhood beret
+loadout-name-MisfitsLoadoutHeadBrotherhoodFieldCap = Brotherhood field cap
+# Head — Enclave
+loadout-name-MisfitsLoadoutHeadEnclaveIntel = Enclave recon beret
+loadout-name-MisfitsLoadoutHeadEnclavePeacekeeperCap = Enclave peacekeeper cap
+loadout-name-MisfitsLoadoutHeadEnclaveOfficer = Enclave officer cap
+loadout-name-MisfitsLoadoutHeadEnclaveScientist = Enclave scientist beret
+# Head — Townsfolk
+loadout-name-MisfitsLoadoutHeadDeputy = deputy hat
+loadout-name-MisfitsLoadoutHeadSheriff = sheriff hat
+# Shoes
+loadout-name-MisfitsLoadoutShoesJamrock = jamrock skins
+loadout-name-MisfitsLoadoutShoesLeatherBoots = leather boots
+loadout-name-MisfitsLoadoutShoesTribal = tribal shoes
+loadout-name-MisfitsLoadoutShoesRaider = raider treads
+# Neck — faction cloaks
+loadout-name-MisfitsLoadoutNeckCloakNCR = NCR cloak
+loadout-name-MisfitsLoadoutNeckCloakNCRSnow = NCR winter cloak
+loadout-name-MisfitsLoadoutNeckMantleNCR = NCR squad leader mantle
+loadout-name-MisfitsLoadoutNeckCloakNCRWoods = NCR woods cloak
+loadout-name-MisfitsLoadoutNeckCloakTribal = tribal cloak

@@ -750,6 +750,24 @@
 
     Lead: 400
 
+# #Misfits Add - Multiplas-specific ammo recipe; same cost as base plasma cartridge
+- type: latheRecipe
+  id: N14BPBoSAmmoPlasmaCartridgeMultiplas
+  result: N14PlasmaCartridgeMultiplas
+  category: N14BlueprintBoSAmmoT3
+  completetime: 10
+  requiresBlueprint: true
+  availableFaction:
+  - BrotherhoodOfSteel
+  materials:
+    Glass: 400
+
+    Circuitry: 100
+
+    ScrapElectronic: 100
+
+    Lead: 400
+
 
 # --- BoS Tier 4 Ammo ---
 - type: latheRecipe

@@ -1,0 +1,11 @@
+# #Misfits Add - Multiplas spread projectile: fires 3 BulletPlasma simultaneously in a 20-degree arc
+- type: entity
+  name: plasma spread
+  id: BulletPlasmaSpread
+  parent: BulletPlasma
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: ProjectileSpread
+    proto: BulletPlasma  # each pellet is a standard plasma bolt
+    count: 3             # three simultaneous bolts per trigger pull
+    spread: 20           # 20 degrees total arc (shotgun-like spread)

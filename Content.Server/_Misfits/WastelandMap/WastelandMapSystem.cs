@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using Content.Server.Access.Components;
+using Content.Server._Misfits.Group; // #Misfits Add - group blip injection
 using Content.Shared.Access.Components;
 using Content.Shared.Tag;
 using Content.Shared._Misfits.WastelandMap;
@@ -24,6 +25,7 @@ public sealed class WastelandMapSystem : EntitySystem
     [Dependency] private readonly UserInterfaceSystem _uiSystem = default!;
     [Dependency] private readonly SharedTransformSystem _transform = default!;
     [Dependency] private readonly TagSystem _tag = default!;
+    [Dependency] private readonly GroupSystem _groupSystem = default!; // #Misfits Add - group member map blips
 
     private const int MaxSharedAnnotations = 128;
     private const int MaxStrokePoints = 512; // 256 UV points × 2 floats each
@@ -58,24 +60,25 @@ public sealed class WastelandMapSystem : EntitySystem
             // #Misfits Fix: Skip the expensive BUI rebuild when nobody has this map open.
             // GetActors() is O(1) with the early-out; the rebuild + GetIdCardBlips world-scan is O(all id cards).
             var viewerMap = xform.MapID;
-            var hasViewer = false;
+            EntityUid? firstActor = null;
             foreach (var actor in _uiSystem.GetActors((uid, ui), WastelandMapUiKey.Key))
             {
                 viewerMap = Transform(actor).MapID;
-                hasViewer = true;
+                firstActor = actor; // #Misfits Add - pass actor so group blips are relative to who holds the map
                 break;
             }
-            if (!hasViewer)
+            if (firstActor == null)
                 continue;
 
-            _uiSystem.SetUiState((uid, ui), WastelandMapUiKey.Key, BuildState(map, viewerMap));
+            _uiSystem.SetUiState((uid, ui), WastelandMapUiKey.Key, BuildState(map, viewerMap, actor: firstActor));
         }
     }
 
     private void OnAfterOpen(EntityUid uid, WastelandMapComponent comp, AfterActivatableUIOpenEvent args)
     {
         var userMap = Transform(args.User).MapID;
-        _uiSystem.SetUiState(uid, WastelandMapUiKey.Key, BuildState(comp, userMap));
+        // #Misfits Add - pass the user so group member blips are seeded correctly on open
+        _uiSystem.SetUiState(uid, WastelandMapUiKey.Key, BuildState(comp, userMap, actor: args.User));
     }
 
     private void OnAddAnnotationMessage(EntityUid uid, WastelandMapComponent comp, WastelandMapAddAnnotationMessage args)
@@ -102,10 +105,11 @@ public sealed class WastelandMapSystem : EntitySystem
         UpdateMapUi(uid, comp, Transform(args.Actor).MapID);
     }
 
-    public WastelandMapBoundUserInterfaceState BuildState(WastelandMapComponent comp, MapId mapId, WastelandMapTacticalFeedKind? feedOverride = null)
+    // #Misfits Add - optional actor param so group-member blips can be injected per-viewer
+    public WastelandMapBoundUserInterfaceState BuildState(WastelandMapComponent comp, MapId mapId, WastelandMapTacticalFeedKind? feedOverride = null, EntityUid? actor = null)
     {
         var feed = feedOverride ?? GetEffectiveFeed(comp);
-        var trackedBlips = GetTrackedBlips(feed, mapId, comp.WorldBounds);
+        var trackedBlips = GetTrackedBlips(feed, mapId, comp.WorldBounds, actor);
         var sharedAnnotations = GetSharedAnnotations(comp, mapId, feed).ToArray();
 
         return new WastelandMapBoundUserInterfaceState(
@@ -224,7 +228,8 @@ public sealed class WastelandMapSystem : EntitySystem
         return annotations;
     }
 
-    private WastelandMapTrackedBlip[] GetTrackedBlips(WastelandMapTacticalFeedKind feed, MapId mapId, Box2 bounds)
+    // #Misfits Add - actor param enables group-member blip injection
+    private WastelandMapTrackedBlip[] GetTrackedBlips(WastelandMapTacticalFeedKind feed, MapId mapId, Box2 bounds, EntityUid? actor = null)
     {
         var blips = new List<WastelandMapTrackedBlip>();
 
@@ -240,6 +245,39 @@ public sealed class WastelandMapSystem : EntitySystem
 
         blips.AddRange(factionBlips);
         blips.AddRange(GetTribalHuntTargetBlips(mapId, bounds));
+
+        // #Misfits Add - inject group member blips if the map carrier is in a group
+        if (actor.HasValue)
+            blips.AddRange(GetGroupMemberBlips(actor.Value, mapId, bounds));
+
+        return blips.ToArray();
+    }
+
+    /// <summary>Returns a blip for each group member on the same map as the actor, excluding the actor themselves.</summary>
+    private WastelandMapTrackedBlip[] GetGroupMemberBlips(EntityUid actor, MapId mapId, Box2 bounds)
+    {
+        var members = _groupSystem.GetGroupMemberEntities(actor);
+        if (members == null || members.Count == 0)
+            return [];
+
+        var blips = new List<WastelandMapTrackedBlip>(members.Count);
+        foreach (var member in members)
+        {
+            if (member == actor)
+                continue; // don't show the holder as a blip
+
+            var mapCoords = _transform.GetMapCoordinates(member);
+            if (mapCoords.MapId != mapId)
+                continue;
+
+            var pos = mapCoords.Position;
+            if (!bounds.Contains(pos))
+                continue;
+
+            var label = Name(member);
+            blips.Add(new WastelandMapTrackedBlip(pos.X, pos.Y, label, WastelandMapTrackedBlipKind.PipBoyGroupMember));
+        }
+
         return blips.ToArray();
     }
 

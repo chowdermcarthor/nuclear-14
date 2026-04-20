@@ -59,3 +59,49 @@
       id: ClothingHeadHatFedoraBlack 
     - type: loadout # Forge-Add
       id: ClothingHeadHatFedoraChoc
+    - type: loadout # #Misfits Add - cosmetic boonies and general berets
+      id: MisfitsLoadoutHeadWoodBoonie
+    - type: loadout
+      id: MisfitsLoadoutHeadWinterBoonie
+    - type: loadout
+      id: MisfitsLoadoutHeadDesertBoonie
+    - type: loadout
+      id: MisfitsLoadoutHeadArmyBeret
+    - type: loadout
+      id: MisfitsLoadoutHeadArmyBeretAirborne
+    - type: loadout
+      id: MisfitsLoadoutHeadArmyBeretSpecial
+    - type: loadout # #Misfits Add - NCR soldier headwear
+      id: MisfitsLoadoutHeadNCRSidecap
+    - type: loadout
+      id: MisfitsLoadoutHeadNCRBeretOfficer
+    - type: loadout
+      id: MisfitsLoadoutHeadNCRBeretMedic
+    - type: loadout
+      id: MisfitsLoadoutHeadNCRBeretQM
+    - type: loadout # #Misfits Add - NCR Ranger headwear
+      id: MisfitsLoadoutHeadArmyBeretRanger
+    - type: loadout
+      id: MisfitsLoadoutHeadNCRBeretRecon
+    - type: loadout
+      id: MisfitsLoadoutHeadRanger
+    - type: loadout
+      id: MisfitsLoadoutHeadRangerB
+    - type: loadout # #Misfits Add - Brotherhood of Steel headwear
+      id: MisfitsLoadoutHeadBrotherhoodCap
+    - type: loadout
+      id: MisfitsLoadoutHeadBrotherhoodBeret
+    - type: loadout
+      id: MisfitsLoadoutHeadBrotherhoodFieldCap
+    - type: loadout # #Misfits Add - Enclave headwear
+      id: MisfitsLoadoutHeadEnclaveIntel
+    - type: loadout
+      id: MisfitsLoadoutHeadEnclavePeacekeeperCap
+    - type: loadout
+      id: MisfitsLoadoutHeadEnclaveOfficer
+    - type: loadout
+      id: MisfitsLoadoutHeadEnclaveScientist
+    - type: loadout # #Misfits Add - Townsfolk headwear
+      id: MisfitsLoadoutHeadDeputy
+    - type: loadout
+      id: MisfitsLoadoutHeadSheriff
