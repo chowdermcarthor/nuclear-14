@@ -36,13 +36,9 @@
   - type: MovementSpeedModifier
     baseWalkSpeed: 2.5 # #Misfits Tweak - no innate slowdown on bare chassis; armor tiers apply their own penalties
     baseSprintSpeed: 2.5 # sprint disabled (matches walk = no sprint acceleration)
-  - type: Armor # #Misfits Add - 10% innate DR from the C-27 chassis plating itself (bare metal body)
-    modifiers:
-      coefficients:
-        Blunt: 0.90
-        Slash: 0.90
-        Piercing: 0.90
-        Heat: 0.90
+  # #Misfits Tweak - chassis innate Armor removed; physical DR now comes entirely from
+  # armor tier clothing. Bare chassis = 400 eHP (raw HP pool). Modset handles only
+  # Shock weakness and Radiation immunity.
   - type: Reflect # #Misfits Add - 10% bare chassis ricochet; sealed metal hull deflects small/medium rounds. .50 bypasses via ignoreResistances:true
     reflects:
       - SmallCaliber

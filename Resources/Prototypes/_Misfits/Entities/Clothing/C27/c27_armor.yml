@@ -31,10 +31,10 @@
   - type: Armor
     modifiers:
       coefficients:
-        Blunt: 0.70    # #Misfits Tweak - 30% DR (combat armor mk2 tier)
-        Slash: 0.70
-        Piercing: 0.70
-        Heat: 0.75     # 25% heat reduction
+        Blunt: 0.667   # #Misfits Tweak - 33% DR → 600 effective HP (bare 400 + 200)
+        Slash: 0.667
+        Piercing: 0.667
+        Heat: 0.75     # light plating runs hotter — weaker heat shielding than medium
 
 - type: entity
   abstract: true
@@ -44,10 +44,10 @@
   - type: Armor
     modifiers:
       coefficients:
-        Blunt: 0.50    # #Misfits Tweak - 50% DR (tier 5 / marine armor tier)
+        Blunt: 0.50    # #Misfits Tweak - 50% DR → 800 effective HP
         Slash: 0.50
         Piercing: 0.50
-        Heat: 0.55     # 45% heat reduction
+        Heat: 0.55     # slightly weaker heat resist than physical — chassis cooling limits
   - type: Reflect # #Misfits Add - 30% ricochet on medium plating; stacks on top of bare chassis 10% (outermost check wins)
     reflects:
       - SmallCaliber
@@ -64,25 +64,17 @@
   parent: BaseC27Armor
   id: BaseC27ArmorHeavy
   components:
-  # Marker only — C-27 chassis already provides limb plating, so we skip the bundled
-  # ToggleableClothing / fusion core stack. requiresProficiency: false because the C-27
-  # species gate (MisfitsC27ArmorSystem) replaces the PA training quirk for these robots.
-  - type: N14PowerArmor
-    requiresProficiency: false
-  # PA integrity pool: while intact, 90% of post-coefficient damage is absorbed here
-  # and only 10% bleeds through to the wearer. When depleted the suit breaks and
-  # only 20% bleeds through (coefficients still apply). Repair with a welder.
-  - type: PowerArmorIntegrity
-    maxIntegrity: 375 # #Misfits Add - matching T-60 integrity pool; makes heavy significantly tankier than medium
+  # #Misfits Tweak - removed N14PowerArmor marker and PowerArmorIntegrity; C-27 heavy
+  # uses pure Armor coefficient DR instead. 60% DR → 1000 effective HP (400 raw HP / 0.40).
   - type: Armor
     modifiers:
       coefficients:
-        Blunt: 0.725   # #Misfits Tweak - matching T-60 power armor physical DR (27.5%)
-        Slash: 0.725
-        Piercing: 0.725
-        Heat: 0.725    # matching T-60 heat DR
-        Caustic: 0.75  # matching T-60 caustic DR
-        Radiation: 0.0 # explicit radiation immunity (also covered by MisfitsC27Silicon mob modifier)
+        Blunt: 0.40    # #Misfits Tweak - 60% DR → 1000 effective HP
+        Slash: 0.40
+        Piercing: 0.40
+        Heat: 0.40
+        Caustic: 0.55  # partial acid resist — ablative plate degrades under caustic
+        Radiation: 0.0 # explicit immunity (also in MisfitsC27Silicon modset)
   - type: Reflect # #Misfits Add - 60% ricochet on heavy plating; hardened combat chassis deflects most small/medium rounds. .50 bypasses via ignoreResistances:true
     reflects:
       - SmallCaliber
@@ -91,10 +83,10 @@
     innate: true
     spread: 90
   - type: ClothingSpeedModifier
-    walkModifier: 0.80 # #Misfits Tweak - 20% penalty (heavier than medium's 5%); meaningful tradeoff for the integrity pool
+    walkModifier: 0.80 # #Misfits Tweak - 20% penalty; meaningful tradeoff for the DR
     sprintModifier: 0.80
   - type: ExplosionResistance
-    damageCoefficient: 0.15 # #Misfits Tweak - matched T-60 explosion resistance (85% reduction)
+    damageCoefficient: 0.15 # #Misfits Tweak - 85% explosion reduction
 
 # === Concrete: Light tier ===
 

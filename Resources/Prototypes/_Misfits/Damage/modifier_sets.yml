@@ -6,11 +6,8 @@
 - type: damageModifierSet
   id: MisfitsC27Silicon
   coefficients:
-    Blunt: 0.7
-    Slash: 0.5
-    Piercing: 0.7
-    Shock: 1.2       # still vulnerable to electrical damage (motor control / circuitry)
-    Radiation: 0.0   # innate full immunity — sealed chassis, no organic components
-  flatReductions:
-    Blunt: 5
-    Heat: 5
+    Shock: 1.2       # vulnerable — electrical disrupts motor control / circuitry
+    Radiation: 0.0   # full immunity — sealed chassis, no organic components
+  # #Misfits Tweak - stripped physical coefficients and flat reductions; physical DR now
+  # comes entirely from armor tier (Armor component on clothing). Bare chassis = 400 eHP
+  # (raw HP only). Keeps flavor: Shock weakness, Radiation immunity.
