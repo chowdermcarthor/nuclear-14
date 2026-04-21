@@ -345,6 +345,7 @@ public sealed class AddictionSystem : SharedAddictionSystem
         if (!_proto.TryIndex<LocalizedDatasetPrototype>("AddictionEffects", out var dataset))
             return null;
 
-        return _random.Pick(dataset.Values);
+        // #Misfits Fix - Localize the picked key; Pick() returns a raw LocId, not the translated string
+        return Loc.GetString(_random.Pick(dataset.Values));
     }
 }
