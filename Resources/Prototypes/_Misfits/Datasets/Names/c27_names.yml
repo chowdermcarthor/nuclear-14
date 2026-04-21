@@ -1,0 +1,96 @@
+# #Misfits Add - C-27 humanoid robot designation pools.
+# Mirrors the per-variant *First dataset pattern used by RobotProtectron / RobotAssaultron.
+# Format is "<FactionPrefix>-<NATO Phonetic>" so every C-27 reads as a serial-designated unit
+# rather than a fleshname. Single-token by design so chat/UI ("Knight-Echo says…") stays clean.
+# Used by the species blocks in _Misfits/Species/c27.yml via maleFirstNames / femaleFirstNames
+# with naming: First, so no surname is appended.
+
+- type: dataset
+  id: C27FirstGeneric
+  values:
+  - Unit-Alpha
+  - Unit-Bravo
+  - Unit-Charlie
+  - Unit-Delta
+  - Unit-Echo
+  - Unit-Foxtrot
+  - Unit-Golf
+  - Unit-Hotel
+  - Unit-India
+  - Unit-Juliet
+  - Unit-Kilo
+  - Unit-Lima
+  - Unit-Mike
+  - Unit-November
+  - Unit-Oscar
+  - Unit-Papa
+  - Unit-Quebec
+  - Unit-Romeo
+  - Unit-Sierra
+  - Unit-Tango
+  - Unit-Uniform
+  - Unit-Victor
+  - Unit-Whiskey
+  - Unit-Xray
+  - Unit-Yankee
+  - Unit-Zulu
+
+- type: dataset
+  id: C27FirstNCR
+  values:
+  - Ranger-Alpha
+  - Ranger-Bravo
+  - Ranger-Charlie
+  - Ranger-Delta
+  - Ranger-Echo
+  - Ranger-Foxtrot
+  - Ranger-Golf
+  - Ranger-Hotel
+  - Ranger-India
+  - Ranger-Juliet
+  - Ranger-Kilo
+  - Ranger-Lima
+  - Ranger-Mike
+  - Ranger-November
+  - Ranger-Oscar
+  - Ranger-Papa
+  - Ranger-Quebec
+  - Ranger-Romeo
+  - Ranger-Sierra
+  - Ranger-Tango
+  - Ranger-Uniform
+  - Ranger-Victor
+  - Ranger-Whiskey
+  - Ranger-Xray
+  - Ranger-Yankee
+  - Ranger-Zulu
+
+- type: dataset
+  id: C27FirstBoS
+  values:
+  - Knight-Alpha
+  - Knight-Bravo
+  - Knight-Charlie
+  - Knight-Delta
+  - Knight-Echo
+  - Knight-Foxtrot
+  - Knight-Golf
+  - Knight-Hotel
+  - Knight-India
+  - Knight-Juliet
+  - Knight-Kilo
+  - Knight-Lima
+  - Knight-Mike
+  - Knight-November
+  - Knight-Oscar
+  - Knight-Papa
+  - Knight-Quebec
+  - Knight-Romeo
+  - Knight-Sierra
+  - Knight-Tango
+  - Knight-Uniform
+  - Knight-Victor
+  - Knight-Whiskey
+  - Knight-Xray
+  - Knight-Yankee
+  - Knight-Zulu

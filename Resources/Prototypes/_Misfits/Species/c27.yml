@@ -41,6 +41,12 @@
   maxWidth: 1.5
   sexes:
   - Unsexed
+  # #Misfits Add - serial-style designations (Unit-Alpha … Unit-Zulu) so default names
+  # don't fall back to regular human first/last names. Mirrors the per-variant *First
+  # dataset pattern used by RobotMrHandy / RobotProtectron / etc.
+  maleFirstNames: C27FirstGeneric
+  femaleFirstNames: C27FirstGeneric
+  naming: First
 
 # Body sprite layer mapping for the C-27 humanoid robot.
 # All limbs use the unified C-27 parts.rsi (no sex/feet split — DMI source has no foot frames).
@@ -130,6 +136,10 @@
   maxWidth: 1.5
   sexes:
   - Unsexed
+  # #Misfits Add - NCR-flavored callsigns (Ranger-Alpha … Ranger-Zulu).
+  maleFirstNames: C27FirstNCR
+  femaleFirstNames: C27FirstNCR
+  naming: First
 
 # #Misfits Add - Hidden Brotherhood of Steel variant. Same access rules as the Generic chassis.
 - type: species
@@ -163,6 +173,10 @@
   maxWidth: 1.5
   sexes:
   - Unsexed
+  # #Misfits Add - Brotherhood rank-flavored callsigns (Knight-Alpha … Knight-Zulu).
+  maleFirstNames: C27FirstBoS
+  femaleFirstNames: C27FirstBoS
+  naming: First
 
 # --- Per-bodypart sprite definitions ---
 # #Misfits Fix - Head + Chest are sex-morphed by HumanoidAppearanceSystem (UpdateLayers passes
