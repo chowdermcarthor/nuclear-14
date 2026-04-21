@@ -673,6 +673,19 @@
       - state: green
       - state: medic
 
+# The Reformer — admin-whitelisted Enclave leader role; spawn point referenced by Vault map  # #Misfits Add
+- type: entity
+  parent: MisfitsSpawnPointEnclaveCommander
+  id: MisfitsSpawnPointEnclaveReformer
+  name: Enclave Reformer
+  components:
+  - type: SpawnPoint
+    job_id: EnclaveReformer
+  - type: Sprite
+    layers:
+      - state: green
+      - state: lt
+
 # Synthetics — parent N14SpawnPointVaultDweller so robots use vault aesthetic and spawn in vault area  # #Misfits Change
 - type: entity
   parent: N14SpawnPointVaultDweller  # #Misfits Change - was SpawnPointJobBase; robots spawn at Vault Dweller spots
