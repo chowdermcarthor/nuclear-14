@@ -130,14 +130,18 @@ public sealed partial class ChangelogTab : Control
                 {
                     Margin = new Thickness(6, 0, 0, 0),
                 };
+                // #Misfits Fix - Use permissive markup parsing so changelog entries containing stray brackets
+                // (e.g. "[Wasteland]", "[decanus]", typos like "encryp[tion") don't throw and blank the entire
+                // window. RT v275 made FromMarkup strict; permissive falls back to plain text on bad tags.
                 authorLabel.SetMessage(
-                    FormattedMessage.FromMarkup(Loc.GetString("changelog-author-changed", ("author", author))));
+                    FormattedMessage.FromMarkupPermissive(Loc.GetString("changelog-author-changed", ("author", author))));
                 ChangelogBody.AddChild(authorLabel);
 
                 foreach (var change in groupedEntry.SelectMany(c => c.Changes))
                 {
                     var text = new RichTextLabel();
-                    text.SetMessage(FormattedMessage.FromMarkup(change.Message));
+                    // #Misfits Fix - Permissive parse, see note above.
+                    text.SetMessage(FormattedMessage.FromMarkupPermissive(change.Message));
                     ChangelogBody.AddChild(new BoxContainer
                     {
                         Orientation = LayoutOrientation.Horizontal,
