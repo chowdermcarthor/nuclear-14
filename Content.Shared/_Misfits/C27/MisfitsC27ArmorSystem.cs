@@ -1,4 +1,5 @@
 using Content.Shared.Humanoid;
+using Content.Shared.IdentityManagement;
 using Content.Shared.Inventory.Events;
 
 namespace Content.Shared._Misfits.C27;
@@ -14,6 +15,25 @@ public sealed class MisfitsC27ArmorSystem : EntitySystem
         base.Initialize();
 
         SubscribeLocalEvent<MisfitsC27ArmorComponent, BeingEquippedAttemptEvent>(OnEquipAttempt);
+        // #Misfits Add - Present C-27 chassis as synthetic for identity purposes. Mirrors
+        // SharedBorgSystem.OnTryGetIdentityShortInfo: when a C-27 is seen without ID, use the
+        // entity name (e.g. "c-27 humanoid robot") instead of the default "old person" fallback.
+        SubscribeLocalEvent<TryGetIdentityShortInfoEvent>(OnTryGetIdentityShortInfo);
+    }
+
+    private void OnTryGetIdentityShortInfo(TryGetIdentityShortInfoEvent args)
+    {
+        if (args.Handled)
+            return;
+
+        if (!TryComp<HumanoidAppearanceComponent>(args.ForActor, out var humanoid))
+            return;
+
+        if (humanoid.Species != "C27" && humanoid.Species != "C27NCR" && humanoid.Species != "C27BoS")
+            return;
+
+        args.Title = Name(args.ForActor).Trim();
+        args.Handled = true;
     }
 
     private void OnEquipAttempt(Entity<MisfitsC27ArmorComponent> item, ref BeingEquippedAttemptEvent args)
