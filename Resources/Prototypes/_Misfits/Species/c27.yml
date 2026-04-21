@@ -10,6 +10,13 @@
   order: 4 # #Misfits Add - sort just after Super Mutant, before Robot variants
   whitelistRequired: true # #Misfits Add - administrative whitelist gate
   restrictedCustomization: true # #Misfits Add - keep marking choices controlled per faction skin
+  allowedLoadoutCategories: # #Misfits Add - show loadout tab despite restrictedCustomization (armor from kit; accessories/weapons still selectable)
+  - Weapons
+  - Accessories
+  - Bags
+  - Backpacks
+  - Duffel
+  - Satchel
   jobWhitelistUnlock: C27 # #Misfits Add (Phase G) - C27 job whitelist also unlocks species visibility
   restrictedJobs: # #Misfits Add (Phase G) - C-27 chassis can only take the C27 job
   - C27
@@ -99,6 +106,13 @@
   order: 5
   whitelistRequired: true
   restrictedCustomization: true
+  allowedLoadoutCategories: # #Misfits Add - show loadout tab for NCR variant
+  - Weapons
+  - Accessories
+  - Bags
+  - Backpacks
+  - Duffel
+  - Satchel
   jobWhitelistUnlock: C27
   restrictedJobs:
   - C27
@@ -125,6 +139,13 @@
   order: 6
   whitelistRequired: true
   restrictedCustomization: true
+  allowedLoadoutCategories: # #Misfits Add - show loadout tab for BoS variant
+  - Weapons
+  - Accessories
+  - Bags
+  - Backpacks
+  - Duffel
+  - Satchel
   jobWhitelistUnlock: C27
   restrictedJobs:
   - C27

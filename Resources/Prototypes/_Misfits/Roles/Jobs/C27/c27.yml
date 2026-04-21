@@ -28,8 +28,8 @@
   whitelisted: true # admin job whitelist required (jobwhitelistadd <player> C27)
   hideWithoutWhitelist: true
   jobWhitelistBypassesRoleTimers: true
-  spawnLoadout: false # #Misfits Tweak (Phase H revised) - lobby loadout tab is hidden for C27 (restrictedCustomization);
-  # armor is delivered via UndecidedLoadoutBackpack kit items in startingGear (see subGear entries below)
+  spawnLoadout: true # #Misfits Tweak (Phase H revised) - loadout tab re-enabled via allowedLoadoutCategories on species;
+  # armor is delivered via UndecidedLoadoutBackpack kit in startingGear (pocket1), loadout for other gear categories
   applyTraits: true # allow trait/perk picks like SuperMutant
   startingGear: C27Gear
   requirements:

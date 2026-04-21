@@ -79,13 +79,17 @@ public sealed class FactionWarSystem : EntitySystem
     // #Misfits Add - Auto-ceasefire deadline for active wars. Key = WarKey, Value = expiry time.
     private readonly Dictionary<string, TimeSpan> _warAutoEndTimes = new();
 
-    /// <summary>Interval between periodic participant broadcasts (keeps overlay fresh).</summary>
-    private static readonly TimeSpan ParticipantBroadcastInterval = TimeSpan.FromSeconds(2);
-    private TimeSpan _nextParticipantBroadcast;
+    // #Misfits Tweak - Safety resync: re-sends participant dict every 30 s to catch edge cases
+    // (e.g. entities that spawned mid-round while a war was active). All real state-change paths
+    // (warjoin, war end) call BroadcastParticipants() directly, so the 2-second timer that was
+    // here before was generating ~140 GC allocations/min from Filter.Broadcast() serialization.
+    // 30 s is imperceptible for an overlay label and generates zero steady-state GC pressure.
+    private float _participantResyncAccumulator;
+    private const float ParticipantResyncInterval = 30f;
 
     // #Misfits Tweak - Gate Update() to 1 Hz. The body only walks in-memory lists (_activeWars,
-    // _warActivationTimes) and delegates to BroadcastParticipants which has its own TimeSpan
-    // gate. 1 s resolution for war-phase transitions is imperceptible.
+    // _warActivationTimes) and delegates to BroadcastParticipants which has its own gate.
+    // 1 s resolution for war-phase transitions is imperceptible.
     private float _warUpdateAccumulator;
     private const float WarUpdateInterval = 1.0f;
 
@@ -152,15 +156,21 @@ public sealed class FactionWarSystem : EntitySystem
 
         var now = _gameTiming.CurTime;
 
-        // Periodically re-broadcast the full participant dict so the client
-        // overlay stays in sync as entities spawn, move, or leave.
+        // Safety resync: re-broadcast participant dict every 30 s so entities that spawned
+        // mid-round (e.g. player respawns) eventually get overlay labels. Real state changes
+        // (warjoin, war end, new connection) call BroadcastParticipants() immediately.
         if (_activeWars.Count > 0)
         {
-            if (now >= _nextParticipantBroadcast)
+            _participantResyncAccumulator += WarUpdateInterval;
+            if (_participantResyncAccumulator >= ParticipantResyncInterval)
             {
-                _nextParticipantBroadcast = now + ParticipantBroadcastInterval;
+                _participantResyncAccumulator = 0f;
                 BroadcastParticipants();
             }
+        }
+        else
+        {
+            _participantResyncAccumulator = 0f;
         }
 
         // ── Pending → Active transitions ──────────────────────────────
@@ -1040,7 +1050,7 @@ public sealed class FactionWarSystem : EntitySystem
         _warParticipants.Clear();
         _factionWarCooldowns.Clear();
         _panelOpenSessions.Clear();
-        _nextParticipantBroadcast = TimeSpan.Zero;
+        _participantResyncAccumulator = 0f;
         _roundStartTime = _gameTiming.CurTime;
     }
 

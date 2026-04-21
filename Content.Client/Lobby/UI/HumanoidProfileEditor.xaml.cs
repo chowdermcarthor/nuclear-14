@@ -1561,6 +1561,20 @@ namespace Content.Client.Lobby.UI
                 return;
 
             Profile = Profile?.WithSpecies(newSpecies);
+
+            // #Misfits Add: if the species restricts to specific jobs, auto-set those jobs to High
+            // so the character doesn't fall through to overflow spawn (Wastelander) when the server
+            // strips all non-restricted job priorities via EnsureValid.
+            var speciesProto = _prototypeManager.Index<SpeciesPrototype>(newSpecies);
+            if (speciesProto.RestrictedJobs is { Count: > 0 } && Profile != null)
+            {
+                foreach (var restrictedJobId in speciesProto.RestrictedJobs)
+                {
+                    if (Profile.JobPriorities.GetValueOrDefault(restrictedJobId.Id, JobPriority.Never) == JobPriority.Never)
+                        Profile = Profile.WithJobPriority(restrictedJobId.Id, JobPriority.High);
+                }
+            }
+
             OnSkinColorOnValueChanged(); // Species may have special color prefs, make sure to update it.
             Markings.SetSpecies(newSpecies); // Repopulate the markings tab as well.
             UpdateSexControls(); // Update sex for new species

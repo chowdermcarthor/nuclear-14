@@ -24,7 +24,6 @@ using Robust.Shared.Enums;
 using Robust.Shared.Maths;
 using Robust.Shared.Network;
 using Robust.Shared.Player;
-using Robust.Shared.Timing;
 
 namespace Content.Server._Misfits.RaidRequest;
 
@@ -36,8 +35,6 @@ public sealed class RaidRequestSystem : EntitySystem
     [Dependency] private readonly MindSystem       _minds         = default!;
     [Dependency] private readonly NpcFactionSystem _npcFaction    = default!;
     [Dependency] private readonly IPlayerManager   _playerManager = default!;
-    // #Misfits Add - Used to throttle the periodic overlay-participants broadcast.
-    [Dependency] private readonly IGameTiming      _gameTiming    = default!;
 
     /// <summary>All requests this round, keyed by sequential id.</summary>
     private readonly Dictionary<int, RaidRequestEntry> _requests = new();
@@ -46,11 +43,11 @@ public sealed class RaidRequestSystem : EntitySystem
     /// <summary>Admin sessions currently watching the Raid Requests tab. Updates pushed only to these.</summary>
     private readonly HashSet<ICommonSession> _subscribedAdmins = new();
 
-    // #Misfits Add - Periodic broadcast cadence for the overlay participants dict, mirroring
-    // FactionWarSystem.ParticipantBroadcastInterval. Keeps client tags fresh as players spawn,
-    // change faction, or disconnect, without flooding the network on every tick.
-    private static readonly TimeSpan ParticipantBroadcastInterval = TimeSpan.FromSeconds(2);
-    private TimeSpan _nextParticipantBroadcast;
+    // #Misfits Tweak - Safety resync: re-sends participant dict every 30 s to catch mid-round
+    // entity spawns. All real state changes call BroadcastParticipants() directly; the old
+    // 2-second timer was generating GC pressure via Filter.Broadcast() serialization to all clients.
+    private float _participantResyncAccumulator;
+    private const float ParticipantResyncInterval = 30f;
 
     // #Misfits Add - 1 Hz update gate; nothing here is sub-second sensitive.
     private float _updateAccumulator;
@@ -76,9 +73,8 @@ public sealed class RaidRequestSystem : EntitySystem
         _playerManager.PlayerStatusChanged -= OnPlayerStatusChanged;
     }
 
-    // #Misfits Add - Periodic re-broadcast of the overlay-participants dict so the
-    // client AllyTagOverlay stays in sync as faction members spawn/move/leave.
-    // Mirrors FactionWarSystem.Update(); skipped entirely when no approved raids exist.
+    // #Misfits Tweak - 30-second safety resync only; real state changes call BroadcastParticipants()
+    // directly so the overlay responds immediately without waiting for the tick.
     public override void Update(float frameTime)
     {
         base.Update(frameTime);
@@ -88,23 +84,32 @@ public sealed class RaidRequestSystem : EntitySystem
             return;
         _updateAccumulator -= UpdateInterval;
 
-        // Cheap pre-check: if nothing's approved we have nothing to broadcast.
         if (!HasAnyApprovedFactionTierRaid())
+        {
+            _participantResyncAccumulator = 0f;
+            return;
+        }
+
+        _participantResyncAccumulator += UpdateInterval;
+        if (_participantResyncAccumulator < ParticipantResyncInterval)
             return;
 
-        var now = _gameTiming.CurTime;
-        if (now < _nextParticipantBroadcast)
-            return;
-
-        _nextParticipantBroadcast = now + ParticipantBroadcastInterval;
+        _participantResyncAccumulator = 0f;
         BroadcastParticipants();
     }
 
     private void OnPlayerStatusChanged(object? sender, SessionStatusEventArgs e)
     {
-        // Stop pushing updates to disconnected admins to avoid stale references.
         if (e.NewStatus == SessionStatus.Disconnected)
+        {
             _subscribedAdmins.Remove(e.Session);
+            return;
+        }
+
+        // Send current raid-participant state to newly-connected players so the overlay is
+        // correct immediately rather than waiting up to 30 s for the safety resync.
+        if (e.NewStatus == SessionStatus.InGame && HasAnyApprovedFactionTierRaid())
+            SendParticipantsTo(e.Session);
     }
 
     private void OnRoundRestart(RoundRestartCleanupEvent ev)
@@ -121,10 +126,9 @@ public sealed class RaidRequestSystem : EntitySystem
         _nextId = 1;
         _subscribedAdmins.Clear();
 
-        // #Misfits Add - Push an empty participant dict so any client overlay caches
-        // from the previous round are wiped before the next one starts.
+        // Push an empty participant dict so any client overlay caches from the previous round are wiped.
         BroadcastParticipants();
-        _nextParticipantBroadcast = TimeSpan.Zero;
+        _participantResyncAccumulator = 0f;
     }
 
     // ── Requester: open panel ───────────────────────────────────────────────
@@ -716,5 +720,13 @@ public sealed class RaidRequestSystem : EntitySystem
         RaiseNetworkEvent(
             new RaidRequestParticipantsUpdatedMsg { Participants = BuildRaidParticipantDict() },
             Filter.Broadcast());
+    }
+
+    /// <summary>Sends the current raid-participant dict to a single session (e.g. on connect).</summary>
+    private void SendParticipantsTo(ICommonSession session)
+    {
+        RaiseNetworkEvent(
+            new RaidRequestParticipantsUpdatedMsg { Participants = BuildRaidParticipantDict() },
+            session);
     }
 }
