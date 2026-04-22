@@ -123,7 +123,7 @@
   placementMode: SnapgridCenter
 
 - type: construction
-  name: West Brotherhood of Steel flag
+  name: Brotherhood of Steel flag
   id: N14FlagWallWesternBrotherhood
   graph: MisfitsFlagBOSW
   startNode: start
