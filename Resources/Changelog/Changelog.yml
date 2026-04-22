@@ -3623,3 +3623,54 @@ Entries:
   id: 5756
   time: '2026-04-22T17:55:17.0000000+00:00'
   url: https://github.com/Misfit-Sanctuary/nuclear-14/pull/313
+- author: cythisiax
+  changes:
+    - type: Add
+      message: >-
+        [DATABASE] tab in terminals. Each faction has their own database via ID
+        access.
+    - type: Add
+      message: >-
+        Faction leadership access is restricted to JOBSLOT. So user with
+        leadership ID tag cannot DELETE.
+    - type: Add
+      message: >-
+        Root level folder creation restricted to faction leadership & admin
+        whitelist.
+    - type: Add
+      message: >-
+        Subfolders and documents can be made by non-leadership, as well as
+        leadership.
+    - type: Add
+      message: >-
+        Holotape export of created document with full title and body once used
+        on terminal or pipboy.
+    - type: Add
+      message: >-
+        Serversided .json saving for tests before DB migration. RISK of deletion
+        of /data upon VPS restart.
+    - type: Add
+      message: BBcode integration into document creation with quick buttons to format.
+    - type: Add
+      message: >-
+        Deletion hiearchy > Admin > Leadership ONLY. Document & Folder creation
+        is LOGGED. Abuse will receive a ban.
+    - type: Tweak
+      message: >-
+        Temporarily accessible via all N14Terminals, specific prototypes made
+        but not mapped. Placeholder for testing.
+    - type: Tweak
+      message: >-
+        Added ADMIN only checkbox to ensure no leadership delete a document
+        designated for respective faction's high command.
+    - type: Tweak
+      message: BoS lose loadoutkit on round spawn Bozar. Moved to T4 blueprint + ammo.
+    - type: Tweak
+      message: >-
+        /raid system updates to allow peer-to-peer approval or denial. Admin
+        intervention still possible if necessary.
+    - type: Tweak
+      message: Stealthboy & Percusia updates. Find out in-game.
+  id: 5757
+  time: '2026-04-22T20:12:43.0000000+00:00'
+  url: https://github.com/Misfit-Sanctuary/nuclear-14/pull/316
