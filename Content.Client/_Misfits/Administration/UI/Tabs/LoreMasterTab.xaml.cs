@@ -33,6 +33,7 @@ public sealed partial class LoreMasterTab : Control
         ("Robots",               "PlayerRobot"),       // #Misfits Add - Synthetic robot player jobs
         ("FEV Mutants",          "PlayerSuperMutant"), // #Misfits Add - Super mutant player jobs
         ("Raiders",              "PlayerRaider"),      // #Misfits Add - Raider-gang player jobs
+        ("Enclave",              "Enclave"),           // #Misfits Add - Enclave remnant player jobs
     };
 
     // #Misfits Tweak - FactionObjectives preset list removed: kill/steal presets were disabled (low-RP).

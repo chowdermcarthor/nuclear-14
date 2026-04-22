@@ -18,6 +18,7 @@ public static class FactionWarConfig
     {
         "NCR", "BrotherhoodOfSteel", "CaesarLegion",
         "Townsfolk", "PlayerRaider",
+        "Enclave", // #Misfits Add - Enclave remnant faction is war-capable.
     };
 
     // #Misfits Add - Major factions that cannot enlist (individually or faction-wide) into
@@ -26,6 +27,7 @@ public static class FactionWarConfig
     public static readonly HashSet<string> MajorFactions = new()
     {
         "NCR", "BrotherhoodOfSteel", "CaesarLegion",
+        "Enclave", // #Misfits Add - Enclave is treated as a major power for cross-faction enlistment rules.
     };
 
     /// <summary>Returns true if the given canonical faction ID is a major faction.</summary>
@@ -57,6 +59,7 @@ public static class FactionWarConfig
         ["CaesarLegion"]       = "Caesar's Legion",
         ["Townsfolk"]          = "Townsfolk",
         ["PlayerRaider"]       = "Raiders",
+        ["Enclave"]            = "Enclave", // #Misfits Add - Enclave display label for war/raid UIs.
     };
 
     /// <summary>

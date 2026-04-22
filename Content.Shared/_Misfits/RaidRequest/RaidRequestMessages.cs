@@ -26,6 +26,7 @@ public static class RaidRequestConfig
         "NCR", "BrotherhoodOfSteel", "CaesarLegion",
         "Townsfolk", "PlayerRaider",
         "Tribal", "Vault", "Followers",
+        "Enclave", // #Misfits Add - Enclave remnant faction may submit faction-tier raid requests.
     };
 
     /// <summary>
