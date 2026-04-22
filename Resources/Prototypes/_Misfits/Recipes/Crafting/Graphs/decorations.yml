@@ -351,14 +351,14 @@
         - to: start
           steps:
             - tool: Prying
-              doAfter: 5
+              doAfter: 3
           completed:
             - !type:SpawnPrototype
               prototype: MaterialWoodPlank1
-              amount: 3
+              amount: 5
             - !type:SpawnPrototype
               prototype: MaterialCloth1
-              amount: 3
+              amount: 5
             - !type:DeleteEntity 
 
 - type: constructionGraph
@@ -389,10 +389,10 @@
           completed:
             - !type:SpawnPrototype
               prototype: MaterialWoodPlank1
-              amount: 3
+              amount: 5
             - !type:SpawnPrototype
               prototype: MaterialCloth1
-              amount: 3
+              amount: 5
             - !type:DeleteEntity 
 
 - type: constructionGraph
@@ -419,14 +419,14 @@
         - to: start
           steps:
             - tool: Prying
-              doAfter: 5
+              doAfter: 3
           completed:
             - !type:SpawnPrototype
               prototype: MaterialWoodPlank1
-              amount: 3
+              amount: 5
             - !type:SpawnPrototype
               prototype: MaterialCloth1
-              amount: 3
+              amount: 5
             - !type:DeleteEntity 
 
 - type: constructionGraph
@@ -453,14 +453,14 @@
         - to: start
           steps:
             - tool: Prying
-              doAfter: 5
+              doAfter: 3
           completed:
             - !type:SpawnPrototype
               prototype: MaterialWoodPlank1
-              amount: 3
+              amount: 5
             - !type:SpawnPrototype
               prototype: MaterialCloth1
-              amount: 3
+              amount: 5
             - !type:DeleteEntity 
 
 - type: constructionGraph
@@ -486,14 +486,14 @@
         - to: start
           steps:
             - tool: Prying
-              doAfter: 5
+              doAfter: 3
           completed:
             - !type:SpawnPrototype
               prototype: MaterialWoodPlank1
-              amount: 3
+              amount: 5
             - !type:SpawnPrototype
               prototype: MaterialCloth1
-              amount: 3
+              amount: 5
             - !type:DeleteEntity 
 
 - type: constructionGraph
@@ -519,14 +519,14 @@
         - to: start
           steps:
             - tool: Prying
-              doAfter: 5
+              doAfter: 3
           completed:
             - !type:SpawnPrototype
               prototype: MaterialWoodPlank1
-              amount: 3
+              amount: 5
             - !type:SpawnPrototype
               prototype: MaterialCloth1
-              amount: 3
+              amount: 5
             - !type:DeleteEntity 
 
 - type: constructionGraph
@@ -553,14 +553,14 @@
         - to: start
           steps:
             - tool: Prying
-              doAfter: 5
+              doAfter: 3
           completed:
             - !type:SpawnPrototype
               prototype: MaterialWoodPlank1
-              amount: 3
+              amount: 5
             - !type:SpawnPrototype
               prototype: MaterialCloth1
-              amount: 3
+              amount: 5
             - !type:DeleteEntity 
 
 - type: constructionGraph
@@ -591,8 +591,8 @@
           completed:
             - !type:SpawnPrototype
               prototype: MaterialWoodPlank1
-              amount: 3
+              amount: 5
             - !type:SpawnPrototype
               prototype: MaterialCloth1
-              amount: 3
+              amount: 5
             - !type:DeleteEntity 
