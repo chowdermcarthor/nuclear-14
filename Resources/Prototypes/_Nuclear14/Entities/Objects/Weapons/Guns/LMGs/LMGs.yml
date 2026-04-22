@@ -350,8 +350,8 @@
     wieldedSpeedModifier: 0.8
   - type: GunRequiresWield
   - type: GunWieldBonus
-    minAngle: -21 # Corvax-Change
-    maxAngle: -40 # Corvax-Change
+    minAngle: -21 
+    maxAngle: -40 
   - type: Gun
     minAngle: 24
     maxAngle: 60
