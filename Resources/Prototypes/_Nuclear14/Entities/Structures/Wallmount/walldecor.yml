@@ -43,8 +43,8 @@
   - type: Sprite
     state: flag_china
   - type: Construction
-    graph: Egg
-    node: boiled
+    graph: MisfitsFlagCH
+    node: flagch
 
 - type: entity
   parent: N14FlagWallUS
@@ -55,8 +55,8 @@
   - type: Sprite
     state: flag_cali
   - type: Construction
-    graph: Egg
-    node: boiled
+    graph: MisfitsFlagCI
+    node: flagci
 
 - type: entity
   parent: N14FlagWallUS
@@ -67,8 +67,8 @@
   - type: Sprite
     state: flag_arizona
   - type: Construction
-    graph: Egg
-    node: boiled
+    graph: MisfitsFlagAZ
+    node: flagaz
 
 - type: entity
   parent: N14FlagWallUS
@@ -79,8 +79,8 @@
   - type: Sprite
     state: flag_enclave
   - type: Construction
-    graph: Egg
-    node: boiled
+    graph: MisfitsFlagEN
+    node: flagen
 
 - type: entity
   parent: N14FlagWallUS
@@ -91,8 +91,8 @@
   - type: Sprite
     state: flag_ncr
   - type: Construction
-    graph: Egg
-    node: boiled
+    graph: MisfitsFlagNCR
+    node: flagncr
 
 - type: entity
   parent: N14FlagWallUS
@@ -103,8 +103,8 @@
   - type: Sprite
     state: flag_legion
   - type: Construction
-    graph: Egg
-    node: boiled
+    graph: MisfitsFlagLE
+    node: flagle
 
 - type: entity
   parent: N14FlagWallUS
@@ -115,8 +115,8 @@
   - type: Sprite
     state: flag_rangers
   - type: Construction
-    graph: Egg
-    node: boiled
+    graph: MisfitsFlagRG
+    node: flagrg
 
 - type: entity
   parent: N14FlagWallUS
@@ -128,8 +128,8 @@
     sprite: _Nuclear14/Structures/Wallmounts/walldecor2.rsi
     state: flag_midwest
   - type: Construction
-    graph: Egg
-    node: boiled
+    graph: MisfitsFlagBOSW
+    node: flagbosw
 
 - type: entity
   parent: N14FlagWallUS
@@ -141,32 +141,32 @@
     sprite: _Nuclear14/Structures/Wallmounts/walldecor3.rsi
     state: flag_washing
   - type: Construction
-    graph: Egg
-    node: boiled
+    graph: MisfitsFlagBOSE
+    node: flagbose
 
 - type: entity
   parent: N14FlagWallUS
   id: N14FlagWallColorado
   suffix: colorado
-  description: A flag for the state of Colorado
+  description: A flag for the state of Colorado.
   components:
   - type: Sprite
     state: flag_colorado
   - type: Construction
-    graph: Egg
-    node: boiled
+    graph: MisfitsFlagCL
+    node: flagcl
 
 - type: entity
   parent: N14FlagWallUS
   id: N14FlagWallDenver
   suffix: denver
-  description: A flag for the state of Denver
+  description: A flag for the state of Denver.
   components:
   - type: Sprite
     state: flag_denver
   - type: Construction
-    graph: Egg
-    node: boiled
+    graph: MisfitsFlagDE
+    node: flagde
 
 # Decor
 - type: entity

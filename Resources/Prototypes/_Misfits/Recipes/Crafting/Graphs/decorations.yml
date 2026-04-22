@@ -7,8 +7,8 @@
         - to: flagus
           steps:
             - material: Cloth
-              amount: 5
-              doAfter: 10
+              amount: 2
+              doAfter: 3
 
     - node: flagus
       entity: N14FlagWallUS
@@ -16,9 +16,284 @@
         - to: start
           steps:
             - tool: Cutting
-              doAfter: 5
+              doAfter: 3
           completed:
             - !type:SpawnPrototype
               prototype: MaterialCloth1
-              amount: 5
+              amount: 2
+            - !type:DeleteEntity
+
+- type: constructionGraph
+  id: MisfitsFlagCH
+  start: start
+  graph:
+    - node: start
+      edges:
+        - to: flagch
+          steps:
+            - material: Cloth
+              amount: 2
+              doAfter: 3
+
+    - node: flagch
+      entity: MisfitsFlagCH
+      edges:
+        - to: start
+          steps:
+            - tool: Cutting
+              doAfter: 3
+          completed:
+            - !type:SpawnPrototype
+              prototype: MaterialCloth1
+              amount: 2
+            - !type:DeleteEntity
+
+- type: constructionGraph
+  id: MisfitsFlagCI
+  start: start
+  graph:
+    - node: start
+      edges:
+        - to: flagci
+          steps:
+            - material: Cloth
+              amount: 2
+              doAfter: 3
+
+    - node: flagci
+      entity: N14FlagWallCalifornia
+      edges:
+        - to: start
+          steps:
+            - tool: Cutting
+              doAfter: 3
+          completed:
+            - !type:SpawnPrototype
+              prototype: MaterialCloth1
+              amount: 2
+            - !type:DeleteEntity
+
+- type: constructionGraph
+  id: MisfitsFlagAZ
+  start: start
+  graph:
+    - node: start
+      edges:
+        - to: flagaz
+          steps:
+            - material: Cloth
+              amount: 2
+              doAfter: 3
+
+    - node: flagaz
+      entity: N14FlagWallArizona
+      edges:
+        - to: start
+          steps:
+            - tool: Cutting
+              doAfter: 3
+          completed:
+            - !type:SpawnPrototype
+              prototype: MaterialCloth1
+              amount: 2
+            - !type:DeleteEntity
+
+- type: constructionGraph
+  id: MisfitsFlagEN
+  start: start
+  graph:
+    - node: start
+      edges:
+        - to: flagen
+          steps:
+            - material: Cloth
+              amount: 2
+              doAfter: 3
+
+    - node: flagen
+      entity: N14FlagWallArizona
+      edges:
+        - to: start
+          steps:
+            - tool: Cutting
+              doAfter: 3
+          completed:
+            - !type:SpawnPrototype
+              prototype: MaterialCloth1
+              amount: 2
+            - !type:DeleteEntity
+
+- type: constructionGraph
+  id: MisfitsFlagNCR
+  start: start
+  graph:
+    - node: start
+      edges:
+        - to: flagncr
+          steps:
+            - material: Cloth
+              amount: 2
+              doAfter: 3
+
+    - node: flagncr
+      entity: N14FlagWallNCR
+      edges:
+        - to: start
+          steps:
+            - tool: Cutting
+              doAfter: 3
+          completed:
+            - !type:SpawnPrototype
+              prototype: MaterialCloth1
+              amount: 2
+            - !type:DeleteEntity
+      
+- type: constructionGraph
+  id: MisfitsFlagLE
+  start: start
+  graph:
+    - node: start
+      edges:
+        - to: flagle
+          steps:
+            - material: Cloth
+              amount: 2
+              doAfter: 3
+
+    - node: flagle
+      entity: N14FlagWallLegion
+      edges:
+        - to: start
+          steps:
+            - tool: Cutting
+              doAfter: 3
+          completed:
+            - !type:SpawnPrototype
+              prototype: MaterialCloth1
+              amount: 2
+            - !type:DeleteEntity
+
+- type: constructionGraph
+  id: MisfitsFlagRG
+  start: start
+  graph:
+    - node: start
+      edges:
+        - to: flagrg
+          steps:
+            - material: Cloth
+              amount: 2
+              doAfter: 3
+
+    - node: flagrg
+      entity: N14FlagWallRangers
+      edges:
+        - to: start
+          steps:
+            - tool: Cutting
+              doAfter: 3
+          completed:
+            - !type:SpawnPrototype
+              prototype: MaterialCloth1
+              amount: 2
+            - !type:DeleteEntity
+
+- type: constructionGraph
+  id: MisfitsFlagBOSW
+  start: start
+  graph:
+    - node: start
+      edges:
+        - to: flagbosw
+          steps:
+            - material: Cloth
+              amount: 2
+              doAfter: 3
+
+    - node: flagbosw
+      entity: N14FlagWallWesternBrotherhood
+      edges:
+        - to: start
+          steps:
+            - tool: Cutting
+              doAfter: 3
+          completed:
+            - !type:SpawnPrototype
+              prototype: MaterialCloth1
+              amount: 2
+            - !type:DeleteEntity
+
+- type: constructionGraph
+  id: MisfitsFlagBOSE
+  start: start
+  graph:
+    - node: start
+      edges:
+        - to: flagbose
+          steps:
+            - material: Cloth
+              amount: 2
+              doAfter: 3
+
+    - node: flagbose
+      entity: N14FlagWallWashingtonBrotherhood
+      edges:
+        - to: start
+          steps:
+            - tool: Cutting
+              doAfter: 3
+          completed:
+            - !type:SpawnPrototype
+              prototype: MaterialCloth1
+              amount: 2
+            - !type:DeleteEntity
+
+- type: constructionGraph
+  id: MisfitsFlagCL
+  start: start
+  graph:
+    - node: start
+      edges:
+        - to: flagcl
+          steps:
+            - material: Cloth
+              amount: 2
+              doAfter: 3
+
+    - node: flagcl
+      entity: N14FlagWallColorado
+      edges:
+        - to: start
+          steps:
+            - tool: Cutting
+              doAfter: 3
+          completed:
+            - !type:SpawnPrototype
+              prototype: MaterialCloth1
+              amount: 2
+            - !type:DeleteEntity
+
+- type: constructionGraph
+  id: MisfitsFlagDE
+  start: start
+  graph:
+    - node: start
+      edges:
+        - to: flagde
+          steps:
+            - material: Cloth
+              amount: 2
+              doAfter: 3
+
+    - node: flagde
+      entity: N14FlagWallDenver
+      edges:
+        - to: start
+          steps:
+            - tool: Cutting
+              doAfter: 3
+          completed:
+            - !type:SpawnPrototype
+              prototype: MaterialCloth1
+              amount: 2
             - !type:DeleteEntity

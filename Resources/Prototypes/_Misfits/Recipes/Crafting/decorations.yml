@@ -8,11 +8,174 @@
   graph: MisfitsFlagUS
   startNode: start
   targetNode: flagus
-# category: construction-category-medical
+# category: construction-category-decorations
   description: A flag of the United States.
   hide: false
   icon:
     sprite: _Nuclear14/Structures/Wallmounts/walldecor.rsi
     state: flag_us
+  objectType: Structure
+  placementMode: SnapgridCenter
+
+- type: construction
+  name: Chinese flag
+  id: N14FlagWallChina
+  graph: MisfitsFlagCH
+  startNode: start
+  targetNode: flagch
+# category: construction-category-decorations
+  description: A Chinese flag.
+  hide: false
+  icon:
+    sprite: _Nuclear14/Structures/Wallmounts/walldecor.rsi
+    state: flag_china
+  objectType: Structure
+  placementMode: SnapgridCenter
+
+- type: construction
+  name: California flag
+  id: N14FlagWallCalifornia
+  graph: MisfitsFlagCI
+  startNode: start
+  targetNode: flagci
+# category: construction-category-decorations
+  description: A flag of California.
+  hide: false
+  icon:
+    sprite: _Nuclear14/Structures/Wallmounts/walldecor.rsi
+    state: flag_cali
+  objectType: Structure
+  placementMode: SnapgridCenter
+
+- type: construction
+  name: Arizona flag
+  id: N14FlagWallArizona
+  graph: MisfitsFlagAZ
+  startNode: start
+  targetNode: flagaz
+# category: construction-category-decorations
+  description: A flag of Arizona.
+  hide: false
+  icon:
+    sprite: _Nuclear14/Structures/Wallmounts/walldecor.rsi
+    state: flag_arizona
+  objectType: Structure
+  placementMode: SnapgridCenter
+
+- type: construction
+  name: Enclave flag
+  id: N14FlagWallEnclave
+  graph: MisfitsFlagEN
+  startNode: start
+  targetNode: flagen
+# category: construction-category-decorations
+  description: An Enclave flag.
+  hide: false
+  icon:
+    sprite: _Nuclear14/Structures/Wallmounts/walldecor.rsi
+    state: flag_enclave
+  objectType: Structure
+  placementMode: SnapgridCenter
+
+- type: construction
+  name: NCR flag
+  id: N14FlagWallNCR
+  graph: MisfitsFlagNCR
+  startNode: start
+  targetNode: flagncr
+# category: construction-category-decorations
+  description: An NCR flag.
+  hide: false
+  icon:
+    sprite: _Nuclear14/Structures/Wallmounts/walldecor.rsi
+    state: flag_ncr
+  objectType: Structure
+  placementMode: SnapgridCenter
+
+- type: construction
+  name: Legion flag
+  id: N14FlagWallLegion
+  graph: MisfitsFlagLE
+  startNode: start
+  targetNode: flagle
+# category: construction-category-decorations
+  description: A Legion flag.
+  hide: false
+  icon:
+    sprite: _Nuclear14/Structures/Wallmounts/walldecor.rsi
+    state: flag_legion
+  objectType: Structure
+  placementMode: SnapgridCenter
+
+- type: construction
+  name: Rangers flag
+  id: N14FlagWallRangers
+  graph: MisfitsFlagRG
+  startNode: start
+  targetNode: flagrg
+# category: construction-category-decorations
+  description: A Rangers flag.
+  hide: false
+  icon:
+    sprite: _Nuclear14/Structures/Wallmounts/walldecor.rsi
+    state: flag_rangers
+  objectType: Structure
+  placementMode: SnapgridCenter
+
+- type: construction
+  name: West Brotherhood of Steel flag
+  id: N14FlagWallWesternBrotherhood
+  graph: MisfitsFlagBOSW
+  startNode: start
+  targetNode: flagbosw
+# category: construction-category-decorations
+  description: A Brotherhood of Steel flag.
+  hide: false
+  icon:
+    sprite: _Nuclear14/Structures/Wallmounts/walldecor2.rsi
+    state: flag_midwest
+  objectType: Structure
+  placementMode: SnapgridCenter
+
+- type: construction
+  name: East Brotherhood of Steel flag
+  id: N14FlagWallWashingtonBrotherhood
+  graph: MisfitsFlagBOSE
+  startNode: start
+  targetNode: flagbose
+# category: construction-category-decorations
+  description: A Washington Brotherhood of Steel flag.
+  hide: false
+  icon:
+    sprite: _Nuclear14/Structures/Wallmounts/walldecor3.rsi
+    state: flag_washing
+  objectType: Structure
+  placementMode: SnapgridCenter
+
+- type: construction
+  name: Colorado flag
+  id: N14FlagWallColorado
+  graph: MisfitsFlagCL
+  startNode: start
+  targetNode: flagcl
+# category: construction-category-decorations
+  description: A flag for the state of Colorado.
+  hide: false
+  icon:
+    state: flag_colorado
+  objectType: Structure
+  placementMode: SnapgridCenter
+
+- type: construction
+  name: Denver flag
+  id: N14FlagWallDenver
+  graph: MisfitsFlagDE
+  startNode: start
+  targetNode: flagde
+# category: construction-category-decorations
+  description: A flag for the state of Denver.
+  hide: false
+  icon:
+    state: flag_denver
   objectType: Structure
   placementMode: SnapgridCenter
