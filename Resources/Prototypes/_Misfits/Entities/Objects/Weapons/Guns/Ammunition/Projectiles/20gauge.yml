@@ -2,6 +2,7 @@
   id: PelletShotgun20Beanbag
   name: beanbag (20 gauge)
   categories: [ HideSpawnMenu ]
+  parent: BaseBullet
   components:
   - type: Sprite
     sprite: Objects/Weapons/Guns/Projectiles/projectiles2.rsi
