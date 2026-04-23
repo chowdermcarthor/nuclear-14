@@ -440,6 +440,12 @@ public sealed partial class LatheMenu : DefaultWindow
 
         if (recipe.Result is { } result)
         {
+            // #Misfits Fix - Some blueprint recipes have historically pointed at abstract or bad
+            // result prototypes. EntityPrototypeView spawns the prototype for preview, so guard the
+            // lookup here and fall back to an empty control instead of crashing the whole lathe UI.
+            if (!_prototypeManager.TryIndex<EntityPrototype>(result, out var entityProto) || entityProto.Abstract)
+                return new Control();
+
             var entProtoView = new EntityPrototypeView();
             entProtoView.SetPrototype(result);
             return entProtoView;

@@ -1,0 +1,8 @@
+# #Misfits Add - Concrete helmet aliases for blueprint crafting recipes that should not point at abstract base prototypes.
+
+- type: entity
+  parent: N14ClothingHeadHatBaseHelmetMetal
+  id: N14ClothingHeadHatVaultBlueprintHelmetMetal
+  name: metal helmet
+  description: A metal helmet offering some ballistic protection.
+

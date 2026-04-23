@@ -2838,7 +2838,7 @@
 
 - type: latheRecipe
   id: N14BPLegionArmorHelmetMetalHelmet
-  result: N14ClothingHeadHatBaseHelmetMetal
+  result: N14ClothingHeadHatVaultBlueprintHelmetMetal
   category: N14BlueprintLegionArmorT4
   completetime: 10
   requiresBlueprint: true

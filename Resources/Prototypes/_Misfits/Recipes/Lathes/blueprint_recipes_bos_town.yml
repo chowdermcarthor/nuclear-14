@@ -2072,7 +2072,7 @@
 
 - type: latheRecipe
   id: N14BPTownArmorHelmetMetal
-  result: N14ClothingHeadHatBaseHelmetMetal
+  result: N14ClothingHeadHatVaultBlueprintHelmetMetal
   category: N14BlueprintTownArmorT2
   completetime: 5
   requiresBlueprint: true

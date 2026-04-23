@@ -1041,7 +1041,7 @@
 # --- Vault Tier 2 Helmets (basic metal) ---
 - type: latheRecipe
   id: N14BPVaultArmorHelmetMetal
-  result: N14ClothingHeadHatBaseHelmetMetal
+  result: N14ClothingHeadHatVaultBlueprintHelmetMetal
   category: N14BlueprintVaultArmorT2
   completetime: 5
   requiresBlueprint: true
