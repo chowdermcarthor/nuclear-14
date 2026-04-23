@@ -806,12 +806,16 @@ namespace Content.Server.Administration.Systems
             }).ToList();
 
             // #Misfits Add - fetch admin statistics when requested
+            // #Misfits Change - destructure tuple; also send PeriodSummary for the % answered row
             List<AdminStatEntry>? adminStats = null;
+            TicketPeriodSummary? periodSummary = null;
             if (msg.IncludeAdminStats)
             {
-                adminStats = await _dbManager.GetAdminStatisticsAsync(
+                var (stats, summary) = await _dbManager.GetAdminStatisticsAsync(
                     msg.FilterStartDate,
                     msg.FilterEndDate);
+                adminStats = stats;
+                periodSummary = summary;
             }
 
             RaiseNetworkEvent(
@@ -820,7 +824,8 @@ namespace Content.Server.Administration.Systems
                     Entries = entries,
                     TotalCount = total,
                     Offset = msg.Offset,
-                    AdminStats = adminStats, // #Misfits Add - include stats in response
+                    AdminStats = adminStats,
+                    PeriodSummary = periodSummary, // #Misfits Add - per-type created/answered counts
                 },
                 args.SenderSession.Channel);
         }

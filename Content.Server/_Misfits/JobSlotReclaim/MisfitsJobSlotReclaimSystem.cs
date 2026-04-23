@@ -230,6 +230,17 @@ public sealed class MisfitsJobSlotReclaimSystem : EntitySystem
     }
 
     /// <summary>
+    /// Removes a mob from all reclaim tracking. Called by CryostorageSystem when a mob
+    /// enters cryostorage — the slot was already freed by the vanilla cryo path, so we
+    /// must not free it a second time if the mob later dies on the PausedMap.
+    /// </summary>
+    public void ClearMobTracking(EntityUid mob)
+    {
+        _occupied.Remove(mob);
+        _pending.Remove(mob);
+    }
+
+    /// <summary>
     /// Clears all locks for a given player. Called by the admin 'respawn' command so
     /// admins can force a respawn regardless of which character the player picks.
     /// </summary>

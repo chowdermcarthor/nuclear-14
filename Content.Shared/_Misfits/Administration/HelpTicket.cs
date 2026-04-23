@@ -239,17 +239,32 @@ public sealed class HelpTicketAuditRequestMessage : EntityEventArgs
     public bool IncludeAdminStats { get; init; }
 }
 
-// #Misfits Add - admin statistics entry for audit log: admin name + ticket counts
+// #Misfits Add - admin statistics entry for audit log: admin name + ticket counts + ticket type
 /// <summary>
-/// Aggregated ticket count statistics for a single admin across all their handled tickets.
+/// Aggregated ticket count statistics for a single admin, split by ticket type (AHELP vs MHELP).
 /// </summary>
 [Serializable, NetSerializable]
 public sealed record AdminStatEntry(
     string AdminName,
     Guid AdminId,
     int ResolvedCount,
-    int ClaimedCount
+    int ClaimedCount,
+    HelpTicketType TicketType
 );
+
+// #Misfits Add - overall ticket counts for the selected period, used to show % answered in the stats tab
+[Serializable, NetSerializable]
+public sealed class TicketPeriodSummary
+{
+    /// <summary>Total AHELP tickets created in the period.</summary>
+    public int AdminHelpCreated { get; init; }
+    /// <summary>Total AHELP tickets resolved or auto-resolved in the period.</summary>
+    public int AdminHelpAnswered { get; init; }
+    /// <summary>Total MHELP tickets created in the period.</summary>
+    public int MentorHelpCreated { get; init; }
+    /// <summary>Total MHELP tickets resolved or auto-resolved in the period.</summary>
+    public int MentorHelpAnswered { get; init; }
+}
 
 /// <summary>
 /// Server → Admin: audit log entries retrieved from the database.
@@ -266,6 +281,10 @@ public sealed class HelpTicketAuditResponseMessage : EntityEventArgs
     // #Misfits Add - optional admin statistics when requested by the client
     /// <summary>Admin statistics (resolved/claimed counts) for the filtered period. Null if not requested.</summary>
     public List<AdminStatEntry>? AdminStats { get; init; }
+
+    // #Misfits Add - overall ticket counts for the period (created/answered per type) for the summary row
+    /// <summary>Period-wide ticket totals. Null if stats were not requested.</summary>
+    public TicketPeriodSummary? PeriodSummary { get; init; }
 }
 
 // ──────────────────── Chat History ──────────────────────

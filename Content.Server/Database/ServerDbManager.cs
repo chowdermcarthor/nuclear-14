@@ -418,8 +418,9 @@ namespace Content.Server.Database
             CancellationToken cancel = default);
 
         // #Misfits Add - admin statistics query method
-        /// <summary>Get resolved/claimed ticket counts grouped by admin, optionally filtered by date range.</summary>
-        Task<List<AdminStatEntry>> GetAdminStatisticsAsync(
+        // #Misfits Change - now returns (Stats, Summary) tuple to include per-type ticket counts
+        /// <summary>Get resolved/claimed ticket counts grouped by admin and ticket type, plus a period summary.</summary>
+        Task<(List<AdminStatEntry> Stats, TicketPeriodSummary Summary)> GetAdminStatisticsAsync(
             DateTime? startDate = null, DateTime? endDate = null, CancellationToken cancel = default);
 
         /// <summary>Append one bwoink/mhelp chat message to the persistent log. Fire-and-forget safe.</summary>
@@ -1269,7 +1270,8 @@ namespace Content.Server.Database
         }
 
         // #Misfits Add - admin statistics query implementation
-        public Task<List<AdminStatEntry>> GetAdminStatisticsAsync(
+        // #Misfits Change - return type updated to match new tuple signature
+        public Task<(List<AdminStatEntry> Stats, TicketPeriodSummary Summary)> GetAdminStatisticsAsync(
             DateTime? startDate = null, DateTime? endDate = null, CancellationToken cancel = default)
         {
             DbReadOpsMetric.Inc();

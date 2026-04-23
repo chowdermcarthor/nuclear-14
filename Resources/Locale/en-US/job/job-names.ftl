@@ -34,7 +34,8 @@ job-name-librarian = Cataloguer
 job-name-mime = Mime
 job-name-ce = Chief Engineer
 job-name-janitor = Janitor
-job-name-chaplain = Town Chaplain # #Misfits Change - renamed for Town faction clarity
+# #Misfits Change - renamed for Town faction clarity
+job-name-chaplain = Town Chaplain
 job-name-botanist = Botanist
 job-name-bartender = Bartender
 job-name-passenger = Passenger
