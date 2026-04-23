@@ -76,7 +76,12 @@ ticket-audit-stats-label = Admin Ticket Handling Statistics (for selected period
 ticket-audit-stats-admin = Admin Name
 ticket-audit-stats-resolved = Resolved
 ticket-audit-stats-claimed = Claimed
+ticket-audit-stats-ratio = Share
 ticket-audit-stats-empty = No statistics available for the selected period.
+ticket-audit-stats-ahelp-section = Admin Help (AHELP)
+ticket-audit-stats-mhelp-section = Mentor Help (MHELP)
+ticket-audit-stats-summary-ahelp = AHELP: {$created} created — {$answered} answered ({$pct})
+ticket-audit-stats-summary-mhelp = MHELP: {$created} created — {$answered} answered ({$pct})
 
 # General
 ticket-audit-log-empty = No ticket events found.

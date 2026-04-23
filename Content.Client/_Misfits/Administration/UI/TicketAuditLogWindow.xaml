@@ -114,19 +114,8 @@
                 </BoxContainer>
             </BoxContainer>
 
-            <!-- Statistics Tab -->
+            <!-- Statistics Tab — headers and sections are built in code-behind -->
             <BoxContainer Orientation="Vertical" VerticalExpand="True" HorizontalExpand="True" Margin="4">
-                <!-- Stats header -->
-                <Label Text="{Loc 'ticket-audit-stats-label'}" Margin="0 0 0 4" />
-                
-                <!-- Stats table header -->
-                <BoxContainer Orientation="Horizontal" HorizontalExpand="True" Margin="0 0 0 2">
-                    <Label Text="{Loc 'ticket-audit-stats-admin'}"   MinWidth="200" />
-                    <Label Text="{Loc 'ticket-audit-stats-resolved'}" MinWidth="120" />
-                    <Label Text="{Loc 'ticket-audit-stats-claimed'}"  HorizontalExpand="True" />
-                </BoxContainer>
-
-                <!-- Scrollable stats list -->
                 <ScrollContainer VerticalExpand="True" HorizontalExpand="True">
                     <BoxContainer Name="StatsList" Orientation="Vertical" HorizontalExpand="True" />
                 </ScrollContainer>

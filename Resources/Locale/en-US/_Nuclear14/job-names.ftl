@@ -114,7 +114,8 @@ job-name-vault-security = Vault Security
 job-description-vault-security = Keep order within the Vault and report to the Overseer. For the good of the Vault!
 
 # Wasteland
-job-name-farmer = Town Farmer # #Misfits Change - renamed for Town faction clarity
+# #Misfits Change - renamed for Town faction clarity
+job-name-farmer = Town Farmer
 job-description-farmer = Produce crops in the wasteland for yourself or to barter with others.
 job-name-waste-musician = Musician
 job-description-waste-musician = This role is going to be removed from the game, please set your preference to "NEVER" on all your characters!

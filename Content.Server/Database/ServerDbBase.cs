@@ -2097,43 +2097,77 @@ INSERT INTO player_round (players_id, rounds_id) VALUES ({players[player]}, {id}
             return (events, total);
         }
 
-        // #Misfits Add - admin statistics query: counts of resolved/claimed ticket actions per admin
-        public async Task<List<AdminStatEntry>> GetAdminStatisticsAsync(
+        // #Misfits Add - admin statistics query: counts of resolved/claimed ticket actions per admin, split by ticket type
+        // #Misfits Change - groups by TicketType too; also returns a TicketPeriodSummary for the overall % answered row
+        public async Task<(List<AdminStatEntry> Stats, TicketPeriodSummary Summary)> GetAdminStatisticsAsync(
             DateTime? startDate = null,
             DateTime? endDate = null,
             CancellationToken cancel = default)
         {
             await using var db = await GetDb(cancel);
 
-            // #Misfits Add - filter to events with both AdminId and AdminName set (skip player/system events)
-            var query = db.DbContext.HelpTicketEvent
+            // Admin-action events only (AdminId set = a human acted on the ticket)
+            var adminQuery = db.DbContext.HelpTicketEvent
                 .Where(e => e.AdminId != null && e.AdminName != null)
                 .AsQueryable();
 
-            // #Misfits Add - date range filtering
-            if (startDate.HasValue)
-                query = query.Where(e => e.OccurredAt >= startDate.Value.ToUniversalTime());
-            if (endDate.HasValue)
-                query = query.Where(e => e.OccurredAt <= endDate.Value.ToUniversalTime());
+            // All events for the summary (Created / Resolved / AutoResolved counts regardless of actor)
+            var allQuery = db.DbContext.HelpTicketEvent.AsQueryable();
 
-            // #Misfits Fix - EF Core cannot translate GroupBy+conditional Count to SQL.
-            // Materialize the filtered admin events first, then aggregate in memory.
-            var adminEvents = await query
-                .Select(e => new { e.AdminId, e.AdminName, e.EventType })
+            if (startDate.HasValue)
+            {
+                var utcStart = startDate.Value.ToUniversalTime();
+                adminQuery = adminQuery.Where(e => e.OccurredAt >= utcStart);
+                allQuery   = allQuery.Where(e => e.OccurredAt >= utcStart);
+            }
+            if (endDate.HasValue)
+            {
+                var utcEnd = endDate.Value.ToUniversalTime();
+                adminQuery = adminQuery.Where(e => e.OccurredAt <= utcEnd);
+                allQuery   = allQuery.Where(e => e.OccurredAt <= utcEnd);
+            }
+
+            // #Misfits Fix - EF Core cannot translate GroupBy+conditional Count to SQL; materialize first.
+            // Now includes TicketType so AHELP and MHELP produce separate rows per admin.
+            var adminEvents = await adminQuery
+                .Select(e => new { e.AdminId, e.AdminName, e.EventType, e.TicketType })
                 .ToListAsync(cancel);
 
             var stats = adminEvents
-                .GroupBy(e => new { e.AdminId, e.AdminName })
+                .GroupBy(e => new { e.AdminId, e.AdminName, e.TicketType })
                 .Select(g => new AdminStatEntry(
                     g.Key.AdminName!,
                     g.Key.AdminId!.Value,
                     g.Count(e => e.EventType == (int)HelpTicketEventType.Resolved),
-                    g.Count(e => e.EventType == (int)HelpTicketEventType.Claimed)
+                    g.Count(e => e.EventType == (int)HelpTicketEventType.Claimed),
+                    (HelpTicketType) g.Key.TicketType
                 ))
                 .OrderByDescending(s => s.ResolvedCount)
                 .ToList();
 
-            return stats;
+            // Period summary: Created and Answered (Resolved + AutoResolved) counts per ticket type
+            var summaryEvents = await allQuery
+                .Where(e => e.EventType == (int)HelpTicketEventType.Created
+                         || e.EventType == (int)HelpTicketEventType.Resolved
+                         || e.EventType == (int)HelpTicketEventType.AutoResolved)
+                .Select(e => new { e.EventType, e.TicketType })
+                .ToListAsync(cancel);
+
+            var ahelpType        = (int)HelpTicketType.AdminHelp;
+            var mhelpType        = (int)HelpTicketType.MentorHelp;
+            var createdEvt       = (int)HelpTicketEventType.Created;
+            var resolvedEvt      = (int)HelpTicketEventType.Resolved;
+            var autoResolvedEvt  = (int)HelpTicketEventType.AutoResolved;
+
+            var summary = new TicketPeriodSummary
+            {
+                AdminHelpCreated   = summaryEvents.Count(e => e.TicketType == ahelpType && e.EventType == createdEvt),
+                AdminHelpAnswered  = summaryEvents.Count(e => e.TicketType == ahelpType && (e.EventType == resolvedEvt || e.EventType == autoResolvedEvt)),
+                MentorHelpCreated  = summaryEvents.Count(e => e.TicketType == mhelpType && e.EventType == createdEvt),
+                MentorHelpAnswered = summaryEvents.Count(e => e.TicketType == mhelpType && (e.EventType == resolvedEvt || e.EventType == autoResolvedEvt)),
+            };
+
+            return (stats, summary);
         }
 
         // #Misfits Add — persist / retrieve individual bwoink/mhelp chat messages

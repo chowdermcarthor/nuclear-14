@@ -209,6 +209,12 @@ public sealed class CryostorageSystem : SharedCryostorageSystem
                 .ClearLockFor(userId.Value, lockName);
         }
 
+        // #Misfits Fix - Remove the mob from reclaim tracking regardless of userId. The slot
+        // was already freed by the vanilla cryo path above; if the mob later dies on the
+        // PausedMap our system must not free it a second time (which would push the count to 2).
+        EntityManager.System<Content.Server._Misfits.JobSlotReclaim.MisfitsJobSlotReclaimSystem>()
+            .ClearMobTracking(ent.Owner);
+
         _audio.PlayPvs(cryostorageComponent.RemoveSound, ent);
 
         EnsurePausedMap();
