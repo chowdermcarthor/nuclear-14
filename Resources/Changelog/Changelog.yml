@@ -3705,3 +3705,34 @@ Entries:
   id: 5760
   time: '2026-04-23T01:06:07.0000000+00:00'
   url: https://github.com/Misfit-Sanctuary/nuclear-14/pull/318
+- author: cythisiax
+  changes:
+    - type: Fix
+      message: T2 and T4 blueprint recipes no longer crash the lathe menu
+    - type: Fix
+      message: >-
+        Borg auto-deactivates on empty battery and cannot be toggled on without
+        charge
+    - type: Add
+      message: >-
+        Job selection tab filter (Wasteland / Minor Factions / Major Factions /
+        Whitelist)
+    - type: Add
+      message: >-
+        Tribal Hunt minor hunts — any participant can call, supports creature
+        packs with kill tracking
+    - type: Add
+      message: Followers of the Apocalypse faction jobs (Head, Doctor, Volunteer)
+    - type: Add
+      message: Eighties faction jobs (The Block, Cylinders, Pistons, Oilers, Road Rash)
+    - type: Add
+      message: >-
+        White Legs specialist roles (Bone Breaker, Pain Maker, Storm Drummer,
+        Warchief)
+    - type: Tweak
+      message: Tribal Hunt UI now shows hunt progress counts
+    - type: Tweak
+      message: Minor hunt targets appear on the Wasteland Map
+  id: 5761
+  time: '2026-04-23T19:15:31.0000000+00:00'
+  url: https://github.com/Misfit-Sanctuary/nuclear-14/pull/320
