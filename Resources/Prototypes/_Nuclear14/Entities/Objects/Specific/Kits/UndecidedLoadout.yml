@@ -86,6 +86,7 @@
     - NCRA_BreacherSet
     # #Misfits Change - all three medic kit options consolidated into one combat medic kit
     - NCRA_ComMedSet
+    - NCRA_SniperSet
 
 - type: entity
   id: NCRengineerloadoutkits

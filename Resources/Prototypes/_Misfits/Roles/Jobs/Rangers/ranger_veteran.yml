@@ -50,7 +50,7 @@
 - type: startingGear
   id: NCRVeteranRangerGear
   equipment:
-    head: N14ClothingHeadHatRangerHelmetEliteOld
+    head: N14ClothingHeadHatRangerHelmetDesert
     back: N14ClothingBackpackMilitary # Corvax-Change
     jumpsuit: N14ClothingUniformRangerV3
     ears: N14ClothingHeadsetNCR
@@ -61,7 +61,7 @@
     pocket1: MagazineBox45-70
     pocket2: NCRveteranrangerloadoutkits
     eyes: ClothingEyesGlassesSunglasses
-    outerClothing: N14ClothingOuterRangerEliteOld
+    outerClothing: N14ClothingOuterRangerCombatDesert
     id: N14IDBadgeNCRDesertRangerElite
   innerClothingSkirt: N14ClothingUniformRangerV3 #placeholder
   satchel: N14ClothingBackpackSatchelMilitaryFilled

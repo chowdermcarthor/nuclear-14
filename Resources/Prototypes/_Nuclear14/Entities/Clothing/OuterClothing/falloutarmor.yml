@@ -222,7 +222,7 @@
       coefficients:
         Blunt: 0.7
         Slash: 0.7
-        Piercing: 0.65
+        Piercing: 0.60
         Heat: 0.65
     priceMultiplier: 0.5
   - type: ExplosionResistance
@@ -1275,7 +1275,7 @@
       coefficients:
         Blunt: 0.7
         Slash: 0.7
-        Piercing: 0.65
+        Piercing: 0.60
         Heat: 0.65
     priceMultiplier: 0.6
   - type: ExplosionResistance
@@ -1315,10 +1315,10 @@
   - type: Armor
     modifiers:
       coefficients:
-        Blunt: 0.7
-        Slash: 0.7
-        Piercing: 0.65
-        Heat: 0.65
+        Blunt: 0.65
+        Slash: 0.65
+        Piercing: 0.55 # mk3 better than Mk2, on par with marine
+        Heat: 0.55
     priceMultiplier: 0.6
   - type: ExplosionResistance
     damageCoefficient: 0.75
@@ -1434,10 +1434,10 @@
   - type: Armor
     modifiers:
       coefficients:
-        Blunt: 0.7
-        Slash: 0.7
-        Piercing: 0.65
-        Heat: 0.65
+        Blunt: 0.65
+        Slash: 0.65
+        Piercing: 0.60 # mk2 parity
+        Heat: 0.60
         Caustic: 0.85
     priceMultiplier: 0.5
   - type: FireProtection

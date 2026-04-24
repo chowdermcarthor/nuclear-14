@@ -31,15 +31,15 @@
   - type: Clothing
     sprite: Corvax/Clothing/OuterClothing/Armor/centurionheavyarmor.rsi
   - type: ClothingSpeedModifier
-    walkModifier: 0.9
-    sprintModifier: 0.9
+    walkModifier: 1 # custom made centurion armor thats more generalist, so here is your speed
+    sprintModifier: 1 # also it makes it useful instead of just DURR PALADIN OR RANGER HUNTER DUURRRHH
   - type: Armor
     modifiers:
       coefficients:
         Blunt: 0.55
         Slash: 0.55
-        Piercing: 0.5
-        Heat: 0.5
+        Piercing: 0.45 #Veni Vidi Vici. Bill came, saw liquid dogshit, and fixed.
+        Heat: 0.50
   - type: ExplosionResistance
     damageCoefficient: 0.65
   - type: StaminaDamageResistance
@@ -65,10 +65,10 @@
   - type: Armor
     modifiers:
       coefficients:
-        Blunt: 0.65  # #Misfits Fix - corrected from SS13 Big-Iron melee=35
-        Slash: 0.65  # #Misfits Fix - corrected from SS13 Big-Iron melee=35
-        Piercing: 0.50  # #Misfits Fix - corrected from SS13 Big-Iron bullet=50
-        Heat: 0.45  # laser=55 dominates; consistent with prior value
+        Blunt: 0.50  # #Misfits Fix - corrected from SS13 Big-Iron melee=35
+        Slash: 0.50  # #Misfits Fix - corrected from SS13 Big-Iron melee=35
+        Piercing: 0.45  # #Misfits Bill was here. paladin will be useful.
+        Heat: 0.30  # laser=70 dominates; not fucking consistent but this was worse than ranger shit so here you go.
   - type: ExplosionResistance
     damageCoefficient: 0.65  # #Misfits Fix - corrected from SS13 Big-Iron bomb=35
   - type: StaminaDamageResistance
@@ -95,7 +95,7 @@
         Blunt: 0.65  # #Misfits Fix - corrected from SS13 Big-Iron melee=35
         Slash: 0.65  # #Misfits Fix - corrected from SS13 Big-Iron melee=35
         Piercing: 0.40  # #Misfits Fix - corrected from SS13 Big-Iron bullet=60
-        Heat: 0.20  # fire=80 dominates; consistent with prior value
+        Heat: 0.45  # Bill was here. No more fireproof ranger hunter. use paladin slayer for that.
         Caustic: 0.40  # #Misfits Fix - corrected from SS13 Big-Iron bio=60 (Radiation removed — rad=20 too low)
   - type: ExplosionResistance
     damageCoefficient: 0.65  # #Misfits Fix - corrected from SS13 Big-Iron bomb=35
@@ -119,10 +119,10 @@
   - type: Armor
     modifiers:
       coefficients:
-        Blunt: 0.70
-        Slash: 0.70
-        Piercing: 0.65
-        Heat: 0.65
+        Blunt: 0.65
+        Slash: 0.65
+        Piercing: 0.55 # Billy again. This shit is for veteran decani. 35% with 10% slow? you fuckin kidding me? buff to 45%.
+        Heat: 0.60 # light buff by bill. just 5%
   - type: ExplosionResistance
     damageCoefficient: 0.75
 #  - type: ClothingSpecialModifier
@@ -146,8 +146,8 @@
       coefficients:
         Blunt: 0.70
         Slash: 0.70
-        Piercing: 0.65
-        Heat: 0.65
+        Piercing: 0.60 # prime is slightly above "recruit" so here is 5% extra resist. sprite does literally have more metal on it.
+        Heat: 0.60 # light 5% buff.
   - type: ExplosionResistance
     damageCoefficient: 0.75
 #  - type: ClothingSpecialModifier
@@ -171,7 +171,7 @@
       coefficients:
         Blunt: 0.70
         Slash: 0.70
-        Piercing: 0.65
+        Piercing: 0.65 # liquid dogshit but you're the bitch decani. -Bill
         Heat: 0.65
   - type: ExplosionResistance
     damageCoefficient: 0.75
@@ -188,6 +188,9 @@
     sprite: Corvax/Clothing/OuterClothing/Armor/veteranarmor.rsi
   - type: Clothing
     sprite: Corvax/Clothing/OuterClothing/Armor/veteranarmor.rsi
+  - type: ClothingSpeedModifier
+    walkModifier: 1.1 # makes veterans a big threat (not really) -Bill
+    sprintModifier: 1.1
   - type: Armor
     modifiers:
       coefficients:
@@ -209,8 +212,8 @@
   - type: Clothing
     sprite: Corvax/Clothing/OuterClothing/Armor/reconnaissancearmor.rsi
   - type: ClothingSpeedModifier
-    walkModifier: 1.05
-    sprintModifier: 1.05
+    walkModifier: 1.10
+    sprintModifier: 1.10 
   - type: Armor
     modifiers:
       coefficients:
@@ -232,15 +235,15 @@
   - type: Clothing
     sprite: Corvax/Clothing/OuterClothing/Armor/lightreconnaissancearmor.rsi
   - type: ClothingSpeedModifier
-    walkModifier: 1.1
-    sprintModifier: 1.1
+    walkModifier: 1.15 
+    sprintModifier: 1.15
   - type: Armor
     modifiers:
       coefficients:
         Blunt: 0.85
         Slash: 0.85
-        Piercing: 0.8
-        Heat: 0.8
+        Piercing: 0.85
+        Heat: 0.85
   - type: ExplosionResistance
     damageCoefficient: 0.85
 
@@ -259,7 +262,7 @@
       coefficients:
         Blunt: 0.85
         Slash: 0.85
-        Piercing: 0.8
+        Piercing: 0.75 # 20 fucking %? no. dogshit. here is 25%. You get nothing else. -Bill
         Heat: 0.8
   - type: ExplosionResistance
     damageCoefficient: 0.85
@@ -276,13 +279,13 @@
     sprite: Corvax/Clothing/OuterClothing/Armor/lightarmor.rsi
   - type: ClothingSpeedModifier
     walkModifier: 1.1
-    sprintModifier: 1.1
+    sprintModifier: 1.1 # the little ones can enjoy the game too.
   - type: Armor
     modifiers:
       coefficients:
         Blunt: 0.9
         Slash: 0.9
-        Piercing: 0.9
+        Piercing: 0.80 # 10% is worse than some COATS btw. just want you to know that. gave them 20% -Bill
         Heat: 0.9
   - type: ExplosionResistance
     damageCoefficient: 0.95
@@ -318,8 +321,8 @@
   - type: Clothing
     sprite: Corvax/Clothing/OuterClothing/Armor/explorerarmor.rsi
   - type: ClothingSpeedModifier
-    walkModifier: 1.05
-    sprintModifier: 1.05
+    walkModifier: 1.15
+    sprintModifier: 1.15
   - type: Armor
     modifiers:
       coefficients:
@@ -345,8 +348,8 @@
       coefficients:
         Blunt: 0.80
         Slash: 0.80
-        Piercing: 0.78
-        Heat: 0.78
+        Piercing: 0.75 # I had pity on him and gave him 25%.
+        Heat: 0.75
   - type: ExplosionResistance
     damageCoefficient: 0.82
 

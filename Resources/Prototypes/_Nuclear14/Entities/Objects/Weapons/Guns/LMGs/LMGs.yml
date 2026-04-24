@@ -357,7 +357,7 @@
     maxAngle: 60
     angleIncrease: 4
     angleDecay: 16
-    fireRate: 3
+    fireRate: 4
     soundGunshot:
       collection: N14AutoRifleGunshot
     selectedMode: FullAuto
