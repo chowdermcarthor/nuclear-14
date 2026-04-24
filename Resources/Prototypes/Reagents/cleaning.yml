@@ -37,6 +37,15 @@
   tileReactions:
     - !type:CleanTileReaction {}
     - !type:CleanDecalsReaction {}
+  # #Misfits Add - ammonia-based cleaner is toxic when consumed
+  metabolisms:
+    Poison:
+      effects:
+      - !type:HealthChange
+        damage:
+          types:
+            Poison: 2
+            Caustic: 2
 
 - type: reagent
   id: SoapReagent

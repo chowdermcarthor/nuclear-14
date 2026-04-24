@@ -7,6 +7,10 @@
   - type: Sprite
     sprite: _Nuclear14/Objects/Misc/storage.rsi
     state: c-ration
+  # #Misfits Fix - Match disposable box cleanup behavior while preserving boxes stored in backpacks or containers.
+  - type: TimedDespawn
+    lifetime: 300
+  - type: PauseTimedDespawnInEntityStorage
 
 - type: entity
   name: C ration

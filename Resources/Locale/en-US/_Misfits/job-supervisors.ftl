@@ -27,3 +27,8 @@ job-supervisors-bos-paladin = the Head Paladin and Elder
 job-supervisors-bos-knight = the Head Knight, Head Paladin, and Elder
 job-supervisors-bos-scribe = the Head Scribe and Elder
 job-supervisors-bos-initiate = the Brotherhood chain of command
+
+# #Misfits Add - Followers of the Apocalypse supervisor strings.
+job-supervisors-follower-head = yourself and the Followers' founding charter
+job-supervisors-follower-doctor = the Follower Head and the Followers' medical mission
+job-supervisors-follower-volunteer = the Follower Doctors and Follower Head above you

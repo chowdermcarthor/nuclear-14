@@ -2,6 +2,15 @@ using Robust.Shared.Prototypes;
 
 namespace Content.Shared.Roles;
 
+// #Misfits Add - UI tab grouping for job selection screens (Late Join + Profile Editor)
+public enum DepartmentUICategory : byte
+{
+    Wasteland   = 0,
+    MinorFaction = 1,
+    MajorFaction = 2,
+    Whitelist   = 3,
+}
+
 [Prototype("department")]
 public sealed partial class DepartmentPrototype : IPrototype
 {
@@ -41,6 +50,10 @@ public sealed partial class DepartmentPrototype : IPrototype
     /// </summary>
     [DataField]
     public bool EditorHidden;
+
+    // #Misfits Add - which tab this department appears under in the job selection UI
+    [DataField("uiCategory")]
+    public DepartmentUICategory UICategory { get; private set; } = DepartmentUICategory.Wasteland;
 }
 
 /// <summary>

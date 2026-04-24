@@ -1,0 +1,33 @@
+﻿- type: entity
+  id: LegionPriestessLoadoutKits
+  name: kit
+  description: "please only take one."
+  parent: LegionCenturionloadoutkits
+  components:
+  - type: Sprite
+    sprite: Corvax/Objects/Misc/kits.rsi
+    state: base
+  - type: UndecidedLoadoutBackpack
+    possibleSets:
+    - PriestessHealingSet
+    - PriestessOrderSet
+
+- type: UndecidedLoadoutBackpackSet
+  id: PriestessHealingSet
+  name: undecided-loadout-category-misfits-priestess-healing-name
+  description: undecided-loadout-category-misfits-priestess-healing-desc
+  sprite:
+    sprite: Corvax/Objects/Misc/kits.rsi
+    state: base
+  content:
+  - KitPriestessHealing
+
+- type: UndecidedLoadoutBackpackSet
+  id: PriestessOrderSet
+  name: undecided-loadout-category-misfits-priestess-order-name
+  description: undecided-loadout-category-misfits-priestess-order-desc
+  sprite:
+    sprite: Corvax/Objects/Misc/kits.rsi
+    state: base
+  content:
+  - KitPriestessOrder

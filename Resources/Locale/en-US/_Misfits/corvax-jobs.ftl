@@ -8,15 +8,26 @@ job-name-ncr-mp-investigator = NCR Military Police Investigator
 job-name-ncr-prisoner = NCR Prisoner
 job-name-raider = Raider
 job-name-townshopkeeperhelper = Town Shopkeeper Helper
-job-name-khan = Khan
+# #Misfits Removed - Khan deactivated when Outlaws/Raider department dissolved into Eighties.
+# job-name-khan = Khan
 # #Misfits Removed - Jackal/Viper/Gunner/Fiend jobs removed as part of Outlaws faction overhaul
 # job-name-jackal = Jackal
 # job-name-viper = Viper
 # job-name-gunner = Gunner
 # job-name-fiend = Fiend
-# #Misfits Add - New Outlaws faction jobs
-job-name-eighties = Eighties
-job-name-whitelegs = White Legs
+# #Misfits Removed - Single-rank Eighties placeholder replaced by 5-rank department.
+# job-name-eighties = Eighties
+# #Misfits Add - Eighties 5-rank job names
+job-name-eighties-the-block = The Block
+job-name-eighties-cylinders = Cylinders
+job-name-eighties-pistons = Pistons
+job-name-eighties-oilers = Oilers
+job-name-eighties-road-rash = Road Rash
+job-name-whitelegs = White Leg Tribal
+job-name-whitelegs-war-chief = White Leg Chief
+job-name-whitelegs-bone-breaker = White Leg Breaker
+job-name-whitelegs-storm-drummer = White Leg Caller
+job-name-whitelegs-pain-maker = White Leg Sower
 
 # Job descriptions
 # Misfits Change /Comment-out/: Inquisitor role removed.
@@ -26,17 +37,39 @@ job-description-ncr-mp-investegator = You are a Military Police Investigator for
 job-description-ncr-prisoner = You are a prisoner held by the New California Republic. Serve your sentence, follow orders, and perhaps find a way to earn your freedom — or take it.
 job-description-raider = You are a raider of the wasteland. Scavenge, fight, and survive by any means necessary. The strong take what they want.
 job-description-townshopkeeperhelper = You are a shopkeeper's helper in town. Assist with inventory, serve customers, and keep the shop running smoothly. It's honest work in a dishonest world.
-job-description-khan = You are a Khan of the Outlaws. Keep your crew supplied, fight smart, and hold your ground.
+# #Misfits Removed - Khan description deactivated with Khan job.
+# job-description-khan = You are a Khan of the Outlaws. Keep your crew supplied, fight smart, and hold your ground.
 # #Misfits Removed - Jackal/Viper/Gunner/Fiend descriptions removed as part of Outlaws faction overhaul
 # job-description-jackal = You are a Jackal of the Outlaws. Strike quickly, loot efficiently, and disappear before the counterattack.
 # job-description-viper = You are a Viper of the Outlaws. Use intimidation and speed to break resistance and secure the haul.
 # job-description-gunner = You are a Gunner of the Outlaws. Bring the heavy firepower and pin enemies down for your gang.
 # job-description-fiend = You are a Fiend of the Outlaws. Cause chaos, pressure the enemy line, and never let up.
-# #Misfits Add - New Outlaws faction job descriptions
-job-description-eighties = You are an Eighty of the Outlaws. Named after Interstate 80, your tribe thrives on raiding caravans and ambushing travelers along the old highway. Scavenge road signs for armor, set traps, and make the wasteland fear the asphalt.
-job-description-whitelegs = You are a White Leg of the Outlaws. Your tribe paints themselves in white and strikes like a desert storm. Trained in guerrilla warfare and tribal combat, you bring speed and savagery to every fight.
+# #Misfits Removed - Single-rank Eighties description replaced by 5-rank entries below.
+# job-description-eighties = You are an Eighty of the Outlaws. Named after Interstate 80, your tribe thrives on raiding caravans and ambushing travelers along the old highway. Scavenge road signs for armor, set traps, and make the wasteland fear the asphalt.
+# #Misfits Add - Eighties 5-rank job descriptions
+job-description-eighties-the-block = You are The Block — the undisputed leader of the Eighties on this stretch of I-80. Every order flows from you. Every mile of asphalt belongs to you. Keep your crew sharp, your rivals scared, and your road clear.
+job-description-eighties-cylinders = You are Cylinders — the engine behind The Block's authority. Veterans of the highway, you execute orders, break resistance, and hold the gang together when the road gets rough.
+job-description-eighties-pistons = You are Pistons — the muscle that keeps the Eighties moving. You run raids, enforce the crew's territory, and answer to Cylinders. Steady hands and a steady trigger finger.
+job-description-eighties-oilers = You are Oilers — the grease that keeps the whole operation running. You haul gear, patch wounds, maintain weapons, and make sure the gang never runs dry. Unglamorous work. Essential work.
+job-description-eighties-road-rash = You are Road Rash — the newest scar on the asphalt. You joined the Eighties because nowhere else would have you. Earn your place, follow orders, and maybe one day you will be the one giving them.
+job-description-whitelegs = You are a White Leg Tribal. Paint yourself for war, move fast, and bring the enemy down before they can organize a defense.
+job-description-whitelegs-war-chief = You are the White Leg Chief. Direct the warband, choose the target, and make sure every raid breaks harder than the last.
+job-description-whitelegs-bone-breaker = You are a White Leg Breaker. Hit first, hit hard, and stay close enough to finish the job with your own hands.
+job-description-whitelegs-storm-drummer = You are a White Leg Caller. Lead the rush, set the pace of the attack, and keep pressure on the enemy line.
+job-description-whitelegs-pain-maker = You are a White Leg Sower. Close the gap, carve up stragglers, and make panic spread faster than the bullets do.
 
-job-supervisors-outlaws = the Outlaws leadership
+# #Misfits Removed - Outlaws supervisors replaced by Eighties-specific keys.
+# job-supervisors-outlaws = the Outlaws leadership
+# #Misfits Add - Eighties supervisor keys
+job-supervisors-eighties = The Block
+job-supervisors-eighties-the-block = your own judgement
+job-supervisors-whitelegs = the White Leg Chief
+job-supervisors-whitelegs-war-chief = your own judgement
+
+# #Misfits Add - dedicated White Legs department locale.
+WhiteLegs = White Leg Tribe
+department-WhiteLegs = White Leg Tribe
+department-WhiteLegs-description = A White Leg Tribe warband built around brutal raids, fast attacks, and tribal shock troops.
 
 # #Misfits Add - Vault Management: admin-only command role above Overseer
 job-name-vaultmanagement = Vault Management

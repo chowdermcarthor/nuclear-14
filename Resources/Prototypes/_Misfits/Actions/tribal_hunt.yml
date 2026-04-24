@@ -6,8 +6,19 @@
   components:
   - type: InstantAction
     useDelay: 180
-    icon: Interface/Actions/scream.png
+    icon: _Misfits/Interface/Actions/hunt_major.png
     event: !type:PerformTribalStartHuntActionEvent
+
+- type: entity
+  id: ActionTribalStartMinorHunt
+  name: action-name-tribal-start-minor-hunt
+  description: action-desc-tribal-start-minor-hunt
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: InstantAction
+    useDelay: 120
+    icon: _Misfits/Interface/Actions/hunt_minor.png
+    event: !type:PerformTribalStartMinorHuntActionEvent
 
 - type: entity
   id: ActionTribalOfferTrophy
@@ -17,7 +28,7 @@
   components:
   - type: InstantAction
     useDelay: 2
-    icon: Interface/Actions/scream.png
+    icon: _Misfits/Interface/Actions/trophy_offer.png
     event: !type:PerformTribalOfferTrophyActionEvent
 
 - type: entity
@@ -28,5 +39,5 @@
   components:
   - type: InstantAction
     useDelay: 0.5
-    icon: Interface/Actions/scream.png
+    icon: _Misfits/Interface/Actions/hunt_tracker.png
     event: !type:PerformTribalToggleHuntGuiActionEvent

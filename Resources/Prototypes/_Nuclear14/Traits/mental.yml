@@ -111,7 +111,9 @@
         #- BoSWashingtonScribe #Misfits Change /Comment-out/: Washington BoS removed
         - BoSMidScribe
         - VaultDoctor
-        - Followers # Forge-Change
+        - FollowerHead    # #Misfits Change - Followers job replaced by ranked hierarchy
+        - FollowerDoctor
+        - FollowerVolunteer
   functions:
     - !type:TraitAddComponent
       components:

@@ -1,0 +1,63 @@
+﻿- type: entity
+  name: priestess of order
+  parent: KitBase
+  id: KitPriestessOrder
+  description: "Run the camp with an iron fist."
+  components:
+  - type: Sprite
+    sprite: Corvax/Objects/Misc/kits.rsi
+    state: base
+  - type: Item
+    size: Huge
+  - type: SpawnItemsOnUse
+    items:
+      - id: N14PoliceBaton
+      - id: NCClothingCollarLegionSlave
+        amount: 2
+      - id: N14IDKeyLegionSlaveCollar
+        amount: 2
+      - id: BoxHandcuff
+      - id: ClothingMaskMuzzle
+        amount: 2
+      - id: Bola
+        amount: 2
+      - id: N14FoodTinK
+        amount: 2
+      - id: N14JunkCeramicFlask
+      - id: N14WeaponShotgunSawedOff
+      - id: MisfitsMagazineBox12GaugeBeanbag
+    sound:
+      path: /Audio/Effects/unwrap.ogg
+
+- type: entity
+  name: priestess of restoration
+  parent: KitBase
+  id: KitPriestessHealing
+  description: "Keep Caesars finest ready for war."
+  components:
+  - type: Sprite
+    sprite: Corvax/Objects/Misc/kits.rsi
+    state: base
+  - type: Item
+    size: Huge
+  - type: SpawnItemsOnUse
+    items:
+      - id: N14SmellingSalts
+        amount: 4
+      - id: N14HandheldHealthAnalyzer
+      - id: N14Bitterdrink
+        amount: 2
+      - id: ClothingBeltMedical
+      - id: N14Bandage
+        amount: 3
+      - id: N14HealingPoultice
+        amount: 2
+      - id: N14Hydra
+        amount: 2
+      - id: N14HealingPowder
+        amount: 2
+      - id: N14FoodTinK
+        amount: 2
+      - id: N14JunkCeramicFlask
+    sound:
+      path: /Audio/Effects/unwrap.ogg

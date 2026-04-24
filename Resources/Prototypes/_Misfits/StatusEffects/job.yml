@@ -1,0 +1,28 @@
+# #Misfits Add - White Leg roles get dedicated white tribal-style join icons instead of the raider placeholder.
+- type: jobIcon
+  parent: JobIcon
+  id: JobIconWhiteLegTribal
+  icon:
+    sprite: /Textures/_Misfits/Interface/Misc/job_icons.rsi
+    state: whiteLegTribal
+
+- type: jobIcon
+  parent: JobIcon
+  id: JobIconWhiteLegChief
+  icon:
+    sprite: /Textures/_Misfits/Interface/Misc/job_icons.rsi
+    state: whiteLegChief
+
+- type: jobIcon
+  parent: JobIcon
+  id: JobIconWhiteLegBreaker
+  icon:
+    sprite: /Textures/_Misfits/Interface/Misc/job_icons.rsi
+    state: whiteLegBreaker
+
+- type: jobIcon
+  parent: JobIcon
+  id: JobIconWhiteLegCaller
+  icon:
+    sprite: /Textures/_Misfits/Interface/Misc/job_icons.rsi
+    state: whiteLegCaller

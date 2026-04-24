@@ -627,6 +627,21 @@ public sealed class RaidRequestSystem : EntitySystem
             return;
         }
 
+        // #Misfits Fix - Re-verify current faction membership. A player who died and respawned
+        // into a different faction since the prompt was sent must not be allowed to decide —
+        // they would be approving/denying a raid that affects their new faction (conflict of interest).
+        if (session.AttachedEntity is not { } currentEntity
+            || !IsEntityInFaction(currentEntity, entry.TargetFaction))
+        {
+            _pendingPeerPrompts.Remove(entry.Id);
+            SendPeerResult(session, msg.RequestId, false,
+                "You are no longer a member of the target faction and cannot decide this request. " +
+                "Another leader or an admin will be notified.");
+            // Re-route to whoever is now highest-ranking in the target faction; no-op if nobody qualifies.
+            TrySendPeerPrompt(entry);
+            return;
+        }
+
         var comment = (msg.Comment ?? string.Empty).Trim();
         if (comment.Length > 1024) comment = comment[..1024];
         if (string.IsNullOrWhiteSpace(comment))
@@ -814,6 +829,19 @@ public sealed class RaidRequestSystem : EntitySystem
             }
         }
         canonicalFaction = string.Empty;
+        return false;
+    }
+
+    // #Misfits Add - True if the entity is currently a member of canonicalFaction or any alias that resolves to it.
+    private bool IsEntityInFaction(EntityUid entity, string canonicalFaction)
+    {
+        if (_npcFaction.IsMember(entity, canonicalFaction))
+            return true;
+        foreach (var (raw, canonical) in FactionWarConfig.FactionAliases)
+        {
+            if (canonical == canonicalFaction && _npcFaction.IsMember(entity, raw))
+                return true;
+        }
         return false;
     }
 

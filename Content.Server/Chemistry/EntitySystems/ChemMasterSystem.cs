@@ -163,10 +163,13 @@ namespace Content.Server.Chemistry.EntitySystems
             }
             else // Container to buffer
             {
-                amount = FixedPoint2.Min(amount, containerSolution.GetReagentQuantity(id));
-                _solutionContainerSystem.RemoveReagent(containerSoln.Value, id, amount);
-
                 var solution = isOutput ? pillBufferSolution : bufferSolution;
+                // #Misfits Tweak - respect buffer maxVol to prevent unlimited super-chem stacking
+                amount = FixedPoint2.Min(amount, containerSolution.GetReagentQuantity(id));
+                amount = FixedPoint2.Min(amount, solution.AvailableVolume);
+                if (amount <= FixedPoint2.Zero)
+                    return;
+                _solutionContainerSystem.RemoveReagent(containerSoln.Value, id, amount);
                 solution.AddReagent(id, amount);
             }
 

@@ -1,0 +1,27 @@
+# #Misfits Add - Concrete helmet aliases for blueprint crafting recipes that should not point at abstract base prototypes.
+
+- type: entity
+  parent: ClothingHeadBase
+  id: N14ClothingHeadHatVaultBlueprintHelmetMetal
+  name: metal helmet
+  description: A metal helmet offering some ballistic protection.
+  components:
+  # #Misfits Fix - Make the blueprint-crafted metal helmet fully concrete so the
+  # recipe result no longer depends on the abstract base helmet prototype.
+  - type: Sprite
+    sprite: _Nuclear14/Clothing/Head/FalloutHelmets/ncrhelmet.rsi
+  - type: Clothing
+    sprite: _Nuclear14/Clothing/Head/FalloutHelmets/ncrhelmet.rsi
+  - type: Armor
+    modifiers:
+      coefficients:
+        Blunt: 0.9
+        Slash: 0.9
+        Piercing: 0.9
+        Heat: 0.9
+    priceMultiplier: 0.5
+  - type: ExplosionResistance
+    damageCoefficient: 0.95
+  - type: HideLayerClothing
+    slots:
+    - Hair

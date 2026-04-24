@@ -3705,3 +3705,120 @@ Entries:
   id: 5760
   time: '2026-04-23T01:06:07.0000000+00:00'
   url: https://github.com/Misfit-Sanctuary/nuclear-14/pull/318
+- author: cythisiax
+  changes:
+    - type: Fix
+      message: T2 and T4 blueprint recipes no longer crash the lathe menu
+    - type: Fix
+      message: >-
+        Borg auto-deactivates on empty battery and cannot be toggled on without
+        charge
+    - type: Add
+      message: >-
+        Job selection tab filter (Wasteland / Minor Factions / Major Factions /
+        Whitelist)
+    - type: Add
+      message: >-
+        Tribal Hunt minor hunts — any participant can call, supports creature
+        packs with kill tracking
+    - type: Add
+      message: Followers of the Apocalypse faction jobs (Head, Doctor, Volunteer)
+    - type: Add
+      message: Eighties faction jobs (The Block, Cylinders, Pistons, Oilers, Road Rash)
+    - type: Add
+      message: >-
+        White Legs specialist roles (Bone Breaker, Pain Maker, Storm Drummer,
+        Warchief)
+    - type: Tweak
+      message: Tribal Hunt UI now shows hunt progress counts
+    - type: Tweak
+      message: Minor hunt targets appear on the Wasteland Map
+  id: 5761
+  time: '2026-04-23T19:15:31.0000000+00:00'
+  url: https://github.com/Misfit-Sanctuary/nuclear-14/pull/320
+- author: Cythisiax
+  changes:
+    - type: Fix
+      message: T2 BPs with MetalHelmet causing lathe refresh error cascade. Annoying.
+  id: 5762
+  time: '2026-04-23T21:33:45.0000000+00:00'
+  url: https://github.com/Misfit-Sanctuary/nuclear-14/pull/321
+- author: cythisiax
+  changes:
+    - type: Fix
+      message: lol stuff/title
+    - type: Fix
+      message: >-
+        /raid p2p YES | NO going to stale cached userID, new refresh queue and
+        admin approve/deny fallback
+    - type: Tweak
+      message: despawn component to plasticbox spam & MREs
+    - type: Tweak
+      message: PA weld require 30 seconds
+    - type: Tweak
+      message: >-
+        C-27 weld require 30 seconds. Nerf EHP to 400/600/800 for
+        Light/Med/Heavy
+  id: 5763
+  time: '2026-04-23T22:52:31.0000000+00:00'
+  url: https://github.com/Misfit-Sanctuary/nuclear-14/pull/322
+- author: Trosling
+  changes:
+    - type: Add
+      message: Added 12 gauge beanbag shells
+    - type: Add
+      message: Added kits for the Priestess of Mars
+  id: 5764
+  time: '2026-04-23T22:53:13.0000000+00:00'
+  url: https://github.com/Misfit-Sanctuary/nuclear-14/pull/323
+- author: Trosling
+  changes:
+    - type: Add
+      message: Properly implemented beanbag shells, for 20 gauge as well
+  id: 5765
+  time: '2026-04-24T02:19:13.0000000+00:00'
+  url: https://github.com/Misfit-Sanctuary/nuclear-14/pull/325
+- author: cythisiax
+  changes:
+    - type: Fix
+      message: >-
+        title has all [ 150 Population Base + 5 Whitelist + Medicine Edits + 150
+        Buffer Limit ] 
+    - type: Fix
+      message: medicine edits are 30u poultice OD
+  id: 5766
+  time: '2026-04-24T02:53:04.0000000+00:00'
+  url: https://github.com/Misfit-Sanctuary/nuclear-14/pull/327
+- author: Chancerous
+  changes:
+    - type: Tweak
+      message: Replaced FoTA classroom with a functioning farm
+    - type: Tweak
+      message: Encloses FoTA base with a fence
+    - type: Tweak
+      message: Made FoTA closet larger and gave them body decomp options
+    - type: Tweak
+      message: Made legions mines larger
+    - type: Fix
+      message: Readded vault & tribal blueprints
+    - type: Fix
+      message: Unelectrified FoTA window bars
+    - type: Fix
+      message: Added BoS substation so they have power on round start now
+    - type: Add
+      message: Gave FoTA recharger
+    - type: Add
+      message: Gave FoTA seed extractor
+  id: 5767
+  time: '2026-04-24T16:12:21.0000000+00:00'
+  url: https://github.com/Misfit-Sanctuary/nuclear-14/pull/329
+- author: qevie
+  changes:
+    - type: Add
+      message: >-
+        The Brotherhoods Scribes have discovered a new chemical reaction! Now,
+        Uranium mixed with iron produces an electromagnetic pulse - perfect for
+        disabling dangerous - and now widespread C-27 units!
+  id: 5768
+  time: '2026-04-24T18:07:56.0000000+00:00'
+  url: https://github.com/Misfit-Sanctuary/nuclear-14/pull/332

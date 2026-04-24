@@ -107,7 +107,7 @@
     - LandMineExplosive  # Explosive Mine (~4 tile radius)
     - LandMineModular    # Modular Mine (empty casing, add payload)
     # #Misfits Add: Expose vanilla centrifuge machine board so players can rebuild MachineCentrifuge via machine frame.
-    - CentrifugeMachineCircuitboard 
+    - CentrifugeMachineCircuitboard
     # #Misfits Add: Electrolyzer machine board so players can make electrolyzers via machine frame.
     - ElectrolysisUnitMachineCircuitboard
 
@@ -173,9 +173,13 @@
     - N14ShellShotgun12
     - N14MagazineShotgun12
     - MagazineBox12gauge
+    - MisfitsShellShotgun12Beanbag
+    - MisfitsMagazineBox12GaugeBeanbag
     - N14ShellShotgun20
     - N14MagazineShotgun20
     - MagazineBox20gauge
+    - MisfitsMagazineBox20GaugeBeanbag
+    - MisfitsShellShotgun20Beanbag
     - N14MagazinePistol22lr
     - MagazineBox22
     - SpeedLoader44
@@ -400,11 +404,11 @@
           - PillCanister
   - type: SolutionContainerManager
     solutions:
-      buffer: { }
+      buffer:
+        maxVol: 150 # #Misfits Tweak - cap buffer at 150u to prevent super-chem stacking
       pillBuffer: { }
   - type: DumpableSolution
     solution: buffer
-    unlimited: true
 
 - type: entity
   parent: BaseStructure

@@ -147,14 +147,21 @@
                     </BoxContainer>
                 </ScrollContainer>
             </BoxContainer>
-            <BoxContainer Name="Jobs" HorizontalExpand="True">
+            <!-- #Misfits Add - job tab strip + filtered list -->
+            <BoxContainer Name="Jobs" HorizontalExpand="True" Orientation="Vertical">
+                <BoxContainer Name="JobTabStrip" Orientation="Horizontal" HorizontalExpand="True" Margin="0 0 0 2">
+                    <Button Name="JobTabWasteland"     Text="{Loc job-tab-wasteland}"      HorizontalExpand="True" ToggleMode="True" />
+                    <Button Name="JobTabMinorFactions" Text="{Loc job-tab-minor-factions}" HorizontalExpand="True" ToggleMode="True" />
+                    <Button Name="JobTabMajorFactions" Text="{Loc job-tab-major-factions}" HorizontalExpand="True" ToggleMode="True" />
+                    <Button Name="JobTabWhitelist"     Text="{Loc job-tab-whitelist}"      HorizontalExpand="True" ToggleMode="True" />
+                </BoxContainer>
                 <ScrollContainer HorizontalExpand="True" HScrollEnabled="True" VerticalExpand="True" VScrollEnabled="True">
                     <BoxContainer HorizontalExpand="True" Orientation="Vertical">
                         <OptionButton Name="PreferenceUnavailableButton" StyleClasses="OpenBoth" />
                         <BoxContainer Name="JobList" Orientation="Vertical" />
                     </BoxContainer>
                 </ScrollContainer>
-                </BoxContainer>
+            </BoxContainer>
             <BoxContainer Name="Antags" HorizontalExpand="True" Orientation="Vertical" Margin="10">
                 <ScrollContainer HorizontalExpand="True" HScrollEnabled="True" VerticalExpand="True" VScrollEnabled="True">
                     <BoxContainer Name="AntagList" Orientation="Vertical" />

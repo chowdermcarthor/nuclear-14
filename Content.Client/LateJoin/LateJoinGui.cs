@@ -46,11 +46,14 @@ namespace Content.Client.LateJoin
         private readonly Dictionary<NetEntity, Dictionary<string, BoxContainer>> _jobCategories = new();
         private readonly List<ScrollContainer> _jobLists = new();
 
+        // #Misfits Add - active job tab filter; persists across RebuildUI calls
+        private DepartmentUICategory _selectedCategory = DepartmentUICategory.Wasteland;
+
         private readonly Control _base;
 
         public LateJoinGui()
         {
-            MinSize = SetSize = new Vector2(360, 560);
+            MinSize = SetSize = new Vector2(520, 560); // #Misfits Tweak - wider to fit 4 job category tabs
             IoCManager.InjectDependencies(this);
             _sprites = _entitySystem.GetEntitySystem<SpriteSystem>();
             _crewManifest = _entitySystem.GetEntitySystem<CrewManifestSystem>();
@@ -146,6 +149,44 @@ namespace Content.Client.LateJoin
                     _base.AddChild(crewManifestButton);
                 }
 
+                // #Misfits Add - 4-tab strip: Wasteland | Minor Factions | Major Factions | Whitelist
+                var tabStrip = new BoxContainer
+                {
+                    Orientation = LayoutOrientation.Horizontal,
+                    HorizontalExpand = true,
+                    Margin = new Thickness(0, 2, 0, 2),
+                };
+
+                var tabDefs = new[]
+                {
+                    (DepartmentUICategory.Wasteland,    "job-tab-wasteland"),
+                    (DepartmentUICategory.MinorFaction, "job-tab-minor-factions"),
+                    (DepartmentUICategory.MajorFaction, "job-tab-major-factions"),
+                    (DepartmentUICategory.Whitelist,    "job-tab-whitelist"),
+                };
+
+                // Capture for closure — jobList is rebuilt when the tab changes
+                var capturedId = id;
+                foreach (var (cat, locKey) in tabDefs)
+                {
+                    var tab = new Button
+                    {
+                        Text = Loc.GetString(locKey),
+                        HorizontalExpand = true,
+                        ToggleMode = true,
+                        Pressed = cat == _selectedCategory,
+                    };
+                    var capturedCat = cat;
+                    tab.OnPressed += _ =>
+                    {
+                        _selectedCategory = capturedCat;
+                        RebuildUI();
+                    };
+                    tabStrip.AddChild(tab);
+                }
+
+                _base.AddChild(tabStrip);
+
                 var jobListScroll = new ScrollContainer()
                 {
                     VerticalExpand = true,
@@ -170,7 +211,9 @@ namespace Content.Client.LateJoin
                 };
 
                 var firstCategory = true;
-                var departments = _prototypeManager.EnumeratePrototypes<DepartmentPrototype>().ToArray();
+                var departments = _prototypeManager.EnumeratePrototypes<DepartmentPrototype>()
+                    .Where(d => d.UICategory == _selectedCategory) // #Misfits Add - filter by active tab
+                    .ToArray();
                 Array.Sort(departments, DepartmentUIComparer.Instance);
 
                 _jobButtons[id] = new Dictionary<string, List<JobButton>>();
@@ -263,7 +306,7 @@ namespace Content.Client.LateJoin
 
                         var jobLabel = new Label
                         {
-                            Margin = new Thickness(5f, 0, 0, 0)
+                            VerticalAlignment = VAlignment.Center,
                         };
 
                         var jobButton = new JobButton(jobLabel, prototype.ID, prototype.LocalizedName, value);
@@ -271,13 +314,18 @@ namespace Content.Client.LateJoin
                         var jobSelector = new BoxContainer
                         {
                             Orientation = LayoutOrientation.Horizontal,
-                            HorizontalExpand = true
+                            HorizontalExpand = true,
+                            SeparationOverride = 6,
                         };
 
+                        // #Misfits Tweak - fixed icon slot keeps mixed faction rank icons aligned in latejoin.
                         var icon = new TextureRect
                         {
-                            TextureScale = new Vector2(2, 2),
-                            VerticalAlignment = VAlignment.Center
+                            Stretch = TextureRect.StretchMode.KeepAspectCentered,
+                            SetSize = new Vector2(16f, 16f),
+                            MinSize = new Vector2(16f, 16f),
+                            MaxSize = new Vector2(16f, 16f),
+                            VerticalAlignment = VAlignment.Center,
                         };
 
                         var jobIcon = _prototypeManager.Index(prototype.Icon);
@@ -287,14 +335,14 @@ namespace Content.Client.LateJoin
                         jobSelector.AddChild(jobLabel);
                         jobButton.AddChild(jobSelector);
 
-                        // #Misfits Change: rank group separator
+                        // #Misfits Tweak - stronger gap makes role tier breaks readable in ranked departments.
                         if (prototype.ShowBorder)
                         {
                             category.AddChild(new PanelContainer
                             {
                                 PanelOverride = new StyleBoxFlat { BackgroundColor = Color.FromHex("#464966") },
                                 MinSize = new Vector2(0, 2),
-                                Margin = new Thickness(3f, 8f, 3f, 4f),
+                                Margin = new Thickness(3f, 10f, 3f, 6f),
                             });
                         }
 

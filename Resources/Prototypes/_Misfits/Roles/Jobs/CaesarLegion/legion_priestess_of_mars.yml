@@ -35,7 +35,7 @@
   # Priestesses share base Legion access; they are not combatants and gain
   # no additional restricted-area access beyond a standard Recruit.
   accessGroups:
-    - CaesarLegionRecruit
+    - CaesarLegionPriestessOfMars
   special:
     - !type:AddComponentSpecial
       components:
@@ -81,10 +81,15 @@
     ears: N14ClothingHeadsetLegion
     back: N14ClothingBackpackMilitary
     id: N14IDLegionaryMedalRecruit
+    pocket1: LegionPriestessLoadoutKits
   storage:
     back:
+      - N14BoxPlasticFilledMilitaryLegion
       - N14HealingPowder
       - N14HealingPowder
+      - N14HealingPoultice
+      - N14HealingPoultice
+      - N14Hydra
 
 # Playtime tracker — accumulated hours unlock future female Legion ranks.
 - type: playTimeTracker

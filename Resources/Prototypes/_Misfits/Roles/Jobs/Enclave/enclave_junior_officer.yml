@@ -6,6 +6,7 @@
   hideWithoutJobWhitelist: true
   jobWhitelistBypassesRoleTimers: true # #Misfits Change
   weight: 110
+  displayWeight: 127
   overrideConsoleVisibility: false
   canBeAntag: false
   name: job-name-enclave-junior-officer
@@ -24,7 +25,7 @@
       tracker: EnclaveNCO
       min: 36000 # 10 hours
   startingGear: EnclaveJuniorOfficerGear
-  icon: "JobIconNcrLeader"
+  icon: "JobIconSecurityOfficer"
   supervisors: job-supervisors-enclave-junior-officer
   alwaysUseSpawner: true
   accessGroups:

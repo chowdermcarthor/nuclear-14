@@ -1,0 +1,9 @@
+# #Misfits Add - Riding perk trait for perk-gated animal mounts.
+- type: trait
+  id: N14RidingPerk
+  category: Physical
+  points: -2
+  functions:
+    - !type:TraitAddComponent
+      components:
+        - type: RidingPerk

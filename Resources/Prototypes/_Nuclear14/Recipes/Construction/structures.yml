@@ -234,6 +234,25 @@
   conditions:
     - !type:TileNotBlocked
 
+- type: construction
+  name: adobe wall
+  id: N14WallAdobe
+  graph: N14AdobeWall
+  startNode: start
+  targetNode: AdobeWall
+  category: construction-category-structures
+  description: A hand-packed adobe wall made from sun-baked mud brick.
+  icon:
+    sprite: _Nuclear14/Structures/Walls/ms13/slanted/adobe.rsi
+    state: full
+  objectType: Structure
+  placementMode: SnapgridCenter
+  canRotate: false
+  canBuildInImpassable: false
+  hide: false
+  conditions:
+    - !type:TileNotBlocked
+
 # #Misfits Add: Tent construction recipes
 
 - type: construction

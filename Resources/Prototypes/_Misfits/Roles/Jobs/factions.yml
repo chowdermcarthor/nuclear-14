@@ -3,10 +3,11 @@
   description: department-Robots-description
   color: "#607d8b"
   weight: -100
+  uiCategory: Whitelist
   roles:
   - SyntheticAssaultron  # combat robots — no vault access
   - SyntheticSentryBot   # combat robots — no vault access
-  # #Misfits Change - reorder: vault-assigned robots grouped below (showBorder separator on MrHandy)
+  # #Misfits Change - reorder: vault-assigned robots grouped below (showBorder separator on MrGutsy — sorts first alphabetically)
   - SyntheticMrHandy
   - SyntheticProtectron
   - SyntheticMrGutsy
@@ -18,6 +19,7 @@
   description: department-FEVMutants-description
   color: "#6b8e23"
   weight: -100
+  uiCategory: Whitelist
   roles:
   - SuperMutant
   - SuperMutantGladiator    # #Misfits Add - Supermutant Legion Gladiator (Legion-aligned)
@@ -29,21 +31,23 @@
 
 # #Misfits Add - Enclave department is job-whitelist-only and sorted below other special departments.
 # #Misfits Change - Expanded from 3 roles to 8 (5 military + 3 science).
+# #Misfits Tweak - UI rank blocks now read top-down as reformer, officers, science, then enlisted.
 - type: department
   id: Enclave
   description: department-Enclave-description
   color: "#2d5d91"
   weight: -101
+  uiCategory: Whitelist
   roles:
   - EnclaveReformer      # The Reformer (admin whitelist)  | _Misfits/Roles/Jobs/Enclave/enclave_reformer.yml  # #Misfits Add
   - EnclaveCommander
   - EnclaveSeniorOfficer
   - EnclaveJuniorOfficer
-  - EnclaveNCO
-  - EnclaveEnlisted
   - EnclaveHeadScientist
   - EnclaveScientist
   - EnclaveJuniorScientist
+  - EnclaveNCO
+  - EnclaveEnlisted
 
 # #Misfits Add — Caesar's Legion department. Groups all Legion roles for the
 # character-creation screen and for department-based requirements/lookups.
@@ -72,16 +76,32 @@
 #  - CaesarLegionRecruit
 #  - CaesarLegionSlave
 
-# #Misfits Add — Raider department. Moved from Corvax/Roles/Jobs/factions.yml.
-# Raider job prototypes live in _Misfits/Roles/Jobs/Raider/.
-# #Misfits Change — Outlaws faction overhaul: replaced Jackal/Viper/Gunner/Fiend with Eighties/WhiteLegs
+# #Misfits Change — Outlaws/Raider department dissolved. The Eighties gang is now its own
+# full department with 5 ranked roles. Khan deactivated. Raider placeholder removed.
+# #Misfits Add — Eighties department. Named after Interstate 80.
+# Job prototypes live in _Misfits/Roles/Jobs/Eighties/eighties.yml.
 - type: department
-  id: Raider
-  description: department-Raider-description
-  color: "#093f09"
-  editorHidden: true
+  id: Eighties
+  description: department-Eighties-description
+  color: "#226b00"  # US highway sign green
+  uiCategory: MinorFaction
   roles:
-  - Khan       # _Misfits/Roles/Jobs/Raider/raider.yml
-  - Eighties   # _Misfits/Roles/Jobs/Raider/eighties.yml
-  - WhiteLegs  # _Misfits/Roles/Jobs/Raider/whitelegs.yml
+  - EightiesTheBlock    # leader, 1 slot
+  - EightiesCylinders   # officer tier, 2 slots
+  - EightiesPistons     # NCO tier, 3 slots
+  - EightiesOilers      # specialist tier, 4 slots
+  - EightiesRoadRash    # recruit tier, 4 slots
+
+# #Misfits Add - White Legs are now a full department while keeping the base WhiteLegs job ID for compatibility.
+- type: department
+  id: WhiteLegs
+  description: department-WhiteLegs-description
+  color: "#d8d0c4"
+  weight: -98
+  uiCategory: MinorFaction
+  roles:
+  - WhiteLegsWarChief
+  - WhiteLegsBoneBreaker
+  - WhiteLegsStormDrummer
+  - WhiteLegs
 

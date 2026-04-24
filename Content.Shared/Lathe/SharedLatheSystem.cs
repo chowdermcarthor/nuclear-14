@@ -139,7 +139,12 @@ public abstract class SharedLatheSystem : EntitySystem
 
         if (proto.Result is { } result)
         {
-            return _proto.Index(result).Name;
+            // #Misfits Fix - Some blueprint recipes may still reference missing or abstract-only
+            // result prototypes. Fall back to the raw prototype ID instead of crashing the UI.
+            if (_proto.TryIndex<EntityPrototype>(result, out var resultProto))
+                return resultProto.Name;
+
+            return result;
         }
 
         if (proto.ResultReagents is { } resultReagents)
@@ -165,7 +170,12 @@ public abstract class SharedLatheSystem : EntitySystem
 
         if (proto.Result is { } result)
         {
-            return _proto.Index(result).Description;
+            // #Misfits Fix - Match GetRecipeName's defensive lookup so invalid blueprint results
+            // don't crash description generation during UI refresh.
+            if (_proto.TryIndex<EntityPrototype>(result, out var resultProto))
+                return resultProto.Description;
+
+            return string.Empty;
         }
 
         if (proto.ResultReagents is { } resultReagents)

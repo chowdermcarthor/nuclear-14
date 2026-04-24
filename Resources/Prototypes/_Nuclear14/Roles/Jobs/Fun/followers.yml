@@ -1,61 +1,63 @@
-- type: job
-  id: Followers
-  setPreference: true # Forge-Change
-  jobWhitelistBypassesRoleTimers: true
-  name: job-name-followers
-  description: job-description-followers
-  playTimeTracker: Followers
-  startingGear: FollowersGear
-  icon: "JobIconPassenger"
-  supervisors: job-supervisors-followers
-  accessGroups:
-  - FollowersApocalypse
-  requirements:
-  - !type:CharacterPlaytimeRequirement
-    tracker: Wastelander
-    min: 18000 # 5 hours
-  - !type:CharacterSpeciesRequirement
-    inverted: true
-    species:
-    - RobotMrHandy
-    - RobotMrGutsy
-    - RobotProtectron
-    - RobotProtectronPolice # #Misfits Fix - missing variant species
-    - RobotProtectronBuilder # #Misfits Fix - missing variant species
-    - RobotProtectronFire # #Misfits Fix - missing variant species
-    - RobotAssaultron
-    - RobotAssaultronTesla # #Misfits Fix - missing variant species
-    - RobotSentryBot # #Misfits Fix - missing robot chassis
-    - RobotSentryBotLaser # #Misfits Fix - missing variant species
-    - RobotRobobrain # #Misfits Fix - missing robot chassis
-    - RobotRobobrainLaser # #Misfits Fix - missing variant species
-    - SuperMutant
-  # Forge-Change-Start
-  special:
-  - !type:AddComponentSpecial
-    components:
-      - type: NpcFactionMember
-        factions:
-          - Wastelander
-      - type: CPRTraining
-  # Forge-Change-End
+# #Misfits Removed - single Followers job replaced by ranked FollowerHead / FollowerDoctor / FollowerVolunteer
+# in _Misfits/Roles/Jobs/Followers/followers.yml under the FollowersOfTheApocalypse department.
+#- type: job
+#  id: Followers
+#  setPreference: true # Forge-Change
+#  jobWhitelistBypassesRoleTimers: true
+#  name: job-name-followers
+#  description: job-description-followers
+#  playTimeTracker: Followers
+#  startingGear: FollowersGear
+#  icon: "JobIconPassenger"
+#  supervisors: job-supervisors-followers
+#  accessGroups:
+#  - FollowersApocalypse
+#  requirements:
+#  - !type:CharacterPlaytimeRequirement
+#    tracker: Wastelander
+#    min: 18000 # 5 hours
+#  - !type:CharacterSpeciesRequirement
+#    inverted: true
+#    species:
+#    - RobotMrHandy
+#    - RobotMrGutsy
+#    - RobotProtectron
+#    - RobotProtectronPolice # #Misfits Fix - missing variant species
+#    - RobotProtectronBuilder # #Misfits Fix - missing variant species
+#    - RobotProtectronFire # #Misfits Fix - missing variant species
+#    - RobotAssaultron
+#    - RobotAssaultronTesla # #Misfits Fix - missing variant species
+#    - RobotSentryBot # #Misfits Fix - missing robot chassis
+#    - RobotSentryBotLaser # #Misfits Fix - missing variant species
+#    - RobotRobobrain # #Misfits Fix - missing robot chassis
+#    - RobotRobobrainLaser # #Misfits Fix - missing variant species
+#    - SuperMutant
+#  # Forge-Change-Start
+#  special:
+#  - !type:AddComponentSpecial
+#    components:
+#      - type: NpcFactionMember
+#        factions:
+#          - Wastelander
+#      - type: CPRTraining
+#  # Forge-Change-End
 
-- type: startingGear
-  id: FollowersGear
-  equipment:
-    jumpsuit: N14ClothingUniformJumpsuitFollowers
-    back: ClothingBackpackDuffelSurgeryFilled # Bag meant for sugeries, belt already has med supplies so this is a good addition
-    shoes: N14ClothingBootsLeather # Forge-Change
-    neck: ClothingNeckStethoscope # Forge-Change
-    id: N14IDDoctorFollower
-    ears: N14ClothingHeadsetFollowers # #Misfits Add - Followers need FoTA + wasteland radio access
-    outerClothing: N14ClothingOuterCoatFollowerLab # Forge-Change
-    belt: N14ClothingBeltMedicalFilled
-    pocket1: SurgicalSterilanSpray # #Misfits Change - Followers are surgeons; sterile spray prevents cross-contamination
-    pocket2: N14HandheldHealthAnalyzer # #Misfits Add - Followers should spawn with health analyzer
-  innerClothingSkirt: N14ClothingUniformJumpskirtFalloutBlack
-  satchel: N14ClothingBackpackSatchelWastelanderFilled
-  duffelbag: N14ClothingBackpackDuffelFilled  # N14TODO: Doctors Bag
+#- type: startingGear
+#  id: FollowersGear
+#  equipment:
+#    jumpsuit: N14ClothingUniformJumpsuitFollowers
+#    back: ClothingBackpackDuffelSurgeryFilled # Bag meant for sugeries, belt already has med supplies so this is a good addition
+#    shoes: N14ClothingBootsLeather # Forge-Change
+#    neck: ClothingNeckStethoscope # Forge-Change
+#    id: N14IDDoctorFollower
+#    ears: N14ClothingHeadsetFollowers # #Misfits Add - Followers need FoTA + wasteland radio access
+#    outerClothing: N14ClothingOuterCoatFollowerLab # Forge-Change
+#    belt: N14ClothingBeltMedicalFilled
+#    pocket1: SurgicalSterilanSpray # #Misfits Change - Followers are surgeons; sterile spray prevents cross-contamination
+#    pocket2: N14HandheldHealthAnalyzer # #Misfits Add - Followers should spawn with health analyzer
+#  innerClothingSkirt: N14ClothingUniformJumpskirtFalloutBlack
+#  satchel: N14ClothingBackpackSatchelWastelanderFilled
+#  duffelbag: N14ClothingBackpackDuffelFilled  # N14TODO: Doctors Bag
 
-- type: playTimeTracker
-  id: Followers
+#- type: playTimeTracker
+#  id: Followers

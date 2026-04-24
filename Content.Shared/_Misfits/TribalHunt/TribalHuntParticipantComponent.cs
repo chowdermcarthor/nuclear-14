@@ -1,3 +1,4 @@
+using System;
 using Content.Shared.Actions;
 using Robust.Shared.Prototypes;
 
@@ -16,5 +17,20 @@ public sealed partial class TribalHuntParticipantComponent : Component
     public EntityUid? OpenTrackerActionEntity;
 
     [DataField]
+    public EntProtoId<InstantActionComponent> StartMinorHuntAction = "ActionTribalStartMinorHunt";
+
+    [DataField]
+    public EntityUid? StartMinorHuntActionEntity;
+
+    [DataField]
     public string TargetDepartment = "Tribe";
+
+    [DataField]
+    public TimeSpan MinorHuntDuration = TimeSpan.FromMinutes(8);
+
+    [DataField]
+    public TimeSpan MinorRewardDuration = TimeSpan.FromMinutes(2);
+
+    [DataField]
+    public float MinorRewardSpeedBonus = 0.10f;
 }

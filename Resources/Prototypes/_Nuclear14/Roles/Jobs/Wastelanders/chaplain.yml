@@ -2,7 +2,6 @@
   id: WastelandChaplain
   setPreference: true
   weight: 20
-  showBorder: true
   overrideConsoleVisibility: false
   canBeAntag: false
   name: job-name-chaplain

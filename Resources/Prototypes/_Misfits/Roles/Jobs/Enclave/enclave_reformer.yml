@@ -6,7 +6,8 @@
   hideWithoutJobWhitelist: true
   jobWhitelistBypassesRoleTimers: true # bypass faction timelocks — admin-only
   weight: 130
-  showBorder: true
+  displayWeight: 130 # keep the Reformer alone at the top of the Enclave rank stack
+  # #Misfits Removed - showBorder moved to Commander so the gap appears after Reformer instead of above it
   overrideConsoleVisibility: false
   canBeAntag: false
   name: job-name-enclave-reformer
@@ -22,7 +23,7 @@
       department: Enclave
       min: 252000 # 70 hours — admin role
   startingGear: EnclaveCommanderGear # reuse Commander gear as base
-  icon: "JobIconNcrLeader"
+  icon: "JobIconCaptain"
   supervisors: job-supervisors-enclave-reformer
   requireAdminNotify: true
   hideIfPlaytimeRequirementsNotMet: false

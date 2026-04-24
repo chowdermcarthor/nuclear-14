@@ -20,6 +20,9 @@ public sealed partial class TribalHuntWindow : FancyWindow
     public void UpdateState(TribalHuntUiState state)
     {
         StatusValue.Text = state.StatusText;
+        ProgressValue.Text = state.Required > 0
+            ? Loc.GetString("tribal-hunt-gui-progress-value", ("offered", state.Offered), ("required", state.Required))
+            : Loc.GetString("tribal-hunt-gui-progress-pending");
         JoinedValue.Text = Loc.GetString("tribal-hunt-gui-party-size-value", ("count", state.JoinedHunters));
         RemainingValue.Text = Loc.GetString("tribal-hunt-gui-remaining-value", ("seconds", state.SecondsRemaining));
 

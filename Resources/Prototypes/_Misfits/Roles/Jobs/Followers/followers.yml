@@ -1,0 +1,212 @@
+# #Misfits Add - Followers of the Apocalypse department and ranked jobs.
+# Replaces the single upstream Followers job (now commented out in _Nuclear14/Roles/Jobs/Fun/followers.yml).
+# Hierarchy: Follower Head > Follower Doctor > Follower Volunteer
+
+- type: department
+  id: FollowersOfTheApocalypse
+  description: department-FollowersOfTheApocalypse-description
+  color: "#e8a838"
+  uiCategory: MinorFaction
+  roles:
+  - FollowerHead
+  - FollowerDoctor
+  - FollowerVolunteer
+
+# ─── Follower Head ────────────────────────────────────────────────────────────
+- type: job
+  id: FollowerHead
+  setPreference: true
+  jobWhitelistBypassesRoleTimers: true
+  weight: 110
+  displayWeight: 115
+  requireAdminNotify: true
+  canBeAntag: false
+  name: job-name-follower-head
+  description: job-description-follower-head
+  playTimeTracker: FollowerHead
+  startingGear: FollowerHeadGear
+  icon: "JobIconPassenger"
+  supervisors: job-supervisors-follower-head
+  accessGroups:
+  - FollowersApocalypse
+  requirements:
+  - !type:CharacterPlaytimeRequirement
+    tracker: FollowerDoctor
+    min: 36000 # 10 hours as Follower Doctor
+  - !type:CharacterDepartmentTimeRequirement
+    department: FollowersOfTheApocalypse
+    min: 54000 # 15 hours in faction
+  - !type:CharacterSpeciesRequirement
+    inverted: true
+    species:
+    - RobotMrHandy
+    - RobotMrGutsy
+    - RobotProtectron
+    - RobotProtectronPolice
+    - RobotProtectronBuilder
+    - RobotProtectronFire
+    - RobotAssaultron
+    - RobotAssaultronTesla
+    - RobotSentryBot
+    - RobotSentryBotLaser
+    - RobotRobobrain
+    - RobotRobobrainLaser
+    - SuperMutant
+  special:
+  - !type:AddComponentSpecial
+    components:
+      - type: NpcFactionMember
+        factions:
+          - Wastelander
+      - type: CPRTraining
+
+- type: startingGear
+  id: FollowerHeadGear
+  equipment:
+    jumpsuit: N14ClothingUniformJumpsuitFollowers
+    back: ClothingBackpackDuffelSurgeryFilled
+    shoes: N14ClothingBootsLeather
+    neck: ClothingNeckStethoscope
+    id: N14IDDoctorFollower
+    ears: N14ClothingHeadsetFollowers
+    outerClothing: N14ClothingOuterCoatFollowerLab
+    belt: N14ClothingBeltMedicalFilled
+    pocket1: SurgicalSterilanSpray
+    pocket2: N14HandheldHealthAnalyzer
+    head: ClothingHeadHatBeretMedic
+  innerClothingSkirt: N14ClothingUniformJumpskirtFalloutBlack
+  satchel: N14ClothingBackpackSatchelWastelanderFilled
+  duffelbag: N14ClothingBackpackDuffelFilled
+
+- type: playTimeTracker
+  id: FollowerHead
+
+# ─── Follower Doctor ─────────────────────────────────────────────────────────
+- type: job
+  id: FollowerDoctor
+  setPreference: true
+  jobWhitelistBypassesRoleTimers: true
+  weight: 105
+  displayWeight: 110
+  showBorder: true
+  canBeAntag: false
+  name: job-name-follower-doctor
+  description: job-description-follower-doctor
+  playTimeTracker: FollowerDoctor
+  startingGear: FollowerDoctorGear
+  icon: "JobIconPassenger"
+  supervisors: job-supervisors-follower-doctor
+  accessGroups:
+  - FollowersApocalypse
+  requirements:
+  - !type:CharacterPlaytimeRequirement
+    tracker: FollowerVolunteer
+    min: 18000 # 5 hours as Follower Volunteer
+  - !type:CharacterDepartmentTimeRequirement
+    department: FollowersOfTheApocalypse
+    min: 10800 # 3 hours in faction
+  - !type:CharacterSpeciesRequirement
+    inverted: true
+    species:
+    - RobotMrHandy
+    - RobotMrGutsy
+    - RobotProtectron
+    - RobotProtectronPolice
+    - RobotProtectronBuilder
+    - RobotProtectronFire
+    - RobotAssaultron
+    - RobotAssaultronTesla
+    - RobotSentryBot
+    - RobotSentryBotLaser
+    - RobotRobobrain
+    - RobotRobobrainLaser
+    - SuperMutant
+  special:
+  - !type:AddComponentSpecial
+    components:
+      - type: NpcFactionMember
+        factions:
+          - Wastelander
+      - type: CPRTraining
+
+- type: startingGear
+  id: FollowerDoctorGear
+  equipment:
+    jumpsuit: N14ClothingUniformJumpsuitFollowers
+    back: ClothingBackpackDuffelSurgeryFilled
+    shoes: N14ClothingBootsLeather
+    neck: ClothingNeckStethoscope
+    id: N14IDDoctorFollower
+    ears: N14ClothingHeadsetFollowers
+    outerClothing: N14ClothingOuterCoatFollowerLab
+    belt: N14ClothingBeltMedicalFilled
+    pocket1: SurgicalSterilanSpray
+    pocket2: N14HandheldHealthAnalyzer
+  innerClothingSkirt: N14ClothingUniformJumpskirtFalloutBlack
+  satchel: N14ClothingBackpackSatchelWastelanderFilled
+  duffelbag: N14ClothingBackpackDuffelFilled
+
+- type: playTimeTracker
+  id: FollowerDoctor
+
+# ─── Follower Volunteer ───────────────────────────────────────────────────────
+- type: job
+  id: FollowerVolunteer
+  setPreference: true
+  jobWhitelistBypassesRoleTimers: true
+  weight: 100
+  displayWeight: 105
+  canBeAntag: false
+  name: job-name-follower-volunteer
+  description: job-description-follower-volunteer
+  playTimeTracker: FollowerVolunteer
+  startingGear: FollowerVolunteerGear
+  icon: "JobIconPassenger"
+  supervisors: job-supervisors-follower-volunteer
+  accessGroups:
+  - FollowersApocalypse
+  requirements:
+  - !type:CharacterPlaytimeRequirement
+    tracker: Wastelander
+    min: 18000 # 5 hours as a Wastelander
+  - !type:CharacterSpeciesRequirement
+    inverted: true
+    species:
+    - RobotMrHandy
+    - RobotMrGutsy
+    - RobotProtectron
+    - RobotProtectronPolice
+    - RobotProtectronBuilder
+    - RobotProtectronFire
+    - RobotAssaultron
+    - RobotAssaultronTesla
+    - RobotSentryBot
+    - RobotSentryBotLaser
+    - RobotRobobrain
+    - RobotRobobrainLaser
+    - SuperMutant
+  special:
+  - !type:AddComponentSpecial
+    components:
+      - type: NpcFactionMember
+        factions:
+          - Wastelander
+      - type: CPRTraining
+
+- type: startingGear
+  id: FollowerVolunteerGear
+  equipment:
+    jumpsuit: N14ClothingUniformJumpsuitFollowers
+    shoes: N14ClothingBootsLeather
+    neck: ClothingNeckStethoscope
+    id: N14IDDoctorFollower
+    ears: N14ClothingHeadsetFollowers
+    belt: ClothingBeltMedicalFilled
+    pocket1: N14HandheldHealthAnalyzer
+    pocket2: Brutepack
+  innerClothingSkirt: N14ClothingUniformJumpskirtFalloutBlack
+  satchel: N14ClothingBackpackSatchelWastelanderFilled
+  duffelbag: N14ClothingBackpackDuffelFilled
+
+- type: playTimeTracker
+  id: FollowerVolunteer

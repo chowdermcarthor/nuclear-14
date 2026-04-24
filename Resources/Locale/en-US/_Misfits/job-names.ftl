@@ -73,6 +73,14 @@ job-description-c27-ncr = You are a C-27 humanoid robot conscripted into the New
 job-name-c27-bos = C-27 Brotherhood Humanoid Robot
 job-description-c27-bos = You are a C-27 humanoid robot reclaimed by the Brotherhood of Steel — repainted in Brotherhood livery and issued a Brotherhood headset, Initiate holotag, and a light Brotherhood-pattern armor kit. Slow but durable, immune to flash and broken glass, and self-repairing. Serve the Codex.
 
+# #Misfits Add - Followers of the Apocalypse ranked job locale.
+job-name-follower-head = Followers Head
+job-description-follower-head = You lead this chapter of the Followers. The sick, the curious, and the desperate look to you for direction. Set the example, protect your people, and keep the mission alive.
+job-name-follower-doctor = Followers Doctor
+job-description-follower-doctor = You are a trained Follower physician. Stitch the wounded, study the wastes, and push medicine into places NCR and Brotherhood dare not go.
+job-name-follower-volunteer = Followers Volunteer
+job-description-follower-volunteer = You are new to the Followers. You believe knowledge and compassion can outlast bullets and bombs. Prove it — learn from those above you and help anyone who needs it.
+
 # #Misfits Add — Western BoS chapter command-tier jobs (Elder + Head Scribe).
 # These keys were commented out in the Corvax locale when the Corvax west-BoS chapter
 # was removed, but the Misfits bos_elder.yml and bos_headscribe.yml prototypes still reference them.

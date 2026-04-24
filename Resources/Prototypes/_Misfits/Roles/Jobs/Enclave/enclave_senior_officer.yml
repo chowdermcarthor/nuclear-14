@@ -6,6 +6,7 @@
   hideWithoutJobWhitelist: true
   jobWhitelistBypassesRoleTimers: true # #Misfits Change
   weight: 115
+  displayWeight: 128
   overrideConsoleVisibility: false
   canBeAntag: false
   name: job-name-enclave-senior-officer
@@ -24,7 +25,7 @@
       tracker: EnclaveJuniorOfficer
       min: 36000 # 10 hours
   startingGear: EnclaveSeniorOfficerGear
-  icon: "JobIconNcrLeader"
+  icon: "JobIconSeniorOfficer"
   supervisors: job-supervisors-enclave-senior-officer
   alwaysUseSpawner: true
   accessGroups:

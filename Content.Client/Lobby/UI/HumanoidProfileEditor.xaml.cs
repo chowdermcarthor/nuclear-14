@@ -133,6 +133,9 @@ namespace Content.Client.Lobby.UI
 
         private readonly Dictionary<string, BoxContainer> _jobCategories;
 
+        // #Misfits Add - active job tab; drives department filter in RefreshJobs
+        private DepartmentUICategory _jobUICategory = DepartmentUICategory.Wasteland;
+
         private Dictionary<Button, ConfirmationData> _confirmationData = new();
         private List<TraitPreferenceSelector> _traitPreferences = new();
         private int _traitCount;
@@ -553,6 +556,27 @@ namespace Content.Client.Lobby.UI
             };
 
             _jobCategories = new Dictionary<string, BoxContainer>();
+
+            // #Misfits Add - wire job tab buttons; pressing a tab sets filter and rebuilds the list
+            JobTabWasteland.Pressed = true;
+            var jobTabMap = new[]
+            {
+                (JobTabWasteland,     DepartmentUICategory.Wasteland),
+                (JobTabMinorFactions, DepartmentUICategory.MinorFaction),
+                (JobTabMajorFactions, DepartmentUICategory.MajorFaction),
+                (JobTabWhitelist,     DepartmentUICategory.Whitelist),
+            };
+            foreach (var (btn, cat) in jobTabMap)
+            {
+                var capturedCat = cat;
+                btn.OnPressed += _ =>
+                {
+                    _jobUICategory = capturedCat;
+                    foreach (var (b, _) in jobTabMap)
+                        b.Pressed = b == btn;
+                    RefreshJobs();
+                };
+            }
 
             #endregion Jobs
 
@@ -988,11 +1012,15 @@ namespace Content.Client.Lobby.UI
             _jobPriorities.Clear();
             var firstCategory = true;
 
-            // Get all displayed departments
+            // Get all displayed departments — filter by active tab and skip EditorHidden
+            // #Misfits Add - UICategory filter replaces the old flat department list
             var departments = new List<DepartmentPrototype>();
             foreach (var department in _prototypeManager.EnumeratePrototypes<DepartmentPrototype>())
             {
                 if (department.EditorHidden)
+                    continue;
+
+                if (department.UICategory != _jobUICategory)
                     continue;
 
                 departments.Add(department);
@@ -1075,23 +1103,27 @@ namespace Content.Client.Lobby.UI
 
                 foreach (var job in jobs)
                 {
-                    // #Misfits Change: rank group separator
+                    // #Misfits Tweak - stronger gap makes role tier breaks readable in ranked departments.
                     if (job.ShowBorder)
                     {
                         category.AddChild(new PanelContainer
                         {
                             PanelOverride = new StyleBoxFlat { BackgroundColor = Color.FromHex("#464966") },
                             MinSize = new Vector2(0, 2),
-                            Margin = new Thickness(3f, 8f, 3f, 4f),
+                            Margin = new Thickness(3f, 10f, 3f, 6f),
                         });
                     }
 
                     var jobContainer = new BoxContainer { Orientation = LayoutOrientation.Horizontal, };
                     var selector = new RequirementsSelector { Margin = new(3f, 3f, 3f, 0f) };
 
+                    // #Misfits Tweak - fixed icon slot keeps mixed faction rank icons aligned in job preferences.
                     var icon = new TextureRect
                     {
-                        TextureScale = new(2, 2),
+                        Stretch = TextureRect.StretchMode.KeepAspectCentered,
+                        SetSize = new Vector2(16f, 16f),
+                        MinSize = new Vector2(16f, 16f),
+                        MaxSize = new Vector2(16f, 16f),
                         VerticalAlignment = VAlignment.Center
                     };
                     var jobIcon = _prototypeManager.Index<JobIconPrototype>(job.Icon);
@@ -1248,14 +1280,14 @@ namespace Content.Client.Lobby.UI
 
                 foreach (var job in jobs)
                 {
-                    // #Misfits Change: rank group separator
+                    // #Misfits Tweak - stronger gap makes role tier breaks readable in ranked departments.
                     if (job.ShowBorder)
                     {
                         category.AddChild(new PanelContainer
                         {
                             PanelOverride = new StyleBoxFlat { BackgroundColor = Color.FromHex("#464966") },
                             MinSize = new Vector2(0, 2),
-                            Margin = new Thickness(3f, 8f, 3f, 4f),
+                            Margin = new Thickness(3f, 10f, 3f, 6f),
                         });
                     }
 
@@ -1266,9 +1298,13 @@ namespace Content.Client.Lobby.UI
 
                     var selector = new RequirementsSelector { Margin = new Thickness(3f, 3f, 3f, 0f), };
 
+                    // #Misfits Tweak - fixed icon slot keeps mixed faction rank icons aligned in job preferences.
                     var icon = new TextureRect
                     {
-                        TextureScale = new Vector2(2, 2),
+                        Stretch = TextureRect.StretchMode.KeepAspectCentered,
+                        SetSize = new Vector2(16f, 16f),
+                        MinSize = new Vector2(16f, 16f),
+                        MaxSize = new Vector2(16f, 16f),
                         VerticalAlignment = VAlignment.Center
                     };
                     var jobIcon = _prototypeManager.Index(job.Icon);

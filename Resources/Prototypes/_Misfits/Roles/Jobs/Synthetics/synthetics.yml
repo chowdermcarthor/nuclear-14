@@ -21,7 +21,6 @@
   overrideConsoleVisibility: true
   whitelisted: true # #Misfits Change
   hideWithoutWhitelist: true # #Misfits Change
-  showBorder: true # #Misfits Add - visual separator: vault-assigned robots begin here
   startingGear: SyntheticGear # #Misfits Fix - triggers EquipIdCard so vault access is applied to nav card
   access: # #Misfits Add - vault access for vault-assigned robot
   - VaultDweller
@@ -81,6 +80,7 @@
   overrideConsoleVisibility: true
   whitelisted: true # #Misfits Change
   hideWithoutWhitelist: true # #Misfits Change
+  showBorder: true # #Misfits Change - moved from MrHandy; MrGutsy sorts first alphabetically so separator belongs here
   startingGear: SyntheticGear # #Misfits Fix - triggers EquipIdCard so vault access is applied to nav card
   access: # #Misfits Add - vault access for vault-assigned robot
   - VaultDweller

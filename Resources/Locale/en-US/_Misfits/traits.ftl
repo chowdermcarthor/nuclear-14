@@ -35,3 +35,8 @@ trait-description-N14PetCentaur =
     You have a centaur that follows you. (Work in Progress)
     A grotesque FEV-warped creature bonded to you through mutation and misery. Only another mutant could earn such trust.
     (The trait creates a ghost role for another player. There is no guarantee that someone takes it.)
+
+trait-name-N14RidingPerk = Riding
+trait-description-N14RidingPerk =
+    You know how to saddle up wasteland pack animals.
+    Brahmin and brahdo will let you ride them instead of throwing a fit the moment you reach for the straps.

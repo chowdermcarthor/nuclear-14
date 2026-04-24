@@ -34,6 +34,15 @@
 
         <PanelContainer MinHeight="1" Modulate="#404040" Margin="10 0" />
 
+        <Label Text="{Loc tribal-hunt-gui-progress}" Margin="10 6 10 2" Modulate="#FFFF40"/>
+        <PanelContainer Margin="10 0" HorizontalExpand="True">
+            <BoxContainer Orientation="Vertical" Margin="8 6" SeparationOverride="4" HorizontalExpand="True">
+                <Label Name="ProgressValue" HorizontalExpand="True" Modulate="#FFFF40" />
+            </BoxContainer>
+        </PanelContainer>
+
+        <PanelContainer MinHeight="1" Modulate="#404040" Margin="10 6" />
+
         <Label Text="{Loc tribal-hunt-gui-party-size}" Margin="10 6 10 2" Modulate="#FFFF40"/>
         <PanelContainer Margin="10 0" HorizontalExpand="True">
             <BoxContainer Orientation="Vertical" Margin="8 6" SeparationOverride="4" HorizontalExpand="True">

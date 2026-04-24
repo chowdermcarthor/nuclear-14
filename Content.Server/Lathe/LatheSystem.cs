@@ -196,6 +196,11 @@ namespace Content.Server.Lathe
 
                 foreach (var recipeId in blueprint.Recipes)
                 {
+                    // #Misfits Fix - Ignore stale blueprint recipe IDs so a bad item in storage
+                    // cannot push invalid recipes to the client and break a refresh/open cycle.
+                    if (!_proto.TryIndex(recipeId, out LatheRecipePrototype? _))
+                        continue;
+
                     if (!recipes.Contains(recipeId))
                         recipes.Add(recipeId);
                 }

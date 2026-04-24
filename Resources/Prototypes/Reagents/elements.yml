@@ -19,6 +19,14 @@
   color: "#22282b"
   boilingPoint: 4200.0
   meltingPoint: 3550.0
+  # #Misfits Add - raw carbon is toxic when consumed, opposite of activated charcoal
+  metabolisms:
+    Poison:
+      effects:
+      - !type:HealthChange
+        damage:
+          types:
+            Poison: 1
 
 - type: reagent
   id: Chlorine
@@ -137,6 +145,14 @@
   color: "#BC8A00"
   boilingPoint: 184.3
   meltingPoint: 113.7
+  # #Misfits Add - iodine protects against radiation when consumed
+  metabolisms:
+    Medicine:
+      effects:
+      - !type:HealthChange
+        damage:
+          types:
+            Radiation: -1
 
 - type: reagent
   id: Iron
@@ -297,13 +313,17 @@
   color: "#fff385"
   boilingPoint: 445.0
   meltingPoint: 120.0
+  # #Misfits Tweak - sulfur is corrosive to digest; added poison and vomit
   metabolisms:
     Poison:
       effects:
       - !type:HealthChange
         damage:
           types:
-            Caustic: 0.1
+            Caustic: 1
+            Poison: 0.5
+      - !type:ChemVomit
+        probability: 0.2
 
 - type: reagent
   id: Sodium

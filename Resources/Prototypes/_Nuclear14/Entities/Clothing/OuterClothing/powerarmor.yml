@@ -15,7 +15,7 @@
     maxIntegrity: 350 # #Misfits Tweak: +150 flat integrity buff
   - type: Repairable
     fuelCost: 10
-    doAfterDelay: 5
+    doAfterDelay: 30 # #Misfits Tweak - Increased weld repair time from 5s to 30s; 5s was too fast for combat balance
     qualityNeeded: Welding
   # End Misfits Add
   - type: Sprite

@@ -162,7 +162,7 @@ public sealed partial class LatheMenu : DefaultWindow
             if (CurrentCategory != null && proto.Category != CurrentCategory)
                 continue;
 
-            var recipeName = _lathe.GetRecipeName(recipe).ToLowerInvariant();
+            var recipeName = _lathe.GetRecipeName(proto).ToLowerInvariant();
             var isBlueprint = IsBlueprintRecipe(proto);
 
             if (isBlueprint)
@@ -361,7 +361,8 @@ public sealed partial class LatheMenu : DefaultWindow
         var currentCategories = new List<ProtoId<LatheCategoryPrototype>>();
         foreach (var recipeId in Recipes)
         {
-            var recipe = _prototypeManager.Index(recipeId);
+            if (!_prototypeManager.TryIndex(recipeId, out LatheRecipePrototype? recipe))
+                continue;
 
             if (recipe.Category == null)
                 continue;
@@ -377,6 +378,7 @@ public sealed partial class LatheMenu : DefaultWindow
 
         Categories = currentCategories;
         var sortedCategories = currentCategories
+            .Where(p => _prototypeManager.TryIndex(p, out LatheCategoryPrototype? _))
             .Select(p => _prototypeManager.Index(p))
             .OrderBy(p => Loc.GetString(p.Name))
             .ToList();
@@ -440,6 +442,12 @@ public sealed partial class LatheMenu : DefaultWindow
 
         if (recipe.Result is { } result)
         {
+            // #Misfits Fix - Some blueprint recipes have historically pointed at abstract or bad
+            // result prototypes. EntityPrototypeView spawns the prototype for preview, so guard the
+            // lookup here and fall back to an empty control instead of crashing the whole lathe UI.
+            if (!_prototypeManager.TryIndex<EntityPrototype>(result, out var entityProto) || entityProto.Abstract)
+                return new Control();
+
             var entProtoView = new EntityPrototypeView();
             entProtoView.SetPrototype(result);
             return entProtoView;

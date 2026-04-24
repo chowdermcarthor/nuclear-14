@@ -9,7 +9,7 @@
     - type: RandomHumanoidAppearance
       randomizeName: true
     - type: Loadout
-      prototypes: [FollowersGear]
+      prototypes: [FollowerDoctorGear] # #Misfits Change - FollowersGear replaced by ranked gear; NPC uses Doctor tier
     - type: NpcFactionMember
       factions:
       - Wastelander

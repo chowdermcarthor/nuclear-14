@@ -24,7 +24,9 @@
     - !type:CharacterJobRequirement
       inverted: true
       jobs:
-        - Followers
+        - FollowerHead    # #Misfits Change - Followers job replaced by ranked hierarchy
+        - FollowerDoctor
+        - FollowerVolunteer
     # Forge-Change-End
     - !type:CharacterTraitRequirement
       inverted: true
@@ -111,7 +113,9 @@
     - !type:CharacterJobRequirement
       inverted: true
       jobs:
-        - Followers
+        - FollowerHead    # #Misfits Change - Followers job replaced by ranked hierarchy
+        - FollowerDoctor
+        - FollowerVolunteer
     # Forge-Change-End
     - !type:CharacterTraitRequirement
       inverted: true
@@ -204,7 +208,9 @@
     - !type:CharacterJobRequirement
       inverted: true
       jobs:
-        - Followers
+        - FollowerHead    # #Misfits Change - Followers job replaced by ranked hierarchy
+        - FollowerDoctor
+        - FollowerVolunteer
     # Forge-Change-End
     - !type:CharacterTraitRequirement
       inverted: true
@@ -278,7 +284,9 @@
     - !type:CharacterJobRequirement
       inverted: true
       jobs:
-        - Followers
+        - FollowerHead    # #Misfits Change - Followers job replaced by ranked hierarchy
+        - FollowerDoctor
+        - FollowerVolunteer
   # Forge-Change-End
   functions:
     - !type:TraitAddComponent
@@ -365,7 +373,9 @@
     - !type:CharacterJobRequirement
       inverted: true
       jobs:
-        - Followers
+        - FollowerHead    # #Misfits Change - Followers job replaced by ranked hierarchy
+        - FollowerDoctor
+        - FollowerVolunteer
     # Forge-Change-End
     # Misfits Fix: CharacterTraitRequirement block removed — all referenced N14ExtremeAug* traits are commented out
     #- !type:CharacterTraitRequirement
@@ -435,7 +445,9 @@
         - TribalShaman # #Misfits Change - renamed from TribalHealer
         # Forge-Change-Start
         - BoSWestElderCommander
-        - Followers
+        - FollowerHead    # #Misfits Change - Followers job replaced by ranked hierarchy
+        - FollowerDoctor
+        - FollowerVolunteer
         # Forge-Change-End
     - !type:CharacterTraitRequirement
       inverted: true

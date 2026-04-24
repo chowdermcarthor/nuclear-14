@@ -667,7 +667,7 @@
   name: followers of the apocalypse
   components:
   - type: SpawnPoint
-    job_id: Followers
+    job_id: FollowerVolunteer # #Misfits Change - Followers job replaced by ranked hierarchy; spawner uses entry-level role
   - type: Sprite
     layers:
       - state: green

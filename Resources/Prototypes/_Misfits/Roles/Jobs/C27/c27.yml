@@ -17,6 +17,7 @@
   # Robots/FEVMutants (-100) and Enclave (-101) between CaesarLegion (-99) and
   # C27Unit, matching the visual margin/spacing of the other special departments.
   weight: -102
+  uiCategory: Whitelist
   roles:
   - C27       # #Misfits Change - was the only role; now joined by C27NCR / C27BoS below.
   - C27NCR    # #Misfits Add - NCR variant role
@@ -66,6 +67,8 @@
   jobWhitelistBypassesRoleTimers: true
   spawnLoadout: true
   applyTraits: true
+  access: # #Misfits Fix - stamp NCR door access onto the spawned dogtag for the NCR C-27 variant.
+  - NCR
   startingGear: C27GearNCR
   requirements:
   - !type:CharacterSpeciesRequirement
@@ -96,6 +99,8 @@
   jobWhitelistBypassesRoleTimers: true
   spawnLoadout: true
   applyTraits: true
+  accessGroups: # #Misfits Fix - stamp Brotherhood door access onto the spawned holotag for the BoS C-27 variant.
+  - BOSInitiate
   startingGear: C27GearBoS
   requirements:
   - !type:CharacterSpeciesRequirement

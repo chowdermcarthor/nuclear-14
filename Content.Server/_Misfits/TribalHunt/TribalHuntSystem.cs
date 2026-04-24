@@ -3,6 +3,7 @@ using Content.Server.Actions;
 using Content.Shared._Misfits.TribalHunt;
 using Content.Shared._Misfits.Warcry;
 using Content.Shared.Mind;
+using Content.Shared.Mobs;
 using Content.Shared.Mobs.Systems;
 using Content.Shared.Movement.Components;
 using Content.Shared.Movement.Systems;
@@ -14,8 +15,8 @@ using Robust.Shared.Timing;
 namespace Content.Server._Misfits.TribalHunt;
 
 /// <summary>
-/// Simple tribal hunt flow: chief starts hunt, tribe joins for 2 minutes via GUI,
-/// then a legendary Deathclaw is spawned and tracked until it is killed.
+/// Tribal hunt flow supporting elder-led legendary hunts and tribe-wide minor hunts.
+/// Legendary hunts remain elder-only; minor hunts can be started by any tribal participant.
 /// </summary>
 public sealed class TribalHuntSystem : EntitySystem
 {
@@ -26,26 +27,37 @@ public sealed class TribalHuntSystem : EntitySystem
         Active,
     }
 
+    private enum TribalHuntType : byte
+    {
+        None,
+        Minor,
+        Legendary,
+    }
+
     [Dependency] private readonly ActionsSystem _actions = default!;
     [Dependency] private readonly SharedJobSystem _jobs = default!;
     [Dependency] private readonly SharedMindSystem _mind = default!;
     [Dependency] private readonly MobStateSystem _mobState = default!;
     [Dependency] private readonly MovementSpeedModifierSystem _movementSpeed = default!;
     [Dependency] private readonly IGameTiming _timing = default!;
-    [Dependency] private readonly LegendaryCreatureSpawnerSystem _legendarySpawner = default!;
+    [Dependency] private readonly LegendaryCreatureSpawnerSystem _huntSpawner = default!;
     [Dependency] private readonly SharedTransformSystem _transform = default!;
 
     private TribalHuntStage _stage = TribalHuntStage.Inactive;
+    private TribalHuntType _huntType = TribalHuntType.None;
     private TimeSpan _gatheringEndsAt;
     private TimeSpan _huntEndsAt;
     private TimeSpan _configuredHuntDuration;
     private TimeSpan _configuredRewardDuration;
     private float _configuredRewardSpeedBonus;
-    private EntityUid? _activeLegendaryCreature;
+    private readonly HashSet<EntityUid> _activeHuntTargets = new();
     private EntityUid? _activeHuntSessionId;
-    private EntityUid? _chief;
+    private EntityUid? _huntCaller;
     private string _targetDepartment = "Tribe";
     private readonly HashSet<EntityUid> _joinedHunters = new();
+    private int _requiredTargets;
+    private int _defeatedTargets;
+    private string _activeTargetName = string.Empty;
     private TimeSpan _lastLocationBroadcast;
     private TimeSpan _lastUiHeartbeat;
     private string _lastKnownCoordinates = string.Empty;
@@ -57,14 +69,17 @@ public sealed class TribalHuntSystem : EntitySystem
 
         SubscribeLocalEvent<TribalHuntLeaderComponent, ComponentStartup>(OnLeaderStartup);
         SubscribeLocalEvent<TribalHuntLeaderComponent, ComponentShutdown>(OnLeaderShutdown);
-        SubscribeLocalEvent<TribalHuntLeaderComponent, PerformTribalStartHuntActionEvent>(OnStartHuntAction);
+        SubscribeLocalEvent<TribalHuntLeaderComponent, PerformTribalStartHuntActionEvent>(OnStartLegendaryHuntAction);
 
         SubscribeLocalEvent<TribalHuntParticipantComponent, ComponentStartup>(OnParticipantStartup);
         SubscribeLocalEvent<TribalHuntParticipantComponent, ComponentShutdown>(OnParticipantShutdown);
+        SubscribeLocalEvent<TribalHuntParticipantComponent, PerformTribalStartMinorHuntActionEvent>(OnStartMinorHuntAction);
         SubscribeLocalEvent<TribalHuntParticipantComponent, PerformTribalToggleHuntGuiActionEvent>(OnToggleHuntGuiAction);
 
         SubscribeLocalEvent<LegendaryCreatureComponent, LegendaryCreatureKilledEvent>(OnLegendaryCreatureKilled);
         SubscribeLocalEvent<LegendaryCreatureComponent, ComponentShutdown>(OnLegendaryCreatureShutdown);
+        SubscribeLocalEvent<MinorHuntCreatureComponent, MobStateChangedEvent>(OnMinorHuntCreatureKilled);
+        SubscribeLocalEvent<MinorHuntCreatureComponent, ComponentShutdown>(OnMinorHuntCreatureShutdown);
         SubscribeNetworkEvent<TribalHuntJoinRequestEvent>(OnJoinRequest);
     }
 
@@ -83,15 +98,17 @@ public sealed class TribalHuntSystem : EntitySystem
 
         if (_stage == TribalHuntStage.Active)
         {
-            if (_activeLegendaryCreature == null || !Exists(_activeLegendaryCreature.Value))
+            PruneDeletedTargets();
+
+            if (_activeHuntTargets.Count == 0)
             {
-                EndHunt(Loc.GetString("tribal-hunt-popup-failed"));
+                EndHunt(GetFailureText());
                 return;
             }
 
             if (_timing.CurTime >= _huntEndsAt)
             {
-                EndHunt(Loc.GetString("tribal-hunt-popup-failed"));
+                EndHunt(GetFailureText());
                 return;
             }
 
@@ -122,6 +139,11 @@ public sealed class TribalHuntSystem : EntitySystem
         _joinedHunters.RemoveWhere(uid => !Exists(uid) || _mobState.IsDead(uid));
     }
 
+    private void PruneDeletedTargets()
+    {
+        _activeHuntTargets.RemoveWhere(uid => !Exists(uid));
+    }
+
     private void OnLeaderStartup(EntityUid uid, TribalHuntLeaderComponent component, ComponentStartup args)
     {
         _actions.AddAction(uid, ref component.StartActionEntity, component.StartAction);
@@ -135,6 +157,7 @@ public sealed class TribalHuntSystem : EntitySystem
     private void OnParticipantStartup(EntityUid uid, TribalHuntParticipantComponent component, ComponentStartup args)
     {
         _actions.AddAction(uid, ref component.OpenTrackerActionEntity, component.OpenTrackerAction);
+        _actions.AddAction(uid, ref component.StartMinorHuntActionEntity, component.StartMinorHuntAction);
 
         if (_stage != TribalHuntStage.Inactive)
             SendUiUpdate(uid, BuildStatusText());
@@ -143,6 +166,7 @@ public sealed class TribalHuntSystem : EntitySystem
     private void OnParticipantShutdown(EntityUid uid, TribalHuntParticipantComponent component, ComponentShutdown args)
     {
         _actions.RemoveAction(uid, component.OpenTrackerActionEntity);
+        _actions.RemoveAction(uid, component.StartMinorHuntActionEntity);
     }
 
     private void OnToggleHuntGuiAction(EntityUid uid, TribalHuntParticipantComponent component, PerformTribalToggleHuntGuiActionEvent args)
@@ -158,7 +182,7 @@ public sealed class TribalHuntSystem : EntitySystem
         RaiseNetworkEvent(new TribalHuntToggleWindowEvent(), actor.PlayerSession);
     }
 
-    private void OnStartHuntAction(EntityUid uid, TribalHuntLeaderComponent component, PerformTribalStartHuntActionEvent args)
+    private void OnStartLegendaryHuntAction(EntityUid uid, TribalHuntLeaderComponent component, PerformTribalStartHuntActionEvent args)
     {
         if (args.Handled)
             return;
@@ -177,17 +201,66 @@ public sealed class TribalHuntSystem : EntitySystem
             return;
         }
 
+        StartGathering(
+            uid,
+            component.TargetDepartment,
+            TribalHuntType.Legendary,
+            component.HuntDuration,
+            component.RewardDuration,
+            component.RewardSpeedBonus);
+    }
+
+    private void OnStartMinorHuntAction(EntityUid uid, TribalHuntParticipantComponent component, PerformTribalStartMinorHuntActionEvent args)
+    {
+        if (args.Handled)
+            return;
+
+        args.Handled = true;
+
+        if (!IsInDepartment(uid, component.TargetDepartment))
+        {
+            SendUiUpdate(uid, Loc.GetString("tribal-hunt-popup-cannot-start-minor"));
+            return;
+        }
+
+        if (_stage != TribalHuntStage.Inactive)
+        {
+            SendUiUpdate(uid, Loc.GetString("tribal-hunt-popup-already-active"));
+            return;
+        }
+
+        StartGathering(
+            uid,
+            component.TargetDepartment,
+            TribalHuntType.Minor,
+            component.MinorHuntDuration,
+            component.MinorRewardDuration,
+            component.MinorRewardSpeedBonus);
+    }
+
+    private void StartGathering(
+        EntityUid caller,
+        string targetDepartment,
+        TribalHuntType huntType,
+        TimeSpan huntDuration,
+        TimeSpan rewardDuration,
+        float rewardSpeedBonus)
+    {
         _stage = TribalHuntStage.Gathering;
-        _targetDepartment = component.TargetDepartment;
-        _chief = uid;
-        _activeHuntSessionId = uid;
+        _huntType = huntType;
+        _targetDepartment = targetDepartment;
+        _huntCaller = caller;
+        _activeHuntSessionId = caller;
         _joinedHunters.Clear();
-        _joinedHunters.Add(uid);
+        _joinedHunters.Add(caller);
+        _activeHuntTargets.Clear();
         _gatheringEndsAt = _timing.CurTime + TimeSpan.FromMinutes(2);
-        _configuredHuntDuration = component.HuntDuration;
-        _configuredRewardDuration = component.RewardDuration;
-        _configuredRewardSpeedBonus = component.RewardSpeedBonus;
-        _activeLegendaryCreature = null;
+        _configuredHuntDuration = huntDuration;
+        _configuredRewardDuration = rewardDuration;
+        _configuredRewardSpeedBonus = rewardSpeedBonus;
+        _requiredTargets = 0;
+        _defeatedTargets = 0;
+        _activeTargetName = string.Empty;
         _lastLocationBroadcast = _timing.CurTime;
         _lastUiHeartbeat = TimeSpan.Zero;
         _lastKnownCoordinates = Loc.GetString("tribal-hunt-gui-coordinate-pending");
@@ -224,29 +297,74 @@ public sealed class TribalHuntSystem : EntitySystem
 
     private void BeginActiveHunt()
     {
-        if (_stage != TribalHuntStage.Gathering || _chief == null)
+        if (_stage != TribalHuntStage.Gathering || _huntCaller == null)
         {
-            EndHunt(Loc.GetString("tribal-hunt-popup-failed"));
+            EndHunt(GetFailureText());
             return;
         }
 
-        if (!TryComp(_chief.Value, out TransformComponent? chiefXform) || chiefXform.MapID == MapId.Nullspace)
+        if (!TryComp(_huntCaller.Value, out TransformComponent? callerXform) || callerXform.MapID == MapId.Nullspace)
         {
-            EndHunt(Loc.GetString("tribal-hunt-popup-failed"));
+            EndHunt(GetFailureText());
             return;
         }
 
-        var chiefMapCoords = _transform.GetMapCoordinates(_chief.Value, chiefXform);
+        var callerMapCoords = _transform.GetMapCoordinates(_huntCaller.Value, callerXform);
+        _activeHuntTargets.Clear();
+        _requiredTargets = 0;
+        _defeatedTargets = 0;
+        _activeTargetName = string.Empty;
 
-        _activeLegendaryCreature = _legendarySpawner.TrySpawnLegendaryCreature(
-            "N14MobDeathclaw",
-            _activeHuntSessionId ?? _chief.Value,
-            chiefMapCoords);
-
-        if (_activeLegendaryCreature == null)
+        switch (_huntType)
         {
-            EndHunt(Loc.GetString("tribal-hunt-popup-failed"));
-            return;
+            case TribalHuntType.Legendary:
+                var legendary = _huntSpawner.TrySpawnLegendaryCreature(
+                    "N14MobDeathclaw",
+                    _activeHuntSessionId ?? _huntCaller.Value,
+                    callerMapCoords);
+
+                if (legendary == null)
+                {
+                    EndHunt(GetFailureText());
+                    return;
+                }
+
+                _activeHuntTargets.Add(legendary.Value);
+                _requiredTargets = 1;
+                _activeTargetName = "Deathclaw";
+                break;
+
+            case TribalHuntType.Minor:
+                var pack = _huntSpawner.TrySpawnMinorHuntPack(
+                    _activeHuntSessionId ?? _huntCaller.Value,
+                    callerMapCoords,
+                    out var creatureName);
+
+                if (pack == null || pack.Count == 0)
+                {
+                    EndHunt(GetFailureText());
+                    return;
+                }
+
+                foreach (var uid in pack)
+                {
+                    if (Exists(uid))
+                        _activeHuntTargets.Add(uid);
+                }
+
+                if (_activeHuntTargets.Count == 0)
+                {
+                    EndHunt(GetFailureText());
+                    return;
+                }
+
+                _requiredTargets = _activeHuntTargets.Count;
+                _activeTargetName = creatureName;
+                break;
+
+            default:
+                EndHunt(GetFailureText());
+                return;
         }
 
         _stage = TribalHuntStage.Active;
@@ -258,15 +376,27 @@ public sealed class TribalHuntSystem : EntitySystem
 
     private void UpdateCreatureLocation()
     {
-        if (_activeLegendaryCreature == null || !Exists(_activeLegendaryCreature.Value))
+        var target = GetTrackedTarget();
+        if (target == null)
             return;
 
-        var mapCoords = _transform.GetMapCoordinates(_activeLegendaryCreature.Value);
+        var mapCoords = _transform.GetMapCoordinates(target.Value);
         var position = mapCoords.Position;
         _lastKnownCoordinates = Loc.GetString("tribal-hunt-gui-coordinate-format",
             ("x", MathF.Round(position.X, 1)),
             ("y", MathF.Round(position.Y, 1)));
         _hasKnownCoordinates = true;
+    }
+
+    private EntityUid? GetTrackedTarget()
+    {
+        foreach (var uid in _activeHuntTargets)
+        {
+            if (Exists(uid))
+                return uid;
+        }
+
+        return null;
     }
 
     private void CompleteHunt()
@@ -294,37 +424,61 @@ public sealed class TribalHuntSystem : EntitySystem
             _movementSpeed.RefreshMovementSpeedModifiers(uid);
         }
 
-        EndHunt(Loc.GetString("tribal-hunt-popup-complete",
-            ("seconds", (int) Math.Ceiling(_configuredRewardDuration.TotalSeconds))), cleanupLegendary: false);
+        var completionText = _huntType == TribalHuntType.Minor
+            ? Loc.GetString("tribal-hunt-popup-minor-complete",
+                ("seconds", (int) Math.Ceiling(_configuredRewardDuration.TotalSeconds)))
+            : Loc.GetString("tribal-hunt-popup-complete",
+                ("seconds", (int) Math.Ceiling(_configuredRewardDuration.TotalSeconds)));
+
+        EndHunt(completionText, cleanupTargets: false);
     }
 
-    private void EndHunt(string statusText, bool cleanupLegendary = true)
+    private void EndHunt(string statusText, bool cleanupTargets = true)
     {
         var department = _targetDepartment;
-        var legendary = _activeLegendaryCreature;
+        var targets = new List<EntityUid>(_activeHuntTargets);
 
         _stage = TribalHuntStage.Inactive;
-        _activeLegendaryCreature = null;
+        _huntType = TribalHuntType.None;
+        _activeHuntTargets.Clear();
         _activeHuntSessionId = null;
-        _chief = null;
+        _huntCaller = null;
+        _requiredTargets = 0;
+        _defeatedTargets = 0;
+        _activeTargetName = string.Empty;
         _lastKnownCoordinates = string.Empty;
         _hasKnownCoordinates = false;
         _joinedHunters.Clear();
 
-        if (cleanupLegendary && legendary != null && Exists(legendary.Value))
-            QueueDel(legendary.Value); // Deferred delete — prevents broadphase corruption if physics is mid-iteration.
+        if (cleanupTargets)
+        {
+            foreach (var target in targets)
+            {
+                if (Exists(target))
+                    QueueDel(target); // Deferred delete — prevents physics-state churn mid-iteration.
+            }
+        }
 
         BroadcastUiToDepartment(department, statusText);
     }
 
     private string BuildStatusText()
     {
-        return _stage switch
+        return (_stage, _huntType) switch
         {
-            TribalHuntStage.Gathering => Loc.GetString("tribal-hunt-gui-status-gathering"),
-            TribalHuntStage.Active => Loc.GetString("tribal-hunt-gui-status-active"),
+            (TribalHuntStage.Gathering, TribalHuntType.Minor) => Loc.GetString("tribal-hunt-gui-status-gathering-minor"),
+            (TribalHuntStage.Gathering, _) => Loc.GetString("tribal-hunt-gui-status-gathering"),
+            (TribalHuntStage.Active, TribalHuntType.Minor) => Loc.GetString("tribal-hunt-gui-status-active-minor", ("prey", _activeTargetName)),
+            (TribalHuntStage.Active, _) => Loc.GetString("tribal-hunt-gui-status-active"),
             _ => Loc.GetString("tribal-hunt-gui-status-idle"),
         };
+    }
+
+    private string GetFailureText()
+    {
+        return _huntType == TribalHuntType.Minor
+            ? Loc.GetString("tribal-hunt-popup-minor-failed")
+            : Loc.GetString("tribal-hunt-popup-failed");
     }
 
     private bool CanLeadHunt(EntityUid uid, TribalHuntLeaderComponent component)
@@ -406,8 +560,8 @@ public sealed class TribalHuntSystem : EntitySystem
         var state = new TribalHuntUiState
         {
             Active = _stage == TribalHuntStage.Active,
-            Offered = 0,
-            Required = 0,
+            Offered = _defeatedTargets,
+            Required = _requiredTargets,
             SecondsRemaining = remaining,
             StatusText = statusText,
             CoordinatesKnown = _stage == TribalHuntStage.Active && _hasKnownCoordinates,
@@ -423,15 +577,48 @@ public sealed class TribalHuntSystem : EntitySystem
 
     private void OnLegendaryCreatureKilled(EntityUid uid, LegendaryCreatureComponent component, LegendaryCreatureKilledEvent args)
     {
-        if (_stage != TribalHuntStage.Active || _activeLegendaryCreature != uid)
+        if (_stage != TribalHuntStage.Active || _huntType != TribalHuntType.Legendary || !_activeHuntTargets.Remove(uid))
             return;
 
+        _defeatedTargets = _requiredTargets;
         CompleteHunt();
     }
 
     private void OnLegendaryCreatureShutdown(EntityUid uid, LegendaryCreatureComponent component, ComponentShutdown args)
     {
-        if (_stage == TribalHuntStage.Active && _activeLegendaryCreature == uid)
-            EndHunt(Loc.GetString("tribal-hunt-popup-failed"), cleanupLegendary: false);
+        if (_stage != TribalHuntStage.Active || _huntType != TribalHuntType.Legendary || !_activeHuntTargets.Contains(uid))
+            return;
+
+        EndHunt(GetFailureText(), cleanupTargets: false);
+    }
+
+    private void OnMinorHuntCreatureKilled(EntityUid uid, MinorHuntCreatureComponent component, MobStateChangedEvent args)
+    {
+        if (args.NewMobState != MobState.Dead)
+            return;
+
+        if (_stage != TribalHuntStage.Active || _huntType != TribalHuntType.Minor || !_activeHuntTargets.Remove(uid))
+            return;
+
+        _defeatedTargets = Math.Min(_requiredTargets, _defeatedTargets + 1);
+
+        if (_activeHuntTargets.Count == 0)
+        {
+            if (!string.IsNullOrWhiteSpace(component.CreatureName))
+                _activeTargetName = component.CreatureName;
+
+            CompleteHunt();
+            return;
+        }
+
+        BroadcastUiToDepartment(_targetDepartment, BuildStatusText());
+    }
+
+    private void OnMinorHuntCreatureShutdown(EntityUid uid, MinorHuntCreatureComponent component, ComponentShutdown args)
+    {
+        if (_stage != TribalHuntStage.Active || _huntType != TribalHuntType.Minor || !_activeHuntTargets.Contains(uid))
+            return;
+
+        EndHunt(GetFailureText(), cleanupTargets: false);
     }
 }

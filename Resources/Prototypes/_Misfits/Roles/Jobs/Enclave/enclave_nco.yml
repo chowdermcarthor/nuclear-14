@@ -6,6 +6,8 @@
   hideWithoutJobWhitelist: true
   jobWhitelistBypassesRoleTimers: true # #Misfits Change
   weight: 105
+  displayWeight: 123
+  showBorder: true
   overrideConsoleVisibility: false
   canBeAntag: false
   name: job-name-enclave-nco
@@ -24,7 +26,7 @@
       tracker: EnclaveEnlisted
       min: 36000 # 10 hours
   startingGear: EnclaveNCOGear
-  icon: "JobIconNcrSoldier"
+  icon: "JobIconNcrSerg"
   supervisors: job-supervisors-enclave-nco
   alwaysUseSpawner: true
   accessGroups:

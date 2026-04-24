@@ -1,0 +1,52 @@
+# #Misfits Add - White Legs Bone Breaker prototype for the dedicated White Legs department.
+
+- type: job
+  id: WhiteLegsBoneBreaker
+  setPreference: true
+  weight: 40
+  showBorder: true
+  name: job-name-whitelegs-bone-breaker
+  description: job-description-whitelegs-bone-breaker
+  playTimeTracker: WhiteLegsBoneBreaker
+  whitelisted: true
+  requirements:
+  - !type:MinPlayersRequirement
+    min: 0
+  - !type:CharacterSpeciesRequirement
+    species:
+    - Human
+    - Ghoul
+  - !type:CharacterDepartmentTimeRequirement
+    department: WhiteLegs
+    min: 43200 # 12 hours
+  startingGear: WhiteLegsBoneBreakerGear
+  alwaysUseSpawner: true
+  icon: "JobIconWhiteLegBreaker"
+  supervisors: job-supervisors-whitelegs
+  canBeAntag: false
+  special:
+  - !type:AddComponentSpecial
+    components:
+      - type: NpcFactionMember
+        factions:
+          - PlayerRaider
+
+- type: startingGear
+  id: WhiteLegsBoneBreakerGear
+  equipment:
+    bandage: NCClothingBandageRaiders
+    jumpsuit: N14ClothingUniformJumpsuitWarriorTribal
+    outerClothing: MisfitsClothingOuterWhiteLegsArmor
+    shoes: N14ClothingShoesRaider
+    neck: ClothingNeckBlackScarf
+    head: N14ClothingHeadHatBeanie
+    ears: MisfitsClothingHeadsetWastelandScrap
+    back: N14ClothingBackpackMilitary
+    suitstorage: N14TribalBigClub
+    pocket1: N14TribalMachete
+  storage:
+    back:
+    - N14BoxPlasticFilledWastelander
+
+- type: playTimeTracker
+  id: WhiteLegsBoneBreaker

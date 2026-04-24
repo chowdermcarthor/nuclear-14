@@ -8,6 +8,11 @@ namespace Content.Shared._Misfits.TribalHunt;
 public sealed partial class PerformTribalStartHuntActionEvent : InstantActionEvent;
 
 /// <summary>
+/// Raised when a tribal participant starts a minor hunt.
+/// </summary>
+public sealed partial class PerformTribalStartMinorHuntActionEvent : InstantActionEvent;
+
+/// <summary>
 /// Raised when a tribal participant offers a trophy to the active hunt.
 /// </summary>
 public sealed partial class PerformTribalOfferTrophyActionEvent : InstantActionEvent;

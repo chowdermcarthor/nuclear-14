@@ -7,6 +7,7 @@
   description: job-description-ranger-veteran-n14
   playTimeTracker: NCRVeteranRanger
   weight: 10
+  showBorder: true
   startingGear: NCRVeteranRangerGear
   icon: "JobIconHeadOfSecurity"
   supervisors: job-supervisors-ranger-veteran

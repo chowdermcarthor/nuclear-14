@@ -20,3 +20,15 @@ department-C27Unit-description = Pre-war General Atomics humanoid robotics frame
 # _Nuclear14/department.ftl (lines 36/38). Fluent errors [ERRO] on duplicate ids, so commented out here.
 # department-CaesarLegion = Caesar's Legion
 # department-CaesarLegion-description = Totalitarian legion built on Roman structure, discipline, and conquest. Ave, true to Caesar.
+
+# #Misfits Add - Followers of the Apocalypse department locale.
+department-FollowersOfTheApocalypse = Followers of the Apocalypse
+department-FollowersOfTheApocalypse-description = Humanitarian scholars devoted to preserving knowledge and healing the wastes, one settlement at a time.
+
+# #Misfits Add - Eighties department locale. Replaces the old Raider/Outlaws department.
+# Named after Interstate 80; a highway gang that raids caravans and scavenges the old road infrastructure.
+Eighties = The Eighties
+department-Eighties = The Eighties
+department-Eighties-description =
+    A highway raider gang born on Interstate 80. They wear road signs as armor, ambush caravans from the old highway,
+    and enforce their own brutal law across every mile of asphalt they claim.

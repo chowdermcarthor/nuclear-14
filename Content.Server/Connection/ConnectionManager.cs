@@ -281,7 +281,14 @@ namespace Content.Server.Connection
                             ticker.PlayerGameStatuses.TryGetValue(userId, out var status) &&
                             status == PlayerGameStatus.JoinedGame;
             var adminBypass = _cfg.GetCVar(CCVars.AdminBypassMaxPlayers) && adminData != null;
-            if ((_plyMgr.PlayerCount >= _cfg.GetCVar(CCVars.SoftMaxPlayers) && !adminBypass) && !wasInGame)
+            // #Misfits Add - Whitelisted players use an expanded cap (soft max + reserved slots) so they
+            // aren't pop-capped or queued behind regular players. Admins already bypass entirely via adminBypass.
+            var softMax = _cfg.GetCVar(CCVars.SoftMaxPlayers);
+            var isWhitelistedPlayer = adminData == null && await _db.GetWhitelistStatusAsync(userId);
+            var effectiveCap = isWhitelistedPlayer
+                ? softMax + _cfg.GetCVar(CCVars.WhitelistReservedSlots)
+                : softMax;
+            if ((_plyMgr.PlayerCount >= effectiveCap && !adminBypass) && !wasInGame)
             {
                 return (ConnectionDenyReason.Full, Loc.GetString("soft-player-cap-full"), null);
             }
@@ -461,10 +468,13 @@ namespace Content.Server.Connection
         {
             var isAdmin = await _db.GetAdminDataForAsync(userId) != null;
             var isSponsor = _sponsorMan.Sponsors.ContainsKey(userId); // Forge-Change
+            // #Misfits Add - Whitelisted players skip the join queue; ConnectionManager already caps them
+            // at SoftMaxPlayers + WhitelistReservedSlots so this doesn't grant unlimited access.
+            var isWhitelisted = await _db.GetWhitelistStatusAsync(userId);
             var wasInGame = EntitySystem.TryGet<GameTicker>(out var ticker) &&
                 ticker.PlayerGameStatuses.TryGetValue(userId, out var status) &&
                 status == PlayerGameStatus.JoinedGame;
-            return isAdmin || isSponsor || wasInGame; // Forge-Change
+            return isAdmin || isSponsor || isWhitelisted || wasInGame; // Forge-Change
         }
     }
 }

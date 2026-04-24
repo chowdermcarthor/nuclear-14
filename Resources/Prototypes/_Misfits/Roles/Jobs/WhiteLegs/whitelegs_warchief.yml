@@ -1,0 +1,52 @@
+# #Misfits Add - White Legs War Chief prototype for the dedicated White Legs department.
+
+- type: job
+  id: WhiteLegsWarChief
+  setPreference: true
+  weight: 60
+  name: job-name-whitelegs-war-chief
+  description: job-description-whitelegs-war-chief
+  playTimeTracker: WhiteLegsWarChief
+  whitelisted: true
+  requirements:
+  - !type:MinPlayersRequirement
+    min: 0
+  - !type:CharacterSpeciesRequirement
+    species:
+    - Human
+    - Ghoul
+  - !type:CharacterDepartmentTimeRequirement
+    department: WhiteLegs
+    min: 144000 # 40 hours
+  startingGear: WhiteLegsWarChiefGear
+  alwaysUseSpawner: true
+  icon: "JobIconWhiteLegChief"
+  supervisors: job-supervisors-whitelegs-war-chief
+  canBeAntag: false
+  special:
+  - !type:AddComponentSpecial
+    components:
+      - type: NpcFactionMember
+        factions:
+          - PlayerRaider
+
+- type: startingGear
+  id: WhiteLegsWarChiefGear
+  equipment:
+    bandage: NCClothingBandageRaiders
+    jumpsuit: N14ClothingUniformJumpsuitWarriorTribal
+    outerClothing: MisfitsClothingOuterWhiteLegsArmor
+    shoes: N14ClothingShoesRaider
+    neck: ClothingNeckBlackScarf
+    head: N14ClothingHeadHatBeanie
+    ears: MisfitsClothingHeadsetWastelandScrap
+    back: N14ClothingBackpackMilitary
+    suitstorage: N14TribalBigClubDecorated
+    pocket1: N14WeaponRevolver44TribalUpgraded
+    belt: ClothingBeltMilitary
+  storage:
+    back:
+    - N14BoxPlasticFilledWastelander
+
+- type: playTimeTracker
+  id: WhiteLegsWarChief

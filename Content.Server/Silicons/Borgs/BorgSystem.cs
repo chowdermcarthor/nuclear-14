@@ -74,6 +74,7 @@ public sealed partial class BorgSystem : SharedBorgSystem
         SubscribeLocalEvent<BorgChassisComponent, PowerCellChangedEvent>(OnPowerCellChanged);
         SubscribeLocalEvent<BorgChassisComponent, PowerCellSlotEmptyEvent>(OnPowerCellSlotEmpty);
         SubscribeLocalEvent<BorgChassisComponent, GetCharactedDeadIcEvent>(OnGetDeadIC);
+        SubscribeLocalEvent<BorgChassisComponent, ItemToggleActivateAttemptEvent>(OnToggleActivateAttempt);
         SubscribeLocalEvent<BorgChassisComponent, ItemToggledEvent>(OnToggled);
 
         SubscribeLocalEvent<BorgBrainComponent, MindAddedMessage>(OnBrainMindAdded);
@@ -187,6 +188,14 @@ public sealed partial class BorgSystem : SharedBorgSystem
     {
         UpdateBatteryAlert((uid, component));
 
+        // #Misfits Fix - Deactivate borgs as soon as their chassis can no longer draw power.
+        if (!_powerCell.HasDrawCharge(uid))
+        {
+            Toggle.TryDeactivate(uid);
+            UpdateUI(uid, component);
+            return;
+        }
+
         // if we aren't drawing and suddenly get enough power to draw again, reeanble.
         if (_powerCell.HasDrawCharge(uid))
         {
@@ -205,6 +214,15 @@ public sealed partial class BorgSystem : SharedBorgSystem
     private void OnGetDeadIC(EntityUid uid, BorgChassisComponent component, ref GetCharactedDeadIcEvent args)
     {
         args.Dead = true;
+    }
+
+    // #Misfits Fix - Prevent borg chassis from reactivating without a usable battery charge.
+    private void OnToggleActivateAttempt(EntityUid uid, BorgChassisComponent component, ref ItemToggleActivateAttemptEvent args)
+    {
+        if (_powerCell.HasDrawCharge(uid, user: args.User))
+            return;
+
+        args.Cancelled = true;
     }
 
     private void OnToggled(Entity<BorgChassisComponent> ent, ref ItemToggledEvent args)

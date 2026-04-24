@@ -33,7 +33,9 @@
     jobs:
     - NCRFieldRanger
     - NCRVeteranRanger
-    - Followers # Forge-Change
+    - FollowerHead    # #Misfits Change - Followers job replaced by ranked hierarchy
+    - FollowerDoctor
+    - FollowerVolunteer
   functions:
   - !type:TraitModifyLanguages
     languagesSpoken:

@@ -739,3 +739,16 @@ c27-armor-set-bos-heavy-description =
     Power-heavy protection in the service of the Brotherhood.
     Includes heavy Brotherhood outer armor and matching helm sensor unit.
     2 gauze packs, and a flare.
+
+undecided-loadout-category-misfits-priestess-healing-name = Priestess of Restoration
+undecided-loadout-category-misfits-priestess-healing-desc =
+    Keep the Legion healthy until medical production is up.
+    4 Smelling Salts, 2 Bitter Drinks, 2 Poultices, 2 Powders.
+    2 Hydras, 3 bandages, and a medical belt.
+
+undecided-loadout-category-misfits-priestess-order-name = Priestess of Order
+undecided-loadout-category-misfits-priestess-order-desc =
+    Run the camp with an iron fist.
+    A sawed off shotgun with a box of beanbag shells.
+    2 Bolas, a box of handcuffs and a muzzle.
+    2 Collars, with keys, and a police baton.

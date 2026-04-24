@@ -7,6 +7,10 @@
   - type: Sprite
     sprite: _Nuclear14/Objects/Misc/storage.rsi
     state: box
+  # #Misfits Fix - Add the same cleanup timer used on other disposable wasteland clutter, but pause it while the box sits in storage.
+  - type: TimedDespawn
+    lifetime: 300
+  - type: PauseTimedDespawnInEntityStorage
 
 - type: entity
   name: wastelander box

@@ -1,0 +1,51 @@
+# #Misfits Add - White Legs Pain Maker prototype for the dedicated White Legs department.
+
+- type: job
+  id: WhiteLegsPainMaker
+  setPreference: false # #Misfits Change - keep the legacy rank prototype out of join screens now that WhiteLegs is the visible tribal entry role.
+  weight: 20
+  name: job-name-whitelegs-pain-maker
+  description: job-description-whitelegs-pain-maker
+  playTimeTracker: WhiteLegsPainMaker
+  whitelisted: true
+  requirements:
+  - !type:MinPlayersRequirement
+    min: 0
+  - !type:CharacterSpeciesRequirement
+    species:
+    - Human
+    - Ghoul
+  - !type:CharacterDepartmentTimeRequirement
+    department: WhiteLegs
+    min: 14400 # 4 hours
+  startingGear: WhiteLegsPainMakerGear
+  alwaysUseSpawner: true
+  icon: "JobIconWhiteLegTribal"
+  supervisors: job-supervisors-whitelegs
+  canBeAntag: false
+  special:
+  - !type:AddComponentSpecial
+    components:
+      - type: NpcFactionMember
+        factions:
+          - PlayerRaider
+
+- type: startingGear
+  id: WhiteLegsPainMakerGear
+  equipment:
+    bandage: NCClothingBandageRaiders
+    jumpsuit: N14ClothingUniformJumpsuitdrylanderTribal
+    outerClothing: MisfitsClothingOuterWhiteLegsArmor
+    shoes: N14ClothingShoesRaider
+    neck: ClothingNeckBlackScarf
+    head: N14ClothingHeadHatBeanie
+    ears: MisfitsClothingHeadsetWastelandScrap
+    back: N14ClothingBackpackMilitary
+    suitstorage: N14WeaponShotgunSawedOff
+    pocket1: N14TribalKnife
+  storage:
+    back:
+    - N14BoxPlasticFilledWastelander
+
+- type: playTimeTracker
+  id: WhiteLegsPainMaker

@@ -12,12 +12,13 @@
     sprite: /Textures/Corvax/Interface/Misc/job_icons.rsi
     state: Raider
 
-- type: jobIcon
-  parent: JobIcon
-  id: JobIconKhan
-  icon:
-    sprite: /Textures/Corvax/Interface/Misc/job_icons.rsi
-    state: Khan
+# #Misfits Removed - Khan job icon deactivated alongside Khan job. Kept for reference.
+# - type: jobIcon
+#   parent: JobIcon
+#   id: JobIconKhan
+#   icon:
+#     sprite: /Textures/Corvax/Interface/Misc/job_icons.rsi
+#     state: Khan
 
 - type: jobIcon
   parent: JobIcon
@@ -47,13 +48,13 @@
     sprite: /Textures/Corvax/Interface/Misc/job_icons.rsi
     state: Fiend
 
-# #Misfits Add - Eighties job icon for Outlaws faction overhaul (placeholder: reuses Raider state until custom icon is made)
+# #Misfits Change - Eighties icon now uses its own RSI state (I-80 highway shield design).
 - type: jobIcon
   parent: JobIcon
   id: JobIconEighties
   icon:
     sprite: /Textures/Corvax/Interface/Misc/job_icons.rsi
-    state: Raider
+    state: eighties
 
 # #Misfits Add - White Legs job icon for Outlaws faction overhaul (placeholder: reuses Raider state until custom icon is made)
 - type: jobIcon

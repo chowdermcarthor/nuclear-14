@@ -18,8 +18,8 @@
     - Ghoul
   startingGear: WhiteLegsGear
   alwaysUseSpawner: true
-  icon: "JobIconWhiteLegs"
-  supervisors: job-supervisors-outlaws
+  icon: "JobIconWhiteLegTribal"
+  supervisors: job-supervisors-whitelegs
   canBeAntag: false
   special: # Register with PlayerRaider faction for faction war system compatibility
   - !type:AddComponentSpecial
@@ -32,7 +32,7 @@
   id: WhiteLegsGear
   equipment:
     bandage: NCClothingBandageRaiders
-    jumpsuit: N14ClothingUniformJumpsuitBrahminFarmer
+    jumpsuit: N14ClothingUniformJumpsuitdrylanderTribal
     outerClothing: MisfitsClothingOuterWhiteLegsArmor
     shoes: N14ClothingShoesRaider
     neck: ClothingNeckBlackScarf

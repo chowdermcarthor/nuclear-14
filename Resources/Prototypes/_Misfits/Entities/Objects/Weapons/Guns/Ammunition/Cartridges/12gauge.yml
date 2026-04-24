@@ -1,0 +1,18 @@
+﻿- type: entity
+  id: MisfitsShellShotgun12Beanbag
+  name: beanbag shell (12 gauge)
+  parent: N14ShellShotgun12
+  components:
+  - type: Tag
+    tags:
+    - Cartridge
+    - N14ShellShotgun12
+  - type: Sprite
+    sprite: Objects/Weapons/Guns/Ammunition/Casings/shotgun_shell.rsi
+    layers:
+      - state: beanbag
+        map: [ "enum.AmmoVisualLayers.Base" ]
+  - type: CartridgeAmmo
+    proto: PelletShotgun12Beanbag
+  - type: SpentAmmoVisuals
+    state: beanbag

@@ -1,0 +1,23 @@
+{
+  "version": 1,
+  "license": "CC-BY-SA-3.0",
+  "copyright": "White Leg job icons recolored for Misfits from Corvax tribal job icons; original tribal art by Mr_Lop_Lop (discord).",
+  "size": {
+    "x": 8,
+    "y": 8
+  },
+  "states": [
+    {
+      "name": "whiteLegTribal"
+    },
+    {
+      "name": "whiteLegChief"
+    },
+    {
+      "name": "whiteLegBreaker"
+    },
+    {
+      "name": "whiteLegCaller"
+    }
+  ]
+}

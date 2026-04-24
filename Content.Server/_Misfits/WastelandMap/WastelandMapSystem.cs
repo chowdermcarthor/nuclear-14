@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using Content.Server.Access.Components;
 using Content.Server._Misfits.Group; // #Misfits Add - group blip injection
+using Content.Server._Misfits.TribalHunt;
 using Content.Shared.Access.Components;
 using Content.Shared.Tag;
 using Content.Shared._Misfits.WastelandMap;
@@ -359,6 +360,32 @@ public sealed class WastelandMapSystem : EntitySystem
             var label = string.IsNullOrWhiteSpace(legendary.CreatureName)
                 ? "Legendary Target"
                 : $"Legendary {legendary.CreatureName}";
+
+            buffer.Add(new WastelandMapTrackedBlip(
+                pos.X,
+                pos.Y,
+                label,
+                WastelandMapTrackedBlipKind.TribalHuntTarget));
+        }
+
+        var minorQuery = EntityQueryEnumerator<MinorHuntCreatureComponent, TransformComponent>();
+
+        while (minorQuery.MoveNext(out var uid, out var minor, out var xform))
+        {
+            if (!minor.RevealLocation)
+                continue;
+
+            var mapCoordinates = _transform.GetMapCoordinates(uid, xform);
+            if (mapCoordinates.MapId != mapId)
+                continue;
+
+            var pos = mapCoordinates.Position;
+            if (!bounds.Contains(pos))
+                continue;
+
+            var label = string.IsNullOrWhiteSpace(minor.CreatureName)
+                ? "Minor Hunt Target"
+                : $"Minor {minor.CreatureName}";
 
             buffer.Add(new WastelandMapTrackedBlip(
                 pos.X,

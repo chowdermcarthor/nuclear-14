@@ -21,31 +21,32 @@
 #         factions:
 #           - PlayerRaider
 
-- type: job
-  id: Khan
-  setPreference: true
-  name: job-name-khan #Misfits Add
-  description: job-description-khan
-  playTimeTracker: Khan
-  whitelisted: true # #Misfits Add - Keep whitelist gate consistent with existing Outlaw access policy
-  requirements:
-  - !type:MinPlayersRequirement
-    min: 0
-  - !type:CharacterSpeciesRequirement # #Misfits Fix - restrict to organic species only
-    species:
-    - Human
-    - Ghoul
-  startingGear: KhanGear
-  alwaysUseSpawner: true
-  icon: "JobIconKhan"
-  supervisors: job-supervisors-outlaws
-  canBeAntag: false
-  special: # #Misfits Add - register with PlayerRaider faction so Loremaster tab can detect this job
-  - !type:AddComponentSpecial
-    components:
-      - type: NpcFactionMember
-        factions:
-          - PlayerRaider
+# #Misfits Removed - Khan deactivated as Outlaws/Raider department dissolves into the Eighties department.
+# - type: job
+#   id: Khan
+#   setPreference: true
+#   name: job-name-khan
+#   description: job-description-khan
+#   playTimeTracker: Khan
+#   whitelisted: true
+#   requirements:
+#   - !type:MinPlayersRequirement
+#     min: 0
+#   - !type:CharacterSpeciesRequirement
+#     species:
+#     - Human
+#     - Ghoul
+#   startingGear: KhanGear
+#   alwaysUseSpawner: true
+#   icon: "JobIconKhan"
+#   supervisors: job-supervisors-outlaws
+#   canBeAntag: false
+#   special:
+#   - !type:AddComponentSpecial
+#     components:
+#       - type: NpcFactionMember
+#         factions:
+#           - PlayerRaider
 
 # #Misfits Removed - Jackal job removed as part of Outlaws faction overhaul
 # - type: job
@@ -159,25 +160,26 @@
 #     - Magazine45SubMachineGun
 #     - Magazine45SubMachineGun
 
-- type: startingGear
-  id: KhanGear
-  equipment:
-    bandage: NCClothingBandageRaiders
-    jumpsuit: N14ClothingUniformJumpsuitBrahminFarmer
-    outerClothing: MisfitsClothingOuterKhansJacket
-    shoes: N14ClothingShoesRaider
-    neck: ClothingNeckBlackScarf
-    head: N14ClothingHeadHatBeanie
-    ears: MisfitsClothingHeadsetWastelandScrap
-    back: N14ClothingBackpackMilitary
-    suitstorage: N14WeaponSMG45
-    belt: ClothingBeltMilitary
-  storage:
-    back:
-    - N14BoxPlasticFilledWastelander
-    belt:
-    - Magazine45SubMachineGun
-    - Magazine45SubMachineGun
+# #Misfits Removed - KhanGear removed alongside Khan job deactivation.
+# - type: startingGear
+#   id: KhanGear
+#   equipment:
+#     bandage: NCClothingBandageRaiders
+#     jumpsuit: N14ClothingUniformJumpsuitBrahminFarmer
+#     outerClothing: MisfitsClothingOuterKhansJacket
+#     shoes: N14ClothingShoesRaider
+#     neck: ClothingNeckBlackScarf
+#     head: N14ClothingHeadHatBeanie
+#     ears: MisfitsClothingHeadsetWastelandScrap
+#     back: N14ClothingBackpackMilitary
+#     suitstorage: N14WeaponSMG45
+#     belt: ClothingBeltMilitary
+#   storage:
+#     back:
+#     - N14BoxPlasticFilledWastelander
+#     belt:
+#     - Magazine45SubMachineGun
+#     - Magazine45SubMachineGun
 
 # #Misfits Removed - JackalGear removed as part of Outlaws faction overhaul
 # - type: startingGear
@@ -267,8 +269,9 @@
 # - type: playTimeTracker
 #   id: Raider
 
-- type: playTimeTracker
-  id: Khan
+# #Misfits Removed - Khan playTimeTracker removed alongside Khan job deactivation.
+# - type: playTimeTracker
+#   id: Khan
 
 # #Misfits Removed - Jackal playTimeTracker removed as part of Outlaws faction overhaul
 # - type: playTimeTracker

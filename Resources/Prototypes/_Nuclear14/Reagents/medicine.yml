@@ -485,6 +485,15 @@
         conditions:
         - !type:ReagentThreshold
           min: 26
+      # #Misfits Add - OD threshold: drinking poultice in bulk causes poison damage
+      - !type:HealthChange
+        conditions:
+        - !type:ReagentThreshold
+          min: 30
+        - !type:MobStateCondition
+        damage:
+          types:
+            Poison: 1.5
 
 - type: reagent
   id: Bitterdrink

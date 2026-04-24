@@ -153,6 +153,11 @@
   id: N14WallAdobeSlanted
   name: adobe wall
   suffix: slanted
+  components:
+  - type: Construction
+    # #Misfits Add - lets the hand-construction adobe recipe deconstruct back through its graph.
+    graph: N14AdobeWall
+    node: AdobeWall
 
 - type: entity
   parent: BaseWallIndestructible

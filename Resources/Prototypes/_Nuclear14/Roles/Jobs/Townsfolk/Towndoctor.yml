@@ -3,7 +3,6 @@
   setPreference: true
   jobWhitelistBypassesRoleTimers: true
   weight: 60
-  showBorder: true
   overrideConsoleVisibility: false
   canBeAntag: false
   name: job-name-towndoctor

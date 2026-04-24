@@ -233,6 +233,35 @@
             - tool: Prying
               doAfter: 20
 
+# #Misfits Add: Adobe wall construction graph using the existing slanted adobe wall prototype.
+- type: constructionGraph
+  id: N14AdobeWall
+  start: start
+  graph:
+    - node: start
+      edges:
+        - to: AdobeWall
+          completed:
+            - !type:SnapToGrid
+              southRotation: true
+          steps:
+            - material: N14Brick
+              amount: 6
+              doAfter: 4
+
+    - node: AdobeWall
+      entity: N14WallAdobeSlanted
+      edges:
+        - to: start
+          completed:
+            - !type:GivePrototype
+              prototype: N14MaterialBrick1
+              amount: 3
+            - !type:DeleteEntity
+          steps:
+            - tool: Prying
+              doAfter: 20
+
 # #Misfits Add: Tent construction graphs
 
 - type: constructionGraph

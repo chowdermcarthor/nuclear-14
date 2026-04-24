@@ -42,10 +42,10 @@
           WastelandFarmer: [ 2, 3 ]
           WastelandChaplain: [ 1, 1 ]
           WastelandBartender: [ 1, 2 ]
-          TribalElder: [ 1, 1 ]
-          Tribal: [ 2, 4 ]
-          TribalFarmer: [ 1, 2 ]
-          TribalShaman: [ 1, 2 ] # #Misfits Change - renamed from TribalHealer
+          TribalElder: [ 1, 1 ] # #Misfits Tweak - Yuma Tribe leadership stays singular while the faction expands to 16 total slots.
+          Tribal: [ 8, 8 ]
+          TribalFarmer: [ 4, 4 ]
+          TribalShaman: [ 3, 3 ] # #Misfits Change - renamed from TribalHealer
           TownMayor: [ 1, 1 ]
           TownSheriff: [ 1, 1 ]
           TownDeputy: [ 1, 2 ]
@@ -119,10 +119,20 @@
           # #Misfits Change: CaesarLegionRecruit slot removed — CaesarLegionLegionnaireRecruit (line 103) already covers entry-level.
           CaesarLegionAuxilia: [ 4, 4 ] # #Misfits Change - activated
           CaesarLegionSlave: [ 4, 4 ] # Forge-Legion
-          Khan: [ 8, 8 ] # #Misfits Change - Outlaws split role: Khan
-          Eighties: [ 8, 8 ] # #Misfits Change - Outlaws faction overhaul: Eighties (replaced Jackal/Viper)
-          WhiteLegs: [ 8, 8 ] # #Misfits Change - Outlaws faction overhaul: White Legs (replaced Gunner/Fiend)
-          Followers: [ 2, 2 ]
+          # #Misfits Change - Khan removed (deactivated); Eighties expanded to 5-rank department.
+          EightiesTheBlock:  [ 0, 1 ] # leader, 1 slot
+          EightiesCylinders: [ 0, 2 ] # officer tier, 2 slots
+          EightiesPistons:   [ 0, 3 ] # NCO tier, 3 slots
+          EightiesOilers:    [ 0, 4 ] # specialist tier, 4 slots
+          EightiesRoadRash:  [ 0, 4 ] # recruit tier, 4 slots
+          WhiteLegs: [ 16, 16 ] # #Misfits Change - keep the compatible White Legs base role live at 16 slots until ranked markers are placed.
+          WhiteLegsWarChief: [ 0, 0 ] # #Misfits Add - prototype-ready rank, no placed map marker yet.
+          WhiteLegsBoneBreaker: [ 0, 0 ] # #Misfits Add - prototype-ready rank, no placed map marker yet.
+          WhiteLegsStormDrummer: [ 0, 0 ] # #Misfits Add - prototype-ready rank, no placed map marker yet.
+          # WhiteLegsPainMaker: [ 0, 0 ] # #Misfits Change - legacy hidden rank removed from join rotation; WhiteLegs now covers the visible tribal entry slot.
+          FollowerVolunteer: [ 2, 2 ] # #Misfits Change - Followers job replaced by ranked hierarchy
+          FollowerDoctor: [ 1, 1 ]   # #Misfits Add - Doctor rank slot
+          FollowerHead: [ 0, 1 ]     # #Misfits Add - Head rank slot (0 min so server doesn't require one)
           SyntheticMrHandy: [ 1, 2 ]
           SyntheticProtectron: [ 1, 2 ]
           SyntheticMrGutsy: [ 1, 2 ]

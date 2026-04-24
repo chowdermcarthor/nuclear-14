@@ -735,38 +735,124 @@
   - type: SpawnPoint
     job_id: SyntheticRobobrain
 
-# Outlaws
+# #Misfits Removed - Khan spawn point deactivated; Khan job dissolved into Eighties department.
+# #Misfits Removed - Jackal, Viper, Gunner, Fiend spawn points removed as part of Outlaws faction overhaul.
+# #Misfits Removed - Old single-rank Eighties spawn point replaced by 5-rank spawners below.
+# - type: entity
+#   parent: SpawnPointJobBase
+#   id: MisfitsSpawnPointKhan
+#   name: Khan
+#   components:
+#   - type: SpawnPoint
+#     job_id: Khan
+#   - type: Sprite
+#     sprite: Corvax/Markers/jobs.rsi
+#     layers:
+#       - state: green
+#       - state: raider
+#
+# - type: entity
+#   parent: MisfitsSpawnPointKhan
+#   id: MisfitsSpawnPointEighties
+#   name: Eighties
+#   components:
+#   - type: SpawnPoint
+#     job_id: Eighties
+
+# #Misfits Add - Eighties ranked spawn point prototypes.
+# The Block = 1 spawner, Cylinders = 2, Pistons = 3, Oilers = 4, Road Rash = 4.
+# Place the appropriate count of each on the map to enforce slot limits.
 - type: entity
   parent: SpawnPointJobBase
-  id: MisfitsSpawnPointKhan
-  name: Khan
+  id: MisfitsSpawnPointEightiesBase
+  name: Eighties
   components:
-  - type: SpawnPoint
-    job_id: Khan
   - type: Sprite
     sprite: Corvax/Markers/jobs.rsi
     layers:
       - state: green
       - state: raider
 
-# #Misfits Removed - Jackal, Viper, Gunner, Fiend spawn points removed as part of Outlaws faction overhaul
-# Replaced by Eighties and WhiteLegs spawn points below
-
 - type: entity
-  parent: MisfitsSpawnPointKhan
-  id: MisfitsSpawnPointEighties
-  name: Eighties
+  parent: MisfitsSpawnPointEightiesBase
+  id: MisfitsSpawnPointEightiesTheBlock
+  name: Eighties — The Block
   components:
   - type: SpawnPoint
-    job_id: Eighties
+    job_id: EightiesTheBlock
 
 - type: entity
-  parent: MisfitsSpawnPointKhan
+  parent: MisfitsSpawnPointEightiesBase
+  id: MisfitsSpawnPointEightiesCylinders
+  name: Eighties — Cylinders
+  components:
+  - type: SpawnPoint
+    job_id: EightiesCylinders
+
+- type: entity
+  parent: MisfitsSpawnPointEightiesBase
+  id: MisfitsSpawnPointEightiesPistons
+  name: Eighties — Pistons
+  components:
+  - type: SpawnPoint
+    job_id: EightiesPistons
+
+- type: entity
+  parent: MisfitsSpawnPointEightiesBase
+  id: MisfitsSpawnPointEightiesOilers
+  name: Eighties — Oilers
+  components:
+  - type: SpawnPoint
+    job_id: EightiesOilers
+
+- type: entity
+  parent: MisfitsSpawnPointEightiesBase
+  id: MisfitsSpawnPointEightiesRoadRash
+  name: Eighties — Road Rash
+  components:
+  - type: SpawnPoint
+    job_id: EightiesRoadRash
+
+- type: entity
+  parent: MisfitsSpawnPointEightiesBase
   id: MisfitsSpawnPointWhiteLegs
   name: White Legs
   components:
   - type: SpawnPoint
     job_id: WhiteLegs
+
+# #Misfits Add - ranked White Legs spawner prototypes for future map placement.
+- type: entity
+  parent: MisfitsSpawnPointWhiteLegs
+  id: MisfitsSpawnPointWhiteLegsWarChief
+  name: White Legs War Chief
+  components:
+  - type: SpawnPoint
+    job_id: WhiteLegsWarChief
+
+- type: entity
+  parent: MisfitsSpawnPointWhiteLegs
+  id: MisfitsSpawnPointWhiteLegsBoneBreaker
+  name: White Legs Bone Breaker
+  components:
+  - type: SpawnPoint
+    job_id: WhiteLegsBoneBreaker
+
+- type: entity
+  parent: MisfitsSpawnPointWhiteLegs
+  id: MisfitsSpawnPointWhiteLegsStormDrummer
+  name: White Legs Storm Drummer
+  components:
+  - type: SpawnPoint
+    job_id: WhiteLegsStormDrummer
+
+- type: entity
+  parent: MisfitsSpawnPointWhiteLegs
+  id: MisfitsSpawnPointWhiteLegsPainMaker
+  name: White Legs Pain Maker
+  components:
+  - type: SpawnPoint
+    job_id: WhiteLegsPainMaker
 
 #Misfits Add: Legacy Washington BoS spawnpoint aliases kept for old map compatibility.
 - type: entity
