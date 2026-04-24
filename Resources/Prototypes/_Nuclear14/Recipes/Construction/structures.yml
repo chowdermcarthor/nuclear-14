@@ -60,15 +60,53 @@
     - !type:TileNotBlocked
 
 - type: construction
+  name: tall wooden wall
+  id: N14WallWoodTall
+  graph: N14WoodWall
+  startNode: start
+  targetNode: WallWoodTall
+  category: construction-category-structures
+  description: A tall wooden wall. Made with love and care.
+  icon:
+    sprite: _Nuclear14/Structures/Walls/ms13/tall/wood.rsi
+    state: full
+  objectType: Structure
+  placementMode: SnapgridCenter
+  canRotate: false
+  canBuildInImpassable: false
+  hide: false
+  conditions:
+    - !type:TileNotBlocked
+
+- type: construction
   name: sheet metal wall
   id: N14WallScrapSlanted
   graph: N14ScrapWall
   startNode: start
   targetNode: SheetScrapWall
   category: construction-category-structures
-  description: Have some rust here and there.
+  description: A bare sheet metal wall. There are weld marks along its surface.
   icon:
     sprite: _Nuclear14/Structures/Walls/ms13/slanted/scrap.rsi
+    state: full
+  objectType: Structure
+  placementMode: SnapgridCenter
+  canRotate: false
+  canBuildInImpassable: false
+  hide: false
+  conditions:
+    - !type:TileNotBlocked
+
+- type: construction
+  name: tall sheet metal wall
+  id: N14WallScrapTall
+  graph: N14ScrapWall
+  startNode: start
+  targetNode: SheetScrapWallTall
+  category: construction-category-structures
+  description: A tall, bare, sheet metal wall. There are weld marks along its surface.
+  icon:
+    sprite: _Nuclear14/Structures/Walls/ms13/tall/scrap.rsi
     state: full
   objectType: Structure
   placementMode: SnapgridCenter
@@ -85,9 +123,28 @@
   startNode: start
   targetNode: WhiteScrapWall
   category: construction-category-structures
-  description: Have some rust here and there.
+  description: A white sheet metal wall. There are weld marks along its surface.
   icon:
     sprite: _Nuclear14/Structures/Walls/ms13/slanted/scrapwhite.rsi
+    state: full
+  objectType: Structure
+  placementMode: SnapgridCenter
+  canRotate: false
+  canBuildInImpassable: false
+  hide: false
+  conditions:
+    - !type:TileNotBlocked
+
+- type: construction
+  name: tall white sheet metal wall
+  id: N14WallScrapWhiteTall
+  graph: N14ScrapWall
+  startNode: start
+  targetNode: WhiteScrapWallTall
+  category: construction-category-structures
+  description: A tall, white, sheet metal wall. There are weld marks along its surface.
+  icon:
+    sprite: _Nuclear14/Structures/Walls/ms13/tall/scrapwhite.rsi
     state: full
   objectType: Structure
   placementMode: SnapgridCenter
@@ -104,9 +161,28 @@
   startNode: start
   targetNode: BlueScrapWall
   category: construction-category-structures
-  description: Have some rust here and there.
+  description: A blue sheet metal wall. There are weld marks along its surface.
   icon:
     sprite: _Nuclear14/Structures/Walls/ms13/slanted/scrapblue.rsi
+    state: full
+  objectType: Structure
+  placementMode: SnapgridCenter
+  canRotate: false
+  canBuildInImpassable: false
+  hide: false
+  conditions:
+    - !type:TileNotBlocked
+
+- type: construction
+  name: tall blue sheet metal wall
+  id: N14WallScrapBlueTall
+  graph: N14ScrapWall
+  startNode: start
+  targetNode: BlueScrapWallTall
+  category: construction-category-structures
+  description: A tall, blue, sheet metal wall. There are weld marks along its surface.
+  icon:
+    sprite: _Nuclear14/Structures/Walls/ms13/tall/scrapblue.rsi
     state: full
   objectType: Structure
   placementMode: SnapgridCenter
@@ -136,15 +212,53 @@
     - !type:TileNotBlocked
 
 - type: construction
+  name: tall red sheet metal wall
+  id: N14WallScrapRedTall
+  graph: N14ScrapWall
+  startNode: start
+  targetNode: RedScrapWallTall
+  category: construction-category-structures
+  description: A tall, red, sheet metal wall. There are weld marks along its surface.
+  icon:
+    sprite: _Nuclear14/Structures/Walls/ms13/tall/scrapred.rsi
+    state: full
+  objectType: Structure
+  placementMode: SnapgridCenter
+  canRotate: false
+  canBuildInImpassable: false
+  hide: false
+  conditions:
+    - !type:TileNotBlocked
+
+- type: construction
   name: rough scrap wall
   id: N14WallRoughScrapSlanted
   graph: N14ScrapWall
   startNode: start
   targetNode: RoughScrapWall
   category: construction-category-structures
-  description: I hope that's red paint...
+  description: A bulky and hastily built scrap wall. Looks sharp.
   icon:
     sprite: _Nuclear14/Structures/Walls/ms13/slanted/roughscrap.rsi
+    state: full
+  objectType: Structure
+  placementMode: SnapgridCenter
+  canRotate: false
+  canBuildInImpassable: false
+  hide: false
+  conditions:
+    - !type:TileNotBlocked
+
+- type: construction
+  name: tall rough scrap wall
+  id: N14WallRoughScrapTall
+  graph: N14ScrapWall
+  startNode: start
+  targetNode: RoughScrapWallTall
+  category: construction-category-structures
+  description: A tall, rough, scrap metal wall. There are hasty weld marks along its surface.
+  icon:
+    sprite: _Nuclear14/Structures/Walls/ms13/tall/roughscrap.rsi
     state: full
   objectType: Structure
   placementMode: SnapgridCenter

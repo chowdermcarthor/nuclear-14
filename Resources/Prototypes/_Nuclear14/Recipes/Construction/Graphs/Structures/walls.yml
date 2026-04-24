@@ -24,6 +24,17 @@
               amount: 2
               doAfter: 2
 
+        - to: WallWoodTall
+          completed:
+            - !type:SnapToGrid
+              southRotation: true
+          conditions:
+            - !type:EntityAnchored {}
+          steps:
+            - material: WoodPlank
+              amount: 4
+              doAfter: 3
+
     - node: Frame
       entity: N14WallWoodFrame
       edges:
@@ -75,6 +86,21 @@
             - tool: Prying
               doAfter: 10
 
+    - node: WallWoodTall
+      entity: N14WallWoodTall
+      edges:
+        - to: start
+          completed:
+            - !type:GivePrototype
+              prototype: MaterialWoodPlank1
+              amount: 2
+            - !type:DeleteEntity {}
+          conditions:
+            - !type:EntityAnchored {}
+          steps:
+            - tool: Prying
+              doAfter: 10
+
 - type: constructionGraph
   id: N14ScrapWall
   start: start
@@ -90,10 +116,32 @@
               amount: 10
               doAfter: 2
   
+        - to: SheetScrapWallTall
+          completed:
+            - !type:SnapToGrid
+              southRotation: true
+          conditions:
+            - !type:EntityAnchored {}
+          steps:
+            - material: Steel
+              amount: 10
+              doAfter: 2
+
         - to: WhiteScrapWall
           completed:
             - !type:SnapToGrid
               southRotation: true
+          steps:
+            - material: Steel
+              amount: 10
+              doAfter: 2
+
+        - to: WhiteScrapWallTall
+          completed:
+            - !type:SnapToGrid
+              southRotation: true
+          conditions:
+            - !type:EntityAnchored {}
           steps:
             - material: Steel
               amount: 10
@@ -108,7 +156,29 @@
               amount: 10
               doAfter: 2
 
+        - to: RedScrapWallTall
+          completed:
+            - !type:SnapToGrid
+              southRotation: true
+          conditions:
+            - !type:EntityAnchored {}
+          steps:
+            - material: Steel
+              amount: 10
+              doAfter: 2
+
         - to: BlueScrapWall
+          completed:
+            - !type:SnapToGrid
+              southRotation: true
+          conditions:
+            - !type:EntityAnchored {}
+          steps:
+            - material: Steel
+              amount: 10
+              doAfter: 2
+
+        - to: BlueScrapWallTall
           completed:
             - !type:SnapToGrid
               southRotation: true
@@ -143,8 +213,34 @@
             - tool: Welding
               doAfter: 10
 
+    - node: SheetScrapWallTall
+      entity: N14WallScrapTall
+      edges:
+        - to: start
+          completed:
+            - !type:GivePrototype
+              prototype: Steel
+              amount: 7
+            - !type:DeleteEntity
+          steps:
+            - tool: Welding
+              doAfter: 10
+
     - node: WhiteScrapWall
       entity: N14WallScrapWhiteSlanted
+      edges:
+        - to: start
+          completed:
+            - !type:GivePrototype
+              prototype: Steel
+              amount: 7
+            - !type:DeleteEntity
+          steps:
+            - tool: Welding
+              doAfter: 10
+
+    - node: WhiteScrapWallTall
+      entity: N14WallScrapWhiteTall
       edges:
         - to: start
           completed:
@@ -169,6 +265,19 @@
             - tool: Welding
               doAfter: 10
 
+    - node: BlueScrapWallTall 
+      entity: N14WallScrapBlueTall
+      edges:
+        - to: start
+          completed:
+            - !type:GivePrototype
+              prototype: Steel
+              amount: 7
+            - !type:DeleteEntity
+          steps:
+            - tool: Welding
+              doAfter: 10
+
     - node: RedScrapWall
       entity: N14WallScrapRedSlanted
       edges:
@@ -182,6 +291,19 @@
             - tool: Welding
               doAfter: 10
 
+    - node: RedScrapWallTall
+      entity: N14WallScrapRedTall
+      edges:
+        - to: start
+          completed:
+            - !type:GivePrototype
+              prototype: Steel
+              amount: 7
+            - !type:DeleteEntity
+          steps:
+            - tool: Welding
+              doAfter: 10
+
     - node: RoughScrapWall
       entity: N14WallRoughScrapSlanted
       edges:
@@ -191,6 +313,19 @@
               prototype: N14Scrap
               amount: 3
             - !type:DeleteEntity # Forge-Change
+          steps:
+            - tool: Welding
+              doAfter: 25
+
+    - node: RoughScrapWallTall
+      entity: N14WallRoughScrapTall
+      edges:
+        - to: start
+          completed:
+            - !type:GivePrototype
+              prototype: N14Scrap
+              amount: 5
+            - !type:DeleteEntity
           steps:
             - tool: Welding
               doAfter: 25
