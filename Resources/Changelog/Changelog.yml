@@ -3812,3 +3812,13 @@ Entries:
   id: 5767
   time: '2026-04-24T16:12:21.0000000+00:00'
   url: https://github.com/Misfit-Sanctuary/nuclear-14/pull/329
+- author: qevie
+  changes:
+    - type: Add
+      message: >-
+        The Brotherhoods Scribes have discovered a new chemical reaction! Now,
+        Uranium mixed with iron produces an electromagnetic pulse - perfect for
+        disabling dangerous - and now widespread C-27 units!
+  id: 5768
+  time: '2026-04-24T18:07:56.0000000+00:00'
+  url: https://github.com/Misfit-Sanctuary/nuclear-14/pull/332
