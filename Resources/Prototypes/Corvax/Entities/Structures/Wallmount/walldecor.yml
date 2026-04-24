@@ -1,30 +1,41 @@
 - type: entity
   parent: N14SignBase
   id: NCFlagWallBazaar
-  name: flag bazaar
+  name: Bazaar flag
   suffix: bazaar
-  description: You notice something in common with this bird...
+  description: You notice something interesting with this bird...
   components:
   - type: Sprite
     sprite: Corvax/Structures/Wallmount/flag.rsi
     state: flag_bazar
+  - type: Construction
+    graph: DecorationFlagBazaar
+    node: FlagBazaar
 
 - type: entity
   parent: NCFlagWallBazaar
   id: NCFlagMexico
-  name: Mexico Flag
+  name: Mexico flag
   suffix: mexico
   description: Avocados from Mexico!
   components:
   - type: Sprite
+    sprite: Corvax/Structures/Wallmount/flag.rsi
     state: flag_mex
+  - type: Construction
+    graph: DecorationFlagMexico
+    node: FlagMexico 
 
 - type: entity
   parent: NCFlagWallBazaar
   id: NCFlagWallTown
-  name: Town Flag
+  name: Brahmin flag
   suffix: town
   description: The brahmin on this flag doesn't look very alive...
   components:
   - type: Sprite
+    sprite: Corvax/Structures/Wallmount/flag.rsi
     state: flag_town
+  - type: Construction
+    graph: DecorationFlagTown
+    node: FlagTown

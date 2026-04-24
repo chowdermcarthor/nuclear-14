@@ -325,6 +325,81 @@
               amount: 2
             - !type:DeleteEntity
 
+- type: constructionGraph
+  id: DecorationFlagBazaar
+  start: start
+  graph:
+    - node: start
+      edges:
+        - to: FlagBazaar
+          steps:
+            - material: Cloth
+              amount: 2
+              doAfter: 3
+
+    - node: FlagBazaar
+      entity: NCFlagWallBazaar
+      edges:
+        - to: start
+          steps:
+            - tool: Cutting
+              doAfter: 3
+          completed:
+            - !type:SpawnPrototype
+              prototype: MaterialCloth1
+              amount: 2
+            - !type:DeleteEntity
+
+- type: constructionGraph
+  id: DecorationFlagTown
+  start: start
+  graph:
+    - node: start
+      edges:
+        - to: FlagTown
+          steps:
+            - material: Cloth
+              amount: 2
+              doAfter: 3
+
+    - node: FlagTown
+      entity: NCFlagWallTown
+      edges:
+        - to: start
+          steps:
+            - tool: Cutting
+              doAfter: 3
+          completed:
+            - !type:SpawnPrototype
+              prototype: MaterialCloth1
+              amount: 2
+            - !type:DeleteEntity
+
+- type: constructionGraph
+  id: DecorationFlagMexico
+  start: start
+  graph:
+    - node: start
+      edges:
+        - to: FlagMexico
+          steps:
+            - material: Cloth
+              amount: 2
+              doAfter: 3
+
+    - node: FlagMexico
+      entity: NCFlagWallMexico
+      edges:
+        - to: start
+          steps:
+            - tool: Cutting
+              doAfter: 3
+          completed:
+            - !type:SpawnPrototype
+              prototype: MaterialCloth1
+              amount: 2
+            - !type:DeleteEntity
+
 # Banners aka big flags
 
 - type: constructionGraph

@@ -197,6 +197,54 @@
   objectType: Structure
   placementMode: SnapgridCenter
 
+- type: construction
+  name: Bazaar flag
+  id: NCFlagWallBazaar
+  graph: DecorationFlagBazaar
+  startNode: start
+  targetNode: FlagBazaar
+  description: You notice something interesting with this bird...
+#  category: construction-category-furniture
+  objectType: Structure
+  placementMode: SnapgridCenter
+  canBuildInImpassable: false
+  hide: false
+  icon:
+    sprite: Corvax/Structures/Wallmount/flag.rsi
+    state: flag_bazar
+
+- type: construction
+  name: Brahmin flag
+  id: NCFlagWallTown
+  graph: DecorationFlagTown
+  startNode: start
+  targetNode: FlagTown
+  description: The brahmin on this flag doesn't look very alive...
+#  category: construction-category-furniture
+  objectType: Structure
+  placementMode: SnapgridCenter
+  canBuildInImpassable: false
+  hide: false
+  icon:
+    sprite: Corvax/Structures/Wallmount/flag.rsi
+    state: flag_town
+
+- type: construction
+  name: Mexico flag
+  id: NCFlagWallMexico
+  graph: DecorationFlagMexico
+  startNode: start
+  targetNode: FlagMexico
+  description: Avocados from Mexico!
+#  category: construction-category-furniture
+  objectType: Structure
+  placementMode: SnapgridCenter
+  canBuildInImpassable: false
+  hide: false
+  icon:
+    sprite: Corvax/Structures/Wallmount/flag.rsi
+    state: flag_mex
+
 # Banners aka big flags
 
 - type: construction
