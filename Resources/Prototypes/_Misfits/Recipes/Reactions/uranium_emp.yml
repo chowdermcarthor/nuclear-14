@@ -1,0 +1,13 @@
+- type: reaction
+  id: UraniumEMP
+  reactants:
+    Uranium:
+      amount: 5
+    Iron:
+      amount: 10
+  effects:
+  - !type:EmpReactionEffect
+      rangePerUnit: 0.2
+      maxRange: 6
+      energyConsumption: 12500
+      duration: 15
