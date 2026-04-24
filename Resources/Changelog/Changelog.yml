@@ -3789,3 +3789,59 @@ Entries:
   id: 5766
   time: '2026-04-24T02:53:04.0000000+00:00'
   url: https://github.com/Misfit-Sanctuary/nuclear-14/pull/327
+- author: Chancerous
+  changes:
+    - type: Tweak
+      message: Replaced FoTA classroom with a functioning farm
+    - type: Tweak
+      message: Encloses FoTA base with a fence
+    - type: Tweak
+      message: Made FoTA closet larger and gave them body decomp options
+    - type: Tweak
+      message: Made legions mines larger
+    - type: Fix
+      message: Readded vault & tribal blueprints
+    - type: Fix
+      message: Unelectrified FoTA window bars
+    - type: Fix
+      message: Added BoS substation so they have power on round start now
+    - type: Add
+      message: Gave FoTA recharger
+    - type: Add
+      message: Gave FoTA seed extractor
+  id: 5767
+  time: '2026-04-24T16:12:21.0000000+00:00'
+  url: https://github.com/Misfit-Sanctuary/nuclear-14/pull/329
+- author: qevie
+  changes:
+    - type: Add
+      message: >-
+        The Brotherhoods Scribes have discovered a new chemical reaction! Now,
+        Uranium mixed with iron produces an electromagnetic pulse - perfect for
+        disabling dangerous - and now widespread C-27 units!
+  id: 5768
+  time: '2026-04-24T18:07:56.0000000+00:00'
+  url: https://github.com/Misfit-Sanctuary/nuclear-14/pull/332
+- author: Bill Clinton
+  changes:
+    - type: Tweak
+      message: legion armor tweak and rework. caesar wants blood and you can bring it.
+    - type: Tweak
+      message: Mk2 combat armor is worth it now. so is Mk3 brotherhood combat armor.
+    - type: Remove
+      message: >-
+        NCR vet doesn't get old armor now, he gets the desert ranger instead
+        now.
+    - type: Tweak
+      message: 'Brotherhood ultimate kit rebalance I want to blow my brains out '
+    - type: Fix
+      message: 'NCRA specialists do get their .50 NCR rifle now. '
+    - type: Tweak
+      message: M60 light buff
+    - type: Tweak
+      message: Bozar light buff
+    - type: Tweak
+      message: requested change by cyth, ups the buffer on chemset to 1000
+  id: 5769
+  time: '2026-04-24T18:41:33.0000000+00:00'
+  url: https://github.com/Misfit-Sanctuary/nuclear-14/pull/326

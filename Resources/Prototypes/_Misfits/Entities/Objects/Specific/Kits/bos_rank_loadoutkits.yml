@@ -66,11 +66,11 @@
     state: rifleman
   - type: UndecidedLoadoutBackpack
     possibleSets:
-    - MBoS_KniLas_Set  #Misfits Tweak: AER-14 replaced with AER-9 (KniLas)
+    #- MBoS_KniLas_Set  #Misfits Tweak by bill: knight kits run crude lasers. palsni and palpla are the two choices for more elite brotherhood
     - MBoS_PalLas_Set
     - MBoS_PalBal_Set
-    #- MBoS_PalSni_Set  #Misfits Remove: Bozar removed from all Paladin ranks
-    #- MBoS_PalPla_Set  #Misfits Remove: AER-14 replaced by KniLas (AER-9) above
+    - MBoS_PalSni_Set  #Misfits Remove: Bozar removed from all Paladin ranks
+    #- MBoS_PalPla_Set  #Misfits readd by bill: full auto AER-9 for paladins
     #Misfits Tweak: Paladin-tier ranks use Bozar again instead of the Wattz 2000 option.
     - Misfits_PalWattz_Set
 
@@ -201,10 +201,10 @@
     state: rifleman
   - type: UndecidedLoadoutBackpack
     possibleSets:
-    - MBoS_KniLas_Set  #Misfits Tweak: AER-9 (was AER-14 PalPla)
+    #- MBoS_KniLas_Set  #Misfits Tweak: AER-9 (was AER-14 PalPla)
     - MBoS_PalLas_Set
     - MBoS_PalBal_Set
-    #- MBoS_PalSni_Set  #Misfits Remove: Bozar removed from all Paladin ranks
+    - MBoS_PalSni_Set  #Misfits readd by Bill: AER-9 for elites.
     #Misfits Tweak: Paladin-tier ranks use Bozar again instead of the Wattz 2000 option.
     - Misfits_PalWattz_Set
 
@@ -218,11 +218,11 @@
     state: rifleman
   - type: UndecidedLoadoutBackpack
     possibleSets:
-    - MBoS_KniLas_Set
-    - MBoS_KniBal_Set
+    #- MBoS_KniLas_Set
+    - MBoS_PalBal_Set
     #Misfits Change /Add/: Head Knight gets shotgun auto option (modified PalLas).
     - MBoS_PalLas_Set
-    #Misfits Change /Add/: Head Knight gets Bozar option.
+    #Misfits Change /remove/: Head Knight lost bozar option due to rebalance.
     - MBoS_PalSni_Set
 
 - type: entity
@@ -249,13 +249,13 @@
     state: rifleman
   - type: UndecidedLoadoutBackpack
     possibleSets:
-    - MBoS_KniLas_Set  #Misfits Tweak: AER-14 replaced with AER-9 (KniLas)
+    #- MBoS_KniLas_Set  #Misfits Tweak: AER-14 replaced with AER-9 (KniLas)
     - MBoS_PalLas_Set
     - MBoS_PalBal_Set
-    #- MBoS_PalSni_Set  #Misfits Remove: Bozar removed from all Paladin ranks
+    - MBoS_PalSni_Set  #Misfits Remove: Bozar removed from all Paladin ranks
     #- MBoS_PalPla_Set  #Misfits Remove: AER-14 replaced by KniLas (AER-9) above
     #Misfits Tweak: Paladin-tier ranks use Bozar again instead of the Wattz 2000 option.
-    - Misfits_PalWattz_Set
+    #- Misfits_PalWattz_Set
 
 - type: entity
   id: BoSBrotherhoodKnightKits
@@ -345,8 +345,8 @@
   - type: SpawnItemsOnUse
     items:
       - id: N14WeaponRifleBozarGRA
-      - id: Magazine556Rifle30
-        amount: 3
+      - id: LMGMagazine556Rifle
+        amount: 1
       - id: N14WeaponPistol12mm
       - id: N14MagazinePistol12mm
         amount: 2

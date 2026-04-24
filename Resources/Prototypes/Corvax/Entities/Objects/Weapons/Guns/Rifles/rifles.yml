@@ -221,13 +221,13 @@
     slots:
       gun_magazine:
         name: Magazine
-        startingItem: Magazine556Rifle30
+        startingItem: LMGMagazine556Rifle
         insertSound: /Audio/Weapons/Guns/MagIn/ltrifle_magin.ogg
         ejectSound: /Audio/Weapons/Guns/MagOut/ltrifle_magout.ogg
         priority: 2
         whitelist:
           tags:
-            - Magazine556Rifle30
+            - N14LMGMagazine556Rifle
       gun_chamber:
         name: Chamber
         startingItem: N14Cartridge556Rifle
