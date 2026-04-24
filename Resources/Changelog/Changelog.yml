@@ -3778,3 +3778,14 @@ Entries:
   id: 5765
   time: '2026-04-24T02:19:13.0000000+00:00'
   url: https://github.com/Misfit-Sanctuary/nuclear-14/pull/325
+- author: cythisiax
+  changes:
+    - type: Fix
+      message: >-
+        title has all [ 150 Population Base + 5 Whitelist + Medicine Edits + 150
+        Buffer Limit ] 
+    - type: Fix
+      message: medicine edits are 30u poultice OD
+  id: 5766
+  time: '2026-04-24T02:53:04.0000000+00:00'
+  url: https://github.com/Misfit-Sanctuary/nuclear-14/pull/327
