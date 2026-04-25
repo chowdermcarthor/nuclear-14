@@ -3,6 +3,7 @@ using Content.Shared._Misfits.Warhorn.Components;
 using Content.Shared.Interaction.Events;
 using Robust.Shared.Audio;
 using Robust.Shared.Audio.Systems;
+using Robust.Shared.Network;
 using Robust.Shared.Player;
 
 
@@ -13,6 +14,7 @@ public sealed class WarhornSystem : EntitySystem
 {
     [Dependency] private readonly SharedAudioSystem _audio = default!;
     [Dependency] private readonly SharedTransformSystem _transform = default!;
+    [Dependency] private readonly INetManager _netMan = default!;
 
     public override void Initialize()
     {
@@ -33,12 +35,15 @@ public sealed class WarhornSystem : EntitySystem
             MaxDistance = ent.Comp.Range
         };
 
-        _audio.PlayEntity(
-            filename: _audio.ResolveSound(sound),
-            Filter.Empty().AddInRange(_transform.GetMapCoordinates(ent, hornXform) , ent.Comp.Range),
-            ent,
-            recordReplay: true,
-            audioParams
-        );
+        if (_netMan.IsServer)
+        {
+            _audio.PlayEntity(
+                filename: _audio.ResolveSound(sound),
+                Filter.Empty().AddInRange(_transform.GetMapCoordinates(ent, hornXform), ent.Comp.Range),
+                ent,
+                recordReplay: true,
+                audioParams
+            );
+        }
     }
 }

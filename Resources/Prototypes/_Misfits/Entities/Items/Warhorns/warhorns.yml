@@ -12,7 +12,9 @@
   - type: Warhorn
     sound: /Audio/_Misfits/Items/Warhorn/WarHorn02.ogg
     range: 45
-    volume: 3
+    volume: 1
+  - type: UseDelay
+    delay: 3
 
 - type: entity
   parent: BaseWarhorn
