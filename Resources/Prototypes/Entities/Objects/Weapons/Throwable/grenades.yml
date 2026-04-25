@@ -267,9 +267,11 @@
   - type: ExplodeOnTrigger
   - type: Explosive
     explosionType: Default
-    totalIntensity: 20000 # ~15 tile radius.
-    intensitySlope: 5
-    maxIntensity: 50
+    # #Misfits Tweak - Keep the nuclear grenade available without a meaningful blast radius.
+    totalIntensity: 1
+    intensitySlope: 1
+    maxIntensity: 1
+    canCreateVacuum: false
   - type: Destructible
     thresholds:
     - trigger:

@@ -53,4 +53,10 @@ public sealed partial class StealthBoyActiveComponent : Component
     /// </summary>
     [DataField, AutoNetworkedField]
     public TimeSpan FadeOutTime = TimeSpan.FromSeconds(2);
+
+    /// <summary>
+    /// Popup shown when the cloak fully fades out.
+    /// </summary>
+    [DataField, AutoNetworkedField]
+    public string ReappearMessage = "You reappear as the Stealth Boy power fades.";
 }

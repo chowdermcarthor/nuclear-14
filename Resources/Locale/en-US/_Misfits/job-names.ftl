@@ -47,6 +47,9 @@ job-description-synthetic-robobrain = You are a pre-war military Robobrain, a cy
 # Super Mutant
 job-name-supermutant = Supermutant
 job-description-supermutant = You are a hulking FEV-mutated humanoid, towering over normal humans. Your immense strength and endurance are matched only by your reduced intellect. Find your place in the wasteland — through force, loyalty, or surprising compassion.
+# #Misfits Add - separate Nightkin whitelist entry under FEV Mutants.
+job-name-nightkin = Nightkin
+job-description-nightkin = You are a Nightkin, a blue-purple FEV mutant changed by long-term Stealth Boy exposure. Strong, scarred, and feared, you walk the wastes apart from ordinary supermutants.
 # #Misfits Tweak - renamed to reflect Legion alignment
 job-name-supermutant-gladiator = Supermutant Legion Gladiator
 job-description-supermutant-gladiator = You are an arena-forged supermutant who fights under Caesar's banner. Your strength and brutality make you a prized weapon of the Legion — a living symbol of conquest.

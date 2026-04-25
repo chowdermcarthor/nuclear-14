@@ -31,6 +31,7 @@ namespace Content.Server.Chemistry.EntitySystems
         [Dependency] private readonly UserInterfaceSystem _userInterfaceSystem = default!;
         [Dependency] private readonly IPrototypeManager _prototypeManager = default!;
         [Dependency] private readonly OpenableSystem _openable = default!;
+        [Dependency] private readonly SharedContainerSystem _containerSystem = default!; // #Misfits Fix - preload dispenser source bottles when slots are generated during MapInit.
 
         public override void Initialize()
         {
@@ -187,14 +188,17 @@ namespace Content.Server.Chemistry.EntitySystems
                 storageComponent.Swap = false;
                 storageComponent.EjectOnBreak = true;
 
-                // Check corresponding index in pre-loaded container (if exists) and set starting item
-                if (i < preLoad.Count)
-                    storageComponent.StartingItem = preLoad[i];
-
                 component.StorageSlotIds.Add(storageSlotId);
                 component.StorageSlots.Add(storageComponent);
                 component.StorageSlots[i].Name = "Storage Slot " + (i+1);
                 _itemSlotsSystem.AddItemSlot(uid, component.StorageSlotIds[i], component.StorageSlots[i]);
+
+                // #Misfits Fix - These slots are created during MapInit, so ItemSlotsSystem may not spawn StartingItem for them.
+                if (i < preLoad.Count && component.StorageSlots[i].ContainerSlot is { } container)
+                {
+                    var item = Spawn(preLoad[i], Transform(uid).Coordinates);
+                    _containerSystem.Insert(item, container);
+                }
             }
 
             _itemSlotsSystem.AddItemSlot(uid, SharedReagentDispenser.OutputSlotName, component.BeakerSlot);

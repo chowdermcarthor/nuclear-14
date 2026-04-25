@@ -1,0 +1,37 @@
+# #Misfits Add - Nightkin species: Super Mutants with Stealth Boy-induced blue-purple skin.
+# Same stats as SuperMutant. Uses its own job whitelist and shares the clothing template.
+
+- type: species
+  id: Nightkin
+  name: species-name-nightkin
+  roundStart: true
+  order: 4
+  whitelistRequired: true
+  restrictedCustomization: true
+  allowedLoadoutCategories:
+  - Weapons
+  - Bags
+  - Backpacks
+  - Duffel
+  - Satchel
+  - Items
+  # #Misfits Fix - Nightkin need their own whitelist entry under FEV Mutants.
+  jobWhitelistUnlock: Nightkin
+  restrictedJobs:
+  - Nightkin
+  prototype: N14MobNightkinPlayer
+  sprites: MobSuperMutantSprites
+  markingLimits: MobSuperMutantMarkingLimits
+  dollPrototype: N14MobNightkinDummy
+  skinColoration: Hues
+  # Nightkin slate blue-purple (from prolonged Stealth Boy exposure in lore).
+  defaultSkinTone: "#4A5878"
+  minHeight: 1.5
+  defaultHeight: 1.5
+  maxHeight: 1.5
+  minWidth: 1.5
+  defaultWidth: 1.5
+  maxWidth: 1.5
+  sexes:
+  - Male
+  - Female

@@ -18,11 +18,13 @@
     maxMessageLength: 128
     targetDepartment: Tribe
     announcementColor: "#d69b3d"
+  # #Misfits Removed - SmokeSignalSystem now opens the UI from E/complex activation
+  # after checking tribe access; ActivatableUI bypassed that gate.
+  # - type: ActivatableUI
+  #   inHandsOnly: false
+  #   singleUser: true
+  #   key: enum.SmokeSignalUiKey.Key
   # BUI registration — links to the SmokeSignalBoundUserInterface client class
-  - type: ActivatableUI
-    inHandsOnly: false
-    singleUser: true
-    key: enum.SmokeSignalUiKey.Key
   - type: UserInterface
     interfaces:
       enum.SmokeSignalUiKey.Key:

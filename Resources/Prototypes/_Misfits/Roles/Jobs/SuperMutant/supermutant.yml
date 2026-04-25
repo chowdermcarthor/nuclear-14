@@ -38,6 +38,37 @@
   equipment:
     jumpsuit: ClothingSuperMutantVaultSuit
 
+# #Misfits Add - Nightkin variant with its own whitelist entry.
+- type: job
+  id: Nightkin
+  jobWhitelistBypassesRoleTimers: true
+  name: job-name-nightkin
+  description: job-description-nightkin
+  playTimeTracker: Nightkin
+  icon: JobIconBorg
+  supervisors: job-supervisors-supermutant
+  canBeAntag: false
+  setPreference: true
+  overrideConsoleVisibility: true
+  whitelisted: true
+  hideWithoutWhitelist: true
+  spawnLoadout: false
+  startingGear: SuperMutantVaultSuitGear
+  applyTraits: true
+  requirements:
+    - !type:CharacterSpeciesRequirement
+      species:
+        - Nightkin
+  special:
+  - !type:AddComponentSpecial
+    components:
+      - type: NpcFactionMember
+        factions:
+          - PlayerSuperMutant
+
+- type: playTimeTracker
+  id: Nightkin
+
 # #Misfits Add - Gladiator variant of the playable Supermutant role.
 # Spawns with an arena-themed outfit while retaining normal whitelist and species restrictions.
 - type: job

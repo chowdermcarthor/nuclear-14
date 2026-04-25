@@ -10,6 +10,8 @@
 //   5. Message is broadcast as a styled announcement pop-up to every living Tribe-dept player.
 
 using Content.Shared._Misfits.SmokeSignal;
+using Content.Server.Atmos.EntitySystems;
+using Content.Shared.Interaction;
 using Content.Shared.Mind;
 using Content.Shared.Mobs.Systems;
 using Content.Shared.Popups;
@@ -43,6 +45,9 @@ public sealed class SmokeSignalSystem : EntitySystem
         // Register the activation verb on any entity with SmokeSignalComponent
         SubscribeLocalEvent<SmokeSignalComponent, GetVerbsEvent<ActivationVerb>>(OnGetVerb);
 
+        // E/complex activation should open the signal UI for tribe members before bonfire extinguishing handles it.
+        SubscribeLocalEvent<SmokeSignalComponent, ActivateInWorldEvent>(OnActivateInWorld, before: new[] { typeof(FlammableSystem) });
+
         // Handle message sent from the BUI text input
         SubscribeLocalEvent<SmokeSignalComponent, SmokeSignalSendMessage>(OnSendMessage);
     }
@@ -65,21 +70,24 @@ public sealed class SmokeSignalSystem : EntitySystem
             Text = Loc.GetString("smoke-signal-verb"),
             Act = () =>
             {
-                // Check cooldown before opening the UI
-                if (component.CooldownEnd.HasValue && _timing.CurTime < component.CooldownEnd.Value)
-                {
-                    var remaining = (int) Math.Ceiling((component.CooldownEnd.Value - _timing.CurTime).TotalSeconds);
-                    _popup.PopupEntity(
-                        Loc.GetString("smoke-signal-cooldown", ("seconds", remaining)),
-                        uid, args.User, PopupType.SmallCaution);
-                    return;
-                }
-
-                // Open the text input window for the activating player
-                _ui.OpenUi(uid, SmokeSignalUiKey.Key, args.User);
+                TryOpenSignalUi(uid, component, args.User);
             },
             Priority = 1,
         });
+    }
+
+    private void OnActivateInWorld(EntityUid uid, SmokeSignalComponent component, ActivateInWorldEvent args)
+    {
+        if (args.Handled || !args.Complex)
+            return;
+
+        if (!IsInDepartment(args.User, component.TargetDepartment))
+            return;
+
+        if (!TryOpenSignalUi(uid, component, args.User))
+            return;
+
+        args.Handled = true;
     }
 
     // ──────────────────────────────────────────────────────────────────────────────────
@@ -89,6 +97,9 @@ public sealed class SmokeSignalSystem : EntitySystem
     private void OnSendMessage(EntityUid uid, SmokeSignalComponent component, SmokeSignalSendMessage args)
     {
         if (args.Actor is not { Valid: true } sender) // #Misfits Fix - .Session removed from BUI messages; use args.Actor
+            return;
+
+        if (!IsInDepartment(sender, component.TargetDepartment))
             return;
 
         // Re-validate cooldown (race guard)
@@ -153,6 +164,23 @@ public sealed class SmokeSignalSystem : EntitySystem
     // ──────────────────────────────────────────────────────────────────────────────────
     //  Helpers
     // ──────────────────────────────────────────────────────────────────────────────────
+
+    private bool TryOpenSignalUi(EntityUid uid, SmokeSignalComponent component, EntityUid user)
+    {
+        // Check cooldown before opening the UI
+        if (component.CooldownEnd.HasValue && _timing.CurTime < component.CooldownEnd.Value)
+        {
+            var remaining = (int) Math.Ceiling((component.CooldownEnd.Value - _timing.CurTime).TotalSeconds);
+            _popup.PopupEntity(
+                Loc.GetString("smoke-signal-cooldown", ("seconds", remaining)),
+                uid, user, PopupType.SmallCaution);
+            return false;
+        }
+
+        // Open the text input window for the activating player
+        _ui.OpenUi(uid, SmokeSignalUiKey.Key, user);
+        return true;
+    }
 
     /// <summary>
     /// Returns true if the entity's job belongs to the given department.

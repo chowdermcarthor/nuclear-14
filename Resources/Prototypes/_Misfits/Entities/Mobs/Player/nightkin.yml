@@ -1,0 +1,11 @@
+# #Misfits Add - Player-controlled Nightkin entity.
+
+- type: entity
+  save: false
+  name: Urist McNightkin
+  parent: N14BaseMobNightkin
+  id: N14MobNightkinPlayer
+  components:
+    - type: NpcFactionMember
+      factions:
+      - Wastelander

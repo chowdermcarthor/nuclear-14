@@ -1,6 +1,6 @@
 - type: job
   id: TownDoctor
-  setPreference: true
+  setPreference: false # #Misfits Tweak - Town Doctor is disabled; FoTA now covers civilian medical play.
   jobWhitelistBypassesRoleTimers: true
   weight: 60
   overrideConsoleVisibility: false

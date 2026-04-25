@@ -90,6 +90,14 @@
   parent: N14BasePipboy
   id: N14Pipboy
 
+- type: entity
+  parent: N14BasePipboy
+  id: N14NCRVeteranRangerPipboy
+  suffix: NCR Veteran Ranger
+  components:
+  - type: Pda
+    id: N14IDBadgeNCRDesertRangerElite
+
 # #Misfits Add - Wastelander Pip-Boy with pre-inserted dogtags for PipBoy Hub networking.
 - type: entity
   parent: N14BasePipboy

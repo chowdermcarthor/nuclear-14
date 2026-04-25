@@ -6,6 +6,7 @@
 // shimmer instead of full invisibility (visibility clamped on the StealthComponent).
 using Content.Shared.Actions;
 using Content.Shared.Interaction.Events;
+using Content.Shared.Mobs.Systems;
 using Content.Shared.Popups;
 using Content.Shared.Stealth;
 using Content.Shared.Stealth.Components;
@@ -20,6 +21,7 @@ public abstract class SharedStealthBoySystem : EntitySystem
     [Dependency] private readonly INetManager _net = default!;
     [Dependency] private readonly SharedPopupSystem _popup = default!;
     [Dependency] private readonly SharedStealthSystem _stealth = default!;
+    [Dependency] private readonly MobStateSystem _mobState = default!;
 
     /// <summary>
     /// Server-only hook called on activation so subclasses can apply addiction
@@ -77,12 +79,37 @@ public abstract class SharedStealthBoySystem : EntitySystem
     protected void Activate(Entity<StealthBoyComponent> item, EntityUid user)
     {
         var now = _timing.CurTime;
+        ActivateStealth(
+            user,
+            item.Comp.Duration,
+            item.Comp.Visibility,
+            item.Comp.FadeInTime,
+            item.Comp.FadeOutTime,
+            "The Stealth Boy hums and you feel yourself fade from view.",
+            "You reappear as the Stealth Boy power fades.");
+    }
+
+    /// <summary>
+    /// Activates Stealth Boy cloak behavior on an entity without requiring an item.
+    /// Used by Nightkin's innate implant path.
+    /// </summary>
+    public void ActivateStealth(
+        EntityUid user,
+        TimeSpan duration,
+        float visibility,
+        TimeSpan fadeInTime,
+        TimeSpan fadeOutTime,
+        string activateMessage,
+        string reappearMessage)
+    {
+        var now = _timing.CurTime;
         var active = EnsureComp<StealthBoyActiveComponent>(user);
         active.StartTime = now;
-        active.EndTime = now + item.Comp.Duration;
-        active.TargetVisibility = item.Comp.Visibility;
-        active.FadeInTime = item.Comp.FadeInTime;
-        active.FadeOutTime = item.Comp.FadeOutTime;
+        active.EndTime = now + duration;
+        active.TargetVisibility = visibility;
+        active.FadeInTime = fadeInTime;
+        active.FadeOutTime = fadeOutTime;
+        active.ReappearMessage = reappearMessage;
         active.FadingOut = false;
         active.FadeOutStart = TimeSpan.Zero;
         Dirty(user, active);
@@ -90,7 +117,7 @@ public abstract class SharedStealthBoySystem : EntitySystem
         // Spawn the stealth shader. Clamp MinVisibility to the prototype's target so
         // we keep the translucent "Chinese Stealth Suit" shimmer rather than going invisible.
         var stealth = EnsureComp<StealthComponent>(user);
-        stealth.MinVisibility = Math.Min(stealth.MinVisibility, item.Comp.Visibility);
+        stealth.MinVisibility = Math.Min(stealth.MinVisibility, visibility);
         Dirty(user, stealth);
         _stealth.SetEnabled(user, true);
         _stealth.SetVisibility(user, 1f);
@@ -105,8 +132,22 @@ public abstract class SharedStealthBoySystem : EntitySystem
         if (_net.IsServer)
         {
             OnStealthBoyActivated(user, exposure);
-            _popup.PopupEntity("The Stealth Boy hums and you feel yourself fade from view.", user, user);
+            _popup.PopupEntity(activateMessage, user, user);
         }
+    }
+
+    public bool TryBeginFadeOut(EntityUid user, StealthBoyActiveComponent? active = null)
+    {
+        if (!Resolve(user, ref active, false))
+            return false;
+
+        if (active.FadingOut)
+            return false;
+
+        active.FadingOut = true;
+        active.FadeOutStart = _timing.CurTime;
+        Dirty(user, active);
+        return true;
     }
 
     private void OnActiveShutdown(Entity<StealthBoyActiveComponent> ent, ref ComponentShutdown args)
@@ -158,7 +199,7 @@ public abstract class SharedStealthBoySystem : EntitySystem
 
                 SetVisibility(uid, visibility);
 
-                if (now >= active.EndTime)
+                if (now >= active.EndTime || _mobState.IsIncapacitated(uid))
                 {
                     active.FadingOut = true;
                     active.FadeOutStart = now;
@@ -182,7 +223,7 @@ public abstract class SharedStealthBoySystem : EntitySystem
                     RemCompDeferred<StealthComponent>(uid);
                     RemCompDeferred<StealthBoyActiveComponent>(uid);
                     if (_net.IsServer)
-                        _popup.PopupEntity("You reappear as the Stealth Boy power fades.", uid, uid);
+                        _popup.PopupEntity(active.ReappearMessage, uid, uid);
                     continue;
                 }
             }

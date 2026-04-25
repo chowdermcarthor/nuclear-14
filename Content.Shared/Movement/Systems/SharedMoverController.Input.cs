@@ -36,9 +36,10 @@ namespace Content.Shared.Movement.Systems
                 .Bind(EngineKeyFunctions.MoveRight, moveRightCmdHandler)
                 .Bind(EngineKeyFunctions.MoveDown, moveDownCmdHandler)
                 .Bind(EngineKeyFunctions.Walk, new WalkInputCmdHandler(this))
-                .Bind(EngineKeyFunctions.CameraRotateLeft, new CameraRotateInputCmdHandler(this, Direction.East))
-                .Bind(EngineKeyFunctions.CameraRotateRight, new CameraRotateInputCmdHandler(this, Direction.West))
-                .Bind(EngineKeyFunctions.CameraReset, new CameraResetInputCmdHandler(this))
+                // #Misfits Change - camera rotation disabled entirely; unregistered handlers ignore custom keybinds
+                //.Bind(EngineKeyFunctions.CameraRotateLeft, new CameraRotateInputCmdHandler(this, Direction.East))
+                //.Bind(EngineKeyFunctions.CameraRotateRight, new CameraRotateInputCmdHandler(this, Direction.West))
+                //.Bind(EngineKeyFunctions.CameraReset, new CameraResetInputCmdHandler(this))
                 // TODO: Relay
                 // Shuttle
                 .Bind(ContentKeyFunctions.ShuttleStrafeUp, new ShuttleInputCmdHandler(this, ShuttleButtons.StrafeUp))

@@ -49,7 +49,7 @@
           TownMayor: [ 1, 1 ]
           TownSheriff: [ 1, 1 ]
           TownDeputy: [ 1, 2 ]
-          TownDoctor: [ 1, 1 ]
+          # TownDoctor: [ 1, 1 ] # #Misfits Tweak - disabled; FoTA FollowerDoctor slots replace town medical coverage.
           TownMechanic: [ 2, 2 ]
           TownShopkeeper: [ 1, 1 ]
           TownShopkeeperHelper: [ 1, 1 ] # Forge-Town

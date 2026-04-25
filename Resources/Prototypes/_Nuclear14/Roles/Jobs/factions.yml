@@ -155,7 +155,7 @@
   - TownMayor
   - TownSheriff
   - TownDeputy
-  - TownDoctor
+  # - TownDoctor # #Misfits Tweak - disabled; Followers of the Apocalypse replaces town medical coverage.
   - TownShopkeeper
   - TownShopkeeperHelper # Forge-Add
   - WastelandChaplain # Forge-Change

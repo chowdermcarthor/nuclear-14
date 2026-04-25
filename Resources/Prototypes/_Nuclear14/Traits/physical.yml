@@ -269,11 +269,19 @@
           - Alive # Forge-Change
           damageCap: 200
           damage:
-            groups:
-              Brute: -0.035 # Forge-Change
-              Burn: -0.035 # Forge-Change
-              Airloss: -0.035
-              Toxin: -0.015 # Forge-Change
+            types:
+              # #Misfits Fix - PassiveDamage group healing is split across member types; direct types make burn regeneration visible.
+              Blunt: -0.035
+              Slash: -0.035
+              Piercing: -0.035
+              Heat: -0.035
+              Shock: -0.035
+              Cold: -0.035
+              Caustic: -0.035
+              Asphyxiation: -0.035
+              Bloodloss: -0.035
+              Poison: -0.015
+              Radiation: -0.015
 
 - type: trait
   id: N14WorldChampion
