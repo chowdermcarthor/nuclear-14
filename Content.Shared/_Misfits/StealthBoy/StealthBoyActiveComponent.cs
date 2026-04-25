@@ -49,6 +49,12 @@ public sealed partial class StealthBoyActiveComponent : Component
     public TimeSpan FadeOutStart;
 
     /// <summary>
+    /// True once steady-state visibility has been applied after fade-in.
+    /// </summary>
+    [DataField, AutoNetworkedField]
+    public bool FadeInComplete;
+
+    /// <summary>
     /// Fade-out duration.
     /// </summary>
     [DataField, AutoNetworkedField]

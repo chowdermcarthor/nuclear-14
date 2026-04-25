@@ -205,6 +205,15 @@ namespace Content.Server.Connection
             }
 
             var modernHwid = e.UserData.ModernHWIds;
+            bool? whitelistStatus = null;
+
+            async Task<bool> GetWhitelistStatus()
+            {
+                if (whitelistStatus == null)
+                    whitelistStatus = await _db.GetWhitelistStatusAsync(userId);
+
+                return whitelistStatus.Value;
+            }
 
             var bans = await _db.GetServerBansAsync(addr, userId, hwId, modernHwid, includeUnbanned: false);
             if (bans.Count > 0)
@@ -231,7 +240,7 @@ namespace Content.Server.Connection
                 var record = await _db.GetPlayerRecordByUserId(userId);
                 var validAccountAge = record != null &&
                                       record.FirstSeenTime.CompareTo(DateTimeOffset.UtcNow - TimeSpan.FromHours(minHoursAge)) <= 0;
-                var bypassAllowed = _cfg.GetCVar(CCVars.BypassBunkerWhitelist) && await _db.GetWhitelistStatusAsync(userId);
+                var bypassAllowed = _cfg.GetCVar(CCVars.BypassBunkerWhitelist) && await GetWhitelistStatus();
 
                 // Use the custom reason if it exists & they don't have the minimum account age
                 if (customReason != string.Empty && !validAccountAge && !bypassAllowed)
@@ -271,7 +280,7 @@ namespace Content.Server.Connection
 
             if (_cfg.GetCVar(CCVars.BabyJailEnabled) && adminData == null)
             {
-                var result = await IsInvalidConnectionDueToBabyJail(userId, e);
+                var result = await IsInvalidConnectionDueToBabyJail(userId, e, await GetWhitelistStatus());
 
                 if (result.IsInvalid)
                     return (ConnectionDenyReason.BabyJail, result.Reason, null);
@@ -284,7 +293,7 @@ namespace Content.Server.Connection
             // #Misfits Add - Whitelisted players use an expanded cap (soft max + reserved slots) so they
             // aren't pop-capped or queued behind regular players. Admins already bypass entirely via adminBypass.
             var softMax = _cfg.GetCVar(CCVars.SoftMaxPlayers);
-            var isWhitelistedPlayer = adminData == null && await _db.GetWhitelistStatusAsync(userId);
+            var isWhitelistedPlayer = adminData == null && await GetWhitelistStatus();
             var effectiveCap = isWhitelistedPlayer
                 ? softMax + _cfg.GetCVar(CCVars.WhitelistReservedSlots)
                 : softMax;
@@ -311,11 +320,11 @@ namespace Content.Server.Connection
                         continue;
                     }
 
-                    var whitelistStatus = await IsWhitelisted(whitelist, e.UserData, _sawmill);
-                    if (!whitelistStatus.isWhitelisted)
+                    var whitelistCheck = await IsWhitelisted(whitelist, e.UserData, _sawmill);
+                    if (!whitelistCheck.isWhitelisted)
                     {
                         // Not whitelisted.
-                        return (ConnectionDenyReason.Whitelist, Loc.GetString("whitelist-fail-prefix", ("msg", whitelistStatus.denyMessage!)), null);
+                        return (ConnectionDenyReason.Whitelist, Loc.GetString("whitelist-fail-prefix", ("msg", whitelistCheck.denyMessage!)), null);
                     }
 
                     // Whitelisted, don't check any more.
@@ -349,10 +358,10 @@ namespace Content.Server.Connection
             return null;
         }
 
-        private async Task<(bool IsInvalid, string Reason)> IsInvalidConnectionDueToBabyJail(NetUserId userId, NetConnectingArgs e)
+        private async Task<(bool IsInvalid, string Reason)> IsInvalidConnectionDueToBabyJail(NetUserId userId, NetConnectingArgs e, bool isWhitelisted)
         {
             // If you're whitelisted then bypass this whole thing
-            if (await _db.GetWhitelistStatusAsync(userId))
+            if (isWhitelisted)
                 return (false, "");
 
             // Initial cvar retrieval

@@ -55,6 +55,7 @@ public sealed class GroupSystem : EntitySystem
     private readonly Dictionary<NetUserId, int>       _playerToGroup = new();
     private readonly List<PendingInvite>              _pendingInvites = new();
     private readonly HashSet<NetUserId>               _overlayEnabled = new();
+    private static readonly Dictionary<NetEntity, string> EmptyOverlay = new();
     private int _nextGroupId = 1;
     private float _overlayAccumulator;
 
@@ -107,30 +108,24 @@ public sealed class GroupSystem : EntitySystem
     /// </summary>
     public List<EntityUid>? GetGroupMemberEntities(EntityUid actor)
     {
-        // Find which session this entity belongs to.
-        foreach (var session in _playerManager.Sessions)
+        if (!TryComp<ActorComponent>(actor, out var actorComp))
+            return null;
+
+        if (!_playerToGroup.TryGetValue(actorComp.PlayerSession.UserId, out var groupId))
+            return null;
+
+        if (!_groups.TryGetValue(groupId, out var group))
+            return null;
+
+        var result = new List<EntityUid>();
+        foreach (var memberId in group.MemberOrder)
         {
-            if (session.AttachedEntity != actor)
+            if (!TryGetSession(memberId, out var memberSession) || memberSession == null)
                 continue;
-
-            if (!_playerToGroup.TryGetValue(session.UserId, out var groupId))
-                return null;
-
-            if (!_groups.TryGetValue(groupId, out var group))
-                return null;
-
-            var result = new List<EntityUid>();
-            foreach (var memberId in group.MemberOrder)
-            {
-                if (!TryGetSession(memberId, out var memberSession) || memberSession == null)
-                    continue;
-                if (memberSession.AttachedEntity is { } ent)
-                    result.Add(ent);
-            }
-            return result;
+            if (memberSession.AttachedEntity is { } ent)
+                result.Add(ent);
         }
-
-        return null;
+        return result;
     }
 
     // ── Overlay broadcast ─────────────────────────────────────────────────
@@ -139,6 +134,19 @@ public sealed class GroupSystem : EntitySystem
     {
         foreach (var (_, group) in _groups)
         {
+            var hasViewer = false;
+            foreach (var memberId in group.MemberOrder)
+            {
+                if (_overlayEnabled.Contains(memberId))
+                {
+                    hasViewer = true;
+                    break;
+                }
+            }
+
+            if (!hasViewer)
+                continue;
+
             // Pre-build the members dict for this group.
             var memberEntities = new Dictionary<NetEntity, string>();
             foreach (var memberId in group.MemberOrder)
@@ -152,15 +160,13 @@ public sealed class GroupSystem : EntitySystem
 
             foreach (var memberId in group.MemberOrder)
             {
+                if (!_overlayEnabled.Contains(memberId))
+                    continue;
+
                 if (!TryGetSession(memberId, out var ms) || ms == null)
                     continue;
 
-                // Members with overlay enabled get the full dict; others get empty to clear stale state.
-                var dict = _overlayEnabled.Contains(memberId)
-                    ? memberEntities
-                    : new Dictionary<NetEntity, string>();
-
-                RaiseNetworkEvent(new GroupOverlayUpdateEvent { GroupMembers = dict }, ms);
+                RaiseNetworkEvent(new GroupOverlayUpdateEvent { GroupMembers = memberEntities }, ms);
             }
         }
     }
@@ -329,7 +335,7 @@ public sealed class GroupSystem : EntitySystem
 
         // Clear overlay for this player.
         _overlayEnabled.Remove(userId);
-        RaiseNetworkEvent(new GroupOverlayUpdateEvent { GroupMembers = new Dictionary<NetEntity, string>() }, session);
+        RaiseNetworkEvent(new GroupOverlayUpdateEvent { GroupMembers = EmptyOverlay }, session);
 
         RemoveMemberFromGroup(userId, groupId);
         SendResult(session, true, Loc.GetString("group-left"));
@@ -376,7 +382,7 @@ public sealed class GroupSystem : EntitySystem
 
         // Clear overlay and state for the kicked player.
         _overlayEnabled.Remove(targetUserId);
-        RaiseNetworkEvent(new GroupOverlayUpdateEvent { GroupMembers = new Dictionary<NetEntity, string>() }, targetSession);
+        RaiseNetworkEvent(new GroupOverlayUpdateEvent { GroupMembers = EmptyOverlay }, targetSession);
         RaiseNetworkEvent(new GroupStateUpdateEvent(), targetSession);
         SendResult(targetSession, false, Loc.GetString("group-you-were-kicked"));
 
@@ -388,9 +394,14 @@ public sealed class GroupSystem : EntitySystem
     {
         var userId = args.SenderSession.UserId;
         if (msg.Enabled)
+        {
             _overlayEnabled.Add(userId);
+        }
         else
+        {
             _overlayEnabled.Remove(userId);
+            RaiseNetworkEvent(new GroupOverlayUpdateEvent { GroupMembers = EmptyOverlay }, args.SenderSession);
+        }
     }
 
     // ── Group state helpers ────────────────────────────────────────────────
@@ -493,16 +504,7 @@ public sealed class GroupSystem : EntitySystem
 
     private bool TryGetSession(NetUserId userId, out ICommonSession? session)
     {
-        foreach (var s in _playerManager.Sessions)
-        {
-            if (s.UserId != userId)
-                continue;
-            session = s;
-            return true;
-        }
-
-        session = null;
-        return false;
+        return _playerManager.TryGetSessionById(userId, out session);
     }
 
     /// <summary>

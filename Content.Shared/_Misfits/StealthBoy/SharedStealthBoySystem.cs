@@ -112,6 +112,7 @@ public abstract class SharedStealthBoySystem : EntitySystem
         active.ReappearMessage = reappearMessage;
         active.FadingOut = false;
         active.FadeOutStart = TimeSpan.Zero;
+        active.FadeInComplete = false;
         Dirty(user, active);
 
         // Spawn the stealth shader. Clamp MinVisibility to the prototype's target so
@@ -183,8 +184,8 @@ public abstract class SharedStealthBoySystem : EntitySystem
             {
                 exposure.ExposureSeconds += frameTime;
                 exposure.LastUpdate = _timing.CurTime;
-                UpdateTier((uid, exposure));
-                Dirty(uid, exposure);
+                if (UpdateTier((uid, exposure)))
+                    Dirty(uid, exposure);
             }
 
             var now = _timing.CurTime;
@@ -197,7 +198,15 @@ public abstract class SharedStealthBoySystem : EntitySystem
                     ? (float)(1.0 + (active.TargetVisibility - 1.0) * Math.Min(1.0, fadeElapsed))
                     : active.TargetVisibility;
 
-                SetVisibility(uid, visibility);
+                if (!active.FadeInComplete)
+                {
+                    SetVisibility(uid, visibility);
+                    if (fadeElapsed >= 1.0)
+                    {
+                        active.FadeInComplete = true;
+                        Dirty(uid, active);
+                    }
+                }
 
                 if (now >= active.EndTime || _mobState.IsIncapacitated(uid))
                 {
@@ -263,8 +272,8 @@ public abstract class SharedStealthBoySystem : EntitySystem
             }
 
             exposure.ExposureSeconds = Math.Max(0f, exposure.ExposureSeconds - exposure.DecayPerSecond * frameTime);
-            UpdateTier((uid, exposure));
-            Dirty(uid, exposure);
+            if (UpdateTier((uid, exposure)))
+                Dirty(uid, exposure);
         }
     }
 
@@ -272,7 +281,7 @@ public abstract class SharedStealthBoySystem : EntitySystem
     /// Recompute the cached tier from ExposureSeconds. Override-friendly hook for
     /// the server to send tier-transition popups.
     /// </summary>
-    protected void UpdateTier(Entity<StealthBoyExposureComponent> ent)
+    protected bool UpdateTier(Entity<StealthBoyExposureComponent> ent)
     {
         var thresholds = ent.Comp.TierThresholds;
         var newTier = 0;
@@ -286,11 +295,12 @@ public abstract class SharedStealthBoySystem : EntitySystem
         }
 
         if (newTier == ent.Comp.CurrentTier)
-            return;
+            return false;
 
         var oldTier = ent.Comp.CurrentTier;
         ent.Comp.CurrentTier = newTier;
         OnTierChanged(ent.Owner, oldTier, newTier);
+        return true;
     }
 
     /// <summary>

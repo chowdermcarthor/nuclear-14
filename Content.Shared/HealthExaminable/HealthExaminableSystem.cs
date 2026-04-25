@@ -62,7 +62,7 @@ public sealed class HealthExaminableSystem : EntitySystem
 
         var first = true;
 
-        var adjustedThresholds = GetAdjustedThresholds(uid, component.Thresholds);
+        var adjustedThresholds = GetAdjustedThresholdsWithLocKeys(uid, component.Thresholds);
 
         foreach (var type in component.ExaminableTypes)
         {
@@ -75,10 +75,10 @@ public sealed class HealthExaminableSystem : EntitySystem
             FixedPoint2 closest = FixedPoint2.Zero;
 
             string chosenLocStr = string.Empty;
-            foreach (var threshold in adjustedThresholds)
+            foreach (var (threshold, locThreshold) in adjustedThresholds)
             {
-                var str = $"health-examinable-{component.LocPrefix}-{type}-{threshold}";
-                var tempLocStr = Loc.GetString($"health-examinable-{component.LocPrefix}-{type}-{threshold}", ("target", Identity.Entity(uid, EntityManager)));
+                var str = $"health-examinable-{component.LocPrefix}-{type}-{locThreshold}";
+                var tempLocStr = Loc.GetString($"health-examinable-{component.LocPrefix}-{type}-{locThreshold}", ("target", Identity.Entity(uid, EntityManager)));
 
                 // i.e., this string doesn't exist, because theres nothing for that threshold
                 if (tempLocStr == str)
@@ -138,7 +138,7 @@ public sealed class HealthExaminableSystem : EntitySystem
             msg.AddMarkup(damageString);
         }
 
-        var adjustedThresholds = GetAdjustedThresholds(target, selfAware.Thresholds);
+        var adjustedThresholds = GetAdjustedThresholdsWithLocKeys(target, selfAware.Thresholds);
 
         foreach (var group in selfAware.DetectableGroups)
         {
@@ -149,9 +149,9 @@ public sealed class HealthExaminableSystem : EntitySystem
             FixedPoint2 closest = FixedPoint2.Zero;
 
             string chosenLocStr = string.Empty;
-            foreach (var threshold in adjustedThresholds)
+            foreach (var (threshold, locThreshold) in adjustedThresholds)
             {
-                var locName = $"health-examinable-selfaware-group-{group}-{threshold}";
+                var locName = $"health-examinable-selfaware-group-{group}-{locThreshold}";
                 var locStr = Loc.GetString(locName);
 
                 var locDoesNotExist = locStr == locName;
@@ -184,10 +184,16 @@ public sealed class HealthExaminableSystem : EntitySystem
         return msg;
     }
 
-    /// <summary>
-    ///     Return thresholds as percentages of an entity's critical threshold.
-    /// </summary>
-    private List<FixedPoint2> GetAdjustedThresholds(EntityUid uid, List<FixedPoint2> thresholdPercentages)
+    private List<(FixedPoint2 Threshold, FixedPoint2 LocThreshold)> GetAdjustedThresholdsWithLocKeys(EntityUid uid, List<FixedPoint2> thresholdPercentages)
+    {
+        var critThreshold = GetCriticalThreshold(uid);
+
+        return thresholdPercentages
+            .Select(percentage => (Threshold: critThreshold * percentage, LocThreshold: FixedPoint2.New(100) * percentage))
+            .ToList();
+    }
+
+    private FixedPoint2 GetCriticalThreshold(EntityUid uid)
     {
         FixedPoint2 critThreshold = 0;
         if (TryComp<MobThresholdsComponent>(uid, out var threshold))
@@ -197,7 +203,7 @@ public sealed class HealthExaminableSystem : EntitySystem
         if (critThreshold == 0)
             critThreshold = 100;
 
-        return thresholdPercentages.Select(percentage => critThreshold * percentage).ToList();
+        return critThreshold;
     }
 }
 
