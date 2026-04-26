@@ -49,3 +49,20 @@
     sound: /Audio/_Misfits/Items/Warhorn/WarHorn01.ogg
     range: 45
     volume: 1
+
+- type: entity
+  parent: BaseWarhorn
+  id: WarhornNCRBugle
+  name: Bugle
+  description: Fine men of California, charge!
+  components:
+  - type: Sprite
+    sprite: /Textures/_Misfits/Objects/Warhorns/ncrbugle.rsi
+    state: icon
+  - type: Item
+    sprite: /Textures/_Misfits/Objects/Warhorns/ncrbugle.rsi
+    size: Normal
+  - type: Warhorn
+    sound: /Audio/_Misfits/Items/Warhorn/BugleCharge.ogg
+    range: 45
+    volume: 1
