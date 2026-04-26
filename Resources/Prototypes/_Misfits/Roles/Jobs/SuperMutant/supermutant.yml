@@ -230,6 +230,7 @@
 - type: startingGear
   id: SuperMutantNCRRangerGear
   equipment:
+    jumpsuit: ClothingSuperMutantJumpsuit
     outerClothing: ClothingSuperMutantRangerArmor
     ears: N14ClothingHeadsetNCR
     id: N14IDBadgeNCRRanger
@@ -273,6 +274,7 @@
 - type: startingGear
   id: SuperMutantNCRTrooperGear
   equipment:
+    jumpsuit: ClothingSuperMutantJumpsuit
     outerClothing: ClothingSuperMutantTrooperArmor
     ears: N14ClothingHeadsetNCR
     id: N14IDNCRDogtagSoldier
