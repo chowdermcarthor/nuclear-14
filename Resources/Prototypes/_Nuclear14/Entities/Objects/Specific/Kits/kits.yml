@@ -514,8 +514,8 @@
       - id: ClothingBeltNCR
       - id: N14ClothingHeadHatNCRBeretRecon
       - id: N14ClothingNeckCloakNCR # Forge-Change
-      - id: N14WeaponSniper50NCRRifle
-      - id: MagazineBox50
+      - id: N14WeaponRifle308SniperRifle
+      - id: Magazine308RifleSniper
       - id: N14WeaponPistol45Colt
       - id: N14MagazinePistol45
         amount: 2

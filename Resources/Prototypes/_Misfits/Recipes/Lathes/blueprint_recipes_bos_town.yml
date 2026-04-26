@@ -17,9 +17,9 @@
   materials:
     Steel: 1000
 
-    Glass: 5
+    Glass: 500
 
-    Circuitry: 5
+    Circuitry: 500
 
 
 # Recharger variants are intentionally excluded from blueprint crafting.
@@ -36,9 +36,9 @@
   materials:
     Steel: 1000
 
-    Glass: 5
+    Glass: 250
 
-    Scrap: 5
+    Scrap: 500
 
 
 - type: latheRecipe
@@ -52,7 +52,7 @@
   materials:
     Steel: 1500
 
-    Scrap: 5
+    Scrap: 50
 
 
 # --- BoS Tier 2 Weapons (Knight energy weapons) ---
@@ -67,11 +67,11 @@
   materials:
     Steel: 3500
 
-    Glass: 15
+    Glass: 350
 
-    Circuitry: 5
+    Circuitry: 250
 
-    Scrap: 15
+    Scrap: 250
 
 
 - type: latheRecipe
@@ -85,11 +85,11 @@
   materials:
     Steel: 3500
 
-    Glass: 15
+    Glass: 450
 
-    Circuitry: 15
+    Circuitry: 350
 
-    Scrap: 5
+    Scrap: 500
 
 
 - type: latheRecipe
@@ -101,13 +101,13 @@
   availableFaction:
   - BrotherhoodOfSteel
   materials:
-    Steel: 3500
+    Steel: 4500
 
-    Glass: 20
+    Glass: 600
 
-    Circuitry: 15
+    Circuitry: 600
 
-    Plastic: 5
+    Plastic: 500
 
 
 
@@ -123,11 +123,11 @@
   materials:
     Steel: 3000
 
-    Glass: 20
+    Glass: 200
 
-    Circuitry: 15
+    Circuitry: 150
 
-    ScrapElectronic: 5
+    ScrapElectronic: 500
 
 
 - type: latheRecipe
@@ -141,11 +141,11 @@
   materials:
     Steel: 3500
 
-    Glass: 20
+    Glass: 800
 
-    Circuitry: 15
+    Circuitry: 900
 
-    ScrapElectronic: 5
+    ScrapElectronic: 500
 
 
 # --- BoS Tier 3 Weapons (Paladin arsenal) ---
@@ -160,13 +160,13 @@
   materials:
     Steel: 6000
 
-    Glass: 30
+    Glass: 1500
 
-    Circuitry: 30
+    Circuitry: 500
 
-    ScrapElectronic: 15
+    ScrapElectronic: 800
 
-    Plastic: 10
+    Plastic: 1000
 
 
 - type: latheRecipe
@@ -180,11 +180,11 @@
   materials:
     Steel: 6000
 
-    Glass: 30
+    Glass: 3500
 
-    Circuitry: 30
+    Circuitry: 600
 
-    ScrapElectronic: 20
+    ScrapElectronic: 200
 
 
 - type: latheRecipe
@@ -198,13 +198,13 @@
   materials:
     Steel: 6000
 
-    Glass: 35
+    Glass: 4000
 
-    Circuitry: 30
+    Circuitry: 1000
 
-    ScrapElectronic: 20
+    ScrapElectronic: 400
 
-    Plastic: 10
+    Plastic: 1200
 
 
 - type: latheRecipe
@@ -216,13 +216,13 @@
   availableFaction:
   - BrotherhoodOfSteel
   materials:
-    Steel: 6000
+    Steel: 6500
 
-    Glass: 30
+    Glass: 2300
 
-    Circuitry: 30
+    Circuitry: 1200
 
-    Plastic: 15
+    Plastic: 1500
 
 
 - type: latheRecipe
@@ -236,11 +236,11 @@
   materials:
     Steel: 6000
 
-    Glass: 40
+    Glass: 400
 
-    Circuitry: 30
+    Circuitry: 750
 
-    ScrapElectronic: 15
+    ScrapElectronic: 450
 
 
 - type: latheRecipe
@@ -254,11 +254,11 @@
   materials:
     Steel: 6000
 
-    Glass: 50
+    Glass: 1200
 
-    Circuitry: 30
+    Circuitry: 1000
 
-    ScrapElectronic: 15
+    ScrapElectronic: 550
 
 
 - type: latheRecipe
@@ -270,15 +270,15 @@
   availableFaction:
   - BrotherhoodOfSteel
   materials:
-    Steel: 6000
+    Steel: 5000
 
-    Glass: 35
+    Glass: 900
 
-    Circuitry: 30
+    Circuitry: 600
 
-    ScrapElectronic: 15
+    ScrapElectronic: 450
 
-    Plastic: 10
+    Plastic: 800
 
 
 # --- BoS Tier 4 Weapons (Elder's vault - pre-war prototypes) ---
@@ -293,13 +293,13 @@
   materials:
     Steel: 10500
 
-    Glass: 70
+    Glass: 700
 
-    Circuitry: 50
+    Circuitry: 1200
 
-    ScrapElectronic: 35
+    ScrapElectronic: 1000
 
-    N14Gold: 5
+    N14Gold: 500
 
 # #Misfits Add - AER-12 recipe at T4; advanced amber-beam laser rifle
 - type: latheRecipe
@@ -313,11 +313,11 @@
   materials:
     Steel: 8000
 
-    Glass: 60
+    Glass: 1600
 
-    Circuitry: 40
+    Circuitry: 1000
 
-    ScrapElectronic: 25
+    ScrapElectronic: 1300
 
 
 # #Misfits Add - Bozar as T4 craftable BoS weapon blueprint; removed from Knight loadout kit
@@ -350,13 +350,13 @@
   materials:
     Steel: 9500
 
-    Glass: 70
+    Glass: 3400
 
-    Circuitry: 55
+    Circuitry: 2500
 
-    ScrapElectronic: 35
+    ScrapElectronic: 1000
 
-    N14Silver: 10
+    N14Silver: 600
 
 # #Misfits Add - AER-15 recipe at T5; highest-damage blue-beam laser rifle
 - type: latheRecipe
@@ -370,13 +370,13 @@
   materials:
     Steel: 12000
 
-    Glass: 80
+    Glass: 2300
 
-    Circuitry: 60
+    Circuitry: 600
 
-    ScrapElectronic: 45
+    ScrapElectronic: 450
 
-    N14Gold: 10
+    N14Gold: 1000
 
 
 - type: latheRecipe
@@ -433,13 +433,13 @@
   availableFaction:
   - BrotherhoodOfSteel
   materials:
-    Cloth: 5
+    Cloth: 500
 
-    Thread: 5
+    Thread: 500
 
     Steel: 1000
 
-    Leather: 2
+    Leather: 200
 
 
 - type: latheRecipe
@@ -451,13 +451,13 @@
   availableFaction:
   - BrotherhoodOfSteel
   materials:
-    Cloth: 5
+    Cloth: 500
 
-    Thread: 5
+    Thread: 500
 
     Steel: 1000
 
-    Leather: 2
+    Leather: 200
 
 
 - type: latheRecipe
@@ -469,11 +469,11 @@
   availableFaction:
   - BrotherhoodOfSteel
   materials:
-    Cloth: 5
+    Cloth: 500
 
-    Thread: 5
+    Thread: 500
 
-    Leather: 2
+    Leather: 200
 
 
 - type: latheRecipe
@@ -487,11 +487,11 @@
   materials:
     Steel: 3500
 
-    Cloth: 15
+    Cloth: 1500
 
-    Thread: 10
+    Thread: 1000
 
-    Leather: 7
+    Leather: 700
 
 
 - type: latheRecipe
@@ -505,11 +505,11 @@
   materials:
     Steel: 3500
 
-    Cloth: 15
+    Cloth: 1500
 
-    Thread: 10
+    Thread: 1000
 
-    Leather: 7
+    Leather: 700
 
 
 - type: latheRecipe
@@ -523,11 +523,11 @@
   materials:
     Steel: 3500
 
-    Cloth: 12
+    Cloth: 1200
 
-    Thread: 10
+    Thread: 1000
 
-    Leather: 7
+    Leather: 700
 
 
 # --- BoS Tier 3 Armor ---
@@ -542,13 +542,13 @@
   materials:
     Steel: 6000
 
-    Cloth: 17
+    Cloth: 1700
 
-    Thread: 15
+    Thread: 1500
 
-    Leather: 12
+    Leather: 1200
 
-    Circuitry: 10
+    Circuitry: 500
 
 
 - type: latheRecipe
@@ -562,13 +562,13 @@
   materials:
     Steel: 6000
 
-    Cloth: 17
+    Cloth: 1700
 
-    Thread: 15
+    Thread: 1500
 
-    Leather: 12
+    Leather: 1200
 
-    Circuitry: 10
+    Circuitry: 500
 
 
 - type: latheRecipe
@@ -582,13 +582,13 @@
   materials:
     Steel: 7000
 
-    Cloth: 20
+    Cloth: 2000
 
-    Thread: 15
+    Thread: 1500
 
-    Leather: 12
+    Leather: 1200
 
-    Circuitry: 10
+    Circuitry: 500
 
 
 - type: latheRecipe
@@ -602,13 +602,13 @@
   materials:
     Steel: 7000
 
-    Cloth: 20
+    Cloth: 2000
 
-    Thread: 15
+    Thread: 1500
 
-    Leather: 12
+    Leather: 1200
 
-    Circuitry: 10
+    Circuitry: 500
 
 
 - type: latheRecipe
@@ -622,13 +622,13 @@
   materials:
     Steel: 6500
 
-    Cloth: 17
+    Cloth: 1700
 
-    Thread: 12
+    Thread: 1200
 
-    Leather: 12
+    Leather: 1200
 
-    Circuitry: 10
+    Circuitry: 1000
 
 
 # --- BoS Tier 4 Armor (Power Armor) ---
@@ -949,7 +949,7 @@
   materials:
     Steel: 2000
 
-    Wood: 10
+    Wood: 1000
 
 
 - type: latheRecipe
@@ -963,7 +963,7 @@
   materials:
     Steel: 2000
 
-    Wood: 10
+    Wood: 1000
 
 
 # --- Town Tier 2 Weapons ---
@@ -978,9 +978,9 @@
   materials:
     Steel: 3500
 
-    N14Iron: 7
+    N14Iron: 700
 
-    Wood: 5
+    Wood: 500
 
 
 - type: latheRecipe
@@ -994,7 +994,7 @@
   materials:
     Steel: 3000
 
-    N14Iron: 7
+    N14Iron: 700
 
 
 - type: latheRecipe
@@ -1008,9 +1008,9 @@
   materials:
     Steel: 4000
 
-    Wood: 25
+    Wood: 2500
 
-    N14Iron: 5
+    N14Iron: 500
 
 
 - type: latheRecipe
@@ -1024,9 +1024,9 @@
   materials:
     Steel: 4000
 
-    Wood: 15
+    Wood: 1500
 
-    N14Iron: 7
+    N14Iron: 700
 
 
 - type: latheRecipe
@@ -1040,9 +1040,9 @@
   materials:
     Steel: 3000
 
-    N14Iron: 7
+    N14Iron: 700
 
-    Leather: 5
+    Leather: 50
 
 
 - type: latheRecipe
@@ -1056,7 +1056,7 @@
   materials:
     Steel: 2500
 
-    Wood: 25
+    Wood: 250
 
 
 - type: latheRecipe
@@ -1070,9 +1070,9 @@
   materials:
     Steel: 3000
 
-    Wood: 20
+    Wood: 200
 
-    N14Iron: 5
+    N14Iron: 500
 
 
 - type: latheRecipe
@@ -1086,9 +1086,9 @@
   materials:
     Steel: 3500
 
-    N14Iron: 7
+    N14Iron: 700
 
-    N14Brass: 5
+    N14Brass: 250
 
 
 - type: latheRecipe
@@ -1102,9 +1102,9 @@
   materials:
     Steel: 3500
 
-    Wood: 25
+    Wood: 550
 
-    N14Iron: 7
+    N14Iron: 700
 
 
 # --- Town Tier 3 Weapons ---
@@ -1119,9 +1119,9 @@
   materials:
     Steel: 6000
 
-    N14Iron: 12
+    N14Iron: 120
 
-    Wood: 15
+    Wood: 150
 
 
 - type: latheRecipe
@@ -1135,9 +1135,9 @@
   materials:
     Steel: 6000
 
-    N14Iron: 12
+    N14Iron: 120
 
-    N14Brass: 10
+    N14Brass: 300
 
 
 - type: latheRecipe
@@ -1151,11 +1151,11 @@
   materials:
     Steel: 5000
 
-    Wood: 15
+    Wood: 1500
 
-    Glass: 15
+    Glass: 150
 
-    N14Iron: 7
+    N14Iron: 700
 
 
 - type: latheRecipe
@@ -1169,9 +1169,9 @@
   materials:
     Steel: 6500
 
-    Wood: 15
+    Wood: 1500
 
-    N14Iron: 12
+    N14Iron: 1200
 
 
 - type: latheRecipe
@@ -1185,9 +1185,9 @@
   materials:
     Steel: 6500
 
-    Wood: 15
+    Wood: 1500
 
-    N14Iron: 12
+    N14Iron: 1200
 
 
 - type: latheRecipe
@@ -1201,9 +1201,9 @@
   materials:
     Steel: 6000
 
-    N14Iron: 12
+    N14Iron: 1200
 
-    N14Brass: 15
+    N14Brass: 150
 
 
 - type: latheRecipe
@@ -1217,9 +1217,9 @@
   materials:
     Steel: 5500
 
-    Wood: 15
+    Wood: 1500
 
-    N14Iron: 7
+    N14Iron: 700
 
 
 - type: latheRecipe
@@ -1233,9 +1233,9 @@
   materials:
     Steel: 5000
 
-    N14Iron: 10
+    N14Iron: 1000
 
-    Scrap: 15
+    Scrap: 1500
 
 
 - type: latheRecipe
@@ -1247,11 +1247,11 @@
   availableFaction:
   - Townsfolk
   materials:
-    Steel: 6000
+    Steel: 3000
 
-    Wood: 25
+    Wood: 4500
 
-    N14Iron: 7
+    N14Iron: 1500
 
 
 # --- Town Tier 4 Weapons (best civilian can get - NOT top-tier from any faction) ---
@@ -1266,11 +1266,11 @@
   materials:
     Steel: 9500
 
-    N14Iron: 20
+    N14Iron: 200
 
-    Plastic: 20
+    Plastic: 2000
 
-    N14Brass: 15
+    N14Brass: 150
 
 
 - type: latheRecipe
@@ -1284,9 +1284,9 @@
   materials:
     Steel: 9500
 
-    N14Iron: 20
+    N14Iron: 200
 
-    N14Brass: 20
+    N14Brass: 200
 
 
 - type: latheRecipe
@@ -1300,7 +1300,7 @@
   materials:
     Steel: 9000
 
-    Wood: 45
+    Wood: 450
 
     N14Iron: 12
 
@@ -1316,9 +1316,9 @@
   materials:
     Steel: 9000
 
-    N14Iron: 20
+    N14Iron: 200
 
-    Wood: 25
+    Wood: 250
 
 
 - type: latheRecipe
@@ -1332,9 +1332,9 @@
   materials:
     Steel: 9000
 
-    Wood: 40
+    Wood: 400
 
-    N14Iron: 17
+    N14Iron: 170
 
 
 # =====================================================================
@@ -1351,11 +1351,11 @@
   availableFaction:
   - Townsfolk
   materials:
-    Leather: 5
+    Leather: 500
 
-    Cloth: 5
+    Cloth: 500
 
-    Thread: 2
+    Thread: 200
 
 
 - type: latheRecipe
@@ -1367,11 +1367,11 @@
   availableFaction:
   - Townsfolk
   materials:
-    Leather: 5
+    Leather: 500
 
-    Cloth: 5
+    Cloth: 500
 
-    Thread: 2
+    Thread: 200
 
 
 - type: latheRecipe
@@ -1383,11 +1383,11 @@
   availableFaction:
   - Townsfolk
   materials:
-    Leather: 7
+    Leather: 700
 
-    Cloth: 5
+    Cloth: 500
 
-    Thread: 5
+    Thread: 500
 
 
 # --- Town Tier 2 Armor ---
@@ -1400,11 +1400,11 @@
   availableFaction:
   - Townsfolk
   materials:
-    Cloth: 17
+    Cloth: 1700
 
-    Thread: 17
+    Thread: 1700
 
-    Leather: 15
+    Leather: 150
 
     Steel: 2500
 
@@ -1418,11 +1418,11 @@
   availableFaction:
   - Townsfolk
   materials:
-    Leather: 17
+    Leather: 170
 
-    Cloth: 17
+    Cloth: 1700
 
-    Thread: 15
+    Thread: 1500
 
     Steel: 2500
 
@@ -1436,11 +1436,11 @@
   availableFaction:
   - Townsfolk
   materials:
-    Leather: 17
+    Leather: 1700
 
-    Cloth: 17
+    Cloth: 170
 
-    Thread: 17
+    Thread: 170
 
     Steel: 2000
 
@@ -1454,11 +1454,11 @@
   availableFaction:
   - Townsfolk
   materials:
-    Leather: 15
+    Leather: 1500
 
-    Cloth: 10
+    Cloth: 100
 
-    Thread: 10
+    Thread: 100
 
 
 # --- Town Tier 3 Armor ---
@@ -1473,11 +1473,11 @@
   materials:
     Steel: 5000
 
-    Leather: 17
+    Leather: 170
 
-    Cloth: 17
+    Cloth: 1700
 
-    Thread: 15
+    Thread: 1500
 
 
 - type: latheRecipe
@@ -1491,11 +1491,11 @@
   materials:
     Steel: 5000
 
-    Cloth: 17
+    Cloth: 170
 
-    Thread: 15
+    Thread: 150
 
-    Leather: 15
+    Leather: 1500
 
 
 - type: latheRecipe
@@ -1507,13 +1507,13 @@
   availableFaction:
   - Townsfolk
   materials:
-    Leather: 25
+    Leather: 2500
 
     Steel: 4000
 
-    Cloth: 20
+    Cloth: 200
 
-    Thread: 12
+    Thread: 120
 
 
 - type: latheRecipe
@@ -1527,11 +1527,11 @@
   materials:
     Steel: 6000
 
-    N14Iron: 12
+    N14Iron: 1200
 
-    Leather: 7
+    Leather: 70
 
-    Cloth: 7
+    Cloth: 70
 
 
 # --- Town Tier 4 Armor ---
@@ -1544,15 +1544,15 @@
   availableFaction:
   - Townsfolk
   materials:
-    Steel: 10500
+    Steel: 7000
 
-    Cloth: 25
+    Cloth: 2500
 
-    Thread: 17
+    Thread: 1700
 
-    Leather: 17
+    Leather: 1700
 
-    Circuitry: 10
+    Circuitry: 100
 
 
 - type: latheRecipe
@@ -1566,11 +1566,11 @@
   materials:
     Steel: 9500
 
-    Leather: 22
+    Leather: 1200
 
-    Scrap: 40
+    Scrap: 400
 
-    N14Iron: 15
+    N14Iron: 150
 
 
 - type: latheRecipe
@@ -1582,11 +1582,11 @@
   availableFaction:
   - Townsfolk
   materials:
-    Leather: 51
+    Leather: 510
 
-    Cloth: 45
+    Cloth: 450
 
-    Thread: 35
+    Thread: 350
 
     Steel: 7000
 
@@ -1912,11 +1912,11 @@
   availableFaction:
   - Townsfolk
   materials:
-    Steel: 7500
+    Steel: 2500
 
     Lead: 65
 
-    N14Gunpowder: 40
+    N14Gunpowder: 400
 
 # =====================================================================
 # #Misfits Add - HELMET RECIPES
@@ -1936,8 +1936,8 @@
   - BrotherhoodOfSteel
   materials:
     Steel: 800
-    Cloth: 5
-    Leather: 3
+    Cloth: 50
+    Leather: 30
 
 # --- BoS Tier 2 Helmets (squire / midwest) ---
 - type: latheRecipe
@@ -1950,9 +1950,9 @@
   - BrotherhoodOfSteel
   materials:
     Steel: 1500
-    Cloth: 6
-    Leather: 4
-    ScrapElectronic: 3
+    Cloth: 60
+    Leather: 40
+    ScrapElectronic: 30
 
 - type: latheRecipe
   id: N14BPBoSArmorHelmetBrotherhoodMidwest
@@ -1964,9 +1964,9 @@
   - BrotherhoodOfSteel
   materials:
     Steel: 1500
-    Cloth: 6
-    Leather: 4
-    ScrapElectronic: 3
+    Cloth: 60
+    Leather: 40
+    ScrapElectronic: 30
 
 # --- BoS Tier 3 Helmets (knight / paladin / midwest veteran) ---
 - type: latheRecipe
@@ -1979,9 +1979,9 @@
   - BrotherhoodOfSteel
   materials:
     Steel: 2500
-    Cloth: 8
-    Leather: 5
-    Circuitry: 4
+    Cloth: 80
+    Leather: 50
+    Circuitry: 40
 
 - type: latheRecipe
   id: N14BPBoSArmorHelmetBrotherhoodPaladin
@@ -1993,9 +1993,9 @@
   - BrotherhoodOfSteel
   materials:
     Steel: 2500
-    Cloth: 8
-    Leather: 5
-    Circuitry: 4
+    Cloth: 80
+    Leather: 50
+    Circuitry: 40
 
 - type: latheRecipe
   id: N14BPBoSArmorHelmetBrotherhoodMK2
@@ -2007,9 +2007,9 @@
   - BrotherhoodOfSteel
   materials:
     Steel: 2800
-    Cloth: 8
-    Leather: 5
-    Circuitry: 5
+    Cloth: 80
+    Leather: 50
+    Circuitry: 50
 
 - type: latheRecipe
   id: N14BPBoSArmorHelmetBrotherhoodMidwestVeteran
@@ -2021,9 +2021,9 @@
   - BrotherhoodOfSteel
   materials:
     Steel: 2800
-    Cloth: 8
-    Leather: 5
-    Circuitry: 5
+    Cloth: 80
+    Leather: 50
+    Circuitry: 50
 
 # #Misfits Removed - user requested no power armor helmet recipes
 # --- BoS Tier 4 Helmets (T-45 power armor) ---
@@ -2052,9 +2052,9 @@
   availableFaction:
   - Townsfolk
   materials:
-    Cloth: 8
-    Leather: 4
-    Thread: 4
+    Cloth: 80
+    Leather: 40
+    Thread: 40
 
 # --- Town Tier 2 Helmets (Brodie / metal) ---
 - type: latheRecipe
@@ -2067,8 +2067,8 @@
   - Townsfolk
   materials:
     Steel: 1000
-    Cloth: 5
-    Leather: 3
+    Cloth: 50
+    Leather: 30
 
 - type: latheRecipe
   id: N14BPTownArmorHelmetMetal
@@ -2080,8 +2080,8 @@
   - Townsfolk
   materials:
     Steel: 1200
-    Cloth: 5
-    Leather: 3
+    Cloth: 50
+    Leather: 30
 
 # --- Town Tier 3 Helmets (riot / sheriff) ---
 - type: latheRecipe
@@ -2094,8 +2094,8 @@
   - Townsfolk
   materials:
     Steel: 1500
-    Cloth: 8
-    Leather: 4
+    Cloth: 80
+    Leather: 40
 
 - type: latheRecipe
   id: N14BPTownArmorHelmetBrodieVisor
@@ -2107,8 +2107,8 @@
   - Townsfolk
   materials:
     Steel: 1800
-    Cloth: 8
-    Leather: 4
+    Cloth: 80
+    Leather: 40
     Glass: 200
 
 - type: latheRecipe
@@ -2121,8 +2121,8 @@
   - Townsfolk
   materials:
     Steel: 2000
-    Cloth: 8
-    Leather: 4
+    Cloth: 80
+    Leather: 40
     Glass: 150
 
 # --- Town Tier 4 Helmets (combat / pre-war military) ---
@@ -2136,8 +2136,8 @@
   - Townsfolk
   materials:
     Steel: 3000
-    Cloth: 10
-    Leather: 5
+    Cloth: 100
+    Leather: 50
     Plastic: 100
 
 - type: latheRecipe
@@ -2150,8 +2150,8 @@
   - Townsfolk
   materials:
     Steel: 3200
-    Cloth: 10
-    Leather: 5
+    Cloth: 100
+    Leather: 50
     Plastic: 100
 
 - type: latheRecipe
@@ -2164,7 +2164,7 @@
   - Townsfolk
   materials:
     Steel: 3000
-    Cloth: 10
-    Leather: 5
+    Cloth: 100
+    Leather: 50
 
 

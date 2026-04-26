@@ -181,11 +181,11 @@
     size: Huge
   - type: SpawnItemsOnUse
     items:
-      - id: N14WeaponSniper50NCRRifle  # #Misfits Change - bolt-action .50 replaces semi-auto AMR; Frumentarii use a slower, precise weapon for covert ops
+      - id: N14WeaponRifle308SniperRifle  # #Misfits Change - bolt-action .50 replaces semi-auto AMR; Frumentarii use a slower, precise weapon for covert ops
       - id: ClothingBeltRope
       # #Misfits Change - AMR magazines removed; bolt-action uses single cartridges from ammo boxes
-      - id: MagazineBox50
-        amount: 3
+      - id: Magazine308RifleSniper
+        amount: 
       - id: ClothingEyesNightVisionGoggles
       - id: N14HealingPoultice #Misfits Change /Tweak/: replaces dirty stimpak, Legion uses tribal medicine
         amount: 2

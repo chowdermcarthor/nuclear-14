@@ -18,7 +18,7 @@
   materials:
     Steel: 1000
 
-    Scrap: 5
+    Scrap: 50
 
 
 - type: latheRecipe
@@ -32,7 +32,7 @@
   materials:
     Steel: 1500
 
-    Scrap: 5
+    Scrap: 50
 
 
 - type: latheRecipe
@@ -46,7 +46,7 @@
   materials:
     Steel: 1000
 
-    Scrap: 5
+    Scrap: 50
 
 
 - type: latheRecipe
@@ -60,7 +60,7 @@
   materials:
     Steel: 1000
 
-    N14Iron: 2
+    N14Iron: 20
 
 
 - type: latheRecipe
@@ -74,7 +74,7 @@
   materials:
     Steel: 1500
 
-    N14Iron: 2
+    N14Iron: 20
 
 
 - type: latheRecipe
@@ -88,7 +88,7 @@
   materials:
     Steel: 2000
 
-    Wood: 10
+    Wood: 1000
 
 
 - type: latheRecipe
@@ -102,7 +102,7 @@
   materials:
     Steel: 2000
 
-    Wood: 10
+    Wood: 1000
 
 
 - type: latheRecipe
@@ -116,7 +116,7 @@
   materials:
     Steel: 2000
 
-    Wood: 10
+    Wood: 1000
 
 
 - type: latheRecipe
@@ -130,7 +130,7 @@
   materials:
     Steel: 1500
 
-    Wood: 10
+    Wood: 1000
 
 
 - type: latheRecipe
@@ -144,7 +144,7 @@
   materials:
     Steel: 1500
 
-    Wood: 10
+    Wood: 1000
 
 
 # --- NCR Tier 2 Weapons (Standard military issue) ---
@@ -159,9 +159,9 @@
   materials:
     Steel: 3000
 
-    N14Iron: 7
+    N14Iron: 700
 
-    Wood: 5
+    Wood: 500
 
 
 - type: latheRecipe
@@ -175,9 +175,9 @@
   materials:
     Steel: 3500
 
-    Wood: 25
+    Wood: 2500
 
-    N14Iron: 5
+    N14Iron: 500
 
 
 - type: latheRecipe
@@ -191,11 +191,11 @@
   materials:
     Steel: 4000
 
-    Wood: 20
+    Wood: 2000
 
-    Glass: 10
+    Glass: 500
 
-    N14Iron: 5
+    N14Iron: 500
 
 
 - type: latheRecipe
@@ -209,9 +209,9 @@
   materials:
     Steel: 4000
 
-    Wood: 15
+    Wood: 1500
 
-    N14Iron: 7
+    N14Iron: 700
 
 
 - type: latheRecipe
@@ -225,9 +225,9 @@
   materials:
     Steel: 3500
 
-    N14Iron: 7
+    N14Iron: 700
 
-    N14Brass: 5
+    N14Brass: 500
 
 
 - type: latheRecipe
@@ -241,9 +241,9 @@
   materials:
     Steel: 3500
 
-    Wood: 15
+    Wood: 1500
 
-    N14Iron: 5
+    N14Iron: 500
 
 
 - type: latheRecipe
@@ -257,9 +257,9 @@
   materials:
     Steel: 3500
 
-    N14Iron: 7
+    N14Iron: 700
 
-    Scrap: 10
+    Scrap: 1000
 
 
 - type: latheRecipe
@@ -271,11 +271,11 @@
   availableFaction:
   - NCR
   materials:
-    Steel: 3500
+    Steel: 4500
 
-    N14Iron: 7
+    N14Iron: 700
 
-    Plastic: 5
+    Plastic: 2500
 
 
 - type: latheRecipe
@@ -289,9 +289,9 @@
   materials:
     Steel: 4000
 
-    Wood: 20
+    Wood: 2000
 
-    N14Iron: 5
+    N14Iron: 500
 
 
 - type: latheRecipe
@@ -305,11 +305,11 @@
   materials:
     Steel: 4000
 
-    Wood: 15
+    Wood: 1500
 
-    Glass: 10
+    Glass: 1000
 
-    N14Iron: 5
+    N14Iron: 500
 
 
 # --- NCR Tier 3 Weapons (Ranger/Veteran grade) ---
@@ -325,11 +325,11 @@
   materials:
     Steel: 6000
 
-    Wood: 25
+    Wood: 1500
 
-    N14Iron: 12
+    N14Iron: 120
 
-    N14Brass: 10
+    N14Brass: 100
 
 
 - type: latheRecipe
@@ -343,11 +343,11 @@
   materials:
     Steel: 6000
 
-    N14Iron: 12
+    N14Iron: 1200
 
-    Plastic: 10
+    Plastic: 1000
 
-    N14Brass: 10
+    N14Brass: 100
 
 
 - type: latheRecipe
@@ -361,9 +361,9 @@
   materials:
     Steel: 6500
 
-    Wood: 15
+    Wood: 1500
 
-    N14Iron: 12
+    N14Iron: 1200
 
 
 - type: latheRecipe
@@ -377,9 +377,9 @@
   materials:
     Steel: 7000
 
-    Wood: 15
+    Wood: 1500
 
-    N14Iron: 12
+    N14Iron: 120
 
 
 - type: latheRecipe
@@ -393,9 +393,9 @@
   materials:
     Steel: 7000
 
-    Wood: 15
+    Wood: 1500
 
-    N14Iron: 12
+    N14Iron: 120
 
 
 - type: latheRecipe
@@ -409,9 +409,9 @@
   materials:
     Steel: 6000
 
-    N14Iron: 12
+    N14Iron: 120
 
-    N14Brass: 15
+    N14Brass: 150
 
 
 - type: latheRecipe
@@ -425,9 +425,9 @@
   materials:
     Steel: 6000
 
-    N14Iron: 15
+    N14Iron: 150
 
-    N14Brass: 15
+    N14Brass: 150
 
 
 - type: latheRecipe
@@ -441,9 +441,9 @@
   materials:
     Steel: 6000
 
-    N14Iron: 12
+    N14Iron: 120
 
-    Wood: 15
+    Wood: 150
 
 
 - type: latheRecipe
@@ -457,9 +457,9 @@
   materials:
     Steel: 6000
 
-    N14Iron: 12
+    N14Iron: 120
 
-    N14Brass: 10
+    N14Brass: 100
 
 
 - type: latheRecipe
@@ -474,11 +474,11 @@
   materials:
     Steel: 6000
 
-    N14Iron: 15
+    N14Iron: 1500
 
-    Wood: 15
+    Wood: 1500
 
-    N14Silver: 10
+    N14Silver: 500
 
 
 - type: latheRecipe
@@ -492,9 +492,9 @@
   materials:
     Steel: 6000
 
-    N14Iron: 12
+    N14Iron: 1200
 
-    N14Brass: 15
+    N14Brass: 1000
 
 
 # --- NCR Tier 4 Weapons (Elite/Heavy) ---
@@ -510,11 +510,11 @@
   materials:
     Steel: 12000
 
-    N14Iron: 30
+    N14Iron: 300
 
-    N14Brass: 30
+    N14Brass: 300
 
-    Glass: 15
+    Glass: 150
 
 
 - type: latheRecipe
@@ -528,11 +528,11 @@
   materials:
     Steel: 11500
 
-    N14Iron: 27
+    N14Iron: 270
 
-    Wood: 25
+    Wood: 2500
 
-    N14Brass: 25
+    N14Brass: 250
 
 
 - type: latheRecipe
@@ -546,11 +546,11 @@
   materials:
     Steel: 11500
 
-    N14Iron: 25
+    N14Iron: 2500
 
-    N14Brass: 25
+    N14Brass: 250
 
-    Plastic: 15
+    Plastic: 1500
 
 
 - type: latheRecipe
@@ -564,11 +564,11 @@
   materials:
     Steel: 10500
 
-    N14Iron: 20
+    N14Iron: 200
 
-    N14Brass: 30
+    N14Brass: 300
 
-    Circuitry: 10
+    Circuitry: 100
 
 
 - type: latheRecipe
@@ -582,9 +582,9 @@
   materials:
     Steel: 10500
 
-    N14Iron: 22
+    N14Iron: 220
 
-    Wood: 30
+    Wood: 300
 
 
 - type: latheRecipe
@@ -598,11 +598,11 @@
   materials:
     Steel: 12000
 
-    N14Iron: 37
+    N14Iron: 370
 
     N14Brass: 45
 
-    Circuitry: 15
+    Circuitry: 150
 
 
 # --- NCR Tier 5 Weapons (Anti-Materiel) ---
@@ -642,11 +642,11 @@
   availableFaction:
   - NCR
   materials:
-    Cloth: 8
+    Cloth: 800
 
-    Thread: 5
+    Thread: 500
 
-    Leather: 5
+    Leather: 500
 
 
 - type: latheRecipe
@@ -658,11 +658,11 @@
   availableFaction:
   - NCR
   materials:
-    Cloth: 8
+    Cloth: 800
 
-    Thread: 5
+    Thread: 500
 
-    Leather: 5
+    Leather: 500
 
 
 - type: latheRecipe
@@ -674,11 +674,11 @@
   availableFaction:
   - NCR
   materials:
-    Cloth: 8
+    Cloth: 800
 
-    Thread: 5
+    Thread: 500
 
-    Leather: 5
+    Leather: 500
 
 
 # --- NCR Tier 2 Armor ---
@@ -693,11 +693,11 @@
   materials:
     Steel: 3000
 
-    Cloth: 15
+    Cloth: 150
 
-    Thread: 12
+    Thread: 120
 
-    Leather: 7
+    Leather: 70
 
 
 - type: latheRecipe
@@ -711,11 +711,11 @@
   materials:
     Steel: 3000
 
-    Cloth: 15
+    Cloth: 150
 
-    Thread: 12
+    Thread: 120
 
-    Leather: 7
+    Leather: 70
 
 
 - type: latheRecipe
@@ -727,11 +727,11 @@
   availableFaction:
   - NCR
   materials:
-    Cloth: 17
+    Cloth: 170
 
-    Thread: 12
+    Thread: 120
 
-    Leather: 7
+    Leather: 70
 
 
 - type: latheRecipe
@@ -743,11 +743,11 @@
   availableFaction:
   - NCR
   materials:
-    Cloth: 17
+    Cloth: 170
 
-    Thread: 12
+    Thread: 120
 
-    Leather: 7
+    Leather: 70
 
 
 - type: latheRecipe
@@ -759,11 +759,11 @@
   availableFaction:
   - NCR
   materials:
-    Cloth: 17
+    Cloth: 170
 
-    Thread: 12
+    Thread: 120
 
-    Leather: 7
+    Leather: 70
 
 
 - type: latheRecipe
@@ -775,11 +775,11 @@
   availableFaction:
   - NCR
   materials:
-    Cloth: 17
+    Cloth: 170
 
-    Thread: 17
+    Thread: 170
 
-    Leather: 12
+    Leather: 120
 
     Steel: 2000
 
@@ -796,11 +796,11 @@
   materials:
     Steel: 6000
 
-    Cloth: 22
+    Cloth: 2200
 
-    Thread: 15
+    Thread: 150
 
-    Leather: 12
+    Leather: 120
 
 
 - type: latheRecipe
@@ -813,11 +813,11 @@
   - NCR
   - Rangers
   materials:
-    Leather: 30
+    Leather: 300
 
-    Cloth: 30
+    Cloth: 300
 
-    Thread: 22
+    Thread: 220
 
     Steel: 4000
 
@@ -832,11 +832,11 @@
   - NCR
   - Rangers
   materials:
-    Leather: 30
+    Leather: 300
 
-    Cloth: 30
+    Cloth: 300
 
-    Thread: 22
+    Thread: 220
 
     Steel: 4500
 
@@ -851,11 +851,11 @@
   - NCR
   - Rangers
   materials:
-    Leather: 25
+    Leather: 250
 
-    Cloth: 25
+    Cloth: 250
 
-    Thread: 17
+    Thread: 170
 
 
 # --- NCR Tier 4 Armor ---
@@ -870,13 +870,13 @@
   materials:
     Steel: 11500
 
-    Cloth: 32
+    Cloth: 320
 
-    Thread: 20
+    Thread: 200
 
-    Leather: 15
+    Leather: 150
 
-    Circuitry: 10
+    Circuitry: 100
 
 
 - type: latheRecipe
@@ -890,13 +890,13 @@
   materials:
     Steel: 12000
 
-    N14Iron: 45
+    N14Iron: 450
 
-    Circuitry: 30
+    Circuitry: 300
 
-    ScrapElectronic: 25
+    ScrapElectronic: 250
 
-    N14Brass: 15
+    N14Brass: 150
 
 
 - type: latheRecipe
@@ -911,13 +911,13 @@
   materials:
     Steel: 12000
 
-    Leather: 30
+    Leather: 300
 
-    Cloth: 22
+    Cloth: 220
 
-    Thread: 17
+    Thread: 170
 
-    Circuitry: 10
+    Circuitry: 100
 
 
 - type: latheRecipe
@@ -932,15 +932,15 @@
   materials:
     Steel: 12000
 
-    Leather: 37
+    Leather: 370
 
-    Cloth: 27
+    Cloth: 270
 
-    Thread: 20
+    Thread: 200
 
-    Circuitry: 15
+    Circuitry: 150
 
-    ScrapElectronic: 10
+    ScrapElectronic: 100
 
 
 - type: latheRecipe
@@ -1334,11 +1334,11 @@
   availableFaction:
   - NCR
   materials:
-    Steel: 8000
+    Steel: 1200
 
-    Lead: 65
+    Lead: 550
 
-    N14Gunpowder: 40
+    N14Gunpowder: 400
 
 
 - type: latheRecipe
@@ -1350,11 +1350,11 @@
   availableFaction:
   - NCR
   materials:
-    Steel: 8500
+    Steel: 1200
 
-    Lead: 65
+    Lead: 650
 
-    N14Gunpowder: 45
+    N14Gunpowder: 450
 
 
 - type: latheRecipe
@@ -1366,11 +1366,11 @@
   availableFaction:
   - NCR
   materials:
-    Steel: 8000
+    Steel: 800
 
-    Lead: 65
+    Lead: 650
 
-    N14Gunpowder: 35
+    N14Gunpowder: 350
 
 
 # =====================================================================
@@ -1387,9 +1387,9 @@
   availableFaction:
   - CaesarLegion
   materials:
-    N14Iron: 5
+    N14Iron: 500
 
-    Leather: 2
+    Leather: 200
 
 
 - type: latheRecipe
@@ -1401,9 +1401,9 @@
   availableFaction:
   - CaesarLegion
   materials:
-    Wood: 10
+    Wood: 1000
 
-    Leather: 2
+    Leather: 200
 
 
 - type: latheRecipe
@@ -1415,9 +1415,9 @@
   availableFaction:
   - CaesarLegion
   materials:
-    Scrap: 10
+    Scrap: 2000
 
-    ScrapSteel: 5
+    ScrapSteel: 500
 
 
 - type: latheRecipe
@@ -1429,9 +1429,9 @@
   availableFaction:
   - CaesarLegion
   materials:
-    Wood: 10
+    Wood: 1000
 
-    N14Iron: 2
+    N14Iron: 200
 
 
 - type: latheRecipe
@@ -1443,11 +1443,11 @@
   availableFaction:
   - CaesarLegion
   materials:
-    Wood: 10
+    Wood: 2500
 
-    N14Iron: 2
+    N14Iron: 1200
 
-    Leather: 2
+    Leather: 200
 
 
 - type: latheRecipe
@@ -1459,11 +1459,11 @@
   availableFaction:
   - CaesarLegion
   materials:
-    N14Iron: 5
+    N14Iron: 500
 
-    Scrap: 10
+    Scrap: 100
 
-    Wood: 5
+    Wood: 500
 
 
 # --- Legion Tier 2 Weapons (Legionnaire grade) ---
@@ -1476,11 +1476,11 @@
   availableFaction:
   - CaesarLegion
   materials:
-    N14Iron: 15
+    N14Iron: 1500
 
-    Leather: 7
+    Leather: 70
 
-    Wood: 5
+    Wood: 500
 
 
 - type: latheRecipe
@@ -1494,9 +1494,9 @@
   materials:
     Steel: 2500
 
-    N14Iron: 7
+    N14Iron: 700
 
-    Leather: 2
+    Leather: 20
 
 
 - type: latheRecipe
@@ -1508,11 +1508,11 @@
   availableFaction:
   - CaesarLegion
   materials:
-    N14Iron: 12
+    N14Iron: 1200
 
-    Wood: 15
+    Wood: 1500
 
-    Leather: 2
+    Leather: 20
 
 
 - type: latheRecipe
@@ -1524,11 +1524,11 @@
   availableFaction:
   - CaesarLegion
   materials:
-    N14Iron: 15
+    N14Iron: 2500
 
-    Leather: 7
+    Leather: 700
 
-    Cloth: 2
+    Cloth: 200
 
 
 - type: latheRecipe
@@ -1540,11 +1540,11 @@
   availableFaction:
   - CaesarLegion
   materials:
-    N14Iron: 17
+    N14Iron: 170
 
     Steel: 2000
 
-    Scrap: 15
+    Scrap: 150
 
 
 - type: latheRecipe
@@ -1558,9 +1558,9 @@
   materials:
     Steel: 3000
 
-    Wood: 20
+    Wood: 2000
 
-    N14Iron: 2
+    N14Iron: 20
 
 
 - type: latheRecipe
@@ -1572,11 +1572,11 @@
   availableFaction:
   - CaesarLegion
   materials:
-    Scrap: 25
+    Scrap: 250
 
-    ScrapSteel: 15
+    ScrapSteel: 150
 
-    Wood: 5
+    Wood: 500
 
 
 - type: latheRecipe
@@ -1588,11 +1588,11 @@
   availableFaction:
   - CaesarLegion
   materials:
-    Wood: 25
+    Wood: 2500
 
-    N14Iron: 10
+    N14Iron: 1000
 
-    Leather: 2
+    Leather: 20
 
 
 # --- Legion Tier 3 Weapons (Veteran grade) ---
@@ -1607,11 +1607,11 @@
   materials:
     Steel: 6000
 
-    N14Iron: 15
+    N14Iron: 1500
 
-    Leather: 7
+    Leather: 70
 
-    N14Gold: 5
+    N14Gold: 50
 
 
 - type: latheRecipe
@@ -1623,11 +1623,11 @@
   availableFaction:
   - CaesarLegion
   materials:
-    Steel: 5000
+    Steel: 3000
 
-    N14Iron: 17
+    N14Iron: 170
 
-    Leather: 7
+    Leather: 70
 
 
 - type: latheRecipe
@@ -1641,9 +1641,9 @@
   materials:
     Steel: 6000
 
-    Wood: 25
+    Wood: 250
 
-    N14Iron: 12
+    N14Iron: 120
 
 
 - type: latheRecipe
@@ -1655,11 +1655,11 @@
   availableFaction:
   - CaesarLegion
   materials:
-    Wood: 50
+    Wood: 3000
 
-    N14Iron: 15
+    N14Iron: 1500
 
-    Leather: 7
+    Leather: 400
 
 
 - type: latheRecipe
@@ -1673,11 +1673,11 @@
   materials:
     Steel: 4500
 
-    N14Iron: 20
+    N14Iron: 200
 
-    Scrap: 20
+    Scrap: 200
 
-    N14Brass: 10
+    N14Brass: 100
 
 
 - type: latheRecipe
@@ -1691,9 +1691,9 @@
   materials:
     Steel: 5000
 
-    N14Iron: 17
+    N14Iron: 170
 
-    Scrap: 15
+    Scrap: 150
 
 
 - type: latheRecipe
@@ -1707,9 +1707,9 @@
   materials:
     Steel: 6000
 
-    Wood: 20
+    Wood: 2000
 
-    N14Iron: 15
+    N14Iron: 150
 
 
 - type: latheRecipe
@@ -1723,9 +1723,9 @@
   materials:
     Steel: 6000
 
-    N14Iron: 17
+    N14Iron: 1700
 
-    N14Brass: 15
+    N14Brass: 150
 
 
 - type: latheRecipe
@@ -1737,9 +1737,9 @@
   availableFaction:
   - CaesarLegion
   materials:
-    Wood: 45
+    Wood: 450
 
-    Leather: 5
+    Leather: 50
 
 
 # #Misfits Add - T3 firearm parity: semi-auto shotgun, SMG, and carbine rifle to close gap with NCR
@@ -1754,9 +1754,9 @@
   materials:
     Steel: 5500
 
-    N14Iron: 15
+    N14Iron: 150
 
-    Leather: 10
+    Leather: 100
 
 
 - type: latheRecipe
@@ -1770,9 +1770,9 @@
   materials:
     Steel: 4500
 
-    N14Iron: 10
+    N14Iron: 100
 
-    N14Brass: 15
+    N14Brass: 150
 
 
 - type: latheRecipe
@@ -1786,9 +1786,9 @@
   materials:
     Steel: 5000
 
-    Wood: 20
+    Wood: 200
 
-    N14Iron: 12
+    N14Iron: 120
 
 
 # #Misfits Add - M240B GPMG for Tier 3 Legion crafting
@@ -1803,11 +1803,11 @@
   materials:
     Steel: 7000
 
-    N14Iron: 20
+    N14Iron: 200
 
-    N14Brass: 10
+    N14Brass: 100
 
-    Leather: 5
+    Leather: 50
 
 
 # --- Legion Tier 4 Weapons (Legate's elite) ---
@@ -1822,11 +1822,11 @@
   materials:
     Steel: 12000
 
-    N14Iron: 30
+    N14Iron: 3000
 
-    Circuitry: 10
+    Circuitry: 100
 
-    ScrapElectronic: 10
+    ScrapElectronic: 100
 
 
 - type: latheRecipe
@@ -1838,13 +1838,13 @@
   availableFaction:
   - CaesarLegion
   materials:
-    Wood: 90
+    Wood: 3000
 
-    N14Iron: 35
+    N14Iron: 1250
 
-    Leather: 17
+    Leather: 170
 
-    N14Gold: 10
+    N14Gold: 100
 
 
 - type: latheRecipe
@@ -1858,11 +1858,11 @@
   materials:
     Steel: 10000
 
-    N14Iron: 30
+    N14Iron: 300
 
-    N14Brass: 30
+    N14Brass: 300
 
-    N14Gold: 5
+    N14Gold: 50
 
 
 - type: latheRecipe
@@ -1874,13 +1874,13 @@
   availableFaction:
   - CaesarLegion
   materials:
-    Steel: 10500
+    Steel: 5500
 
-    N14Iron: 27
+    N14Iron: 270
 
-    Circuitry: 20
+    Circuitry: 200
 
-    ScrapElectronic: 15
+    ScrapElectronic: 150
 
 
 - type: latheRecipe
@@ -1892,13 +1892,13 @@
   availableFaction:
   - CaesarLegion
   materials:
-    Steel: 9000
+    Steel: 7000
 
-    N14Iron: 35
+    N14Iron: 350
 
-    Wood: 45
+    Wood: 2000
 
-    Leather: 12
+    Leather: 120
 
 
 - type: latheRecipe
@@ -1912,11 +1912,11 @@
   materials:
     Steel: 12000
 
-    N14Iron: 37
+    N14Iron: 370
 
-    Circuitry: 25
+    Circuitry: 250
 
-    ScrapElectronic: 15
+    ScrapElectronic: 150
 
 
 # #Misfits Add - T4 firearm additions: Bren LMG (.308 FullAuto) and Auto Shotgun for DPS parity with NCR T4
@@ -1931,11 +1931,11 @@
   materials:
     Steel: 11000
 
-    N14Iron: 25
+    N14Iron: 250
 
-    N14Brass: 30
+    N14Brass: 300
 
-    Wood: 20
+    Wood: 2000
 
 
 - type: latheRecipe
@@ -1949,9 +1949,9 @@
   materials:
     Steel: 7000
 
-    N14Iron: 15
+    N14Iron: 150
 
-    N14Brass: 10
+    N14Brass: 100
 
 
 # #Misfits Add - T5 Legion Weapons: Scorcher flamethrower (apex incendiary weapon)
@@ -1967,11 +1967,11 @@
   materials:
     Steel: 14000
 
-    N14Iron: 30
+    N14Iron: 300
 
-    Circuitry: 20
+    Circuitry: 200
 
-    ScrapElectronic: 15
+    ScrapElectronic: 150
 
 
 # =====================================================================
@@ -1988,11 +1988,11 @@
   availableFaction:
   - CaesarLegion
   materials:
-    Leather: 5
+    Leather: 500
 
-    Cloth: 5
+    Cloth: 500
 
-    Thread: 2
+    Thread: 200
 
 
 - type: latheRecipe
@@ -2004,11 +2004,11 @@
   availableFaction:
   - CaesarLegion
   materials:
-    Leather: 7
+    Leather: 700
 
-    Cloth: 5
+    Cloth: 500
 
-    Thread: 2
+    Thread: 200
 
 
 # --- Legion Tier 2 Armor ---
@@ -2021,13 +2021,13 @@
   availableFaction:
   - CaesarLegion
   materials:
-    Leather: 15
+    Leather: 1500
 
-    Cloth: 12
+    Cloth: 1200
 
-    Thread: 7
+    Thread: 700
 
-    N14Iron: 5
+    N14Iron: 500
 
 
 - type: latheRecipe
@@ -2039,13 +2039,13 @@
   availableFaction:
   - CaesarLegion
   materials:
-    Leather: 17
+    Leather: 1700
 
-    Cloth: 12
+    Cloth: 1200
 
-    Thread: 10
+    Thread: 1000
 
-    N14Iron: 5
+    N14Iron: 500
 
 
 - type: latheRecipe
@@ -2057,11 +2057,11 @@
   availableFaction:
   - CaesarLegion
   materials:
-    Leather: 15
+    Leather: 1500
 
-    Cloth: 10
+    Cloth: 1000
 
-    Thread: 7
+    Thread: 700
 
 
 # --- Legion Tier 3 Armor ---
@@ -2074,15 +2074,15 @@
   availableFaction:
   - CaesarLegion
   materials:
-    Leather: 30
+    Leather: 300
 
-    Steel: 4500
+    Steel: 3500
 
-    Cloth: 22
+    Cloth: 220
 
-    Thread: 17
+    Thread: 170
 
-    N14Iron: 10
+    N14Iron: 100
 
 
 - type: latheRecipe
@@ -2094,15 +2094,15 @@
   availableFaction:
   - CaesarLegion
   materials:
-    Leather: 25
+    Leather: 250
 
-    Cloth: 22
+    Cloth: 220
 
-    Thread: 17
+    Thread: 170
 
-    N14Iron: 10
+    N14Iron: 1000
 
-    N14Gold: 5
+    N14Gold: 150
 
 
 - type: latheRecipe
@@ -2116,11 +2116,11 @@
   materials:
     Steel: 5000
 
-    Leather: 20
+    Leather: 200
 
-    Cloth: 17
+    Cloth: 170
 
-    Thread: 15
+    Thread: 150
 
 
 - type: latheRecipe
@@ -2132,13 +2132,13 @@
   availableFaction:
   - CaesarLegion
   materials:
-    Leather: 25
+    Leather: 250
 
-    Cloth: 17
+    Cloth: 170
 
-    Thread: 15
+    Thread: 150
 
-    N14Iron: 7
+    N14Iron: 70
 
 
 # --- Legion Tier 4 Armor ---
@@ -2153,13 +2153,13 @@
   materials:
     Steel: 10000
 
-    Leather: 35
+    Leather: 350
 
-    Cloth: 30
+    Cloth: 300
 
-    Thread: 20
+    Thread: 200
 
-    N14Iron: 20
+    N14Iron: 200
 
 
 - type: latheRecipe
@@ -2171,17 +2171,15 @@
   availableFaction:
   - CaesarLegion
   materials:
-    Steel: 10500
+    Steel: 6500
 
-    Leather: 35
+    Leather: 350
 
-    Cloth: 27
+    Cloth: 270
 
-    Thread: 20
+    Thread: 200
 
-    N14Iron: 20
-
-    N14Gold: 5
+    N14Iron: 200
 
 
 - type: latheRecipe
@@ -2195,13 +2193,13 @@
   materials:
     Steel: 10500
 
-    Leather: 45
+    Leather: 450
 
-    N14Iron: 27
+    N14Iron: 270
 
-    Cloth: 17
+    Cloth: 170
 
-    Thread: 15
+    Thread: 150
 
 
 # =====================================================================
@@ -2364,7 +2362,7 @@
   availableFaction:
   - CaesarLegion
   materials:
-    Steel: 4500
+    Steel: 2500
 
     N14Gunpowder: 50
 
@@ -2431,13 +2429,13 @@
   availableFaction:
   - CaesarLegion
   materials:
-    Steel: 10000
+    Steel: 1000
 
-    N14Gunpowder: 80
+    N14Gunpowder: 4000
 
-    N14Iron: 20
+    N14Iron: 200
 
-    Circuitry: 10
+    Circuitry: 100
 
 
 - type: latheRecipe
@@ -2467,13 +2465,13 @@
   availableFaction:
   - CaesarLegion
   materials:
-    Steel: 8000
+    Steel: 1000
 
-    N14Gunpowder: 1
+    N14Gunpowder: 1000
 
-    N14Iron: 27
+    N14Iron: 270
 
-    Plastic: 15
+    Plastic: 150
 
 
 # #Misfits Add - T4 ammo for Bren LMG (.308 Long magazine, 20-round box)
@@ -2527,8 +2525,8 @@
   - NCR
   materials:
     Steel: 500
-    Cloth: 4
-    Leather: 2
+    Cloth: 40
+    Leather: 20
 
 - type: latheRecipe
   id: N14BPNCRArmorHelmetMetalWoods
@@ -2540,8 +2538,8 @@
   - NCR
   materials:
     Steel: 500
-    Cloth: 4
-    Leather: 2
+    Cloth: 40
+    Leather: 20
 
 - type: latheRecipe
   id: N14BPNCRArmorHelmetMetalDesert
@@ -2553,8 +2551,8 @@
   - NCR
   materials:
     Steel: 500
-    Cloth: 4
-    Leather: 2
+    Cloth: 40
+    Leather: 20
 
 # --- NCR Tier 2 Helmets (paired with plate / pouched / CF vests) ---
 - type: latheRecipe
@@ -2567,9 +2565,9 @@
   - NCR
   materials:
     Steel: 1000
-    Cloth: 6
-    Leather: 3
-    ScrapElectronic: 3
+    Cloth: 60
+    Leather: 30
+    ScrapElectronic: 30
 
 - type: latheRecipe
   id: N14BPNCRArmorHelmetMetalRadioSnow
@@ -2581,9 +2579,9 @@
   - NCR
   materials:
     Steel: 1000
-    Cloth: 6
-    Leather: 3
-    ScrapElectronic: 3
+    Cloth: 60
+    Leather: 30
+    ScrapElectronic: 30
 
 - type: latheRecipe
   id: N14BPNCRArmorHelmetMetalMilitaryPolice
@@ -2595,8 +2593,8 @@
   - NCR
   materials:
     Steel: 900
-    Cloth: 5
-    Leather: 3
+    Cloth: 50
+    Leather: 30
 
 - type: latheRecipe
   id: N14BPNCRArmorHelmetMetalMedic
@@ -2608,8 +2606,8 @@
   - NCR
   materials:
     Steel: 900
-    Cloth: 5
-    Leather: 3
+    Cloth: 50
+    Leather: 30
 
 - type: latheRecipe
   id: N14BPNCRArmorHelmetMetalGhillie
@@ -2622,7 +2620,7 @@
   materials:
     Steel: 800
     Cloth: 10
-    Leather: 4
+    Leather: 40
 
 # --- NCR Tier 3 Helmets (combat / ranger) ---
 - type: latheRecipe
@@ -2635,8 +2633,8 @@
   - NCR
   materials:
     Steel: 2000
-    Cloth: 8
-    Leather: 4
+    Cloth: 80
+    Leather: 40
     Plastic: 100
 
 - type: latheRecipe
@@ -2650,8 +2648,8 @@
   - Rangers
   materials:
     Steel: 1800
-    Leather: 10
-    Cloth: 8
+    Leather: 100
+    Cloth: 80
     Glass: 200
 
 - type: latheRecipe
@@ -2665,8 +2663,8 @@
   - Rangers
   materials:
     Steel: 1800
-    Leather: 10
-    Cloth: 8
+    Leather: 100
+    Cloth: 80
     Glass: 200
 
 - type: latheRecipe
@@ -2680,8 +2678,8 @@
   - Rangers
   materials:
     Steel: 1800
-    Leather: 10
-    Cloth: 8
+    Leather: 100
+    Cloth: 80
     Glass: 200
 
 # --- NCR Tier 4 Helmets (elite / power armor) ---
@@ -2695,9 +2693,9 @@
   - NCR
   materials:
     Steel: 4000
-    Cloth: 10
-    Leather: 5
-    Circuitry: 5
+    Cloth: 100
+    Leather: 50
+    Circuitry: 50
 
 - type: latheRecipe
   id: N14BPNCRArmorRangerHelmetElite
@@ -2710,10 +2708,10 @@
   - Rangers
   materials:
     Steel: 4000
-    Leather: 12
-    Cloth: 10
+    Leather: 120
+    Cloth: 100
     Glass: 250
-    Circuitry: 5
+    Circuitry: 50
 
 # #Misfits Removed - user requested no power armor helmet recipes
 # - type: latheRecipe
@@ -2741,8 +2739,8 @@
   availableFaction:
   - CaesarLegion
   materials:
-    Cloth: 8
-    Thread: 5
+    Cloth: 80
+    Thread: 50
 
 - type: latheRecipe
   id: N14BPLegionArmorHelmetTribalHeadWraps
@@ -2753,8 +2751,8 @@
   availableFaction:
   - CaesarLegion
   materials:
-    Cloth: 8
-    Thread: 5
+    Cloth: 80
+    Thread: 50
 
 # --- Legion Tier 2 Helmets (legionnaire hoods) ---
 - type: latheRecipe
@@ -2766,9 +2764,9 @@
   availableFaction:
   - CaesarLegion
   materials:
-    Cloth: 12
-    Thread: 8
-    Leather: 5
+    Cloth: 120
+    Thread: 80
+    Leather: 50
 
 - type: latheRecipe
   id: N14BPLegionArmorHelmetTribalOutcastHood
@@ -2779,9 +2777,9 @@
   availableFaction:
   - CaesarLegion
   materials:
-    Cloth: 12
-    Thread: 8
-    Leather: 5
+    Cloth: 120
+    Thread: 80
+    Leather: 50
 
 # --- Legion Tier 3 Helmets (veteran skulls and hunter hoods) ---
 - type: latheRecipe
@@ -2793,9 +2791,9 @@
   availableFaction:
   - CaesarLegion
   materials:
-    Cloth: 15
-    Thread: 10
-    Leather: 8
+    Cloth: 150
+    Thread: 100
+    Leather: 80
 
 - type: latheRecipe
   id: N14BPLegionArmorHelmetHeadtakerwraps
@@ -2806,9 +2804,9 @@
   availableFaction:
   - CaesarLegion
   materials:
-    Cloth: 15
-    Thread: 10
-    Leather: 8
+    Cloth: 150
+    Thread: 100
+    Leather: 80
 
 - type: latheRecipe
   id: N14BPLegionArmorHelmetMuffaloskull
@@ -2819,8 +2817,8 @@
   availableFaction:
   - CaesarLegion
   materials:
-    Leather: 20
-    Thread: 8
+    Leather: 200
+    Thread: 80
 
 # --- Legion Tier 4 Helmets (looted pre-war military) ---
 - type: latheRecipe
@@ -2833,8 +2831,8 @@
   - CaesarLegion
   materials:
     Steel: 3000
-    Cloth: 10
-    Leather: 5
+    Cloth: 100
+    Leather: 50
 
 - type: latheRecipe
   id: N14BPLegionArmorHelmetMetalHelmet
@@ -2846,7 +2844,7 @@
   - CaesarLegion
   materials:
     Steel: 3000
-    Cloth: 10
-    Leather: 5
+    Cloth: 100
+    Leather: 50
 
 
