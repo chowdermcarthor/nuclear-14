@@ -4,13 +4,13 @@
   parent: Milk
   name: reagent-name-milk-brahmin
   desc: reagent-desc-milk-brahmin
-  
+
 - type: reagent
   id: N14MilkBighorner
   parent: Milk
   name: reagent-name-milk-bighorner
   desc: reagent-desc-milk-bighorner
-  
+
 - type: reagent
   id: N14MilkRadstag
   parent: Milk
@@ -148,3 +148,22 @@
         damage:
           groups:
             Burn: -1.5
+
+## Maple Syrup
+- type: reagent
+  id: MapleSyrup
+  name: reagent-name-maple-syrup
+  parent: BaseJuice
+  desc: reagent-desc-maple-syrup
+  physicalDesc: reagent-physical-desc-sticky
+  flavor: sweet
+  color: "#fec108"
+  recognizable: true
+  metabolisms:
+    Drink:
+      effects:
+      - !type:AdjustReagent
+        reagent: Sugar
+        amount: 0.4
+      - !type:SatiateThirst
+        factor: 0.5

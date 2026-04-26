@@ -226,8 +226,11 @@ reagent-desc-bitterdrink = A mixture of crushed plants mixed with water neutrali
 reagent-name-smelling-salts = smelling salts
 reagent-desc-smelling-salts = A grainy mixture of rocks with an insanely potent smell.
 
-reagent-name-mourning-poultice = mournin poultice
+reagent-name-mourning-poultice = mourning poultice
 reagent-desc-mourning-poultice = A mixture of poisonous crushed plants used in tribalistic ceremonies said to make you see gods.
+
+reagent-name-maple-syrup = maple syrup
+reagent-desc-maple-syrup = "Grade A Golden" pure Maple Syrup. A sugary syrup derived from maple trees, eh?
 
 # Medicine
 reagent-name-healing-mixture = stimpak
