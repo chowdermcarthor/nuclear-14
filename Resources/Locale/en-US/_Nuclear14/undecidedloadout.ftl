@@ -57,7 +57,7 @@ undecided-loadout-category-soldier-point-description =
 
 undecided-loadout-category-soldier-morale-name = Morale Booster Kit
 undecided-loadout-category-soldier-morale-description =
-    Includes 1 NCR plate armor, 1 plate mask, 1 NCR belt, 1 NCR spear flag,
+    Includes 1 NCR plate armor, 1 plate mask, 1 NCR belt, 1 NCR spear flag, bugle,
     1 pair of black biker gloves, 1 hatchet, 1 9mm pistol, 2 9mm pistol magazines,
     1 Psycho, 1 C ration MRE, 1 stimpak, 1 Rad-X pill, 1 gauze pack, and 1 flare.
 
@@ -450,7 +450,7 @@ undecided-loadout-category-Tribal-pain-bringer-description =
 # Town Guard Kits
 
 undecided-loadout-category-town-cere-name = Ceremonial Kit
-undecided-loadout-category-town-cere-description = 
+undecided-loadout-category-town-cere-description =
     Sometimes you have to look fancy and not worry about protection.
     Includes 1 guard hat, 1 guard greatcoat, 1 .308 battle rifle,
     3 .308 clips, 1 .44 magnum, 2 .44 speedloaders,

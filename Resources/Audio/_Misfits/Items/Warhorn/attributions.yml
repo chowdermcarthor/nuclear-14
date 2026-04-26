@@ -1,0 +1,14 @@
+- files: ["WarHorn01.ogg"]
+  license: "CC0-1.0"
+  copyright: "Created by adharca, converted to Mono ogg by Trosling"
+  source: "https://freesound.org/s/539956/"
+
+- files: ["WarHorn02.ogg"]
+  license: "CC-BY-4.0"
+  copyright: "Created by newagesoup, converted to Mono ogg by Trosling"
+  source: "https://freesound.org/s/348862/"
+
+- files: ["BugleCharge.ogg"]
+  license: "CC0-1.0"
+  copyright: "Created by craigsmith, converted to Mono ogg by Trosling"
+  source: "https://freesound.org/s/438633/"

@@ -231,6 +231,7 @@
       - id: N14RadXPill
       - id: N14CleanGauze10
       - id: N14Flare
+      - id: WarhornNCRBugle # Misfit edit
     sound:
       path: /Audio/Effects/unwrap.ogg
 

@@ -1,0 +1,68 @@
+﻿- type: entity
+  parent: BaseItem
+  id: BaseWarhorn
+  description: A warhorn, for signalling armies.
+  components:
+  - type: Sprite
+    sprite: Objects/Fun/bikehorn.rsi
+    state: icon
+  - type: Item
+    sprite: Objects/Fun/bikehorn.rsi
+    size: Tiny
+  - type: Warhorn
+    sound: /Audio/_Misfits/Items/Warhorn/WarHorn02.ogg
+    range: 45
+    volume: 1
+  - type: UseDelay
+    delay: 3
+
+- type: entity
+  parent: BaseWarhorn
+  id: WarhornCornus
+  name: cornus
+  description: A large signalling trumpet in the style of the ancient Roman cornus
+  components:
+  - type: Sprite
+    sprite: /Textures/_Misfits/Objects/Warhorns/cornus.rsi
+    state: icon
+  - type: Item
+    sprite: /Textures/_Misfits/Objects/Warhorns/cornus.rsi
+    size: Normal
+  - type: Warhorn
+    sound: /Audio/_Misfits/Items/Warhorn/WarHorn02.ogg
+    range: 45
+    volume: 1
+
+- type: entity
+  parent: BaseWarhorn
+  id: WarhornBrahmin
+  name: Brahmin Warhorn
+  description: Hollowed out Brahmin horn, used by tribals for signalling during war time
+  components:
+  - type: Sprite
+    sprite: /Textures/_Misfits/Objects/Warhorns/brahminhorn.rsi
+    state: icon
+  - type: Item
+    sprite: /Textures/_Misfits/Objects/Warhorns/brahminhorn.rsi
+    size: Normal
+  - type: Warhorn
+    sound: /Audio/_Misfits/Items/Warhorn/WarHorn01.ogg
+    range: 45
+    volume: 1
+
+- type: entity
+  parent: BaseWarhorn
+  id: WarhornNCRBugle
+  name: Bugle
+  description: Fine men of California, charge!
+  components:
+  - type: Sprite
+    sprite: /Textures/_Misfits/Objects/Warhorns/ncrbugle.rsi
+    state: icon
+  - type: Item
+    sprite: /Textures/_Misfits/Objects/Warhorns/ncrbugle.rsi
+    size: Normal
+  - type: Warhorn
+    sound: /Audio/_Misfits/Items/Warhorn/BugleCharge.ogg
+    range: 45
+    volume: 2
