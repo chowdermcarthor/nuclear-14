@@ -16,7 +16,7 @@
 
 # --- Powder Ganger Outfit ---
 - type: entity
-  parent: ClothingOuterBase
+  parent: N14ClothingUniformBase
   id: ClothingPowderGangerOutfit
   name: powder ganger outfit
   description: The rough and patched clothing of a Powder Ganger — practical enough to work in, durable enough to run in.
