@@ -4003,3 +4003,14 @@ Entries:
   id: 5780
   time: '2026-04-27T23:10:07.0000000+00:00'
   url: https://github.com/Misfit-Sanctuary/nuclear-14/pull/351
+- author: Bradysgaming
+  changes:
+    - type: Add
+      message: Added new NCR ranger supermutant armor, looks like a duster
+    - type: Tweak
+      message: Made old NCR ranger armor an outfit instead
+    - type: Fix
+      message: Made Powderganger outfit, an outfit instead of an outerclothing item
+  id: 5781
+  time: '2026-04-27T23:10:49.0000000+00:00'
+  url: https://github.com/Misfit-Sanctuary/nuclear-14/pull/354
