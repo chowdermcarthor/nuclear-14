@@ -196,7 +196,7 @@
   name: 12.7mm pipe SMG
   parent: N14WeaponSMGBase
   id: N14WeaponSMG12mmPipe
-  description: a rickeyu makeshift 12mm submachine gun, looks like it is going to fall apart the second it shoots.
+  description: A rickety, makeshift 12mm submachine gun. It looks like it's going to fall apart the second it shoots.
   components:
   - type: Clothing
     sprite: _Nuclear14/Objects/Weapons/Guns/SMGs/12mmPIPE.rsi
