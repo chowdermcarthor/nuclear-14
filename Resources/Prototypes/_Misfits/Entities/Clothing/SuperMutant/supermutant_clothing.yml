@@ -182,10 +182,32 @@
         Slash: 0.5
         Piercing: 0.5
 
+# #Misfits Add - Ranger armor for the Supermutant Ranger job.
+# Tagged SupermutantWearable so only supermutants can equip it in Outerclothing slot.
+- type: entity
+  parent: [ClothingOuterBase, AllowSuitStorageClothing]
+  id: ClothingSuperMutantRangerArmor
+  name: supermutant ranger duster
+  description: An XXXXL duster created to fit even the biggest of people.
+  components:
+  - type: Sprite
+    sprite: _Misfits/Clothing/SuperMutant/ranger_armor.rsi
+  - type: Clothing
+    sprite: _Misfits/Clothing/SuperMutant/ranger_armor.rsi
+  - type: Tag
+    tags:
+    - SuperMutantWearable
+  - type: Armor # #Misfits add: was the old ncr ranger dmg reduc
+    modifiers:
+      coefficients:
+        Blunt: 0.80
+        Slash: 0.80
+        Piercing: 0.85
+
 # #Misfits Add - Ranger armor for the playable Supermutant Ranger job variant.
 # Tagged SuperMutantWearable so only supermutants can equip it in outerClothing slot.
 - type: entity
-  parent: [ClothingOuterBase, AllowSuitStorageClothing]
+  parent: [UnsensoredClothingUniformBase, AllowSuitStorageClothing]
   id: ClothingSuperMutantRangerShirt
   name: supermutant ranger shirt
   description: An XXXXL shirt stuffed with cotton to make a protective layer.
@@ -266,7 +288,6 @@
   - type: Tag
     tags:
     - SuperMutantWearable
-
 # #Misfits Add - Tribal Loincloth for the base playable Supermutant role.
 # Sprites by beepbopbopedy (CC-BY-SA-3.0).
 # --- Supermutant Tribal Loincloth ---
