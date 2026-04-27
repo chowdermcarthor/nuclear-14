@@ -101,6 +101,15 @@
   exclusive: true
   requirements:
   - !type:CharacterJobRequirement
+    inverted: true
+    jobs:
+    - SuperMutant
+    - Nightkin
+    - SuperMutantGladiator
+    - SuperMutantRanger
+    - SuperMutantTrooper
+    - SuperMutantTribal
+  - !type:CharacterJobRequirement
     jobs:
     - NCRSGT
     - NCRStaffSergeant # Misfits Change /Add/: expand access to all NCR senior roles

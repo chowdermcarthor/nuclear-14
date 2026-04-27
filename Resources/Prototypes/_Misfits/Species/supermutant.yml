@@ -16,6 +16,13 @@
   - Duffel
   - Satchel
   - Items
+  - Uniform
+  - Outer
+  - Hands
+  - Shoes
+  - Head
+  - Mask
+  - Accessories
   jobWhitelistUnlock: SuperMutant # #Misfits Change: job whitelist for SuperMutant unlocks this species
   restrictedJobs: # #Misfits Change
   - SuperMutant

@@ -15,7 +15,7 @@
   overrideConsoleVisibility: true
   whitelisted: true # #Misfits Fix — allow job-whitelist fallback in lobby visibility filter
   hideWithoutWhitelist: true # #Misfits Change
-  spawnLoadout: false
+  spawnLoadout: true
   startingGear: SuperMutantVaultSuitGear # #Misfits Add - prevents naked spawns
   applyTraits: true # #Misfits Change - enable perks tab for Supermutants
   requirements:
@@ -52,7 +52,7 @@
   overrideConsoleVisibility: true
   whitelisted: true
   hideWithoutWhitelist: true
-  spawnLoadout: false
+  spawnLoadout: true
   startingGear: SuperMutantVaultSuitGear
   applyTraits: true
   requirements:
@@ -84,7 +84,7 @@
   overrideConsoleVisibility: true
   whitelisted: true # #Misfits Change
   hideWithoutWhitelist: true # #Misfits Change
-  spawnLoadout: false
+  spawnLoadout: true
   applyTraits: true # #Misfits Change - enable perks tab for Supermutants
   startingGear: SuperMutantGladiatorGear
   requirements:
@@ -131,7 +131,7 @@
   overrideConsoleVisibility: true
   whitelisted: true
   hideWithoutWhitelist: true
-  spawnLoadout: false
+  spawnLoadout: true
   applyTraits: true
   startingGear: SuperMutantRangerGear
   requirements:
@@ -169,7 +169,7 @@
   overrideConsoleVisibility: true
   whitelisted: true
   hideWithoutWhitelist: true
-  spawnLoadout: false
+  spawnLoadout: true
   applyTraits: true
   startingGear: SuperMutantTrooperGear
   requirements:
@@ -208,7 +208,7 @@
   overrideConsoleVisibility: true
   whitelisted: true
   hideWithoutWhitelist: true
-  spawnLoadout: false
+  spawnLoadout: true
   applyTraits: true
   startingGear: SuperMutantNCRRangerGear
   access:
@@ -257,7 +257,7 @@
   overrideConsoleVisibility: true
   whitelisted: true
   hideWithoutWhitelist: true
-  spawnLoadout: false
+  spawnLoadout: true
   applyTraits: true
   startingGear: SuperMutantNCRTrooperGear
   requirements:
@@ -303,7 +303,7 @@
   overrideConsoleVisibility: true
   whitelisted: true
   hideWithoutWhitelist: true
-  spawnLoadout: false
+  spawnLoadout: true
   applyTraits: true
   startingGear: SuperMutantTribalGear
   requirements:

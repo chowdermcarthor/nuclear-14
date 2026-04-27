@@ -15,6 +15,13 @@
   - Duffel
   - Satchel
   - Items
+  - Uniform
+  - Outer
+  - Hands
+  - Shoes
+  - Head
+  - Mask
+  - Accessories
   # #Misfits Fix - Nightkin need their own whitelist entry under FEV Mutants.
   jobWhitelistUnlock: Nightkin
   restrictedJobs:
