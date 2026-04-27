@@ -3996,3 +3996,10 @@ Entries:
   id: 5779
   time: '2026-04-26T19:39:39.0000000+00:00'
   url: https://github.com/Misfit-Sanctuary/nuclear-14/pull/348
+- author: Dpellowski
+  changes:
+    - type: Add
+      message: Super Mutant Drip in loadouts
+  id: 5780
+  time: '2026-04-27T23:10:07.0000000+00:00'
+  url: https://github.com/Misfit-Sanctuary/nuclear-14/pull/351
