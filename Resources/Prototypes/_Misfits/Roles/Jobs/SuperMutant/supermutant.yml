@@ -148,6 +148,7 @@
 - type: startingGear
   id: SuperMutantRangerGear
   equipment:
+    jumpsuit: ClothingSuperMutantRangerShirt
     outerClothing: ClothingSuperMutantRangerArmor
     back: N14ClothingBackpackMilitary
 
@@ -231,7 +232,7 @@
   id: SuperMutantNCRRangerGear
   equipment:
     shoes: ClothingSuperMutantGladiatorBoots # Placeholder untill we get NCR boots
-    jumpsuit: ClothingSuperMutantJumpsuit
+    jumpsuit: ClothingSuperMutantRangerShirt
     outerClothing: ClothingSuperMutantRangerArmor
     ears: N14ClothingHeadsetNCR
     id: N14IDBadgeNCRRanger
