@@ -148,7 +148,7 @@
 - type: startingGear
   id: SuperMutantRangerGear
   equipment:
-    outerClothing: ClothingSuperMutantRangerArmor
+    jumpsuit: ClothingSuperMutantRangerShirt
     back: N14ClothingBackpackMilitary
 
 - type: playTimeTracker
@@ -231,8 +231,7 @@
   id: SuperMutantNCRRangerGear
   equipment:
     shoes: ClothingSuperMutantGladiatorBoots # Placeholder untill we get NCR boots
-    jumpsuit: ClothingSuperMutantJumpsuit
-    outerClothing: ClothingSuperMutantRangerArmor
+    jumpsuit: ClothingSuperMutantRangerShirt
     ears: N14ClothingHeadsetNCR
     id: N14IDBadgeNCRRanger
     back: N14ClothingBackpackMilitary
@@ -284,7 +283,7 @@
 
 - type: playTimeTracker
   id: SuperMutantNCRTrooper
-
+  
 # #Misfits Add - Tribal Super Mutant
 # A Champion of the tribe blessed by the spirits
 - type: job

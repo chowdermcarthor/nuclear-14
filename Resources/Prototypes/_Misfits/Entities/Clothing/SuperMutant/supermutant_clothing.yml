@@ -186,23 +186,18 @@
 # Tagged SuperMutantWearable so only supermutants can equip it in outerClothing slot.
 - type: entity
   parent: [ClothingOuterBase, AllowSuitStorageClothing]
-  id: ClothingSuperMutantRangerArmor
-  name: supermutant ranger armor
+  id: ClothingSuperMutantRangerShirt
+  name: supermutant ranger shirt
   description: An XXXXL shirt stuffed with cotton to make a protective layer.
   components:
   - type: Sprite
-    sprite: _Misfits/Clothing/SuperMutant/ranger_armor.rsi
+    sprite: _Misfits/Clothing/SuperMutant/ranger_shirt.rsi
   - type: Clothing
-    sprite: _Misfits/Clothing/SuperMutant/ranger_armor.rsi
+    sprite: _Misfits/Clothing/SuperMutant/ranger_shirt.rsi
   - type: Tag
     tags:
     - SuperMutantWearable
-  - type: Armor
-    modifiers:
-      coefficients:
-        Blunt: 0.80
-        Slash: 0.80
-        Piercing: 0.85
+
 
 # #Misfits Add - Trooper armor for the playable Supermutant Trooper job variant.
 - type: entity
