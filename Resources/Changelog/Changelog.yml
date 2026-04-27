@@ -4033,3 +4033,10 @@ Entries:
   id: 5782
   time: '2026-04-27T23:11:39.0000000+00:00'
   url: https://github.com/Misfit-Sanctuary/nuclear-14/pull/352
+- author: NajaTheNaja
+  changes:
+    - type: Fix
+      message: updated N14WeaponSMG12mmPipe description to be spelled correctly
+  id: 5783
+  time: '2026-04-27T23:11:55.0000000+00:00'
+  url: https://github.com/Misfit-Sanctuary/nuclear-14/pull/350
