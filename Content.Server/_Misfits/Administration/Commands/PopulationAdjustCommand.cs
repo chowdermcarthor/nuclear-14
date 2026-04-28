@@ -12,6 +12,8 @@
 using System.Reflection;
 using Content.Server.Administration;
 using Content.Shared.Administration;
+using Content.Shared.CCVar;
+using Robust.Shared;
 using Robust.Shared.Configuration;
 using Robust.Shared.Console;
 using Robust.Shared.IoC;
@@ -55,6 +57,12 @@ public sealed class PopulationAdjustCommand : IConsoleCommand
             return;
         }
 
+        // Compute a Lidgren/net.max_connections value that leaves room for whitelisted/admin
+        // handshakes so privileged joins aren't rejected at the low-level network layer.
+        var whitelistReserved = _cfg.GetCVar(CCVars.WhitelistReservedSlots);
+        var netReserve = 128; // keep a large runtime reserve so handshake bookkeeping never trips the cap
+        var netMax = newCap + whitelistReserved + netReserve;
+
         var patched = 0;
         foreach (var peerData in peers)
         {
@@ -70,7 +78,7 @@ public sealed class PopulationAdjustCommand : IConsoleCommand
                 return;
             }
 
-            maxField.SetValue(config, newCap);
+            maxField.SetValue(config, netMax);
             patched++;
         }
 
@@ -80,14 +88,12 @@ public sealed class PopulationAdjustCommand : IConsoleCommand
             return;
         }
 
-        // Sync cvars so future reads/reboots see the same value.
-        // game.maxplayers takes precedence in ConfigHelpers.GetEffectiveMaxConnections;
-        // net.max_connections is the fallback. Setting both keeps them coherent.
-        _cfg.SetCVar("net.max_connections", newCap);
-        _cfg.SetCVar("game.maxplayers", newCap);
-        _cfg.SetCVar("game.soft_max_players", newCap);
+        // Sync cvars so future reads/reboots see the intended limits.
+        _cfg.SetCVar("net.max_connections", netMax);
+        _cfg.SetCVar("game.maxplayers", netMax);  // Use netMax (with reserve), not newCap, so the hard cap accommodates privileged joins
+        _cfg.SetCVar(CCVars.SoftMaxPlayers, newCap);
 
-        shell.WriteLine($"Population cap raised to {newCap} on {patched} NetPeer(s). Cvars synced.");
+        shell.WriteLine($"Population cap raised to {newCap} on {patched} NetPeer(s). net.max_connections set to {netMax} (soft + whitelist + reserve).");
         shell.WriteLine("Reminder: if the active whitelist prototype caps below this value, also hot-load an updated whitelist and toggle whitelist.prototype_list.");
     }
 }
