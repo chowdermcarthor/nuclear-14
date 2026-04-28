@@ -161,9 +161,9 @@ public sealed partial class CCVars
     public static readonly CVarDef<bool> GameDiagonalMovement =
         CVarDef.Create("game.diagonalmovement", true, CVar.ARCHIVE);
 
-    // #Misfits Tweak - Bumped default to 150 to match Misfits server population target
+    // #Misfits Tweak - Bumped default to 120 to match Misfits server population target
     public static readonly CVarDef<int> SoftMaxPlayers =
-        CVarDef.Create("game.soft_max_players", 150, CVar.SERVERONLY | CVar.ARCHIVE);
+        CVarDef.Create("game.soft_max_players", 120, CVar.SERVERONLY | CVar.ARCHIVE);
 
     /// <summary>
     /// Extra slots above SoftMaxPlayers reserved for whitelisted players.
