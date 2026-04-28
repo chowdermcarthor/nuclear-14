@@ -4126,3 +4126,18 @@ Entries:
   id: 5793
   time: '2026-04-28T19:20:17.0000000+00:00'
   url: https://github.com/Misfit-Sanctuary/nuclear-14/pull/363
+- author: Dpellowski
+  changes:
+    - type: Tweak
+      message: Liquids on the ground now evaporate within a few seconds
+    - type: Tweak
+      message: All liquid types, including blood, now evaporate
+    - type: Remove
+      message: Stepping through puddles no longer generates footprints
+    - type: Tweak
+      message: Reduced puddle spread rate from 16 to 2 updates per second
+    - type: Tweak
+      message: Footprint entities now auto-clean via evaporation
+  id: 5794
+  time: '2026-04-28T20:17:06.0000000+00:00'
+  url: https://github.com/Misfit-Sanctuary/nuclear-14/pull/365
