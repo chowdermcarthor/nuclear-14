@@ -138,3 +138,21 @@
   conditions:
     - !type:TileNotBlocked
   hide: false
+
+- type: construction
+  name: tinker workbench
+  id: N14WorkbenchTinkerbench
+  graph: N14WorkbenchTinkerbench
+  startNode: start
+  targetNode: WorkbenchTinkerbench
+  category: construction-category-machines
+  description: A workbench with tinkering tools for crafting.
+  icon:
+    sprite: _Nuclear14/Structures/Misc/workbenches.rsi
+    state: tinkerbench
+  objectType: Structure
+  placementMode: SnapgridCenter
+  canBuildInImpassable: false
+  conditions:
+    - !type:TileNotBlocked
+  hide: false

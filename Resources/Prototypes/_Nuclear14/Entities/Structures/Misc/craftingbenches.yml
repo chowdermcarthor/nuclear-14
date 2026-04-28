@@ -101,15 +101,6 @@
     - N14JunkGunpartsStock
     - N14JunkGunpartsStockWood
     - N14JunkGunpartsTrigger
-    # Explosives - Misfits Add
-    - N14LandMine        # Anti-Personnel Mine
-    - LandMineKick       # Concussion Mine (non-lethal)
-    - LandMineExplosive  # Explosive Mine (~4 tile radius)
-    - LandMineModular    # Modular Mine (empty casing, add payload)
-    # #Misfits Add: Expose vanilla centrifuge machine board so players can rebuild MachineCentrifuge via machine frame.
-    - CentrifugeMachineCircuitboard
-    # #Misfits Add: Electrolyzer machine board so players can make electrolyzers via machine frame.
-    - ElectrolysisUnitMachineCircuitboard
 
 - type: entity
   parent: N14WorkbenchBase
@@ -325,8 +316,26 @@
   description: A workbench with tinkering tools for crafting.
   name: tinker workbench
   components:
+  - type: Construction
+    graph: N14WorkbenchTinkerbench
+    node: WorkbenchTinkerbench
   - type: Sprite
     state: tinkerbench
+  - type: ContainerContainer
+    containers:
+      storagebase: !type:Container
+  - type: UserInterface
+    interfaces:
+      enum.StorageUiKey.Key:
+        type: StorageBoundUserInterface
+      enum.LatheUiKey.Key:
+        type: LatheBoundUserInterface
+  # - type: Craftable  # #Misfits Remove: Stalker14 crafting system
+  - type: Storage
+    craft: true
+    maxItemSize: Ginormous
+    grid:
+    - 0,0,12,9
   - type: PointLight
     color: "#fffbeb"
     energy: 2
@@ -346,6 +355,8 @@
     - N14RPED
     - N14MiningDrill
     - N14HandheldRadio
+    - N14GeigerCounter
+    - N14HandheldHealthAnalyzer
     #Misc
     - N14FlashlightLantern
     - N14GlowstickRed
@@ -354,6 +365,44 @@
     - CapacitorStockPart
     - MicroManipulatorStockPart
     - MatterBinStockPart
+    # Explosives - Misfits Add
+    - N14LandMine        # Anti-Personnel Mine
+    - LandMineKick       # Concussion Mine (non-lethal)
+    - LandMineExplosive  # Explosive Mine (~4 tile radius)
+    - LandMineModular    # Modular Mine (empty casing, add payload)
+    # #Misfits Add: Expose vanilla centrifuge machine board so players can rebuild MachineCentrifuge via machine frame.
+    - CentrifugeMachineCircuitboard
+    # #Misfits Add: Electrolyzer machine board so players can make electrolyzers via machine frame.
+    - ElectrolysisUnitMachineCircuitboard
+
+- type: entity
+  categories: [ HideSpawnMenu ] # Forge-change
+  parent: N14WorkbenchBase
+  id: N14WorkbenchTinkerbenchFrame
+  description: A workbench with tinkering tools for crafting. This one is still being built!
+  name: tinker workbench frame
+  components:
+  - type: Sprite
+    sprite: _Nuclear14/Structures/Misc/workbenches.rsi
+    layers:
+    - state: tinkerbench0
+      map: [ "enum.ConstructionVisuals.Layer" ]
+    offset: 0.5, 0
+  - type: Appearance
+  - type: GenericVisualizer
+    visuals:
+      enum.ConstructionVisuals.Key:
+        enum.ConstructionVisuals.Layer:
+          WorkbenchTinkerbenchFrame: { state: tinkerbench0 }
+          WorkbenchTinkerbenchCopper: { state: tinkerbench1 }
+          WorkbenchTinkerbenchAluminum: { state: tinkerbench2 }
+          WorkbenchTinkerbenchCable: { state: tinkerbench3 }
+          WorkbenchTinkerbenchPlastic: { state: tinkerbench4 }
+          WorkbenchTinkerbenchWrench: { state: tinkerbench5 }
+  - type: Construction
+    graph: N14WorkbenchTinkerbench
+    node: WorkbenchTinkerbenchFrame
+    defaultTarget: WorkbenchTinkerbench
 
 - type: entity
   parent: BaseStructure

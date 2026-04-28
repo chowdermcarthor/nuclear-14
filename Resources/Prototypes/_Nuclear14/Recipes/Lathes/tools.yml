@@ -239,3 +239,22 @@
   completetime: 2
   materials:
     Plastic: 100
+
+- type: latheRecipe
+  id: N14GeigerCounter
+  result: GeigerCounter
+  category: N14Tools
+  completetime: 2
+  materials:
+    Plastic: 100
+    Circuitry: 50
+
+- type: latheRecipe
+  id: N14HandheldHealthAnalyzer
+  result: N14HandheldHealthAnalyzer
+  category: N14Tools
+  completetime: 2
+  materials:
+    Gold: 50
+    Plastic: 300
+    Circuitry: 100
