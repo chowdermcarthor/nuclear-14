@@ -14,6 +14,10 @@
                 <cc:CommandButton Name="JobSlotsButton" Command="whitelistslots" Text="{Loc misfits-whitelisting-tab-job-slots-btn}" MinWidth="180" />
                 <Label Name="JobSlotsDescription" Text="{Loc misfits-whitelisting-tab-job-slots-desc}" VerticalAlignment="Center" StyleClasses="LabelSubText" />
             </BoxContainer>
+            <BoxContainer Orientation="Horizontal" SeparationOverride="8">
+                <cc:CommandButton Name="ViewWhitelistButton" Command="whitelistview" Text="{Loc misfits-whitelisting-tab-view-whitelist-btn}" MinWidth="180" />
+                <Label Name="ViewWhitelistDescription" Text="{Loc misfits-whitelisting-tab-view-whitelist-desc}" VerticalAlignment="Center" StyleClasses="LabelSubText" />
+            </BoxContainer>
         </BoxContainer>
     </ScrollContainer>
 </Control>

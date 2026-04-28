@@ -1,0 +1,26 @@
+<!-- #Misfits Change - Whitelist Viewer admin panel XAML -->
+<controls:FancyWindow
+        xmlns="https://spacestation14.io"
+        xmlns:controls="clr-namespace:Content.Client.UserInterface.Controls"
+    Title="Whitelist Viewer" MinSize="400 500">
+    <BoxContainer Orientation="Vertical" Margin="4">
+        <!-- Header row with count and refresh -->
+        <BoxContainer Orientation="Horizontal" Margin="0 0 0 4" SeparationOverride="6">
+            <Label Name="CountLabel" Text="Whitelisted players: 0" HorizontalExpand="True" VerticalAlignment="Center" />
+            <Button Name="RefreshButton" Text="Refresh" MinWidth="80" />
+        </BoxContainer>
+
+        <!-- Filter box -->
+        <BoxContainer Orientation="Horizontal" Margin="0 0 0 4" SeparationOverride="6">
+            <Label Text="Filter:" VerticalAlignment="Center" />
+            <LineEdit Name="FilterBox" PlaceHolder="Filter by CKEY..." HorizontalExpand="True" />
+        </BoxContainer>
+
+        <!-- Player list -->
+        <PanelContainer VerticalExpand="True" StyleClasses="BackgroundDark">
+            <ScrollContainer VerticalExpand="True">
+                <BoxContainer Name="PlayerList" Orientation="Vertical" Margin="4" />
+            </ScrollContainer>
+        </PanelContainer>
+    </BoxContainer>
+</controls:FancyWindow>

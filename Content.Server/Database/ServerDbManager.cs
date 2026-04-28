@@ -264,6 +264,9 @@ namespace Content.Server.Database
 
         Task RemoveFromWhitelistAsync(NetUserId player);
 
+        // #Misfits Change - Get all whitelisted players with their CKEYs for the whitelist viewer UI
+        Task<List<PlayerRecord>> GetAllWhitelistedPlayersAsync(CancellationToken cancel = default);
+
         #endregion
 
         #region Blacklist
@@ -876,6 +879,13 @@ namespace Content.Server.Database
         {
             DbWriteOpsMetric.Inc();
             return RunDbCommand(() => _db.RemoveFromWhitelistAsync(player));
+        }
+
+        // #Misfits Change - Get all whitelisted players with their CKEYs for the whitelist viewer UI
+        public Task<List<PlayerRecord>> GetAllWhitelistedPlayersAsync(CancellationToken cancel = default)
+        {
+            DbReadOpsMetric.Inc();
+            return RunDbCommand(() => _db.GetAllWhitelistedPlayersAsync(cancel));
         }
 
         public Task<bool> GetBlacklistStatusAsync(NetUserId player)

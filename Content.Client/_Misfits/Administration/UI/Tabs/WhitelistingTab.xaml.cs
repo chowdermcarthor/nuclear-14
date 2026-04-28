@@ -24,6 +24,12 @@ public sealed partial class WhitelistingTab : Control
         JobSlotsDescription.Text = GetLocalizedOrFallback(
             "misfits-whitelisting-tab-job-slots-desc",
             "Search for players and manage station job slot configuration.");
+        ViewWhitelistButton.Text = GetLocalizedOrFallback(
+            "misfits-whitelisting-tab-view-whitelist-btn",
+            "View Whitelist");
+        ViewWhitelistDescription.Text = GetLocalizedOrFallback(
+            "misfits-whitelisting-tab-view-whitelist-desc",
+            "View all CKEYs currently on the server whitelist.");
     }
 
     private static string GetLocalizedOrFallback(string key, string fallback)

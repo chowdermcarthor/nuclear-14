@@ -1089,6 +1089,21 @@ INSERT INTO player_round (players_id, rounds_id) VALUES ({players[player]}, {id}
             await db.DbContext.SaveChangesAsync();
         }
 
+        // #Misfits Change - Get all whitelisted players joined with player records for CKEY display
+        public async Task<List<PlayerRecord>> GetAllWhitelistedPlayersAsync(CancellationToken cancel)
+        {
+            await using var db = await GetDb();
+
+            var records = await (
+                from w in db.DbContext.Whitelist
+                join p in db.DbContext.Player on w.UserId equals p.UserId
+                orderby p.LastSeenUserName
+                select p
+            ).ToListAsync(cancel);
+
+            return records.Select(r => MakePlayerRecord(r)!).ToList();
+        }
+
         public async Task<DateTimeOffset?> GetLastReadRules(NetUserId player)
         {
             await using var db = await GetDb();
