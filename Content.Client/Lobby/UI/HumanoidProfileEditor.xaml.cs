@@ -1160,21 +1160,9 @@ namespace Content.Client.Lobby.UI
                     selector.OnSelected += selectedPrio =>
                     {
                         var selectedJobPrio = (JobPriority) selectedPrio;
-                        Profile = Profile?.WithJobPriority(job.ID, selectedJobPrio);
-
-                        foreach (var (jobId, other) in _jobPriorities)
-                        {
-                            // Sync other selectors with the same job in case of multiple department jobs
-                            if (jobId == job.ID)
-                                other.Select(selectedPrio);
-                            else if (selectedJobPrio == JobPriority.High &&
-                                     (JobPriority) other.Selected == JobPriority.High)
-                            {
-                                // Lower any other high priorities to medium.
-                                other.Select((int) JobPriority.Medium);
-                                Profile = Profile?.WithJobPriority(jobId, JobPriority.Medium);
-                            }
-                        }
+                        Profile = NormalizeSingleHighPriority(
+                            Profile?.WithJobPriority(job.ID, selectedJobPrio),
+                            selectedJobPrio == JobPriority.High ? job.ID : null);
 
                         // TODO: Only reload on high change (either to or from).
                         ReloadPreview();
@@ -1338,38 +1326,60 @@ namespace Content.Client.Lobby.UI
                     else
                         selector.UnlockRequirements();
 
-                    category.AddChild(selector);
-                    _jobPriorities.Add((job.ID, selector));
-                    EnsureJobRequirementsValid(); // DeltaV
-
                     selector.OnSelected += priority =>
                     {
-                        foreach (var (jobId, other) in _jobPriorities)
-                        {
-                            // Sync other selectors with the same job in case of multiple department jobs
-                            if (jobId == job.ID)
-                                other.Select(other.Selected);
-                            else if ((JobPriority) other.Selected == JobPriority.High && (JobPriority) other.Selected == JobPriority.High)
-                            {
-                                // Lower any other high priorities to medium.
-                                other.Select((int) JobPriority.Medium);
-                                Profile = Profile?.WithJobPriority(jobId, JobPriority.Medium);
-                            }
-                        }
+                        var selectedPrio = (JobPriority) priority;
 
-                        Profile = Profile?.WithJobPriority(job.ID, (JobPriority) priority);
+                        Profile = NormalizeSingleHighPriority(
+                            Profile?.WithJobPriority(job.ID, selectedPrio),
+                            selectedPrio == JobPriority.High ? job.ID : null);
+
                         ReloadPreview();
+                        UpdateJobPriorities();
                         SetDirty();
-                        SetProfile(Profile, CharacterSlot);
                     };
 
                     _jobPriorities.Add((job.ID, selector));
+                    jobContainer.AddChild(selector);
                     category.AddChild(jobContainer);
                 }
             }
 
+            EnsureJobRequirementsValid(); // DeltaV
+
             if (Profile is not null)
                 UpdateJobPriorities();
+        }
+
+        private static HumanoidCharacterProfile? NormalizeSingleHighPriority(
+            HumanoidCharacterProfile? profile,
+            string? preferredHighJobId = null)
+        {
+            if (profile == null)
+                return null;
+
+            var highJobs = profile.JobPriorities
+                .Where(job => job.Value == JobPriority.High)
+                .Select(job => job.Key)
+                .ToList();
+
+            if (highJobs.Count <= 1)
+                return profile;
+
+            var keepHighJobId = preferredHighJobId is not null && highJobs.Contains(preferredHighJobId)
+                ? preferredHighJobId
+                : highJobs[0];
+
+            var normalized = profile;
+            foreach (var highJobId in highJobs)
+            {
+                if (highJobId == keepHighJobId)
+                    continue;
+
+                normalized = normalized.WithJobPriority(highJobId, JobPriority.Medium);
+            }
+
+            return normalized;
         }
 
         /// DeltaV - Make sure that no invalid job priorities get through
@@ -1609,6 +1619,8 @@ namespace Content.Client.Lobby.UI
                     if (Profile.JobPriorities.GetValueOrDefault(restrictedJobId.Id, JobPriority.Never) == JobPriority.Never)
                         Profile = Profile.WithJobPriority(restrictedJobId.Id, JobPriority.High);
                 }
+
+                Profile = NormalizeSingleHighPriority(Profile);
             }
 
             OnSkinColorOnValueChanged(); // Species may have special color prefs, make sure to update it.

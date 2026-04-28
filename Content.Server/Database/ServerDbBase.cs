@@ -101,7 +101,13 @@ namespace Content.Server.Database
                 .AsSplitQuery()
                 .SingleOrDefault(h => h.Slot == slot);
 
-            var newProfile = ConvertProfiles(humanoid, slot, oldProfile);
+            if (oldProfile != null)
+            {
+                db.DbContext.Profile.Remove(oldProfile);
+                await db.DbContext.SaveChangesAsync();
+            }
+
+            var newProfile = ConvertProfiles(humanoid, slot);
             if (oldProfile == null)
             {
                 var prefs = await db.DbContext
@@ -307,11 +313,29 @@ namespace Content.Server.Database
             profile.PreferenceUnavailable = (DbPreferenceUnavailableMode) humanoid.PreferenceUnavailable;
 
             profile.Jobs.Clear();
-            profile.Jobs.AddRange(
-                humanoid.JobPriorities
-                    .Where(j => j.Value != JobPriority.Never)
-                    .Select(j => new Job { JobName = j.Key, Priority = (DbJobPriority) j.Value })
-            );
+
+            // Enforce single high-priority job constraint
+            var jobsToAdd = new List<Job>();
+            bool foundHighPriority = false;
+
+            foreach (var (jobId, priority) in humanoid.JobPriorities
+                .Where(j => j.Value != JobPriority.Never))
+            {
+                var actualPriority = priority;
+
+                // Only allow one High-priority job; demote others to Medium
+                if (priority == JobPriority.High)
+                {
+                    if (foundHighPriority)
+                        actualPriority = JobPriority.Medium;
+                    else
+                        foundHighPriority = true;
+                }
+
+                jobsToAdd.Add(new Job { JobName = jobId, Priority = (DbJobPriority) actualPriority });
+            }
+
+            profile.Jobs.AddRange(jobsToAdd);
 
             profile.Antags.Clear();
             profile.Antags.AddRange(
