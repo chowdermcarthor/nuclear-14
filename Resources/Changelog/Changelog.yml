@@ -4061,3 +4061,10 @@ Entries:
   id: 5786
   time: '2026-04-28T00:31:50.0000000+00:00'
   url: https://github.com/Misfit-Sanctuary/nuclear-14/pull/356
+- author: Dpellowski
+  changes:
+    - type: Fix
+      message: Fixed soft lock bug in lobby for having 2 high jobs in different tabs
+  id: 5787
+  time: '2026-04-28T14:01:59.0000000+00:00'
+  url: https://github.com/Misfit-Sanctuary/nuclear-14/pull/358
