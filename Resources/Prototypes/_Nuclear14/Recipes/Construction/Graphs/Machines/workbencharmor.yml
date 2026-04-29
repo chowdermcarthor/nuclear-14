@@ -1,0 +1,69 @@
+- type: constructionGraph
+  id: N14WorkbenchArmorbench
+  start: start
+  graph:
+    - node: start
+      edges:
+        - to: WorkbenchArmorbenchFrame
+          completed:
+            - !type:SnapToGrid
+              southRotation: true
+          steps:
+            - material: Steel
+              amount: 10
+              doAfter: 5
+
+    - node: WorkbenchArmorbenchFrame
+      actions:
+      - !type:AppearanceChange
+      entity: N14WorkbenchArmorbenchFrame
+      edges:
+        - to: WorkbenchArmorbenchUnwelded
+          steps:
+            - tool: Welding
+              doAfter: 2
+
+    - node: WorkbenchArmorbenchUnwelded
+      actions:
+      - !type:AppearanceChange
+      entity: N14WorkbenchArmorbenchFrame
+      edges:
+        - to: WorkbenchArmorbenchCircuitry
+          steps: 
+            - material: Circuitry
+              amount: 4
+              doAfter: 2
+
+    - node: WorkbenchArmorbenchCircuitry
+      actions:
+      - !type:AppearanceChange
+      entity: N14WorkbenchArmorbenchFrame
+      edges:
+        - to: WorkbenchArmorbenchUnscrewed
+          steps:
+            - tool: Screwing
+              doAfter: 2
+
+    - node: WorkbenchArmorbenchUnscrewed
+      actions:
+      - !type:AppearanceChange
+      entity: N14WorkbenchArmorbenchFrame
+      edges:
+        - to: WorkbenchArmorbenchIron
+          steps: 
+            - material: N14Iron
+              amount: 5
+              doAfter: 5
+
+    - node: WorkbenchArmorbenchIron
+      actions:
+      - !type:AppearanceChange
+      entity: N14WorkbenchArmorbenchFrame
+      edges:
+        - to: WorkbenchArmorbench
+          steps:
+            - tool: Anchoring
+              doAfter: 4
+
+    - node: WorkbenchArmorbench
+      entity: N14WorkbenchArmorbench

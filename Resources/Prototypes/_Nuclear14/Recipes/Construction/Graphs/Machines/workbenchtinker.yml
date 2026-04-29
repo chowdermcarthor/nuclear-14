@@ -1,0 +1,92 @@
+- type: constructionGraph
+  id: N14WorkbenchTinkerbench
+  start: start
+  graph:
+    - node: start
+      edges:
+        - to: WorkbenchTinkerbenchFrame
+          completed:
+            - !type:SnapToGrid
+              southRotation: true
+          steps:
+            - material: Steel
+              amount: 10
+              doAfter: 5
+
+    - node: WorkbenchTinkerbenchFrame
+      actions:
+      - !type:AppearanceChange
+      entity: N14WorkbenchTinkerbenchFrame
+      edges:
+        - to: WorkbenchTinkerbenchCopper
+          steps:
+            - material: N14Copper
+              amount: 2
+              doAfter: 3
+
+    - node: WorkbenchTinkerbenchCopper
+      actions:
+      - !type:AppearanceChange
+      entity: N14WorkbenchTinkerbenchFrame
+      edges:
+        - to: WorkbenchTinkerbenchAluminum
+          steps: 
+            - material: Aluminum
+              amount: 1
+              doAfter: 1
+
+    - node: WorkbenchTinkerbenchAluminum
+      actions:
+      - !type:AppearanceChange
+      entity: N14WorkbenchTinkerbenchFrame
+      edges:
+        - to: WorkbenchTinkerbenchCable
+          steps:
+            - material: Cable
+              amount: 2
+              doAfter: 1
+
+    - node: WorkbenchTinkerbenchCable
+      actions:
+      - !type:AppearanceChange
+      entity: N14WorkbenchTinkerbenchFrame
+      edges:
+        - to: WorkbenchTinkerbenchPlastic
+          steps:
+            - material: Plastic
+              amount: 4
+              doAfter: 1
+
+    - node: WorkbenchTinkerbenchPlastic
+      actions:
+      - !type:AppearanceChange
+      entity: N14WorkbenchTinkerbenchFrame
+      edges:
+        - to: WorkbenchTinkerbenchUnwrench
+          steps:
+            - tool: Anchoring
+              doAfter: 2
+
+    - node: WorkbenchTinkerbenchUnwrench
+      actions:
+      - !type:AppearanceChange
+      entity: N14WorkbenchTinkerbenchFrame
+      edges:
+        - to: WorkbenchTinkerbenchUnscrewed
+          steps:
+            - material: Circuitry
+              amount: 4
+              doAfter: 1
+
+    - node: WorkbenchTinkerbenchUnscrewed
+      actions:
+      - !type:AppearanceChange
+      entity: N14WorkbenchTinkerbenchFrame
+      edges:
+        - to: WorkbenchTinkerbench
+          steps:
+            - tool: Screwing
+              doAfter: 2
+
+    - node: WorkbenchTinkerbench
+      entity: N14WorkbenchTinkerbench

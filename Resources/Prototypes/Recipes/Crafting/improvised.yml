@@ -34,6 +34,7 @@
   description: "Homemade handcuffs crafted from spare cables."
   icon: { sprite: Objects/Misc/cablecuffs.rsi, state: cuff }
   objectType: Item
+  hide: false
 
 - type: construction
   name: makeshift stunprod
@@ -186,8 +187,9 @@
   description: "A homemade piece of cotton cloth, it feels coarse."
   icon:
     sprite: Objects/Materials/materials.rsi
-    state: cotton_3
+    state: cloth_2 #Misfits Change: Better Icon
   objectType: Item
+  hide: false #Misfits Change: Unhide Recipe
 
 - type: construction
   name: straw hat

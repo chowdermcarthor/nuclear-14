@@ -303,3 +303,30 @@
   materials:
     Steel: 600
 
+# Misfits Add: Recipes for payloads because there is none for modular mines.
+- type: latheRecipe
+  id: N14ChemicalPayload
+  result: ChemicalPayload
+  category: N14Weapons
+  completetime: 10
+  materials:
+    Circuitry: 300
+    Steel: 400
+
+- type: latheRecipe
+  id: N14ExplosivePayload
+  result: ExplosivePayload
+  category: N14Weapons
+  completetime: 10
+  materials:
+    N14Gunpowder: 1000
+    Lead: 400
+
+- type: latheRecipe
+  id: N14FlashPayload
+  result: FlashPayload
+  category: N14Weapons
+  completetime: 10
+  materials:
+    Aluminum: 100
+    Sulfur: 400

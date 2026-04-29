@@ -1014,7 +1014,7 @@
 - type: entity
   parent: N14JunkItemBasePlastic
   id: N14JunkComponentSwitch
-  name: sensor module
+  name: switch module #Misfits Change: Why was this called a sensor module if its a switch??
   description: An electronics switch.
   components:
   - type: Sprite

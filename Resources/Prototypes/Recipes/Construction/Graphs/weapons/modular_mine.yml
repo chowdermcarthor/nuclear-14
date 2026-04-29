@@ -18,11 +18,11 @@
       steps:
       - material: Cable
         doAfter: 1
-      - tag: ProximitySensor
+      - tag: SensorModule #Misfits Change: Use the SensorModules
         icon:
-          sprite: Objects/Misc/proximity_sensor.rsi
-          state: icon
-        name: proximity sensor
+          sprite: _Nuclear14/Objects/Misc/crafting_junk.rsi #Misfits Change: Use the SensorModules
+          state: sensor_module #Misfits Change: Use the SensorModules
+        name: sensormodule #Misfits Change: Use the SensorModules
     - to: start
       completed:
       - !type:SpawnPrototype
@@ -47,7 +47,7 @@
         - !type:SpawnPrototype
           prototype: CableApcStack1
         - !type:SpawnPrototype
-          prototype: ProximitySensor
+          prototype: N14JunkComponentSensorModule #Misfits Change: Use the SensorModules
     - to: mine
       steps:
       - tag: Payload
