@@ -750,6 +750,20 @@
   id: CaravanBuy2_Misc
   name: "Misc"
   entries:
+  - proto: SprayPaintBlue
+    price: 5
+  - proto: SprayPaintRed
+    price: 5
+  - proto: SprayPaintGreen
+    price: 5
+  - proto: SprayPaintBlack
+    price: 5
+  - proto: SprayPaintOrange
+    price: 5
+  - proto: SprayPaintPurple
+    price: 5
+  - proto: SprayPaintWhite
+    price: 5
   - proto: N14JunkDuctTape
     price: 5
   - proto: CrayonBox
@@ -760,6 +774,8 @@
     price: 75
   - proto: OreBag # Misfits Add - ore magnet bag for miners on Wendover
     price: 40
+  - proto: MisfitsWendoverMap
+    price: 75
 
 - type: storeCategoryStructured
   id: CaravanBuy2_Sprouts
@@ -814,6 +830,15 @@
   - proto: N14FloraWildXanderRootClippingSeed
     price: 5
 
+- type: storeCategoryStructured
+  id: CaravanBuy2_Currency
+  name: "Currency"
+  entries:
+  - proto: N14CurrencyLegionDenarius
+    price: 10
+  - proto: N14CurrencyLegionAureus
+    price: 50
+
 - type: storePresetStructured
   id: caravan_buy2
   currency: Caps
@@ -836,6 +861,7 @@
   - CaravanBuy2_Alcohol
   - CaravanBuy2_Misc
   - CaravanBuy2_Sprouts
+  - CaravanBuy2_Currency
 
 # ----------------------------
 # caravan_sell2 categories
@@ -891,23 +917,31 @@
     price: 33
   - proto: N14WeaponDesertEagle44
     price: 110
+  - proto: N14WeaponLaserdotDesertEagle44
+    price: 150
 
 - type: storeCategoryStructured
   id: CaravanSell2_SMGs
   name: "Submachine Guns"
   entries:
+  - proto: N14WeaponSMGAmerican180
+    price: 30
   - proto: N14WeaponSMG10mmPipe
     price: 83
   - proto: N14WeaponSMG12mmPipe
     price: 69
   - proto: N14WeaponSMG9mm
     price: 72
+  - proto: N14WeaponSMGGreaseGun
+    price: 80
   - proto: N14WeaponSMG10mm
     price: 110
   - proto: N14WeaponSMG9mminfiltrator
     price: 138
   - proto: N14WeaponSMG10mmSuppressed
     price: 165
+  - proto: N14WeaponSMGPPSh41
+    price: 100
   - proto: N14WeaponSMG45
     price: 83
   - proto: N14WeaponSMG9mmCanadian
@@ -929,6 +963,8 @@
   entries:
   - proto: N14WeaponShotgunPipe
     price: 10
+  - proto: N14WeaponShotgunLever
+    price: 10
   - proto: N14WeaponShotgunDoubleBarrel
     price: 15
   - proto: N14WeaponShotgunBoomstick
@@ -939,6 +975,8 @@
     price: 15
   - proto: N14WeaponShotgunSawedOff
     price: 70
+  - proto: N14WeaponShotgunTrench
+    price: 40
   - proto: N14WeaponShotgun
     price: 45
   - proto: N14WeaponShotgunShort
@@ -952,6 +990,8 @@
   - proto: N14WeaponShotgunRiot
     price: 160
   - proto: N14WeaponBlowback
+    price: 550
+  - proto: N14WeaponShotgunNeostead
     price: 550
 
 - type: storeCategoryStructured
@@ -1300,7 +1340,7 @@
 
 - type: storeCategoryStructured
   id: CaravanSell2_Ore
-  name: "Ore and Currency"
+  name: "Ore"
   entries:
   - proto: N14IngotCopper1
     price: 10
@@ -1316,10 +1356,6 @@
     price: 20
   - proto: N14IngotGold1
     price: 25
-  - proto: N14CurrencyLegionDenarius
-    price: 4
-  - proto: N14CurrencyLegionAureus
-    price: 100
 
 - type: storeCategoryStructured
   id: CaravanSell2_Alcohol
@@ -1333,6 +1369,15 @@
     price: 3
   - proto: DrinkCognacBottleFull
     price: 3
+
+- type: storeCategoryStructured
+  id: CaravanSell2_Currency
+  name: "Currency"
+  entries:
+  - proto: N14CurrencyLegionDenarius
+    price: 10
+  - proto: N14CurrencyLegionAureus
+    price: 50
 
 - type: storePresetStructured
   id: caravan_sell2
@@ -1355,3 +1400,4 @@
   - CaravanSell2_Ore
   - CaravanSell2_Alcohol
   - CaravanSell2_Fish
+  - CaravanSell2_Currency

@@ -41,19 +41,20 @@
 
 #Misfits Change /Add/: Let the forge mint Legion currency directly from the matching precious metal.
 #Misfits Tweak: Raised material cost from 1 (0.01 ingot) to 500 (5 ingots) so the recipe requires a meaningful resource investment.
+#Misfits tweak: Reduced materials cost so it can be a used currency.
 - type: latheRecipe
   id: N14CurrencyLegionAureus
   result: N14CurrencyLegionAureus
   completetime: 1
   materials:
-    N14Gold: 500
+    N14Gold: 20
 
 - type: latheRecipe
   id: N14CurrencyLegionDenarius
   result: N14CurrencyLegionDenarius
   completetime: 1
   materials:
-    N14Silver: 500
+    N14Silver: 20
 
 - type: latheRecipe
   id: N14IngotIronScrap
