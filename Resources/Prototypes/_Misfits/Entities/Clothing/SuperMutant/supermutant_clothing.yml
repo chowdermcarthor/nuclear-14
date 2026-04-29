@@ -211,9 +211,9 @@
   description: An XXXXL ranger hat made to fit even the biggest of people.
   components:
   - type: Sprite
-    sprite: _Misfits\Clothing\SuperMutant\ranger_hat.rsi
+    sprite: _Misfits/Clothing/SuperMutant/ranger_hat.rsi
   - type: Clothing
-    sprite: _Misfits\Clothing\SuperMutant\ranger_hat.rsi
+    sprite: _Misfits/Clothing/SuperMutant/ranger_hat.rsi
   - type: Tag
     tags:
     - SuperMutantWearable
