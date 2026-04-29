@@ -174,3 +174,21 @@
   conditions:
     - !type:TileNotBlocked
   hide: false
+
+- type: construction
+  name: weapon workbench
+  id: N14WorkbenchWeaponbench
+  graph: N14WorkbenchWeaponbench
+  startNode: start
+  targetNode: WorkbenchWeaponbench
+  category: construction-category-machines
+  description: A workbench with weapon working tools for crafting.
+  icon:
+    sprite: _Nuclear14/Structures/Misc/workbenches.rsi
+    state: weaponbench
+  objectType: Structure
+  placementMode: SnapgridCenter
+  canBuildInImpassable: false
+  conditions:
+    - !type:TileNotBlocked
+  hide: false

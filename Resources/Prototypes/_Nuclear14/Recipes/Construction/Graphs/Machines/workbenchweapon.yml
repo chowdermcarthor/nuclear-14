@@ -1,0 +1,69 @@
+- type: constructionGraph
+  id: N14WorkbenchWeaponbench
+  start: start
+  graph:
+    - node: start
+      edges:
+        - to: WorkbenchWeaponbenchFrame
+          completed:
+            - !type:SnapToGrid
+              southRotation: true
+          steps:
+            - material: WoodPlank
+              amount: 8
+              doAfter: 5
+
+    - node: WorkbenchWeaponbenchFrame
+      actions:
+      - !type:AppearanceChange
+      entity: N14WorkbenchWeaponbenchFrame
+      edges:
+        - to: WorkbenchWeaponbenchSteel
+          steps:
+            - material: Steel
+              amount: 5
+              doAfter: 3
+
+    - node: WorkbenchWeaponbenchSteel
+      actions:
+      - !type:AppearanceChange
+      entity: N14WorkbenchWeaponbenchFrame
+      edges:
+        - to: WorkbenchWeaponbenchUnwelded
+          steps: 
+            - tool: Welding
+              doAfter: 4
+
+    - node: WorkbenchWeaponbenchUnwelded
+      actions:
+      - !type:AppearanceChange
+      entity: N14WorkbenchWeaponbenchFrame
+      edges:
+        - to: WorkbenchWeaponbenchCircuitry
+          steps:
+            - material: Circuitry
+              amount: 2
+              doAfter: 1
+
+    - node: WorkbenchWeaponbenchCircuitry
+      actions:
+      - !type:AppearanceChange
+      entity: N14WorkbenchWeaponbenchFrame
+      edges:
+        - to: WorkbenchWeaponbenchUnscrewed
+          steps: 
+            - tool: Screwing
+              doAfter: 6
+
+    - node: WorkbenchWeaponbenchUnscrewed
+      actions:
+      - !type:AppearanceChange
+      entity: N14WorkbenchWeaponbenchFrame
+      edges:
+        - to: WorkbenchWeaponbench
+          steps:
+            - tool: Anchoring
+              doAfter: 6
+
+    - node: WorkbenchWeaponbench
+      entity: N14WorkbenchWeaponbench

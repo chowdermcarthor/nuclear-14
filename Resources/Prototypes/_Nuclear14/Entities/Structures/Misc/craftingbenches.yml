@@ -45,6 +45,9 @@
   description: A workbench with weapon working tools for crafting.
   name: weapon workbench
   components:
+  - type: Construction
+    graph: N14WorkbenchWeaponbench
+    node: WorkbenchWeaponbench
   - type: Sprite
     state: weaponbench
   - type: ContainerContainer
@@ -103,6 +106,33 @@
     - N14JunkGunpartsStock
     - N14JunkGunpartsStockWood
     - N14JunkGunpartsTrigger
+
+- type: entity
+  categories: [ HideSpawnMenu ] # Forge-change
+  parent: N14WorkbenchBase
+  id: N14WorkbenchWeaponbenchFrame
+  description: A workbench with weapon working tools for crafting. This one is still being built!
+  name: weapon workbench frame
+  components:
+  - type: Sprite
+    sprite: _Nuclear14/Structures/Misc/workbenches.rsi
+    layers:
+    - state: weaponbenchframe0
+      map: [ "enum.ConstructionVisuals.Layer" ]
+  - type: Appearance
+  - type: GenericVisualizer
+    visuals:
+      enum.ConstructionVisuals.Key:
+        enum.ConstructionVisuals.Layer:
+          WorkbenchWeaponbenchFrame: { state: weaponbenchframe0 }
+          WorkbenchWeaponbenchSteel: { state: weaponbenchframe1 }
+          WorkbenchWeaponbenchUnwelded: { state: weaponbenchframe2 }
+          WorkbenchWeaponbenchCircuitry: { state: weaponbenchframe3 }
+          WorkbenchWeaponbenchUnscrewed: { state: weaponbenchframe4 }
+  - type: Construction
+    graph: N14WorkbenchWeaponbench
+    node: WorkbenchWeaponbenchFrame
+    defaultTarget: WorkbenchWeaponbench
 
 - type: entity
   parent: N14WorkbenchBase
