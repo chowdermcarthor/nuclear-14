@@ -202,7 +202,7 @@
       coefficients:
         Blunt: 0.80
         Slash: 0.80
-        Piercing: 0.
+        Piercing: 0.85
 
 - type: entity
   parent: ClothingHeadBase
