@@ -43,7 +43,6 @@
     belt: ClothingBeltNCR
     eyes: ClothingEyesGlassesSunglasses
     ears: N14ClothingHeadsetNCR
-    pocket1: N14WeaponRevolver44Magnum
     pocket2: Handcuffs
     id: N14IDNCRDogtagMPSergeant
   innerClothingSkirt: N14ClothingOfficerUniformNCRDesert
