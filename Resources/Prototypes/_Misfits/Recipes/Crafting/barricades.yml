@@ -57,3 +57,18 @@
     state: concrete_barrier
   objectType: Structure
   placementMode: SnapgridCenter
+
+- type: construction
+  name: tall wooden barricade
+  id: N14BarricadeWoodTall
+  graph: BarricadeWoodTall
+  startNode: start
+  targetNode: WoodTall
+# category: construction-category-decorations
+  description: A tall wooden barricade for blocking paths.
+  hide: false
+  icon:
+    sprite: _Nuclear14/Structures/Walls/ms13/tallobstacles.rsi
+    state: barricade
+  objectType: Structure
+  placementMode: SnapgridCenter

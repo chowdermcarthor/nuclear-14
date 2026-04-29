@@ -64,6 +64,9 @@
     position: Down
     rotation: -270
     buckleOffset: 0,0.3
+  - type: Construction
+    graph: N14Bed
+    node: bedwoodbunk
 
 # TODO: Reduce the healing rate of all these at some point compared to a proper bed.
 - type: entity

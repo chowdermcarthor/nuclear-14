@@ -8,6 +8,9 @@
   - type: Sprite
     sprite: Objects/Decoration/mines.rsi
     state: sign_left
+  - type: Construction    #misfits change
+    graph: WoodenSign
+    node: sign_left
   - type: Physics
     bodyType: Static
   - type: Fixtures
@@ -47,6 +50,9 @@
   - type: Sprite
     sprite: Objects/Decoration/mines.rsi
     state: sign_right
+  - type: Construction    #misfits change
+    graph: WoodenSign
+    node: sign_right
 
 - type: entity
   id: WoodenSupport
@@ -65,6 +71,9 @@
     noRot: true
     sprite: Objects/Decoration/mines.rsi
     state: support
+  - type: Construction    #misfits change
+    graph: WoodenSupport
+    node: support
   - type: Damageable
     damageContainer: Inorganic
     damageModifierSet: Wood
@@ -109,6 +118,9 @@
   - type: Sprite
     sprite: Objects/Decoration/mines.rsi
     state: support_beams
+  - type: Construction    #misfits change
+    graph: WoodenSupport
+    node: support_beams
   - type: Fixtures
     fixtures:
       fix1:
@@ -140,6 +152,9 @@
     noRot: true
     sprite: Objects/Decoration/mines.rsi
     state: support_wall
+  - type: Construction    #misfits change
+    graph: WoodenSupport
+    node: support_wall
   - type: Damageable
     damageContainer: Inorganic
     damageModifierSet: Wood
@@ -177,6 +192,9 @@
   - type: Sprite
     sprite: Objects/Decoration/mines.rsi
     state: support_wall_broken
+  - type: Construction    #misfits change
+    graph: WoodenSupport
+    node: support_wall_broken
   - type: Destructible
     thresholds:
     - trigger:

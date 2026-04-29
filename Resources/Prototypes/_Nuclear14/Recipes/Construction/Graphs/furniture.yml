@@ -26,6 +26,18 @@
             - material: Cloth
               amount: 6
               doAfter: 2
+              # start Misfits change
+        - to: bedwoodbunk
+          completed:
+            - !type:SnapToGrid { }
+          steps:
+            - material: WoodPlank
+              amount: 2
+              doAfter: 1
+            - material: Cloth
+              amount: 6
+              doAfter: 2
+              # end Misfits change
         - to: bedroll
           completed:
             - !type:SnapToGrid { }
@@ -68,6 +80,22 @@
           steps:
             - tool: Screwing
               doAfter: 1
+    #start Misfits change
+    - node: bedwoodbunk
+      entity: N14BedWoodBunk
+      edges:
+        - to: start
+          completed:
+            - !type:SpawnPrototype
+              prototype: MaterialWoodPlank1
+              amount: 2
+            - !type:SpawnPrototype
+              prototype: MaterialCloth1
+              amount: 6
+          steps:
+            - tool: Screwing
+              doAfter: 1
+    #end Misfits change
     - node: medicalbed
       entity: MedicalBed
       edges:

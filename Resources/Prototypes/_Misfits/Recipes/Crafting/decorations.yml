@@ -366,3 +366,89 @@
     state: cotc
   objectType: Structure
   placementMode: SnapgridCenter
+
+# signs like left and right wooden ones in mines
+
+- type: construction
+  name: wooden sign
+  id: WoodenSign
+  graph: WoodenSign
+  startNode: start
+  targetNode: sign_left
+  description: He's pointing somewhere. 
+  hide: false
+  icon:
+    sprite: Objects/Decoration/mines.rsi
+    state: sign_left
+  objectType: Structure
+
+- type: construction
+  name: wooden sign
+  id: WoodenSignRight
+  graph: WoodenSign
+  startNode: start
+  targetNode: sign_right
+  description: He's pointing somewhere, but this time on the right. 
+  hide: false
+  icon:
+    sprite: Objects/Decoration/mines.rsi
+    state: sign_right
+  objectType: Structure
+
+# mineshaft supports
+
+- type: construction
+  name: wooden support
+  id: WoodenSupport
+  graph: WoodenSupports
+  startNode: start
+  targetNode: support
+  description: A t-shaped wooden support beam, used to shore up mine shafts and tunnels.
+  hide: false
+  icon:
+    sprite: Objects/Decoration/mines.rsi
+    state: support
+  objectType: Structure
+  placementMode: SnapgridCenter
+
+- type: construction
+  name: wooden support beams
+  id: WoodenSupportBeam
+  graph: WoodenSupports
+  startNode: start
+  targetNode: support_beams
+  description: Two sturdy wooden support beams. 
+  hide: false
+  icon:
+    sprite: Objects/Decoration/mines.rsi
+    state: support_beams
+  objectType: Structure
+  placementMode: SnapgridCenter
+
+- type: construction
+  name: wooden support wall
+  id: WoodenSupportWall
+  graph: WoodenSupports
+  startNode: start
+  targetNode: support_wall
+  description: A support wall made of wood, commonly used in mines.
+  hide: false
+  icon:
+    sprite: Objects/Decoration/mines.rsi
+    state: support_wall
+  objectType: Structure
+  placementMode: SnapgridCenter
+
+- type: construction
+  name: broken wooden support wall
+  id: WoodenSupportWallBroken
+  graph: WoodenSupports
+  startNode: start
+  targetNode: support_wall_broken
+  description: An old wooden support wall that's seen better days. It looks like it could collapse at any moment.
+  hide: false
+  icon:
+    sprite: Objects/Decoration/mines.rsi
+    state: support_wall_broken
+  objectType: Structure
+  placementMode: SnapgridCenter

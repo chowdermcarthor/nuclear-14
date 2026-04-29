@@ -45,6 +45,9 @@
   - type: Damageable
     damageContainer: Inorganic
     damageModifierSet: FlimsyMetallic
+  - type: Construction
+    graph: BarricadeWoodTall
+    node: WoodTall
   - type: Destructible
     thresholds:
     - trigger:

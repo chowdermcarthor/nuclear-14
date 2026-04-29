@@ -162,3 +162,31 @@
               prototype: N14MaterialCement1
               amount: 5
             - !type:DeleteEntity
+
+- type: constructionGraph
+  id: BarricadeWoodTall
+  start: start
+  graph:
+    - node: start
+      edges:
+        - to: WoodTall
+          steps:
+            - material: WoodPlank
+              amount: 5
+              doAfter: 4
+          completed:
+            - !type:SnapToGrid
+              southRotation: true
+
+    - node: WoodTall
+      entity: N14BarricadeWoodTall
+      edges:
+        - to: start
+          steps:
+            - tool: Prying
+              doAfter: 3
+          completed:
+            - !type:SpawnPrototype
+              prototype: MaterialWoodPlank1
+              amount: 5
+            - !type:DeleteEntity 

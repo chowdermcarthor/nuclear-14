@@ -671,3 +671,123 @@
               prototype: MaterialCloth1
               amount: 5
             - !type:DeleteEntity 
+
+# Signs (like left and right wooden signs)
+
+- type: constructionGraph
+  id: WoodenSign
+  start: start
+  graph:
+    - node: start
+      edges:
+        - to: sign_left
+          steps:
+            - material: WoodPlank
+              amount: 2
+              doAfter: 2
+        - to: sign_right
+          steps:
+            - material: WoodPlank
+              amount: 2
+              doAfter: 2
+    - node: sign_left
+      entity: WoodenSign
+      edges:
+        - to: start
+          steps:
+            - tool: Screwing
+              doAfter: 3
+          completed:
+            - !type:SpawnPrototype
+              prototype: MaterialWoodPlank1
+              amount: 2
+            - !type:DeleteEntity 
+    - node: sign_right
+      entity: WoodenSignRight
+      edges:
+        - to: start
+          steps:
+            - tool: Screwing
+              doAfter: 3
+          completed:
+            - !type:SpawnPrototype
+              prototype: MaterialWoodPlank1
+              amount: 2
+            - !type:DeleteEntity 
+
+#wooden mineshaft supports
+
+- type: constructionGraph
+  id: WoodenSupports
+  start: start
+  graph:
+    - node: start
+      edges:
+        - to: support
+          steps:
+            - material: WoodPlank
+              amount: 3
+              doAfter: 4
+        - to: support_beams
+          steps:
+            - material: WoodPlank
+              amount: 3
+              doAfter: 5
+        - to: support_wall
+          steps:
+            - material: WoodPlank
+              amount: 5
+              doAfter: 5
+        - to: support_wall_broken
+          steps:
+            - material: WoodPlank
+              amount: 4
+              doAfter: 6
+    - node: support
+      entity: WoodenSupport
+      edges:
+        - to: start
+          steps:
+            - tool: Prying
+              doAfter: 8
+          completed:
+            - !type:SpawnPrototype
+              prototype: MaterialWoodPlank1
+              amount: 3
+            - !type:DeleteEntity 
+    - node: support_beams
+      entity: WoodenSupportBeam
+      edges:
+        - to: start
+          steps:
+            - tool: Prying
+              doAfter: 8
+          completed:
+            - !type:SpawnPrototype
+              prototype: MaterialWoodPlank1
+              amount: 3
+            - !type:DeleteEntity 
+    - node: support_wall
+      entity: WoodenSupportWall
+      edges:
+        - to: start
+          steps:
+            - tool: Prying
+              doAfter: 8
+          completed:
+            - !type:SpawnPrototype
+              prototype: MaterialWoodPlank1
+              amount: 5
+            - !type:DeleteEntity 
+    - node: support_wall_broken
+      entity: WoodenSupportWallBroken
+      edges:
+        - to: start
+          steps:
+            - tool: Prying
+              doAfter: 8
+          completed:
+            - !type:SpawnPrototype
+              prototype: MaterialWoodPlank1
+              amount: 4
+            - !type:DeleteEntity 

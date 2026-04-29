@@ -35,6 +35,24 @@
     - !type:TileNotBlocked
   hide: false
 
+# start Misfits change
+- type: construction
+  id: N14BedWoodBunk
+  name: tall bed
+  description: This is used to lie in, sleep in or strap on. The top bunk is a little less comfortable, but you get a better view of the world.
+  graph: N14Bed
+  startNode: start
+  targetNode: bedwoodbunk
+  category: construction-category-furniture
+  icon:
+    sprite: _Nuclear14/Structures/Furniture/bedsandchairs.rsi
+    state: bed_wood_bunk
+  objectType: Structure
+  placementMode: SnapgridCenter
+  canBuildInImpassable: false
+  hide: false
+# end Misfits change
+
 - type: construction
   id: N14Bedroll
   name: bedroll
