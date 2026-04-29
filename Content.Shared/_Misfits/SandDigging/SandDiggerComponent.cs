@@ -25,7 +25,7 @@ public sealed partial class SandDiggerComponent : Component
     /// Entity prototype spawned when sand is successfully dug.
     /// </summary>
     [DataField]
-    public EntProtoId SandPrototype = "N14Sand1";
+    public EntProtoId SandPrototype = "N14Sand5";
 
     /// <summary>
     /// Base time to dig sand before any speed modifiers.
