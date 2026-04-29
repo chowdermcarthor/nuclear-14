@@ -171,7 +171,7 @@ public sealed partial class CCVars
     /// </summary>
     // #Misfits Add - Reserved overflow slots so whitelisted players (admins, VIPs) bypass the pop cap
     public static readonly CVarDef<int> WhitelistReservedSlots =
-        CVarDef.Create("game.whitelist_reserved_slots", 5, CVar.SERVERONLY | CVar.ARCHIVE);
+        CVarDef.Create("game.whitelist_reserved_slots", 20, CVar.SERVERONLY | CVar.ARCHIVE);
 
     /// <summary>
     /// If a player gets denied connection to the server,
