@@ -21,8 +21,8 @@
       - tag: SensorModule #Misfits Change: Use the SensorModules
         icon:
           sprite: _Nuclear14/Objects/Misc/crafting_junk.rsi #Misfits Change: Use the SensorModules
-          state: icon
-        name: sensor_module #Misfits Change: Use the SensorModules
+          state: sensor_module #Misfits Change: Use the SensorModules
+        name: sensormodule #Misfits Change: Use the SensorModules
     - to: start
       completed:
       - !type:SpawnPrototype

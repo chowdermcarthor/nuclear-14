@@ -301,7 +301,6 @@
       - RawMaterial
       - Ingot
       - RawLeather # move it to the tanning machine
-      - Cotton # move it to like idk a clothing machine someday
   - type: Lathe
     idleState: icon
     runningState: icon # change this
