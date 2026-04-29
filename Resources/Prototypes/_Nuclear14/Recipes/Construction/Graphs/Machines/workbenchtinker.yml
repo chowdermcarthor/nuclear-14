@@ -62,21 +62,31 @@
       - !type:AppearanceChange
       entity: N14WorkbenchTinkerbenchFrame
       edges:
-        - to: WorkbenchTinkerbenchWrench
+        - to: WorkbenchTinkerbenchUnwrench
           steps:
             - tool: Anchoring
               doAfter: 2
 
-    - node: WorkbenchTinkerbenchWrench
+    - node: WorkbenchTinkerbenchUnwrench
+      actions:
+      - !type:AppearanceChange
+      entity: N14WorkbenchTinkerbenchFrame
+      edges:
+        - to: WorkbenchTinkerbenchUnscrewed
+          steps:
+            - material: Circuitry
+              amount: 4
+              doAfter: 1
+
+    - node: WorkbenchTinkerbenchUnscrewed
       actions:
       - !type:AppearanceChange
       entity: N14WorkbenchTinkerbenchFrame
       edges:
         - to: WorkbenchTinkerbench
           steps:
-            - material: Circuitry
-              amount: 4
-              doAfter: 1
+            - tool: Screwing
+              doAfter: 2
 
     - node: WorkbenchTinkerbench
       entity: N14WorkbenchTinkerbench
