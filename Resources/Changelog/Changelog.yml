@@ -4172,3 +4172,14 @@ Entries:
   id: 5797
   time: '2026-04-29T01:55:22.0000000+00:00'
   url: https://github.com/Misfit-Sanctuary/nuclear-14/pull/370
+- author: Bradysgaming
+  changes:
+    - type: Add
+      message: Gave NCR supermutants a hat to hide their shamefull baldness
+    - type: Remove
+      message: >-
+        Removed the poncho, it wasnt properly scaled for supermutants so it
+        clipped in
+  id: 5798
+  time: '2026-04-29T01:55:37.0000000+00:00'
+  url: https://github.com/Misfit-Sanctuary/nuclear-14/pull/369
