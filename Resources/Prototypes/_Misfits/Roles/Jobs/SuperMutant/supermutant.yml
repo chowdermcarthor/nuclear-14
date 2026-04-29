@@ -148,6 +148,7 @@
 - type: startingGear
   id: SuperMutantRangerGear
   equipment:
+    head: ClothingSuperMutantRangerHat
     jumpsuit: ClothingSuperMutantRangerShirt
     outerClothing: ClothingSuperMutantRangerArmor
     back: N14ClothingBackpackMilitary
@@ -231,13 +232,13 @@
 - type: startingGear
   id: SuperMutantNCRRangerGear
   equipment:
+    head: ClothingSuperMutantRangerHat
     shoes: ClothingSuperMutantGladiatorBoots # Placeholder untill we get NCR boots
     jumpsuit: ClothingSuperMutantRangerShirt
     outerClothing: ClothingSuperMutantRangerArmor
     ears: N14ClothingHeadsetNCR
     id: N14IDBadgeNCRRanger
     back: N14ClothingBackpackMilitary
-    neck: N14ClothingNeckCloakRangerPoncho  # NCR ranger duster, fits neck slot
 
 - type: playTimeTracker
   id: SuperMutantNCRRanger
