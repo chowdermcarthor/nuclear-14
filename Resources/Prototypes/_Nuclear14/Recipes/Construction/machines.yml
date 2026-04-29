@@ -156,3 +156,21 @@
   conditions:
     - !type:TileNotBlocked
   hide: false
+
+- type: construction
+  name: armor workbench
+  id: N14WorkbenchArmorbench
+  graph: N14WorkbenchArmorbench
+  startNode: start
+  targetNode: WorkbenchArmorbench
+  category: construction-category-machines
+  description: A workbench with metal working tools for crafting.
+  icon:
+    sprite: _Nuclear14/Structures/Misc/workbenches.rsi
+    state: armorbench
+  objectType: Structure
+  placementMode: SnapgridCenter
+  canBuildInImpassable: false
+  conditions:
+    - !type:TileNotBlocked
+  hide: false

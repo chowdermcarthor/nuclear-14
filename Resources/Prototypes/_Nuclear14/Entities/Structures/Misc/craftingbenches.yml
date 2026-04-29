@@ -21,7 +21,8 @@
   - type: Sprite
     sprite: _Nuclear14/Structures/Misc/workbenches.rsi
     state: workbench
-    offset: 0.5, 0
+    # Misfit Remove: Fix the offset issue with construction benches
+    #offset: 0.5, 0
   - type: Lathe
   - type: MaterialStorage
   - type: ActivatableUI
@@ -30,9 +31,10 @@
     interfaces:
       enum.LatheUiKey.Key:
         type: LatheBoundUserInterface
-  - type: ExtensionCableReceiver
-  - type: ApcPowerReceiver
-    needsPower: false
+  # Misfit Remove: There is no need for all the benches to have this...
+  #- type: ExtensionCableReceiver
+  #- type: ApcPowerReceiver
+  #  needsPower: false
   - type: Tag
     tags:
     - N14Workbench
@@ -208,7 +210,8 @@
     layers:
     - state: ammobenchframe0
       map: [ "enum.ConstructionVisuals.Layer" ]
-    offset: 0.5, 0
+    # Misfit Remove: Fix the offset issue with construction benches
+    #offset: 0.5, 0
   - type: Appearance
   - type: GenericVisualizer
     visuals:
@@ -231,6 +234,9 @@
   description: A workbench with armor working tools for crafting.
   name: armor workbench
   components:
+  - type: Construction
+    graph: N14WorkbenchArmorbench
+    node: WorkbenchArmorbench
   - type: Sprite
     state: armorbench
   # Forge-Change-Start
@@ -311,6 +317,35 @@
     - ClothingBeltQuiverSpear
 
 - type: entity
+  categories: [ HideSpawnMenu ] # Forge-change
+  parent: N14WorkbenchBase
+  id: N14WorkbenchArmorbenchFrame
+  description: A workbench with armor working tools for crafting. This one is still being built!
+  name: armor workbench frame
+  components:
+  - type: Sprite
+    sprite: _Nuclear14/Structures/Misc/workbenches.rsi
+    layers:
+    - state: armorbenchframe0
+      map: [ "enum.ConstructionVisuals.Layer" ]
+    # Misfit Remove: Fix the offset issue with construction benches
+    #offset: 0.5, 0
+  - type: Appearance
+  - type: GenericVisualizer
+    visuals:
+      enum.ConstructionVisuals.Key:
+        enum.ConstructionVisuals.Layer:
+          WorkbenchArmorbenchFrame: { state: armorbenchframe0 }
+          WorkbenchArmorbenchUnwelded: { state: armorbenchframe1 }
+          WorkbenchArmorbenchCircuitry: { state: armorbenchframe2 }
+          WorkbenchArmorbenchUnscrewed: { state: armorbenchframe3 }
+          WorkbenchArmorbenchIron: { state: armorbenchframe4 }
+  - type: Construction
+    graph: N14WorkbenchArmorbench
+    node: WorkbenchArmorbenchFrame
+    defaultTarget: WorkbenchArmorbench
+
+- type: entity
   parent: N14WorkbenchBase
   id: N14WorkbenchTinkerbench
   description: A workbench with tinkering tools for crafting.
@@ -339,7 +374,8 @@
   - type: PointLight
     color: "#fffbeb"
     energy: 2
-    offset: 0.5, 0
+    # Misfit Remove: Fix the offset issue with construction benches
+    #offset: 0.5, 0
     radius: 1.5
   - type: Lathe
     idleState: icon
@@ -387,7 +423,8 @@
     layers:
     - state: tinkerbench0
       map: [ "enum.ConstructionVisuals.Layer" ]
-    offset: 0.5, 0
+    # Misfit Remove: Fix the offset issue with construction benches
+    #offset: 0.5, 0
   - type: Appearance
   - type: GenericVisualizer
     visuals:
@@ -398,7 +435,8 @@
           WorkbenchTinkerbenchAluminum: { state: tinkerbench2 }
           WorkbenchTinkerbenchCable: { state: tinkerbench3 }
           WorkbenchTinkerbenchPlastic: { state: tinkerbench4 }
-          WorkbenchTinkerbenchWrench: { state: tinkerbench5 }
+          WorkbenchTinkerbenchUnwrench: { state: tinkerbench5 }
+          WorkbenchTinkerbenchUnscrewed: { state: tinkerbench6 }
   - type: Construction
     graph: N14WorkbenchTinkerbench
     node: WorkbenchTinkerbenchFrame
@@ -606,7 +644,8 @@
     layers:
     - state: workbenchframe0
       map: [ "enum.ConstructionVisuals.Layer" ]
-    offset: 0.5, 0
+    # Misfit Remove: Fix the offset issue with construction benches
+    #offset: 0.5, 0
   - type: Appearance
   - type: GenericVisualizer
     visuals:
@@ -687,7 +726,8 @@
     layers:
     - state: forgeframe0
       map: [ "enum.ConstructionVisuals.Layer" ]
-    offset: 0.5, 0
+    # Misfit Remove: Fix the offset issue with construction benches
+    #offset: 0.5, 0
   - type: Appearance
   - type: GenericVisualizer
     visuals:
