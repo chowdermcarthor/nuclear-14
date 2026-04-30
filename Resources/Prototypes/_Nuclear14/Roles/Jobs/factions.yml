@@ -211,14 +211,3 @@
   # #Misfits Change: CaesarLegionRecruit removed — replaced by Legionnaire (CaesarLegionLegionnaireRecruit).
   # - CaesarLegionRecruit         # Recruit             | _Misfits/Roles/Jobs/CaesarLegion/legion_recruit.yml
   - CaesarLegionSlave           # Slave               | _Misfits/Roles/Jobs/CaesarLegion/legion_slave.yml # #Misfits Add
-
-- type: department
-  id: MilitaryPolice
-  description: department-NCRMilitaryPolice-description
-  color: "#662727"
-  uiCategory: MajorFaction
-  roles:
-  - NCRMilitaryPoliceRecruit
-  - NCRMilitaryPoliceSergeant
-  - NCRMilitaryPoliceCaptain
-
