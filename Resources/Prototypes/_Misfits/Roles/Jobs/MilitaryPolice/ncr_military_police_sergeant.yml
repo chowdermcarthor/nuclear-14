@@ -1,7 +1,7 @@
 - type: job
   id: NCRMilitaryPoliceSergeant
   setPreference: true # #Misfits Tweak - visible in job selection
-  hideWithoutJobWhitelist: true # #Misfits Tweak - visible in all menus
+  hideWithoutJobWhitelist: false # #Misfits Tweak - visible in all menus
   hideIfPlaytimeRequirementsNotMet: false # #Misfits Tweak - all jobs visible in selection
   jobWhitelistBypassesRoleTimers: true # #Misfits Change
   overrideConsoleVisibility: false
