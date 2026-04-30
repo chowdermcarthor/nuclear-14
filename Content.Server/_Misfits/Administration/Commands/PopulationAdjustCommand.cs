@@ -51,11 +51,7 @@ public sealed class PopulationAdjustCommand : IConsoleCommand
         // value the connection-handshake check reads each time.
         var netManagerType = _net.GetType();
         var peersField = netManagerType.GetField("_netPeers", BindingFlags.Instance | BindingFlags.NonPublic);
-        if (peersField?.GetValue(_net) is not System.Collections.IEnumerable peers)
-        {
-            shell.WriteError("Could not access NetManager._netPeers via reflection. Engine may have changed.");
-            return;
-        }
+        var peers = peersField?.GetValue(_net) as System.Collections.IEnumerable;
 
         // Compute a Lidgren/net.max_connections value that leaves room for whitelisted/admin
         // handshakes so privileged joins aren't rejected at the low-level network layer.
@@ -64,7 +60,7 @@ public sealed class PopulationAdjustCommand : IConsoleCommand
         var netMax = newCap + whitelistReserved + netReserve;
 
         var patched = 0;
-        foreach (var peerData in peers)
+        foreach (var peerData in peers ?? Array.Empty<object>())
         {
             var peerField = peerData.GetType().GetField("Peer", BindingFlags.Instance | BindingFlags.Public);
             if (peerField?.GetValue(peerData) is not Lidgren.Network.NetPeer peer)
@@ -74,8 +70,8 @@ public sealed class PopulationAdjustCommand : IConsoleCommand
             var maxField = config.GetType().GetField("m_maximumConnections", BindingFlags.Instance | BindingFlags.NonPublic);
             if (maxField == null)
             {
-                shell.WriteError("Could not find Lidgren m_maximumConnections field. Engine may have changed.");
-                return;
+                shell.WriteLine("Warning: Could not find Lidgren m_maximumConnections field — CVars updated but runtime cap not patched.");
+                break;
             }
 
             maxField.SetValue(config, netMax);
@@ -83,10 +79,7 @@ public sealed class PopulationAdjustCommand : IConsoleCommand
         }
 
         if (patched == 0)
-        {
-            shell.WriteError("No active NetPeers found to patch.");
-            return;
-        }
+            shell.WriteLine($"Warning: No active NetPeers to patch — CVars updated only.");
 
         // Sync cvars so future reads/reboots see the intended limits.
         _cfg.SetCVar("net.max_connections", netMax);
