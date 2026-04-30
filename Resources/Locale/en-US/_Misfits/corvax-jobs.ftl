@@ -81,17 +81,3 @@ job-name-ncr-major = NCR Major
 job-description-ncr-major = You are the senior command billet of the New California Republic in this region. Your authority supersedes the Captain. Your appointment is by administrative directive — act with restraint and purpose.
 job-supervisors-ncr-major = NCR High Command
 id-card-access-level-ncr-major = NCR Major Access
-
-# #Misfits Add - NCR Military Police
-
-job-name-ncr-military-police-recruit = NCR Military Police Specialist
-job-description-ncr-military-police-recruit = Learn from your betters and enforce NCR law accordingly.
-department-NCRMilitaryPolice-description = Enforce justice and law upon the members of the NCR.
-department-MilitaryPolice = NCR Military Police
-job-name-ncr-military-police-sergeant = NCR Military Police Staff Sergeant
-job-description-ncr-military-police-sergeant = You are responsible for ensuring the law is upheld and followed within this NCR battalion. Lead the fledgling military police recruits and learn every letter of the law.
-job-supervisors-ncr-militarypolice-recruit = every member of the NCRMP above you. YOU ARE NOT ALLOWED TO LEAVE THE NCR TERRITORY UNDER ANY CIRCUMSTANCE.
-job-name-ncr-military-police-captain = NCR Military Police First Lieutenant
-job-description-ncr-military-police-captain = You are responsible for ensuring the law is upheld and followed within this NCR battalion. Lead the NCR Military police with due competence - and make sure no crime goes unpunished.
-job-supervisors-ncr-militarypolice-sergeant = the Military Police Captain. YOU ARE NOT ALLOWED TO LEAVE THE NCR TERRITORY UNDER ANY CIRCUMSTANCE.
-job-supervisors-ncr-militarypolice-captain = high command. YOU ARE NOT ALLOWED TO LEAVE THE NCR TERRITORY UNDER ANY CIRCUMSTANCE.
