@@ -4236,3 +4236,10 @@ Entries:
   id: 5801
   time: '2026-04-29T23:10:12.0000000+00:00'
   url: https://github.com/Misfit-Sanctuary/nuclear-14/pull/373
+- author: Dpellowski
+  changes:
+    - type: Add
+      message: New chat colorer
+  id: 5802
+  time: '2026-04-30T01:25:42.0000000+00:00'
+  url: https://github.com/Misfit-Sanctuary/nuclear-14/pull/375
