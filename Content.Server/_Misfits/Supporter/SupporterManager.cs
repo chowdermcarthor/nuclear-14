@@ -1,10 +1,9 @@
 using System.Diagnostics.CodeAnalysis;
 using System.Linq;
-using System.Text.Json;
+using System.Threading.Tasks;
+using Content.Server.Database;
 using Content.Shared._Misfits.Supporter;
-using Robust.Shared.ContentPack;
 using Robust.Shared.Network;
-using Robust.Shared.Utility;
 
 namespace Content.Server._Misfits.Supporter;
 
@@ -12,80 +11,67 @@ public interface ISupporterManager
 {
     void Initialize();
     bool TryGetSupporter(NetUserId userId, [NotNullWhen(true)] out SupporterEntry? data);
-    void SetSupporter(Guid userId, string username, string? title, string? nameColor);
-    void RemoveSupporter(Guid userId);
+    Task SetSupporterAsync(Guid userId, string username, string? title, string? nameColor);
+    Task RemoveSupporterAsync(Guid userId);
     IReadOnlyList<SupporterEntry> GetAll();
 }
 
 public sealed class SupporterManager : ISupporterManager
 {
-    [Dependency] private readonly IResourceManager _res = default!;
+    [Dependency] private readonly IServerDbManager _db = default!;
 
-    private static readonly ResPath SavePath = new("/supporters.json");
-    private static readonly JsonSerializerOptions JsonOpts = new() { WriteIndented = true, IncludeFields = true };
-
-    private readonly Dictionary<Guid, SupporterEntry> _supporters = new();
+    private readonly Dictionary<Guid, SupporterEntry> _cache = new();
     private ISawmill _sawmill = default!;
+    private Task _loadTask = Task.CompletedTask;
 
     public void Initialize()
     {
         IoCManager.InjectDependencies(this);
         _sawmill = Logger.GetSawmill("supporter");
-        Load();
+        _loadTask = Task.Run(LoadAsync);
+    }
+
+    private async Task LoadAsync()
+    {
+        try
+        {
+            var rows = await _db.GetAllSupportersAsync();
+            lock (_cache)
+            {
+                foreach (var row in rows)
+                    _cache[row.UserId] = new SupporterEntry(row.UserId, row.Username, row.Title, row.NameColor);
+            }
+            _sawmill.Info($"Loaded {_cache.Count} supporter(s) from database.");
+        }
+        catch (Exception ex)
+        {
+            _sawmill.Error($"Failed to load supporters from database: {ex}");
+        }
     }
 
     public bool TryGetSupporter(NetUserId userId, [NotNullWhen(true)] out SupporterEntry? data)
     {
-        return _supporters.TryGetValue(userId.UserId, out data);
+        lock (_cache)
+            return _cache.TryGetValue(userId.UserId, out data);
     }
 
-    public void SetSupporter(Guid userId, string username, string? title, string? nameColor)
+    public async Task SetSupporterAsync(Guid userId, string username, string? title, string? nameColor)
     {
-        _supporters[userId] = new SupporterEntry(userId, username, title, nameColor);
-        Save();
+        await _db.UpsertSupporterAsync(userId, username, title, nameColor);
+        lock (_cache)
+            _cache[userId] = new SupporterEntry(userId, username, title, nameColor);
     }
 
-    public void RemoveSupporter(Guid userId)
+    public async Task RemoveSupporterAsync(Guid userId)
     {
-        _supporters.Remove(userId);
-        Save();
+        await _db.RemoveSupporterAsync(userId);
+        lock (_cache)
+            _cache.Remove(userId);
     }
 
-    public IReadOnlyList<SupporterEntry> GetAll() => _supporters.Values.ToList();
-
-    private void Load()
+    public IReadOnlyList<SupporterEntry> GetAll()
     {
-        try
-        {
-            if (!_res.UserData.Exists(SavePath))
-                return;
-
-            var json = _res.UserData.ReadAllText(SavePath);
-            var entries = JsonSerializer.Deserialize<List<SupporterEntry>>(json, JsonOpts);
-            if (entries == null)
-                return;
-
-            foreach (var entry in entries)
-                _supporters[entry.UserId] = entry;
-
-            _sawmill.Info($"Loaded {_supporters.Count} supporter(s).");
-        }
-        catch (Exception ex)
-        {
-            _sawmill.Error($"Failed to load supporters.json: {ex}");
-        }
-    }
-
-    private void Save()
-    {
-        try
-        {
-            var json = JsonSerializer.Serialize(_supporters.Values.ToList(), JsonOpts);
-            _res.UserData.WriteAllText(SavePath, json);
-        }
-        catch (Exception ex)
-        {
-            _sawmill.Error($"Failed to save supporters.json: {ex}");
-        }
+        lock (_cache)
+            return _cache.Values.ToList();
     }
 }

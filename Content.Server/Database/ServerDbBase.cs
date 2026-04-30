@@ -2227,6 +2227,61 @@ INSERT INTO player_round (players_id, rounds_id) VALUES ({players[player]}, {id}
 
         #endregion
 
+        // #Misfits Add - Supporter management
+
+        #region Supporter
+
+        public async Task<List<Supporter>> GetAllSupportersAsync(CancellationToken cancel = default)
+        {
+            await using var db = await GetDb(cancel);
+            return await db.DbContext.Supporter.ToListAsync(cancel);
+        }
+
+        public async Task UpsertSupporterAsync(Guid userId, string username, string? title, string? nameColor)
+        {
+            await using var db = await GetDb();
+
+            var existing = await db.DbContext.Supporter
+                .Where(s => s.UserId == userId)
+                .SingleOrDefaultAsync();
+
+            if (existing != null)
+            {
+                existing.Username = username;
+                existing.Title = title;
+                existing.NameColor = nameColor;
+            }
+            else
+            {
+                db.DbContext.Supporter.Add(new Supporter
+                {
+                    UserId = userId,
+                    Username = username,
+                    Title = title,
+                    NameColor = nameColor,
+                });
+            }
+
+            await db.DbContext.SaveChangesAsync();
+        }
+
+        public async Task RemoveSupporterAsync(Guid userId)
+        {
+            await using var db = await GetDb();
+
+            var existing = await db.DbContext.Supporter
+                .Where(s => s.UserId == userId)
+                .SingleOrDefaultAsync();
+
+            if (existing != null)
+            {
+                db.DbContext.Supporter.Remove(existing);
+                await db.DbContext.SaveChangesAsync();
+            }
+        }
+
+        #endregion
+
         protected void NotificationReceived(DatabaseNotification notification) =>
             OnNotificationReceived?.Invoke(notification);
 

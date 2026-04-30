@@ -435,6 +435,16 @@ namespace Content.Server.Database
         Task<List<HelpTicketMessage>> GetHelpTicketMessagesAsync(
             int ticketId, int ticketType, Guid playerId, CancellationToken cancel = default);
         #endregion
+
+        // #Misfits Add - Supporter management
+
+        #region Supporter
+
+        Task<List<Supporter>> GetAllSupportersAsync(CancellationToken cancel = default);
+        Task UpsertSupporterAsync(Guid userId, string username, string? title, string? nameColor);
+        Task RemoveSupporterAsync(Guid userId);
+
+        #endregion
     }
     /// </summary>
     /// <remarks>
@@ -1300,6 +1310,30 @@ namespace Content.Server.Database
         {
             DbReadOpsMetric.Inc();
             return RunDbCommand(() => _db.GetHelpTicketMessagesAsync(ticketId, ticketType, playerId, cancel));
+        }
+
+        #endregion
+
+        // #Misfits Add - Supporter management
+
+        #region Supporter
+
+        public Task<List<Supporter>> GetAllSupportersAsync(CancellationToken cancel = default)
+        {
+            DbReadOpsMetric.Inc();
+            return RunDbCommand(() => _db.GetAllSupportersAsync(cancel));
+        }
+
+        public Task UpsertSupporterAsync(Guid userId, string username, string? title, string? nameColor)
+        {
+            DbWriteOpsMetric.Inc();
+            return RunDbCommand(() => _db.UpsertSupporterAsync(userId, username, title, nameColor));
+        }
+
+        public Task RemoveSupporterAsync(Guid userId)
+        {
+            DbWriteOpsMetric.Inc();
+            return RunDbCommand(() => _db.RemoveSupporterAsync(userId));
         }
 
         #endregion

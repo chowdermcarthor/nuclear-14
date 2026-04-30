@@ -55,6 +55,7 @@ namespace Content.Server.Database
         public DbSet<AtmPlacement> AtmPlacement { get; set; } = default!; // #Misfits Change - Persistent ATM placements
         public DbSet<HelpTicketEvent> HelpTicketEvent { get; set; } = default!; // #Misfits Change - Persistent help ticket audit log
         public DbSet<HelpTicketMessage> HelpTicketMessage { get; set; } = default!; // #Misfits Add - Persistent individual bwoink/mhelp chat messages for audit replay
+        public DbSet<Supporter> Supporter { get; set; } = default!; // #Misfits Add - Persistent supporter color/title data
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -165,6 +166,11 @@ namespace Content.Server.Database
 
             modelBuilder.Entity<HelpTicketMessage>()
                 .HasIndex(e => new { e.TicketId, e.TicketType });
+
+            // #Misfits Add - One row per player for supporter data
+            modelBuilder.Entity<Supporter>()
+                .HasIndex(s => s.UserId)
+                .IsUnique();
 
             modelBuilder.Entity<AdminLogPlayer>()
                 .HasOne(player => player.Player)
@@ -1454,6 +1460,24 @@ namespace Content.Server.Database
     }
 
     /// <summary>
+    // #Misfits Add - Persistent supporter color/title data
+    [Table("supporter")]
+    public sealed class Supporter
+    {
+        [Required, Key, DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+        public int Id { get; set; }
+
+        [Required]
+        public Guid UserId { get; set; }
+
+        [Required]
+        public string Username { get; set; } = null!;
+
+        public string? Title { get; set; }
+
+        public string? NameColor { get; set; }
+    }
+
     /// A hardware ID value together with its <see cref="HwidType"/>.
     /// </summary>
     /// <seealso cref="ImmutableTypedHwid"/>

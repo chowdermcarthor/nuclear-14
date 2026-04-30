@@ -1724,6 +1724,40 @@ namespace Content.Server.Database.Migrations.Sqlite
                     b.ToTable("help_ticket_message", (string)null);
                 });
 
+            modelBuilder.Entity("Content.Server.Database.Supporter", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("INTEGER")
+                        .HasColumnName("supporter_id");
+
+                    b.Property<string>("NameColor")
+                        .HasColumnType("TEXT")
+                        .HasColumnName("name_color");
+
+                    b.Property<string>("Title")
+                        .HasColumnType("TEXT")
+                        .HasColumnName("title");
+
+                    b.Property<Guid>("UserId")
+                        .HasColumnType("TEXT")
+                        .HasColumnName("user_id");
+
+                    b.Property<string>("Username")
+                        .IsRequired()
+                        .HasColumnType("TEXT")
+                        .HasColumnName("username");
+
+                    b.HasKey("Id")
+                        .HasName("PK_supporter");
+
+                    b.HasIndex("UserId")
+                        .IsUnique()
+                        .HasDatabaseName("IX_supporter_user_id");
+
+                    b.ToTable("supporter", (string)null);
+                });
+
             modelBuilder.Entity("Content.Server.Database.Admin", b =>
                 {
                     b.HasOne("Content.Server.Database.AdminRank", "AdminRank")

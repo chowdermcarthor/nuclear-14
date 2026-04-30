@@ -46,14 +46,19 @@ public sealed class SupporterManagerEui : BaseEui
                 break;
 
             case SupporterRemoveMessage removeMsg:
-                var entry = _supporters.GetAll().FirstOrDefault(e => e.UserId == removeMsg.UserId);
-                _supporters.RemoveSupporter(removeMsg.UserId);
-                _adminLog.Add(LogType.AdminMessage, LogImpact.Medium,
-                    $"{Player:actor} removed supporter {entry?.Username ?? removeMsg.UserId.ToString()}");
-                _pendingStatus = $"Removed: {entry?.Username ?? removeMsg.UserId.ToString()}";
-                StateDirty();
+                HandleRemove(removeMsg);
                 break;
         }
+    }
+
+    private async void HandleRemove(SupporterRemoveMessage msg)
+    {
+        var entry = _supporters.GetAll().FirstOrDefault(e => e.UserId == msg.UserId);
+        await _supporters.RemoveSupporterAsync(msg.UserId);
+        _adminLog.Add(LogType.AdminMessage, LogImpact.Medium,
+            $"{Player:actor} removed supporter {entry?.Username ?? msg.UserId.ToString()}");
+        _pendingStatus = $"Removed: {entry?.Username ?? msg.UserId.ToString()}";
+        StateDirty();
     }
 
     private async void HandleSet(SupporterSetMessage msg)
@@ -80,7 +85,7 @@ public sealed class SupporterManagerEui : BaseEui
             username = located.Username;
         }
 
-        _supporters.SetSupporter(userId, username, msg.Title, msg.NameColor);
+        await _supporters.SetSupporterAsync(userId, username, msg.Title, msg.NameColor);
         _adminLog.Add(LogType.AdminMessage, LogImpact.Medium,
             $"{Player:actor} set supporter [{username}]: title='{msg.Title ?? "(none)"}', color='{msg.NameColor ?? "(none)"}'");
         _pendingStatus = $"Saved: {username}";
