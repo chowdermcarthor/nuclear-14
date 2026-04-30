@@ -60,7 +60,7 @@ public sealed class PopulationAdjustCommand : IConsoleCommand
         var netMax = newCap + whitelistReserved + netReserve;
 
         var patched = 0;
-        foreach (var peerData in peers ?? [])
+        foreach (var peerData in peers ?? Array.Empty<object>())
         {
             var peerField = peerData.GetType().GetField("Peer", BindingFlags.Instance | BindingFlags.Public);
             if (peerField?.GetValue(peerData) is not Lidgren.Network.NetPeer peer)
