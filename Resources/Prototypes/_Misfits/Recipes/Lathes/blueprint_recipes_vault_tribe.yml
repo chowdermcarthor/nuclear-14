@@ -124,7 +124,7 @@
   availableFaction:
   - Vault
   materials:
-    Steel: 7000
+    Steel: 4000
     Glass: 700
     Circuitry: 1000
     ScrapElectronic: 150
@@ -1050,9 +1050,9 @@
   availableFaction:
   - Vault
   materials:
-    Steel: 600
-    Plastic: 1000
-    Cloth: 400
+    Steel: 300
+    Plastic: 200
+    Cloth: 200
 
 # --- Vault Tier 2 Helmets (basic metal) ---
 - type: latheRecipe
@@ -1064,8 +1064,8 @@
   availableFaction:
   - Vault
   materials:
-    Steel: 1200
-    Cloth: 500
+    Steel: 800
+    Cloth: 300
     Leather: 30
 
 # --- Vault Tier 3 Helmets (combat) ---
@@ -1078,10 +1078,10 @@
   availableFaction:
   - Vault
   materials:
-    Steel: 2000
+    Steel: 800
     Cloth: 800
     Leather: 40
-    Plastic: 1000
+    Plastic: 600
 
 # --- Vault Tier 4 Helmets (combat MK2 / marine) ---
 - type: latheRecipe
@@ -1093,9 +1093,9 @@
   availableFaction:
   - Vault
   materials:
-    Steel: 4000
+    Steel: 900
     Cloth: 100
-    Leather: 5
+    Leather: 50
     Circuitry: 50
 
 - type: latheRecipe
@@ -1107,10 +1107,10 @@
   availableFaction:
   - Vault
   materials:
-    Steel: 4000
-    Cloth: 10
-    Leather: 5
-    Circuitry: 5
+    Steel: 900
+    Cloth: 100
+    Leather: 50
+    Circuitry: 50
 
 - type: latheRecipe
   id: N14BPVaultArmorHelmetMarine
@@ -1121,7 +1121,7 @@
   availableFaction:
   - Vault
   materials:
-    Steel: 4000
+    Steel: 3000
     Cloth: 1000
     Leather: 500
     Circuitry: 500
