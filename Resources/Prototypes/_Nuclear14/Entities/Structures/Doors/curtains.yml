@@ -10,6 +10,9 @@
     layers:
     - state: closed
       map: ["enum.DoorVisualLayers.Base"]
+#  - type: Construction
+#    graph: CurtainJunk
+#    node: CurtainJunk
       
 - type: entity
   parent: N14JunkCurtain
