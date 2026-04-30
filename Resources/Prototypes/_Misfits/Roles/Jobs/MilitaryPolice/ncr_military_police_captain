@@ -1,0 +1,59 @@
+- type: job
+  id: NCRMilitaryPoliceCaptain
+  setPreference: true # #Misfits Tweak - visible in job selection
+  hideWithoutJobWhitelist: true # #Misfits Tweak - visible in all menus
+  hideIfPlaytimeRequirementsNotMet: false # #Misfits Tweak - all jobs visible in selection
+  jobWhitelistBypassesRoleTimers: true # #Misfits Change
+  overrideConsoleVisibility: false
+  canBeAntag: false
+  name: job-name-ncr-military-police-captain
+  description: job-description-ncr-military-police-captain
+  playTimeTracker: NCRMilitaryPoliceCaptain
+  requirements:
+    - !type:CharacterSpeciesRequirement
+      species:
+      - Human
+      - Ghoul
+    - !type:CharacterDepartmentTimeRequirement
+      department: MilitaryPolice
+      min: 108000 # 30 hours
+  weight: 3
+  startingGear: NCRMilitaryPoliceCaptainGear
+  icon: "JobIconNcrLeader"
+  supervisors: job-supervisors-ncr-militarypolice-captain
+  alwaysUseSpawner: true
+  access:
+  - NCR
+  - NCRSGT
+  - NCRLT
+  special:
+  - !type:AddComponentSpecial
+    components:
+      - type: NpcFactionMember
+        factions:
+          - Wastelander
+          - NCR
+
+- type: startingGear
+  id: NCRMilitaryPoliceCaptainGear
+  equipment:
+    head: N14ClothingHeadHatNCRBeretOfficer
+    back: N14ClothingBackpackNCR
+    jumpsuit: N14ClothingMPUniformNCRDesert
+    shoes: N14ClothingBootsCombatFilled
+    belt: ClothingBeltNCR
+    eyes: ClothingEyesGlassesSunglasses
+    ears: N14ClothingHeadsetNCR
+    pocket1: N14WeaponShotgunRiot
+    pocket2: Handcuffs
+    id: N14IDNCRDogtagMPCaptain
+  innerClothingSkirt: N14ClothingOfficerUniformNCRDesert
+  satchel: N14ClothingBackpackSatchelNCRFilled
+  storage:
+    back:
+      - N14BoxPlasticFilledMilitaryNCR
+      - N14PoliceBaton
+      - N14MagazineShotgun20
+
+- type: playTimeTracker
+  id: NCRMilitaryPoliceCaptain
