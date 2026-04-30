@@ -227,14 +227,9 @@
             - N14Cartridge762Rifle
   - type: StaticPrice
     price: 125
-  - type: Scope #Misfits Add - scope for rifles with scopes...
-    requireWielding: true
-    zoomLevels:
-    - name: 4x
-      zoom: 1.0
-      offset: 15
-      allowMovement: true
-      doAfter: 0.4
+  # #Misfits Add — built-in scope on marksman carbine (description already states it has a scope)
+  # - type: N14Scope
+  #   eyeOffset: 5
 
 - type: entity
   name: service rifle
@@ -344,14 +339,9 @@
         whitelist:
           tags:
             - N14Cartridge556Rifle
-  - type: Scope #Misfits Add - scope for rifles with scopes...
-    requireWielding: true
-    zoomLevels:
-    - name: 4x
-      zoom: 1.0
-      offset: 15
-      allowMovement: true
-      doAfter: 0.4
+  # #Misfits Add — built-in scope on scoped service rifle (explicitly described as having an optic)
+  # - type: N14Scope
+  #   eyeOffset: 5
 
 - type: entity
   name: scout rifle
@@ -774,14 +764,6 @@
             - N14Cartridge762Rifle
   - type: StaticPrice
     price: 175
-  - type: Scope #Misfits Add - scope for rifles with scopes...
-    requireWielding: true
-    zoomLevels:
-    - name: 4x
-      zoom: 1.0
-      offset: 15
-      allowMovement: true
-      doAfter: 0.4
 
 - type: entity
   name: chinese marksman rifle
@@ -836,14 +818,6 @@
             - N14Cartridge308Rifle
   - type: StaticPrice
     price: 175
-  - type: Scope #Misfits Add - scope for rifles with scopes...
-    requireWielding: true
-    zoomLevels:
-    - name: 4x
-      zoom: 1.0
-      offset: 15
-      allowMovement: true
-      doAfter: 0.8
 
 - type: entity
   name: SKS chinese carbine

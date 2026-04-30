@@ -135,31 +135,12 @@
           tags:
             - N14Cartridge50
             - N14Cartridge50HEIAP
-  - type: Scope #Misfits Add - scope for rifles with scopes...
-    requireWielding: true
-    zoomLevels:
-    - name: 4x
-      zoom: 1.0
-      offset: 15
-      allowMovement: false
-      doAfter: 0.8
-  - type: ChamberMagazineAmmoProvider
-    autoCycle: false
-    autoEject: true
-    soundAutoEject:
-      path: /Audio/_Goobstation/Weapons/Guns/MagOut/garand_eject.ogg
-    soundRack:
-      path: /Audio/Weapons/Guns/Cock/batrifle_cock.ogg
-      params:
-        volume: -3
-    soundBoltClosed:
-      path: /Audio/Weapons/Guns/Bolt/lever_bolt_closed.ogg
-      params:
-        volume: -3
-    soundBoltOpened:
-      path: /Audio/Weapons/Guns/Bolt/lever_bolt_opened.ogg
-      params:
-        volume: -3
+      # #Misfits Add — scope attachment slot on anti-materiel rifle
+      # gun_scope:
+      #   name: Scope Slot
+      #   whitelist:
+      #     tags:
+      #     - RifleScope
   - type: MagazineVisuals
     magState: mag
     steps: 1
@@ -207,14 +188,6 @@
     backStrength: 3
   - type: StaticPrice
     price: 175
-  - type: Scope #Misfits Add - scope for rifles with scopes...
-    requireWielding: true
-    zoomLevels:
-    - name: 4x
-      zoom: 1.0
-      offset: 15
-      allowMovement: false
-      doAfter: 0.8
   # #Misfits Add — scope attachment slot on .50 NCR rifle
   # - type: ItemSlots
   #   slots:
@@ -487,14 +460,6 @@
     backStrength: 3
   - type: StaticPrice
     price: 90
-  - type: Scope #Misfits Add - scope for rifles with scopes...
-    requireWielding: true
-    zoomLevels:
-    - name: 4x
-      zoom: 1.0
-      offset: 15
-      allowMovement: false
-      doAfter: 0.8
 
 - type: entity
   name: F1 sniper rifle
@@ -514,14 +479,6 @@
     backStrength: 3
   - type: StaticPrice
     price: 150
-  - type: Scope #Misfits Add - scope for rifles with scopes...
-    requireWielding: true
-    zoomLevels:
-    - name: 4x
-      zoom: 1.0
-      offset: 15
-      allowMovement: false
-      doAfter: 0.8
 
 - type: entity
   name: ross rifle
@@ -606,14 +563,6 @@
     backStrength: 3
   - type: StaticPrice
     price: 175
-  - type: Scope #Misfits Add - scope for rifles with scopes...
-    requireWielding: true
-    zoomLevels:
-    - name: 4x
-      zoom: 1.0
-      offset: 15
-      allowMovement: false
-      doAfter: 0.8
 # Forge-add-end
 
 # #Misfits Add — Cowboy Repeater, Paciencia, Ratslayer, M1 Carbine, Rangemaster
