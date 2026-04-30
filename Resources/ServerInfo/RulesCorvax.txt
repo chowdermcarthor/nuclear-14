@@ -165,5 +165,5 @@ Each round is its own story.
 
 [color=#a4885c][b]Additional Points[/b][/color]
 • Head Administration has final authority in all rule interpretations.
-• The server maintains a 16+ expectation.
+• The server maintains a 17+ expectation.
 • These rules may be updated as needed.

@@ -87,9 +87,19 @@ namespace Content.Server.Preferences.Managers
 
             // ReSharper disable once ConditionIsAlwaysTrueOrFalseAccordingToNullableAPIContract
             if (message.Profile == null)
+            {
                 _sawmill.Error($"User {userId} sent a {nameof(MsgUpdateCharacter)} with a null profile in slot {message.Slot}.");
-            else
+                return;
+            }
+
+            try
+            {
                 await SetProfile(userId, message.Slot, message.Profile);
+            }
+            catch (Exception e)
+            {
+                _sawmill.Error($"Failed to save character slot {message.Slot} for user {userId}: {e}");
+            }
         }
 
         public async Task SetProfile(NetUserId userId, int slot, ICharacterProfile profile)

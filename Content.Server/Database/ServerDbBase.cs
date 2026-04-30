@@ -91,7 +91,7 @@ namespace Content.Server.Database
                 throw new NotImplementedException();
             }
 
-            var oldProfile = db.DbContext.Profile
+            var existingProfile = db.DbContext.Profile
                 .Include(p => p.Preference)
                 .Where(p => p.Preference.UserId == userId.UserId)
                 .Include(p => p.Jobs)
@@ -101,19 +101,22 @@ namespace Content.Server.Database
                 .AsSplitQuery()
                 .SingleOrDefault(h => h.Slot == slot);
 
-            if (oldProfile != null)
+            if (existingProfile != null)
             {
-                db.DbContext.Profile.Remove(oldProfile);
-                await db.DbContext.SaveChangesAsync();
+                // Update the existing tracked entity in-place so EF Core diffs the changes correctly.
+                ConvertProfiles(humanoid, slot, existingProfile);
             }
+            else
+            {
+                // New slot — create and attach to the preference row.
+                var newProfile = ConvertProfiles(humanoid, slot);
+                var prefs = await db.DbContext
+                    .Preference
+                    .Include(p => p.Profiles)
+                    .SingleAsync(p => p.UserId == userId.UserId);
 
-            var newProfile = ConvertProfiles(humanoid, slot);
-            var prefs = await db.DbContext
-                .Preference
-                .Include(p => p.Profiles)
-                .SingleAsync(p => p.UserId == userId.UserId);
-
-            prefs.Profiles.Add(newProfile);
+                prefs.Profiles.Add(newProfile);
+            }
 
             await db.DbContext.SaveChangesAsync();
         }
