@@ -4352,3 +4352,10 @@ Entries:
   id: 5813
   time: '2026-05-01T16:22:38.0000000+00:00'
   url: https://github.com/Misfit-Sanctuary/nuclear-14/pull/394
+- author: HungryCuban
+  changes:
+    - type: Tweak
+      message: Reduced binocular use time.
+  id: 5814
+  time: '2026-05-01T16:24:09.0000000+00:00'
+  url: https://github.com/Misfit-Sanctuary/nuclear-14/pull/391
