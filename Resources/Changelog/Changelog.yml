@@ -4359,3 +4359,12 @@ Entries:
   id: 5814
   time: '2026-05-01T16:24:09.0000000+00:00'
   url: https://github.com/Misfit-Sanctuary/nuclear-14/pull/391
+- author: NajaTheNaja
+  changes:
+    - type: Tweak
+      message: vault recipe prices
+    - type: Fix
+      message: paracusia whisper 8 wasnt firing
+  id: 5815
+  time: '2026-05-01T16:24:30.0000000+00:00'
+  url: https://github.com/Misfit-Sanctuary/nuclear-14/pull/393
