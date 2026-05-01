@@ -125,7 +125,7 @@
 
 #MARK: Sheet paper
 - type: entity
-  parent: SheetOtherBase
+  parent: [ Paper, SheetOtherBase ]
   id: N14Paper
   name: paper
   categories: [ HideSpawnMenu ]
@@ -135,6 +135,8 @@
     count: 10
     baseLayer: base
     layerStates:
+    - paper
+    - paper
     - paper
   - type: Material
   - type: Sprite
