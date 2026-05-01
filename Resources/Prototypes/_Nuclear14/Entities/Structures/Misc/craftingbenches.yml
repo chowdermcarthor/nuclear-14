@@ -12,8 +12,8 @@
       fix1:
         shape:
           !type:PhysShapeAabb
-          bounds: "-0.1,-0.1,1,0.3"
-        density: 190
+          bounds: "-0.75,-0.3,0.75,0.3"
+        density: 3000
         mask:
         - MachineMask
         layer:
@@ -24,6 +24,7 @@
     # Misfit Remove: Fix the offset issue with construction benches
     #offset: 0.5, 0
   - type: Lathe
+    requirePower: false
   - type: MaterialStorage
   - type: ActivatableUI
     key: enum.LatheUiKey.Key
@@ -31,9 +32,11 @@
     interfaces:
       enum.LatheUiKey.Key:
         type: LatheBoundUserInterface
-  - type: ExtensionCableReceiver
-  - type: ApcPowerReceiver
-    needsPower: false
+  #- type: ExtensionCableReceiver
+  #- type: ApcPowerReceiver
+  #  needsPower: false
+  - type: Anchorable
+  - type: Rotatable
   - type: Tag
     tags:
     - N14Workbench
@@ -442,6 +445,12 @@
     - CentrifugeMachineCircuitboard
     # #Misfits Add: Electrolyzer machine board so players can make electrolyzers via machine frame.
     - ElectrolysisUnitMachineCircuitboard
+    requirePower: true
+  - type: ExtensionCableReceiver
+  - type: ApcPowerReceiver
+    needsPower: true
+    powerLoad: 250
+  - type: ActivatableUIRequiresPower
 
 - type: entity
   categories: [ HideSpawnMenu ] # Forge-change
@@ -493,8 +502,8 @@
       fix1:
         shape:
           !type:PhysShapeAabb
-          bounds: "-1,-0,0,0.5" # Corvax-Change
-        density: 500
+          bounds: "-0.5,-0.5,0.5,0.5" # Misfit Change
+        density: 1500
         mask:
         - TabletopMachineMask
   - type: ActivatableUI

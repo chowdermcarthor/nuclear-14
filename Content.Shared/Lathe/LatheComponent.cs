@@ -71,6 +71,12 @@ namespace Content.Shared.Lathe
 
         public const float DefaultPartRatingMaterialUseMultiplier = 0.85f;
         #endregion
+
+        /// <summary>
+        /// Simple component to check if power is required for production.
+        /// </summary>
+        [DataField, ViewVariables(VVAccess.ReadWrite)]
+        public bool RequirePower = true;
     }
 
     public sealed class LatheGetRecipesEvent : EntityEventArgs

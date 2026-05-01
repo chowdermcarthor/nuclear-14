@@ -238,7 +238,7 @@ namespace Content.Server.Lathe
         {
             if (!Resolve(uid, ref component))
                 return false;
-            if (component.CurrentRecipe != null || component.Queue.Count <= 0 || !this.IsPowered(uid, EntityManager))
+            if (component.CurrentRecipe != null || component.Queue.Count <= 0 || (!this.IsPowered(uid, EntityManager) && component.RequirePower)) // Misfit
                 return false;
 
             var recipe = component.Queue.First();
@@ -480,7 +480,7 @@ namespace Content.Server.Lathe
 
         private void OnPowerChanged(EntityUid uid, LatheComponent component, ref PowerChangedEvent args)
         {
-            if (!args.Powered)
+            if (!args.Powered && component.RequirePower) // Misfits
             {
                 RemComp<LatheProducingComponent>(uid);
                 UpdateRunningAppearance(uid, false);
