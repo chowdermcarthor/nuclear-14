@@ -37,6 +37,7 @@
 - type: startingGear
   id: NCRMilitaryPoliceRecruitGear
   equipment:
+    outerClothing: falloutNCRmilitarypolicevest
     head: FalloutNCRmilitarypoliceHelmet
     back: N14ClothingBackpackNCR
     jumpsuit: N14ClothingMPUniformNCRDesert
