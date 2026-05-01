@@ -443,40 +443,76 @@ public sealed class WastelandMapSystem : EntitySystem
         }
     }
 
-    // #Misfits Add - Notify all online Followers players when a player-controlled entity dies.
+    // #Misfits Add - Notify Followers on player death and immediately refresh maps on revival.
     private void OnMindedEntityMobStateChanged(EntityUid uid, MindContainerComponent comp, MobStateChangedEvent args)
     {
-        if (args.NewMobState != MobState.Dead)
+        // Only care about transitions to or from Dead.
+        var wasDead = args.OldMobState == MobState.Dead;
+        var isDead  = args.NewMobState == MobState.Dead;
+        if (!wasDead && !isDead)
             return;
 
-        // Ignore NPCs — only notify for real player deaths.
+        // Ignore NPCs — only act on real player characters.
         if (comp.OriginalMind == null)
             return;
         if (!TryComp<MindComponent>(comp.OriginalMind.Value, out var mindComp)
             || mindComp.OriginalOwnerUserId == null)
             return;
 
-        // Collect Followers sessions into scratch buffer; bail early if none are online.
-        _followerSessionScratch.Clear();
-        var factionQuery = EntityQueryEnumerator<NpcFactionMemberComponent, ActorComponent>();
-        while (factionQuery.MoveNext(out _, out var factionComp, out var actor))
+        if (isDead)
         {
-            foreach (var f in factionComp.Factions)
+            // Player just died — notify all online Followers.
+            _followerSessionScratch.Clear();
+            var factionQuery = EntityQueryEnumerator<NpcFactionMemberComponent, ActorComponent>();
+            while (factionQuery.MoveNext(out _, out var factionComp, out var actor))
             {
-                if (f.Id == "Followers")
+                foreach (var f in factionComp.Factions)
                 {
-                    _followerSessionScratch.Add(actor.PlayerSession);
-                    break;
+                    if (f.Id == "Followers")
+                    {
+                        _followerSessionScratch.Add(actor.PlayerSession);
+                        break;
+                    }
                 }
             }
+
+            if (_followerSessionScratch.Count > 0)
+            {
+                var msg = Loc.GetString("followers-death-alert", ("name", Name(uid)));
+                foreach (var session in _followerSessionScratch)
+                    _chatManager.DispatchServerMessage(session, msg);
+            }
         }
+        else
+        {
+            // Player was revived — immediately remove the blip from all active Followers maps.
+            RefreshFollowersMaps();
+        }
+    }
 
-        if (_followerSessionScratch.Count == 0)
-            return;
+    // #Misfits Add - Push an immediate state update to every open Followers tac-map.
+    // Called on revival so the dead-body blip disappears without waiting for the 2.5s sweep.
+    private void RefreshFollowersMaps()
+    {
+        var query = EntityQueryEnumerator<WastelandMapComponent, UserInterfaceComponent, TransformComponent>();
+        while (query.MoveNext(out var uid, out var map, out var ui, out var xform))
+        {
+            if (GetEffectiveFeed(map) != WastelandMapTacticalFeedKind.Followers)
+                continue;
 
-        var msg = Loc.GetString("followers-death-alert", ("name", Name(uid)));
-        foreach (var session in _followerSessionScratch)
-            _chatManager.DispatchServerMessage(session, msg);
+            // Only refresh if at least one player has this map open.
+            var hasViewer = false;
+            foreach (var _ in _uiSystem.GetActors((uid, ui), WastelandMapUiKey.Key))
+            {
+                hasViewer = true;
+                break;
+            }
+            if (!hasViewer)
+                continue;
+
+            _uiSystem.SetUiState((uid, ui), WastelandMapUiKey.Key,
+                BuildState(map, xform.MapID));
+        }
     }
 
     private void AppendIdCardBlips(List<WastelandMapTrackedBlip> buffer, MapId mapId, Box2 bounds, string requiredTag)
