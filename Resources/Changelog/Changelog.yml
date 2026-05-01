@@ -4386,3 +4386,10 @@ Entries:
   id: 5817
   time: '2026-05-01T18:00:15.0000000+00:00'
   url: https://github.com/Misfit-Sanctuary/nuclear-14/pull/397
+- author: Dpellowski
+  changes:
+    - type: Add
+      message: Followers see dead bodies on tac-map
+  id: 5818
+  time: '2026-05-01T18:05:59.0000000+00:00'
+  url: https://github.com/Misfit-Sanctuary/nuclear-14/pull/398
