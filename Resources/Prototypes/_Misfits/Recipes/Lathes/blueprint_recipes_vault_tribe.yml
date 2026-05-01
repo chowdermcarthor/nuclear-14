@@ -428,7 +428,7 @@
   - Tribe
   materials:
     Wood: 1500
-    Leather: 500
+    Leather: 100
 
 - type: latheRecipe
   id: N14BPTribeWeaponWastelandSpear
@@ -440,8 +440,8 @@
   - Tribe
   materials:
     Wood: 1200
-    N14Iron: 700
-    Leather: 250
+    N14Iron: 500
+    Leather: 150
 
 - type: latheRecipe
   id: N14BPTribeWeaponRevolver44Tribal
@@ -453,7 +453,7 @@
   - Tribe
   materials:
     N14Iron: 500
-    Scrap: 750
+    Scrap: 250
     Wood: 250
 
 - type: latheRecipe
@@ -465,8 +465,8 @@
   availableFaction:
   - Tribe
   materials:
-    Scrap: 3000
-    ScrapSteel: 500
+    Scrap: 1000
+    ScrapSteel: 300
 
 # --- Tribe Tier 2 Weapons (Warrior weapons) ---
 - type: latheRecipe
@@ -478,8 +478,8 @@
   availableFaction:
   - Tribe
   materials:
-    N14Iron: 1750
-    Leather: 750
+    N14Iron: 1250
+    Leather: 250
     Wood: 500
 
 - type: latheRecipe
@@ -491,9 +491,9 @@
   availableFaction:
   - Tribe
   materials:
-    N14Iron: 1500
-    Wood: 100
-    Leather: 500
+    N14Iron: 1000
+    Wood: 500
+    Leather: 100
 
 - type: latheRecipe
   id: N14BPTribeWeaponTribalSword
@@ -504,8 +504,8 @@
   availableFaction:
   - Tribe
   materials:
-    N14Iron: 2500
-    Leather: 1200
+    N14Iron: 1400
+    Leather: 300
     Cloth: 500
 
 - type: latheRecipe
@@ -517,9 +517,9 @@
   availableFaction:
   - Tribe
   materials:
-    N14Iron: 1750
-    Scrap: 1000
-    Steel: 1900
+    N14Iron: 1250
+    Scrap: 200
+    Steel: 700
 
 - type: latheRecipe
   id: N14BPTribeWeaponPistol10mmPipe
@@ -531,8 +531,8 @@
   - Tribe
   materials:
     Scrap: 1250
-    ScrapSteel: 750
-    Wood: 2500
+    ScrapSteel: 350
+    Wood: 500
 
 - type: latheRecipe
   id: N14BPTribeWeaponShotgunPipe
@@ -543,8 +543,8 @@
   availableFaction:
   - Tribe
   materials:
-    Scrap: 1500
-    ScrapSteel: 1000
+    Scrap: 1000
+    ScrapSteel: 700
     Wood: 500
 
 # --- Tribe Tier 3 Weapons (Elder's war knowledge) ---
@@ -558,9 +558,9 @@
   - Tribe
   materials:
     Steel: 2000
-    N14Iron: 1750
+    N14Iron: 750
     Scrap: 100
-    N14Brass: 500
+    N14Brass: 300
 
 - type: latheRecipe
   id: N14BPTribeWeaponHandcannon
@@ -573,7 +573,7 @@
   materials:
     Steel: 4000
     N14Iron: 800
-    Scrap: 1500
+    Scrap: 300
 
 - type: latheRecipe
   id: N14BPTribeWeaponTribalBigClub
@@ -585,8 +585,8 @@
   - Tribe
   materials:
     Wood: 3000
-    N14Iron: 1500
-    Leather: 1000
+    N14Iron: 500
+    Leather: 200
 
 - type: latheRecipe
   id: N14BPTribeWeaponTribalSpear
@@ -597,9 +597,9 @@
   availableFaction:
   - Tribe
   materials:
-    Wood: 2000
-    N14Iron: 1250
-    Leather: 750
+    Wood: 1800
+    N14Iron: 1050
+    Leather: 150
 
 - type: latheRecipe
   id: N14BPTribeWeaponSMG12mmPipe
@@ -610,9 +610,9 @@
   availableFaction:
   - Tribe
   materials:
-    Scrap: 2500
-    ScrapSteel: 1500
-    N14Iron: 750
+    Scrap: 800
+    ScrapSteel: 900
+    N14Iron: 1050
 
 - type: latheRecipe
   id: N14BPTribeWeaponRifle556Pipe
@@ -623,9 +623,9 @@
   availableFaction:
   - Tribe
   materials:
-    Scrap: 2250
-    ScrapSteel: 1500
-    Wood: 750
+    Scrap: 1150
+    ScrapSteel: 800
+    Wood: 1050
 
 # --- Tribe Tier 4 Weapons (Shaman's sacred weapons) ---
 - type: latheRecipe
@@ -637,10 +637,10 @@
   availableFaction:
   - Tribe
   materials:
-    Steel: 4000
-    N14Iron: 2500
-    N14Brass: 100
-    Leather: 500
+    Steel: 3500
+    N14Iron: 1000
+    N14Brass: 200
+    Leather: 100
 
 - type: latheRecipe
   id: N14BPTribeWeaponTribalBigClubDecorated
@@ -652,8 +652,8 @@
   - Tribe
   materials:
     Wood: 1800
-    N14Iron: 2500
-    Leather: 1500
+    N14Iron: 1200
+    Leather: 500
     N14Gold: 250
 
 - type: latheRecipe
@@ -665,10 +665,10 @@
   availableFaction:
   - Tribe
   materials:
-    Steel: 3000
-    N14Iron: 2500
+    Steel: 2500
+    N14Iron: 1000
     Wood: 2000
-    Leather: 750
+    Leather: 350
 
 - type: latheRecipe
   id: N14BPTribeWeaponSniper50Pipe
@@ -679,8 +679,8 @@
   availableFaction:
   - Tribe
   materials:
-    Scrap: 8000
-    ScrapSteel: 3500
+    Scrap: 2000
+    ScrapSteel: 1500
     N14Iron: 5000
     Wood: 1500
 
@@ -778,7 +778,7 @@
   availableFaction:
   - Tribe
   materials:
-    Cloth: 2000
+    Cloth: 1200
     Thread: 125
     Leather: 50
 
@@ -792,8 +792,8 @@
   availableFaction:
   - Tribe
   materials:
-    Leather: 300
-    N14Iron: 1500
+    Leather: 200
+    N14Iron: 1200
     Cloth: 200
     Thread: 150
 
@@ -809,7 +809,7 @@
     Leather: 275
     N14Iron: 100
     Cloth: 1750
-    Thread: 1250
+    Thread: 750
 
 - type: latheRecipe
   id: N14BPTribeArmorShaman
@@ -820,7 +820,7 @@
   availableFaction:
   - Tribe
   materials:
-    Cloth: 2500
+    Cloth: 2000
     Thread: 1750
     Leather: 1500
 
@@ -834,9 +834,9 @@
   - Tribe
   materials:
     Leather: 300
-    Steel: 2000
-    Cloth: 1750
-    Thread: 1500
+    Steel: 3000
+    Cloth: 1050
+    Thread: 900
 
 # --- Tribe Tier 4 Armor ---
 - type: latheRecipe
@@ -848,9 +848,9 @@
   availableFaction:
   - Tribe
   materials:
-    Leather: 400
-    Steel: 3000
-    N14Iron: 2000
+    Leather: 300
+    Steel: 2500
+    N14Iron: 1300
     Cloth: 200
     Thread: 150
 
@@ -866,7 +866,7 @@
     Leather: 350
     Cloth: 200
     Thread: 150
-    N14Iron: 1500
+    N14Iron: 1200
 
 # =====================================================================
 # TRIBE AMMO RECIPES
