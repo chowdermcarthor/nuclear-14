@@ -41,7 +41,7 @@
       zoom: 1.0
       offset: 15
       allowMovement: false
-      doAfter: 2
+      doAfter: 0.8
   - type: StaticPrice
     price: 150
   # #Misfits Removed - Binoculars TagPrototype not defined in Nuclear-14
