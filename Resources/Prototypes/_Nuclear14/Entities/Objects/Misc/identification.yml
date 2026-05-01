@@ -697,6 +697,10 @@
   id: N14IDDoctorFollower
   name: followers ID
   description: An ID card worn by the Followers of the Apocalypse.
+  components:
+  - type: Tag
+    tags:
+    - IdCardFollowers
 
 #MARK: Keys
 

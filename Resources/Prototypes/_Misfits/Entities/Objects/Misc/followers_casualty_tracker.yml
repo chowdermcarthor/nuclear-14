@@ -1,0 +1,32 @@
+# #Misfits Add - Followers of the Apocalypse casualty tracker.
+# Handheld device that shows all dead player-controlled bodies on the wasteland map.
+# Granted to all Follower jobs via starting gear Inhand list.
+
+- type: entity
+  parent: BaseItem
+  id: FollowersCasualtyTracker
+  name: casualty tracker
+  description: A medical data pad used by the Followers of the Apocalypse to locate casualties across the wasteland. It displays the position of all known dead.
+  components:
+  - type: WastelandMap
+    mapTexturePath: _Misfits/Maps/wendover_map.png
+    mapTitle: Followers Casualty Registry
+    worldBounds: "-517,-308,484,311"
+    tacticalFeed: Followers
+  - type: Sprite
+    sprite: _Nuclear14/Objects/Misc/clutter.rsi
+    layers:
+    - state: trifold
+  - type: Item
+    size: Small
+  - type: ActivatableUI
+    inHandsOnly: false
+    singleUser: true
+    key: enum.WastelandMapUiKey.Key
+  - type: UserInterface
+    interfaces:
+      enum.WastelandMapUiKey.Key:
+        type: WastelandMapBoundUserInterface
+  - type: Tag
+    tags:
+    - Document

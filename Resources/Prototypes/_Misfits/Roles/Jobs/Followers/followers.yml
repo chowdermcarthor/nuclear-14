@@ -58,6 +58,7 @@
       - type: NpcFactionMember
         factions:
           - Wastelander
+          - Followers # #Misfits Add - enables Followers death-alert targeting
       - type: CPRTraining
 
 - type: startingGear
@@ -127,6 +128,7 @@
       - type: NpcFactionMember
         factions:
           - Wastelander
+          - Followers # #Misfits Add - enables Followers death-alert targeting
       - type: CPRTraining
 
 - type: startingGear
@@ -191,6 +193,7 @@
       - type: NpcFactionMember
         factions:
           - Wastelander
+          - Followers # #Misfits Add - enables Followers death-alert targeting
       - type: CPRTraining
 
 - type: startingGear

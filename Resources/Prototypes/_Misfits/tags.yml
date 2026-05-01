@@ -31,6 +31,11 @@
 - type: Tag
   id: IdCardLegion # #Misfits Add - used by Legion tactical feed
 
+# #Misfits Add - Tag for Followers of the Apocalypse ID cards.
+# Applied to N14IDDoctorFollower so the Pip-Boy can identify Followers IDs.
+- type: Tag
+  id: IdCardFollowers
+
 # #Misfits Add - Tag for wastelander dogtags to allow insertion into Pip-Boy idSlot.
 # Without a faction-specific tag, wastelander dogtags would be rejected by the PDA whitelist.
 - type: Tag

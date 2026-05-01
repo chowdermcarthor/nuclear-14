@@ -33,6 +33,8 @@ public enum WastelandMapTrackedBlipKind : byte
     PipBoyContact,    // PipBoy contact sharing location — cyan circle
     PipBoyGroupMember, // PipBoy group member with map tracking — teal triangle
     TribalHuntTarget, // Active tribal hunt Deathclaw target
+    // #Misfits Add - Followers of the Apocalypse dead body blip
+    DeadBody,          // deceased player-controlled entity shown on Followers tac-map
 }
 
 [Serializable, NetSerializable]
@@ -52,6 +54,8 @@ public enum WastelandMapTacticalFeedKind : byte
     NCR,
     Enclave, // #Misfits Change
     Legion, // #Misfits Add - Legion faction tactical feed for Centurion's terminal
+    // #Misfits Add - Followers of the Apocalypse feed: shows all dead player bodies
+    Followers,
 }
 
 [Serializable, NetSerializable]

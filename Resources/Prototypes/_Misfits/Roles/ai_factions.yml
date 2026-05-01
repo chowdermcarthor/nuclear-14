@@ -168,6 +168,12 @@
   - HostileRobot
   - Feral
 
+# #Misfits Add - Followers of the Apocalypse player faction.
+# Used by BuildFactionFilter to target death-alert chat messages at Followers players.
+# Neutral to all factions — Followers are non-hostile humanitarians.
+- type: npcFaction
+  id: Followers
+
 # #Misfits Add - Deathclaw faction. Hostile to everything, neutral only to other deathclaws.
 - type: npcFaction
   id: Deathclaw

@@ -2,17 +2,24 @@
 using System;
 using System.Collections.Generic;
 using Content.Server.Access.Components;
+using Content.Server.Chat.Managers; // #Misfits Add - faction death alert chat dispatch
 using Content.Server._Misfits.Group; // #Misfits Add - group blip injection
 using Content.Server._Misfits.TribalHunt;
 using Content.Shared.Access.Components;
+using Content.Shared.Mind; // #Misfits Add - MindComponent (OriginalOwnerUserId player check)
+using Content.Shared.Mind.Components; // #Misfits Add - MindContainerComponent
+using Content.Shared.Mobs; // #Misfits Add - MobState, MobStateChangedEvent
+using Content.Shared.Mobs.Components; // #Misfits Add - MobStateComponent
+using Content.Shared.Mobs.Systems; // #Misfits Add - MobStateSystem
 using Content.Shared.Tag;
 using Content.Shared._Misfits.WastelandMap;
 using Content.Shared._Misfits.TribalHunt;
-using Content.Shared.Nyanotrasen.NPC.Components.Faction;
+using Content.Shared.NPC.Components; // NpcFactionMemberComponent
 using Content.Shared.UserInterface;
 using Robust.Server.GameObjects;
 using Robust.Shared.GameObjects;
 using Robust.Shared.Map;
+using Robust.Shared.Player; // #Misfits Add - ActorComponent for faction filter iteration
 
 namespace Content.Server._Misfits.WastelandMap;
 
@@ -27,6 +34,9 @@ public sealed class WastelandMapSystem : EntitySystem
     [Dependency] private readonly SharedTransformSystem _transform = default!;
     [Dependency] private readonly TagSystem _tag = default!;
     [Dependency] private readonly GroupSystem _groupSystem = default!; // #Misfits Add - group member map blips
+    // #Misfits Add - Followers dead body tracking & death alerts
+    [Dependency] private readonly MobStateSystem _mobState = default!;
+    [Dependency] private readonly IChatManager _chatManager = default!;
 
     private const int MaxSharedAnnotations = 128;
     private const int MaxStrokePoints = 512; // 256 UV points × 2 floats each
@@ -35,6 +45,9 @@ public sealed class WastelandMapSystem : EntitySystem
     private const float UpdateInterval = 2.5f;
     private float _updateAccumulator;
     private readonly Dictionary<(MapId MapId, WastelandMapTacticalFeedKind Feed), List<WastelandMapAnnotation>> _sharedFeedAnnotations = new();
+
+    // #Misfits Add - Scratch buffer for Followers death-alert session dispatch.
+    private readonly List<ICommonSession> _followerSessionScratch = new();
 
     // #Misfits Add - Scratch buffers + tick-local cache for BuildState.
     // At 150 pop with many open wasteland maps, the 2.5s sweep was the single hottest user-
@@ -53,6 +66,8 @@ public sealed class WastelandMapSystem : EntitySystem
         SubscribeLocalEvent<WastelandMapComponent, WastelandMapAddAnnotationMessage>(OnAddAnnotationMessage);
         SubscribeLocalEvent<WastelandMapComponent, WastelandMapRemoveAnnotationMessage>(OnRemoveAnnotationMessage);
         SubscribeLocalEvent<WastelandMapComponent, WastelandMapClearAnnotationsMessage>(OnClearAnnotationsMessage);
+        // #Misfits Add - notify Followers players when any player-controlled entity dies
+        SubscribeLocalEvent<MindContainerComponent, MobStateChangedEvent>(OnMindedEntityMobStateChanged);
     }
 
     public override void Update(float frameTime)
@@ -312,6 +327,10 @@ public sealed class WastelandMapSystem : EntitySystem
             case WastelandMapTacticalFeedKind.Legion:
                 AppendIdCardBlips(buffer, mapId, bounds, "IdCardLegion");
                 break;
+            // #Misfits Add - Followers feed shows all dead player-controlled entities
+            case WastelandMapTacticalFeedKind.Followers:
+                AppendDeadBodyBlips(buffer, mapId, bounds);
+                break;
         }
     }
 
@@ -393,6 +412,71 @@ public sealed class WastelandMapSystem : EntitySystem
                 label,
                 WastelandMapTrackedBlipKind.TribalHuntTarget));
         }
+    }
+
+    // #Misfits Add - Blips for dead player-controlled entities; used by the Followers tac-map feed.
+    // Only shows bodies whose OriginalMind was a real player (OriginalOwnerUserId set), filtering out NPCs.
+    private void AppendDeadBodyBlips(List<WastelandMapTrackedBlip> buffer, MapId mapId, Box2 bounds)
+    {
+        var query = EntityQueryEnumerator<MindContainerComponent, MobStateComponent, TransformComponent>();
+        while (query.MoveNext(out var uid, out var mindContainer, out var mobState, out var xform))
+        {
+            if (!_mobState.IsDead(uid, mobState))
+                continue;
+
+            // Require the entity to have had a real player mind at some point.
+            if (mindContainer.OriginalMind == null)
+                continue;
+            if (!TryComp<MindComponent>(mindContainer.OriginalMind.Value, out var mindComp)
+                || mindComp.OriginalOwnerUserId == null)
+                continue;
+
+            var mapCoords = _transform.GetMapCoordinates(uid, xform);
+            if (mapCoords.MapId != mapId)
+                continue;
+
+            var pos = mapCoords.Position;
+            if (!bounds.Contains(pos))
+                continue;
+
+            buffer.Add(new WastelandMapTrackedBlip(pos.X, pos.Y, Name(uid), WastelandMapTrackedBlipKind.DeadBody));
+        }
+    }
+
+    // #Misfits Add - Notify all online Followers players when a player-controlled entity dies.
+    private void OnMindedEntityMobStateChanged(EntityUid uid, MindContainerComponent comp, MobStateChangedEvent args)
+    {
+        if (args.NewMobState != MobState.Dead)
+            return;
+
+        // Ignore NPCs — only notify for real player deaths.
+        if (comp.OriginalMind == null)
+            return;
+        if (!TryComp<MindComponent>(comp.OriginalMind.Value, out var mindComp)
+            || mindComp.OriginalOwnerUserId == null)
+            return;
+
+        // Collect Followers sessions into scratch buffer; bail early if none are online.
+        _followerSessionScratch.Clear();
+        var factionQuery = EntityQueryEnumerator<NpcFactionMemberComponent, ActorComponent>();
+        while (factionQuery.MoveNext(out _, out var factionComp, out var actor))
+        {
+            foreach (var f in factionComp.Factions)
+            {
+                if (f.Id == "Followers")
+                {
+                    _followerSessionScratch.Add(actor.PlayerSession);
+                    break;
+                }
+            }
+        }
+
+        if (_followerSessionScratch.Count == 0)
+            return;
+
+        var msg = Loc.GetString("followers-death-alert", ("name", Name(uid)));
+        foreach (var session in _followerSessionScratch)
+            _chatManager.DispatchServerMessage(session, msg);
     }
 
     private void AppendIdCardBlips(List<WastelandMapTrackedBlip> buffer, MapId mapId, Box2 bounds, string requiredTag)

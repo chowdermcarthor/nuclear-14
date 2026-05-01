@@ -349,6 +349,10 @@ public sealed class MapViewerControl : Control
                 handle.DrawCircle(markerPos, 7f, Color.Black);
                 handle.DrawCircle(markerPos, 3f, Color.White);
                 break;
+            // #Misfits Add - Followers dead body blip: pale white X mark
+            case WastelandMapTrackedBlipKind.DeadBody:
+                DrawX(handle, markerPos, 9f, color);
+                break;
             // End Misfits Add
         }
     }
@@ -511,6 +515,13 @@ public sealed class MapViewerControl : Control
         handle.DrawPrimitives(DrawPrimitiveTopology.TriangleList, vertices, color);
     }
 
+    // #Misfits Add - X marker for dead body blips on the Followers tac-map.
+    private static void DrawX(DrawingHandleScreen handle, Vector2 center, float radius, Color color)
+    {
+        DrawThickLine(handle, center + new Vector2(-radius, -radius), center + new Vector2(radius, radius), color, 3f);
+        DrawThickLine(handle, center + new Vector2(radius, -radius), center + new Vector2(-radius, radius), color, 3f);
+    }
+
     private static void DrawTriangle(DrawingHandleScreen handle, Vector2 center, float radius, Color color)
     {
         var vertices = new[]
@@ -537,6 +548,8 @@ public sealed class MapViewerControl : Control
             WastelandMapTrackedBlipKind.LegionWarrior => new Color(0.70f, 0.16f, 0.12f, 1f),   // dark red
             WastelandMapTrackedBlipKind.LegionRecruit => new Color(0.62f, 0.32f, 0.12f, 1f),   // brown
             WastelandMapTrackedBlipKind.TribalHuntTarget => new Color(1f, 0.20f, 0.18f, 1f),
+            // #Misfits Add - Followers dead body blip: pale white
+            WastelandMapTrackedBlipKind.DeadBody => new Color(0.9f, 0.9f, 0.9f, 1f),
             // End Misfits Add
             _ => new Color(0.98f, 0.84f, 0.15f, 0.95f),
         };
