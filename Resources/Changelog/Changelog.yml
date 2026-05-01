@@ -4393,3 +4393,10 @@ Entries:
   id: 5818
   time: '2026-05-01T18:05:59.0000000+00:00'
   url: https://github.com/Misfit-Sanctuary/nuclear-14/pull/398
+- author: AthenaAI
+  changes:
+    - type: Fix
+      message: fix some rsi validator stuff.
+  id: 5819
+  time: '2026-05-01T21:05:05.0000000+00:00'
+  url: https://github.com/Misfit-Sanctuary/nuclear-14/pull/401
