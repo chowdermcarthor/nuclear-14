@@ -67,6 +67,7 @@ public sealed partial class SupporterManagerWindow : FancyWindow
         if (serverStatus != null)
             StatusLabel.Text = serverStatus;
 
+        supporters ??= new List<SupporterEntry>();
         SupporterListContainer.RemoveAllChildren();
         NoSupportersLabel.Visible = supporters.Count == 0;
 

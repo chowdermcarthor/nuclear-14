@@ -75,7 +75,6 @@ public sealed partial class ChatSystem : SharedChatSystem
     [Dependency] private readonly LanguageSystem _language = default!;
     [Dependency] private readonly TelepathicChatSystem _telepath = default!;
     [Dependency] private readonly EntityWhitelistSystem _whitelistSystem = default!;
-    [Dependency] private readonly ISupporterManager _supporterManager = default!; // #Misfits Add
 
     // Forge-Change Moved to shared
     // public const int VoiceRange = 10; // how far voice goes in world units
@@ -480,13 +479,6 @@ public sealed partial class ChatSystem : SharedChatSystem
 
         name = FormattedMessage.EscapeText(name);
 
-        // #Nuclear14 - Inject supporter title/color prefix into the IC name.
-        if (_playerManager.TryGetSessionByEntity(source, out var speakerSession) &&
-            _supporterManager.TryGetSupporter(speakerSession.UserId, out var supporterData))
-        {
-            name = BuildSupporterName(name, supporterData);
-        }
-
         // The chat message wrapped in a "x says y" string
         var wrappedMessage = WrapPublicMessage(source, name, message, language: language, speechOverride: speech);
         // The chat message obfuscated via language obfuscation
@@ -563,13 +555,6 @@ public sealed partial class ChatSystem : SharedChatSystem
                 speech = proto;
         }
         name = FormattedMessage.EscapeText(name);
-
-        // #Nuclear14 - Inject supporter title/color into whisper name.
-        if (_playerManager.TryGetSessionByEntity(source, out var whisperSession) &&
-            _supporterManager.TryGetSupporter(whisperSession.UserId, out var whisperSupporterData))
-        {
-            name = BuildSupporterName(name, whisperSupporterData);
-        }
 
         var languageObfuscatedMessage = SanitizeInGameICMessage(source, _language.ObfuscateSpeech(message, language), out var emoteStr, true, _configurationManager.GetCVar(CCVars.ChatPunctuation), (!CultureInfo.CurrentCulture.IsNeutralCulture && CultureInfo.CurrentCulture.Parent.Name == "en") || (CultureInfo.CurrentCulture.IsNeutralCulture && CultureInfo.CurrentCulture.Name == "en"));
 
@@ -984,18 +969,6 @@ public sealed partial class ChatSystem : SharedChatSystem
             ("language", languageDisplay));
     }
 
-    // #Nuclear14 - Build a name string with the supporter's color and optional title prefix.
-    // `escapedName` is already escaped; the markup tags wrapping it are trusted server-side strings.
-    private static string BuildSupporterName(string escapedName, Content.Shared._Misfits.Supporter.SupporterEntry supporter)
-    {
-        var colorHex = string.IsNullOrWhiteSpace(supporter.NameColor) ? "#FFD700" : supporter.NameColor;
-        if (!string.IsNullOrWhiteSpace(supporter.Title))
-        {
-            var escapedTitle = FormattedMessage.EscapeText(supporter.Title);
-            return $"[color={colorHex}]\\[{escapedTitle}] {escapedName}[/color]";
-        }
-        return $"[color={colorHex}]{escapedName}[/color]";
-    }
 
     /// <summary>
     ///     Returns list of players and ranges for all players withing some range. Also returns observers with a range of -1.

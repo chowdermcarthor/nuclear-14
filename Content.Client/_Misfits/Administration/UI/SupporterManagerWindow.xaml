@@ -32,7 +32,7 @@
         <Label Text="Current Supporters" StyleClasses="LabelHeadingBig" />
 
         <ScrollContainer VerticalExpand="True" MinSize="0 200">
-            <BoxContainer Name="SupporterListContainer" Orientation="Vertical" SeparationOverride="2" />
+            <BoxContainer Name="SupporterListContainer" Orientation="Vertical" SeparationOverride="2" HorizontalExpand="True" />
         </ScrollContainer>
 
         <Label Name="NoSupportersLabel" Text="No supporters configured." StyleClasses="LabelSubText"
